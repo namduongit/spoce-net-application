@@ -3,22 +3,12 @@ package MAIN_GUI;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
-import java.util.List;
 import java.awt.event.ActionEvent;
-import java.sql.Timestamp;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 import javax.swing.*;
 
 import Components.CustomButton;
 import Components.CustomTextField;
-import SQLHelper.MySQLHelper;
-import Utils.SendEmail;
 
 public class ForgetPass extends JFrame {
 
@@ -39,15 +29,6 @@ public class ForgetPass extends JFrame {
 
     public ForgetPass() {
         this.initComponents();
-    }
-
-    private void sendOTP(SendEmail sendEmail, String email, String otpCode, String username) {
-        boolean resultSend = sendEmail.sendNewOTP(email, "Cập nhật lại mật khẩu!", otpCode, username);
-        if (resultSend) {
-            JOptionPane.showMessageDialog(this, "Đã gửi mã OTP tới Email của bạn", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(this, "Gửi mã OTP thất bại, vui lòng thử lại sau", "Thông báo", JOptionPane.ERROR_MESSAGE);
-        }
     }
 
     private void returnHomePage() {
