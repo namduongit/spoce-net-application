@@ -1,5 +1,7 @@
 package Pojo;
 
-public class Otps {
+import SQLHelper.MySQLHelper;
 
+public class Otps extends MySQLHelper {
+    
 }

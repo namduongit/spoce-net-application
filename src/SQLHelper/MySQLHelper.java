@@ -122,6 +122,7 @@ public class MySQLHelper {
             }
 
             int rowsInserted = preparedStatement.executeUpdate();
+            preparedStatement.close();
             return rowsInserted > 0;
 
         } catch (SQLException exception) {
@@ -129,6 +130,63 @@ public class MySQLHelper {
         }
         return false;
     }
+
+    public boolean deleteData(List<Object> values) {
+        try {
+            String table = this.queryParams.get("TABLE");
+            String where = this.buildingCondition();
+
+            String sql = "DELETE FROM " + table + " " + where;
+
+            try (PreparedStatement preparedStatement = this.connection.prepareStatement(sql)) {
+                for (int i = 0; i < values.size(); i++) {
+                    preparedStatement.setObject(i + 1, values.get(i));
+                }
+
+                int affectedRows = preparedStatement.executeUpdate();
+                return affectedRows > 0;
+            }
+        } catch (SQLException exception) {
+            JOptionPane.showMessageDialog(null, exception.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
+        return false;
+    }
+
+    public boolean updateData(Map<String, Object> updateValues, List<Object> conditionValues) {
+        try {
+            String table = this.queryParams.get("TABLE");
+            String where = this.buildingCondition();
+
+            StringBuilder setClause = new StringBuilder();
+            for (String column : updateValues.keySet()) {
+                if (setClause.length() > 0) {
+                    setClause.append(", ");
+                }
+                setClause.append(column).append(" = ?");
+            }
+
+            String sql = "UPDATE " + table + " SET " + setClause + " " + where;
+
+            try (PreparedStatement preparedStatement = this.connection.prepareStatement(sql)) {
+                int index = 1;
+
+                for (Object value : updateValues.values()) {
+                    preparedStatement.setObject(index++, value);
+                }
+
+                for (Object value : conditionValues) {
+                    preparedStatement.setObject(index++, value);
+                }
+
+                int affectedRows = preparedStatement.executeUpdate();
+                return affectedRows > 0;
+            }
+        } catch (SQLException exception) {
+            JOptionPane.showMessageDialog(null, exception.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
+        return false;
+    }
+
 
 
     public void closeConnect() {

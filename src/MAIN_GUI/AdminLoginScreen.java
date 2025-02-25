@@ -133,7 +133,7 @@ public class AdminLoginScreen extends JFrame{
 
                 if (textUserName.equals("Enter your username") || textUserName.isEmpty()
                     || textPassword.equals("Enter your password") || textPassword.isEmpty()) {
-                        JOptionPane.showMessageDialog(null, "Please input your username and password", "Cảnh báo", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Vui lòng nhập đầy đủ thông tin", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                     }
                 else {
 
@@ -185,9 +185,6 @@ public class AdminLoginScreen extends JFrame{
         panel.add(leftPanel);
         this.getContentPane().add(panel);
     }
-
-
-
 
     public static void main(String[] args) {
         new AdminLoginScreen().setVisible(true);
