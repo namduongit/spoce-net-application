@@ -1,4 +1,4 @@
-package Utils;
+package Utils.Config;
 
 public class ConfigSQL {
     public static String USER_NAME = "net_gaming";

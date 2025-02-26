@@ -4,11 +4,13 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
-
+import java.util.LinkedHashMap;
+import java.util.Map;
 import javax.swing.*;
 
 import Components.CustomButton;
 import Components.CustomTextField;
+import SQLHelper.MySQLHelper;
 
 public class ForgetPass extends JFrame {
 
@@ -222,17 +224,31 @@ public class ForgetPass extends JFrame {
     }
 
     private void handleSendOTP(ActionEvent e) {
-        this.sendOTPButton.setVisible(false);
+        String textEmail = this.emailField.getText();
+        if (textEmail != "") {
+            // Kiểm tra Email có tồn tại trên hệ thống không
+            /** Nếu đúng thì thực hiện gửi mã và cho điền OTP
+             * this.sendOTPButton.setVisible(false);
 
-        this.emailField.setVisible(false);
-        this.passwordField.setVisible(false);
-        this.otpField.setVisible(true);
+                this.emailField.setVisible(false);
+                this.passwordField.setVisible(false);
+                this.otpField.setVisible(true);
 
-        this.goBackMenuButton.setVisible(true);
-        this.verifyOTPButton.setVisible(true);
-        this.resendOTPButton.setVisible(true);
+                this.goBackMenuButton.setVisible(true);
+                this.verifyOTPButton.setVisible(true);
+                this.resendOTPButton.setVisible(true);
 
-        this.startCountdown();
+                this.startCountdown();
+             */
+            MySQLHelper helper = new MySQLHelper();
+
+            Map<String, String> params = new LinkedHashMap<>();
+            params.put("TABLE", "");
+            helper.buidlingQueryParam(params);
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Vui lòng điền Email", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
 
     private void verifyOTPValue(ActionEvent e) {

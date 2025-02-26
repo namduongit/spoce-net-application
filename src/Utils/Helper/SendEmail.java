@@ -1,4 +1,4 @@
-package Utils;
+package Utils.Helper;
 
 import java.util.Properties;
 import java.util.Random;
@@ -6,11 +6,11 @@ import java.util.Random;
 import javax.mail.*;
 import javax.mail.internet.*;
 
+import Utils.Config.ConfigEmail;
+
 public class SendEmail {
     private Session session;
-    private final String senderEmail = "nguyennamduong.api@gmail.com";
-    private final String senderPassword = "aouh esat ldvz csjc";
-
+ 
     public void setUpServerProperties() {
         Properties properties = new Properties();
         properties.put("mail.smtp.host", "smtp.gmail.com"); // Máy chủ SMTP Gmail
@@ -21,7 +21,7 @@ public class SendEmail {
         session = Session.getInstance(properties, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(senderEmail, senderPassword);
+                return new PasswordAuthentication(ConfigEmail.EMAIL_SENDER, ConfigEmail.PASSWORD_SENDER);
             }
         });
     }
@@ -38,7 +38,7 @@ public class SendEmail {
         this.setUpServerProperties();
         try {
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(senderEmail));
+            message.setFrom(new InternetAddress(ConfigEmail.EMAIL_SENDER));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipient));
             message.setSubject(titleEmail);
 

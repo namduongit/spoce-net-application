@@ -11,7 +11,7 @@ import java.util.Map;
 
 import javax.swing.JOptionPane;
 
-import Utils.ConfigSQL;
+import Utils.Config.ConfigSQL;
 
 public class MySQLHelper {
     private Connection connection;
@@ -20,7 +20,7 @@ public class MySQLHelper {
 
     public MySQLHelper() {
         try {
-            this.connection = DriverManager.getConnection(Utils.ConfigSQL.URL, ConfigSQL.USER_NAME, ConfigSQL.PASSWORD);
+            this.connection = DriverManager.getConnection(Utils.Config.ConfigSQL.URL, ConfigSQL.USER_NAME, ConfigSQL.PASSWORD);
         } catch (SQLException exception) {
             String messenger = exception.getMessage();
             JOptionPane.showMessageDialog(null, messenger, "Lỗi", JOptionPane.ERROR_MESSAGE);
@@ -186,8 +186,6 @@ public class MySQLHelper {
         }
         return false;
     }
-
-
 
     public void closeConnect() {
         if (this.connection != null) {

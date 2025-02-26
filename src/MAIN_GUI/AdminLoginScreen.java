@@ -29,7 +29,7 @@ public class AdminLoginScreen extends JFrame{
     }
 
     private void initComponents() {
-        this.setSize(Utils.ConfigFrame.WIDTH_FRAME, Utils.ConfigFrame.HEIGHT_FRAME);
+        this.setSize(Utils.Config.ConfigFrame.WIDTH_FRAME, Utils.Config.ConfigFrame.HEIGHT_FRAME);
         this.setTitle("Đăng nhập hệ thống quản lý NetGaming");
         this.setIconImage(new ImageIcon(System.getProperty("user.dir") + "/src/Assets/Icon/icons8-management-100.png").getImage());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
