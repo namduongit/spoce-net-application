@@ -1,6 +1,6 @@
 package Pojo;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 public class Rooms {
     private int roomId;
@@ -8,12 +8,14 @@ public class Rooms {
     private int maxComputers;
     private String type;
     private String status;
-    private LocalDateTime createdAt;
+    private Date createdAt;
 
+    // Constructor không tham số
     public Rooms() {
     }
 
-    public Rooms(int roomId, String roomName, int maxComputers, String type, String status, LocalDateTime createdAt) {
+    // Constructor có tham số
+    public Rooms(int roomId, String roomName, int maxComputers, String type, String status, Date createdAt) {
         this.roomId = roomId;
         this.roomName = roomName;
         this.maxComputers = maxComputers;
@@ -22,6 +24,7 @@ public class Rooms {
         this.createdAt = createdAt;
     }
 
+    // Getter và Setter
     public int getRoomId() {
         return roomId;
     }
@@ -62,14 +65,15 @@ public class Rooms {
         this.status = status;
     }
 
-    public LocalDateTime getCreatedAt() {
+    public Date getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
+    public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
 
+    // Phương thức toString để trả về thông tin đối tượng
     @Override
     public String toString() {
         return "Rooms{" +

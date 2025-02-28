@@ -5,8 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.LinkedHashMap;
-import java.util.List;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.swing.JOptionPane;
@@ -27,20 +27,7 @@ public class MySQLHelper {
         }
     }
 
-    public MySQLHelper buidlingQueryParam(Map<String, String> params) {
-        Map<String, String> defaultParam = new LinkedHashMap<>();
-        defaultParam.put("SELECT", "*"); // Chọn trường dữ liệu
-        defaultParam.put("TABLE", ""); // Từ bảng
-        defaultParam.put("JOIN", ""); // JOIN Bảng
-        defaultParam.put("WHERE", ""); // Điều kiện params.put("WHERE", "username = ?"); => Không truyền trực tiếp giá trị
-        defaultParam.put("OTHER", ""); // Yêu cầu thêm như LIMIT 1 hay ORDER id DESC
-        defaultParam.put("FIELD", "");
-
-        defaultParam.putAll(params);
-        this.queryParams = defaultParam;
-
-        return this;
-    }
+    /* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 
     public String buildingCondition() {
         if (this.queryParams != null && !this.queryParams.get("WHERE").isEmpty()) {
@@ -63,7 +50,48 @@ public class MySQLHelper {
         return "";
     }
 
-    public ResultSet queryWithParam(List<Object> values) {
+    /* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+    public MySQLHelper buidlingQueryParam(Map<String, String> params) {
+        if (params == null) {
+            params = new HashMap<>();
+        }
+
+        params.putIfAbsent("SELECT", "*");          // Thêm nếu chưa có dữ liệu Key
+        params.putIfAbsent("TABLE", "");            // Thêm nếu chưa có dữ liệu Key
+        params.putIfAbsent("JOIN", "");             // Thêm nếu chưa có dữ liệu Key
+        params.putIfAbsent("WHERE", "");            // Thêm nếu chưa có dữ liệu Key
+        params.putIfAbsent("OTHER", "");            // Thêm nếu chưa có dữ liệu Key
+        params.putIfAbsent("FIELD", "");            // Thêm nếu chưa có dữ liệu Key
+
+        this.queryParams = params;
+        return this;
+    }
+
+    /* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+    public ResultSet query(String sql) {
+        try {
+            PreparedStatement statement = this.connection.prepareStatement(sql);
+            return statement.executeQuery();
+        } catch (SQLException exception) {
+            JOptionPane.showMessageDialog(null, exception.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
+        return null;
+    }
+
+    public ResultSet selectAllFromTable(String tableName) {
+        try {
+            String sql = "SELECT * FROM "+ tableName;
+            PreparedStatement statement = this.connection.prepareStatement(sql);
+            return statement.executeQuery();
+        } catch (SQLException exception) {
+            JOptionPane.showMessageDialog(null, exception.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
+        return null;
+    }
+
+    public ResultSet queryWithParam(ArrayList<Object> values) {
         try {
             String select = this.queryParams.get("SELECT");
             String table = this.queryParams.get("TABLE");
@@ -91,17 +119,7 @@ public class MySQLHelper {
         return null;
     }
 
-    public ResultSet query(String sql) {
-        try {
-            PreparedStatement statement = this.connection.prepareStatement(sql);
-            return statement.executeQuery();
-        } catch (SQLException exception) {
-            JOptionPane.showMessageDialog(null, exception.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
-        }
-        return null;
-    }
-
-    public boolean insertData(List<Object> values) {
+    public boolean insertData(ArrayList<Object> values) {
         try {
             String table = this.queryParams.get("TABLE");
             String field = this.buidlingFieldInsert();
@@ -131,7 +149,7 @@ public class MySQLHelper {
         return false;
     }
 
-    public boolean deleteData(List<Object> values) {
+    public boolean deleteData(ArrayList<Object> values) {
         try {
             String table = this.queryParams.get("TABLE");
             String where = this.buildingCondition();
@@ -152,7 +170,7 @@ public class MySQLHelper {
         return false;
     }
 
-    public boolean updateData(Map<String, Object> updateValues, List<Object> conditionValues) {
+    public boolean updateData(Map<String, Object> updateValues, ArrayList<Object> conditionValues) {
         try {
             String table = this.queryParams.get("TABLE");
             String where = this.buildingCondition();
@@ -187,6 +205,8 @@ public class MySQLHelper {
         return false;
     }
 
+    /* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
     public void closeConnect() {
         if (this.connection != null) {
             try {
@@ -197,47 +217,4 @@ public class MySQLHelper {
         }
     }
 
-    public static void main(String[] args) {
-        MySQLHelper helper = new MySQLHelper();
-        System.out.println(helper != null ? "Kết nối thành công" : "Kết nối thất bại");
-
-        // Xây dựng các tham số truy vấn
-        Map<String, String> params = new LinkedHashMap<>();
-        params.put("TABLE", "accounts");
-        params.put("JOIN", "staffs ON accounts.account_id = staffs.staff_id");
-        params.put("WHERE", "staffs.account_id = ?");
-
-        helper.buidlingQueryParam(params);
-
-        // Giá trị tham số cho dấu ?
-        List<Object> values = List.of(1);
-
-        // Thực hiện truy vấn
-        ResultSet rs = helper.queryWithParam(values);
-
-        // Xử lý kết quả truy vấn
-        try {
-            if (rs != null) {
-                // Lấy được số lượng cột trong kết quả
-                int columnCount = rs.getMetaData().getColumnCount();
-
-                while (rs.next()) {
-                    for (int i = 1; i <= columnCount; i++) {
-                        // Lấy tên cột
-                        String columnName = rs.getMetaData().getColumnName(i);
-                        // Lấy giá trị cột
-                        String columnValue = rs.getString(i);
-                        // In ra giá trị
-                        System.out.print(columnName + ": " + columnValue + " | ");
-                    }
-                     // Xuống dòng sau mỗi dòng dữ liệu
-                    System.out.println();
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            helper.closeConnect();
-        }
-    }
 }

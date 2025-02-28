@@ -1,6 +1,6 @@
 package Pojo;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 public class Accounts {
     private int accountId;
@@ -8,12 +8,14 @@ public class Accounts {
     private String password;
     private String role;
     private String status;
-    private LocalDateTime createdAt;
+    private Date createdAt;
 
+    // Constructor không tham số
     public Accounts() {
     }
 
-    public Accounts(int accountId, String username, String password, String role, String status, LocalDateTime createdAt) {
+    // Constructor có tham số
+    public Accounts(int accountId, String username, String password, String role, String status, Date createdAt) {
         this.accountId = accountId;
         this.username = username;
         this.password = password;
@@ -22,6 +24,7 @@ public class Accounts {
         this.createdAt = createdAt;
     }
 
+    // Getter và Setter
     public int getAccountId() {
         return accountId;
     }
@@ -62,19 +65,21 @@ public class Accounts {
         this.status = status;
     }
 
-    public LocalDateTime getCreatedAt() {
+    public Date getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
+    public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
 
+    // Phương thức toString để trả về thông tin đối tượng
     @Override
     public String toString() {
         return "Accounts{" +
                 "accountId=" + accountId +
                 ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
                 ", role='" + role + '\'' +
                 ", status='" + status + '\'' +
                 ", createdAt=" + createdAt +

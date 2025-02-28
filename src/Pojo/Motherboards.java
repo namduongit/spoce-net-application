@@ -1,5 +1,7 @@
 package Pojo;
 
+import java.util.Date;
+
 public class Motherboards {
     private int motherboardId;
     private String brand;
@@ -17,11 +19,15 @@ public class Motherboards {
     private Integer cpuId;
     private Integer psuId;
     private Integer gpuId;
+    private Date purchaseDate;
+    private Date warrantyExpiry;
 
+    // Constructor không tham số
     public Motherboards() {
     }
 
-    public Motherboards(int motherboardId, String brand, String model, String socket, String chipset, int ramSlots, int maxRam, int ramSpeed, int storageSlots, int sataPorts, int m2Slots, int maxStorageCapacity, String status, Integer cpuId, Integer psuId, Integer gpuId) {
+    // Constructor có tham số
+    public Motherboards(int motherboardId, String brand, String model, String socket, String chipset, int ramSlots, int maxRam, int ramSpeed, int storageSlots, int sataPorts, int m2Slots, int maxStorageCapacity, String status, Integer cpuId, Integer psuId, Integer gpuId, Date purchaseDate, Date warrantyExpiry) {
         this.motherboardId = motherboardId;
         this.brand = brand;
         this.model = model;
@@ -38,8 +44,11 @@ public class Motherboards {
         this.cpuId = cpuId;
         this.psuId = psuId;
         this.gpuId = gpuId;
+        this.purchaseDate = purchaseDate;
+        this.warrantyExpiry = warrantyExpiry;
     }
 
+    // Getter và Setter
     public int getMotherboardId() {
         return motherboardId;
     }
@@ -168,6 +177,23 @@ public class Motherboards {
         this.gpuId = gpuId;
     }
 
+    public Date getPurchaseDate() {
+        return purchaseDate;
+    }
+
+    public void setPurchaseDate(Date purchaseDate) {
+        this.purchaseDate = purchaseDate;
+    }
+
+    public Date getWarrantyExpiry() {
+        return warrantyExpiry;
+    }
+
+    public void setWarrantyExpiry(Date warrantyExpiry) {
+        this.warrantyExpiry = warrantyExpiry;
+    }
+
+    // Phương thức toString để trả về thông tin đối tượng
     @Override
     public String toString() {
         return "Motherboards{" +
@@ -187,6 +213,8 @@ public class Motherboards {
                 ", cpuId=" + cpuId +
                 ", psuId=" + psuId +
                 ", gpuId=" + gpuId +
+                ", purchaseDate=" + purchaseDate +
+                ", warrantyExpiry=" + warrantyExpiry +
                 '}';
     }
 }

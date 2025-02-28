@@ -1,6 +1,6 @@
 package Pojo;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 public class Monitors {
     private int monitorId;
@@ -8,14 +8,16 @@ public class Monitors {
     private String model;
     private float size;
     private int refreshRate;
-    private LocalDate purchaseDate;
-    private LocalDate warrantyExpiry;
+    private Date purchaseDate;
+    private Date warrantyExpiry;
     private String status;
 
+    // Constructor không tham số
     public Monitors() {
     }
 
-    public Monitors(int monitorId, String brand, String model, float size, int refreshRate, LocalDate purchaseDate, LocalDate warrantyExpiry, String status) {
+    // Constructor có tham số
+    public Monitors(int monitorId, String brand, String model, float size, int refreshRate, Date purchaseDate, Date warrantyExpiry, String status) {
         this.monitorId = monitorId;
         this.brand = brand;
         this.model = model;
@@ -26,6 +28,7 @@ public class Monitors {
         this.status = status;
     }
 
+    // Getter và Setter
     public int getMonitorId() {
         return monitorId;
     }
@@ -66,19 +69,19 @@ public class Monitors {
         this.refreshRate = refreshRate;
     }
 
-    public LocalDate getPurchaseDate() {
+    public Date getPurchaseDate() {
         return purchaseDate;
     }
 
-    public void setPurchaseDate(LocalDate purchaseDate) {
+    public void setPurchaseDate(Date purchaseDate) {
         this.purchaseDate = purchaseDate;
     }
 
-    public LocalDate getWarrantyExpiry() {
+    public Date getWarrantyExpiry() {
         return warrantyExpiry;
     }
 
-    public void setWarrantyExpiry(LocalDate warrantyExpiry) {
+    public void setWarrantyExpiry(Date warrantyExpiry) {
         this.warrantyExpiry = warrantyExpiry;
     }
 
@@ -90,6 +93,7 @@ public class Monitors {
         this.status = status;
     }
 
+    // Phương thức toString để trả về thông tin đối tượng
     @Override
     public String toString() {
         return "Monitors{" +

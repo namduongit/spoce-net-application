@@ -5,12 +5,18 @@ public class FoodOrders {
     private int foodId;
     private int quantity;
 
+    // Constructor không tham số
+    public FoodOrders() {
+    }
+
+    // Constructor có tham số
     public FoodOrders(int billId, int foodId, int quantity) {
         this.billId = billId;
         this.foodId = foodId;
         this.quantity = quantity;
     }
 
+    // Getter và Setter
     public int getBillId() {
         return billId;
     }
@@ -32,9 +38,10 @@ public class FoodOrders {
     }
 
     public void setQuantity(int quantity) {
-        this.quantity = quantity > 0 ? quantity : this.quantity; // Thực ra có như không :)))) nhưng do tạo bảng có tiên quyết lớn hơn 0
+        this.quantity = quantity;
     }
 
+    // Phương thức toString để hiển thị thông tin đối tượng
     @Override
     public String toString() {
         return "FoodOrder{" +

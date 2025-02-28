@@ -1,26 +1,33 @@
 package Pojo;
 
-import java.time.LocalDateTime;
+import java.math.BigDecimal;
+import java.util.Date;
 
 public class Foods {
     private int foodId;
     private String name;
-    private double price;
-    private String category; // "Đồ ăn" hoặc "Nước uống"
+    private BigDecimal price;
+    private int categoryId;
     private int quantity;
-    private String status; // "Còn hàng" hoặc "Hết hàng"
-    private LocalDateTime createdAt;
+    private String status;
+    private Date createdAt;
 
-    public Foods(int foodId, String name, double price, String category, int quantity, LocalDateTime createdAt) {
+    // Constructor không tham số
+    public Foods() {
+    }
+
+    // Constructor có tham số
+    public Foods(int foodId, String name, BigDecimal price, int categoryId, int quantity, String status, Date createdAt) {
         this.foodId = foodId;
         this.name = name;
         this.price = price;
-        this.category = category;
+        this.categoryId = categoryId;
         this.quantity = quantity;
-        this.status = (quantity > 0) ? "Còn hàng" : "Hết hàng";
+        this.status = status;
         this.createdAt = createdAt;
     }
 
+    // Getter và Setter
     public int getFoodId() {
         return foodId;
     }
@@ -37,20 +44,20 @@ public class Foods {
         this.name = name;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
-    public String getCategory() {
-        return category;
+    public int getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 
     public int getQuantity() {
@@ -59,28 +66,32 @@ public class Foods {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
-        this.status = (quantity > 0) ? "Còn hàng" : "Hết hàng";
     }
 
     public String getStatus() {
         return status;
     }
 
-    public LocalDateTime getCreatedAt() {
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Date getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
+    public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
 
+    // Phương thức toString để trả về thông tin đối tượng
     @Override
     public String toString() {
         return "Foods{" +
                 "foodId=" + foodId +
                 ", name='" + name + '\'' +
                 ", price=" + price +
-                ", category='" + category + '\'' +
+                ", categoryId=" + categoryId +
                 ", quantity=" + quantity +
                 ", status='" + status + '\'' +
                 ", createdAt=" + createdAt +

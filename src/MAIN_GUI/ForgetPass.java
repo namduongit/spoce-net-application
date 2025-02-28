@@ -14,6 +14,9 @@ import SQLHelper.MySQLHelper;
 
 public class ForgetPass extends JFrame {
 
+    private JPanel leftPanel;
+    private JPanel rightPanel;
+
     private JLabel titleForm = new JLabel("Enter your email:");
 
     private CustomTextField emailField;
@@ -268,11 +271,11 @@ public class ForgetPass extends JFrame {
         this.setIconImage(new ImageIcon(System.getProperty("user.dir") + "/src/Assets/Icon/icons8-password-50.png").getImage());
         this.setLayout(null);
 
-        JPanel leftPanel = this.createLeftPanel();
-        JPanel rightPanel = this.createRightPanel();
+        this.leftPanel = this.createLeftPanel();
+        this.rightPanel = this.createRightPanel();
 
-        rightPanel.setBounds(335, 0, 340, 420);
-        leftPanel.setBounds(0, 0, 340, 420);
+        this.rightPanel.setBounds(335, 0, 340, 420);
+        this.leftPanel.setBounds(0, 0, 340, 420);
 
         this.add(rightPanel);
         this.add(leftPanel);

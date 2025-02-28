@@ -1,20 +1,22 @@
 package Pojo;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 public class Gpus {
     private int gpuId;
     private String brand;
     private String model;
     private int vram;
-    private LocalDate purchaseDate;
-    private LocalDate warrantyExpiry;
+    private Date purchaseDate;
+    private Date warrantyExpiry;
     private String status;
 
+    // Constructor không tham số
     public Gpus() {
     }
 
-    public Gpus(int gpuId, String brand, String model, int vram, LocalDate purchaseDate, LocalDate warrantyExpiry, String status) {
+    // Constructor có tham số
+    public Gpus(int gpuId, String brand, String model, int vram, Date purchaseDate, Date warrantyExpiry, String status) {
         this.gpuId = gpuId;
         this.brand = brand;
         this.model = model;
@@ -24,6 +26,7 @@ public class Gpus {
         this.status = status;
     }
 
+    // Getter và Setter
     public int getGpuId() {
         return gpuId;
     }
@@ -56,19 +59,19 @@ public class Gpus {
         this.vram = vram;
     }
 
-    public LocalDate getPurchaseDate() {
+    public Date getPurchaseDate() {
         return purchaseDate;
     }
 
-    public void setPurchaseDate(LocalDate purchaseDate) {
+    public void setPurchaseDate(Date purchaseDate) {
         this.purchaseDate = purchaseDate;
     }
 
-    public LocalDate getWarrantyExpiry() {
+    public Date getWarrantyExpiry() {
         return warrantyExpiry;
     }
 
-    public void setWarrantyExpiry(LocalDate warrantyExpiry) {
+    public void setWarrantyExpiry(Date warrantyExpiry) {
         this.warrantyExpiry = warrantyExpiry;
     }
 
@@ -80,6 +83,7 @@ public class Gpus {
         this.status = status;
     }
 
+    // Phương thức toString để trả về thông tin đối tượng
     @Override
     public String toString() {
         return "Gpus{" +

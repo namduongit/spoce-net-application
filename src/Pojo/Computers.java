@@ -1,11 +1,9 @@
 package Pojo;
 
-import java.math.BigDecimal;
-
 public class Computers {
     private int computerId;
     private String name;
-    private BigDecimal pricePerHour;
+    private double pricePerHour;
     private int motherboardId;
     private Integer mouseId;
     private Integer keyboardId;
@@ -13,12 +11,13 @@ public class Computers {
     private Integer headphoneId;
     private Integer romId;
     private Integer roomId;
-    private Integer playerId;
     private String status;
 
+    // Constructor không tham số
     public Computers() {}
 
-    public Computers(int computerId, String name, BigDecimal pricePerHour, int motherboardId, Integer mouseId, Integer keyboardId, Integer monitorId, Integer headphoneId, Integer romId, Integer roomId, Integer playerId, String status) {
+    // Constructor có tham số
+    public Computers(int computerId, String name, double pricePerHour, int motherboardId, Integer mouseId, Integer keyboardId, Integer monitorId, Integer headphoneId, Integer romId, Integer roomId, String status) {
         this.computerId = computerId;
         this.name = name;
         this.pricePerHour = pricePerHour;
@@ -29,10 +28,10 @@ public class Computers {
         this.headphoneId = headphoneId;
         this.romId = romId;
         this.roomId = roomId;
-        this.playerId = playerId;
         this.status = status;
     }
 
+    // Getter và Setter
     public int getComputerId() {
         return computerId;
     }
@@ -49,11 +48,11 @@ public class Computers {
         this.name = name;
     }
 
-    public BigDecimal getPricePerHour() {
+    public double getPricePerHour() {
         return pricePerHour;
     }
 
-    public void setPricePerHour(BigDecimal pricePerHour) {
+    public void setPricePerHour(double pricePerHour) {
         this.pricePerHour = pricePerHour;
     }
 
@@ -113,14 +112,6 @@ public class Computers {
         this.roomId = roomId;
     }
 
-    public Integer getPlayerId() {
-        return playerId;
-    }
-
-    public void setPlayerId(Integer playerId) {
-        this.playerId = playerId;
-    }
-
     public String getStatus() {
         return status;
     }
@@ -129,9 +120,10 @@ public class Computers {
         this.status = status;
     }
 
+    // Phương thức toString để hiển thị thông tin
     @Override
     public String toString() {
-        return "Computers{" +
+        return "Computer{" +
                 "computerId=" + computerId +
                 ", name='" + name + '\'' +
                 ", pricePerHour=" + pricePerHour +
@@ -142,7 +134,6 @@ public class Computers {
                 ", headphoneId=" + headphoneId +
                 ", romId=" + romId +
                 ", roomId=" + roomId +
-                ", playerId=" + playerId +
                 ", status='" + status + '\'' +
                 '}';
     }

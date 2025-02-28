@@ -1,27 +1,30 @@
 package Pojo;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 public class PasswordResetOtps {
     private int otpId;
-    private int accountId;
+    private int staffId;
     private String otpCode;
-    private LocalDateTime expiresAt;
+    private Date expiresAt;
     private boolean used;
-    private LocalDateTime createdAt;
+    private Date createdAt;
 
+    // Constructor không tham số
     public PasswordResetOtps() {
     }
 
-    public PasswordResetOtps(int otpId, int accountId, String otpCode, LocalDateTime expiresAt, boolean used, LocalDateTime createdAt) {
+    // Constructor có tham số
+    public PasswordResetOtps(int otpId, int staffId, String otpCode, Date expiresAt, boolean used, Date createdAt) {
         this.otpId = otpId;
-        this.accountId = accountId;
+        this.staffId = staffId;
         this.otpCode = otpCode;
         this.expiresAt = expiresAt;
         this.used = used;
         this.createdAt = createdAt;
     }
 
+    // Getter và Setter
     public int getOtpId() {
         return otpId;
     }
@@ -30,12 +33,12 @@ public class PasswordResetOtps {
         this.otpId = otpId;
     }
 
-    public int getAccountId() {
-        return accountId;
+    public int getStaffId() {
+        return staffId;
     }
 
-    public void setAccountId(int accountId) {
-        this.accountId = accountId;
+    public void setStaffId(int staffId) {
+        this.staffId = staffId;
     }
 
     public String getOtpCode() {
@@ -46,11 +49,11 @@ public class PasswordResetOtps {
         this.otpCode = otpCode;
     }
 
-    public LocalDateTime getExpiresAt() {
+    public Date getExpiresAt() {
         return expiresAt;
     }
 
-    public void setExpiresAt(LocalDateTime expiresAt) {
+    public void setExpiresAt(Date expiresAt) {
         this.expiresAt = expiresAt;
     }
 
@@ -62,19 +65,20 @@ public class PasswordResetOtps {
         this.used = used;
     }
 
-    public LocalDateTime getCreatedAt() {
+    public Date getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
+    public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
 
+    // Phương thức toString để trả về thông tin đối tượng
     @Override
     public String toString() {
         return "PasswordResetOtps{" +
                 "otpId=" + otpId +
-                ", accountId=" + accountId +
+                ", staffId=" + staffId +
                 ", otpCode='" + otpCode + '\'' +
                 ", expiresAt=" + expiresAt +
                 ", used=" + used +

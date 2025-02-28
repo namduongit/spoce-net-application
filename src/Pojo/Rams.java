@@ -1,6 +1,6 @@
 package Pojo;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 public class Rams {
     private int ramId;
@@ -8,14 +8,16 @@ public class Rams {
     private String model;
     private int capacity;
     private int speed;
-    private LocalDate purchaseDate;
-    private LocalDate warrantyExpiry;
+    private Date purchaseDate;
+    private Date warrantyExpiry;
     private String status;
 
+    // Constructor không tham số
     public Rams() {
     }
 
-    public Rams(int ramId, String brand, String model, int capacity, int speed, LocalDate purchaseDate, LocalDate warrantyExpiry, String status) {
+    // Constructor có tham số
+    public Rams(int ramId, String brand, String model, int capacity, int speed, Date purchaseDate, Date warrantyExpiry, String status) {
         this.ramId = ramId;
         this.brand = brand;
         this.model = model;
@@ -26,6 +28,7 @@ public class Rams {
         this.status = status;
     }
 
+    // Getter và Setter
     public int getRamId() {
         return ramId;
     }
@@ -66,19 +69,19 @@ public class Rams {
         this.speed = speed;
     }
 
-    public LocalDate getPurchaseDate() {
+    public Date getPurchaseDate() {
         return purchaseDate;
     }
 
-    public void setPurchaseDate(LocalDate purchaseDate) {
+    public void setPurchaseDate(Date purchaseDate) {
         this.purchaseDate = purchaseDate;
     }
 
-    public LocalDate getWarrantyExpiry() {
+    public Date getWarrantyExpiry() {
         return warrantyExpiry;
     }
 
-    public void setWarrantyExpiry(LocalDate warrantyExpiry) {
+    public void setWarrantyExpiry(Date warrantyExpiry) {
         this.warrantyExpiry = warrantyExpiry;
     }
 
@@ -90,6 +93,7 @@ public class Rams {
         this.status = status;
     }
 
+    // Phương thức toString để trả về thông tin đối tượng
     @Override
     public String toString() {
         return "Rams{" +

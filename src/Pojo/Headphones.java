@@ -1,20 +1,22 @@
 package Pojo;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 public class Headphones {
     private int headphoneId;
     private String brand;
     private String model;
     private String type;
-    private LocalDate purchaseDate;
-    private LocalDate warrantyExpiry;
+    private Date purchaseDate;
+    private Date warrantyExpiry;
     private String status;
 
+    // Constructor không tham số
     public Headphones() {
     }
 
-    public Headphones(int headphoneId, String brand, String model, String type, LocalDate purchaseDate, LocalDate warrantyExpiry, String status) {
+    // Constructor có tham số
+    public Headphones(int headphoneId, String brand, String model, String type, Date purchaseDate, Date warrantyExpiry, String status) {
         this.headphoneId = headphoneId;
         this.brand = brand;
         this.model = model;
@@ -24,6 +26,7 @@ public class Headphones {
         this.status = status;
     }
 
+    // Getter và Setter
     public int getHeadphoneId() {
         return headphoneId;
     }
@@ -56,19 +59,19 @@ public class Headphones {
         this.type = type;
     }
 
-    public LocalDate getPurchaseDate() {
+    public Date getPurchaseDate() {
         return purchaseDate;
     }
 
-    public void setPurchaseDate(LocalDate purchaseDate) {
+    public void setPurchaseDate(Date purchaseDate) {
         this.purchaseDate = purchaseDate;
     }
 
-    public LocalDate getWarrantyExpiry() {
+    public Date getWarrantyExpiry() {
         return warrantyExpiry;
     }
 
-    public void setWarrantyExpiry(LocalDate warrantyExpiry) {
+    public void setWarrantyExpiry(Date warrantyExpiry) {
         this.warrantyExpiry = warrantyExpiry;
     }
 
@@ -80,6 +83,7 @@ public class Headphones {
         this.status = status;
     }
 
+    // Phương thức toString để trả về thông tin đối tượng
     @Override
     public String toString() {
         return "Headphones{" +

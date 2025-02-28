@@ -1,19 +1,23 @@
 package Pojo;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 public class ComputerSessions {
     private int sessionId;
-    private Integer playerId;
+    private Integer playerId; // Có thể null nếu là khách vãng lai
     private int computerId;
-    private LocalDateTime startTime;
-    private LocalDateTime endTime;
-    private Integer duration;
+    private Date startTime;
+    private Date endTime;
+    private int duration; // Tính toán tự động từ start_time và end_time
     private double totalCost;
     private boolean isGuest;
 
-    public ComputerSessions(int sessionId, Integer playerId, int computerId, LocalDateTime startTime,
-                           LocalDateTime endTime, Integer duration, double totalCost, boolean isGuest) {
+    // Constructor không tham số
+    public ComputerSessions() {
+    }
+
+    // Constructor có tham số
+    public ComputerSessions(int sessionId, Integer playerId, int computerId, Date startTime, Date endTime, int duration, double totalCost, boolean isGuest) {
         this.sessionId = sessionId;
         this.playerId = playerId;
         this.computerId = computerId;
@@ -24,9 +28,7 @@ public class ComputerSessions {
         this.isGuest = isGuest;
     }
 
-    public ComputerSessions() {
-    }
-
+    // Getter và Setter
     public int getSessionId() {
         return sessionId;
     }
@@ -51,27 +53,27 @@ public class ComputerSessions {
         this.computerId = computerId;
     }
 
-    public LocalDateTime getStartTime() {
+    public Date getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(LocalDateTime startTime) {
+    public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
 
-    public LocalDateTime getEndTime() {
+    public Date getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(LocalDateTime endTime) {
+    public void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
 
-    public Integer getDuration() {
+    public int getDuration() {
         return duration;
     }
 
-    public void setDuration(Integer duration) {
+    public void setDuration(int duration) {
         this.duration = duration;
     }
 
@@ -91,6 +93,7 @@ public class ComputerSessions {
         isGuest = guest;
     }
 
+    // Phương thức toString để hiển thị thông tin
     @Override
     public String toString() {
         return "ComputerSession{" +

@@ -1,19 +1,21 @@
 package Pojo;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 public class Mouse {
     private int mouseId;
     private String brand;
     private String model;
-    private LocalDate purchaseDate;
-    private LocalDate warrantyExpiry;
+    private Date purchaseDate;
+    private Date warrantyExpiry;
     private String status;
 
+    // Constructor không tham số
     public Mouse() {
     }
 
-    public Mouse(int mouseId, String brand, String model, LocalDate purchaseDate, LocalDate warrantyExpiry, String status) {
+    // Constructor có tham số
+    public Mouse(int mouseId, String brand, String model, Date purchaseDate, Date warrantyExpiry, String status) {
         this.mouseId = mouseId;
         this.brand = brand;
         this.model = model;
@@ -22,6 +24,7 @@ public class Mouse {
         this.status = status;
     }
 
+    // Getter và Setter
     public int getMouseId() {
         return mouseId;
     }
@@ -46,19 +49,19 @@ public class Mouse {
         this.model = model;
     }
 
-    public LocalDate getPurchaseDate() {
+    public Date getPurchaseDate() {
         return purchaseDate;
     }
 
-    public void setPurchaseDate(LocalDate purchaseDate) {
+    public void setPurchaseDate(Date purchaseDate) {
         this.purchaseDate = purchaseDate;
     }
 
-    public LocalDate getWarrantyExpiry() {
+    public Date getWarrantyExpiry() {
         return warrantyExpiry;
     }
 
-    public void setWarrantyExpiry(LocalDate warrantyExpiry) {
+    public void setWarrantyExpiry(Date warrantyExpiry) {
         this.warrantyExpiry = warrantyExpiry;
     }
 
@@ -70,6 +73,7 @@ public class Mouse {
         this.status = status;
     }
 
+    // Phương thức toString để trả về thông tin đối tượng
     @Override
     public String toString() {
         return "Mouse{" +

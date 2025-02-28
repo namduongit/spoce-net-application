@@ -1,6 +1,6 @@
 package Pojo;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 public class Roms {
     private int romId;
@@ -8,14 +8,16 @@ public class Roms {
     private String model;
     private String type;
     private int capacity;
-    private LocalDate purchaseDate;
-    private LocalDate warrantyExpiry;
+    private Date purchaseDate;
+    private Date warrantyExpiry;
     private String status;
 
+    // Constructor không tham số
     public Roms() {
     }
 
-    public Roms(int romId, String brand, String model, String type, int capacity, LocalDate purchaseDate, LocalDate warrantyExpiry, String status) {
+    // Constructor có tham số
+    public Roms(int romId, String brand, String model, String type, int capacity, Date purchaseDate, Date warrantyExpiry, String status) {
         this.romId = romId;
         this.brand = brand;
         this.model = model;
@@ -26,6 +28,7 @@ public class Roms {
         this.status = status;
     }
 
+    // Getter và Setter
     public int getRomId() {
         return romId;
     }
@@ -66,19 +69,19 @@ public class Roms {
         this.capacity = capacity;
     }
 
-    public LocalDate getPurchaseDate() {
+    public Date getPurchaseDate() {
         return purchaseDate;
     }
 
-    public void setPurchaseDate(LocalDate purchaseDate) {
+    public void setPurchaseDate(Date purchaseDate) {
         this.purchaseDate = purchaseDate;
     }
 
-    public LocalDate getWarrantyExpiry() {
+    public Date getWarrantyExpiry() {
         return warrantyExpiry;
     }
 
-    public void setWarrantyExpiry(LocalDate warrantyExpiry) {
+    public void setWarrantyExpiry(Date warrantyExpiry) {
         this.warrantyExpiry = warrantyExpiry;
     }
 
@@ -90,6 +93,7 @@ public class Roms {
         this.status = status;
     }
 
+    // Phương thức toString để trả về thông tin đối tượng
     @Override
     public String toString() {
         return "Roms{" +
@@ -97,7 +101,7 @@ public class Roms {
                 ", brand='" + brand + '\'' +
                 ", model='" + model + '\'' +
                 ", type='" + type + '\'' +
-                ", capacity=" + capacity + "MB" +
+                ", capacity=" + capacity +
                 ", purchaseDate=" + purchaseDate +
                 ", warrantyExpiry=" + warrantyExpiry +
                 ", status='" + status + '\'' +

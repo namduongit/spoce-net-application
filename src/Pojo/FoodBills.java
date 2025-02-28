@@ -1,18 +1,22 @@
 package Pojo;
 
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 public class FoodBills {
     private int billId;
-    private Integer playerId; // Có thể null
+    private Integer playerId;
     private int staffId;
-    private BigDecimal totalPrice;
-    private String paymentMethod; // Tiền mặt, Chuyển khoản
-    private String status; // Chưa xử lý, Đã xử lý, Đã hủy
-    private LocalDateTime createdAt;
+    private double totalPrice;
+    private String paymentMethod;
+    private String status;
+    private Date createdAt;
 
-    public FoodBills(int billId, Integer playerId, int staffId, BigDecimal totalPrice, String paymentMethod, String status, LocalDateTime createdAt) {
+    // Constructor không tham số
+    public FoodBills() {
+    }
+
+    // Constructor có tham số
+    public FoodBills(int billId, Integer playerId, int staffId, double totalPrice, String paymentMethod, String status, Date createdAt) {
         this.billId = billId;
         this.playerId = playerId;
         this.staffId = staffId;
@@ -22,7 +26,7 @@ public class FoodBills {
         this.createdAt = createdAt;
     }
 
-    // Getters and Setters
+    // Getter và Setter
     public int getBillId() {
         return billId;
     }
@@ -47,11 +51,11 @@ public class FoodBills {
         this.staffId = staffId;
     }
 
-    public BigDecimal getTotalPrice() {
+    public double getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(BigDecimal totalPrice) {
+    public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
     }
 
@@ -71,17 +75,18 @@ public class FoodBills {
         this.status = status;
     }
 
-    public LocalDateTime getCreatedAt() {
+    public Date getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
+    public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
 
+    // Phương thức toString để hiển thị thông tin đối tượng
     @Override
     public String toString() {
-        return "FoodBill{" +
+        return "FoodBills{" +
                 "billId=" + billId +
                 ", playerId=" + playerId +
                 ", staffId=" + staffId +

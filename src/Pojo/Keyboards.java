@@ -1,19 +1,21 @@
 package Pojo;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 public class Keyboards {
     private int keyboardId;
     private String brand;
     private String model;
-    private LocalDate purchaseDate;
-    private LocalDate warrantyExpiry;
+    private Date purchaseDate;
+    private Date warrantyExpiry;
     private String status;
 
+    // Constructor không tham số
     public Keyboards() {
     }
 
-    public Keyboards(int keyboardId, String brand, String model, LocalDate purchaseDate, LocalDate warrantyExpiry, String status) {
+    // Constructor có tham số
+    public Keyboards(int keyboardId, String brand, String model, Date purchaseDate, Date warrantyExpiry, String status) {
         this.keyboardId = keyboardId;
         this.brand = brand;
         this.model = model;
@@ -22,6 +24,7 @@ public class Keyboards {
         this.status = status;
     }
 
+    // Getter và Setter
     public int getKeyboardId() {
         return keyboardId;
     }
@@ -46,19 +49,19 @@ public class Keyboards {
         this.model = model;
     }
 
-    public LocalDate getPurchaseDate() {
+    public Date getPurchaseDate() {
         return purchaseDate;
     }
 
-    public void setPurchaseDate(LocalDate purchaseDate) {
+    public void setPurchaseDate(Date purchaseDate) {
         this.purchaseDate = purchaseDate;
     }
 
-    public LocalDate getWarrantyExpiry() {
+    public Date getWarrantyExpiry() {
         return warrantyExpiry;
     }
 
-    public void setWarrantyExpiry(LocalDate warrantyExpiry) {
+    public void setWarrantyExpiry(Date warrantyExpiry) {
         this.warrantyExpiry = warrantyExpiry;
     }
 
@@ -70,6 +73,7 @@ public class Keyboards {
         this.status = status;
     }
 
+    // Phương thức toString để trả về thông tin đối tượng
     @Override
     public String toString() {
         return "Keyboards{" +

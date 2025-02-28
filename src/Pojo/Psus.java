@@ -1,20 +1,22 @@
 package Pojo;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 public class Psus {
     private int psuId;
     private String brand;
     private String model;
     private int wattage;
-    private LocalDate purchaseDate;
-    private LocalDate warrantyExpiry;
+    private Date purchaseDate;
+    private Date warrantyExpiry;
     private String status;
 
+    // Constructor không tham số
     public Psus() {
     }
 
-    public Psus(int psuId, String brand, String model, int wattage, LocalDate purchaseDate, LocalDate warrantyExpiry, String status) {
+    // Constructor có tham số
+    public Psus(int psuId, String brand, String model, int wattage, Date purchaseDate, Date warrantyExpiry, String status) {
         this.psuId = psuId;
         this.brand = brand;
         this.model = model;
@@ -24,6 +26,7 @@ public class Psus {
         this.status = status;
     }
 
+    // Getter và Setter
     public int getPsuId() {
         return psuId;
     }
@@ -56,19 +59,19 @@ public class Psus {
         this.wattage = wattage;
     }
 
-    public LocalDate getPurchaseDate() {
+    public Date getPurchaseDate() {
         return purchaseDate;
     }
 
-    public void setPurchaseDate(LocalDate purchaseDate) {
+    public void setPurchaseDate(Date purchaseDate) {
         this.purchaseDate = purchaseDate;
     }
 
-    public LocalDate getWarrantyExpiry() {
+    public Date getWarrantyExpiry() {
         return warrantyExpiry;
     }
 
-    public void setWarrantyExpiry(LocalDate warrantyExpiry) {
+    public void setWarrantyExpiry(Date warrantyExpiry) {
         this.warrantyExpiry = warrantyExpiry;
     }
 
@@ -80,6 +83,7 @@ public class Psus {
         this.status = status;
     }
 
+    // Phương thức toString để trả về thông tin đối tượng
     @Override
     public String toString() {
         return "Psus{" +

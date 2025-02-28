@@ -1,20 +1,22 @@
 package Pojo;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 public class Staffs {
     private int staffId;
     private int accountId;
     private String fullName;
-    private LocalDate birthDate;
+    private Date birthDate;
     private String phone;
     private String email;
     private String avatar;
 
+    // Constructor không tham số
     public Staffs() {
     }
 
-    public Staffs(int staffId, int accountId, String fullName, LocalDate birthDate, String phone, String email, String avatar) {
+    // Constructor có tham số
+    public Staffs(int staffId, int accountId, String fullName, Date birthDate, String phone, String email, String avatar) {
         this.staffId = staffId;
         this.accountId = accountId;
         this.fullName = fullName;
@@ -24,6 +26,7 @@ public class Staffs {
         this.avatar = avatar;
     }
 
+    // Getter và Setter
     public int getStaffId() {
         return staffId;
     }
@@ -48,11 +51,11 @@ public class Staffs {
         this.fullName = fullName;
     }
 
-    public LocalDate getBirthDate() {
+    public Date getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
+    public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
 
@@ -80,6 +83,7 @@ public class Staffs {
         this.avatar = avatar;
     }
 
+    // Phương thức toString để trả về thông tin đối tượng
     @Override
     public String toString() {
         return "Staffs{" +

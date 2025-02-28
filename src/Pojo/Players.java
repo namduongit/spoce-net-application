@@ -7,17 +7,18 @@ public class Players {
     private int accountId;
     private BigDecimal balance;
 
+    // Constructor không tham số
     public Players() {
-        this.balance = BigDecimal.ZERO;
     }
 
+    // Constructor có tham số
     public Players(int playerId, int accountId, BigDecimal balance) {
         this.playerId = playerId;
         this.accountId = accountId;
         this.balance = balance;
     }
 
-    // Getters và Setters
+    // Getter và Setter
     public int getPlayerId() {
         return playerId;
     }
@@ -42,6 +43,7 @@ public class Players {
         this.balance = balance;
     }
 
+    // Phương thức toString để trả về thông tin đối tượng
     @Override
     public String toString() {
         return "Players{" +

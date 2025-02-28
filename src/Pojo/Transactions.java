@@ -1,19 +1,21 @@
 package Pojo;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 public class Transactions {
     private int transactionId;
     private int playerId;
     private BigDecimal amount;
     private String paymentMethod;
-    private LocalDateTime createdAt;
+    private Date createdAt;
 
+    // Constructor không tham số
     public Transactions() {
     }
 
-    public Transactions(int transactionId, int playerId, BigDecimal amount, String paymentMethod, LocalDateTime createdAt) {
+    // Constructor có tham số
+    public Transactions(int transactionId, int playerId, BigDecimal amount, String paymentMethod, Date createdAt) {
         this.transactionId = transactionId;
         this.playerId = playerId;
         this.amount = amount;
@@ -21,6 +23,7 @@ public class Transactions {
         this.createdAt = createdAt;
     }
 
+    // Getter và Setter
     public int getTransactionId() {
         return transactionId;
     }
@@ -53,14 +56,15 @@ public class Transactions {
         this.paymentMethod = paymentMethod;
     }
 
-    public LocalDateTime getCreatedAt() {
+    public Date getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
+    public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
 
+    // Phương thức toString để trả về thông tin đối tượng
     @Override
     public String toString() {
         return "Transactions{" +

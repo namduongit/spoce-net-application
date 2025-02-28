@@ -1,6 +1,6 @@
 package Pojo;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 public class Cpus {
     private int cpuId;
@@ -10,14 +10,16 @@ public class Cpus {
     private int cores;
     private int threads;
     private boolean integratedGpu;
-    private LocalDate purchaseDate;
-    private LocalDate warrantyExpiry;
+    private Date purchaseDate;
+    private Date warrantyExpiry;
     private String status;
 
+    // Constructor không tham số
     public Cpus() {
     }
 
-    public Cpus(int cpuId, String brand, String model, float clockSpeed, int cores, int threads, boolean integratedGpu, LocalDate purchaseDate, LocalDate warrantyExpiry, String status) {
+    // Constructor có tham số
+    public Cpus(int cpuId, String brand, String model, float clockSpeed, int cores, int threads, boolean integratedGpu, Date purchaseDate, Date warrantyExpiry, String status) {
         this.cpuId = cpuId;
         this.brand = brand;
         this.model = model;
@@ -30,6 +32,7 @@ public class Cpus {
         this.status = status;
     }
 
+    // Getter và Setter
     public int getCpuId() {
         return cpuId;
     }
@@ -86,19 +89,19 @@ public class Cpus {
         this.integratedGpu = integratedGpu;
     }
 
-    public LocalDate getPurchaseDate() {
+    public Date getPurchaseDate() {
         return purchaseDate;
     }
 
-    public void setPurchaseDate(LocalDate purchaseDate) {
+    public void setPurchaseDate(Date purchaseDate) {
         this.purchaseDate = purchaseDate;
     }
 
-    public LocalDate getWarrantyExpiry() {
+    public Date getWarrantyExpiry() {
         return warrantyExpiry;
     }
 
-    public void setWarrantyExpiry(LocalDate warrantyExpiry) {
+    public void setWarrantyExpiry(Date warrantyExpiry) {
         this.warrantyExpiry = warrantyExpiry;
     }
 
@@ -110,6 +113,7 @@ public class Cpus {
         this.status = status;
     }
 
+    // Phương thức toString để trả về thông tin đối tượng
     @Override
     public String toString() {
         return "Cpus{" +

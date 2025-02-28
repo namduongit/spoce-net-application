@@ -61,6 +61,12 @@ public class CustomButton extends JButton {
         updateButtonSize();
     }
 
+    @Override
+    public void setIcon(Icon defaultIcon) {
+        super.setIcon(defaultIcon);
+        updateButtonSize();
+    }
+
     public void setIcon(Icon icon, int typeScale) {
         if (icon instanceof ImageIcon) {
             ImageIcon imageIcon = (ImageIcon) icon;
