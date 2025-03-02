@@ -85,6 +85,7 @@ public class CustomButton extends JButton {
         g2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
         g2D.setColor(getBackground());
+        int borderRadius = (int)(this.borderRadius * 1.3);
         g2D.fillRoundRect(0, 0, getWidth(), getHeight(), borderRadius, borderRadius);
 
         super.paintComponent(g);
@@ -97,6 +98,7 @@ public class CustomButton extends JButton {
 
         g2D.setColor(borderColor);
         g2D.setStroke(new BasicStroke(border));
-        g2D.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, borderRadius, borderRadius);
+        int borderRadius = (int)(this.borderRadius * 1.3);
+        g2D.drawRoundRect(1, 1, getWidth() - 3, getHeight() - 3, borderRadius, borderRadius);
     }
 }

@@ -1,7 +1,7 @@
 package Pojo;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.sql.Timestamp;
 
 public class Foods {
     private int foodId;
@@ -10,14 +10,14 @@ public class Foods {
     private int categoryId;
     private int quantity;
     private String status;
-    private Date createdAt;
+    private Timestamp createdAt;
 
     // Constructor không tham số
     public Foods() {
     }
 
     // Constructor có tham số
-    public Foods(int foodId, String name, BigDecimal price, int categoryId, int quantity, String status, Date createdAt) {
+    public Foods(int foodId, String name, BigDecimal price, int categoryId, int quantity, String status, Timestamp createdAt) {
         this.foodId = foodId;
         this.name = name;
         this.price = price;
@@ -76,11 +76,11 @@ public class Foods {
         this.status = status;
     }
 
-    public Date getCreatedAt() {
+    public Timestamp getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
     }
 

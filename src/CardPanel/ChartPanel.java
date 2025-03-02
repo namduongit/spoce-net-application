@@ -1,5 +1,7 @@
 package CardPanel;
 
-public class ChartPanel {
-    
+import javax.swing.JPanel;
+
+public class ChartPanel extends JPanel{
+
 }

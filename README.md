@@ -1,6 +1,7 @@
 # 👥 Các thành viên trong nhóm
 **1** `Nguyễn Nam Dương     -     3123560012`
-**2** `Chênh Tiên Luân      -     ..........`
+
+**2** `Chênh Tiên Luân      -     3123560048`
 
 # 📓 Một số lưu ý khi xây dựng dự án
 - **Đảm bảo bộ nhớ**    : Tối ưu hóa hệ thống bằng việc tìm hiểu các loại dữ liệu giúp đỡ tốn bộ nhớ

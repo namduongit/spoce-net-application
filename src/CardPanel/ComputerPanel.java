@@ -1,5 +1,7 @@
 package CardPanel;
 
-public class ComputerPanel {
+import javax.swing.JPanel;
+
+public class ComputerPanel extends JPanel{
 
 }

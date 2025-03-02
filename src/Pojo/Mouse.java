@@ -1,6 +1,6 @@
 package Pojo;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Mouse {
     private int mouseId;

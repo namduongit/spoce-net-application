@@ -1,6 +1,6 @@
 package Pojo;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 public class FoodBills {
     private int billId;
@@ -9,14 +9,14 @@ public class FoodBills {
     private double totalPrice;
     private String paymentMethod;
     private String status;
-    private Date createdAt;
+    private Timestamp createdAt;
 
     // Constructor không tham số
     public FoodBills() {
     }
 
     // Constructor có tham số
-    public FoodBills(int billId, Integer playerId, int staffId, double totalPrice, String paymentMethod, String status, Date createdAt) {
+    public FoodBills(int billId, Integer playerId, int staffId, double totalPrice, String paymentMethod, String status, Timestamp createdAt) {
         this.billId = billId;
         this.playerId = playerId;
         this.staffId = staffId;
@@ -75,11 +75,11 @@ public class FoodBills {
         this.status = status;
     }
 
-    public Date getCreatedAt() {
+    public Timestamp getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
     }
 

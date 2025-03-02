@@ -1,14 +1,17 @@
 package Pojo;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Staffs {
     private int staffId;
     private int accountId;
     private String fullName;
     private Date birthDate;
+    private String gender;
     private String phone;
     private String email;
+    private String address;
+    private String cccd;
     private String avatar;
 
     // Constructor không tham số
@@ -16,13 +19,16 @@ public class Staffs {
     }
 
     // Constructor có tham số
-    public Staffs(int staffId, int accountId, String fullName, Date birthDate, String phone, String email, String avatar) {
+    public Staffs(int staffId, int accountId, String fullName, Date birthDate, String gender, String phone, String email, String address, String cccd, String avatar) {
         this.staffId = staffId;
         this.accountId = accountId;
         this.fullName = fullName;
         this.birthDate = birthDate;
+        this.gender = gender;
         this.phone = phone;
         this.email = email;
+        this.address = address;
+        this.cccd = cccd;
         this.avatar = avatar;
     }
 
@@ -59,6 +65,14 @@ public class Staffs {
         this.birthDate = birthDate;
     }
 
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
     public String getPhone() {
         return phone;
     }
@@ -74,6 +88,23 @@ public class Staffs {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getCccd() {
+        return cccd;
+    }
+
+    public void setCccd(String cccd) {
+        this.cccd = cccd;
+    }
+
 
     public String getAvatar() {
         return avatar;
@@ -91,8 +122,11 @@ public class Staffs {
                 ", accountId=" + accountId +
                 ", fullName='" + fullName + '\'' +
                 ", birthDate=" + birthDate +
+                ", birthDate=" + gender +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
+                ", address=" + address +
+                ", cccd=" + cccd +
                 ", avatar='" + avatar + '\'' +
                 '}';
     }

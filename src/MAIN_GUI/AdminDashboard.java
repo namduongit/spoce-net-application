@@ -4,18 +4,32 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.sql.Date;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.MatteBorder;
 
 import CardPanel.AccountPanel;
+import CardPanel.BillPanel;
+import CardPanel.ChartPanel;
+import CardPanel.ComputerPanel;
 import CardPanel.DashBoardPanel;
+import CardPanel.FoodPanel;
+import CardPanel.HardwarePanel;
 import CardPanel.HistoryPanel;
+import CardPanel.RoomPanel;
 import Components.CustomButton;
 import Pojo.Accounts;
 import Pojo.Staffs;
@@ -25,6 +39,10 @@ public class AdminDashboard extends JFrame {
     private Staffs currentStaff;
     private Accounts currentAccount;
 
+    private JLabel iconLogo;
+    private JLabel nameStaffs;
+    private JLabel roleAccount;
+
     private JPanel actionPanel;
 
     private CardLayout cardLayout;
@@ -33,39 +51,117 @@ public class AdminDashboard extends JFrame {
     public AdminDashboard(Staffs staffLogined, Accounts accountLogined) {
         this.currentStaff = staffLogined;
         this.currentAccount = accountLogined;
+
         this.initComponents();
     }
 
-    public CustomButton createButton(String imageIconName, String textIcon) {
-        int target = 15;
-        int lengthText = textIcon.length();
-        for (int i = 0; i < target - lengthText; i++) {
-            textIcon = " "+ textIcon;
-        }
-        CustomButton button = new CustomButton(textIcon);
-        button.setIcon(new ImageIcon(
-                new ImageIcon(System.getProperty("user.dir") + "/src/Assets/Icon/"+ imageIconName).getImage()
-                .getScaledInstance(50, 50, Image.SCALE_SMOOTH)),
-                0);
-        button.setBorderSize(0);
-        button.setBorderColor(Color.WHITE);
-        button.setFont(new Font("Sans-serif", Font.BOLD, 15));
-        // Sự kiện ấn vào nền có màu xanh nhạt còn không ấn thì có màu trắng (tức không có màu)
-        button.addFocusListener(new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                button.setBackground(Color.decode("#B3E5FC"));
-            }
+    private void createLayoutAdmin(JPanel buttonActionPanel) {
+        buttonActionPanel.setLayout(null);
 
+        CustomButton dashBoardButton = Utils.Helper.CreateComponent.createButton("icons8-dashboard-100.png", "Trang chủ");
+        dashBoardButton.setBounds(10, 5, 230, 50);
+        dashBoardButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "DashBoardPanel"));
+
+        CustomButton acccountButton = Utils.Helper.CreateComponent.createButton("icons8-account-100.png", "Tài khoản");
+        acccountButton.setBounds(10, 60, 230, 50);
+        acccountButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "AccountPanel"));
+
+        CustomButton historyButton = Utils.Helper.CreateComponent.createButton("icons8-payment-history-100.png", "Lịch sử");
+        historyButton.setBounds(10, 115, 230, 50);
+        historyButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "HistoryPanel"));
+
+        CustomButton computerButton = Utils.Helper.CreateComponent.createButton("icons8-computer-100.png", "Máy tính");
+        computerButton.setBounds(10, 170, 230, 50);
+        computerButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "ComputerPanel"));
+
+        CustomButton harwareButton = Utils.Helper.CreateComponent.createButton("icons8-ethernet-on-100.png", "Linh kiện");
+        harwareButton.setBounds(10, 225, 230, 50);
+        harwareButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "HardwarePanel"));
+
+        CustomButton foodButton = Utils.Helper.CreateComponent.createButton("icons8-ingredients-100.png", "Thức ăn");
+        foodButton.setBounds(10, 280, 230, 50);
+        foodButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "FoodPanel"));
+
+        CustomButton billButton = Utils.Helper.CreateComponent.createButton("icons8-bill-100.png", "Hóa đơn");
+        billButton.setBounds(10, 335, 230, 50);
+        billButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "BillPanel"));
+
+        CustomButton chartButton = Utils.Helper.CreateComponent.createButton("icons8-chart-100.png", "Thống kê");
+        chartButton.setBounds(10, 390, 230, 50);
+        chartButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "ChartPanel"));
+
+        CustomButton roomButton = Utils.Helper.CreateComponent.createButton("icons8-hotel-room-key-100.png", "Phòng chơi");
+        roomButton.setBounds(10, 445, 230, 50);
+        roomButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "RoomPanel"));
+
+        CustomButton logoutButton = Utils.Helper.CreateComponent.createButton("icons8-logout-100.png", "Đăng xuất");
+        logoutButton.setBounds(10, 555, 230, 50);
+        logoutButton.addActionListener(new ActionListener() {
             @Override
-            public void focusLost(FocusEvent e) {
-                button.setBackground(Color.WHITE);
+            public void actionPerformed(ActionEvent e) {
+                dispose();
             }
         });
-        return button;
+
+        buttonActionPanel.add(dashBoardButton);
+        buttonActionPanel.add(acccountButton);
+        buttonActionPanel.add(historyButton);
+        buttonActionPanel.add(computerButton);
+        buttonActionPanel.add(harwareButton);
+        buttonActionPanel.add(foodButton);
+        buttonActionPanel.add(billButton);
+        buttonActionPanel.add(chartButton);
+        buttonActionPanel.add(roomButton);
+        buttonActionPanel.add(logoutButton);
+
+        buttonActionPanel.setBounds(0, 80, 250, Utils.Config.ConfigFrame.HEIGHT_FRAME - 80);
+        buttonActionPanel.setBackground(Color.WHITE);
     }
 
-    public JPanel actionPanelDesign() {
+    private void createLayoutEmployee(JPanel buttonActionPanel) {
+        buttonActionPanel.setLayout(null);
+
+        CustomButton dashBoardButton = Utils.Helper.CreateComponent.createButton("icons8-dashboard-100.png", "Trang chủ");
+        dashBoardButton.setBounds(10, 5, 230, 50);
+        dashBoardButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "DashBoardPanel"));
+
+        CustomButton acccountButton = Utils.Helper.CreateComponent.createButton("icons8-account-100.png", "Tài khoản");
+        acccountButton.setBounds(10, 60, 230, 50);
+        acccountButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "AccountPanel"));
+
+        CustomButton foodButton = Utils.Helper.CreateComponent.createButton("icons8-ingredients-100.png", "Thức ăn");
+        foodButton.setBounds(10, 115, 230, 50);
+        foodButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "FoodPanel"));
+
+        CustomButton billButton = Utils.Helper.CreateComponent.createButton("icons8-bill-100.png", "Hóa đơn");
+        billButton.setBounds(10, 170, 230, 50);
+        billButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "BillPanel"));
+
+        CustomButton roomButton = Utils.Helper.CreateComponent.createButton("icons8-hotel-room-key-100.png", "Phòng chơi");
+        roomButton.setBounds(10, 225, 230, 50);
+        roomButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "RoomPanel"));
+
+        CustomButton logoutButton = Utils.Helper.CreateComponent.createButton("icons8-logout-100.png", "Đăng xuất");
+        logoutButton.setBounds(10, 555, 230, 50);
+        logoutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
+
+        buttonActionPanel.add(dashBoardButton);
+        buttonActionPanel.add(acccountButton);
+        buttonActionPanel.add(foodButton);
+        buttonActionPanel.add(billButton);
+        buttonActionPanel.add(roomButton);
+        buttonActionPanel.add(logoutButton);
+
+        buttonActionPanel.setBounds(0, 80, 250, Utils.Config.ConfigFrame.HEIGHT_FRAME - 80);
+        buttonActionPanel.setBackground(Color.WHITE);
+    }
+
+    private JPanel actionPanelDesign() {
         JPanel panel = new JPanel();
         panel.setLayout(null);
         // Ở trên đây có Hình logo là con người, Tên, Chức Vụ
@@ -77,11 +173,11 @@ public class AdminDashboard extends JFrame {
                 new ImageIcon(new ImageIcon(System.getProperty("user.dir") + "/src/Assets/Icon/icons8-employee-100.png")
                 .getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH)));
         iconLogo.setBounds(10, 10, 50, 50);
-        JLabel nameStaffs = new JLabel("Nguyễn Nam Dương");
+        JLabel nameStaffs = new JLabel(this.currentStaff.getFullName());
         nameStaffs.setFont(new Font("Sans-serif", Font.BOLD, 15));
         nameStaffs.setForeground(Color.BLACK);
         nameStaffs.setBounds(80, 10, 150, 30);
-        JLabel roleAccount = new JLabel("Quản trị viên");
+        JLabel roleAccount = new JLabel(this.currentAccount.getRole());
         roleAccount.setFont(new Font("Sans-serif", Font.BOLD, 12));
         roleAccount.setForeground(Color.GRAY);
         roleAccount.setBounds(80, 30, 150, 30);
@@ -94,53 +190,14 @@ public class AdminDashboard extends JFrame {
 
         // Ở dưới đây là bảng nút
         JPanel buttonActionPanel = new JPanel();
-        buttonActionPanel.setLayout(null);
-
-        CustomButton dashBoardButton = this.createButton("icons8-dashboard-100.png", "Trang chủ");
-        dashBoardButton.setBounds(20, 5, 210, 50);
-        dashBoardButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "DashBoardPanel"));
-
-        CustomButton acccountButton = this.createButton("icons8-account-100.png", "Tài khoản");
-        acccountButton.setBounds(20, 60, 210, 50);
-        acccountButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "AccountPanel"));
-
-        CustomButton historyButton = this.createButton("icons8-payment-history-100.png", "Lịch sử");
-        historyButton.setBounds(20, 115, 210, 50);
-        historyButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "HistoryPanel"));
-
-        CustomButton computerButton = this.createButton("icons8-computer-100.png", "Máy tính");
-        computerButton.setBounds(20, 170, 210, 50);
-
-        CustomButton harwareButton = this.createButton("icons8-ethernet-on-100.png", "Linh kiện");
-        harwareButton.setBounds(20, 225, 210, 50);
-
-        CustomButton foodButton = this.createButton("icons8-ingredients-100.png", "Thức ăn");
-        foodButton.setBounds(20, 280, 210, 50);
-
-        CustomButton billButton = this.createButton("icons8-bill-100.png", "Hóa đơn");
-        billButton.setBounds(20, 335, 210, 50);
-
-        CustomButton chartButton = this.createButton("icons8-chart-100.png", "Thống kê");
-        chartButton.setBounds(20, 390, 210, 50);
-
-        CustomButton logoutButton = this.createButton("icons8-logout-100.png", "Đăng xuất");
-        logoutButton.setBounds(20, 445, 210, 50);
-
-        buttonActionPanel.add(dashBoardButton);
-        buttonActionPanel.add(acccountButton);
-        buttonActionPanel.add(historyButton);
-        buttonActionPanel.add(computerButton);
-        buttonActionPanel.add(harwareButton);
-        buttonActionPanel.add(foodButton);
-        buttonActionPanel.add(billButton);
-        buttonActionPanel.add(chartButton);
-        buttonActionPanel.add(logoutButton);
-
-        buttonActionPanel.setBounds(0, 80, 250, Utils.Config.ConfigFrame.HEIGHT_FRAME - 80);
-        buttonActionPanel.setBackground(Color.WHITE);
+        if (this.currentAccount.getRole().equals("Quản trị viên")) {
+            this.createLayoutAdmin(buttonActionPanel);
+        } else if (this.currentAccount.getRole().equals("Nhân viên")) {
+            this.createLayoutEmployee(buttonActionPanel);
+        }
 
         // Thêm đường viền cho 2 Panel phụ trong Panel chính
-        headActionPanel.setBorder(new MatteBorder(0, 0, 1, 0, Color.GRAY));
+        headActionPanel.setBorder(new MatteBorder(0, 0, 1, 0, Color.decode("#9E9E9E")));
 
         // Thêm trước khi trả về
         panel.add(headActionPanel);
@@ -151,31 +208,45 @@ public class AdminDashboard extends JFrame {
         return panel;
     }
 
-    public JPanel infoPanelDesign() {
+    private JPanel infoPanelDesign() {
         this.cardLayout = new CardLayout();
         JPanel panel = new JPanel(this.cardLayout);
 
         DashBoardPanel dashBoardPanel = new DashBoardPanel();
-        dashBoardPanel.setBackground(Color.decode("#2196F3"));
 
-        AccountPanel accountPanel = new AccountPanel();
-        accountPanel.setBackground(Color.decode("#1E88E5"));
+        AccountPanel accountPanel = new AccountPanel(this.currentAccount, this.currentStaff);
 
         HistoryPanel historyPanel = new HistoryPanel();
-        historyPanel.setBackground(Color.decode("#1976D2"));
 
+        ComputerPanel computerPanel = new ComputerPanel();
+
+        HardwarePanel hardwarePanel = new HardwarePanel();
+
+        FoodPanel foodPanel = new FoodPanel();
+
+        BillPanel billPanel = new BillPanel();
+
+        ChartPanel chartPanel = new ChartPanel();
+
+        RoomPanel roomPanel = new RoomPanel();
 
         // Thêm trước khi trả về
         panel.add(dashBoardPanel, "DashBoardPanel");
         panel.add(accountPanel, "AccountPanel");
         panel.add(historyPanel, "HistoryPanel");
+        panel.add(computerPanel, "ComputerPanel");
+        panel.add(hardwarePanel, "HardwarePanel");
+        panel.add(foodPanel, "FoodPanel");
+        panel.add(billPanel, "BillPanel");
+        panel.add(chartPanel, "ChartPanel");
+        panel.add(roomPanel, "RoomPanel");
 
         // Tạo đường viền ở bên trái
-        panel.setBorder(new MatteBorder(0, 1, 0, 0, Color.GRAY));
+        panel.setBorder(new MatteBorder(0, 1, 0, 0, Color.decode("#9E9E9E")));
         return panel;
     }
 
-    public void initComponents() {
+    private void initComponents() {
         this.setSize(Utils.Config.ConfigFrame.WIDTH_FRAME, Utils.Config.ConfigFrame.HEIGHT_FRAME);
         this.setTitle("SPOCE Cyber System");
         this.setIconImage(
@@ -183,6 +254,22 @@ public class AdminDashboard extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+
+        this.iconLogo = new JLabel();
+        this.iconLogo.setIcon(
+                new ImageIcon(new ImageIcon(System.getProperty("user.dir") + "/src/Assets/Icon/icons8-employee-100.png")
+                .getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH)));
+        this.iconLogo.setBounds(10, 10, 50, 50);
+
+        this.nameStaffs = new JLabel(this.currentStaff.getFullName());
+        nameStaffs.setFont(new Font("Sans-serif", Font.BOLD, 15));
+        nameStaffs.setForeground(Color.BLACK);
+        nameStaffs.setBounds(80, 10, 150, 30);
+
+        roleAccount = new JLabel(this.currentAccount.getRole());
+        roleAccount.setFont(new Font("Sans-serif", Font.BOLD, 12));
+        roleAccount.setForeground(Color.GRAY);
+        roleAccount.setBounds(80, 30, 150, 30);
 
         JPanel panel = new JPanel();
         panel.setLayout(null);
@@ -202,6 +289,18 @@ public class AdminDashboard extends JFrame {
     }
 
     public static void main(String[] args) {
-        new AdminDashboard(new Staffs(), new Accounts()).setVisible(true);
+        LocalDate date = LocalDate.of(2005, 2, 14);
+        LocalDateTime timeslap = LocalDateTime.of(2025, 2, 14, 10, 20, 22);
+
+        Date birthDate = Date.valueOf(date);
+        Timestamp createAt = Timestamp.valueOf(timeslap);
+
+
+        Staffs employeeStaff = new Staffs(1, 1, "Nguyễn Nam Dương", birthDate, "Nam", "0388853835", "nguyennamduong205@gmail.com", "Long Khánh, Đồng Nai", "075205020410", "1.png");
+
+        Accounts adminAccount = new Accounts(1, "namduongit", "NDuong205", "Quản trị viên", "Đang hoạt động", createAt);
+        Accounts employeeAccount = new Accounts(1, "namduongit", "NDuong205", "Nhân viên", "Đang hoạt động", createAt);
+
+        new AdminDashboard(employeeStaff, employeeAccount).setVisible(true);
     }
 }
