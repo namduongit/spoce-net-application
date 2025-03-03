@@ -33,6 +33,8 @@ import CardPanel.RoomPanel;
 import Components.CustomButton;
 import Pojo.Accounts;
 import Pojo.Staffs;
+import Utils.Helper.CreateComponent;
+
 
 @SuppressWarnings("unused")
 public class AdminDashboard extends JFrame {
@@ -58,43 +60,43 @@ public class AdminDashboard extends JFrame {
     private void createLayoutAdmin(JPanel buttonActionPanel) {
         buttonActionPanel.setLayout(null);
 
-        CustomButton dashBoardButton = Utils.Helper.CreateComponent.createButton("icons8-dashboard-100.png", "Trang chủ");
+        CustomButton dashBoardButton = CreateComponent.createButton("icons8-dashboard-100.png", "Trang chủ");
         dashBoardButton.setBounds(10, 5, 230, 50);
         dashBoardButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "DashBoardPanel"));
 
-        CustomButton acccountButton = Utils.Helper.CreateComponent.createButton("icons8-account-100.png", "Tài khoản");
+        CustomButton acccountButton = CreateComponent.createButton("icons8-account-100.png", "Tài khoản");
         acccountButton.setBounds(10, 60, 230, 50);
         acccountButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "AccountPanel"));
 
-        CustomButton historyButton = Utils.Helper.CreateComponent.createButton("icons8-payment-history-100.png", "Lịch sử");
+        CustomButton historyButton = CreateComponent.createButton("icons8-payment-history-100.png", "Lịch sử");
         historyButton.setBounds(10, 115, 230, 50);
         historyButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "HistoryPanel"));
 
-        CustomButton computerButton = Utils.Helper.CreateComponent.createButton("icons8-computer-100.png", "Máy tính");
+        CustomButton computerButton = CreateComponent.createButton("icons8-computer-100.png", "Máy tính");
         computerButton.setBounds(10, 170, 230, 50);
         computerButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "ComputerPanel"));
 
-        CustomButton harwareButton = Utils.Helper.CreateComponent.createButton("icons8-ethernet-on-100.png", "Linh kiện");
+        CustomButton harwareButton = CreateComponent.createButton("icons8-ethernet-on-100.png", "Linh kiện");
         harwareButton.setBounds(10, 225, 230, 50);
         harwareButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "HardwarePanel"));
 
-        CustomButton foodButton = Utils.Helper.CreateComponent.createButton("icons8-ingredients-100.png", "Thức ăn");
+        CustomButton foodButton = CreateComponent.createButton("icons8-ingredients-100.png", "Thức ăn");
         foodButton.setBounds(10, 280, 230, 50);
         foodButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "FoodPanel"));
 
-        CustomButton billButton = Utils.Helper.CreateComponent.createButton("icons8-bill-100.png", "Hóa đơn");
+        CustomButton billButton = CreateComponent.createButton("icons8-bill-100.png", "Hóa đơn");
         billButton.setBounds(10, 335, 230, 50);
         billButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "BillPanel"));
 
-        CustomButton chartButton = Utils.Helper.CreateComponent.createButton("icons8-chart-100.png", "Thống kê");
+        CustomButton chartButton = CreateComponent.createButton("icons8-chart-100.png", "Thống kê");
         chartButton.setBounds(10, 390, 230, 50);
         chartButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "ChartPanel"));
 
-        CustomButton roomButton = Utils.Helper.CreateComponent.createButton("icons8-hotel-room-key-100.png", "Phòng chơi");
+        CustomButton roomButton = CreateComponent.createButton("icons8-hotel-room-key-100.png", "Phòng chơi");
         roomButton.setBounds(10, 445, 230, 50);
         roomButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "RoomPanel"));
 
-        CustomButton logoutButton = Utils.Helper.CreateComponent.createButton("icons8-logout-100.png", "Đăng xuất");
+        CustomButton logoutButton = CreateComponent.createButton("icons8-logout-100.png", "Đăng xuất");
         logoutButton.setBounds(10, 555, 230, 50);
         logoutButton.addActionListener(new ActionListener() {
             @Override
@@ -121,27 +123,27 @@ public class AdminDashboard extends JFrame {
     private void createLayoutEmployee(JPanel buttonActionPanel) {
         buttonActionPanel.setLayout(null);
 
-        CustomButton dashBoardButton = Utils.Helper.CreateComponent.createButton("icons8-dashboard-100.png", "Trang chủ");
+        CustomButton dashBoardButton = CreateComponent.createButton("icons8-dashboard-100.png", "Trang chủ");
         dashBoardButton.setBounds(10, 5, 230, 50);
         dashBoardButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "DashBoardPanel"));
 
-        CustomButton acccountButton = Utils.Helper.CreateComponent.createButton("icons8-account-100.png", "Tài khoản");
+        CustomButton acccountButton = CreateComponent.createButton("icons8-account-100.png", "Tài khoản");
         acccountButton.setBounds(10, 60, 230, 50);
         acccountButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "AccountPanel"));
 
-        CustomButton foodButton = Utils.Helper.CreateComponent.createButton("icons8-ingredients-100.png", "Thức ăn");
+        CustomButton foodButton = CreateComponent.createButton("icons8-ingredients-100.png", "Thức ăn");
         foodButton.setBounds(10, 115, 230, 50);
         foodButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "FoodPanel"));
 
-        CustomButton billButton = Utils.Helper.CreateComponent.createButton("icons8-bill-100.png", "Hóa đơn");
+        CustomButton billButton = CreateComponent.createButton("icons8-bill-100.png", "Hóa đơn");
         billButton.setBounds(10, 170, 230, 50);
         billButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "BillPanel"));
 
-        CustomButton roomButton = Utils.Helper.CreateComponent.createButton("icons8-hotel-room-key-100.png", "Phòng chơi");
+        CustomButton roomButton = CreateComponent.createButton("icons8-hotel-room-key-100.png", "Phòng chơi");
         roomButton.setBounds(10, 225, 230, 50);
         roomButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "RoomPanel"));
 
-        CustomButton logoutButton = Utils.Helper.CreateComponent.createButton("icons8-logout-100.png", "Đăng xuất");
+        CustomButton logoutButton = CreateComponent.createButton("icons8-logout-100.png", "Đăng xuất");
         logoutButton.setBounds(10, 555, 230, 50);
         logoutButton.addActionListener(new ActionListener() {
             @Override
@@ -173,7 +175,7 @@ public class AdminDashboard extends JFrame {
                 new ImageIcon(new ImageIcon(System.getProperty("user.dir") + "/src/Assets/Icon/icons8-employee-100.png")
                 .getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH)));
         iconLogo.setBounds(10, 10, 50, 50);
-        JLabel nameStaffs = new JLabel(this.currentStaff.getFullName());
+        JLabel nameStaffs = new JLabel(this.currentStaff.getFullName().isEmpty() ? "Chưa có tên" : this.currentStaff.getFullName());
         nameStaffs.setFont(new Font("Sans-serif", Font.BOLD, 15));
         nameStaffs.setForeground(Color.BLACK);
         nameStaffs.setBounds(80, 10, 150, 30);

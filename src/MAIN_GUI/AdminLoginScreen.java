@@ -9,8 +9,11 @@ import javax.swing.JPanel;
 import Components.CustomButton;
 import Components.CustomPasswordField;
 import Components.CustomTextField;
+import DAO.AccountDAO;
+import DAO.StaffDAO;
 import Pojo.Accounts;
 import Pojo.Staffs;
+import Utils.Helper.EncriptString;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -24,8 +27,6 @@ import java.awt.event.MouseListener;
 
 @SuppressWarnings("unused")
 public class AdminLoginScreen extends JFrame{
-    private Staffs staffLogin = null;          // Do chưa có ai đăng nhập nên để là null
-    private Accounts accountLogin = null;      // Do chưa có ai đăng nhập nên để là null
 
     public AdminLoginScreen() {
         this.initComponents();
@@ -139,6 +140,18 @@ public class AdminLoginScreen extends JFrame{
                         JOptionPane.showMessageDialog(null, "Vui lòng nhập đầy đủ thông tin", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                     }
                 else {
+                    String username = userNameInput.getText();
+                    String password = new String(passwordInput.getPassword());
+
+                    Accounts accounts = AccountDAO.loginAccount(username, password);
+                    if (accounts != null && (accounts.getRole().equals("Quản trị viên") || accounts.getRole().equals("Nhân viên"))) {
+                        Staffs staffs = StaffDAO.getStaffsByAccountID(accounts.getAccountId());
+                        System.out.println(accounts);
+                        System.out.println(staffs);
+                        new AdminDashboard(staffs, accounts);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Tài khoản không tồn tại", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                    }
 
                 }
             }

@@ -14,6 +14,7 @@ import Components.CustomButton;
 import Components.CustomPanel;
 import Pojo.Accounts;
 import Pojo.Staffs;
+import Utils.Helper.CreateComponent;
 
 public class AccountPanel extends JPanel {
     private Accounts currentAccount;
@@ -38,11 +39,11 @@ public class AccountPanel extends JPanel {
         titlePanel.setFont(new Font("Sans-serif", Font.PLAIN, 30));
         titlePanel.setBounds(420, 30, 400, 50);
 
-        CustomButton selfInfoButton = Utils.Helper.CreateComponent.createButtonNoIcon("Thông tin tài khoản");
+        CustomButton selfInfoButton = CreateComponent.createButtonNoIcon("Thông tin tài khoản");
         selfInfoButton.setBounds(20, 100, 170, 40);
         selfInfoButton.addActionListener(e -> this.cardLayout.show(this.infomationPanel, "MyInfo"));
 
-        CustomButton playerAccountButton = Utils.Helper.CreateComponent.createButtonNoIcon("Tài khoản người chơi");
+        CustomButton playerAccountButton = CreateComponent.createButtonNoIcon("Tài khoản người chơi");
         playerAccountButton.setBounds(200, 100, 170, 40);
         playerAccountButton.addActionListener(e -> this.cardLayout.show(this.infomationPanel, "PlayerInfo"));
 
@@ -51,7 +52,7 @@ public class AccountPanel extends JPanel {
         panel.add(playerAccountButton);
 
         if (this.currentAccount.getRole().equals("Quản trị viên")) {
-            CustomButton employeeButton = Utils.Helper.CreateComponent.createButtonNoIcon("Tài khoản nhân viên");
+            CustomButton employeeButton = CreateComponent.createButtonNoIcon("Tài khoản nhân viên");
             employeeButton.setBounds(380, 100, 170, 40);
             employeeButton.addActionListener(e -> this.cardLayout.show(this.infomationPanel, "EmployeeInfo"));
             panel.add(employeeButton);
@@ -156,6 +157,8 @@ public class AccountPanel extends JPanel {
 
             // Cập nhật thông tin avatar của nhân viên
             this.currentStaff.setAvatar(newFileName);
+            // Lưu vào database
+
             updateAvatar(destination.getAbsolutePath());
 
             JOptionPane.showMessageDialog(null, "Ảnh đại diện đã được cập nhật!", "Thành công", JOptionPane.INFORMATION_MESSAGE);

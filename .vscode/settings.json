@@ -11,5 +11,6 @@
         "c:\\libs-api-connect\\mail-1.4.7.jar",
         "c:\\libs-api-connect\\activation-1.1.1.jar",
         "c:\\libs-api-connect\\javax.mail.jar"
-    ]
+    ],
+    "java.debug.settings.onBuildFailureProceed": true
 }

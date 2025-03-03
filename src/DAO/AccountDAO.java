@@ -22,12 +22,14 @@ public class AccountDAO {
         ResultSet resultSet = helper.selectAllFromTable("accounts");
         try {
             while (resultSet.next()) {
-                // list.add(new Accounts(resultSet.getInt("account_id"),
-                //         resultSet.getString("username"),
-                //         resultSet.getString("password"),
-                //         resultSet.getString("role"),
-                //         resultSet.getString("status"),
-                //         resultSet.getTimestamp("created_at"))); // Lấy đầy đủ giờ phút giây còn getDate chỉ lấy ngày không lấy thời gian giờ phút giây
+                list.add(new Accounts(
+                    resultSet.getInt(1),
+                    resultSet.getString(2),
+                    resultSet.getString(3),
+                    resultSet.getString(4),
+                    resultSet.getString(5),
+                    resultSet.getTimestamp(6)
+                ));
             }
             resultSet.close();
             helper.closeConnect();
@@ -41,29 +43,41 @@ public class AccountDAO {
 
     public static Accounts loginAccount(String username, String password) {
         MySQLHelper helper = new MySQLHelper();
-            Map<String, String> params = new HashMap<>();
-            params.put("TABLE", "accounts");
-            params.put("WHERE", "accounts.username = ? AND accounts.password = ?");
-            helper.buidlingQueryParam(params);
-            ArrayList<Object> values = new ArrayList<>();
-            values.add(username);
-            values.add(password);
-            ResultSet resultSet = helper.queryWithParam(values);
+        Map<String, String> params = new HashMap<>();
+        params.put("TABLE", "accounts");
+        params.put("WHERE", "accounts.username = ? AND accounts.password = ?");
+        helper.buidlingQueryParam(params);
 
-            // if (resultSet != null) {
-            //     try {
-            //         return new Accounts(resultSet.getInt("account_id"),
-            //                             resultSet.getString("username"),
-            //                             resultSet.getString("password"),
-            //                             resultSet.getString("role"),
-            //                             resultSet.getString("status"),
-            //                             resultSet.getTimestamp("created_at"));
-            //     } catch(SQLException exception) {
-            //         JOptionPane.showMessageDialog(null, exception.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
-            //     }
-            // }
+        ArrayList<Object> values = new ArrayList<>();
+        values.add(username);
+        values.add(password);
 
-            return null;
+        ResultSet resultSet = helper.queryWithParam(values);
+        Accounts account = null;
+
+        if (resultSet != null) {
+            try {
+                if (resultSet.next()) {  // Quan trọng: cần gọi .next() trước khi lấy dữ liệu
+                    account = new Accounts(
+                        resultSet.getInt(1),
+                        resultSet.getString(2),
+                        resultSet.getString(3),
+                        resultSet.getString(4),
+                        resultSet.getString(5),
+                        resultSet.getTimestamp(6)
+                    );
+                }
+            } catch (SQLException exception) {
+                JOptionPane.showMessageDialog(null, exception.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+            } finally {
+                helper.closeConnect();  // Đảm bảo đóng kết nối khi xong
+            }
+        }
+
+        return account;
     }
+
+
+
 
 }
