@@ -25,7 +25,7 @@ import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-@SuppressWarnings("unused")
+
 public class AdminLoginScreen extends JFrame{
 
     public AdminLoginScreen() {
@@ -59,11 +59,11 @@ public class AdminLoginScreen extends JFrame{
         titleLabel.setBounds(160, 140, 540, 50);
 
         JLabel textInputUserName = new JLabel("Username");
-        textInputUserName.setBounds(80, 225, 115, 20);
+        textInputUserName.setBounds(90, 225, 115, 20);
         textInputUserName.setFont(new Font(Font.DIALOG_INPUT,  Font.BOLD, 15));
 
         CustomTextField userNameInput = new CustomTextField("Enter your username");
-        userNameInput.setBounds(80, 250, 540, 50);
+        userNameInput.setBounds(90, 250, 540, 50);
         userNameInput.setFont(new Font(Font.DIALOG_INPUT,  Font.BOLD, 15));
         userNameInput.setForeground(Color.decode("#424242"));
         userNameInput.addFocusListener(new FocusListener() {
@@ -84,11 +84,11 @@ public class AdminLoginScreen extends JFrame{
         });
 
         JLabel textInputPassword = new JLabel("Password");
-        textInputPassword.setBounds(80, 310, 115, 20);
+        textInputPassword.setBounds(90, 310, 115, 20);
         textInputPassword.setFont(new Font(Font.DIALOG_INPUT,  Font.BOLD, 15));
 
         CustomPasswordField passwordInput = new CustomPasswordField("Enter your password");
-        passwordInput.setBounds(80, 340, 540, 50);
+        passwordInput.setBounds(90, 340, 540, 50);
         passwordInput.setFont(new Font(Font.DIALOG_INPUT,  Font.BOLD, 15));
         passwordInput.setForeground(Color.decode("#424242"));
         passwordInput.addFocusListener(new FocusListener() {
@@ -109,7 +109,7 @@ public class AdminLoginScreen extends JFrame{
         });
 
         CustomButton forgotPassword = new CustomButton("Forgot your password");
-        forgotPassword.setBounds(380, 405, 240, 35);
+        forgotPassword.setBounds(390, 405, 240, 35);
         forgotPassword.setFont(new Font(Font.DIALOG_INPUT,  Font.BOLD, 15));
         forgotPassword.setBackground(Color.decode("#424242"));
         forgotPassword.setBorderColor(Color.decode("#424242"));
@@ -123,7 +123,7 @@ public class AdminLoginScreen extends JFrame{
         });
 
         CustomButton loginButton = new CustomButton("Login Admin Dashboard");
-        loginButton.setBounds(80, 452, 540, 50);
+        loginButton.setBounds(90, 452, 540, 50);
         loginButton.setFont(new Font(Font.DIALOG_INPUT,  Font.BOLD, 15));
         loginButton.setBackground(Color.WHITE);
         loginButton.setBorderColor(Color.decode("#303F9F"));
@@ -140,15 +140,12 @@ public class AdminLoginScreen extends JFrame{
                         JOptionPane.showMessageDialog(null, "Vui lòng nhập đầy đủ thông tin", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                     }
                 else {
-                    String username = userNameInput.getText();
-                    String password = new String(passwordInput.getPassword());
-
-                    Accounts accounts = AccountDAO.loginAccount(username, password);
+                    Accounts accounts = AccountDAO.loginAccount(userNameInput.getText(), EncriptString.MD5String(new String(passwordInput.getPassword())));
                     if (accounts != null && (accounts.getRole().equals("Quản trị viên") || accounts.getRole().equals("Nhân viên"))) {
                         Staffs staffs = StaffDAO.getStaffsByAccountID(accounts.getAccountId());
-                        System.out.println(accounts);
-                        System.out.println(staffs);
-                        new AdminDashboard(staffs, accounts);
+                        JOptionPane.showMessageDialog(null, "Đăng nhập thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                        dispose();
+                        new AdminDashboard(staffs, accounts).setVisible(true);
                     } else {
                         JOptionPane.showMessageDialog(null, "Tài khoản không tồn tại", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                     }

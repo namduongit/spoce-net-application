@@ -4,14 +4,17 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.FocusListener;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import javax.swing.*;
+import javax.swing.border.Border;
 
 import Components.CustomButton;
 import Components.CustomPanel;
+import Components.CustomTextField;
 import Pojo.Accounts;
 import Pojo.Staffs;
 import Utils.Helper.CreateComponent;
@@ -34,6 +37,8 @@ public class AccountPanel extends JPanel {
     private JPanel createButtonPanel() {
         JPanel panel = new JPanel();
         panel.setLayout(null);
+
+        panel.setBackground(Color.BLACK);
 
         JLabel titlePanel = new JLabel("QUẢN LÝ TÀI KHOẢN");
         titlePanel.setFont(new Font("Sans-serif", Font.PLAIN, 30));
@@ -65,19 +70,66 @@ public class AccountPanel extends JPanel {
         CustomPanel panel = new CustomPanel();
         panel.setLayout(null);
 
+        // Ảnh đại diện
         avatarEmployee = new JLabel();
         updateAvatar(getAvatarPath());
-        avatarEmployee.setBounds(30, 30, 200, 200);
-        panel.add(avatarEmployee);
+        avatarEmployee.setBounds(80, 30, 200, 200);
+        avatarEmployee.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 
         // Nút chọn ảnh
-        JButton btnChooseFile = new JButton("Chọn Ảnh");
-        btnChooseFile.setBounds(30, 250, 120, 30);
+        CustomButton btnChooseFile = new CustomButton("Chọn Ảnh");
+        btnChooseFile.setBounds(130, 240, 100, 25);
         btnChooseFile.addActionListener(e -> chooseImage());
+
+        // Họ và tên
+        JLabel staffName = new JLabel("Họ và Tên:");
+        staffName.setFont(new Font("Sans", Font.BOLD, 15));
+        staffName.setBounds(35, 270, 200, 30);
+
+        CustomTextField staffNameInput = new CustomTextField(this.currentStaff.getFullName().isEmpty() ? "Chưa có tên" : this.currentStaff.getFullName());
+        staffNameInput.setBounds(30, 300, 300, 35);
+
+        // Email
+        JLabel staffEmail = new JLabel("Địa chỉ email:");
+        staffEmail.setFont(new Font("Sans", Font.BOLD, 15));
+        staffEmail.setBounds(35, 350, 200, 30);
+
+        CustomTextField staffEmailInput = new CustomTextField("ABC");
+        staffEmailInput.setBounds(30, 380, 300, 35);
+        staffEmailInput.addFocusListener(new FocusListener() {
+            public void focusGained(java.awt.event.FocusEvent e) {}
+            public void focusLost(java.awt.event.FocusEvent e) {}
+        });
+
+        // Nhãn "Ngày tạo tài khoản"
+        JLabel createAtLabel = new JLabel("Ngày tạo tài khoản:");
+        createAtLabel.setFont(new Font("Sans", Font.BOLD, 15));
+        createAtLabel.setBounds(35, 430, 200, 30);
+
+        // Ngày tạo tài khoản
+        JLabel staffCreateAt = new JLabel(this.currentAccount.getCreatedAt().toString());
+        staffCreateAt.setBounds(35, 455, 200, 30);
+        staffCreateAt.setFont(new Font("Sans", Font.ITALIC, 13));
+
+        // Đường kẻ thứ nhất
+        JLabel firstLine = new JLabel();
+        firstLine.setIcon(new ImageIcon(new ImageIcon(System.getProperty("user.dir") +"/src/Assets/Image/card_black.png").getImage().getScaledInstance(10, 500, Image.SCALE_SMOOTH)));
+        firstLine.setBounds(380, 10, 1, 598);
+
+        // Thêm các thành phần vào panel
+        panel.add(avatarEmployee);
         panel.add(btnChooseFile);
+        panel.add(staffName);
+        panel.add(staffNameInput);
+        panel.add(staffEmail);
+        panel.add(staffEmailInput);
+        panel.add(createAtLabel);
+        panel.add(staffCreateAt);
+        panel.add(firstLine);
 
         return panel;
     }
+
 
     private JPanel createInfomationPanel() {
         this.cardLayout = new CardLayout();
@@ -85,13 +137,13 @@ public class AccountPanel extends JPanel {
         panel.setBackground(Color.WHITE);
 
         CustomPanel selfInfoPanel = this.createInfoPanel();
-        selfInfoPanel.setBackground(Color.BLACK);
+        // selfInfoPanel.setBackground(Color.BLACK);
 
         CustomPanel playerAccountPanel = new CustomPanel();
-        playerAccountPanel.setBackground(Color.BLUE);
+        // playerAccountPanel.setBackground(Color.BLUE);
 
         CustomPanel employeePanel = new CustomPanel();
-        employeePanel.setBackground(Color.RED);
+        // employeePanel.setBackground(Color.RED);
 
         panel.add(selfInfoPanel, "MyInfo");
         panel.add(playerAccountPanel, "PlayerInfo");
@@ -101,12 +153,12 @@ public class AccountPanel extends JPanel {
 
     private void initComponents() {
         this.setLayout(null);
-        this.setBackground(Color.decode("#9E9E9E"));
+        this.setBackground(Color.WHITE);
         this.buttonPanel = this.createButtonPanel();
         this.infomationPanel = this.createInfomationPanel();
 
-        buttonPanel.setBounds(0, 0, 1116, 200);
-        infomationPanel.setBounds(0, 200, 1116, 568);
+        buttonPanel.setBounds(0, 0, 1116, 170);
+        infomationPanel.setBounds(0, 170, 1116, 598);
 
         this.add(buttonPanel);
         this.add(infomationPanel);
