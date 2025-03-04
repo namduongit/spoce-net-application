@@ -90,4 +90,8 @@ public class SendEmail {
         }
         return false;
     }
+
+    public static void main(String[] args) {
+        new SendEmail().sendNewOTP("tienluanchenh192@gmail.com", "Thông báo", "23333", "namduongit");
+    }
 }
