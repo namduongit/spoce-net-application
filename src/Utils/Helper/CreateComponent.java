@@ -1,4 +1,4 @@
-package Utils.Helper;
+package utils.Helper;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -8,7 +8,7 @@ import java.awt.event.FocusListener;
 
 import javax.swing.ImageIcon;
 
-import Components.CustomButton;
+import view.Components.CustomButton;
 
 public class CreateComponent {
     public static CustomButton createButton(String imageIconName, String textIcon) {

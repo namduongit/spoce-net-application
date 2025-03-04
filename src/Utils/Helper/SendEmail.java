@@ -1,4 +1,4 @@
-package Utils.Helper;
+package utils.Helper;
 
 import java.util.Properties;
 import java.util.Random;
@@ -6,11 +6,11 @@ import java.util.Random;
 import javax.mail.*;
 import javax.mail.internet.*;
 
-import Utils.Config.ConfigEmail;
+import utils.Config.ConfigEmail;
 
 public class SendEmail {
     private Session session;
- 
+
     public void setUpServerProperties() {
         Properties properties = new Properties();
         properties.put("mail.smtp.host", "smtp.gmail.com"); // Máy chủ SMTP Gmail

@@ -1,4 +1,4 @@
-package Utils.Config;
+package utils.Config;
 
 public class ConfigEmail {
     public static final String EMAIL_SENDER = "nguyennamduong.api@gmail.com";
