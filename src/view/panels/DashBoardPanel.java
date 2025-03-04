@@ -12,7 +12,7 @@ import view.Components.CustomButton;
 public class DashBoardPanel extends JPanel {
     public DashBoardPanel() {
         this.setLayout(null);
-        this.setSize(utils.Config.ConfigFrame.WIDTH_FRAME - 250, utils.Config.ConfigFrame.HEIGHT_FRAME);
+        this.setSize(Utils.Config.ConfigFrame.WIDTH_FRAME - 250, Utils.Config.ConfigFrame.HEIGHT_FRAME);
         this.initComponents();
     }
 
@@ -39,7 +39,7 @@ public class DashBoardPanel extends JPanel {
         JPanel panel = new JPanel();
         panel.setLayout(null);
         JLabel label = new JLabel();
-        label.setIcon(new ImageIcon(new ImageIcon(System.getProperty("user.dir") +"/src/Assets/Image/infomation-dashboard.png").getImage().getScaledInstance(1116, 512, Image.SCALE_SMOOTH)));
+        label.setIcon(new ImageIcon(new ImageIcon(System.getProperty("user.dir") +"/src/view/Assets/Image/infomation-dashboard.png").getImage().getScaledInstance(1116, 512, Image.SCALE_SMOOTH)));
         label.setBounds(0, 0, 1116, 512);
         label.setOpaque(false);
 
@@ -66,8 +66,8 @@ public class DashBoardPanel extends JPanel {
         JPanel dashBoardTitlePanel = this.createDashBoardTitle();
         JPanel createIntromation = this.createIntromation();
 
-        dashBoardTitlePanel.setBounds(0, 0, utils.Config.ConfigFrame.WIDTH_FRAME - 250, 256);
-        createIntromation.setBounds(0, 256, utils.Config.ConfigFrame.WIDTH_FRAME - 250, utils.Config.ConfigFrame.HEIGHT_FRAME - 256);
+        dashBoardTitlePanel.setBounds(0, 0, Utils.Config.ConfigFrame.WIDTH_FRAME - 250, 256);
+        createIntromation.setBounds(0, 256, Utils.Config.ConfigFrame.WIDTH_FRAME - 250, Utils.Config.ConfigFrame.HEIGHT_FRAME - 256);
 
         this.add(dashBoardTitlePanel);
         this.add(createIntromation);

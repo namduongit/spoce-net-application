@@ -1,4 +1,4 @@
-package utils.Config;
+package Utils.Config;
 
 public class ConfigFrame {
     public static int WIDTH_FRAME = 1366;

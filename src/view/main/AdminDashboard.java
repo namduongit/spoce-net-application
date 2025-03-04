@@ -6,10 +6,7 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.sql.Date;
@@ -23,7 +20,7 @@ import javax.swing.border.MatteBorder;
 
 import model.Pojo.Accounts;
 import model.Pojo.Staffs;
-import utils.Helper.CreateComponent;
+import Utils.Helper.CreateComponent;
 import view.Components.CustomButton;
 import view.panels.AccountPanel;
 import view.panels.BillPanel;
@@ -64,9 +61,9 @@ public class AdminDashboard extends JFrame {
         dashBoardButton.setBounds(10, 5, 230, 50);
         dashBoardButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "DashBoardPanel"));
 
-        CustomButton acccountButton = CreateComponent.createButton("icons8-account-100.png", "Tài khoản");
-        acccountButton.setBounds(10, 60, 230, 50);
-        acccountButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "AccountPanel"));
+        CustomButton accountButton = CreateComponent.createButton("icons8-account-100.png", "Tài khoản");
+        accountButton.setBounds(10, 60, 230, 50);
+        accountButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "AccountPanel"));
 
         CustomButton historyButton = CreateComponent.createButton("icons8-payment-history-100.png", "Lịch sử");
         historyButton.setBounds(10, 115, 230, 50);
@@ -76,9 +73,9 @@ public class AdminDashboard extends JFrame {
         computerButton.setBounds(10, 170, 230, 50);
         computerButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "ComputerPanel"));
 
-        CustomButton harwareButton = CreateComponent.createButton("icons8-ethernet-on-100.png", "Linh kiện");
-        harwareButton.setBounds(10, 225, 230, 50);
-        harwareButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "HardwarePanel"));
+        CustomButton hardwareButton = CreateComponent.createButton("icons8-ethernet-on-100.png", "Linh kiện");
+        hardwareButton.setBounds(10, 225, 230, 50);
+        hardwareButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "HardwarePanel"));
 
         CustomButton foodButton = CreateComponent.createButton("icons8-ingredients-100.png", "Thức ăn");
         foodButton.setBounds(10, 280, 230, 50);
@@ -106,17 +103,17 @@ public class AdminDashboard extends JFrame {
         });
 
         buttonActionPanel.add(dashBoardButton);
-        buttonActionPanel.add(acccountButton);
+        buttonActionPanel.add(accountButton);
         buttonActionPanel.add(historyButton);
         buttonActionPanel.add(computerButton);
-        buttonActionPanel.add(harwareButton);
+        buttonActionPanel.add(hardwareButton);
         buttonActionPanel.add(foodButton);
         buttonActionPanel.add(billButton);
         buttonActionPanel.add(chartButton);
         buttonActionPanel.add(roomButton);
         buttonActionPanel.add(logoutButton);
 
-        buttonActionPanel.setBounds(0, 80, 250, utils.Config.ConfigFrame.HEIGHT_FRAME - 80);
+        buttonActionPanel.setBounds(0, 80, 250, Utils.Config.ConfigFrame.HEIGHT_FRAME - 80);
         buttonActionPanel.setBackground(Color.WHITE);
     }
 
@@ -159,7 +156,7 @@ public class AdminDashboard extends JFrame {
         buttonActionPanel.add(roomButton);
         buttonActionPanel.add(logoutButton);
 
-        buttonActionPanel.setBounds(0, 80, 250, utils.Config.ConfigFrame.HEIGHT_FRAME - 80);
+        buttonActionPanel.setBounds(0, 80, 250, Utils.Config.ConfigFrame.HEIGHT_FRAME - 80);
         buttonActionPanel.setBackground(Color.WHITE);
     }
 
@@ -249,7 +246,7 @@ public class AdminDashboard extends JFrame {
     }
 
     private void initComponents() {
-        this.setSize(utils.Config.ConfigFrame.WIDTH_FRAME, utils.Config.ConfigFrame.HEIGHT_FRAME);
+        this.setSize(Utils.Config.ConfigFrame.WIDTH_FRAME, Utils.Config.ConfigFrame.HEIGHT_FRAME);
         this.setTitle("SPOCE Cyber System");
         this.setIconImage(
                 new ImageIcon(System.getProperty("user.dir") + "/src/view/Assets/Image/spoce_net_gaming.png").getImage());
@@ -279,8 +276,8 @@ public class AdminDashboard extends JFrame {
         this.actionPanel = this.actionPanelDesign();
         this.infoPanel = this.infoPanelDesign();
 
-        this.actionPanel.setBounds(0, 0, 250, utils.Config.ConfigFrame.HEIGHT_FRAME);
-        this.infoPanel.setBounds(250, 0, utils.Config.ConfigFrame.WIDTH_FRAME - 250, utils.Config.ConfigFrame.HEIGHT_FRAME);
+        this.actionPanel.setBounds(0, 0, 250, Utils.Config.ConfigFrame.HEIGHT_FRAME);
+        this.infoPanel.setBounds(250, 0, Utils.Config.ConfigFrame.WIDTH_FRAME - 250, Utils.Config.ConfigFrame.HEIGHT_FRAME);
 
         panel.add(actionPanel);
         panel.add(infoPanel);

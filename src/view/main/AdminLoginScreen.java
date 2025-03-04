@@ -10,7 +10,7 @@ import model.DAO.AccountDAO;
 import model.DAO.StaffDAO;
 import model.Pojo.Accounts;
 import model.Pojo.Staffs;
-import utils.Helper.EncriptString;
+import Utils.Helper.EncriptString;
 import view.Components.CustomButton;
 import view.Components.CustomPasswordField;
 import view.Components.CustomTextField;
@@ -33,7 +33,7 @@ public class AdminLoginScreen extends JFrame{
     }
 
     private void initComponents() {
-        this.setSize(utils.Config.ConfigFrame.WIDTH_FRAME, utils.Config.ConfigFrame.HEIGHT_FRAME);
+        this.setSize(Utils.Config.ConfigFrame.WIDTH_FRAME, Utils.Config.ConfigFrame.HEIGHT_FRAME);
         this.setTitle("Đăng nhập hệ thống quản lý NetGaming");
         this.setIconImage(new ImageIcon(System.getProperty("user.dir") + "/src/view/Assets/Icon/icons8-management-100.png").getImage());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -47,7 +47,7 @@ public class AdminLoginScreen extends JFrame{
         JPanel rightPanel = new JPanel();
 
         JLabel leftIcon = new JLabel();
-        Image iconImage = new ImageIcon(System.getProperty("user.dir") +"/src/Assets/Image/undraw_personal-goals_f9bb.png").getImage().getScaledInstance(612, 480, Image.SCALE_SMOOTH);
+        Image iconImage = new ImageIcon(System.getProperty("user.dir") +"/src/view/Assets/Image/undraw_personal-goals_f9bb.png").getImage().getScaledInstance(612, 480, Image.SCALE_SMOOTH);
         leftIcon.setIcon(new ImageIcon(iconImage));
         leftIcon.setBounds(20, 170, 612, 480);
         JLabel titleApp = new JLabel("Net Management App");

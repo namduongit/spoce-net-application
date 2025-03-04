@@ -1,4 +1,4 @@
-package utils.Helper;
+package Utils.Helper;
 
 import java.util.Properties;
 import java.util.Random;
@@ -6,7 +6,7 @@ import java.util.Random;
 import javax.mail.*;
 import javax.mail.internet.*;
 
-import utils.Config.ConfigEmail;
+import Utils.Config.ConfigEmail;
 
 public class SendEmail {
     private Session session;

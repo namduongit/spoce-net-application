@@ -14,7 +14,7 @@ import javax.swing.border.Border;
 
 import model.Pojo.Accounts;
 import model.Pojo.Staffs;
-import utils.Helper.CreateComponent;
+import Utils.Helper.CreateComponent;
 import view.Components.CustomButton;
 import view.Components.CustomPanel;
 import view.Components.CustomTextField;
@@ -113,7 +113,7 @@ public class AccountPanel extends JPanel {
 
         // Đường kẻ thứ nhất
         JLabel firstLine = new JLabel();
-        firstLine.setIcon(new ImageIcon(new ImageIcon(System.getProperty("user.dir") +"/src/Assets/Image/card_black.png").getImage().getScaledInstance(10, 500, Image.SCALE_SMOOTH)));
+        firstLine.setIcon(new ImageIcon(new ImageIcon(System.getProperty("user.dir") +"/src/view/Assets/Image/card_black.png").getImage().getScaledInstance(10, 500, Image.SCALE_SMOOTH)));
         firstLine.setBounds(380, 10, 1, 598);
 
         // Thêm các thành phần vào panel
@@ -166,7 +166,7 @@ public class AccountPanel extends JPanel {
 
     private String getAvatarPath() {
         String avatarFile = this.currentStaff.getAvatar();
-        String basePath = System.getProperty("user.dir") + "/src/Assets/Avatar/";
+        String basePath = System.getProperty("user.dir") + "/src/view/Assets/Avatar/";
 
         if (avatarFile == null || avatarFile.isEmpty()) {
             return basePath + "non_avatar.png";
@@ -191,13 +191,15 @@ public class AccountPanel extends JPanel {
     private void saveNewAvatar(File selectedFile) {
         try {
             String oldAvatarFile = this.currentStaff.getAvatar();
-            String basePath = System.getProperty("user.dir") + "/src/Assets/Avatar/";
+            String basePath = System.getProperty("user.dir") + "/src/view/Assets/Avatar/";
 
             // Xóa ảnh cũ (nếu không phải ảnh mặc định)
             if (oldAvatarFile != null && !oldAvatarFile.isEmpty() && !oldAvatarFile.equals("non_avatar.png")) {
                 File oldFile = new File(basePath + oldAvatarFile); // Thêm ".png"
                 if (oldFile.exists()) {
-                    oldFile.delete();
+                    boolean result = oldFile.delete();
+                    if (result) System.out.println("Xóa thành công");
+                    else System.out.println("Xóa thất bại");
                 }
             }
 
@@ -216,7 +218,6 @@ public class AccountPanel extends JPanel {
             JOptionPane.showMessageDialog(null, "Ảnh đại diện đã được cập nhật!", "Thành công", JOptionPane.INFORMATION_MESSAGE);
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Lỗi khi lưu ảnh!", "Lỗi", JOptionPane.ERROR_MESSAGE);
-            e.printStackTrace();
         }
     }
 

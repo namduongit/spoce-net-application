@@ -1,4 +1,4 @@
-package utils.Helper;
+package Utils.Helper;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -19,7 +19,7 @@ public class CreateComponent {
         }
         CustomButton button = new CustomButton(textIcon);
         button.setIcon(new ImageIcon(
-                new ImageIcon(System.getProperty("user.dir") + "/src/Assets/Icon/"+ imageIconName).getImage()
+                new ImageIcon(System.getProperty("user.dir") + "/src/view/Assets/Icon/"+ imageIconName).getImage()
                 .getScaledInstance(50, 50, Image.SCALE_SMOOTH)),
                 0);
         button.setBorderSize(0);
