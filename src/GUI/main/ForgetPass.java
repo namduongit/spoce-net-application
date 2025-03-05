@@ -146,7 +146,7 @@ public class ForgetPass extends JFrame {
         titlePanel.setBounds(50, 40, 250, 50);
 
         JLabel logoPanel = new JLabel();
-        Image scaledImage = new ImageIcon(System.getProperty("user.dir") + "/src/view/Assets/Image/undraw_forgot-password_odai.png").getImage().getScaledInstance(331, 220, Image.SCALE_SMOOTH);
+        Image scaledImage = new ImageIcon(System.getProperty("user.dir") + "/src/Assets/Image/undraw_forgot-password_odai.png").getImage().getScaledInstance(331, 220, Image.SCALE_SMOOTH);
         logoPanel.setIcon(new ImageIcon(scaledImage));
         logoPanel.setBounds(5, 100, 331, 220);
 
@@ -268,7 +268,7 @@ public class ForgetPass extends JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setTitle("Reset your password");
-        this.setIconImage(new ImageIcon(System.getProperty("user.dir") + "/src/view/Assets/Icon/icons8-password-50.png").getImage());
+        this.setIconImage(new ImageIcon(System.getProperty("user.dir") + "/src/Assets/Icon/icons8-password-50.png").getImage());
         this.setLayout(null);
 
         this.leftPanel = this.createLeftPanel();

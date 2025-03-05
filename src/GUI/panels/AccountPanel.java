@@ -1,7 +1,9 @@
 package GUI.panels;
 
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Image;
 import java.io.File;
@@ -9,11 +11,13 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 import Utils.Helper.CreateComponent;
 import GUI.Components.CustomButton;
 import GUI.Components.CustomCombobox;
 import GUI.Components.CustomPanel;
+import GUI.Components.CustomTable;
 import GUI.Components.CustomTextField;
 
 public class AccountPanel extends JPanel {
@@ -101,9 +105,9 @@ public class AccountPanel extends JPanel {
         myCreateAtInput.setEnabled(false);
 
         // Đường kẻ thứ nhất
-        JLabel firstLine = new JLabel();
-        firstLine.setIcon(new ImageIcon(new ImageIcon(System.getProperty("user.dir") +"/src/Assets/Image/card_black.png").getImage().getScaledInstance(10, 500, Image.SCALE_SMOOTH)));
-        firstLine.setBounds(380, 10, 1, 490);
+        // JLabel firstLine = new JLabel();
+        // firstLine.setIcon(new ImageIcon(new ImageIcon(System.getProperty("user.dir") +"/src/Assets/Image/card_black.png").getImage().getScaledInstance(10, 500, Image.SCALE_SMOOTH)));
+        // firstLine.setBounds(380, 10, 1, 490);
 
         // Họ và tên
         JLabel myName = new JLabel("Họ và tên:");
@@ -168,18 +172,17 @@ public class AccountPanel extends JPanel {
         layeredPane.add(editAddress, Integer.valueOf(2));
 
         // Đường kẻ thứ 2
-        JLabel secondLine = new JLabel();
-        secondLine.setIcon(new ImageIcon(new ImageIcon(System.getProperty("user.dir") +"/src/Assets/Image/card_black.png").getImage().getScaledInstance(10, 500, Image.SCALE_SMOOTH)));
-        secondLine.setBounds(780, 10, 1, 490);
+        // JLabel secondLine = new JLabel();
+        // secondLine.setIcon(new ImageIcon(new ImageIcon(System.getProperty("user.dir") +"/src/Assets/Image/card_black.png").getImage().getScaledInstance(10, 500, Image.SCALE_SMOOTH)));
+        // secondLine.setBounds(780, 10, 1, 490);
 
         // Nút đổi mật khẩu
         CustomButton changePassword = new CustomButton("Đổi mật khẩu");
         changePassword.setBounds(830, 60, 200, 30);
 
+         // Nút lưu thông tin
         CustomButton changeMyInfo = new CustomButton("Cập nhật thông tin");
         changeMyInfo.setBounds(830, 110, 200, 30);
-        // Nút lưu thông tin
-
 
 
         // Thêm các thành phần vào panel
@@ -191,7 +194,7 @@ public class AccountPanel extends JPanel {
         panel.add(myEmailInput);
         panel.add(createAtLabel);
         panel.add(myCreateAtInput);
-        panel.add(firstLine);
+        // panel.add(firstLine);
         panel.add(myName);
         panel.add(myNameInput);
         panel.add(myBirthdate);
@@ -204,13 +207,260 @@ public class AccountPanel extends JPanel {
         panel.add(myAddress);
         panel.add(myGenderInput);
         panel.add(layeredPane);
-        panel.add(secondLine);
+        // panel.add(secondLine);
         panel.add(changePassword);
         panel.add(changeMyInfo);
 
         return panel;
     }
 
+    private CustomPanel createEmployeeInfoPanel() {
+        CustomPanel panel = new CustomPanel();
+        panel.setLayout(null);
+
+        CustomPanel findDataPanel = new CustomPanel();
+        findDataPanel.setLayout(null);
+        findDataPanel.setBackground(Color.WHITE);
+        findDataPanel.setBounds(10, 0, 1080, 80);
+
+        JLabel searchLabel = new JLabel("Tìm kiếm:");
+        searchLabel.setBounds(20, 20, 80, 30);
+        CustomTextField searchField = new CustomTextField();
+        searchField.setBounds(100, 20, 200, 30);
+
+        JLabel statusLabel = new JLabel("Trạng thái:");
+        statusLabel.setBounds(320, 20, 80, 30);
+        String[] statuses = {"Tất cả", "Hoạt động", "Bị khóa"};
+        CustomCombobox<String> statusComboBox = new CustomCombobox<>(statuses);
+        statusComboBox.setBounds(400, 20, 150, 30);
+
+        JLabel roleLabel = new JLabel("Quyền:");
+        roleLabel.setBounds(570, 20, 50, 30);
+        String[] roles = {"Tất cả", "Quản trị viên", "Người dùng"};
+        CustomCombobox<String> roleComboBox = new CustomCombobox<>(roles);
+        roleComboBox.setBounds(620, 20, 150, 30);
+
+        CustomButton filterButton = new CustomButton("Lọc");
+        filterButton.setBounds(800, 15, 80, 30);
+        filterButton.setBackground(new Color(70, 130, 180));
+        filterButton.setForeground(Color.WHITE);
+        filterButton.setBorderSize(0);
+        filterButton.setBorderColor(new Color(70, 130, 180));
+
+        CustomButton resetButton = new CustomButton("Đặt lại");
+        resetButton.setBounds(890, 15, 80, 30);
+        resetButton.setBackground(Color.RED);
+        resetButton.setForeground(Color.WHITE);
+        resetButton.setBorderSize(0);
+        resetButton.setBorderColor(Color.RED);
+
+        findDataPanel.add(searchLabel);
+        findDataPanel.add(searchField);
+        findDataPanel.add(statusLabel);
+        findDataPanel.add(statusComboBox);
+        findDataPanel.add(roleLabel);
+        findDataPanel.add(roleComboBox);
+        findDataPanel.add(filterButton);
+        findDataPanel.add(resetButton);
+
+        CustomPanel tableDataPanel = new CustomPanel();
+        tableDataPanel.setLayout(null);
+        tableDataPanel.setBackground(Color.WHITE);
+        tableDataPanel.setBounds(10, 90, 1080, 400);
+
+        String[] columnNames = {"Mã tài khoản", "Tên đăng nhập", "Họ và tên", "Chức vụ", "Trạng thái"};
+        Object[][] data = {
+            {"TK001", "namduongit", "Nguyễn Nam Dương", "Quản trị viên", "Đang hoạt động"},
+            {"TK001", "namduongit", "Nguyễn Nam Dương", "Quản trị viên", "Đang hoạt động"},
+            {"TK001", "namduongit", "Nguyễn Nam Dương", "Quản trị viên", "Đang hoạt động"},
+            {"TK001", "namduongit", "Nguyễn Nam Dương", "Quản trị viên", "Đang hoạt động"},
+            {"TK001", "namduongit", "Nguyễn Nam Dương", "Quản trị viên", "Đang hoạt động"},
+            {"TK001", "namduongit", "Nguyễn Nam Dương", "Quản trị viên", "Đang hoạt động"},
+            {"TK001", "namduongit", "Nguyễn Nam Dương", "Quản trị viên", "Đang hoạt động"},
+            {"TK001", "namduongit", "Nguyễn Nam Dương", "Quản trị viên", "Đang hoạt động"},
+            {"TK001", "namduongit", "Nguyễn Nam Dương", "Quản trị viên", "Đang hoạt động"},
+            {"TK001", "namduongit", "Nguyễn Nam Dương", "Quản trị viên", "Đang hoạt động"},
+            {"TK001", "namduongit", "Nguyễn Nam Dương", "Quản trị viên", "Đang hoạt động"},
+            {"TK001", "namduongit", "Nguyễn Nam Dương", "Quản trị viên", "Đang hoạt động"},
+            {"TK001", "namduongit", "Nguyễn Nam Dương", "Quản trị viên", "Đang hoạt động"},
+            {"TK001", "namduongit", "Nguyễn Nam Dương", "Quản trị viên", "Đang hoạt động"},
+            {"TK001", "namduongit", "Nguyễn Nam Dương", "Quản trị viên", "Đang hoạt động"},
+            {"TK001", "namduongit", "Nguyễn Nam Dương", "Quản trị viên", "Đang hoạt động"},
+            {"TK001", "namduongit", "Nguyễn Nam Dương", "Quản trị viên", "Đang hoạt động"},
+            {"TK001", "namduongit", "Nguyễn Nam Dương", "Quản trị viên", "Đang hoạt động"},
+            {"TK001", "namduongit", "Nguyễn Nam Dương", "Quản trị viên", "Đang hoạt động"},
+            {"TK001", "namduongit", "Nguyễn Nam Dương", "Quản trị viên", "Đang hoạt động"},
+            {"TK001", "namduongit", "Nguyễn Nam Dương", "Quản trị viên", "Đang hoạt động"},
+            {"TK001", "namduongit", "Nguyễn Nam Dương", "Quản trị viên", "Đang hoạt động"}
+        };
+
+        CustomTable table = new CustomTable(new DefaultTableModel(data, columnNames));
+        JScrollPane scrollPane = new JScrollPane(table);
+        scrollPane.setBounds(0, 0, 1080, 400);
+        tableDataPanel.add(scrollPane);
+
+        CustomPanel buttonPanel = new CustomPanel();
+        buttonPanel.setLayout(null);
+        buttonPanel.setBounds(10, 500, 1080, 65);
+        buttonPanel.setBackground(Color.WHITE);
+
+        CustomButton addButton = new CustomButton("Thêm");
+        addButton.setBounds(10, 20, 100, 30);
+        addButton.setBackground(new Color(34, 177, 76));
+        addButton.setForeground(Color.WHITE);
+        addButton.setBorderSize(0);
+        addButton.setBorderColor(new Color(34, 177, 76));
+
+        CustomButton editButton = new CustomButton("Thay đổi");
+        editButton.setBounds(120, 20, 100, 30);
+        editButton.setBackground(Color.decode("#795548"));
+        editButton.setForeground(Color.WHITE);
+        editButton.setBorderSize(0);
+        editButton.setBorderColor(Color.decode("#795548"));
+
+        CustomButton lockButton = new CustomButton("Khóa");
+        lockButton.setBounds(230, 20, 100, 30);
+        lockButton.setBackground(Color.decode("#E57373"));
+        lockButton.setForeground(Color.WHITE);
+        lockButton.setBorderSize(0);
+        lockButton.setBorderColor(Color.decode("#E57373"));
+
+        CustomButton detailButton = new CustomButton("Chi tiết");
+        detailButton.setBounds(340, 20, 100, 30);
+        detailButton.setBackground(Color.decode("#455A64"));
+        detailButton.setForeground(Color.WHITE);
+        detailButton.setBorderSize(0);
+        detailButton.setBorderColor(Color.decode("#455A64"));
+
+        buttonPanel.add(addButton);
+        buttonPanel.add(editButton);
+        buttonPanel.add(lockButton);
+        buttonPanel.add(detailButton);
+
+        panel.add(findDataPanel);
+        panel.add(tableDataPanel);
+        panel.add(buttonPanel);
+
+        return panel;
+    }
+
+    private CustomPanel createPlayerInfoPanel() {
+        CustomPanel panel = new CustomPanel();
+        panel.setLayout(null);
+
+        CustomPanel findDataPanel = new CustomPanel();
+        findDataPanel.setLayout(null);
+        findDataPanel.setBackground(Color.WHITE);
+        findDataPanel.setBounds(10, 0, 1080, 80);
+
+        JLabel searchLabel = new JLabel("Tìm kiếm:");
+        searchLabel.setBounds(20, 20, 80, 30);
+        CustomTextField searchField = new CustomTextField();
+        searchField.setBounds(100, 20, 200, 30);
+
+        JLabel statusLabel = new JLabel("Trạng thái:");
+        statusLabel.setBounds(320, 20, 80, 30);
+        String[] statuses = {"Tất cả", "Hoạt động", "Bị khóa"};
+        CustomCombobox<String> statusComboBox = new CustomCombobox<>(statuses);
+        statusComboBox.setBounds(400, 20, 150, 30);
+
+        CustomButton filterButton = new CustomButton("Lọc");
+        filterButton.setBounds(600, 15, 80, 30);
+        filterButton.setBackground(new Color(70, 130, 180));
+        filterButton.setForeground(Color.WHITE);
+        filterButton.setBorderSize(0);
+        filterButton.setBorderColor(new Color(70, 130, 180));
+
+        CustomButton resetButton = new CustomButton("Đặt lại");
+        resetButton.setBounds(690, 15, 80, 30);
+        resetButton.setBackground(Color.RED);
+        resetButton.setForeground(Color.WHITE);
+        resetButton.setBorderSize(0);
+        resetButton.setBorderColor(Color.RED);
+
+        findDataPanel.add(searchLabel);
+        findDataPanel.add(searchField);
+        findDataPanel.add(statusLabel);
+        findDataPanel.add(statusComboBox);
+        findDataPanel.add(filterButton);
+        findDataPanel.add(resetButton);
+
+        CustomPanel tableDataPanel = new CustomPanel();
+        tableDataPanel.setLayout(null);
+        tableDataPanel.setBackground(Color.WHITE);
+        tableDataPanel.setBounds(10, 90, 1080, 400);
+
+        String[] columnNames = {"Mã tài khoản", "Tên đăng nhập", "Số dư", "Trạng thái"};
+        Object[][] data = {
+            {"TK001", "namduongit", "10000000", "Đang hoạt động"},
+            {"TK001", "namduongit", "10000000", "Đang hoạt động"},
+            {"TK001", "namduongit", "10000000", "Đang hoạt động"},
+            {"TK001", "namduongit", "10000000", "Đang hoạt động"},
+            {"TK001", "namduongit", "10000000", "Đang hoạt động"},
+            {"TK001", "namduongit", "10000000", "Đang hoạt động"},
+            {"TK001", "namduongit", "10000000", "Đang hoạt động"},
+            {"TK001", "namduongit", "10000000", "Đang hoạt động"},
+            {"TK001", "namduongit", "10000000", "Đang hoạt động"},
+            {"TK001", "namduongit", "10000000", "Đang hoạt động"},
+            {"TK001", "namduongit", "10000000", "Đang hoạt động"},
+            {"TK001", "namduongit", "10000000", "Đang hoạt động"},
+            {"TK001", "namduongit", "10000000", "Đang hoạt động"},
+            {"TK001", "namduongit", "10000000", "Đang hoạt động"},
+            {"TK001", "namduongit", "10000000", "Đang hoạt động"},
+            {"TK001", "namduongit", "10000000", "Đang hoạt động"},
+            {"TK001", "namduongit", "10000000", "Đang hoạt động"},
+            {"TK001", "namduongit", "10000000", "Đang hoạt động"}
+        };
+
+        CustomTable table = new CustomTable(new DefaultTableModel(data, columnNames));
+        JScrollPane scrollPane = new JScrollPane(table);
+        scrollPane.setBounds(0, 0, 1080, 400);
+        tableDataPanel.add(scrollPane);
+
+        CustomPanel buttonPanel = new CustomPanel();
+        buttonPanel.setLayout(null);
+        buttonPanel.setBounds(10, 500, 1080, 65);
+        buttonPanel.setBackground(Color.WHITE);
+
+        CustomButton addButton = new CustomButton("Thêm");
+        addButton.setBounds(10, 20, 100, 30);
+        addButton.setBackground(new Color(34, 177, 76));
+        addButton.setForeground(Color.WHITE);
+        addButton.setBorderSize(0);
+        addButton.setBorderColor(new Color(34, 177, 76));
+
+        CustomButton editButton = new CustomButton("Thay đổi");
+        editButton.setBounds(120, 20, 100, 30);
+        editButton.setBackground(Color.decode("#795548"));
+        editButton.setForeground(Color.WHITE);
+        editButton.setBorderSize(0);
+        editButton.setBorderColor(Color.decode("#795548"));
+
+        CustomButton lockButton = new CustomButton("Khóa");
+        lockButton.setBounds(230, 20, 100, 30);
+        lockButton.setBackground(Color.decode("#E57373"));
+        lockButton.setForeground(Color.WHITE);
+        lockButton.setBorderSize(0);
+        lockButton.setBorderColor(Color.decode("#E57373"));
+
+        CustomButton detailButton = new CustomButton("Chi tiết");
+        detailButton.setBounds(340, 20, 100, 30);
+        detailButton.setBackground(Color.decode("#455A64"));
+        detailButton.setForeground(Color.WHITE);
+        detailButton.setBorderSize(0);
+        detailButton.setBorderColor(Color.decode("#455A64"));
+
+        buttonPanel.add(addButton);
+        buttonPanel.add(editButton);
+        buttonPanel.add(lockButton);
+        buttonPanel.add(detailButton);
+
+        panel.add(findDataPanel);
+        panel.add(tableDataPanel);
+        panel.add(buttonPanel);
+
+        return panel;
+    }
 
     private JPanel createShowInfo() {
         this.cardLayout = new CardLayout();
@@ -219,9 +469,9 @@ public class AccountPanel extends JPanel {
 
         CustomPanel selfInfoPanel = this.createStaffInfoPanel();
 
-        CustomPanel playerAccountPanel = new CustomPanel();
+        CustomPanel playerAccountPanel = this.createPlayerInfoPanel();
 
-        CustomPanel employeePanel = new CustomPanel();
+        CustomPanel employeePanel = this.createEmployeeInfoPanel();
 
         panel.add(selfInfoPanel, "MyInfo");
         panel.add(playerAccountPanel, "PlayerInfo");
@@ -235,8 +485,8 @@ public class AccountPanel extends JPanel {
         this.buttonControllPanel = this.createButtonPanel();
         this.showInfoPanel = this.createShowInfo();
 
-        buttonControllPanel.setBounds(0, 0, 1116, 170);
-        showInfoPanel.setBounds(0, 170, 1116, 598);
+        buttonControllPanel.setBounds(0, 0, 1116, 150);
+        showInfoPanel.setBounds(0, 150, 1116, 618);
 
         this.add(buttonControllPanel);
         this.add(showInfoPanel);
