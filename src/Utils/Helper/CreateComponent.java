@@ -8,7 +8,7 @@ import java.awt.event.FocusListener;
 
 import javax.swing.ImageIcon;
 
-import view.Components.CustomButton;
+import GUI.Components.CustomButton;
 
 public class CreateComponent {
     public static CustomButton createButton(String imageIconName, String textIcon) {
@@ -19,7 +19,7 @@ public class CreateComponent {
         }
         CustomButton button = new CustomButton(textIcon);
         button.setIcon(new ImageIcon(
-                new ImageIcon(System.getProperty("user.dir") + "/src/view/Assets/Icon/"+ imageIconName).getImage()
+                new ImageIcon(System.getProperty("user.dir") + "/src/Assets/Icon/"+ imageIconName).getImage()
                 .getScaledInstance(50, 50, Image.SCALE_SMOOTH)),
                 0);
         button.setBorderSize(0);
