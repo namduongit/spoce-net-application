@@ -25,24 +25,30 @@ public class CustomComboBoxUI extends BasicComboBoxUI {
     }
 
     @Override
-    protected ListCellRenderer<Object> createRenderer() {
-        return new DefaultListCellRenderer() {
-            @Override
-            public Component getListCellRendererComponent(JList<?> list, Object value, int index,
-                    boolean isSelected, boolean cellHasFocus) {
-                JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected,
-                        cellHasFocus);
-                if (isSelected) {
-                    label.setBackground(new Color(220, 220, 220));
-                    label.setForeground(Color.BLACK);
-                } else {
-                    label.setBackground(Color.WHITE);
-                    label.setForeground(Color.BLACK);
-                }
-                return label;
+protected ListCellRenderer<Object> createRenderer() {
+    return new DefaultListCellRenderer() {
+        @Override
+        public Component getListCellRendererComponent(JList<?> list, Object value, int index,
+                boolean isSelected, boolean cellHasFocus) {
+            JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected,
+                    cellHasFocus);
+
+            label.setBorder(BorderFactory.createEmptyBorder(10, 5, 10, 5));
+
+            if (isSelected) {
+                label.setBackground(new Color(220, 220, 220));
+                label.setForeground(Color.BLACK);
+                label.setFont(label.getFont().deriveFont(Font.BOLD));
+            } else {
+                label.setBackground(Color.WHITE);
+                label.setForeground(Color.BLACK);
+                label.setFont(label.getFont().deriveFont(Font.PLAIN));
             }
-        };
-    }
+            return label;
+        }
+    };
+}
+
 
     @Override
     public void paintCurrentValue(Graphics g, Rectangle bounds, boolean hasFocus) {

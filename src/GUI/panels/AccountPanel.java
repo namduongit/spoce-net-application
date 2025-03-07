@@ -1,9 +1,7 @@
 package GUI.panels;
 
-import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Image;
 import java.io.File;
@@ -17,6 +15,7 @@ import Utils.Helper.CreateComponent;
 import GUI.Components.CustomButton;
 import GUI.Components.CustomCombobox;
 import GUI.Components.CustomPanel;
+import GUI.Components.CustomScrollPane;
 import GUI.Components.CustomTable;
 import GUI.Components.CustomTextField;
 
@@ -295,7 +294,7 @@ public class AccountPanel extends JPanel {
         };
 
         CustomTable table = new CustomTable(new DefaultTableModel(data, columnNames));
-        JScrollPane scrollPane = new JScrollPane(table);
+        JScrollPane scrollPane = new CustomScrollPane(table);
         scrollPane.setBounds(0, 0, 1080, 400);
         tableDataPanel.add(scrollPane);
 
@@ -413,7 +412,7 @@ public class AccountPanel extends JPanel {
         };
 
         CustomTable table = new CustomTable(new DefaultTableModel(data, columnNames));
-        JScrollPane scrollPane = new JScrollPane(table);
+        JScrollPane scrollPane = new CustomScrollPane(table);
         scrollPane.setBounds(0, 0, 1080, 400);
         tableDataPanel.add(scrollPane);
 
