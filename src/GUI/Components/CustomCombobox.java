@@ -3,6 +3,7 @@ package GUI.Components;
 import javax.swing.*;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class CustomCombobox<E> extends JComboBox<E> {
     private int borderRadius = 10;
@@ -13,6 +14,14 @@ public class CustomCombobox<E> extends JComboBox<E> {
 
     public CustomCombobox(E[] items) {
         super(items);
+        initComponents();
+    }
+
+    public CustomCombobox(ArrayList<E> items) {
+        super();
+        for (E item : items) {
+            this.addItem(item);
+        }
         initComponents();
     }
 

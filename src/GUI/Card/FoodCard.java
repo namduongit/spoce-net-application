@@ -19,6 +19,7 @@ public class FoodCard extends CustomPanel {
     private int typeProduct;
     private String statusProduct;
 
+
     public FoodCard(String imageProduct, int idProduct, String nameProduct, BigDecimal priceProduct,
                     int typeProduct, String statusProduct) {
         this.idProduct = idProduct;
@@ -33,7 +34,7 @@ public class FoodCard extends CustomPanel {
     private void initComponents() {
         this.setLayout(null);
         this.setPreferredSize(new Dimension(168, 250));
-        this.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        this.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         this.setFocusable(true);
 
         // Sự kiện khi click vào card
@@ -47,11 +48,11 @@ public class FoodCard extends CustomPanel {
         this.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
-                setBorder(BorderFactory.createLineBorder(Color.BLUE, 1));
+                setBorder(BorderFactory.createLineBorder(Color.BLUE, 2));
             }
             @Override
             public void focusLost(FocusEvent e) {
-                setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+                setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
             }
         });
 
@@ -67,20 +68,22 @@ public class FoodCard extends CustomPanel {
         this.add(imageLabel);
 
         // Thông tin sản phẩm
-        JLabel idLabel = new JLabel("<html><b>Mã sản phẩm:</b> <b>" + this.idProduct + "</b> </html>");
+        JLabel idLabel = new JLabel("Mã sản phẩm: " + this.idProduct);
         idLabel.setBounds(10, 130, 230, 20);
 
-        JLabel nameLabel = new JLabel("<html><b>Tên:</b> " + this.nameProduct + "</html>");
+        JLabel nameLabel = new JLabel("Tên: " + this.nameProduct);
         nameLabel.setBounds(10, 150, 230, 20);
 
-        JLabel priceLabel = new JLabel("<html><b>Giá:</b> " + this.priceProduct + " VND</html>");
+        JLabel priceLabel = new JLabel("Giá: " + this.priceProduct);
         priceLabel.setBounds(10, 170, 230, 20);
 
-        JLabel typeLabel = new JLabel("<html><b>Loại:</b> " + this.typeProduct + "</html>");
+        JLabel typeLabel = new JLabel("Loại: " + this.typeProduct);
         typeLabel.setBounds(10, 190, 230, 20);
 
-        JLabel statusLabel = new JLabel("<html><b>Trạng thái:</b>" + this.statusProduct + "</html>");
+        JLabel statusLabel = new JLabel(this.statusProduct);
         statusLabel.setBounds(10, 210, 230, 20);
+        if (statusLabel.getText().equalsIgnoreCase("Hết hàng")) statusLabel.setForeground(Color.decode("#B71C1C"));
+        else statusLabel.setForeground(Color.decode("#2E7D32"));
 
         // Thêm vào panel
         this.add(idLabel);
@@ -89,4 +92,30 @@ public class FoodCard extends CustomPanel {
         this.add(typeLabel);
         this.add(statusLabel);
     }
+
+    public int getIdProduct() {
+        return idProduct;
+    }
+
+    public String getImageProduct() {
+        return imageProduct;
+    }
+
+    public String getNameProduct() {
+        return nameProduct;
+    }
+
+    public BigDecimal getPriceProduct() {
+        return priceProduct;
+    }
+
+    public int getTypeProduct() {
+        return typeProduct;
+    }
+
+    public String getStatusProduct() {
+        return statusProduct;
+    }
+
+    
 }

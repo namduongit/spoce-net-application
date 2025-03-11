@@ -11,11 +11,29 @@ public class FoodBLL {
         this.foodDAL = new FoodDAL();
     }
 
-    public ArrayList<Foods> getAllFood() {
+    public ArrayList<Foods> getAllFoods() {
         return this.foodDAL.getFoodList();
     }
 
-    public void updateStatusFood() {
-        this.foodDAL.updateStatusFood();
+
+    public ArrayList<Foods> getFoodByCategory(String typeCategory) {
+        return this.foodDAL.getFoodByCategory(typeCategory);
     }
+
+    public Foods getFoodByID(int id) {
+        return this.foodDAL.getFoodByID(id);
+    }
+
+    public ArrayList<Foods> getFoodByStatus(String status) {
+        return foodDAL.getFoodByStatus(status);
+    }
+
+    public ArrayList<Foods> searchFoodByName(String keyword) {
+        return foodDAL.searchFoodByName(keyword);
+    }
+
+    public ArrayList<Foods> advancedSearch(String category, String status, String keyword) {
+        return foodDAL.advancedSearch(category, status, keyword);
+    }
+
 }

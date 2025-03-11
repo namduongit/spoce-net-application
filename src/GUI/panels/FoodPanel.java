@@ -2,12 +2,16 @@ package GUI.panels;
 
 import javax.swing.*;
 
+import BLL.CategoryBLL;
 import BLL.FoodBLL;
+import DTO.Categories;
 import DTO.Foods;
 
 import java.awt.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import GUI.Card.FoodCard;
 import GUI.Components.CustomButton;
@@ -20,7 +24,9 @@ import java.util.ArrayList;
 
 public class FoodPanel extends JPanel {
     private FoodBLL foodBLL;
+    private CategoryBLL categoryBLL;
     private ArrayList<Foods> foodList;
+    private ArrayList<Categories> categoryList;
 
     private Foods currentFoods;
 
@@ -31,10 +37,14 @@ public class FoodPanel extends JPanel {
     private CustomTextField searchField;
     private CustomCombobox<String> statusComboBoxProduct;
     private CustomCombobox<String> statusComboBoxCategory;
+    private JLabel nameCurrentFood;
 
     public FoodPanel() {
         this.foodBLL = new FoodBLL();
-        this.foodList = this.foodBLL.getAllFood();
+        this.categoryBLL = new CategoryBLL();
+        this.foodList = this.foodBLL.getAllFoods();
+        this.categoryList = this.categoryBLL.getAllCategories();
+
         this.initComponents();
     }
 
@@ -57,6 +67,7 @@ public class FoodPanel extends JPanel {
         this.add(this.buttonFilterPanel);
     }
 
+    // ------------------------------------------------------- PHẦN TIÊU ĐỀ ----------------------------------------------------------
     private JPanel createControlButtonPanel() {
         JPanel panel = new CustomPanel();
         panel.setLayout(null);
@@ -69,6 +80,7 @@ public class FoodPanel extends JPanel {
         return panel;
     }
 
+    // ------------------------------------------------------- PHẦN BỘ LỌC ----------------------------------------------------------
     private CustomPanel createFilterPanel() {
         CustomPanel panel = new CustomPanel();
         panel.setLayout(null);
@@ -79,7 +91,7 @@ public class FoodPanel extends JPanel {
         panel.add(searchLabel);
 
         this.searchField = new CustomTextField("Nhập thông tin sản phẩm");
-        this.searchField.setBounds(100, 20, 200, 35);
+        this.searchField.setBounds(80, 20, 200, 35);
         this.searchField.addFocusListener(new FocusListener() {
             public String text = searchField.getText();
 
@@ -103,23 +115,41 @@ public class FoodPanel extends JPanel {
         statusProductLabel.setBounds(320, 20, 80, 35);
         panel.add(statusProductLabel);
 
-        String[] statusesProduct = { "Tất cả", "Còn hàng", "Hết hàng" };
+        ArrayList<String> statusesProduct = new ArrayList<>();
+        statusesProduct.add("Tất cả");
+        statusesProduct.add("Còn hàng");
+        statusesProduct.add("Hết hàng");
         this.statusComboBoxProduct = new CustomCombobox<>(statusesProduct);
-        this.statusComboBoxProduct.setBounds(400, 20, 150, 35);
+        this.statusComboBoxProduct.setBounds(385, 20, 150, 35);
+        this.statusComboBoxProduct.addActionListener(e -> {
+            updateListFood(null, (String) this.statusComboBoxProduct.getSelectedItem(), null, 2);
+        });
         panel.add(this.statusComboBoxProduct);
 
         JLabel statusCategoryLabel = new JLabel("Loại sản phẩm:");
         statusCategoryLabel.setBounds(570, 20, 100, 35);
         panel.add(statusCategoryLabel);
 
-        String[] statusesCategory = { "Tất cả" };
+        ArrayList<String> statusesCategory = new ArrayList<>();
+        statusesCategory.add("Tất cả");
+        for (Categories cate : this.categoryList) {
+            statusesCategory.add(cate.getName());
+        }
         this.statusComboBoxCategory = new CustomCombobox<>(statusesCategory);
-        this.statusComboBoxCategory.setBounds(670, 20, 150, 35);
+        this.statusComboBoxCategory.setBounds(660, 20, 150, 35);
+        this.statusComboBoxCategory.addActionListener(e -> {
+            updateListFood((String) this.statusComboBoxCategory.getSelectedItem(), null, null, 1);
+        });
         panel.add(this.statusComboBoxCategory);
+
+        this.nameCurrentFood = new JLabel("Đang chọn: NULL");
+        this.nameCurrentFood.setBounds(850, 20, 200, 35);
+        panel.add(nameCurrentFood);
 
         return panel;
     }
 
+    // ------------------------------------------------------- PHẦN NÚT BẢNG HIỂN THỊ THỨC ĂN ----------------------------------------------------------
     private CustomPanel createFoodPanel() {
         CustomPanel panel = new CustomPanel();
         panel.setLayout(null);
@@ -133,27 +163,111 @@ public class FoodPanel extends JPanel {
 
         for (Foods fd : this.foodList) {
             FoodCard foodCard = new FoodCard(
-                fd.getImage(),
-                fd.getFoodId(),
-                fd.getName(),
-                fd.getPrice(),
-                fd.getCategoryId(),
-                fd.getStatus()
-            );
+                    fd.getImage(),
+                    fd.getFoodId(),
+                    fd.getName(),
+                    fd.getPrice(),
+                    fd.getCategoryId(),
+                    fd.getStatus());
+
+            foodCard.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    currentFoods = foodBLL.getFoodByID(foodCard.getIdProduct());
+                    if (currentFoods != null) {
+                        nameCurrentFood.setText("Đang chọn: "+ foodCard.getIdProduct() +", "+ foodCard.getNameProduct());
+                    } else {
+                        nameCurrentFood.setText("Đang chọn: NULL");
+                    }
+                }
+            });
 
             panelProduct.add(foodCard);
         }
 
-        panelProduct.setPreferredSize(new Dimension(1050, this.foodList.size() * 150));
+        panelProduct.setPreferredSize(new Dimension(1060, (int) Math.ceil(this.foodList.size() / 4.0) * 250));
 
         JScrollPane scrollPane = new CustomScrollPane(panelProduct);
-        scrollPane.setBounds(0, 0, 1080, 450);
+        scrollPane.setBounds(0, 0, 1080, 480);
         scrollPane.setBorder(null);
-
         panel.add(scrollPane);
+
         return panel;
     }
+    private void updateListFood(String categoryType, String status, String search, int type) {
+        switch (type) {
+            case 1:
+                this.foodList = categoryType.equalsIgnoreCase("Tất cả")
+                                ? this.foodBLL.getAllFoods()
+                                : this.foodBLL.getFoodByCategory(categoryType);
+                break;
 
+            case 2:
+                this.foodList = status.equalsIgnoreCase("Tất cả")
+                                ? this.foodBLL.getAllFoods()
+                                :  this.foodBLL.getFoodByStatus(status);
+                break;
+
+            case 3:
+                this.foodList = this.foodBLL.searchFoodByName(search);
+                break;
+
+            case 4:
+                this.foodList = this.foodBLL.advancedSearch(categoryType, status, search);
+                break;
+
+            default:
+                System.out.println("Loại tìm kiếm không hợp lệ!");
+                return;
+        }
+        this.reloadFoodPanel();
+    }
+
+    private void reloadFoodPanel() {
+        this.foodPanel.removeAll();
+        this.foodPanel.revalidate();
+        this.foodPanel.repaint();
+
+        JPanel panelProduct = new JPanel();
+        panelProduct.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
+        panelProduct.setBackground(Color.WHITE);
+
+        for (Foods fd : this.foodList) {
+            FoodCard foodCard = new FoodCard(
+                    fd.getImage(),
+                    fd.getFoodId(),
+                    fd.getName(),
+                    fd.getPrice(),
+                    fd.getCategoryId(),
+                    fd.getStatus());
+
+            foodCard.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    currentFoods = foodBLL.getFoodByID(foodCard.getIdProduct());
+                    if (currentFoods != null) {
+                        nameCurrentFood.setText("Đang chọn: " + foodCard.getIdProduct() + ", " + foodCard.getNameProduct());
+                    } else {
+                        nameCurrentFood.setText("Đang chọn: NULL");
+                    }
+                }
+            });
+
+            panelProduct.add(foodCard);
+        }
+
+        panelProduct.setPreferredSize(new Dimension(1060, (int) Math.ceil(this.foodList.size() / 4.0) * 250));
+
+        JScrollPane scrollPane = new CustomScrollPane(panelProduct);
+        scrollPane.setBounds(0, 0, 1080, 480);
+        scrollPane.setBorder(null);
+        this.foodPanel.add(scrollPane);
+
+        this.foodPanel.revalidate();
+        this.foodPanel.repaint();
+    }
+
+    // ------------------------------------------------------- PHẦN NÚT HÀNH ĐỘNG ----------------------------------------------------------
     private CustomPanel createFilterButtonPanel() {
         CustomPanel panel = new CustomPanel();
         panel.setLayout(null);
@@ -165,6 +279,11 @@ public class FoodPanel extends JPanel {
 
         CustomButton editButton = new CustomButton("Sửa");
         editButton.setBounds(320, 10, 100, 30);
+        editButton.addActionListener(e -> {
+            if (this.currentFoods == null) {
+                JOptionPane.showMessageDialog(null, "Bạn chưa chọn sản phẩm", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
         panel.add(editButton);
 
         CustomButton deleteButton = new CustomButton("Xóa");
