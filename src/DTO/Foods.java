@@ -9,6 +9,7 @@ public class Foods {
     private BigDecimal price;
     private int categoryId;
     private int quantity;
+    private String image;
     private String status;
     private Timestamp createdAt;
 
@@ -17,12 +18,13 @@ public class Foods {
     }
 
     // Constructor có tham số
-    public Foods(int foodId, String name, BigDecimal price, int categoryId, int quantity, String status, Timestamp createdAt) {
+    public Foods(int foodId, String name, BigDecimal price, int categoryId, int quantity, String image, String status, Timestamp createdAt) {
         this.foodId = foodId;
         this.name = name;
         this.price = price;
         this.categoryId = categoryId;
         this.quantity = quantity;
+        this.image = image;
         this.status = status;
         this.createdAt = createdAt;
     }
@@ -66,6 +68,14 @@ public class Foods {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getStatus() {

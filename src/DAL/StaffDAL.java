@@ -10,11 +10,11 @@ import DTO.Staffs;
 import DAL.SQLHelper.MySQLHelper;
 
 public class StaffDAL {
-    public static ArrayList<Staffs> getStaffList() {
+    public ArrayList<Staffs> getStaffList() {
         ArrayList<Staffs> list = new ArrayList<>();
 
         MySQLHelper helper = new MySQLHelper();
-        ResultSet resultSet = helper.selectAllFromTable("staffs");
+        ResultSet resultSet = helper.selectAllFromTable("Staffs");
         try {
             while (resultSet.next()) {
                 list.add(new Staffs(
@@ -40,9 +40,9 @@ public class StaffDAL {
         return list;
     }
 
-    public static Staffs getStaffsByAccountID(int accountID) {
+    public Staffs getStaffsByAccountID(int accountID) {
         MySQLHelper helper = new MySQLHelper();
-        ResultSet resultSet = helper.selectAllFromTable("staffs");
+        ResultSet resultSet = helper.selectAllFromTable("Staffs");
         if (resultSet != null) {
             try {
                 while (resultSet.next()) {
@@ -70,10 +70,5 @@ public class StaffDAL {
         helper.closeConnect();
         // Có thể nhân viên chưa cập nhật thông tin nên vẫn trả về 1 object mới để tránh bị null exception
         return new Staffs();
-    }
-
-    public static void main(String[] args) {
-        Staffs staffs = getStaffsByAccountID(1);
-        System.out.println(staffs);
     }
 }

@@ -1,6 +1,10 @@
 package GUI.panels;
 
 import javax.swing.*;
+
+import BLL.FoodBLL;
+import DTO.Foods;
+
 import java.awt.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
@@ -13,11 +17,14 @@ import GUI.Components.CustomScrollPane;
 import GUI.Components.CustomTextField;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class FoodPanel extends JPanel {
+    private FoodBLL foodBLL;
+    private ArrayList<Foods> foodList;
+
+    private Foods currentFoods;
+
     private JPanel foodPanel;
-    private List<FoodCard> foodCards;
     private JPanel titlePanel;
     private CustomPanel filterPanel;
     private CustomPanel buttonFilterPanel;
@@ -26,13 +33,13 @@ public class FoodPanel extends JPanel {
     private CustomCombobox<String> statusComboBoxCategory;
 
     public FoodPanel() {
-        this.foodCards = new ArrayList<>();
+        this.foodBLL = new FoodBLL();
+        this.foodList = this.foodBLL.getAllFood();
         this.initComponents();
     }
 
     private void initComponents() {
         this.setLayout(null);
-        // this.setBackground(Color.WHITE);
 
         this.titlePanel = this.createControlButtonPanel();
         this.filterPanel = this.createFilterPanel();
@@ -75,12 +82,14 @@ public class FoodPanel extends JPanel {
         this.searchField.setBounds(100, 20, 200, 35);
         this.searchField.addFocusListener(new FocusListener() {
             public String text = searchField.getText();
+
             @Override
             public void focusGained(FocusEvent e) {
                 if (this.text.equalsIgnoreCase("Nhập thông tin sản phẩm")) {
                     searchField.setText("");
                 }
             }
+
             @Override
             public void focusLost(FocusEvent e) {
                 if (!this.text.equalsIgnoreCase("")) {
@@ -94,7 +103,7 @@ public class FoodPanel extends JPanel {
         statusProductLabel.setBounds(320, 20, 80, 35);
         panel.add(statusProductLabel);
 
-        String[] statusesProduct = {"Tất cả", "Còn hàng", "Hết hàng"};
+        String[] statusesProduct = { "Tất cả", "Còn hàng", "Hết hàng" };
         this.statusComboBoxProduct = new CustomCombobox<>(statusesProduct);
         this.statusComboBoxProduct.setBounds(400, 20, 150, 35);
         panel.add(this.statusComboBoxProduct);
@@ -103,7 +112,7 @@ public class FoodPanel extends JPanel {
         statusCategoryLabel.setBounds(570, 20, 100, 35);
         panel.add(statusCategoryLabel);
 
-        String[] statusesCategory = {"Tất cả"};
+        String[] statusesCategory = { "Tất cả" };
         this.statusComboBoxCategory = new CustomCombobox<>(statusesCategory);
         this.statusComboBoxCategory.setBounds(670, 20, 150, 35);
         panel.add(this.statusComboBoxCategory);
@@ -111,30 +120,37 @@ public class FoodPanel extends JPanel {
         return panel;
     }
 
-    private JPanel createFoodPanel() {
-        JPanel panel = new CustomPanel();
-        panel.setLayout(new BorderLayout());
+    private CustomPanel createFoodPanel() {
+        CustomPanel panel = new CustomPanel();
+        panel.setLayout(null);
+        panel.setBackground(Color.WHITE);
+        panel.setPreferredSize(new Dimension(1080, 480));
 
-        JPanel tableDataPanel = new CustomPanel();
-        tableDataPanel.setBackground(Color.WHITE);
+        // Panel chứa danh sách sản phẩm
+        JPanel panelProduct = new JPanel();
+        panelProduct.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
+        panelProduct.setBackground(Color.WHITE);
 
-        int columns = 6;
-        tableDataPanel.setLayout(new GridLayout(0, columns, 10, 10));
+        for (Foods fd : this.foodList) {
+            FoodCard foodCard = new FoodCard(
+                fd.getImage(),
+                fd.getFoodId(),
+                fd.getName(),
+                fd.getPrice(),
+                fd.getCategoryId(),
+                fd.getStatus()
+            );
 
-        for (int i = 0; i < 12; i++) {
-
+            panelProduct.add(foodCard);
         }
-        JPanel lastRow = new JPanel();
-        lastRow.setBackground(Color.WHITE);
-        tableDataPanel.add(lastRow);
 
-        JScrollPane scrollPane = new CustomScrollPane(tableDataPanel);
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        scrollPane.getVerticalScrollBar().setUnitIncrement(16);
+        panelProduct.setPreferredSize(new Dimension(1050, this.foodList.size() * 150));
+
+        JScrollPane scrollPane = new CustomScrollPane(panelProduct);
+        scrollPane.setBounds(0, 0, 1080, 450);
         scrollPane.setBorder(null);
 
-        panel.add(scrollPane, BorderLayout.CENTER);
+        panel.add(scrollPane);
         return panel;
     }
 
