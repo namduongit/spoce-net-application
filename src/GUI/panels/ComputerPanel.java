@@ -1,5 +1,7 @@
 package GUI.panels;
 
+import BLL.ComputerBLL;
+import DTO.Computers;
 import GUI.Components.*;
 import Utils.Helper.CreateComponent;
 
@@ -12,6 +14,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 public class ComputerPanel extends JPanel{
     private CardLayout cardLayout;
@@ -20,8 +23,12 @@ public class ComputerPanel extends JPanel{
     private JPanel dataPanel;
     private int selectedItemIndex;
     private JLabel selectionText;
+    private ComputerBLL computerBLL;
+    private ArrayList<Computers> list;
 
     public ComputerPanel() {
+        this.computerBLL = new ComputerBLL();
+        this.list = this.computerBLL.getAllComputers();
         this.initComponents();
     }
 
@@ -170,7 +177,7 @@ public class ComputerPanel extends JPanel{
 
         selectionText = new JLabel("Đang chọn: NULL");
         selectionText.setFont(new Font("Sans-serif", Font.BOLD, 12));
-        selectionText.setBounds(845,79,150,20);
+        selectionText.setBounds(845,79,300,20);
 
         panel.add(playerButton);
         panel.add(manageButton);
@@ -203,22 +210,16 @@ public class ComputerPanel extends JPanel{
         CustomPanel panel = new CustomPanel();
         panel.setLayout(null);
 
-        String[] columnNames = {"Mã máy tính", "Tên máy tính", "Giá tiền", "Trạng thái"};
-        Object[][] data = {
-                {"MT01", "Siêu máy tính", "10000", "Trong kho"},
-                {"MT01", "Siêu máy tính", "10000", "Trong kho"},
-                {"MT01", "Siêu máy tính", "10000", "Trong kho"},
-                {"MT01", "Siêu máy tính", "10000", "Trong kho"},
-                {"MT01", "Siêu máy tính", "10000", "Trong kho"},
-                {"MT01", "Siêu máy tính", "10000", "Trong kho"},
-                {"MT01", "Siêu máy tính", "10000", "Trong kho"},
-                {"MT01", "Siêu máy tính", "10000", "Trong kho"},
-                {"MT01", "Siêu máy tính", "10000", "Trong kho"},
-                {"MT01", "Siêu máy tính", "10000", "Trong kho"},
-                {"MT01", "Siêu máy tính", "10000", "Trong kho"},
-                {"MT01", "Siêu máy tính", "10000", "Trong kho"},
-                {"MT01", "Siêu máy tính", "10000", "Trong kho"}
-        };
+        String[] columnNames = {"ID", "Tên máy tính", "Motherboard", "Giá tiền", "Trạng thái"};
+        Object[][] data = new Object[this.list.size()][5];
+
+        for (int i=0; i<this.list.size(); i++) {
+            data[i][0] = this.list.get(i).getComputerId();
+            data[i][1] = this.list.get(i).getName();
+            data[i][2] = this.list.get(i).getMotherboardId();
+            data[i][3] = this.list.get(i).getPricePerHour();
+            data[i][4] = this.list.get(i).getStatus();
+        }
 
         CustomTable tableData = new CustomTable(new DefaultTableModel(data, columnNames));
         tableData.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
