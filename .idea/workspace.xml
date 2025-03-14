@@ -5,82 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="62dcb59d-8ce0-47e1-a5ea-b8e40b7265e0" name="Changes" comment="SQL">
-      <change afterPath="$PROJECT_DIR$/src/BLL/AccountBLL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/DataUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/javax_mail_1_5_3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/javax_mail.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/Helper/CreateComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/Helper/CreateComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/DAO/AccountDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/AccountDAL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/DAO/StaffDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/StaffDAL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Pojo/Accounts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/Accounts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Pojo/Categories.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/Categories.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Pojo/ComputerSessions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/ComputerSessions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Pojo/Computers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/Computers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Pojo/Cpus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/Cpus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Pojo/FoodBills.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/FoodBills.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Pojo/FoodOrders.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/FoodOrders.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Pojo/Foods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/Foods.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Pojo/Gpus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/Gpus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Pojo/Headphones.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/Headphones.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Pojo/Keyboards.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/Keyboards.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Pojo/Monitors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/Monitors.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Pojo/MotherboardRam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/MotherboardRam.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Pojo/MotherboardStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/MotherboardStorage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Pojo/Motherboards.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/Motherboards.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Pojo/Mouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/Mouse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Pojo/PasswordResetOtps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/PasswordResetOtps.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Pojo/Players.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/Players.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Pojo/Psus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/Psus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Pojo/Rams.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/Rams.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Pojo/Roms.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/Roms.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Pojo/Rooms.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/Rooms.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Pojo/Staffs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/Staffs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Pojo/Storages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/Storages.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Pojo/Transactions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/Transactions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/SQLHelper/MySQLHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/SQLHelper/MySQLHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Assets/Avatar/avatar_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Assets/Avatar/non_avatar.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/Avatar/non_avatar.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Assets/Icon/icons8-account-100.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/Icon/icons8-account-100.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Assets/Icon/icons8-bill-100.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/Icon/icons8-bill-100.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Assets/Icon/icons8-chart-100.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/Icon/icons8-chart-100.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Assets/Icon/icons8-computer-100.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/Icon/icons8-computer-100.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Assets/Icon/icons8-cyber-security-100.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/Icon/icons8-cyber-security-100.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Assets/Icon/icons8-dashboard-100.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/Icon/icons8-dashboard-100.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Assets/Icon/icons8-employee-100.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/Icon/icons8-employee-100.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Assets/Icon/icons8-ethernet-on-100.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/Icon/icons8-ethernet-on-100.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Assets/Icon/icons8-forget-96.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/Icon/icons8-forget-96.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Assets/Icon/icons8-growth-100.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/Icon/icons8-growth-100.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Assets/Icon/icons8-hotel-room-key-100.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/Icon/icons8-hotel-room-key-100.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Assets/Icon/icons8-ingredients-100.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/Icon/icons8-ingredients-100.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Assets/Icon/icons8-logout-100.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/Icon/icons8-logout-100.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Assets/Icon/icons8-management-100.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/Icon/icons8-management-100.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Assets/Icon/icons8-password-50.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/Icon/icons8-password-50.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Assets/Icon/icons8-payment-history-100.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/Icon/icons8-payment-history-100.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Assets/Icon/icons8-target-100.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/Icon/icons8-target-100.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Assets/Image/MENU.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/Image/MENU.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Assets/Image/card_black.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/Image/card_black.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Assets/Image/infomation-dashboard.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/Image/infomation-dashboard.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Assets/Image/spoce_net_gaming.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/Image/spoce_net_gaming.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Assets/Image/undraw_forgot-password_odai.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/Image/undraw_forgot-password_odai.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Assets/Image/undraw_personal-goals_f9bb.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/Image/undraw_personal-goals_f9bb.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Components/CustomButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Components/CustomButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Components/CustomPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Components/CustomPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Components/CustomPasswordField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Components/CustomPasswordField.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Components/CustomTextField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Components/CustomTextField.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/main/AdminDashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/main/AdminDashboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/main/AdminLoginScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/main/AdminLoginScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/main/ForgetPass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/main/ForgetPass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/main/MachineSelectionScreen.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/main/UserDashboardScreen.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/main/UserLoginScreen.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/panels/AccountPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/panels/AccountPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/panels/BillPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/panels/BillPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/panels/ChartPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/panels/ChartPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/panels/ComputerPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/panels/ComputerPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/panels/DashBoardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/panels/DashBoardPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/panels/FoodPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/panels/FoodPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/panels/HardwarePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/panels/HardwarePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/panels/HistoryPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/panels/HistoryPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/panels/RoomPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/panels/RoomPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/create_table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/create_table.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Utils/Helper/CreateComponent$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/Utils/Helper/CreateComponent$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Utils/Helper/CreateComponent$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/Utils/Helper/CreateComponent$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Utils/Helper/CreateComponent.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/Utils/Helper/CreateComponent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spoce-net-application.iml" beforeDir="false" afterPath="$PROJECT_DIR$/spoce-net-application.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/panels/ComputerPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/panels/ComputerPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +40,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/namduongit/spoce-net-application.git&quot;,
-    &quot;accountId&quot;: &quot;97305b00-7551-45a0-8070-b2da50f0a9ed&quot;
+    &quot;accountId&quot;: &quot;20b56b38-814f-4b8e-a4dd-02db64bcf7b6&quot;
   }
 }</component>
   <component name="ProblemsViewState">
@@ -132,7 +66,7 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Năm II/Kì II/Java/learn-code&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/libs-api-connect/javax.mail-1.5.3.jar&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -141,15 +75,15 @@
     &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.inline.completion&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.25659.39" />
-        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.25659.39" />
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23726.103" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23726.103" />
       </set>
     </attachedChunks>
   </component>
@@ -165,6 +99,9 @@
       <workItem from="1741075973693" duration="3152000" />
       <workItem from="1741136303005" duration="2644000" />
       <workItem from="1741145498991" duration="1002000" />
+      <workItem from="1741770642815" duration="4371000" />
+      <workItem from="1741787275968" duration="4020000" />
+      <workItem from="1741919251799" duration="7566000" />
     </task>
     <task id="LOCAL-00001" summary="Edit path file">
       <option name="closed" value="true" />

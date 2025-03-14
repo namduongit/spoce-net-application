@@ -7,7 +7,7 @@ use net_gaming_management;
 -- Create date: 26-02-2025
 
 -- Giải thích một số ràng buộc SQL:
--- 	   + AUTO_INCREMEN: 			tự tạo mã khi tạo 1 hàng mới của bảng
+-- 	   + AUTO_INCREMENT: 			tự tạo mã khi tạo 1 hàng mới của bảng
 --     + CURRENT_TIMESTAMP: 		tự lấy thời gian lúc tạo bảng
 --     + ON DELETE SET NULL: 		khi bản ghi trong bảng cha bị xóa, các bản ghi con sẽ có giá trị NULL trong cột khóa ngoại.
 --     + ON DELETE CASCADE: 		khi bản ghi trong bảng cha bị xóa, tất cả các bản ghi con liên quan cũng sẽ bị xóa.
@@ -344,3 +344,265 @@ INSERT INTO foods (name, price, category_id, quantity, image) VALUES
 ('Sữa chua nếp cẩm', 25000, 3, 15, 'sua-chua-nep-cam.jpg'),
 ('Rau câu dừa', 22000, 3, 25, 'rau-cau-dua.jpg'),
 ('Bánh mochi', 40000, 3, 10, 'banh-mochi.jpg');
+
+-- Thêm dữ liệu cho bảng mouse
+INSERT INTO mouse(brand, model, purchase_date, warranty_expiry, status)
+    VALUES ('Logitech', 'Logitech G102', '2025-03-14', '2026-03-14', 'Trong kho'),
+           ('Logitech', 'Logitech G304', '2025-03-14', '2026-03-14', 'Trong kho'),
+           ('Logitech', 'Logitech G Pro X Superlight', '2025-03-14', '2026-03-14', 'Trong kho'),
+           ('Logitech', 'Logitech G Pro X Superlight 2', '2025-03-14', '2026-03-14', 'Trong kho'),
+           ('Logitech', 'Logitech MX Master 3', '2025-03-01', '2028-03-01', 'Trong kho'),
+           ('SteelSeries', 'SteelSeries Rival 3', '2024-12-01', '2025-12-01', 'Trong kho'),
+           ('SteelSeries', 'Aerox 5 Wireless', '2025-03-13', '2027-03-13', 'Trong kho'),
+           ('SteelSeries', 'Aerox 3 Wireless', '2025-02-15', '2026-02-15', 'Trong kho'),
+           ('SteelSeries', 'Prime Wireless', '2024-11-01', '2026-11-01', 'Trong kho'),
+           ('Corsair', 'Corsair Harpoon RGB', '2025-02-15', '2026-02-15', 'Trong kho'),
+           ('Corsair', 'Corsair Harpoon RGB', '2025-02-15', '2026-02-15', 'Trong kho'),
+           ('Razer', 'Razer Basilisk V3', '2024-11-20', '2025-11-20', 'Trong kho'),
+           ('Razer', 'Razer DeathAdder V2', '2025-01-10', '2027-01-10', 'Trong kho'),
+           ('HyperX', 'HyperX Pulsefire Surge', '2025-03-13', '2026-03-13', 'Trong kho'),
+           ('Zowie', 'Zowie EC2', '2025-02-28', '2027-02-28', 'Trong kho'),
+           ('DareU', 'DareU A950 Pro', '2025-03-13', '2027-03-13', 'Trong kho'),
+           ('DareU', 'DareU A980 Pro Max', '2025-01-15', '2028-01-15', 'Trong kho'),
+           ('DareU', 'DareU A955', '2024-12-20', '2026-12-20', 'Trong kho'),
+           ('DareU', 'DareU EM901X', '2025-02-10', '2026-02-10', 'Trong kho'),
+           ('DareU', 'DareU A970', '2025-03-01', '2026-03-01', 'Trong kho');
+
+
+-- Thêm dữ liệu cho bảng keyboards
+INSERT INTO keyboards(brand, model, purchase_date, warranty_expiry, status)
+    VALUES ('Logitech', 'Logitech G Pro X TKL', '2025-03-14', '2027-03-14', 'Trong kho'),
+           ('Razer', 'Razer BlackWidow V4 Pro', '2025-02-10', '2026-02-10', 'Trong kho'),
+           ('SteelSeries', 'SteelSeries Apex Pro Mini', '2024-12-15', '2026-12-15', 'Trong kho'),
+           ('Corsair', 'Corsair K95 RGB Platinum', '2025-01-05', '2027-01-05', 'Trong kho'),
+           ('Keychron', 'Keychron K8 Pro', '2025-03-13', '2026-03-13', 'Trong kho'),
+           ('Ducky', 'Ducky One 3 TKL', '2025-02-20', '2027-02-20', 'Trong kho'),
+           ('Logitech', 'Logitech MX Keys', '2024-11-25', '2025-11-25', 'Trong kho'),
+           ('Razer', 'Raxer Huntsman Mini', '2025-03-01', '2026-03-01', 'Trong kho'),
+           ('SteelSeries', 'SteelSeries Apex 7 TKL', '2025-01-15', '2026-01-15', 'Trong kho'),
+           ('Corsair', 'Corsair K70 RGB TKL', '2025-02-28', '2027-02-28', 'Trong kho'),
+           ('DarkAlien', 'DarkAlien R65', '2025-01-24', '2027-01-24', 'Trong kho'),
+           ('DarkAlien', 'DarkAlien R65', '2025-01-24', '2027-01-24', 'Trong kho'),
+           ('DarkAlien', 'DarkAlien R65', '2025-01-24', '2027-01-24', 'Trong kho'),
+           ('HyperX', 'HyperX Alloy Origins 60', '2024-12-01', '2025-12-01', 'Trong kho'),
+           ('Logitech', 'Logitech G915 TKL', '2025-03-10', '2028-03-10', 'Trong kho'),
+           ('Razer', 'Razer DeathStalker V2', '2025-02-05', '2026-02-05', 'Trong kho'),
+           ('SteelSeries', 'SteelSeries Apex 3', '2025-03-12', '2026-03-12', 'Trong kho'),
+           ('Corsair', 'Corsair K100 RGB', '2024-11-10', '2026-11-10', 'Trong kho'),
+           ('Keychron', 'Keychron Q1', '2025-01-25', '2027-01-25', 'Trong kho'),
+           ('Ducky', 'Ducky Shine 7', '2025-03-07', '2026-03-07', 'Trong kho'),
+           ('HyperX', 'HyperX Alloy Elite 2', '2025-02-15', '2026-02-15', 'Trong kho'),
+           ('Logitech', 'Logitech G613', '2024-12-20', '2025-12-20', 'Trong kho'),
+           ('Razer', 'Razer Ornata V3', '2025-03-13', '2026-03-13', 'Trong kho');
+
+
+-- Thêm dữ liệu cho bảng headphones
+INSERT INTO headphones(brand, model, type, purchase_date, warranty_expiry, status)
+    VALUES ('Logitech', 'Logitech G733', 'Wireless', '2025-03-14', '2026-03-14', 'Trong kho'),
+           ('Razer', 'Razer BlackShark V2', 'Wired', '2025-02-10', '2027-02-10', 'Trong kho'),
+           ('Sony', 'Sony WH-1000XM5', 'Wireless', '2024-12-15', '2027-12-15', 'Trong kho'),
+           ('HyperX', 'HyperX Cloud II', 'Wired', '2025-01-05', '2026-01-05', 'Trong kho'),
+           ('SteelSeries', 'SteelSeries Arctis Nova Pro', 'Wireless', '2025-03-13', '2028-03-13', 'Trong kho'),
+           ('Sennheiser', 'Sennheiser HD 660S', 'Wired', '2025-02-20', '2027-02-20', 'Trong kho'),
+           ('Logitech', 'Logitech G435', 'Wireless', '2024-11-25', '2025-11-25', 'Trong kho'),
+           ('Razer', 'Razer Kraken V3', 'Wired', '2025-03-01', '2026-03-01', 'Trong kho'),
+           ('Sony', 'Sony WF-1000XM4', 'Wireless', '2025-01-15', '2026-01-15', 'Trong kho'),
+           ('HyperX', 'HyperX Cloud Alpha', 'Wired', '2025-02-28', '2026-02-28', 'Trong kho'),
+           ('SteelSeries', 'SteelSeries Arctis 7+', 'Wireless', '2024-12-01', '2026-12-01', 'Trong kho'),
+           ('Logitech', 'Logitech Zone Vibe 100', 'Wireless', '2025-03-10', '2026-03-10', 'Trong kho'),
+           ('Razer', 'Razer Barracuda X', 'Wireless', '2025-02-05', '2026-02-05', 'Trong kho'),
+           ('Sony', 'Sony MDR-7506', 'Wired', '2025-03-12', '2026-03-12', 'Trong kho'),
+           ('HyperX', 'HyperX Cloud Stinger', 'Wired', '2024-11-10', '2025-11-10', 'Trong kho'),
+           ('SteelSeries', 'SteelSeries Arctis 1', 'Wired', '2025-01-25', '2026-01-25', 'Trong kho'),
+           ('Sennheiser', 'Sennheiser Momentum 4', 'Wireless', '2025-03-07', '2028-03-07', 'Trong kho'),
+           ('Logitech', 'Logitech G Pro X', 'Wired', '2025-02-15', '2026-02-15', 'Trong kho'),
+           ('Razer', 'Razer Nari Ultimate', 'Wireless', '2024-12-20', '2026-12-20', 'Trong kho'),
+           ('Sony', 'Sony Pulse 3D', 'Wireless', '2025-03-13', '2026-03-13', 'Trong kho');
+
+
+-- Thêm dữ liệu cho bảng monitors
+INSERT INTO monitors (brand, model, size, refresh_rate, purchase_date, warranty_expiry, status)
+    VALUES ('ASUS', 'ASUS TUF Gaming VG27AQ', 27.0, 165, '2025-03-14', '2027-03-14', 'Trong kho'),
+           ('Dell', 'Dell Alienware AW2723DF', 27.0, 280, '2025-02-10', '2028-02-10', 'Trong kho'),
+           ('LG', ' LG UltraGear 27GP950-B', 27.0, 144, '2024-12-15', '2026-12-15', 'Trong kho'),
+           ('Samsung', 'Samsung Odyssey G7', 32.0, 240, '2025-01-05', '2027-01-05', 'Trong kho'),
+           ('Acer', 'Acer Predator XB273U', 27.0, 270, '2025-03-13', '2028-03-13', 'Trong kho'),
+           ('ASUS', 'ASUS ROG Swift PG259QN', 24.5, 360, '2025-02-20', '2028-02-20', 'Trong kho'),
+           ('Dell', 'Dell S2721DGF', 27.0, 165, '2024-11-25', '2025-11-25', 'Trong kho'),
+           ('LG', 'LG UltraGear 32GP850-B', 32.0, 180, '2025-03-01', '2027-03-01', 'Trong kho'),
+           ('Samsung', 'Samsung Odyssey Neo G8', 32.0, 240, '2025-01-15', '2028-01-15', 'Trong kho'),
+           ('Acer', 'Acer Nitro XV272U', 27.0, 170, '2025-02-28', '2026-02-28', 'Trong kho'),
+           ('MSI', 'MSI Optix MAG274QRF-QD', 27.0, 165, '2024-12-01', '2026-12-01', 'Trong kho'),
+           ('ASUS', 'ASUS ROG Strix XG27UCS', 27.0, 160, '2025-03-10', '2027-03-10', 'Trong kho'),
+           ('Dell', 'Dell Alienware AW3423DWF', 34.0, 165, '2025-02-05', '2028-02-05', 'Trong kho'),
+           ('LG', 'LG UltraGear 24GN650-B', 24.0, 144, '2025-03-12', '2026-03-12', 'Trong kho'),
+           ('Samsung', 'Samsung Odyssey G5', 27.0, 144, '2024-11-10', '2025-11-10', 'Trong kho'),
+           ('Acer', 'Acer Predator X34', 34.0, 180, '2025-01-25', '2027-01-25', 'Trong kho'),
+           ('MSI', 'MSI Optix MPG321UR-QD', 32.0, 144, '2025-03-07', '2028-03-07', 'Trong kho'),
+           ('ASUS', 'ASUS TUF Gaming VG279QM', 27.0, 280, '2025-02-15', '2027-02-15', 'Trong kho'),
+           ('Dell', 'Dell G3223Q', 32.0, 144, '2024-12-20', '2026-12-20', 'Trong kho'),
+           ('LG', 'LG UltraGear 27GL850-B', 27.0, 144, '2025-03-13', '2026-03-13', 'Trong kho');
+
+-- Thêm dữ liệu cho bảng roms
+INSERT INTO roms (brand, model, type, capacity, purchase_date, warranty_expiry, status)
+    VALUES ('AMI', 'AMI BIOS 2023', 'Flash', 32, '2025-03-14', '2027-03-14', 'Trong kho'),
+           ('Phoenix', 'Phoenix SecureCore Tiano', 'EEPROM', 16, '2025-02-10', '2026-02-10', 'Trong kho'),
+           ('Award', 'Award BIOS Modular', 'Flash', 64, '2024-12-15', '2026-12-15', 'Trong kho'),
+           ('Intel', 'Intel UEFI v2.8', 'Flash', 128, '2025-01-05', '2028-01-05', 'Trong kho'),
+           ('AMI', 'AMI Aptio V', 'Flash', 32, '2025-03-13', '2027-03-13', 'Trong kho'),
+           ('Phoenix', 'Phoenix BIOS 4.0', 'EPROM', 8, '2025-02-20', '2026-02-20', 'Trong kho'),
+           ('Award', 'AwardBIOS Elite', 'EEPROM', 16, '2024-11-25', '2025-11-25', 'Trong kho'),
+           ('Intel', 'Intel UEFI v2.7', 'Flash', 64, '2025-03-01', '2027-03-01', 'Trong kho'),
+           ('AMI', 'AMI BIOS 2024', 'Flash', 32, '2025-01-15', '2026-01-15', 'Trong kho'),
+           ('Phoenix', 'Phoenix SecureCore DXE', 'Flash', 64, '2025-02-28', '2027-02-28', 'Trong kho'),
+           ('Award', 'Award BIOS Legacy', 'EPROM', 8, '2024-12-01', '2025-12-01', 'Trong kho'),
+           ('Intel', 'Intel UEFI v2.9', 'Flash', 128, '2025-03-10', '2028-03-10', 'Trong kho'),
+           ('AMI', 'AMI Aptio 6', 'Flash', 32, '2025-02-05', '2026-02-05', 'Hỏng'),
+           ('Phoenix', 'Phoenix TrustedCore', 'EEPROM', 16, '2025-03-12', '2027-03-12', 'Trong kho'),
+           ('Award', 'Award BIOS Pro', 'Flash', 64, '2024-11-10', '2026-11-10', 'Trong kho'),
+           ('Intel', 'Intel UEFI v2.6', 'Flash', 32, '2025-01-25', '2026-01-25', 'Trong kho'),
+           ('AMI', 'AMI BIOS Core', 'EEPROM', 16, '2025-03-07', '2027-03-07', 'Trong kho'),
+           ('Phoenix', 'Phoenix BIOS 5.0', 'EPROM', 8, '2025-02-15', '2026-02-15', 'Trong kho'),
+           ('Award', 'Award BIOS Ultra', 'Flash', 64, '2024-12-20', '2026-12-20', 'Trong kho'),
+           ('Intel', 'Intel UEFI v3.0', 'Flash', 128, '2025-03-13', '2028-03-13', 'Trong kho');
+
+--Thêm dữ liệu cho bảng psus
+INSERT INTO psus (brand, model, wattage, purchase_date, warranty_expiry, status)
+    VALUES ('Corsair', 'Corsair RM750x', 750, '2025-03-14', '2030-03-14', 'Trong kho'),
+           ('EVGA', 'EVGA SuperNOVA 850 G5', 850, '2025-02-10', '2032-02-10', 'Trong kho'),
+           ('Seasonic', 'Seasonic Focus GX-650', 650, '2024-12-15', '2034-12-15', 'Trong kho'),
+           ('Cooler Master', 'Cooler Master MWE Gold 750', 750, '2025-01-05', '2030-01-05', 'Trong kho'),
+           ('Corsair', 'Corsair HX1200', 1200, '2025-03-13', '2035-03-13', 'Trong kho'),
+           ('EVGA', 'EVGA 650 GQ', 650, '2025-02-20', '2028-02-20', 'Trong kho'),
+           ('Seasonic', 'Seasonic Prime TX-1000', 1000, '2024-11-25', '2034-11-25', 'Trong kho'),
+           ('Cooler Master', 'Cooler Master V850 SFX', 850, '2025-03-01', '2030-03-01', 'Trong kho'),
+           ('Corsair', 'Corsair SF600', 600, '2025-01-15', '2027-01-15', 'Trong kho'),
+           ('EVGA', 'EVGA SuperNOVA 750 T2', 750, '2025-02-28', '2035-02-28', 'Trong kho'),
+           ('Seasonic', 'Seasonic Focus SGX-500', 500, '2024-12-01', '2029-12-01', 'Trong kho'),
+           ('Cooler Master', 'Cooler Master MasterWatt 550', 550, '2025-03-10', '2028-03-10', 'Trong kho'),
+           ('Corsair', 'Corsair AX860', 860, '2025-02-05', '2035-02-05', 'Trong kho'),
+           ('EVGA', 'EVGA SuperNOVA 1000 P2', 1000, '2025-03-12', '2032-03-12', 'Trong kho'),
+           ('Seasonic', 'Seasonic Snow Silent 750', 750, '2024-11-10', '2034-11-10', 'Trong kho'),
+           ('Cooler Master', 'Cooler Master V1200 Platinum', 1200, '2025-01-25', '2030-01-25', 'Trong kho'),
+           ('Corsair', 'Corsair RM650i', 650, '2025-03-07', '2030-03-07', 'Trong kho'),
+           ('EVGA', 'EVGA 450 BR', 450, '2025-02-15', '2026-02-15', 'Trong kho'),
+           ('Seasonic', 'Seasonic Prime GX-850', 850, '2024-12-20', '2034-12-20', 'Trong kho'),
+           ('Cooler Master', 'Cooler Master MWE Bronze 600', 600, '2025-03-13', '2028-03-13', 'Trong kho');
+
+
+-- Thêm dữ liệu cho bảng storages
+INSERT INTO storages (brand, model, type, capacity, purchase_date, warranty_expiry, status)
+    VALUES ('Samsung', 'Samsung 970 EVO Plus', 'NVMe', 1000, '2025-03-14', '2030-03-14', 'Trong kho'),
+           ('Western Digital', 'Western Digital WD Black SN850X', 'NVMe', 2000, '2025-02-10', '2030-02-10', 'Trong kho'),
+           ('Seagate', 'Seagate Barracuda', 'HDD', 4000, '2024-12-15', '2027-12-15', 'Trong kho'),
+           ('Crucial', 'Crucial MX500', 'SSD', 500, '2025-01-05', '2028-01-05', 'Trong kho'),
+           ('Samsung', 'Samsung 990 PRO', 'NVMe', 1000, '2025-03-13', '2030-03-13', 'Trong kho'),
+           ('Western Digital', 'Western Digital WD Blue 3D', 'SSD', 256, '2025-02-20', '2028-02-20', 'Trong kho'),
+           ('Seagate', 'Seagate FireCuda 530', 'NVMe', 500, '2024-11-25', '2029-11-25', 'Trong kho'),
+           ('Crucial', 'Crucial P3 Plus', 'NVMe', 2000, '2025-03-01', '2028-03-01', 'Trong kho'),
+           ('Samsung', ' Samsung 870 QVO', 'SSD', 1000, '2025-01-15', '2028-01-15', 'Trong kho'),
+           ('Western Digital', 'Western Digital WD Red', 'HDD', 2000, '2025-02-28', '2028-02-28', 'Trong kho'),
+           ('Seagate', 'Seagate IronWolf', 'HDD', 4000, '2024-12-01', '2027-12-01', 'Trong kho'),
+           ('Crucial', 'Crucial BX500', 'SSD', 500, '2025-03-10', '2028-03-10', 'Trong kho'),
+           ('Samsung', 'Samsung 860 EVO', 'SSD', 256, '2025-02-05', '2027-02-05', 'Trong kho'),
+           ('Western Digital', 'Western Digital WD Black SN770', 'NVMe', 1000, '2025-03-12', '2030-03-12', 'Trong kho'),
+           ('Seagate', 'Seagate BarraCuda 510', 'NVMe', 512, '2024-11-10', '2029-11-10', 'Trong kho'),
+           ('Crucial', 'Crucial P5', 'NVMe', 1000, '2025-01-25', '2030-01-25', 'Trong kho'),
+           ('Samsung', 'Samsung 980', 'NVMe', 500, '2025-03-07', '2028-03-07', 'Trong kho'),
+           ('Western Digital', 'Western Digital WD Green', 'SSD', 480, '2025-02-15', '2028-02-15', 'Trong kho'),
+           ('Seagate', 'Seagate Expansion', 'HDD', 2000, '2024-12-20', '2027-12-20', 'Trong kho'),
+           ('Crucial', 'Crucial P2', 'NVMe', 2000, '2025-03-13', '2030-03-13', 'Trong kho');
+
+-- thêm dữ liệu cho bảng rams
+INSERT INTO rams (brand, model, capacity, speed, purchase_date, warranty_expiry, status)
+    VALUES ('Corsair', 'Corsair Vengeance LPX', 8, 3200, '2025-03-14', '2035-03-14', 'Trong kho'),
+           ('Corsair', 'Corsair Vengeance LPX', 8, 3200, '2025-03-13', '2035-03-13', 'Trong kho'),
+           ('Corsair', 'Corsair Vengeance LPX', 8, 3200, '2025-01-15', '2035-01-15', 'Trong kho'),
+           ('Corsair', 'Corsair Vengeance LPX', 8, 3200, '2025-02-05', '2035-02-05', 'Trong kho'),
+           ('Corsair', 'Corsair Vengeance LPX', 8, 3200, '2025-03-07', '2035-03-07', 'Trong kho'),
+           ('Crucial', 'Crucial DDR5 Pro', 16, 5600, '2025-01-05', '2030-01-05', 'Trong kho'),
+           ('Crucial', 'Crucial DDR5 Pro', 16, 5600, '2025-03-01', '2030-03-01', 'Trong kho'),
+           ('Crucial', 'Crucial DDR5 Pro', 16, 5600, '2025-03-10', '2030-03-10', 'Trong kho'),
+           ('Crucial', 'Crucial DDR5 Pro', 16, 5600, '2025-01-25', '2030-01-25', 'Trong kho'),
+           ('Crucial', 'Crucial DDR5 Pro', 16, 5600, '2025-03-13', '2030-03-13', 'Trong kho'),
+           ('G.Skill', 'G.Skill Ripjaws V', 16, 3600, '2024-12-15', '2034-12-15', 'Trong kho'),
+           ('G.Skill', 'G.Skill Ripjaws V', 16, 3600, '2024-11-25', '2034-11-25', 'Trong kho'),
+           ('G.Skill', 'G.Skill Ripjaws V', 16, 3600, '2024-12-01', '2034-12-01', 'Trong kho'),
+           ('G.Skill', 'G.Skill Ripjaws V', 16, 3600, '2024-11-10', '2034-11-10', 'Trong kho'),
+           ('G.Skill', 'G.Skill Ripjaws V', 16, 3600, '2024-12-20', '2034-12-20', 'Trong kho'),
+           ('Kingston', 'Kingston Fury Beast', 8, 5200, '2025-02-10', '2035-02-10', 'Trong kho'),
+           ('Kingston', 'Kingston Fury Beast', 8, 5200, '2025-02-20', '2035-02-20', 'Trong kho'),
+           ('Kingston', 'Kingston Fury Beast', 8, 5200, '2025-02-28', '2035-02-28', 'Trong kho'),
+           ('Kingston', 'Kingston Fury Beast', 8, 5200, '2025-03-12', '2035-03-12', 'Trong kho'),
+           ('Kingston', 'Kingston Fury Beast', 8, 5200, '2025-02-15', '2035-02-15', 'Trong kho');
+
+-- thêm dữ lieu cho bảng gpus
+INSERT INTO gpus (brand, model, vram, purchase_date, warranty_expiry, status)
+    VALUES ('NVIDIA', 'NVIDIA GTX 1660 Super', 6, '2025-03-14', '2028-03-14', 'Trong kho'),
+           ('NVIDIA', 'NVIDIA RTX 3060', 12, '2025-02-10', '2029-02-10', 'Trong kho'),
+           ('NVIDIA', 'NVIDIA RTX 4070', 12, '2024-12-15', '2029-12-15', 'Trong kho'),
+           ('NVIDIA', 'NVIDIA RTX 4090', 24, '2025-01-05', '2030-01-05', 'Trong kho'),
+           ('NVIDIA', 'NVIDIA GTX 1660 Super', 6, '2025-03-13', '2028-03-13', 'Trong kho'),
+           ('NVIDIA', 'NVIDIA RTX 3060', 12, '2025-02-20', '2029-02-20', 'Trong kho'),
+           ('NVIDIA', 'NVIDIA RTX 4070', 12, '2024-11-25', '2029-11-25', 'Trong kho'),
+           ('NVIDIA', 'NVIDIA RTX 4090', 24, '2025-03-01', '2030-03-01', 'Trong kho'),
+           ('NVIDIA', 'NVIDIA GTX 1660 Super', 6, '2025-01-15', '2028-01-15', 'Trong kho'),
+           ('NVIDIA', 'NVIDIA RTX 3060', 12, '2025-02-28', '2029-02-28', 'Trong kho'),
+           ('NVIDIA', 'NVIDIA RTX 4070', 12, '2024-12-01', '2029-12-01', 'Trong kho'),
+           ('NVIDIA', 'NVIDIA RTX 4090', 24, '2025-03-10', '2030-03-10', 'Trong kho'),
+           ('NVIDIA', 'NVIDIA GTX 1660 Super', 6, '2025-02-05', '2028-02-05', 'Trong kho'),
+           ('NVIDIA', 'NVIDIA RTX 3060', 12, '2025-03-12', '2029-03-12', 'Trong kho'),
+           ('NVIDIA', 'NVIDIA RTX 4070', 12, '2024-11-10', '2029-11-10', 'Trong kho'),
+           ('NVIDIA', 'NVIDIA RTX 4090', 24, '2025-01-25', '2030-01-25', 'Trong kho'),
+           ('NVIDIA', 'NVIDIA GTX 1660 Super', 6, '2025-03-07', '2028-03-07', 'Trong kho'),
+           ('NVIDIA', 'NVIDIA RTX 3060', 12, '2025-02-15', '2029-02-15', 'Trong kho'),
+           ('NVIDIA', 'NVIDIA RTX 4070', 12, '2024-12-20', '2029-12-20', 'Trong kho'),
+           ('NVIDIA', 'NVIDIA RTX 4090', 24, '2025-03-13', '2030-03-13', 'Trong kho');
+
+
+-- thêm dữ liệu cho bảng cpus
+INSERT INTO cpus (brand, model, clock_speed, cores, threads, integrated_gpu, purchase_date, warranty_expiry, status)
+    VALUES ('AMD', 'AMD Ryzen 5 5600X', 4.6, 6, 12, FALSE, '2025-03-14', '2028-03-14', 'Trong kho'),
+           ('Intel', 'Intel Core i5-13400', 4.6, 10, 16, TRUE, '2025-02-10', '2028-02-10', 'Trong kho'),
+           ('AMD', 'AMD Ryzen 7 7700X', 5.4, 8, 16, TRUE, '2024-12-15', '2029-12-15', 'Trong kho'),
+           ('Intel', 'Intel Core i9-13900K', 5.8, 24, 32, TRUE, '2025-01-05', '2030-01-05', 'Trong kho'),
+           ('AMD', 'AMD Ryzen 5 5600X', 4.6, 6, 12, FALSE, '2025-03-13', '2028-03-13', 'Trong kho'),
+           ('Intel', 'Intel Core i5-13400', 4.6, 10, 16, TRUE, '2025-02-20', '2028-02-20', 'Trong kho'),
+           ('AMD', 'AMD Ryzen 7 7700X', 5.4, 8, 16, TRUE, '2024-11-25', '2029-11-25', 'Trong kho'),
+           ('Intel', 'Intel Core i9-13900K', 5.8, 24, 32, TRUE, '2025-03-01', '2030-03-01', 'Trong kho'),
+           ('AMD', 'AMD Ryzen 5 5600X', 4.6, 6, 12, FALSE, '2025-01-15', '2028-01-15', 'Trong kho'),
+           ('Intel', 'Intel Core i5-13400', 4.6, 10, 16, TRUE, '2025-02-28', '2028-02-28', 'Trong kho'),
+           ('AMD', 'AMD Ryzen 7 7700X', 5.4, 8, 16, TRUE, '2024-12-01', '2029-12-01', 'Trong kho'),
+           ('Intel', 'Intel Core i9-13900K', 5.8, 24, 32, TRUE, '2025-03-10', '2030-03-10', 'Trong kho'),
+           ('AMD', 'AMD Ryzen 5 5600X', 4.6, 6, 12, FALSE, '2025-02-05', '2028-02-05', 'Trong kho'),
+           ('Intel', 'Intel Core i5-13400', 4.6, 10, 16, TRUE, '2025-03-12', '2028-03-12', 'Trong kho'),
+           ('AMD', 'AMD Ryzen 7 7700X', 5.4, 8, 16, TRUE, '2024-11-10', '2029-11-10', 'Trong kho'),
+           ('Intel', 'Intel Core i9-13900K', 5.8, 24, 32, TRUE, '2025-01-25', '2030-01-25', 'Trong kho'),
+           ('AMD', 'AMD Ryzen 5 5600X', 4.6, 6, 12, FALSE, '2025-03-07', '2028-03-07', 'Trong kho'),
+           ('Intel', 'Intel Core i5-13400', 4.6, 10, 16, TRUE, '2025-02-15', '2028-02-15', 'Trong kho'),
+           ('AMD', 'AMD Ryzen 7 7700X', 5.4, 8, 16, TRUE, '2024-12-20', '2029-12-20', 'Trong kho'),
+           ('Intel', 'Intel Core i9-13900K', 5.8, 24, 32, TRUE, '2025-03-13', '2030-03-13', 'Trong kho');
+
+-- thêm dữ liệu cho bảng motherboards chưa gồm cpu, gpu, psu
+INSERT INTO motherboards (brand, model, socket, chipset, ram_slots, max_ram, ram_speed, storage_slots, sata_ports, m2_slots, max_storage_capacity, status, purchase_date, warranty_expiry)
+    VALUES ('ASUS', 'ASUS TUF Gaming B550-Plus', 'AM4', 'B550', 4, 128, 4400, 6, 4, 2, 96000, 'Trong kho', '2025-03-14', '2028-03-14'),
+           ('MSI', 'MSI PRO B760M-A', 'LGA1700', 'B760', 4, 128, 5333, 6, 4, 2, 96000, 'Trong kho', '2025-02-10', '2028-02-10'),
+           ('Gigabyte', 'Gigabyte X670 AORUS Elite', 'AM5', 'X670', 4, 128, 6000, 8, 6, 2, 144000, 'Trong kho', '2024-12-15', '2029-12-15'),
+           ('ASUS', 'ASUS ROG Strix Z790-E', 'LGA1700', 'Z790', 4, 192, 7200, 8, 6, 2, 144000, 'Trong kho', '2025-01-05', '2030-01-05'),
+           ('ASUS', 'ASUS TUF Gaming B550-Plus', 'AM4', 'B550', 4, 128, 4400, 6, 4, 2, 96000, 'Trong kho', '2025-03-13', '2028-03-13'),
+           ('MSI', 'MSI PRO B760M-A', 'LGA1700', 'B760', 4, 128, 5333, 6, 4, 2, 96000, 'Trong kho', '2025-02-20', '2028-02-20'),
+           ('Gigabyte', 'Gigabyte X670 AORUS Elite', 'AM5', 'X670', 4, 128, 6000, 8, 6, 2, 144000, 'Trong kho', '2024-11-25', '2029-11-25'),
+           ('ASUS', 'ASUS ROG Strix Z790-E', 'LGA1700', 'Z790', 4, 192, 7200, 8, 6, 2, 144000, 'Trong kho', '2025-03-01', '2030-03-01'),
+           ('ASUS', 'ASUS TUF Gaming B550-Plus', 'AM4', 'B550', 4, 128, 4400, 6, 4, 2, 96000, 'Trong kho', '2025-01-15', '2028-01-15'),
+           ('MSI', 'MSI PRO B760M-A', 'LGA1700', 'B760', 4, 128, 5333, 6, 4, 2, 96000, 'Trong kho', '2025-02-28', '2028-02-28'),
+           ('Gigabyte', 'Gigabyte X670 AORUS Elite', 'AM5', 'X670', 4, 128, 6000, 8, 6, 2, 144000, 'Trong kho', '2024-12-01', '2029-12-01'),
+           ('ASUS', 'ASUS ROG Strix Z790-E', 'LGA1700', 'Z790', 4, 192, 7200, 8, 6, 2, 144000, 'Trong kho', '2025-03-10', '2030-03-10'),
+           ('ASUS', 'ASUS TUF Gaming B550-Plus', 'AM4', 'B550', 4, 128, 4400, 6, 4, 2, 96000, 'Trong kho', '2025-02-05', '2028-02-05'),
+           ('MSI', 'MSI PRO B760M-A', 'LGA1700', 'B760', 4, 128, 5333, 6, 4, 2, 96000, 'Trong kho', '2025-03-12', '2028-03-12'),
+           ('Gigabyte', 'Gigabyte X670 AORUS Elite', 'AM5', 'X670', 4, 128, 6000, 8, 6, 2, 144000, 'Trong kho', '2024-11-10', '2029-11-10'),
+           ('ASUS', 'ASUS ROG Strix Z790-E', 'LGA1700', 'Z790', 4, 192, 7200, 8, 6, 2, 144000, 'Trong kho', '2025-01-25', '2030-01-25'),
+           ('ASUS', 'ASUS TUF Gaming B550-Plus', 'AM4', 'B550', 4, 128, 4400, 6, 4, 2, 96000, 'Trong kho', '2025-03-07', '2028-03-07'),
+           ('MSI', 'MSI PRO B760M-A', 'LGA1700', 'B760', 4, 128, 5333, 6, 4, 2, 96000, 'Trong kho', '2025-02-15', '2028-02-15'),
+           ('Gigabyte', 'Gigabyte X670 AORUS Elite', 'AM5', 'X670', 4, 128, 6000, 8, 6, 2, 144000, 'Trong kho', '2024-12-20', '2029-12-20'),
+           ('ASUS', 'ASUS ROG Strix Z790-E', 'LGA1700', 'Z790', 4, 192, 7200, 8, 6, 2, 144000, 'Trong kho', '2025-03-13', '2030-03-13');
+
