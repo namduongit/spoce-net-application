@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS players (
 CREATE TABLE IF NOT EXISTS  transactions (
     transaction_id  INT AUTO_INCREMENT PRIMARY KEY,
     player_id       INT NOT NULL,
-    amount          DECIMAL(10,2) NOT NULL,
+    amount          INT NOT NULL,
     payment_method  ENUM('Tiền mặt', 'Chuyển khoản') NOT NULL,
     created_at      DATETIME DEFAULT CURRENT_TIMESTAMP,
 
@@ -227,7 +227,7 @@ CREATE TABLE IF NOT EXISTS motherboard_storage ( -- Mạch chủ với bộ nh�
 CREATE TABLE IF NOT EXISTS computers (
     computer_id    	INT AUTO_INCREMENT PRIMARY KEY,
     name           	VARCHAR(100) NOT NULL,
-    price_per_hour	DECIMAL(10, 2) NOT NULL,
+    price_per_hour	INT NOT NULL,
     motherboard_id 	INT NOT NULL,
 
     mouse_id       	INT DEFAULT NULL,
@@ -257,7 +257,7 @@ CREATE TABLE IF NOT EXISTS categories (
 CREATE TABLE IF NOT EXISTS foods (
     food_id         INT AUTO_INCREMENT PRIMARY KEY,
     name            VARCHAR(100) UNIQUE NOT NULL,
-    price           DECIMAL(10,2) NOT NULL,
+    price           INT NOT NULL,
     category_id     INT NOT NULL,
     quantity        INT DEFAULT 0,
     image           VARCHAR(100),
@@ -272,7 +272,7 @@ CREATE TABLE IF NOT EXISTS food_bills (
     bill_id     INT AUTO_INCREMENT PRIMARY KEY,
     player_id   INT DEFAULT NULL,  -- Mặc định NULL để hỗ trợ khách vãng lai
     staff_id    INT NOT NULL,  -- Bắt buộc có nhân viên xác nhận
-    total_price DECIMAL(10,2) NOT NULL DEFAULT 0.00,
+    total_price INT NOT NULL DEFAULT 0.00,
     payment_method ENUM('Tiền mặt', 'Chuyển khoản') NOT NULL,
     status      ENUM('Chưa xử lý', 'Đã xử lý', 'Đã hủy') DEFAULT 'Chưa xử lý',
     created_at  DATETIME DEFAULT CURRENT_TIMESTAMP,
