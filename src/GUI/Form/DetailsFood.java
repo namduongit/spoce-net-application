@@ -108,7 +108,7 @@ public class DetailsFood extends JFrame{
 
         JLabel foodPriceLabel = new JLabel("Giá cả:");
         foodPriceLabel.setBounds(25, 280, 425, 25);
-        this.fooodPriceTextField = new CustomTextField(this.currentFood.getPrice().toString());
+        this.fooodPriceTextField = new CustomTextField(this.currentFood.getPrice() +"");
         this.fooodPriceTextField.setBounds(25, 305, 425, 30);
 
         JLabel foodQuantityLabel = new JLabel("Số lượng còn lại (Enter để cập nhật):");
@@ -191,7 +191,7 @@ public class DetailsFood extends JFrame{
                 .getScaledInstance(190, 190, Image.SCALE_SMOOTH)));
 
         this.foodNameTextField.setText(this.currentFood.getName());
-        this.fooodPriceTextField.setText(this.currentFood.getPrice().toString());
+        this.fooodPriceTextField.setText(this.currentFood.getPrice() +"");
         this.foodQuantityTextField.setText(String.valueOf(this.currentFood.getQuantity()));
         this.foodCreateAtTextField.setText(this.currentFood.getCreatedAt().toString());
         this.foodCateCombobox.setSelectedItem(new CategoryBLL().getNameCategoryById(this.currentFood.getCategoryId() + ""));

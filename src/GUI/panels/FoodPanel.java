@@ -270,11 +270,11 @@ public class FoodPanel extends JPanel {
         panel.setBackground(Color.WHITE);
 
         CustomButton addButton = Utils.Helper.CreateComponent.createGreenButton("Thêm");;
-        addButton.setBounds(200, 10, 100, 30);
+        addButton.setBounds(50, 10, 100, 30);
         panel.add(addButton);
 
         CustomButton editButton = Utils.Helper.CreateComponent.createBlueButton("Chỉnh sửa");;
-        editButton.setBounds(320, 10, 100, 30);
+        editButton.setBounds(170, 10, 100, 30);
         editButton.addActionListener(e -> {
             if (this.currentFoods == null) {
                 JOptionPane.showMessageDialog(null, "Bạn chưa chọn sản phẩm", "Thông báo",
@@ -287,7 +287,7 @@ public class FoodPanel extends JPanel {
         panel.add(editButton);
 
         CustomButton deleteButton = Utils.Helper.CreateComponent.createOrangeButton("Xóa");;
-        deleteButton.setBounds(440, 10, 100, 30);
+        deleteButton.setBounds(290, 10, 100, 30);
         panel.add(deleteButton);
 
         return panel;

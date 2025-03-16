@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 public class Foods {
     private int foodId;
     private String name;
-    private BigDecimal price;
+    private int price;
     private int categoryId;
     private int quantity;
     private String image;
@@ -18,7 +18,7 @@ public class Foods {
     }
 
     // Constructor có tham số
-    public Foods(int foodId, String name, BigDecimal price, int categoryId, int quantity, String image, String status, Timestamp createdAt) {
+    public Foods(int foodId, String name, int price, int categoryId, int quantity, String image, String status, Timestamp createdAt) {
         this.foodId = foodId;
         this.name = name;
         this.price = price;
@@ -46,11 +46,11 @@ public class Foods {
         this.name = name;
     }
 
-    public BigDecimal getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 

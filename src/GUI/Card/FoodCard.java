@@ -15,12 +15,12 @@ public class FoodCard extends CustomPanel {
     private int idProduct;
     private String imageProduct;
     private String nameProduct;
-    private BigDecimal priceProduct;
+    private int priceProduct;
     private int typeProduct;
     private String statusProduct;
 
 
-    public FoodCard(String imageProduct, int idProduct, String nameProduct, BigDecimal priceProduct,
+    public FoodCard(String imageProduct, int idProduct, String nameProduct, int priceProduct,
                     int typeProduct, String statusProduct) {
         this.idProduct = idProduct;
         this.imageProduct = imageProduct;
@@ -105,7 +105,7 @@ public class FoodCard extends CustomPanel {
         return nameProduct;
     }
 
-    public BigDecimal getPriceProduct() {
+    public int getPriceProduct() {
         return priceProduct;
     }
 
@@ -117,5 +117,5 @@ public class FoodCard extends CustomPanel {
         return statusProduct;
     }
 
-    
+
 }

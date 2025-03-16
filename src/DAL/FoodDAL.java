@@ -22,7 +22,7 @@ public class FoodDAL {
                 list.add(new Foods(
                     resultSet.getInt(1),
                     resultSet.getString(2),
-                    resultSet.getBigDecimal(3),
+                    resultSet.getInt(3),
                     resultSet.getInt(4),
                     resultSet.getInt(5),
                     resultSet.getString(6),
@@ -58,7 +58,7 @@ public class FoodDAL {
                 list.add(new Foods(
                     resultSet.getInt(1),
                     resultSet.getString(2),
-                    resultSet.getBigDecimal(3),
+                    resultSet.getInt(3),
                     resultSet.getInt(4),
                     resultSet.getInt(5),
                     resultSet.getString(6),
@@ -94,7 +94,7 @@ public class FoodDAL {
                 list.add(new Foods(
                     resultSet.getInt(1),
                     resultSet.getString(2),
-                    resultSet.getBigDecimal(3),
+                    resultSet.getInt(3),
                     resultSet.getInt(4),
                     resultSet.getInt(5),
                     resultSet.getString(6),
@@ -129,7 +129,7 @@ public class FoodDAL {
                 list.add(new Foods(
                     resultSet.getInt(1),
                     resultSet.getString(2),
-                    resultSet.getBigDecimal(3),
+                    resultSet.getInt(3),
                     resultSet.getInt(4),
                     resultSet.getInt(5),
                     resultSet.getString(6),
@@ -165,7 +165,7 @@ public class FoodDAL {
                 list.add(new Foods(
                     resultSet.getInt(1),
                     resultSet.getString(2),
-                    resultSet.getBigDecimal(3),
+                    resultSet.getInt(3),
                     resultSet.getInt(4),
                     resultSet.getInt(5),
                     resultSet.getString(6),

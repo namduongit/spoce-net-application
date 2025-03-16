@@ -322,28 +322,28 @@ INSERT INTO categories (name) VALUES
 
 -- Thêm món ăn vào bảng foods
 INSERT INTO foods (name, price, category_id, quantity, image) VALUES
-('Cơm gà xối mỡ', 50000, 1, 10, 'com-ga-xoi-mo.jpg'),
-('Bún bò Huế', 45000, 1, 15, 'bun-bo-hue.jpg'),
-('Phở tái chín', 40000, 1, 20, 'pho-tai-chin.jpg'),
-('Cơm tấm sườn bì chả', 55000, 1, 12, 'com-tam-suon-bi-cha.jpg'),
-('Mì Quảng tôm thịt', 48000, 1, 18, 'mi-quang-tom-thit.jpg'),
-('Hủ tiếu Nam Vang', 47000, 1, 8, 'hu-tieu-nam-vang.jpg'),
-('Bánh mì thịt nướng', 30000, 1, 25, 'banh-mi-thit-nuong.jpg'),
+('Cơm gà xối mỡ', 50000, 1, 10, 'com-ga-xoi-mo.png'),
+('Bún bò Huế', 45000, 1, 15, 'bun-bo-hue.png'),
+('Phở tái chín', 40000, 1, 20, 'pho-tai-chin.png'),
+('Cơm tấm sườn bì chả', 55000, 1, 12, 'com-tam-suon-bi-cha.png'),
+('Mì Quảng tôm thịt', 48000, 1, 18, 'mi-quang-tom-thit.png'),
+('Hủ tiếu Nam Vang', 47000, 1, 8, 'hu-tieu-nam-vang.png'),
+('Bánh mì thịt nướng', 30000, 1, 25, 'banh-mi-thit-nuong.png'),
 
-('Cà phê sữa đá', 25000, 2, 30, 'ca-phe-sua-da.jpg'),
-('Trà đào cam sả', 35000, 2, 20, 'tra-dao-cam-sa.jpg'),
-('Nước ép cam', 30000, 2, 18, 'nuoc-ep-cam.jpg'),
-('Nước ép ổi', 28000, 2, 22, 'nuoc-ep-oi.jpg'),
-('Sinh tố bơ', 40000, 2, 15, 'sinh-to-bo.jpg'),
-('Trà sữa trân châu', 38000, 2, 25, 'tra-sua-tran-chau.jpg'),
-('Soda chanh dây', 32000, 2, 10, 'soda-chanh-day.jpg'),
+('Cà phê sữa đá', 25000, 2, 30, 'ca-phe-sua-da.png'),
+('Trà đào cam sả', 35000, 2, 20, 'tra-dao-cam-sa.png'),
+('Nước ép cam', 30000, 2, 18, 'nuoc-ep-cam.png'),
+('Nước ép ổi', 28000, 2, 22, 'nuoc-ep-oi.png'),
+('Sinh tố bơ', 40000, 2, 15, 'sinh-to-bo.png'),
+('Trà sữa trân châu', 38000, 2, 25, 'tra-sua-tran-chau.png'),
+('Soda chanh dây', 32000, 2, 10, 'soda-chanh-day.png'),
 
-('Bánh flan', 20000, 3, 20, 'banh-flan.jpg'),
-('Chè thập cẩm', 30000, 3, 18, 'che-thap-cam.jpg'),
+('Bánh flan', 20000, 3, 20, 'banh-flan.png'),
+('Chè thập cẩm', 30000, 3, 18, 'che-thap-cam.png'),
 ('Kem dừa', 35000, 3, 12, 'kem-dua.jpg'),
-('Sữa chua nếp cẩm', 25000, 3, 15, 'sua-chua-nep-cam.jpg'),
-('Rau câu dừa', 22000, 3, 25, 'rau-cau-dua.jpg'),
-('Bánh mochi', 40000, 3, 10, 'banh-mochi.jpg');
+('Sữa chua nếp cẩm', 25000, 3, 15, 'sua-chua-nep-cam.png'),
+('Rau câu dừa', 22000, 3, 25, 'rau-cau-dua.png'),
+('Bánh mochi', 40000, 3, 10, 'banh-mochi.png');
 
 -- Thêm dữ liệu cho bảng mouse
 INSERT INTO mouse(brand, model, purchase_date, warranty_expiry, status)
@@ -465,8 +465,7 @@ INSERT INTO roms (brand, model, type, capacity, purchase_date, warranty_expiry, 
            ('Phoenix', 'Phoenix BIOS 5.0', 'EPROM', 8, '2025-02-15', '2026-02-15', 'Trong kho'),
            ('Award', 'Award BIOS Ultra', 'Flash', 64, '2024-12-20', '2026-12-20', 'Trong kho'),
            ('Intel', 'Intel UEFI v3.0', 'Flash', 128, '2025-03-13', '2028-03-13', 'Trong kho');
-
---Thêm dữ liệu cho bảng psus
+-- Thêm dữ liệu cho bảng psus
 INSERT INTO psus (brand, model, wattage, purchase_date, warranty_expiry, status)
     VALUES ('Corsair', 'Corsair RM750x', 750, '2025-03-14', '2030-03-14', 'Trong kho'),
            ('EVGA', 'EVGA SuperNOVA 850 G5', 850, '2025-02-10', '2032-02-10', 'Trong kho'),
