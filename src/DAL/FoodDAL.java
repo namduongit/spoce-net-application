@@ -11,6 +11,7 @@ import DAL.SQLHelper.MySQLHelper;
 import DTO.Foods;
 
 public class FoodDAL {
+    // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
     public ArrayList<Foods> getFoodList() {
         ArrayList<Foods> list = new ArrayList<>();
 
@@ -111,6 +112,18 @@ public class FoodDAL {
         return list;
     }
 
+    public Foods getFoodByID(int id) {
+        ArrayList<Foods> list = this.getFoodList();
+        for (Foods fd : list) {
+            if (fd.getFoodId() == id) {
+                return fd;
+            }
+        }
+        return null;
+    }
+
+    // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
+
     public ArrayList<Foods> searchFoodByName(String keyword) {
         ArrayList<Foods> list = new ArrayList<>();
         MySQLHelper helper = new MySQLHelper();
@@ -150,7 +163,8 @@ public class FoodDAL {
         MySQLHelper helper = new MySQLHelper();
 
         HashMap<String, String> params = new HashMap<>();
-        params.put("TABLE", "foods JOIN categories cate ON foods.category_id = cate.category_id");
+        params.put("TABLE", "foods");
+        params.put("JOIN", "categories cate ON foods.category_id = cate.category_id");
         params.put("WHERE", "cate.name = ? AND foods.status = ? AND foods.name LIKE ?");
 
         helper.buildingQueryParam(params);
@@ -181,19 +195,26 @@ public class FoodDAL {
         return list;
     }
 
+    // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
 
-    public Foods getFoodByID(int id) {
-        ArrayList<Foods> list = this.getFoodList();
-        for (Foods fd : list) {
-            if (fd.getFoodId() == id) {
-                return fd;
-            }
+    public boolean updateFoodDetailsById(int foodId, HashMap<String, Object> updateValues) {
+        if (updateValues == null || updateValues.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Không có dữ liệu để cập nhật!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            return false;
         }
-        return null;
-    }
 
-    public static void main(String[] args) {
-        ArrayList<Foods> list = new FoodDAL().getFoodByCategory("Đồ uống");
-        for (Foods fd : list) System.out.println(fd);
+        MySQLHelper helper = new MySQLHelper();
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "foods");
+        params.put("WHERE", "food_id = ?");
+
+        helper.buildingQueryParam(params);
+
+        ArrayList<Object> conditionValues = new ArrayList<>();
+        conditionValues.add(foodId);
+
+        return helper.updateData(updateValues, conditionValues);
     }
 }
+

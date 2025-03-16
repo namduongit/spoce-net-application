@@ -1,6 +1,7 @@
 package BLL;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import DAL.FoodDAL;
 import DTO.Foods;
@@ -10,6 +11,8 @@ public class FoodBLL {
     public FoodBLL() {
         this.foodDAL = new FoodDAL();
     }
+
+    // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
 
     public ArrayList<Foods> getAllFoods() {
         return this.foodDAL.getFoodList();
@@ -25,15 +28,22 @@ public class FoodBLL {
     }
 
     public ArrayList<Foods> getFoodByStatus(String status) {
-        return foodDAL.getFoodByStatus(status);
+        return this.foodDAL.getFoodByStatus(status);
     }
 
+    // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
+
     public ArrayList<Foods> searchFoodByName(String keyword) {
-        return foodDAL.searchFoodByName(keyword);
+        return this.foodDAL.searchFoodByName(keyword);
     }
 
     public ArrayList<Foods> advancedSearch(String category, String status, String keyword) {
-        return foodDAL.advancedSearch(category, status, keyword);
+        return this.foodDAL.advancedSearch(category, status, keyword);
     }
 
+    // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
+
+    public boolean updateFoodDetailsById(int foodId, HashMap<String, Object> updateValues) {
+        return this.foodDAL.updateFoodDetailsById(foodId, updateValues);
+    }
 }

@@ -174,7 +174,7 @@ public class MySQLHelper {
         return false;
     }
 
-    public boolean updateData(Map<String, Object> updateValues, ArrayList<Object> conditionValues) {
+    public boolean updateData(HashMap<String, Object> updateValues, ArrayList<Object> conditionValues) {
         try {
             String table = this.queryParams.get("TABLE");
             String where = this.buildingCondition();
