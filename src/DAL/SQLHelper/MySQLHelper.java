@@ -30,21 +30,21 @@ public class MySQLHelper {
     /* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 
     public String buildingCondition() {
-        if (this.queryParams != null && !this.queryParams.get("WHERE").isEmpty()) {
+        if (this.queryParams != null && this.queryParams.get("WHERE") != null && !this.queryParams.get("WHERE").isEmpty()) {
             return "WHERE " + this.queryParams.get("WHERE");
         }
         return "";
     }
 
     public String buidlingJoinTable() {
-        if (this.queryParams != null && !this.queryParams.get("JOIN").isEmpty()) {
+        if (this.queryParams != null && this.queryParams.get("JOIN") != null && !this.queryParams.get("JOIN").isEmpty()) {
             return "JOIN " + this.queryParams.get("JOIN");
         }
         return "";
     }
 
     public String buidlingFieldInsert() {
-        if (this.queryParams != null && !this.queryParams.get("FIELD").isEmpty()) {
+        if (this.queryParams != null && this.queryParams.get("FIELD") != null && !this.queryParams.get("FIELD").isEmpty()) {
             return "("+ this.queryParams.get("FIELD") +")";
         }
         return "";
@@ -52,7 +52,7 @@ public class MySQLHelper {
 
     /* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 
-    public MySQLHelper buidlingQueryParam(Map<String, String> params) {
+    public MySQLHelper buildingQueryParam(Map<String, String> params) {
         if (params == null) {
             params = new HashMap<>();
         }
@@ -71,14 +71,18 @@ public class MySQLHelper {
     /* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 
     public ResultSet query(String sql) {
-        try {
-            PreparedStatement statement = this.connection.prepareStatement(sql);
+        if (this.connection == null) {
+            JOptionPane.showMessageDialog(null, "Chưa kết nối đến database!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+        try (PreparedStatement statement = this.connection.prepareStatement(sql)) {
             return statement.executeQuery();
         } catch (SQLException exception) {
             JOptionPane.showMessageDialog(null, exception.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
         return null;
     }
+
 
     public ResultSet selectAllFromTable(String tableName) {
         try {

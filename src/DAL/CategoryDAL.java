@@ -41,7 +41,7 @@ public class CategoryDAL {
         params.put("TABLE", "categories");
         params.put("WHERE", "category_id = ?");
 
-        helper.buidlingQueryParam(params);
+        helper.buildingQueryParam(params);
         ArrayList<Object> values = new ArrayList<>();
         values.add(id);
 

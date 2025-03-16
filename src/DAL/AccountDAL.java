@@ -43,7 +43,7 @@ public class AccountDAL {
         Map<String, String> params = new HashMap<>();
         params.put("TABLE", "accounts");
         params.put("WHERE", "accounts.username = ? AND accounts.password = ?");
-        helper.buidlingQueryParam(params);
+        helper.buildingQueryParam(params);
 
         ArrayList<Object> values = new ArrayList<>();
         values.add(username);

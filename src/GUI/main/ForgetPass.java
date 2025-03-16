@@ -247,7 +247,7 @@ public class ForgetPass extends JFrame {
 
             Map<String, String> params = new LinkedHashMap<>();
             params.put("TABLE", "");
-            helper.buidlingQueryParam(params);
+            helper.buildingQueryParam(params);
 
         } else {
             JOptionPane.showMessageDialog(null, "Vui lòng điền Email", "Thông báo", JOptionPane.INFORMATION_MESSAGE);

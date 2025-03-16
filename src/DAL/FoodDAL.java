@@ -47,7 +47,7 @@ public class FoodDAL {
         params.put("JOIN", "categories cate on foods.category_id = cate.category_id");
         params.put("WHERE", "cate.name = ?");
 
-        helper.buidlingQueryParam(params);
+        helper.buildingQueryParam(params);
         ArrayList<Object> values = new ArrayList<>();
         values.add(typeCategory);
 
@@ -83,7 +83,7 @@ public class FoodDAL {
         params.put("TABLE", "foods");
         params.put("WHERE", "foods.status = ?");
 
-        helper.buidlingQueryParam(params);
+        helper.buildingQueryParam(params);
         ArrayList<Object> values = new ArrayList<>();
         values.add(status);
 
@@ -119,7 +119,7 @@ public class FoodDAL {
         params.put("TABLE", "foods");
         params.put("WHERE", "name LIKE ?");
 
-        helper.buidlingQueryParam(params);
+        helper.buildingQueryParam(params);
         ArrayList<Object> values = new ArrayList<>();
         values.add("%" + keyword + "%");
 
@@ -153,7 +153,7 @@ public class FoodDAL {
         params.put("TABLE", "foods JOIN categories cate ON foods.category_id = cate.category_id");
         params.put("WHERE", "cate.name = ? AND foods.status = ? AND foods.name LIKE ?");
 
-        helper.buidlingQueryParam(params);
+        helper.buildingQueryParam(params);
         ArrayList<Object> values = new ArrayList<>();
         values.add(category);
         values.add(status);
