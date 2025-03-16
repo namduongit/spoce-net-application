@@ -64,4 +64,34 @@ public class CreateComponent {
         });
         return button;
     }
+
+    public static CustomButton createBlueButton(String textContent) {
+        CustomButton button = new CustomButton(textContent);
+        button.setBorderColor(Color.decode("#1E88E5"));
+        button.setFont(new Font("Sans-serif", Font.BOLD, 13));
+        button.setBackground(Color.decode("#1E88E5"));
+        button.setForeground(Color.WHITE);
+
+        return button;
+    }
+
+    public static CustomButton createOrangeButton(String textContent) {
+        CustomButton button = new CustomButton(textContent);
+        button.setBorderColor(Color.decode("#DD2C00"));
+        button.setFont(new Font("Sans-serif", Font.BOLD, 13));
+        button.setBackground(Color.decode("#DD2C00"));
+        button.setForeground(Color.WHITE);
+
+        return button;
+    }
+
+    public static CustomButton createGreenButton(String textContent) {
+        CustomButton button = new CustomButton(textContent);
+        button.setBorderColor(Color.decode("#2E7D32"));
+        button.setFont(new Font("Sans-serif", Font.BOLD, 13));
+        button.setBackground(Color.decode("#2E7D32"));
+        button.setForeground(Color.WHITE);
+
+        return button;
+    }
 }

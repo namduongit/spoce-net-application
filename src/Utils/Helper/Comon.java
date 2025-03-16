@@ -16,6 +16,7 @@ public class Comon {
         return result.toString() + " VND";
     }
 
+
     public static void main(String[] args) {
         System.out.println(formatMoney("10000"));
     }

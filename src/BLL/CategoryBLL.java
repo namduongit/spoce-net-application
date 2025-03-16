@@ -11,6 +11,10 @@ public class CategoryBLL {
         this.categoryDAL = new CategoryDAL();
     }
 
+    public String getNameCategoryById(String id) {
+        return this.categoryDAL.getNameCategoryById(id);
+    }
+
     public ArrayList<Categories> getAllCategories() {
         return this.categoryDAL.getAllCategoryList();
     }

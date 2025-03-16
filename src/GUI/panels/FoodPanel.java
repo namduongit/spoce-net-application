@@ -19,8 +19,11 @@ import GUI.Components.CustomCombobox;
 import GUI.Components.CustomPanel;
 import GUI.Components.CustomScrollPane;
 import GUI.Components.CustomTextField;
+import GUI.Form.DetailsFood;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class FoodPanel extends JPanel {
     private FoodBLL foodBLL;
@@ -121,9 +124,7 @@ public class FoodPanel extends JPanel {
         statusesProduct.add("Hết hàng");
         this.statusComboBoxProduct = new CustomCombobox<>(statusesProduct);
         this.statusComboBoxProduct.setBounds(385, 20, 150, 35);
-        this.statusComboBoxProduct.addActionListener(e -> {
-            updateListFood(null, (String) this.statusComboBoxProduct.getSelectedItem(), null, 2);
-        });
+        this.statusComboBoxProduct.addActionListener(e -> filterFoodList());
         panel.add(this.statusComboBoxProduct);
 
         JLabel statusCategoryLabel = new JLabel("Loại sản phẩm:");
@@ -137,9 +138,7 @@ public class FoodPanel extends JPanel {
         }
         this.statusComboBoxCategory = new CustomCombobox<>(statusesCategory);
         this.statusComboBoxCategory.setBounds(660, 20, 150, 35);
-        this.statusComboBoxCategory.addActionListener(e -> {
-            updateListFood((String) this.statusComboBoxCategory.getSelectedItem(), null, null, 1);
-        });
+        this.statusComboBoxCategory.addActionListener(e -> filterFoodList());
         panel.add(this.statusComboBoxCategory);
 
         this.nameCurrentFood = new JLabel("Đang chọn: NULL");
@@ -175,7 +174,8 @@ public class FoodPanel extends JPanel {
                 public void mouseClicked(MouseEvent e) {
                     currentFoods = foodBLL.getFoodByID(foodCard.getIdProduct());
                     if (currentFoods != null) {
-                        nameCurrentFood.setText("Đang chọn: "+ foodCard.getIdProduct() +", "+ foodCard.getNameProduct());
+                        nameCurrentFood
+                                .setText("Đang chọn: " + foodCard.getIdProduct() + ", " + foodCard.getNameProduct());
                     } else {
                         nameCurrentFood.setText("Đang chọn: NULL");
                     }
@@ -194,32 +194,27 @@ public class FoodPanel extends JPanel {
 
         return panel;
     }
-    private void updateListFood(String categoryType, String status, String search, int type) {
-        switch (type) {
-            case 1:
-                this.foodList = categoryType.equalsIgnoreCase("Tất cả")
-                                ? this.foodBLL.getAllFoods()
-                                : this.foodBLL.getFoodByCategory(categoryType);
-                break;
 
-            case 2:
-                this.foodList = status.equalsIgnoreCase("Tất cả")
-                                ? this.foodBLL.getAllFoods()
-                                :  this.foodBLL.getFoodByStatus(status);
-                break;
+    private void filterFoodList() {
+        String typeStatus = this.statusComboBoxProduct.getSelectedItem().toString();
+        String typeCategory = this.statusComboBoxCategory.getSelectedItem().toString();
 
-            case 3:
-                this.foodList = this.foodBLL.searchFoodByName(search);
-                break;
-
-            case 4:
-                this.foodList = this.foodBLL.advancedSearch(categoryType, status, search);
-                break;
-
-            default:
-                System.out.println("Loại tìm kiếm không hợp lệ!");
-                return;
+        if (typeStatus.equalsIgnoreCase("Tất cả") && typeCategory.equalsIgnoreCase("Tất cả")) {
+            this.foodList = this.foodBLL.getAllFoods();
+        } else {
+            this.updateFoodByCategoryAndType(typeStatus, typeCategory);
         }
+
+        this.reloadFoodPanel();
+    }
+
+    private void updateFoodByCategoryAndType(String status, String categoryType) {
+        List<Foods> filteredList = this.foodBLL.getFoodByCategory(categoryType)
+                .stream()
+                .filter(fd -> status.equalsIgnoreCase("Tất cả") || fd.getStatus().equalsIgnoreCase(status))
+                .collect(Collectors.toList());
+
+        this.foodList = new ArrayList<>(filteredList);
         this.reloadFoodPanel();
     }
 
@@ -246,7 +241,8 @@ public class FoodPanel extends JPanel {
                 public void mouseClicked(MouseEvent e) {
                     currentFoods = foodBLL.getFoodByID(foodCard.getIdProduct());
                     if (currentFoods != null) {
-                        nameCurrentFood.setText("Đang chọn: " + foodCard.getIdProduct() + ", " + foodCard.getNameProduct());
+                        nameCurrentFood
+                                .setText("Đang chọn: " + foodCard.getIdProduct() + ", " + foodCard.getNameProduct());
                     } else {
                         nameCurrentFood.setText("Đang chọn: NULL");
                     }
@@ -273,26 +269,26 @@ public class FoodPanel extends JPanel {
         panel.setLayout(null);
         panel.setBackground(Color.WHITE);
 
-        CustomButton addButton = new CustomButton("Thêm");
+        CustomButton addButton = Utils.Helper.CreateComponent.createGreenButton("Thêm");;
         addButton.setBounds(200, 10, 100, 30);
         panel.add(addButton);
 
-        CustomButton editButton = new CustomButton("Sửa");
+        CustomButton editButton = Utils.Helper.CreateComponent.createBlueButton("Chỉnh sửa");;
         editButton.setBounds(320, 10, 100, 30);
         editButton.addActionListener(e -> {
             if (this.currentFoods == null) {
-                JOptionPane.showMessageDialog(null, "Bạn chưa chọn sản phẩm", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Bạn chưa chọn sản phẩm", "Thông báo",
+                        JOptionPane.INFORMATION_MESSAGE);
+            }
+            else {
+                new DetailsFood(this.foodBLL.getFoodByID(this.currentFoods.getFoodId())).setVisible(true);;
             }
         });
         panel.add(editButton);
 
-        CustomButton deleteButton = new CustomButton("Xóa");
+        CustomButton deleteButton = Utils.Helper.CreateComponent.createOrangeButton("Xóa");;
         deleteButton.setBounds(440, 10, 100, 30);
         panel.add(deleteButton);
-
-        CustomButton detailButton = new CustomButton("Xem chi tiết");
-        detailButton.setBounds(560, 10, 120, 30);
-        panel.add(detailButton);
 
         return panel;
     }

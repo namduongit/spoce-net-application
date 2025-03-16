@@ -17,7 +17,7 @@ public class FoodBLL {
 
 
     public ArrayList<Foods> getFoodByCategory(String typeCategory) {
-        return this.foodDAL.getFoodByCategory(typeCategory);
+        return !typeCategory.equalsIgnoreCase("Tất cả") ? this.foodDAL.getFoodByCategory(typeCategory) : this.foodDAL.getFoodList();
     }
 
     public Foods getFoodByID(int id) {

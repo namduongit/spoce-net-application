@@ -101,7 +101,7 @@ public class AccountPanel extends JPanel {
 
         CustomTextField myCreateAtInput = new CustomTextField("2025-01-01");
         myCreateAtInput.setBounds(30, 460, 300, 35);
-        myCreateAtInput.setEnabled(false);
+        myCreateAtInput.setEditable(false);
 
         // Đường kẻ thứ nhất
         // JLabel firstLine = new JLabel();

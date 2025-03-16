@@ -3,6 +3,7 @@ package DAL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.swing.JOptionPane;
 
@@ -31,4 +32,36 @@ public class CategoryDAL {
         }
         return list;
     }
+
+    public String getNameCategoryById(String id) {
+        String result = "";
+
+        MySQLHelper helper = new MySQLHelper();
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "categories");
+        params.put("WHERE", "category_id = ?");
+
+        helper.buidlingQueryParam(params);
+        ArrayList<Object> values = new ArrayList<>();
+        values.add(id);
+
+        ResultSet resultSet = helper.queryWithParam(values);
+
+        if (resultSet != null) {
+            try {
+                while (resultSet.next()) {
+                    result = resultSet.getString("name");
+                    break;
+                }
+                helper.closeConnect();
+                resultSet.close();
+            } catch (SQLException exception) {
+                JOptionPane.showMessageDialog(null, exception.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+
+        return result;
+    }
+
+
 }

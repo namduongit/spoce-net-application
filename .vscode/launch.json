@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CategoryDAL",
+            "request": "launch",
+            "mainClass": "DAL.CategoryDAL",
+            "projectName": "spoce-net-application_49a25238"
+        },
+        {
+            "type": "java",
+            "name": "DetailsFood",
+            "request": "launch",
+            "mainClass": "GUI.Form.DetailsFood",
+            "projectName": "spoce-net-application_49a25238"
+        },
+        {
+            "type": "java",
             "name": "FoodDAL",
             "request": "launch",
             "mainClass": "DAL.FoodDAL",
