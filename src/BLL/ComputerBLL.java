@@ -15,4 +15,8 @@ public class ComputerBLL {
     public ArrayList<Computers> getAllComputers() {
         return this.computerDAL.getComputerList();
     }
+
+    public Computers getComputerById(int id) {
+        return this.computerDAL.getComputerById(id);
+    }
 }

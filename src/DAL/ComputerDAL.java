@@ -43,4 +43,16 @@ public class ComputerDAL {
 
         return arr;
     }
+
+    public Computers getComputerById(int id) {
+        ArrayList<Computers> arr = this.getComputerList();
+
+        for (Computers x : arr) {
+            if (x.getComputerId() == id) {
+                return x;
+            }
+        }
+
+        return null;
+    }
 }

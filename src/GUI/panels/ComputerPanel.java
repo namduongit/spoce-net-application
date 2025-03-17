@@ -1,8 +1,10 @@
 package GUI.panels;
 
-import BLL.ComputerBLL;
-import DTO.Computers;
+import BLL.*;
+import DTO.*;
 import GUI.Components.*;
+import GUI.Form.DetailsComputer;
+import Utils.Helper.AdjustTableWidth;
 import Utils.Helper.CreateComponent;
 
 import javax.swing.*;
@@ -24,10 +26,26 @@ public class ComputerPanel extends JPanel{
     private int selectedItemIndex;
     private JLabel selectionText;
     private ComputerBLL computerBLL;
+    private MotherboardBLL motherboardBLL;
+    private CpuBLL cpuBLL;
+    private GpuBLL gpuBLL;
+    private MouseBLL mouseBLL;
+    private KeyboardBLL keyboardBLL;
+    private MonitorBLL monitorBLL;
+    private HeadphoneBLL headphoneBLL;
+    private RomBLL romBLL;
     private ArrayList<Computers> list;
 
     public ComputerPanel() {
         this.computerBLL = new ComputerBLL();
+        this.motherboardBLL = new MotherboardBLL();
+        this.cpuBLL = new CpuBLL();
+        this.gpuBLL = new GpuBLL();
+        this.mouseBLL = new MouseBLL();
+        this.keyboardBLL = new KeyboardBLL();
+        this.monitorBLL = new MonitorBLL();
+        this.headphoneBLL = new HeadphoneBLL();
+        this.romBLL = new RomBLL();
         this.list = this.computerBLL.getAllComputers();
         this.initComponents();
     }
@@ -210,18 +228,59 @@ public class ComputerPanel extends JPanel{
         CustomPanel panel = new CustomPanel();
         panel.setLayout(null);
 
-        String[] columnNames = {"ID", "Tên máy tính", "Motherboard", "Giá tiền", "Trạng thái"};
-        Object[][] data = new Object[this.list.size()][5];
+        String[] columnNames = {"ID",
+                                "Tên máy tính",
+                                "Bo mạch chủ",
+                                "CPU",
+                                "GPU",
+                                "Chuột",
+                                "Bàn phím",
+                                "Màn hình",
+                                "Tai nghe",
+                                "ROM",
+                                "Phòng",
+                                "Giá tiền",
+                                "Trạng thái"};
+        Object[][] data = new Object[this.list.size()][13];
 
         for (int i=0; i<this.list.size(); i++) {
             data[i][0] = this.list.get(i).getComputerId();
             data[i][1] = this.list.get(i).getName();
-            data[i][2] = this.list.get(i).getMotherboardId();
-            data[i][3] = this.list.get(i).getPricePerHour();
-            data[i][4] = this.list.get(i).getStatus();
+
+            Motherboards motherboard = this.motherboardBLL.getMotherboardById(this.list.get(i).getComputerId());
+            data[i][2] = motherboard.getModel();
+
+            Cpus cpu = this.cpuBLL.getCpuById(motherboard.getCpuId());
+            data[i][3] = cpu.getModel();
+
+            Gpus gpu = this.gpuBLL.getGpubyId(motherboard.getGpuId());
+            data[i][4] = gpu.getModel();
+
+            Mouse mouse = this.mouseBLL.getMouseById(this.list.get(i).getMouseId());
+            data[i][5] = mouse.getModel();
+
+            Keyboards keyboard = this.keyboardBLL.getKeyboardById(this.list.get(i).getKeyboardId());
+            data[i][6] = keyboard.getModel();
+
+            Monitors monitor = this.monitorBLL.getMonitorById(this.list.get(i).getMonitorId());
+            data[i][7] = monitor.getModel();
+
+            Headphones headphone = this.headphoneBLL.getHeadphoneById(this.list.get(i).getHeadphoneId());
+            data[i][8] = headphone.getModel();
+
+            Roms rom = this.romBLL.getRomById(this.list.get(i).getRomId());
+            data[i][9] = rom.getModel();
+
+            data[i][10] = this.list.get(i).getRoomId();
+
+            data[i][11] = this.list.get(i).getPricePerHour();
+            data[i][12] = this.list.get(i).getStatus();
         }
 
         CustomTable tableData = new CustomTable(new DefaultTableModel(data, columnNames));
+        tableData.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        AdjustTableWidth.automaticallyAdjustTableWidths(tableData);
+        tableData.getColumnModel().getColumn(0).setPreferredWidth(100);
         tableData.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
@@ -283,7 +342,9 @@ public class ComputerPanel extends JPanel{
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (tableData.getSelectedRow() != -1) {
-
+                    int computerId = (int)tableData.getValueAt(tableData.getSelectedRow(), 0);
+                    Computers computer = ComputerPanel.this.computerBLL.getComputerById(computerId);
+                    new DetailsComputer(computer);
                 } else {
                     JOptionPane.showMessageDialog(null, "Bạn chưa chọn máy tính", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                 }
