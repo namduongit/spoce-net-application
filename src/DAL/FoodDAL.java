@@ -16,7 +16,7 @@ public class FoodDAL {
         ArrayList<Foods> list = new ArrayList<>();
 
         MySQLHelper helper = new MySQLHelper();
-        ResultSet resultSet = helper.selectAllFromTable("Foods");
+        ResultSet resultSet = helper.selectAllFromTable("foods");
 
         try {
             while (resultSet.next()) {

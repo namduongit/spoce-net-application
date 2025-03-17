@@ -14,7 +14,7 @@ public class StaffDAL {
         ArrayList<Staffs> list = new ArrayList<>();
 
         MySQLHelper helper = new MySQLHelper();
-        ResultSet resultSet = helper.selectAllFromTable("Staffs");
+        ResultSet resultSet = helper.selectAllFromTable("staffs");
         try {
             while (resultSet.next()) {
                 list.add(new Staffs(
@@ -42,7 +42,7 @@ public class StaffDAL {
 
     public Staffs getStaffsByAccountID(int accountID) {
         MySQLHelper helper = new MySQLHelper();
-        ResultSet resultSet = helper.selectAllFromTable("Staffs");
+        ResultSet resultSet = helper.selectAllFromTable("staffs");
         if (resultSet != null) {
             try {
                 while (resultSet.next()) {
