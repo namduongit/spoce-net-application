@@ -4,58 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="62dcb59d-8ce0-47e1-a5ea-b8e40b7265e0" name="Changes" comment="SQL">
-      <change afterPath="$PROJECT_DIR$/src/BLL/CpuBLL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BLL/GpuBLL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BLL/HeadphoneBLL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BLL/KeyboardBLL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BLL/MonitorBLL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BLL/MotherboardBLL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BLL/MouseBLL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BLL/RomBLL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DAL/CpuDAL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DAL/GpuDAL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DAL/HeadphoneDAL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DAL/KeyboardDAL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DAL/MonitorDAL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DAL/MotherboardDAL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DAL/MouseDAL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DAL/RomDAL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/Form/DetailsComputer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Utils/Helper/AdjustTableWidth.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Food/bun-bo-hue.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Food/bun-bo-hue.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Food/kem-dua.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Food/sua-chua-nep-cam.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Food/sua-chua-nep-cam.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Food/tra-sua-tran-chau.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Food/tra-sua-tran-chau.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/CategoryBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/CategoryBLL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/FoodBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/FoodBLL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/AccountDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/AccountDAL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/CategoryDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/CategoryDAL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/FoodDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/FoodDAL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/SQLHelper/MySQLHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/SQLHelper/MySQLHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DTO/Foods.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DTO/Foods.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Card/FoodCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Card/FoodCard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/main/ForgetPass.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/main/ForgetPass.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/AccountPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/AccountPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/FoodPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/FoodPanel$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/FoodPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/FoodPanel$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/FoodPanel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/FoodPanel$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/FoodPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/FoodPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Utils/Helper/Comon.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/Utils/Helper/Comon.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Utils/Helper/CreateComponent.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/Utils/Helper/CreateComponent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BLL/ComputerBLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/ComputerBLL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DAL/ComputerDAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/ComputerDAL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/panels/ComputerPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/panels/ComputerPanel.java" afterDir="false" />
-    </list>
+    <list default="true" id="62dcb59d-8ce0-47e1-a5ea-b8e40b7265e0" name="Changes" comment="SQL" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -143,7 +92,7 @@
       <workItem from="1741770642815" duration="4371000" />
       <workItem from="1741787275968" duration="4020000" />
       <workItem from="1741919251799" duration="17428000" />
-      <workItem from="1742178607317" duration="17687000" />
+      <workItem from="1742178607317" duration="17992000" />
     </task>
     <task id="LOCAL-00001" summary="Edit path file">
       <option name="closed" value="true" />
