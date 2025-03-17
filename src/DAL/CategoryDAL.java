@@ -16,7 +16,7 @@ public class CategoryDAL {
         ArrayList<Categories> list = new ArrayList<>();
 
         MySQLHelper helper = new MySQLHelper();
-        ResultSet resultSet = helper.selectAllFromTable("Categories");
+        ResultSet resultSet = helper.selectAllFromTable("categories");
 
         try {
             while (resultSet.next()) {

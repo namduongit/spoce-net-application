@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="62dcb59d-8ce0-47e1-a5ea-b8e40b7265e0" name="Changes" comment="SQL" />
+    <list default="true" id="62dcb59d-8ce0-47e1-a5ea-b8e40b7265e0" name="Changes" comment="SQL">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/launch.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/launch.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/DAL/CategoryDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DAL/CategoryDAL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/DAL/FoodDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DAL/FoodDAL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/DAL/StaffDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DAL/StaffDAL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Utils/Config/ConfigSQL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Utils/Config/ConfigSQL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DAL/CategoryDAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/CategoryDAL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DAL/FoodDAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/FoodDAL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DAL/StaffDAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/StaffDAL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils/Config/ConfigSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/Config/ConfigSQL.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,12 +37,12 @@
     &quot;assignee&quot;: &quot;namduongit&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/namduongit/spoce-net-application.git&quot;,
-    &quot;accountId&quot;: &quot;20b56b38-814f-4b8e-a4dd-02db64bcf7b6&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/namduongit/spoce-net-application.git",
+    "accountId": "97305b00-7551-45a0-8070-b2da50f0a9ed"
   }
-}</component>
+}]]></component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -48,7 +59,7 @@
   "keyToString": {
     "Application.AdminDashboard.executor": "Run",
     "Application.AdminLoginScreen.executor": "Run",
-    "Application.DetailsComputer.executor": "Run",
+    "Application.ConfigSQL.executor": "Run",
     "Application.SendEmail.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -72,8 +83,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23726.103" />
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23726.103" />
+        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.25659.39" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.25659.39" />
       </set>
     </attachedChunks>
   </component>
@@ -91,8 +102,8 @@
       <workItem from="1741145498991" duration="1002000" />
       <workItem from="1741770642815" duration="4371000" />
       <workItem from="1741787275968" duration="4020000" />
-      <workItem from="1741919251799" duration="17428000" />
-      <workItem from="1742178607317" duration="17992000" />
+      <workItem from="1741919251799" duration="17064000" />
+      <workItem from="1742183879628" duration="555000" />
     </task>
     <task id="LOCAL-00001" summary="Edit path file">
       <option name="closed" value="true" />
@@ -120,5 +131,16 @@
     <MESSAGE value="Edit path file" />
     <MESSAGE value="SQL" />
     <option name="LAST_COMMIT_MESSAGE" value="SQL" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/GUI/panels/AccountPanel.java</url>
+          <line>513</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

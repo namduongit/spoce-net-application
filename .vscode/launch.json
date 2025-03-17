@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ConfigSQL",
+            "request": "launch",
+            "mainClass": "Utils.Config.ConfigSQL",
+            "projectName": "spoce-net-application_49a25238"
+        },
+        {
+            "type": "java",
             "name": "CategoryDAL",
             "request": "launch",
             "mainClass": "DAL.CategoryDAL",
