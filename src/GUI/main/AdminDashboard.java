@@ -6,6 +6,8 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -272,5 +274,11 @@ public class AdminDashboard extends JFrame {
         panel.setBackground(Color.WHITE);
 
         this.getContentPane().add(panel);
+    }
+
+    public static void main(String[] args) {
+        Accounts accounts = new Accounts(1, "namduongit", "namduongit", "Quản trị viên", "Đang hoạt động", new Timestamp(1, 1, 1, 1, 1, 1, 1));
+        Staffs staffs = new Staffs(1, 1, "Nguyễn Nam Dương", new Date(1, 1, 1), "Nam", "0388853835", "null", "null", "null", "null");
+        new AdminDashboard(accounts, staffs).setVisible(true);
     }
 }
