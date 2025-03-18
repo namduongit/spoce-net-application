@@ -28,4 +28,10 @@ public class AccountBLL {
         return this.accountDAL.updateAccountDetailsById(accountId, updateValues);
     }
 
+    // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
+
+    public Accounts staffLoginAccount(String username, String password) {
+        return this.accountDAL.staffLoginAccount(username, password);
+    }
+
 }

@@ -779,3 +779,11 @@ VALUES
     ('alibabaDepZai', MD5('123456789'), 'Người chơi', 'Offline'),
     ('DoMayVoDuoc', MD5('123456789'), 'Người chơi', 'Offline'),
     ('BeNgocLan', MD5('123456789'), 'Người chơi', 'Offline');
+
+use net_gaming_management;
+update staffs
+set email = 'nguyennamduong205@gmail.com'
+where staff_id = 1;
+update staffs
+set email = 'luanchenh192@gmail.com'
+where staff_id = 2;

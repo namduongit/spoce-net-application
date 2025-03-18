@@ -98,16 +98,18 @@ public class AccountDAL {
 
     // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    public Accounts loginAccount(String username, String password) {
+    public Accounts staffLoginAccount(String username, String password) {
         MySQLHelper helper = new MySQLHelper();
         Map<String, String> params = new HashMap<>();
         params.put("TABLE", "accounts");
-        params.put("WHERE", "accounts.username = ? AND accounts.password = ?");
+        params.put("WHERE", "accounts.username = ? AND accounts.password = ? AND (accounts.role = ? OR accounts.role = ?)");
         helper.buildingQueryParam(params);
 
         ArrayList<Object> values = new ArrayList<>();
         values.add(username);
         values.add(password);
+        values.add("Quản trị viên");
+        values.add("Nhân viên");
 
         ResultSet resultSet = helper.queryWithParam(values);
         Accounts account = null;
