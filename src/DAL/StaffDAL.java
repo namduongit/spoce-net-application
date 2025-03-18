@@ -3,6 +3,7 @@ package DAL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.swing.JOptionPane;
 
@@ -10,6 +11,7 @@ import DTO.Staffs;
 import DAL.SQLHelper.MySQLHelper;
 
 public class StaffDAL {
+
     public ArrayList<Staffs> getStaffList() {
         ArrayList<Staffs> list = new ArrayList<>();
 
@@ -40,35 +42,81 @@ public class StaffDAL {
         return list;
     }
 
-    public Staffs getStaffsByAccountID(int accountID) {
+    public Staffs getStaffById(int staffId) {
+        Staffs staff = null;
         MySQLHelper helper = new MySQLHelper();
-        ResultSet resultSet = helper.selectAllFromTable("staffs");
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "staffs");
+        params.put("WHERE", "staff_id = ?");
+
+        ArrayList<Object> values = new ArrayList<>();
+        values.add(staffId);
+        helper.buildingQueryParam(params);
+
+        ResultSet resultSet = helper.queryWithParam(values);
         if (resultSet != null) {
             try {
-                while (resultSet.next()) {
-                    int staffAccountID = resultSet.getInt(2);
-                    if (staffAccountID == accountID) {
-                        return new Staffs(
-                            resultSet.getInt(1),
-                            resultSet.getInt(2),
-                            resultSet.getString(3),
-                            resultSet.getDate(4),
-                            resultSet.getString(5),
-                            resultSet.getString(6),
-                            resultSet.getString(7),
-                            resultSet.getString(8),
-                            resultSet.getString(9),
-                            resultSet.getString(10)
-                        );
-                    }
+                if (resultSet.next()) {
+                    staff = new Staffs(
+                        resultSet.getInt("staff_id"),
+                        resultSet.getInt("account_id"),
+                        resultSet.getString("full_name"),
+                        resultSet.getDate("birth_date"),
+                        resultSet.getString("gender"),
+                        resultSet.getString("phone"),
+                        resultSet.getString("email"),
+                        resultSet.getString("address"),
+                        resultSet.getString("cccd"),
+                        resultSet.getString("avatar")
+                    );
+                    resultSet.close();
+                    helper.closeConnect();
                 }
             } catch (SQLException exception) {
                 JOptionPane.showMessageDialog(null, exception.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
             }
         }
-
-        helper.closeConnect();
-        // Có thể nhân viên chưa cập nhật thông tin nên vẫn trả về 1 object mới để tránh bị null exception
-        return new Staffs();
+        return staff;
     }
+
+    public Staffs getStaffByEmail(String staffEmail) {
+        Staffs staff = null;
+        MySQLHelper helper = new MySQLHelper();
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "staffs");
+        params.put("WHERE", "email = ?");
+
+        ArrayList<Object> values = new ArrayList<>();
+        values.add(staffEmail);
+        helper.buildingQueryParam(params);
+
+        ResultSet resultSet = helper.queryWithParam(values);
+        if (resultSet != null) {
+            try {
+                if (resultSet.next()) {
+                    staff = new Staffs(
+                        resultSet.getInt("staff_id"),
+                        resultSet.getInt("account_id"),
+                        resultSet.getString("full_name"),
+                        resultSet.getDate("birth_date"),
+                        resultSet.getString("gender"),
+                        resultSet.getString("phone"),
+                        resultSet.getString("email"),
+                        resultSet.getString("address"),
+                        resultSet.getString("cccd"),
+                        resultSet.getString("avatar")
+                    );
+                    resultSet.close();
+                    helper.closeConnect();
+                }
+            } catch (SQLException exception) {
+                JOptionPane.showMessageDialog(null, exception.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        return staff;
+    }
+
+
 }

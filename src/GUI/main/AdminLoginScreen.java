@@ -3,14 +3,10 @@ package GUI.main;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import DAL.AccountDAL;
-import DAL.StaffDAL;
-import DTO.Accounts;
-import DTO.Staffs;
-import Utils.Helper.EncriptString;
+import BLL.AccountBLL;
+import BLL.StaffBLL;
 import GUI.Components.CustomButton;
 import GUI.Components.CustomPasswordField;
 import GUI.Components.CustomTextField;
@@ -27,8 +23,12 @@ import java.awt.event.MouseListener;
 
 
 public class AdminLoginScreen extends JFrame{
+    private AccountBLL accountBLL;
+    private StaffBLL staffBLL;
 
     public AdminLoginScreen() {
+        this.accountBLL = new AccountBLL();
+        this.staffBLL = new StaffBLL();
         this.initComponents();
     }
 
@@ -131,8 +131,9 @@ public class AdminLoginScreen extends JFrame{
         loginButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                dispose();
-                new AdminDashboard().setVisible(true);
+                String userName = userNameInput.getText();
+                String password = new String(passwordInput.getPassword());
+
             }
             @Override
             public void mousePressed(MouseEvent e) {
@@ -181,6 +182,7 @@ public class AdminLoginScreen extends JFrame{
         panel.add(leftPanel);
         this.getContentPane().add(panel);
     }
+
 
     public static void main(String[] args) {
         new AdminLoginScreen().setVisible(true);

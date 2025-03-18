@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.swing.JOptionPane;
 
@@ -215,6 +216,18 @@ public class FoodDAL {
         conditionValues.add(foodId);
 
         return helper.updateData(updateValues, conditionValues);
+    }
+
+    // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
+
+    public boolean deleteFoodById(int foodId) {
+        MySQLHelper helper = new MySQLHelper();
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "foods");
+        params.put("WHERE", "food_id = ?");
+        helper.buildingQueryParam(params);
+
+        return helper.deleteData(new ArrayList<>(List.of(foodId)));
     }
 }
 

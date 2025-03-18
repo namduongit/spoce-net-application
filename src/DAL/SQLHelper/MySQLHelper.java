@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -203,6 +204,37 @@ public class MySQLHelper {
                 int affectedRows = preparedStatement.executeUpdate();
                 return affectedRows > 0;
             }
+        } catch (SQLException exception) {
+            JOptionPane.showMessageDialog(null, exception.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
+        return false;
+    }
+
+    /* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+    public boolean existsDataInTable(ArrayList<Object> values) {
+        try {
+            String select = this.queryParams.get("SELECT");
+            String table = this.queryParams.get("TABLE");
+            String join = this.buidlingJoinTable();
+            String where = this.buildingCondition();
+            String other = this.queryParams.get("OTHER");
+
+            String sql = "SELECT " + select + " FROM " + table + " \n"
+                    + join + " \n"
+                    + where + " \n"
+                    + other;
+
+            PreparedStatement preparedStatement = this.connection.prepareStatement(sql);
+            if (values.size() > 0) {
+                for (int i = 0; i < values.size(); i++) {
+                    preparedStatement.setObject(i + 1, values.get(i));
+                }
+            }
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return resultSet != null;
+
         } catch (SQLException exception) {
             JOptionPane.showMessageDialog(null, exception.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
         }

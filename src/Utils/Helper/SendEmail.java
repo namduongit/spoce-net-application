@@ -11,6 +11,8 @@ import Utils.Config.ConfigEmail;
 public class SendEmail {
     private Session session;
 
+    private Random random = new Random();
+
     public void setUpServerProperties() {
         Properties properties = new Properties();
         properties.put("mail.smtp.host", "smtp.gmail.com"); // Máy chủ SMTP Gmail
@@ -29,18 +31,31 @@ public class SendEmail {
     public String createDigitToReset() {
         String result = "";
         for (int i = 0; i < 8; i++) {
-            result += new Random().nextInt(0, 9);
+            result += this.random.nextInt(0, 10);
         }
         return result;
     }
 
-    public boolean sendNewOTP(String recipient, String titleEmail, String digitToReset, String userName) {
+    public String CreateNewPassword() {
+        String result = "";
+        for (int i = 0; i < 12; i++) {
+            if (this.random.nextInt(0, 10) % 2 == 0) {
+                result += (char)(97 + this.random.nextInt(0, 26));
+            } else {
+                result += random.nextInt(0, 10);
+            }
+        }
+        return result;
+    }
+
+
+    public boolean sendEmail(String recipient, String newPassword, String userName) {
         this.setUpServerProperties();
         try {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(ConfigEmail.EMAIL_SENDER));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipient));
-            message.setSubject(titleEmail);
+            message.setSubject("Thông báo thay đổi mật khẩu");
 
 
             String htmlContent =
@@ -56,9 +71,9 @@ public class SendEmail {
                     + "<h2 style=\"color: #000;\">Xin chào " + userName + ",</h2>"
                     + "<p style=\"color: #333; font-size: 16px;\">Chúng tôi đã nhận được yêu cầu đặt lại mật khẩu đăng nhập cho tài khoản Spoce Net Gaming của bạn.</p>"
                     + "<p style=\"font-size: 22px; font-weight: bold; text-align: center; background: #f8f8f8; padding: 10px; border-radius: 5px; border: 1px dashed red; color: black;\">"
-                    + digitToReset + "</p>"
-                    + "<p style=\"color: #333;\">Mã khôi phục mật khẩu của bạn có giá trị trong <strong>10 phút</strong>, hãy cập nhật lại mật khẩu cho tài khoản của bạn.</p>"
-                    + "<p style=\"color: #333;\">Tuyệt đối không chia sẻ mã này cho bất kì ai dù người đó tự nhận mình là quản trị viên của <strong>Spoce Net Gaming</strong>.</p>"
+                    + newPassword + "</p>"
+                    + "<p style=\"color: #333;\">Vui lòng sử dụng <strong>mật khẩu</strong> này thay cho mật khẩu cũ của bạn, nếu được thì hãy đặt lại mật khẩu mới lần nữa.</p>"
+                    + "<p style=\"color: #333;\">Tuyệt đối không chia sẻ mật khẩu này cho bất kì ai dù người đó tự nhận mình là quản trị viên của <strong>Spoce Net Gaming</strong>.</p>"
                     + "<p style=\"color: #333;\">Nếu bạn không thực hiện yêu cầu này, bạn có thể bỏ qua hoặc liên hệ hỗ trợ với chúng tôi.</p>"
                     + "<p style=\"color: #777; margin-top: 20px;\">Trân trọng,<br><strong>Spoce Net Gaming Team</strong></p>"
                     + "</div>"
@@ -89,9 +104,5 @@ public class SendEmail {
             e.printStackTrace();
         }
         return false;
-    }
-
-    public static void main(String[] args) {
-        new SendEmail().sendNewOTP("tienluanchenh192@gmail.com", "Thông báo", "23333", "namduongit");
     }
 }

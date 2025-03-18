@@ -22,12 +22,14 @@ import GUI.Components.CustomTextField;
 import GUI.Form.DetailsFood;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class FoodPanel extends JPanel {
     private FoodBLL foodBLL;
     private CategoryBLL categoryBLL;
+
     private ArrayList<Foods> foodList;
     private ArrayList<Categories> categoryList;
 
@@ -95,6 +97,7 @@ public class FoodPanel extends JPanel {
 
         this.searchField = new CustomTextField("Nhập thông tin sản phẩm");
         this.searchField.setBounds(80, 20, 200, 35);
+        this.searchField.addActionListener(e -> this.filterFoodList());
         this.searchField.addFocusListener(new FocusListener() {
             public String text = searchField.getText();
 
@@ -107,7 +110,7 @@ public class FoodPanel extends JPanel {
 
             @Override
             public void focusLost(FocusEvent e) {
-                if (!this.text.equalsIgnoreCase("")) {
+                if (this.text.equalsIgnoreCase("")) {
                     searchField.setText("Nhập thông tin sản phẩm");
                 }
             }
@@ -198,20 +201,28 @@ public class FoodPanel extends JPanel {
     private void filterFoodList() {
         String typeStatus = this.statusComboBoxProduct.getSelectedItem().toString();
         String typeCategory = this.statusComboBoxCategory.getSelectedItem().toString();
+        String searchText = this.searchField.getText().trim().equals("Nhập thông tin sản phẩm") ? "" : this.searchField.getText().trim();
 
-        if (typeStatus.equalsIgnoreCase("Tất cả") && typeCategory.equalsIgnoreCase("Tất cả")) {
+        if (typeStatus.equalsIgnoreCase("Tất cả") && typeCategory.equalsIgnoreCase("Tất cả") && searchText.isEmpty()) {
             this.foodList = this.foodBLL.getAllFoods();
         } else {
-            this.updateFoodByCategoryAndType(typeStatus, typeCategory);
+            this.updateFoodByCategoryAndType(typeStatus, typeCategory, searchText, "name");
         }
 
         this.reloadFoodPanel();
     }
 
-    private void updateFoodByCategoryAndType(String status, String categoryType) {
+    private void updateFoodByCategoryAndType(String status, String categoryType, String searchText, String sortBy) {
         List<Foods> filteredList = this.foodBLL.getFoodByCategory(categoryType)
                 .stream()
                 .filter(fd -> status.equalsIgnoreCase("Tất cả") || fd.getStatus().equalsIgnoreCase(status))
+                .filter(fd -> searchText.isEmpty() || fd.getName().toLowerCase().contains(searchText.toLowerCase()))
+                .sorted(Comparator.comparing(fd -> {
+                    if (sortBy.equals("name")) {
+                        return fd.getName().toLowerCase();
+                    }
+                    return "";
+                }))
                 .collect(Collectors.toList());
 
         this.foodList = new ArrayList<>(filteredList);
@@ -269,25 +280,49 @@ public class FoodPanel extends JPanel {
         panel.setLayout(null);
         panel.setBackground(Color.WHITE);
 
-        CustomButton addButton = Utils.Helper.CreateComponent.createGreenButton("Thêm");;
+        CustomButton addButton = Utils.Helper.CreateComponent.createGreenButton("Thêm");
+        ;
         addButton.setBounds(50, 10, 100, 30);
         panel.add(addButton);
 
-        CustomButton editButton = Utils.Helper.CreateComponent.createBlueButton("Chỉnh sửa");;
+        CustomButton editButton = Utils.Helper.CreateComponent.createBlueButton("Chỉnh sửa");
+        ;
         editButton.setBounds(170, 10, 100, 30);
         editButton.addActionListener(e -> {
             if (this.currentFoods == null) {
                 JOptionPane.showMessageDialog(null, "Bạn chưa chọn sản phẩm", "Thông báo",
                         JOptionPane.INFORMATION_MESSAGE);
-            }
-            else {
-                new DetailsFood(this.foodBLL.getFoodByID(this.currentFoods.getFoodId())).setVisible(true);;
+            } else {
+                new DetailsFood(this.foodBLL.getFoodByID(this.currentFoods.getFoodId())).setVisible(true);
+                ;
             }
         });
         panel.add(editButton);
 
-        CustomButton deleteButton = Utils.Helper.CreateComponent.createOrangeButton("Xóa");;
+        CustomButton deleteButton = Utils.Helper.CreateComponent.createOrangeButton("Xóa");
+        ;
         deleteButton.setBounds(290, 10, 100, 30);
+        deleteButton.addActionListener(e -> {
+            if (this.currentFoods != null) {
+                int option = JOptionPane.showConfirmDialog(null,
+                        "Bạn có chắc muốn xóa sản phẩm\nCó tên: " + this.currentFoods.getName(),
+                        "Thông báo", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+                if (option == JOptionPane.YES_OPTION) {
+                    if (this.foodBLL.deleteFoodById(this.currentFoods.getFoodId())) {
+                        JOptionPane.showMessageDialog(null, "Xóa thành công", "Thông báo",
+                                JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Xóa thất bại", "Thông báo", JOptionPane.ERROR_MESSAGE);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Hủy xóa sản phẩm", "Thông báo",
+                            JOptionPane.INFORMATION_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Bạn chưa chọn sản phẩm", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            }
+        });
         panel.add(deleteButton);
 
         return panel;

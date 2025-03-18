@@ -312,8 +312,30 @@ SELECT COUNT(*) AS SoLuongBang
 FROM information_schema.tables
 WHERE table_schema = 'net_gaming_management';
 
+-- Trigger
 
--- Insert dữ liệu liên quan đến đồ ăn
+DELIMITER $$
+
+CREATE TRIGGER after_account_insert
+AFTER INSERT ON accounts
+FOR EACH ROW
+BEGIN
+    -- Nếu là Quản trị viên hoặc Nhân viên, thêm vào bảng staffs với thông tin mặc định
+    IF NEW.role IN ('Quản trị viên', 'Nhân viên') THEN
+        INSERT INTO staffs (account_id, full_name, birth_date, gender, phone, email, address, cccd, avatar)
+        VALUES (NEW.account_id, 'Chưa cập nhật', '2000-01-01', 'Chưa đặt', NULL, NULL, NULL, NULL, NULL);
+
+    -- Nếu là Người chơi, thêm vào bảng players với số dư mặc định là 0.00
+    ELSEIF NEW.role = 'Người chơi' THEN
+        INSERT INTO players (account_id, balance)
+        VALUES (NEW.account_id, 0.00);
+    END IF;
+END$$
+
+DELIMITER ;
+
+
+
 -- Thêm danh mục vào bảng categories
 INSERT INTO categories (name) VALUES
 ('Món chính'),
@@ -732,3 +754,28 @@ INSERT INTO computers (name, price_per_hour, motherboard_id, mouse_id, keyboard_
            ('Siêu máy tính Spoce 3', 30000.00, 18, 18, 18, 18, 18, 18, 'Trong kho'),
            ('Siêu máy tính Spoce 4', 30000.00, 19, 19, 19, 19, 19, 19, 'Trong kho'),
            ('Siêu máy tính Spoce 5', 30000.00, 20, 20, 20, 20, 20, 20, 'Trong kho');
+
+INSERT INTO accounts (username, password, role, status)
+VALUES
+    ('namduongit', MD5('123456789'), 'Quản trị viên', 'Offline'),
+    ('luanchenh', MD5('123456789'), 'Quản trị viên', 'Offline');
+
+-- Thêm 3 nhân viên
+INSERT INTO accounts (username, password, role, status)
+VALUES
+    ('staff1', MD5('123456789'), 'Nhân viên', 'Offline'),
+    ('staff2', MD5('123456789'), 'Nhân viên', 'Offline'),
+    ('staff3', MD5('123456789'), 'Nhân viên', 'Offline');
+
+INSERT INTO accounts (username, password, role, status)
+VALUES
+    ('ChienBinhMa', MD5('123456789'), 'Người chơi', 'Offline'),
+    ('gaconNgauLoi', MD5('123456789'), 'Người chơi', 'Offline'),
+    ('boanco', MD5('123456789'), 'Người chơi', 'Offline'),
+    ('haycamnhannoidau', MD5('123456789'), 'Người chơi', 'Offline'),
+    ('naruto', MD5('123456789'), 'Người chơi', 'Offline'),
+    ('songokuuuu', MD5('123456789'), 'Người chơi', 'Offline'),
+    ('cadic821', MD5('123456789'), 'Người chơi', 'Offline'),
+    ('alibabaDepZai', MD5('123456789'), 'Người chơi', 'Offline'),
+    ('DoMayVoDuoc', MD5('123456789'), 'Người chơi', 'Offline'),
+    ('BeNgocLan', MD5('123456789'), 'Người chơi', 'Offline');

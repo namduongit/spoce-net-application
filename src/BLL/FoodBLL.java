@@ -46,4 +46,10 @@ public class FoodBLL {
     public boolean updateFoodDetailsById(int foodId, HashMap<String, Object> updateValues) {
         return this.foodDAL.updateFoodDetailsById(foodId, updateValues);
     }
+
+     // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
+
+     public boolean deleteFoodById(int foodId) {
+        return this.foodDAL.deleteFoodById(foodId);
+     }
 }
