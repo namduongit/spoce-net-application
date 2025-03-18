@@ -2,6 +2,7 @@ package DAL;
 
 import DAL.SQLHelper.MySQLHelper;
 import DTO.Monitors;
+import DTO.Mouse;
 
 import javax.swing.*;
 import java.sql.ResultSet;
@@ -47,5 +48,17 @@ public class MonitorDAL {
         }
 
         return null;
+    }
+
+    public ArrayList<Monitors> getMonitorsByStatus(String status) {
+        ArrayList<Monitors> arr = new ArrayList<>();
+
+        for (Monitors x : this.getMonitorList()) {
+            if (x.getStatus().equals(status)) {
+                arr.add(x);
+            }
+        }
+
+        return arr;
     }
 }

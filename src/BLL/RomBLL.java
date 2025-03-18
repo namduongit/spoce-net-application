@@ -21,4 +21,8 @@ public class RomBLL {
     public Roms getRomById(int id) {
         return this.romDAL.getRomById(id);
     }
+
+    public ArrayList<Roms> getRomsByStatus(String status) {
+        return this.romDAL.getRomsByStatus(status);
+    }
 }

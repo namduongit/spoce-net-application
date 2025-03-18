@@ -19,4 +19,8 @@ public class MouseBLL {
     public Mouse getMouseById(int id) {
         return this.mouseDAL.getMouseById(id);
     }
+
+    public ArrayList<Mouse> getMousesByStatus(String status) {
+        return this.mouseDAL.getMousesByStatus(status);
+    }
 }

@@ -1,6 +1,7 @@
 package DAL;
 
 import DAL.SQLHelper.MySQLHelper;
+import DTO.Mouse;
 import DTO.Roms;
 
 import javax.swing.*;
@@ -47,5 +48,17 @@ public class RomDAL {
         }
 
         return null;
+    }
+
+    public ArrayList<Roms> getRomsByStatus(String status) {
+        ArrayList<Roms> arr = new ArrayList<>();
+
+        for (Roms x : this.getRomList()) {
+            if (x.getStatus().equals(status)) {
+                arr.add(x);
+            }
+        }
+
+        return arr;
     }
 }

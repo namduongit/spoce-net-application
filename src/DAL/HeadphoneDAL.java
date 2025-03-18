@@ -2,6 +2,7 @@ package DAL;
 
 import DAL.SQLHelper.MySQLHelper;
 import DTO.Headphones;
+import DTO.Mouse;
 
 import javax.swing.*;
 import java.sql.ResultSet;
@@ -46,5 +47,17 @@ public class HeadphoneDAL {
         }
 
         return null;
+    }
+
+    public ArrayList<Headphones> getHeadphonesByStatus(String status) {
+        ArrayList<Headphones> arr = new ArrayList<>();
+
+        for (Headphones x : this.getHeadphoneList()) {
+            if (x.getStatus().equals(status)) {
+                arr.add(x);
+            }
+        }
+
+        return arr;
     }
 }

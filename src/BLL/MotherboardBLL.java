@@ -23,4 +23,8 @@ public class MotherboardBLL {
     public ArrayList<Motherboards> getMotherboardByBrand(String brand) {
         return this.motherboardDAL.getMotherboardByBrand(brand);
     }
+
+    public ArrayList<Motherboards> getMotherboardsByStatus(String status) {
+        return this.motherboardDAL.getMotherboardsByStatus(status);
+    }
 }

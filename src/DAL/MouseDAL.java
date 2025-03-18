@@ -46,4 +46,16 @@ public class MouseDAL {
 
         return null;
     }
+
+    public ArrayList<Mouse> getMousesByStatus(String status) {
+        ArrayList<Mouse> arr = new ArrayList<>();
+
+        for (Mouse x : this.getMouseList()) {
+            if (x.getStatus().equals(status)) {
+                arr.add(x);
+            }
+        }
+
+        return arr;
+    }
 }

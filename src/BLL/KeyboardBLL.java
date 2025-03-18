@@ -21,4 +21,8 @@ public class KeyboardBLL {
     public Keyboards getKeyboardById(int id) {
         return this.keyboardDAL.getKeyboardById(id);
     }
+
+    public ArrayList<Keyboards> getKeyboardsByStatus(String status) {
+        return this.keyboardDAL.getKeyboardsByStatus(status);
+    }
 }

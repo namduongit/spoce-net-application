@@ -21,4 +21,8 @@ public class HeadphoneBLL {
     public Headphones getHeadphoneById(int id) {
         return this.headphoneDAL.getHeadphoneById(id);
     }
+
+    public ArrayList<Headphones> getHeadphonesByStatus(String status) {
+        return this.headphoneDAL.getHeadphonesByStatus(status);
+    }
 }

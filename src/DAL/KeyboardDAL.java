@@ -2,6 +2,7 @@ package DAL;
 
 import DAL.SQLHelper.MySQLHelper;
 import DTO.Keyboards;
+import DTO.Mouse;
 
 import javax.swing.*;
 import java.sql.ResultSet;
@@ -45,5 +46,17 @@ public class KeyboardDAL {
         }
 
         return null;
+    }
+
+    public ArrayList<Keyboards> getKeyboardsByStatus(String status) {
+        ArrayList<Keyboards> arr = new ArrayList<>();
+
+        for (Keyboards x : this.getKeyboardList()) {
+            if (x.getStatus().equals(status)) {
+                arr.add(x);
+            }
+        }
+
+        return arr;
     }
 }

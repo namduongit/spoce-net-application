@@ -105,4 +105,51 @@ public class MotherboardDAL {
 
         return arr;
     }
+
+    public ArrayList<Motherboards> getMotherboardsByStatus(String status) {
+        ArrayList<Motherboards> arr = new ArrayList<>();
+        MySQLHelper helper = new MySQLHelper();
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "motherboards");
+        params.put("WHERE", "motherboards.status = ?");
+
+        ArrayList<Object> values = new ArrayList<>();
+        values.add(status);
+
+        helper.buildingQueryParam(params);
+
+        try {
+            ResultSet rs = helper.queryWithParam(values);
+
+            while (rs.next()) {
+                arr.add(new Motherboards(
+                        rs.getInt("motherboard_id"),
+                        rs.getString("brand"),
+                        rs.getString("model"),
+                        rs.getString("socket"),
+                        rs.getString("chipset"),
+                        rs.getInt("ram_slots"),
+                        rs.getInt("max_ram"),
+                        rs.getInt("ram_speed"),
+                        rs.getInt("storage_slots"),
+                        rs.getInt("sata_ports"),
+                        rs.getInt("m2_slots"),
+                        rs.getInt("max_storage_capacity"),
+                        rs.getString("status"),
+                        rs.getInt("cpu_id"),
+                        rs.getInt("psu_id"),
+                        rs.getInt("gpu_id"),
+                        rs.getDate("purchase_date"),
+                        rs.getDate("warranty_expiry")
+                ));
+            }
+            rs.close();
+            helper.closeConnect();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
+
+        return arr;
+    }
 }

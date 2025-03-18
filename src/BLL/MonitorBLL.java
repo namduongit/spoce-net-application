@@ -20,4 +20,8 @@ public class MonitorBLL {
     public Monitors getMonitorById(int id) {
         return this.monitorDAL.getMonitorById(id);
     }
+
+    public ArrayList<Monitors> getMonitorsByStatus(String status) {
+        return this.monitorDAL.getMonitorsByStatus(status);
+    }
 }
