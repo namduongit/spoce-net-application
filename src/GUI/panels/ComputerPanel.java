@@ -12,10 +12,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 import java.util.ArrayList;
 
 public class ComputerPanel extends JPanel{
@@ -35,6 +32,10 @@ public class ComputerPanel extends JPanel{
     private HeadphoneBLL headphoneBLL;
     private RomBLL romBLL;
     private ArrayList<Computers> list;
+    private Object[][] data;
+    private DefaultTableModel model;
+    private String[] columnNames;
+    private CustomTable tableData;
 
     public ComputerPanel() {
         this.computerBLL = new ComputerBLL();
@@ -47,6 +48,20 @@ public class ComputerPanel extends JPanel{
         this.headphoneBLL = new HeadphoneBLL();
         this.romBLL = new RomBLL();
         this.list = this.computerBLL.getAllComputers();
+        this.columnNames = new String[]{
+                "ID",
+                "Tên máy tính",
+                "Bo mạch chủ",
+                "CPU",
+                "GPU",
+                "Chuột",
+                "Bàn phím",
+                "Màn hình",
+                "Tai nghe",
+                "ROM",
+                "Phòng",
+                "Giá tiền",
+                "Trạng thái"};
         this.initComponents();
     }
 
@@ -120,6 +135,12 @@ public class ComputerPanel extends JPanel{
         String[] statusList = {"Tất cả" , "Trong kho", "Đang sử dụng", "Thiếu linh kiện", "Bảo trì", "Hỏng"};
         CustomCombobox<String> statusComboBox = new CustomCombobox<>(statusList);
         statusComboBox.setBounds(405, 73, 150, 35);
+        statusComboBox.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+
+            }
+        });
 
         CustomButton filterButton = new CustomButton("Lọc");
         filterButton.setBorderSize(3);
@@ -131,7 +152,27 @@ public class ComputerPanel extends JPanel{
 
             @Override
             public void mouseClicked(MouseEvent e) {
+                String status = statusComboBox.getSelectedItem().toString();
+                ComputerPanel.this.refreshAllDatas();
+                if (status.equals("Tất cả")) {
 
+                    Object[][] data = ComputerPanel.this.createData(ComputerPanel.this.list);
+                    ComputerPanel.this.updateModel(data);
+                    ComputerPanel.this.tableData.setModel(ComputerPanel.this.model);
+                    ComputerPanel.this.updateTable();
+
+                } else {
+                    ArrayList<Computers> filteredList = new ArrayList<>();
+                    for (Computers x : ComputerPanel.this.list) {
+                        if (x.getStatus().equals(status)) {
+                            filteredList.add(x);
+                        }
+                    }
+                    Object[][] data = ComputerPanel.this.createData(filteredList);
+                    ComputerPanel.this.updateModel(data);
+                    ComputerPanel.this.tableData.setModel(ComputerPanel.this.model);
+                    ComputerPanel.this.updateTable();
+                }
             }
 
             @Override
@@ -224,30 +265,19 @@ public class ComputerPanel extends JPanel{
         return panel;
     }
 
-    private CustomPanel createManagePanel() {
-        CustomPanel panel = new CustomPanel();
-        panel.setLayout(null);
+    private void refreshAllDatas() {
+        this.list = this.computerBLL.getAllComputers();
+    }
 
-        String[] columnNames = {"ID",
-                                "Tên máy tính",
-                                "Bo mạch chủ",
-                                "CPU",
-                                "GPU",
-                                "Chuột",
-                                "Bàn phím",
-                                "Màn hình",
-                                "Tai nghe",
-                                "ROM",
-                                "Phòng",
-                                "Giá tiền",
-                                "Trạng thái"};
-        Object[][] data = new Object[this.list.size()][13];
 
-        for (int i=0; i<this.list.size(); i++) {
-            data[i][0] = this.list.get(i).getComputerId();
-            data[i][1] = this.list.get(i).getName();
+    private Object[][] createData(ArrayList<Computers> list) {
+        Object[][] data = new Object[list.size()][13];
 
-            Motherboards motherboard = this.motherboardBLL.getMotherboardById(this.list.get(i).getComputerId());
+        for (int i=0; i<list.size(); i++) {
+            data[i][0] = list.get(i).getComputerId();
+            data[i][1] = list.get(i).getName();
+
+            Motherboards motherboard = this.motherboardBLL.getMotherboardById(list.get(i).getComputerId());
             data[i][2] = motherboard.getModel();
 
             Cpus cpu = this.cpuBLL.getCpuById(motherboard.getCpuId());
@@ -256,28 +286,39 @@ public class ComputerPanel extends JPanel{
             Gpus gpu = this.gpuBLL.getGpubyId(motherboard.getGpuId());
             data[i][4] = gpu.getModel();
 
-            Mouse mouse = this.mouseBLL.getMouseById(this.list.get(i).getMouseId());
+            Mouse mouse = this.mouseBLL.getMouseById(list.get(i).getMouseId());
             data[i][5] = mouse.getModel();
 
-            Keyboards keyboard = this.keyboardBLL.getKeyboardById(this.list.get(i).getKeyboardId());
+            Keyboards keyboard = this.keyboardBLL.getKeyboardById(list.get(i).getKeyboardId());
             data[i][6] = keyboard.getModel();
 
-            Monitors monitor = this.monitorBLL.getMonitorById(this.list.get(i).getMonitorId());
+            Monitors monitor = this.monitorBLL.getMonitorById(list.get(i).getMonitorId());
             data[i][7] = monitor.getModel();
 
-            Headphones headphone = this.headphoneBLL.getHeadphoneById(this.list.get(i).getHeadphoneId());
+            Headphones headphone = this.headphoneBLL.getHeadphoneById(list.get(i).getHeadphoneId());
             data[i][8] = headphone.getModel();
 
-            Roms rom = this.romBLL.getRomById(this.list.get(i).getRomId());
+            Roms rom = this.romBLL.getRomById(list.get(i).getRomId());
             data[i][9] = rom.getModel();
 
-            data[i][10] = this.list.get(i).getRoomId();
+            data[i][10] = list.get(i).getRoomId();
 
-            data[i][11] = this.list.get(i).getPricePerHour();
-            data[i][12] = this.list.get(i).getStatus();
+            data[i][11] = list.get(i).getPricePerHour();
+            data[i][12] = list.get(i).getStatus();
         }
 
-        CustomTable tableData = new CustomTable(new DefaultTableModel(data, columnNames));
+        return data;
+    }
+
+    private CustomPanel createManagePanel() {
+        CustomPanel panel = new CustomPanel();
+        panel.setLayout(null);
+
+        this.refreshAllDatas();
+        this.data = this.createData(this.list);
+        this.model = new DefaultTableModel(this.data, this.columnNames);
+
+        tableData = new CustomTable(this.model);
         tableData.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         AdjustTableWidth.automaticallyAdjustTableWidths(tableData);
         tableData.getColumnModel().getColumn(0).setPreferredWidth(100);
@@ -419,5 +460,17 @@ public class ComputerPanel extends JPanel{
         panel.add(deleteButton);
 
         return panel;
+    }
+
+    private void updateModel(Object[][] data) {
+        this.model = new DefaultTableModel(data, this.columnNames);
+
+    }
+
+    private void updateTable() {
+        this.tableData.setModel(this.model);
+        tableData.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        AdjustTableWidth.automaticallyAdjustTableWidths(tableData);
+        tableData.getColumnModel().getColumn(0).setPreferredWidth(100);
     }
 }

@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ComputerDAL {
 
@@ -24,12 +25,12 @@ public class ComputerDAL {
                         rs.getString("name"),
                         rs.getDouble("price_per_hour"),
                         rs.getInt("motherboard_id"),
-                        rs.getInt("mouse_id"),
-                        rs.getInt("keyboard_id"),
-                        rs.getInt("monitor_id"),
-                        rs.getInt("headphone_id"),
-                        rs.getInt("rom_id"),
-                        rs.getInt("room_id"),
+                        (Integer)rs.getObject("mouse_id"),
+                        (Integer)rs.getObject("keyboard_id"),
+                        (Integer)rs.getObject("monitor_id"),
+                        (Integer)rs.getObject("headphone_id"),
+                        (Integer)rs.getObject("rom_id"),
+                        (Integer)rs.getObject("room_id"),
                         rs.getString("status")
                 );
 
@@ -54,5 +55,25 @@ public class ComputerDAL {
         }
 
         return null;
+    }
+
+    public boolean updateComputerById(int id, HashMap<String, Object> newValues) {
+        if (newValues == null || newValues.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Không có dữ liệu", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        MySQLHelper helper = new MySQLHelper();
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "computers");
+        params.put("WHERE", "computers.computer_id = ?");
+
+        helper.buildingQueryParam(params);
+
+        ArrayList<Object> values = new ArrayList<>();
+        values.add(id);
+
+        return helper.updateData(newValues, values);
     }
 }

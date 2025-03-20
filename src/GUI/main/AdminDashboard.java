@@ -273,4 +273,6 @@ public class AdminDashboard extends JFrame {
 
         this.getContentPane().add(panel);
     }
+
+
 }

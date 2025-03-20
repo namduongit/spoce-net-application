@@ -6,13 +6,17 @@ import GUI.Components.CustomButton;
 import GUI.Components.CustomCombobox;
 import GUI.Components.CustomPanel;
 import GUI.Components.CustomTextField;
+import GUI.panels.ComputerPanel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class DetailsComputer extends JFrame {
     private JPanel content;
@@ -35,6 +39,14 @@ public class DetailsComputer extends JFrame {
     private HeadphoneBLL headphoneBLL;
     private RomBLL romBLL;
     private ArrayList<String> statusList;
+    private int currentMotherboardId;
+    private int currentMouseId;
+    private int currentKeyboardId;
+    private int currentMonitorId;
+    private int currentHeadphoneId;
+    private int currentRomId;
+    private int currentRoomId;
+    private String currentStatus;
 
     public DetailsComputer(Computers computer) {
         this.computer = computer;
@@ -44,6 +56,14 @@ public class DetailsComputer extends JFrame {
         this.monitorBLL = new MonitorBLL();
         this.headphoneBLL = new HeadphoneBLL();
         this.romBLL = new RomBLL();
+        this.currentMotherboardId = computer.getMotherboardId();
+        this.currentMouseId = computer.getMouseId();
+        this.currentKeyboardId = computer.getKeyboardId();
+        this.currentMonitorId = computer.getMonitorId();
+        this.currentHeadphoneId = computer.getHeadphoneId();
+        this.currentRomId = computer.getRomId();
+        this.currentRoomId = computer.getRoomId();
+        this.currentStatus = computer.getStatus();
         this.statusList = new ArrayList<>(Arrays.asList("Trong kho", "Đang sử dụng", "Thiếu linh kiện", "Bảo trì", "Hỏng"));
         this.initComponents();
     }
@@ -81,7 +101,7 @@ public class DetailsComputer extends JFrame {
         ArrayList<String> motherboardList = new ArrayList<>();
 
         for (Motherboards x : this.motherboardBLL.getMotherboardsByStatus("Trong kho")) {
-            motherboardList.add(x.getModel());
+            motherboardList.add(x.getMotherboardId() + ". " + x.getModel());
         }
 
         String motherboardName = new String();
@@ -94,25 +114,38 @@ public class DetailsComputer extends JFrame {
 
         motherboardList.add(0, "Đang chọn: " + motherboardName);
         motherboardCb = new CustomCombobox<>(motherboardList);
+        motherboardCb.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+
+            }
+        });
 
         JLabel mouseLabel = new JLabel("Chuột:");
         ArrayList<String> mouseList = new ArrayList<>();
         for (Mouse x : this.mouseBLL.getMousesByStatus("Trong kho")) {
-            mouseList.add(x.getModel());
+            mouseList.add(x.getMouseId() + ". " + x.getModel());
         }
-        String mouseName = new String();
-        for (Mouse x : this.mouseBLL.getAllMouses()) {
-            if (x.getMouseId() == this.computer.getMouseId()) {
-                mouseName = x.getModel();
+
+        if (this.computer.getMouseId() == null) {
+            mouseList.add(0, "Không gắn chuột");
+        } else {
+            String mouseName = new String();
+            for (Mouse x : this.mouseBLL.getAllMouses()) {
+                if (x.getMouseId() == this.computer.getMouseId()) {
+                    mouseName = x.getModel();
+                }
             }
+            mouseList.add(0, "Đang chọn: " + mouseName);
+            mouseList.add(1, "Gỡ chuột");
         }
-        mouseList.add(0, "Đang chọn: " + mouseName);
+
         mouseCb = new CustomCombobox<>(mouseList);
 
         JLabel keyboardLabel = new JLabel("Bàn phím:");
         ArrayList<String> keyboardList = new ArrayList<>();
         for (Keyboards x : this.keyboardBLL.getKeyboardsByStatus("Trong kho")) {
-            keyboardList.add(x.getModel());
+            keyboardList.add(x.getKeyboardId() + ". " + x.getModel());
         }
         String keyboardName = new String();
         for (Keyboards x : this.keyboardBLL.getAllKeyboards()) {
@@ -126,7 +159,7 @@ public class DetailsComputer extends JFrame {
         JLabel monitorLabel = new JLabel("Màn hình:");
         ArrayList<String> monitorList = new ArrayList<>();
         for (Monitors x : this.monitorBLL.getMonitorsByStatus("Trong kho")) {
-            monitorList.add(x.getModel());
+            monitorList.add(x.getMonitorId() + ". " + x.getModel());
         }
         String monitorName = new String();
         for (Monitors x : this.monitorBLL.getAllMonitors()) {
@@ -140,7 +173,7 @@ public class DetailsComputer extends JFrame {
         JLabel headphoneLabel = new JLabel("Tai nghe:");
         ArrayList<String> headphoneList = new ArrayList<>();
         for (Headphones x : this.headphoneBLL.getHeadphonesByStatus("Trong kho")) {
-            headphoneList.add(x.getModel());
+            headphoneList.add(x.getHeadphoneId() + ". " + x.getModel());
         }
         String headphoneName = new String();
         for (Headphones x : this.headphoneBLL.getAllHeadphones()) {
@@ -154,7 +187,7 @@ public class DetailsComputer extends JFrame {
         JLabel romLabel = new JLabel("Rom:");
         ArrayList<String> romList = new ArrayList<>();
         for (Roms x : this.romBLL.getRomsByStatus("Trong kho")) {
-            romList.add(x.getModel());
+            romList.add(x.getRomId() + ". " + x.getModel());
         }
         String romName = new String();
         for (Roms x : this.romBLL.getAllRoms()) {
@@ -187,14 +220,14 @@ public class DetailsComputer extends JFrame {
                 g.fillRect(0,0,getWidth(),getHeight());
             }
         };
-        separator.setBounds(270,215,2,250);
+        separator.setBounds(270,215,1,250);
 
         CustomButton saveBtn = Utils.Helper.CreateComponent.createBlueButton("Lưu lại");
         saveBtn.setBounds(20,495,100,30);
         saveBtn.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-
+                DetailsComputer.this.updateDatas();
             }
 
             @Override
@@ -311,6 +344,25 @@ public class DetailsComputer extends JFrame {
         panel.add(resetBtn);
 
         return panel;
+    }
+
+    public void updateDatas() {
+        HashMap<String, Object> newValues = new HashMap<>();
+        newValues.put("computer_id", this.idTextField.getText());
+        newValues.put("name", this.nameTextField.getText());
+        newValues.put("price_per_hour", Integer.parseInt(this.priceTextField.getText()));
+        newValues.put("motherboard_id", this.getIdFromString(this.motherboardCb.getSelectedItem().toString()));
+        newValues.put("mouse_id", this.getIdFromString(this.mouseCb.getSelectedItem().toString()));
+        newValues.put("keyboard_id", this.getIdFromString(this.keyboardCb.getSelectedItem().toString()));
+        newValues.put("monitor_id", this.getIdFromString(this.monitorCb.getSelectedItem().toString()));
+        newValues.put("headphone_id", this.getIdFromString(this.headphoneCb.getSelectedItem().toString()));
+        newValues.put("rom_id", this.getIdFromString(this.romCb.getSelectedItem().toString()));
+        newValues.put("status", this.statusCb.getSelectedItem());
+    }
+
+    public int getIdFromString(String str) {
+        String[] arr = str.split("\\.");
+        return Integer.parseInt(arr[0]);
     }
 
     public static void main(String[] args) {
