@@ -367,6 +367,14 @@ INSERT INTO foods (name, price, category_id, quantity, image) VALUES
 ('Rau câu dừa', 22000, 3, 25, 'rau-cau-dua.png'),
 ('Bánh mochi', 40000, 3, 10, 'banh-mochi.png');
 
+-- Thêm dữ liệu phòng
+INSERT INTO rooms (room_name, max_computers, type, status)
+VALUES ('Phòng chiến thắng', 20, 'Phòng thường', 'Trống'),
+       ('Phòng hủy diệt', 20, 'Phòng thường', 'Trống'),
+       ('Phòng bất bại', 20, 'Phòng thường', 'Trống'),
+       ('Phòng chiến tướng', 20, 'Phòng thường', 'Trống'),
+       ('Phòng thách đấu', 20, 'Phòng thường', 'Trống');
+
 -- Thêm dữ liệu cho bảng mouse
 INSERT INTO mouse(brand, model, purchase_date, warranty_expiry, status)
     VALUES ('Logitech', 'Logitech G102', '2025-03-14', '2026-03-14', 'Trong kho'),
@@ -733,27 +741,28 @@ INSERT INTO motherboard_storage (motherboard_id, storage_id)
            (20, 1);
 
 -- thêm dữ liệu vào bảng computers
-INSERT INTO computers (name, price_per_hour, motherboard_id, mouse_id, keyboard_id, monitor_id, headphone_id, rom_id, status)
-    VALUES ('Máy thường Spoce 1', 10000.00, 1, 1, 1, 1, 1, 1, 'Trong kho'),
-           ('Máy thường Spoce 2', 10000.00, 2, 2, 2, 2, 2, 2, 'Trong kho'),
-           ('Máy thường Spoce 3', 10000.00, 3, 3, 3, 3, 3, 3, 'Trong kho'),
-           ('Máy thường Spoce 4', 10000.00, 4, 4, 4, 4, 4, 4, 'Trong kho'),
-           ('Máy thường Spoce 5', 10000.00, 5, 5, 5, 5, 5, 5, 'Trong kho'),
-           ('Máy vip Spoce 1', 15000.00, 6, 6, 6, 6, 6, 6, 'Trong kho'),
-           ('Máy vip Spoce 2', 15000.00, 7, 7, 7, 7, 7, 7, 'Trong kho'),
-           ('Máy vip Spoce 3', 15000.00, 8, 8, 8, 8, 8, 8, 'Trong kho'),
-           ('Máy vip Spoce 4', 15000.00, 9, 9, 9, 9, 9, 9, 'Trong kho'),
-           ('Máy vip Spoce 5', 15000.00, 10, 10, 10, 10, 10, 10, 'Trong kho'),
-           ('Máy cao cấp Spoce 1', 20000.00, 11, 11, 11, 11, 11, 11, 'Trong kho'),
-           ('Máy cao cấp Spoce 2', 20000.00, 12, 12, 12, 12, 12, 12, 'Trong kho'),
-           ('Máy cao cấp Spoce 3', 20000.00, 13, 13, 13, 13, 13, 13, 'Trong kho'),
-           ('Máy cao cấp Spoce 4', 20000.00, 14, 14, 14, 14, 14, 14, 'Trong kho'),
-           ('Máy cao cấp Spoce 5', 20000.00, 15, 15, 15, 15, 15, 15, 'Trong kho'),
-           ('Siêu máy tính Spoce 1', 30000.00, 16, 16, 16, 16, 16, 16, 'Trong kho'),
-           ('Siêu máy tính Spoce 2', 30000.00, 17, 17, 17, 17, 17, 17, 'Trong kho'),
-           ('Siêu máy tính Spoce 3', 30000.00, 18, 18, 18, 18, 18, 18, 'Trong kho'),
-           ('Siêu máy tính Spoce 4', 30000.00, 19, 19, 19, 19, 19, 19, 'Trong kho'),
-           ('Siêu máy tính Spoce 5', 30000.00, 20, 20, 20, 20, 20, 20, 'Trong kho');
+INSERT INTO computers (name, price_per_hour, motherboard_id, mouse_id, keyboard_id, monitor_id, headphone_id, rom_id, room_id, status)
+    VALUES ('Máy thường Spoce 1', 10000.00, 1, 1, 1, 1, 1, 1, 1, 'Bảo trì'),
+           ('Máy thường Spoce 2', 10000.00, 2, 2, 2, 2, 2, 2, 1, 'Bảo trì'),
+           ('Máy thường Spoce 3', 10000.00, 3, 3, 3, 3, 3, 3, 1,  'Đang sử dụng'),
+           ('Máy thường Spoce 4', 10000.00, 4, 4, 4, 4, 4, 4, 1, 'Bảo trì'),
+           ('Máy thường Spoce 5', 10000.00, 5, 5, 5, 5, 5, 5, 1, 'Đang sử dụng'),
+           ('Máy vip Spoce 1', 15000.00, 6, 6, 6, 6, 6, 6, 1, 'Bảo trì'),
+           ('Máy vip Spoce 2', 15000.00, 7, 7, 7, 7, 7, 7, 1, 'Đang sử dụng'),
+           ('Máy vip Spoce 3', 15000.00, 8, 8, 8, 8, 8, 8, 1, 'Bảo trì'),
+           ('Máy vip Spoce 4', 15000.00, 9, 9, 9, 9, 9, 9, 1, 'Đang sử dụng'),
+           ('Máy vip Spoce 5', 15000.00, 10, 10, 10, 10, 10, 10, 1, 'Đang sử dụng'),
+           ('Máy cao cấp Spoce 1', 20000.00, 11, 11, 11, 11, 11, 11, 1, 'Bảo trì'),
+           ('Máy cao cấp Spoce 2', 20000.00, 12, 12, 12, 12, 12, 12, 1, 'Đang sử dụng'),
+           ('Máy cao cấp Spoce 3', 20000.00, 13, 13, 13, 13, 13, 13, 1, 'Bảo trì'),
+           ('Máy cao cấp Spoce 4', 20000.00, 14, 14, 14, 14, 14, 14, 1, 'Đang sử dụng'),
+           ('Máy cao cấp Spoce 5', 20000.00, 15, 15, 15, 15, 15, 15, 1, 'Đang sử dụng'),
+           ('Siêu máy tính Spoce 1', 30000.00, 16, 16, 16, 16, 16, 16, 1, 'Đang sử dụng'),
+           ('Siêu máy tính Spoce 2', 30000.00, 17, 17, 17, 17, 17, 17, 1, 'Bảo trì'),
+           ('Siêu máy tính Spoce 3', 30000.00, 18, 18, 18, 18, 18, 18, 1, 'Đang sử dụng'),
+           ('Siêu máy tính Spoce 4', 30000.00, 19, 19, 19, 19, 19, 19, 1, 'Đang sử dụng'),
+           ('Siêu máy tính Spoce 5', 30000.00, 20, 20, 20, 20, 20, 20, 1, 'Đang sử dụng');
+
 
 INSERT INTO accounts (username, password, role, status)
 VALUES
@@ -787,3 +796,41 @@ where staff_id = 1;
 update staffs
 set email = 'luanchenh192@gmail.com'
 where staff_id = 2;
+
+SET SQL_SAFE_UPDATES = 0;
+
+UPDATE mouse
+SET status = 'Đang sử dụng';
+
+UPDATE keyboards
+SET status = 'Đang sử dụng';
+
+UPDATE headphones
+SET status = 'Đang sử dụng';
+
+UPDATE monitors
+SET status = 'Đang sử dụng';
+
+UPDATE roms
+SET status = 'Đang sử dụng';
+
+UPDATE psus
+SET status = 'Đang sử dụng';
+
+UPDATE storages
+SET status = 'Đang sử dụng';
+
+UPDATE rams
+SET status = 'Đang sử dụng';
+
+UPDATE gpus
+SET status = 'Đang sử dụng';
+
+UPDATE cpus
+SET status = 'Đang sử dụng';
+
+UPDATE motherboards
+SET status = 'Đang sử dụng';
+
+UPDATE rams
+SET status = 'Đang sử dụng';

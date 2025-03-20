@@ -38,6 +38,7 @@ public class DetailsComputer extends JFrame {
     private MonitorBLL monitorBLL;
     private HeadphoneBLL headphoneBLL;
     private RomBLL romBLL;
+    private RoomBLL roomBLL;
     private ArrayList<String> statusList;
     private int currentMotherboardId;
     private int currentMouseId;
@@ -56,13 +57,14 @@ public class DetailsComputer extends JFrame {
         this.monitorBLL = new MonitorBLL();
         this.headphoneBLL = new HeadphoneBLL();
         this.romBLL = new RomBLL();
+        this.roomBLL = new RoomBLL();
         this.currentMotherboardId = computer.getMotherboardId();
-        this.currentMouseId = computer.getMouseId();
-        this.currentKeyboardId = computer.getKeyboardId();
-        this.currentMonitorId = computer.getMonitorId();
-        this.currentHeadphoneId = computer.getHeadphoneId();
-        this.currentRomId = computer.getRomId();
-        this.currentRoomId = computer.getRoomId();
+        this.currentMouseId = computer.getMouseId() == null ? 0 : computer.getMouseId();
+        this.currentKeyboardId = computer.getKeyboardId() == null ? 0 : computer.getKeyboardId();
+        this.currentMonitorId = computer.getMonitorId() == null ? 0 : computer.getMonitorId();
+        this.currentHeadphoneId = computer.getHeadphoneId() == null ? 0 : computer.getHeadphoneId();
+        this.currentRomId = computer.getRomId() == null ? 0 : computer.getRomId();
+        this.currentRoomId = computer.getRoomId() == null ? 0 : computer.getRoomId();
         this.currentStatus = computer.getStatus();
         this.statusList = new ArrayList<>(Arrays.asList("Trong kho", "Đang sử dụng", "Thiếu linh kiện", "Bảo trì", "Hỏng"));
         this.initComponents();
@@ -127,7 +129,7 @@ public class DetailsComputer extends JFrame {
             mouseList.add(x.getMouseId() + ". " + x.getModel());
         }
 
-        if (this.computer.getMouseId() == null) {
+        if (this.currentMouseId == 0) {
             mouseList.add(0, "Không gắn chuột");
         } else {
             String mouseName = new String();
@@ -147,13 +149,20 @@ public class DetailsComputer extends JFrame {
         for (Keyboards x : this.keyboardBLL.getKeyboardsByStatus("Trong kho")) {
             keyboardList.add(x.getKeyboardId() + ". " + x.getModel());
         }
-        String keyboardName = new String();
-        for (Keyboards x : this.keyboardBLL.getAllKeyboards()) {
-            if (x.getKeyboardId() == this.computer.getKeyboardId()) {
-                keyboardName = x.getModel();
+
+        if (this.currentKeyboardId == 0) {
+            keyboardList.add(0, "Không gắn bàn phím");
+        } else {
+            String keyboardName = new String();
+            for (Keyboards x : this.keyboardBLL.getAllKeyboards()) {
+                if (x.getKeyboardId() == this.computer.getKeyboardId()) {
+                    keyboardName = x.getModel();
+                }
             }
+            keyboardList.add(0, "Đang chọn: " + keyboardName);
+            keyboardList.add(1, "Gỡ bàn phím");
         }
-        keyboardList.add(0, "Đang chọn: " + keyboardName);
+
         keyboardCb = new CustomCombobox<>(keyboardList);
 
         JLabel monitorLabel = new JLabel("Màn hình:");
@@ -161,13 +170,21 @@ public class DetailsComputer extends JFrame {
         for (Monitors x : this.monitorBLL.getMonitorsByStatus("Trong kho")) {
             monitorList.add(x.getMonitorId() + ". " + x.getModel());
         }
-        String monitorName = new String();
-        for (Monitors x : this.monitorBLL.getAllMonitors()) {
-            if (x.getMonitorId() == this.computer.getMonitorId()) {
-                monitorName = x.getModel();
+
+        if (this.currentMonitorId == 0) {
+            monitorList.add(0, "Không gắn màn hình");
+        } else {
+            String monitorName = new String();
+            for (Monitors x : this.monitorBLL.getAllMonitors()) {
+                if (x.getMonitorId() == this.computer.getMonitorId()) {
+                    monitorName = x.getModel();
+                }
             }
+            monitorList.add(0, "Đang chọn: " + monitorName);
+            monitorList.add(1, "Gỡ màn hình");
         }
-        monitorList.add(0, "Đang chọn: " + monitorName);
+
+
         monitorCb = new CustomCombobox<>(monitorList);
 
         JLabel headphoneLabel = new JLabel("Tai nghe:");
@@ -175,13 +192,21 @@ public class DetailsComputer extends JFrame {
         for (Headphones x : this.headphoneBLL.getHeadphonesByStatus("Trong kho")) {
             headphoneList.add(x.getHeadphoneId() + ". " + x.getModel());
         }
-        String headphoneName = new String();
-        for (Headphones x : this.headphoneBLL.getAllHeadphones()) {
-            if (x.getHeadphoneId() == this.computer.getHeadphoneId()) {
-                headphoneName = x.getModel();
+
+        if (this.currentHeadphoneId == 0) {
+            headphoneList.add(0, "Không gắn tai nghe");
+        } else {
+            String headphoneName = new String();
+            for (Headphones x : this.headphoneBLL.getAllHeadphones()) {
+                if (x.getHeadphoneId() == this.computer.getHeadphoneId()) {
+                    headphoneName = x.getModel();
+                }
             }
+            headphoneList.add(0, "Đang chọn: " + headphoneName);
+            headphoneList.add(1, "Gỡ tai nghe");
         }
-        headphoneList.add(0, "Đang chọn: " + headphoneName);
+
+
         headphoneCb = new CustomCombobox<>(headphoneList);
 
         JLabel romLabel = new JLabel("Rom:");
@@ -189,17 +214,44 @@ public class DetailsComputer extends JFrame {
         for (Roms x : this.romBLL.getRomsByStatus("Trong kho")) {
             romList.add(x.getRomId() + ". " + x.getModel());
         }
-        String romName = new String();
-        for (Roms x : this.romBLL.getAllRoms()) {
-            if (x.getRomId() == this.computer.getRomId()) {
-                romName = x.getModel();
+
+        if (this.currentRomId == 0) {
+            romList.add(0, "Không gắn rom");
+        } else {
+            String romName = new String();
+            for (Roms x : this.romBLL.getAllRoms()) {
+                if (x.getRomId() == this.computer.getRomId()) {
+                    romName = x.getModel();
+                }
             }
+            romList.add(0, "Đang chọn: " + romName);
+            romList.add(1, "Gỡ rom");
         }
-        romList.add(0, "Đang chọn: " + romName);
+
+
         romCb = new CustomCombobox<>(romList);
 
         JLabel roomLabel = new JLabel("Phòng:");
         ArrayList<String> roomList = new ArrayList<>();
+        for (Rooms x : this.roomBLL.getRoomsByStatus("Trống")) {
+            if (x.getRoomId() != this.currentRoomId) {
+                roomList.add(x.getRoomId() + ". " + x.getRoomName());
+            }
+        }
+
+        if (this.currentRoomId == 0) {
+            roomList.add(0,"Không có phòng");
+        } else {
+            String roomName = new String();
+            for (Rooms x : this.roomBLL.getAllRooms()) {
+                if (x.getRoomId() == this.computer.getRoomId()) {
+                    roomName = x.getRoomName();
+                }
+            }
+            roomList.add(0, "Đang chọn: " + roomName);
+            roomList.add(1, "Tháo máy khỏi phòng hiện tại");
+        }
+
         roomCb = new CustomCombobox<>(roomList);
 
         JLabel statusLabel = new JLabel("Trạng thái:");
@@ -351,13 +403,69 @@ public class DetailsComputer extends JFrame {
         newValues.put("computer_id", this.idTextField.getText());
         newValues.put("name", this.nameTextField.getText());
         newValues.put("price_per_hour", Integer.parseInt(this.priceTextField.getText()));
-        newValues.put("motherboard_id", this.getIdFromString(this.motherboardCb.getSelectedItem().toString()));
-        newValues.put("mouse_id", this.getIdFromString(this.mouseCb.getSelectedItem().toString()));
-        newValues.put("keyboard_id", this.getIdFromString(this.keyboardCb.getSelectedItem().toString()));
-        newValues.put("monitor_id", this.getIdFromString(this.monitorCb.getSelectedItem().toString()));
-        newValues.put("headphone_id", this.getIdFromString(this.headphoneCb.getSelectedItem().toString()));
-        newValues.put("rom_id", this.getIdFromString(this.romCb.getSelectedItem().toString()));
-        newValues.put("status", this.statusCb.getSelectedItem());
+
+        if (!this.motherboardCb.getSelectedItem().toString().contains("Đang chọn:")) {
+            newValues.put("motherboard_id", this.getIdFromString(this.motherboardCb.getSelectedItem().toString()));
+        }
+
+        if (!this.mouseCb.getSelectedItem().toString().contains("Đang chọn:")) {
+            if (this.mouseCb.getSelectedItem().toString().equals("Gỡ chuột")) {
+                newValues.put("mouse_id", null);
+            } else {
+                newValues.put("mouse_id", this.getIdFromString(this.mouseCb.getSelectedItem().toString()));
+            }
+        }
+
+        if (!this.keyboardCb.getSelectedItem().toString().contains("Đang chọn:")) {
+            if (this.keyboardCb.getSelectedItem().toString().equals("Gỡ bàn phím")) {
+                newValues.put("keyboard_id", null);
+            } else {
+                newValues.put("keyboard_id", this.getIdFromString(this.keyboardCb.getSelectedItem().toString()));
+            }
+        }
+
+        if (!this.monitorCb.getSelectedItem().toString().contains("Đang chọn:")) {
+            if (this.monitorCb.getSelectedItem().toString().equals("Gỡ màn hình")) {
+                newValues.put("monitor_id", null);
+            } else {
+                newValues.put("monitor_id", this.getIdFromString(this.monitorCb.getSelectedItem().toString()));
+            }
+        }
+
+        if (!this.headphoneCb.getSelectedItem().toString().contains("Đang chọn:")) {
+            if (this.headphoneCb.getSelectedItem().toString().equals("Gỡ tai nghe")) {
+                newValues.put("headphone_id", null);
+            } else {
+                newValues.put("headphone_id", this.getIdFromString(this.headphoneCb.getSelectedItem().toString()));
+            }
+        }
+
+        if (!this.romCb.getSelectedItem().toString().contains("Đang chọn:")) {
+            if (this.romCb.getSelectedItem().toString().equals("Gỡ rom")) {
+                newValues.put("rom_id", null);
+            } else {
+                newValues.put("rom_id", this.getIdFromString(this.romCb.getSelectedItem().toString()));
+            }
+        }
+
+        if (!this.roomCb.getSelectedItem().toString().contains("Đang chọn:")) {
+            if (this.roomCb.getSelectedItem().toString().equals("Tháo máy khỏi phòng hiện tại")) {
+                newValues.put("room_id", null);
+            } else {
+                newValues.put("room_id", this.getIdFromString(this.roomCb.getSelectedItem().toString()));
+            }
+        }
+
+        if (!this.statusCb.getSelectedItem().toString().contains("Đang chọn:")) {
+            newValues.put("status", this.statusCb.getSelectedItem().toString());
+        }
+
+        boolean result = new ComputerBLL().updateComputerById(this.computer.getComputerId(), newValues);
+        if (result) {
+            JOptionPane.showMessageDialog(null, "Cập nhật thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Cập nhật thất bại!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     public int getIdFromString(String str) {

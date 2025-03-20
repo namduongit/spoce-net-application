@@ -3,7 +3,7 @@ package DTO;
 public class Computers {
     private int computerId;
     private String name;
-    private double pricePerHour;
+    private int pricePerHour;
     private int motherboardId;
     private Integer mouseId;
     private Integer keyboardId;
@@ -17,7 +17,7 @@ public class Computers {
     public Computers() {}
 
     // Constructor có tham số
-    public Computers(int computerId, String name, double pricePerHour, int motherboardId, Integer mouseId, Integer keyboardId, Integer monitorId, Integer headphoneId, Integer romId, Integer roomId, String status) {
+    public Computers(int computerId, String name, int pricePerHour, int motherboardId, Integer mouseId, Integer keyboardId, Integer monitorId, Integer headphoneId, Integer romId, Integer roomId, String status) {
         this.computerId = computerId;
         this.name = name;
         this.pricePerHour = pricePerHour;
@@ -48,11 +48,11 @@ public class Computers {
         this.name = name;
     }
 
-    public double getPricePerHour() {
+    public int getPricePerHour() {
         return pricePerHour;
     }
 
-    public void setPricePerHour(double pricePerHour) {
+    public void setPricePerHour(int pricePerHour) {
         this.pricePerHour = pricePerHour;
     }
 

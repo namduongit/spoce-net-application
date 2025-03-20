@@ -15,7 +15,7 @@ public class AdjustTableWidth {
             headerWidth = metrics.stringWidth(header) + 10;
 
             for (int j=0; j<table.getRowCount(); j++) {
-                String value = table.getValueAt(j, i).toString();
+                String value = table.getValueAt(j, i) == null ? "" : table.getValueAt(j, i).toString();
                 int valueWidth = metrics.stringWidth(value) + 10;
                 width = Math.max(width, valueWidth);
             }

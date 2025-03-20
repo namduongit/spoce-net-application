@@ -23,7 +23,7 @@ public class ComputerDAL {
                 Computers computer = new Computers(
                         rs.getInt("computer_id"),
                         rs.getString("name"),
-                        rs.getDouble("price_per_hour"),
+                        rs.getInt("price_per_hour"),
                         rs.getInt("motherboard_id"),
                         (Integer)rs.getObject("mouse_id"),
                         (Integer)rs.getObject("keyboard_id"),

@@ -5,26 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="62dcb59d-8ce0-47e1-a5ea-b8e40b7265e0" name="Changes" comment="SQL">
-      <change afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/HardwarePanel$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/HardwarePanel$2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/HardwarePanel$3.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/HardwarePanel$4.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/HardwarePanel$5.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/HardwarePanel$6.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/BLL/RoomBLL.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DAL/RoomDAL.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/main/AdminDashboard$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/main/AdminDashboard$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/main/AdminDashboard$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/main/AdminDashboard$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/main/AdminDashboard.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/main/AdminDashboard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/main/AdminDashboard$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/main/AdminDashboard$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/main/AdminDashboard$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/main/AdminDashboard$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/main/AdminDashboard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/main/AdminDashboard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/HardwarePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/HardwarePanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/create_table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/create_table.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/DetailsComputer$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/DetailsComputer$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/DetailsComputer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/DetailsComputer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/main/AdminLoginScreen$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/main/AdminLoginScreen$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/main/ForgetPass.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Utils/Config/ConfigSQL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/Utils/Config/ConfigSQL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/main/AdminDashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/main/AdminDashboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/main/ForgetPass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/main/ForgetPass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/panels/HardwarePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/panels/HardwarePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Utils/Helper/AdjustTableWidth.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/Utils/Helper/AdjustTableWidth.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Utils/Helper/SendEmail$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Utils/Helper/SendEmail.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DAL/ComputerDAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/ComputerDAL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DTO/Computers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/Computers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Form/DetailsComputer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Form/DetailsComputer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/main/AdminLoginScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/main/AdminLoginScreen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Utils/Config/ConfigSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/Config/ConfigSQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/Helper/SendEmail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/Helper/SendEmail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils/Helper/AdjustTableWidth.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/Helper/AdjustTableWidth.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +73,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "Merging main",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Caidat/hoctap/hk2 - nam 2/java/project/spoce-net-application",

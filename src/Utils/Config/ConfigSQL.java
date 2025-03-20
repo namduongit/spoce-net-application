@@ -13,7 +13,7 @@ public class ConfigSQL {
     public static String PASSWORDServer = "SpoceTech";
     public static String URLServer = "jdbc:mysql://128.199.154.64:3306/net_gaming_management";
     public static String USER_NAME = "root";
-    public static String PASSWORD = "";
+    public static String PASSWORD = "123456";
     public static String URL = "jdbc:mysql://localhost:3306/net_gaming_management";
 
 

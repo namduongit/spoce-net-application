@@ -126,7 +126,7 @@ public class AdminLoginScreen extends JFrame {
         forgotPassword.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new ForgetPass().setVisible(true);
+//                new ForgetPass().setVisible(true);
             }
         });
 
