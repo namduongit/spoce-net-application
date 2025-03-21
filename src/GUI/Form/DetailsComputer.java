@@ -405,50 +405,117 @@ public class DetailsComputer extends JFrame {
         newValues.put("price_per_hour", Integer.parseInt(this.priceTextField.getText()));
 
         if (!this.motherboardCb.getSelectedItem().toString().contains("Đang chọn:")) {
-            newValues.put("motherboard_id", this.getIdFromString(this.motherboardCb.getSelectedItem().toString()));
+            int newMotherboardId = this.getIdFromString(this.motherboardCb.getSelectedItem().toString());
+            newValues.put("motherboard_id", newMotherboardId);
+
+
+            HashMap<String, Object> oldMotherboardValues = new HashMap<>();
+            oldMotherboardValues.put("status", "Trong kho");
+            this.motherboardBLL.updateMotherboardById(this.currentMotherboardId, oldMotherboardValues);
+
+
+            HashMap<String, Object> newMotherboardValues = new HashMap<>();
+            oldMotherboardValues.put("status", "Đang sử dụng");
+            this.motherboardBLL.updateMotherboardById(newMotherboardId, oldMotherboardValues);
         }
 
-        if (!this.mouseCb.getSelectedItem().toString().contains("Đang chọn:")) {
+        if (!this.mouseCb.getSelectedItem().toString().contains("Đang chọn:") && !this.mouseCb.getSelectedItem().toString().contains("Không gắn chuột")) {
+
+            HashMap<String, Object> oldMouseValues = new HashMap<>();
+            oldMouseValues.put("status", "Trong kho");
+            this.mouseBLL.updateMouseById(this.currentMouseId, oldMouseValues);
+
             if (this.mouseCb.getSelectedItem().toString().equals("Gỡ chuột")) {
+
                 newValues.put("mouse_id", null);
+
             } else {
-                newValues.put("mouse_id", this.getIdFromString(this.mouseCb.getSelectedItem().toString()));
+
+                int newMouseId = this.getIdFromString(this.mouseCb.getSelectedItem().toString());
+                newValues.put("mouse_id", newMouseId);
+
+                HashMap<String, Object> newMouseValues = new HashMap<>();
+                newMouseValues.put("status", "Đang sử dụng");
+                this.mouseBLL.updateMouseById(newMouseId, newMouseValues);
+
             }
         }
 
-        if (!this.keyboardCb.getSelectedItem().toString().contains("Đang chọn:")) {
+        if (!this.keyboardCb.getSelectedItem().toString().contains("Đang chọn:") && !this.keyboardCb.getSelectedItem().toString().contains("Không gắn bàn phím")) {
+
+            HashMap<String, Object> oldKeyboardValues = new HashMap<>();
+            oldKeyboardValues.put("status", "Trong kho");
+            this.keyboardBLL.updateKeyboardById(this.currentKeyboardId, oldKeyboardValues);
+
             if (this.keyboardCb.getSelectedItem().toString().equals("Gỡ bàn phím")) {
+
                 newValues.put("keyboard_id", null);
+
             } else {
-                newValues.put("keyboard_id", this.getIdFromString(this.keyboardCb.getSelectedItem().toString()));
+                int newKeyboardId = this.getIdFromString(this.keyboardCb.getSelectedItem().toString());
+                newValues.put("keyboard_id", newKeyboardId);
+
+                HashMap<String, Object> newKeyboardValues = new HashMap<>();
+                newKeyboardValues.put("status", "Đang sử dụng");
+                this.keyboardBLL.updateKeyboardById(newKeyboardId, newKeyboardValues);
             }
         }
 
-        if (!this.monitorCb.getSelectedItem().toString().contains("Đang chọn:")) {
+        if (!this.monitorCb.getSelectedItem().toString().contains("Đang chọn:") && !this.monitorCb.getSelectedItem().toString().contains("Không gắn màn hình")) {
+
+            HashMap<String, Object> oldMonitorValues = new HashMap<>();
+            oldMonitorValues.put("status", "Trong kho");
+            this.monitorBLL.updateMonitorById(this.currentMonitorId, oldMonitorValues);
+
             if (this.monitorCb.getSelectedItem().toString().equals("Gỡ màn hình")) {
                 newValues.put("monitor_id", null);
             } else {
-                newValues.put("monitor_id", this.getIdFromString(this.monitorCb.getSelectedItem().toString()));
+                int newMonitorId = this.getIdFromString(this.monitorCb.getSelectedItem().toString());
+                newValues.put("monitor_id", newMonitorId);
+
+                HashMap<String, Object> newMonitorValues = new HashMap<>();
+                newMonitorValues.put("status", "Đang sử dụng");
+                this.monitorBLL.updateMonitorById(newMonitorId, newMonitorValues);
             }
         }
 
-        if (!this.headphoneCb.getSelectedItem().toString().contains("Đang chọn:")) {
+        if (!this.headphoneCb.getSelectedItem().toString().contains("Đang chọn:") && !this.headphoneCb.getSelectedItem().toString().contains("Không gắn tai nghe")) {
+
+            HashMap<String, Object> oldHeadphoneValues = new HashMap<>();
+            oldHeadphoneValues.put("status", "Trong kho");
+            this.headphoneBLL.updateHeadphoneById(this.currentHeadphoneId, oldHeadphoneValues);
+
             if (this.headphoneCb.getSelectedItem().toString().equals("Gỡ tai nghe")) {
                 newValues.put("headphone_id", null);
             } else {
-                newValues.put("headphone_id", this.getIdFromString(this.headphoneCb.getSelectedItem().toString()));
+                int newHeadphoneId = this.getIdFromString(this.headphoneCb.getSelectedItem().toString());
+                newValues.put("headphone_id", newHeadphoneId);
+
+                HashMap<String, Object> newHeadphoneValues = new HashMap<>();
+                newHeadphoneValues.put("status", "Đang sử dụng");
+                this.headphoneBLL.updateHeadphoneById(newHeadphoneId, newHeadphoneValues);
             }
         }
 
-        if (!this.romCb.getSelectedItem().toString().contains("Đang chọn:")) {
+        if (!this.romCb.getSelectedItem().toString().contains("Đang chọn:") && !this.romCb.getSelectedItem().toString().contains("Không gắn rom")) {
+
+            HashMap<String, Object> oldRomValues = new HashMap<>();
+            oldRomValues.put("status", "Trong kho");
+            this.romBLL.updateRomById(this.currentRomId, oldRomValues);
+
             if (this.romCb.getSelectedItem().toString().equals("Gỡ rom")) {
                 newValues.put("rom_id", null);
             } else {
-                newValues.put("rom_id", this.getIdFromString(this.romCb.getSelectedItem().toString()));
+                int newRomId = this.getIdFromString(this.romCb.getSelectedItem().toString());
+                newValues.put("rom_id", newRomId);
+
+                HashMap<String, Object> newRomValues = new HashMap<>();
+                newRomValues.put("status", "Đang sử dụng");
+                this.romBLL.updateRomById(newRomId, newRomValues);
             }
         }
 
-        if (!this.roomCb.getSelectedItem().toString().contains("Đang chọn:")) {
+        if (!this.roomCb.getSelectedItem().toString().contains("Đang chọn:") && !this.roomCb.getSelectedItem().toString().contains("Không có phòng")) {
             if (this.roomCb.getSelectedItem().toString().equals("Tháo máy khỏi phòng hiện tại")) {
                 newValues.put("room_id", null);
             } else {

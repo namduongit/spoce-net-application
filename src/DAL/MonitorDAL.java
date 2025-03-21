@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MonitorDAL {
 
@@ -60,5 +61,19 @@ public class MonitorDAL {
         }
 
         return arr;
+    }
+
+    public boolean updateMonitorById(int id, HashMap<String, Object> newvalues) {
+        MySQLHelper helper = new MySQLHelper();
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "monitors");
+        params.put("WHERE", "monitors.monitor_id = ?");
+        helper.buildingQueryParam(params);
+
+        ArrayList<Object> values = new ArrayList<>();
+        values.add(id);
+
+        return helper.updateData(newvalues, values);
     }
 }

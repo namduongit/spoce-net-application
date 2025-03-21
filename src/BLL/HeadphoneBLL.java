@@ -6,6 +6,7 @@ import DAL.HeadphoneDAL;
 import DTO.Headphones;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class HeadphoneBLL {
     private HeadphoneDAL headphoneDAL;
@@ -24,5 +25,9 @@ public class HeadphoneBLL {
 
     public ArrayList<Headphones> getHeadphonesByStatus(String status) {
         return this.headphoneDAL.getHeadphonesByStatus(status);
+    }
+
+    public boolean updateHeadphoneById(int id, HashMap<String, Object> newvalues) {
+        return this.headphoneDAL.updateHeadphoneById(id, newvalues);
     }
 }

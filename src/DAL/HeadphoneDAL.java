@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class HeadphoneDAL {
 
@@ -59,5 +60,19 @@ public class HeadphoneDAL {
         }
 
         return arr;
+    }
+
+    public boolean updateHeadphoneById(int id, HashMap<String, Object> newvalues) {
+        MySQLHelper helper = new MySQLHelper();
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "headphones");
+        params.put("WHERE", "headphones.headphone_id = ?");
+        helper.buildingQueryParam(params);
+
+        ArrayList<Object> values = new ArrayList<>();
+        values.add(id);
+
+        return helper.updateData(newvalues, values);
     }
 }

@@ -5,6 +5,7 @@ import DTO.Monitors;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MonitorBLL {
     private MonitorDAL monitorDAL;
@@ -23,5 +24,9 @@ public class MonitorBLL {
 
     public ArrayList<Monitors> getMonitorsByStatus(String status) {
         return this.monitorDAL.getMonitorsByStatus(status);
+    }
+
+    public boolean updateMonitorById(int id, HashMap<String, Object> newvalues) {
+        return this.monitorDAL.updateMonitorById(id, newvalues);
     }
 }

@@ -152,4 +152,18 @@ public class MotherboardDAL {
 
         return arr;
     }
+
+    public boolean updateMotherboardById(int id, HashMap<String, Object> newvalues) {
+        MySQLHelper helper = new MySQLHelper();
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "motherboards");
+        params.put("WHERE", "motherboards.motherboard_id = ?");
+        helper.buildingQueryParam(params);
+
+        ArrayList<Object> values = new ArrayList<>();
+        values.add(id);
+
+        return helper.updateData(newvalues, values);
+    }
 }

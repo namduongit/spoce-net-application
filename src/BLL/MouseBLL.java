@@ -4,6 +4,7 @@ import DAL.MouseDAL;
 import DTO.Mouse;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MouseBLL {
     private MouseDAL mouseDAL;
@@ -22,5 +23,9 @@ public class MouseBLL {
 
     public ArrayList<Mouse> getMousesByStatus(String status) {
         return this.mouseDAL.getMousesByStatus(status);
+    }
+
+    public boolean updateMouseById(int id, HashMap<String, Object> newvalues) {
+        return this.mouseDAL.updateMouseById(id, newvalues);
     }
 }

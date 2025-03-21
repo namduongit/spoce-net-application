@@ -6,6 +6,7 @@ import DAL.RomDAL;
 import DTO.Roms;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class RomBLL {
     private RomDAL romDAL;
@@ -24,5 +25,9 @@ public class RomBLL {
 
     public ArrayList<Roms> getRomsByStatus(String status) {
         return this.romDAL.getRomsByStatus(status);
+    }
+
+    public boolean updateRomById(int id, HashMap<String, Object> newvalues) {
+        return this.romDAL.updateRomById(id, newvalues);
     }
 }

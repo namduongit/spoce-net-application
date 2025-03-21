@@ -6,6 +6,7 @@ import DAL.KeyboardDAL;
 import DTO.Keyboards;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class KeyboardBLL {
     private KeyboardDAL keyboardDAL;
@@ -24,5 +25,9 @@ public class KeyboardBLL {
 
     public ArrayList<Keyboards> getKeyboardsByStatus(String status) {
         return this.keyboardDAL.getKeyboardsByStatus(status);
+    }
+
+    public boolean updateKeyboardById(int id, HashMap<String, Object> newvalues) {
+        return this.keyboardDAL.updateKeyboardById(id, newvalues);
     }
 }

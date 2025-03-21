@@ -31,6 +31,7 @@ public class ComputerPanel extends JPanel{
     private MonitorBLL monitorBLL;
     private HeadphoneBLL headphoneBLL;
     private RomBLL romBLL;
+    private RoomBLL roomBLL;
     private ArrayList<Computers> list;
     private Object[][] data;
     private DefaultTableModel model;
@@ -47,18 +48,19 @@ public class ComputerPanel extends JPanel{
         this.monitorBLL = new MonitorBLL();
         this.headphoneBLL = new HeadphoneBLL();
         this.romBLL = new RomBLL();
+        this.roomBLL = new RoomBLL();
         this.list = this.computerBLL.getAllComputers();
         this.columnNames = new String[]{
                 "ID",
                 "Tên máy tính",
-                "Bo mạch chủ",
-                "CPU",
-                "GPU",
-                "Chuột",
-                "Bàn phím",
-                "Màn hình",
-                "Tai nghe",
-                "ROM",
+//                "Bo mạch chủ",
+//                "CPU",
+//                "GPU",
+//                "Chuột",
+//                "Bàn phím",
+//                "Màn hình",
+//                "Tai nghe",
+//                "ROM",
                 "Phòng",
                 "Giá tiền",
                 "Trạng thái"};
@@ -157,9 +159,7 @@ public class ComputerPanel extends JPanel{
                 if (status.equals("Tất cả")) {
 
                     Object[][] data = ComputerPanel.this.createData(ComputerPanel.this.list);
-                    ComputerPanel.this.updateModel(data);
-                    ComputerPanel.this.tableData.setModel(ComputerPanel.this.model);
-                    ComputerPanel.this.updateTable();
+                    ComputerPanel.this.updateTable(data);
 
                 } else {
                     ArrayList<Computers> filteredList = new ArrayList<>();
@@ -169,9 +169,7 @@ public class ComputerPanel extends JPanel{
                         }
                     }
                     Object[][] data = ComputerPanel.this.createData(filteredList);
-                    ComputerPanel.this.updateModel(data);
-                    ComputerPanel.this.tableData.setModel(ComputerPanel.this.model);
-                    ComputerPanel.this.updateTable();
+                    ComputerPanel.this.updateTable(data);
                 }
             }
 
@@ -271,40 +269,41 @@ public class ComputerPanel extends JPanel{
 
 
     private Object[][] createData(ArrayList<Computers> list) {
-        Object[][] data = new Object[list.size()][13];
+        Object[][] data = new Object[list.size()][5];
 
         for (int i=0; i<list.size(); i++) {
             data[i][0] = list.get(i).getComputerId();
             data[i][1] = list.get(i).getName();
 
-            Motherboards motherboard = this.motherboardBLL.getMotherboardById(list.get(i).getComputerId());
-            data[i][2] = motherboard.getModel();
+//            Motherboards motherboard = this.motherboardBLL.getMotherboardById(list.get(i).getMotherboardId());
+//            data[i][2] = motherboard.getModel();
 
-            Cpus cpu = this.cpuBLL.getCpuById(motherboard.getCpuId());
-            data[i][3] = cpu.getModel();
+//            Cpus cpu = this.cpuBLL.getCpuById(motherboard.getCpuId());
+//            data[i][3] = cpu.getModel();
+//
+//            Gpus gpu = this.gpuBLL.getGpubyId(motherboard.getGpuId());
+//            data[i][4] = gpu.getModel();
+//
+//            Mouse mouse = this.mouseBLL.getMouseById(list.get(i).getMouseId());
+//            data[i][5] = mouse.getModel();
+//
+//            Keyboards keyboard = this.keyboardBLL.getKeyboardById(list.get(i).getKeyboardId());
+//            data[i][6] = keyboard.getModel();
+//
+//            Monitors monitor = this.monitorBLL.getMonitorById(list.get(i).getMonitorId());
+//            data[i][7] = monitor.getModel();
+//
+//            Headphones headphone = this.headphoneBLL.getHeadphoneById(list.get(i).getHeadphoneId());
+//            data[i][8] = headphone.getModel();
+//
+//            Roms rom = this.romBLL.getRomById(list.get(i).getRomId());
+//            data[i][9] = rom.getModel();
 
-            Gpus gpu = this.gpuBLL.getGpubyId(motherboard.getGpuId());
-            data[i][4] = gpu.getModel();
 
-            Mouse mouse = this.mouseBLL.getMouseById(list.get(i).getMouseId());
-            data[i][5] = mouse.getModel();
+            data[i][2] = list.get(i).getRoomId() == null ? "Không có Phòng" : this.roomBLL.getRoomById(list.get(i).getRoomId()).getRoomName();
 
-            Keyboards keyboard = this.keyboardBLL.getKeyboardById(list.get(i).getKeyboardId());
-            data[i][6] = keyboard.getModel();
-
-            Monitors monitor = this.monitorBLL.getMonitorById(list.get(i).getMonitorId());
-            data[i][7] = monitor.getModel();
-
-            Headphones headphone = this.headphoneBLL.getHeadphoneById(list.get(i).getHeadphoneId());
-            data[i][8] = headphone.getModel();
-
-            Roms rom = this.romBLL.getRomById(list.get(i).getRomId());
-            data[i][9] = rom.getModel();
-
-            data[i][10] = list.get(i).getRoomId();
-
-            data[i][11] = list.get(i).getPricePerHour();
-            data[i][12] = list.get(i).getStatus();
+            data[i][3] = list.get(i).getPricePerHour() + "đ";
+            data[i][4] = list.get(i).getStatus();
         }
 
         return data;
@@ -462,12 +461,10 @@ public class ComputerPanel extends JPanel{
         return panel;
     }
 
-    private void updateModel(Object[][] data) {
+    private void updateTable(Object[][] data) {
+
         this.model = new DefaultTableModel(data, this.columnNames);
 
-    }
-
-    private void updateTable() {
         this.tableData.setModel(this.model);
         tableData.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         AdjustTableWidth.automaticallyAdjustTableWidths(tableData);

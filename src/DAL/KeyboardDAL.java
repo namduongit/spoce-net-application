@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class KeyboardDAL {
 
@@ -58,5 +59,19 @@ public class KeyboardDAL {
         }
 
         return arr;
+    }
+
+    public boolean updateKeyboardById(int id, HashMap<String, Object> newvalues) {
+        MySQLHelper helper = new MySQLHelper();
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "keyboards");
+        params.put("WHERE", "keyboards.keyboard_id = ?");
+        helper.buildingQueryParam(params);
+
+        ArrayList<Object> values = new ArrayList<>();
+        values.add(id);
+
+        return helper.updateData(newvalues, values);
     }
 }

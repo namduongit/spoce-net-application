@@ -4,6 +4,7 @@ import DAL.MotherboardDAL;
 import DTO.Motherboards;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MotherboardBLL {
     private MotherboardDAL motherboardDAL;
@@ -26,5 +27,9 @@ public class MotherboardBLL {
 
     public ArrayList<Motherboards> getMotherboardsByStatus(String status) {
         return this.motherboardDAL.getMotherboardsByStatus(status);
+    }
+
+    public boolean updateMotherboardById(int id, HashMap<String, Object> newvalues) {
+        return this.motherboardDAL.updateMotherboardById(id, newvalues);
     }
 }

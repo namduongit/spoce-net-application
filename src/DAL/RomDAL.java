@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class RomDAL {
 
@@ -60,5 +61,19 @@ public class RomDAL {
         }
 
         return arr;
+    }
+
+    public boolean updateRomById(int id, HashMap<String, Object> newvalues) {
+        MySQLHelper helper = new MySQLHelper();
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "roms");
+        params.put("WHERE", "roms.rom_id = ?");
+        helper.buildingQueryParam(params);
+
+        ArrayList<Object> values = new ArrayList<>();
+        values.add(id);
+
+        return helper.updateData(newvalues, values);
     }
 }
