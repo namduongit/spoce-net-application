@@ -24,4 +24,8 @@ public class ComputerBLL {
     public boolean updateComputerById(int id, HashMap<String, Object> newValues) {
         return this.computerDAL.updateComputerById(id,newValues);
     }
+
+    public boolean deleteComputerById(int id) {
+        return this.computerDAL.deleteComputerById(id);
+    }
 }

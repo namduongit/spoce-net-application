@@ -14,6 +14,9 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.stream.Collectors;
+import java.util.List;
 
 public class ComputerPanel extends JPanel{
     private CardLayout cardLayout;
@@ -22,6 +25,8 @@ public class ComputerPanel extends JPanel{
     private JPanel dataPanel;
     private int selectedItemIndex;
     private JLabel selectionText;
+    private CustomCombobox<String> statusComboBox;
+    private CustomTextField searchTextField;
     private ComputerBLL computerBLL;
     private MotherboardBLL motherboardBLL;
     private CpuBLL cpuBLL;
@@ -112,7 +117,7 @@ public class ComputerPanel extends JPanel{
         JLabel searchLabel = new JLabel("Tìm kiếm:");
         searchLabel.setBounds(20, 75, 80, 30);
 
-        CustomTextField searchTextField = new CustomTextField("Nhập thông tin tìm kiếm");
+        searchTextField = new CustomTextField("Nhập thông tin tìm kiếm");
         searchTextField.setBounds(90, 73, 200, 35);
         searchTextField.addFocusListener(new FocusListener() {
 
@@ -135,7 +140,7 @@ public class ComputerPanel extends JPanel{
         filterLabel.setBounds(330, 75, 70, 30);
 
         String[] statusList = {"Tất cả" , "Trong kho", "Đang sử dụng", "Thiếu linh kiện", "Bảo trì", "Hỏng"};
-        CustomCombobox<String> statusComboBox = new CustomCombobox<>(statusList);
+        statusComboBox = new CustomCombobox<>(statusList);
         statusComboBox.setBounds(405, 73, 150, 35);
         statusComboBox.addItemListener(new ItemListener() {
             @Override
@@ -154,25 +159,8 @@ public class ComputerPanel extends JPanel{
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                String status = statusComboBox.getSelectedItem().toString();
-                ComputerPanel.this.refreshAllDatas();
-                if (status.equals("Tất cả")) {
-
-                    Object[][] data = ComputerPanel.this.createData(ComputerPanel.this.list);
-                    ComputerPanel.this.updateTable(data);
-
-                } else {
-                    ArrayList<Computers> filteredList = new ArrayList<>();
-                    for (Computers x : ComputerPanel.this.list) {
-                        if (x.getStatus().equals(status)) {
-                            filteredList.add(x);
-                        }
-                    }
-                    Object[][] data = ComputerPanel.this.createData(filteredList);
-                    ComputerPanel.this.updateTable(data);
-                }
+                ComputerPanel.this.filterList();
             }
-
             @Override
             public void mousePressed(MouseEvent e) {
 
@@ -424,7 +412,12 @@ public class ComputerPanel extends JPanel{
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (tableData.getSelectedRow() != -1) {
-
+                    boolean isDone = ComputerPanel.this.computerBLL.deleteComputerById((int)tableData.getValueAt(tableData.getSelectedRow(), 0));
+                    if (isDone) {
+                        JOptionPane.showMessageDialog(null, "Xóa máy tính thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Xóa máy tính thất bại!", "Lỗi", JOptionPane.WARNING_MESSAGE);
+                    }
                 } else {
                     JOptionPane.showMessageDialog(null, "Bạn chưa chọn máy tính", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                 }
@@ -468,6 +461,35 @@ public class ComputerPanel extends JPanel{
         this.tableData.setModel(this.model);
         tableData.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         AdjustTableWidth.automaticallyAdjustTableWidths(tableData);
-        tableData.getColumnModel().getColumn(0).setPreferredWidth(100);
+        tableData.getColumnModel()
+                .getColumn(0)
+                .setPreferredWidth(100);
+    }
+
+    private void filterList() {
+        String textFieldContent = this.searchTextField.getText().trim().equals("Nhập thông tin tìm kiếm") ? "" : this.searchTextField.getText().trim();
+        String status = this.statusComboBox
+                            .getSelectedItem()
+                            .toString();
+
+        if (textFieldContent.isEmpty() && status.equals("Tất cả")) {
+            this.refreshAllDatas();
+            Object[][] data = this.createData(this.list);
+            this.updateTable(data);
+        } else {
+            this.filterListOnNameAndStatus(textFieldContent, status);
+        }
+    }
+
+    private void filterListOnNameAndStatus(String name, String status) {
+        this.refreshAllDatas();
+        List<Computers> filteredList = this.list.stream()
+                                            .filter(computer -> name.isEmpty() || computer.getName().toLowerCase().contains(name))
+                                            .filter(computer -> status.equals("Tất cả") || computer.getStatus().equals(status))
+                                            .collect(Collectors.toList());
+
+        this.list = new ArrayList(filteredList);
+        Object[][] data = this.createData(this.list);
+        this.updateTable(data);
     }
 }

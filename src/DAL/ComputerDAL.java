@@ -76,4 +76,18 @@ public class ComputerDAL {
 
         return helper.updateData(newValues, values);
     }
+
+    public boolean deleteComputerById(int id) {
+        MySQLHelper helper = new MySQLHelper();
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "computers");
+        params.put("WHERE", "computers.computer_id = ?");
+        helper.buildingQueryParam(params);
+
+        ArrayList<Object> values = new ArrayList<>();
+        values.add(id);
+
+        return helper.deleteData(values);
+    }
 }

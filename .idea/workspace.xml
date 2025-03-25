@@ -6,23 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="62dcb59d-8ce0-47e1-a5ea-b8e40b7265e0" name="Changes" comment="SQL">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/create_table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/create_table.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/ComputerBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/ComputerBLL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/ComputerDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/ComputerDAL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/DetailsComputer$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/DetailsComputer$4.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BLL/HeadphoneBLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/HeadphoneBLL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BLL/KeyboardBLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/KeyboardBLL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BLL/MonitorBLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/MonitorBLL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BLL/MotherboardBLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/MotherboardBLL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BLL/MouseBLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/MouseBLL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BLL/RomBLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/RomBLL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DAL/HeadphoneDAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/HeadphoneDAL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DAL/KeyboardDAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/KeyboardDAL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DAL/MonitorDAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/MonitorDAL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DAL/MotherboardDAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/MotherboardDAL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DAL/MouseDAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/MouseDAL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DAL/RomDAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/RomDAL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BLL/ComputerBLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/ComputerBLL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DAL/ComputerDAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/ComputerDAL.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/Form/DetailsComputer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Form/DetailsComputer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/panels/ComputerPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/panels/ComputerPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/panels/HardwarePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/panels/HardwarePanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,12 +37,12 @@
     &quot;assignee&quot;: &quot;namduongit&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/namduongit/spoce-net-application.git",
-    "accountId": "20b56b38-814f-4b8e-a4dd-02db64bcf7b6"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/namduongit/spoce-net-application.git&quot;,
+    &quot;accountId&quot;: &quot;20b56b38-814f-4b8e-a4dd-02db64bcf7b6&quot;
   }
-}]]></component>
+}</component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -135,7 +127,8 @@
       <workItem from="1742183879628" duration="555000" />
       <workItem from="1742265346207" duration="4627000" />
       <workItem from="1742302689181" duration="6364000" />
-      <workItem from="1742524185307" duration="6696000" />
+      <workItem from="1742524185307" duration="10069000" />
+      <workItem from="1742869931132" duration="4360000" />
     </task>
     <task id="LOCAL-00001" summary="Edit path file">
       <option name="closed" value="true" />
