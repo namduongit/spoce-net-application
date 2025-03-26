@@ -90,4 +90,15 @@ public class ComputerDAL {
 
         return helper.deleteData(values);
     }
+
+    public boolean insertComputer(ArrayList<Object> values) {
+        MySQLHelper helper = new MySQLHelper();
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "computers");
+        params.put("FIELD", "name, price_per_hour, motherboard_id, mouse_id, keyboard_id, monitor_id, headphone_id, rom_id, room_id, status");
+        helper.buildingQueryParam(params);
+
+        return helper.insertData(values);
+    }
 }

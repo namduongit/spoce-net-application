@@ -28,4 +28,8 @@ public class ComputerBLL {
     public boolean deleteComputerById(int id) {
         return this.computerDAL.deleteComputerById(id);
     }
+
+    public boolean insertComputer(ArrayList<Object> values) {
+        return this.computerDAL.insertComputer(values);
+    }
 }
