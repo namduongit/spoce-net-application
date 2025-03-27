@@ -11,6 +11,7 @@ public class StaffBLL {
         this.staffDAL = new StaffDAL();
     }
 
+    // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
     public ArrayList<Staffs> getAllStaffs() {
         return this.staffDAL.getStaffList();
     }
@@ -21,5 +22,9 @@ public class StaffBLL {
 
     public Staffs getStaffByEmail(String staffEmail) {
         return this.staffDAL.getStaffByEmail(staffEmail);
+    }
+    // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
+    public boolean updateAddressStaffById(int staffId, String addressValue) {
+        return this.staffDAL.updateAddressStaffById(staffId, addressValue);
     }
 }

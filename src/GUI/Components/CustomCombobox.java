@@ -12,6 +12,11 @@ public class CustomCombobox<E> extends JComboBox<E> {
     private Color backgroundColor = Color.WHITE;
     private Color foregroundColor = Color.BLACK;
 
+    public CustomCombobox() {
+        super();
+        initComponents();
+    }
+
     public CustomCombobox(E[] items) {
         super(items);
         initComponents();
@@ -31,6 +36,7 @@ public class CustomCombobox<E> extends JComboBox<E> {
         setForeground(foregroundColor);
         setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
         setUI(new CustomComboBoxUI());
+        this.setFont(new Font("Sans", Font.PLAIN, 12));
     }
 
     public void setBorderRadius(int radius) {

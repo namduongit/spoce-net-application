@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "DetailsAddress",
+            "request": "launch",
+            "mainClass": "GUI.Form.DetailsAddress",
+            "projectName": "spoce-net-application_f57ff3ae"
+        },
+        {
+            "type": "java",
             "name": "AddressSelector",
             "request": "launch",
             "mainClass": "Utils.Data.AddressSelector",

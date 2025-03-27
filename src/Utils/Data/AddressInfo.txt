@@ -568,3 +568,537 @@ Thành phố Hồ Chí Minh|Huyện Nhà Bè|Xã Phú Xuân
 Thành phố Hồ Chí Minh|Huyện Nhà Bè|Xã Phước Kiển
 Thành phố Hồ Chí Minh|Huyện Nhà Bè|Xã Phước Lộc
 --
+-
+Đồng Nai|Thành phố Biên Hòa|Chọn Phường / Xã
+Đồng Nai|Thành phố Biên Hòa|Phường An Bình
+Đồng Nai|Thành phố Biên Hòa|Phường Bình Đa
+Đồng Nai|Thành phố Biên Hòa|Phường Bửu Hòa
+Đồng Nai|Thành phố Biên Hòa|Phường Bửu Long
+Đồng Nai|Thành phố Biên Hòa|Phường Hóa An
+Đồng Nai|Thành phố Biên Hòa|Phường Hòa Bình
+Đồng Nai|Thành phố Biên Hòa|Phường Long Bình
+Đồng Nai|Thành phố Biên Hòa|Phường Long Bình Tân
+Đồng Nai|Thành phố Biên Hòa|Phường Long Tân
+Đồng Nai|Thành phố Biên Hòa|Phường Quang Vinh
+Đồng Nai|Thành phố Biên Hòa|Phường Quyết Thắng
+Đồng Nai|Thành phố Biên Hòa|Phường Tam Hòa
+Đồng Nai|Thành phố Biên Hòa|Phường Tam Hiệp
+Đồng Nai|Thành phố Biên Hòa|Phường Tam Phước
+Đồng Nai|Thành phố Biên Hòa|Phường Tân Biên
+Đồng Nai|Thành phố Biên Hòa|Phường Tân Hạnh
+Đồng Nai|Thành phố Biên Hòa|Phường Tân Hiệp
+Đồng Nai|Thành phố Biên Hòa|Phường Tân Hòa
+Đồng Nai|Thành phố Biên Hòa|Phường Tân Mai
+Đồng Nai|Thành phố Biên Hòa|Phường Tân Phong
+Đồng Nai|Thành phố Biên Hòa|Phường Tân Tiến
+Đồng Nai|Thành phố Biên Hòa|Phường Tân Vạn
+Đồng Nai|Thành phố Biên Hòa|Phường Thống Nhất
+Đồng Nai|Thành phố Biên Hòa|Phường Trảng Dài
+Đồng Nai|Thành phố Biên Hòa|Phường Trung Dũng
+-
+Đồng Nai|Thành phố Long Khánh|Chọn Phường / Xã
+Đồng Nai|Thành phố Long Khánh|Phường Bảo Quang
+Đồng Nai|Thành phố Long Khánh|Phường Bảo Vinh
+Đồng Nai|Thành phố Long Khánh|Phường Bình Lộc
+Đồng Nai|Thành phố Long Khánh|Phường Suối Tre
+Đồng Nai|Thành phố Long Khánh|Phường Xuân An
+Đồng Nai|Thành phố Long Khánh|Phường Xuân Bình
+Đồng Nai|Thành phố Long Khánh|Phường Xuân Hòa
+Đồng Nai|Thành phố Long Khánh|Phường Xuân Lập
+Đồng Nai|Thành phố Long Khánh|Phường Xuân Tân
+Đồng Nai|Thành phố Long Khánh|Phường Xuân Thanh
+Đồng Nai|Thành phố Long Khánh|Phường Xuân Trung
+-
+Đồng Nai|Huyện Cẩm Mỹ|Chọn Phường / Xã
+Đồng Nai|Huyện Cẩm Mỹ|Xã Bảo Bình
+Đồng Nai|Huyện Cẩm Mỹ|Xã Lâm San
+Đồng Nai|Huyện Cẩm Mỹ|Xã Nhân Nghĩa
+Đồng Nai|Huyện Cẩm Mỹ|Xã Sông Nhạn
+Đồng Nai|Huyện Cẩm Mỹ|Xã Sông Ray
+Đồng Nai|Huyện Cẩm Mỹ|Xã Thừa Đức
+Đồng Nai|Huyện Cẩm Mỹ|Xã Xuân Bảo
+Đồng Nai|Huyện Cẩm Mỹ|Xã Xuân Đông
+Đồng Nai|Huyện Cẩm Mỹ|Xã Xuân Đường
+Đồng Nai|Huyện Cẩm Mỹ|Xã Xuân Mỹ
+Đồng Nai|Huyện Cẩm Mỹ|Xã Xuân Quế
+Đồng Nai|Huyện Cẩm Mỹ|Xã Xuân Tây
+-
+Nghệ An|Thành phố Vinh|Chọn Phường / Xã
+Nghệ An|Thành phố Vinh|Phường Bến Thủy
+Nghệ An|Thành phố Vinh|Phường Cửa Nam
+Nghệ An|Thành phố Vinh|Phường Đội Cung
+Nghệ An|Thành phố Vinh|Phường Đông Vĩnh
+Nghệ An|Thành phố Vinh|Phường Hà Huy Tập
+Nghệ An|Thành phố Vinh|Phường Hồng Sơn
+Nghệ An|Thành phố Vinh|Phường Hưng Bình
+Nghệ An|Thành phố Vinh|Phường Hưng Dũng
+Nghệ An|Thành phố Vinh|Phường Hưng Phúc
+Nghệ An|Thành phố Vinh|Phường Lê Lợi
+Nghệ An|Thành phố Vinh|Phường Lê Mao
+Nghệ An|Thành phố Vinh|Phường Quán Bàu
+Nghệ An|Thành phố Vinh|Phường Quang Trung
+Nghệ An|Thành phố Vinh|Phường Trung Đô
+Nghệ An|Thành phố Vinh|Xã Hưng Chính
+Nghệ An|Thành phố Vinh|Xã Hưng Đông
+Nghệ An|Thành phố Vinh|Xã Hưng Hòa
+Nghệ An|Thành phố Vinh|Xã Hưng Lộc
+Nghệ An|Thành phố Vinh|Xã Nghi Ân
+Nghệ An|Thành phố Vinh|Xã Nghi Đức
+Nghệ An|Thành phố Vinh|Xã Nghi Kim
+Nghệ An|Thành phố Vinh|Xã Nghi Liên
+Nghệ An|Thành phố Vinh|Xã Nghi Phú
+-
+Nghệ An|Thị xã Cửa Lò|Chọn Phường / Xã
+Nghệ An|Thị xã Cửa Lò|Phường Nghi Hải
+Nghệ An|Thị xã Cửa Lò|Phường Nghi Hòa
+Nghệ An|Thị xã Cửa Lò|Phường Nghi Hương
+Nghệ An|Thị xã Cửa Lò|Phường Nghi Tân
+Nghệ An|Thị xã Cửa Lò|Phường Nghi Thu
+Nghệ An|Thị xã Cửa Lò|Phường Nghi Thủy
+Nghệ An|Thị xã Cửa Lò|Phường Thu Thủy
+-
+Nghệ An|Thị xã Hoàng Mai|Chọn Phường / Xã
+Nghệ An|Thị xã Hoàng Mai|Phường Quỳnh Dị
+Nghệ An|Thị xã Hoàng Mai|Phường Quỳnh Lập
+Nghệ An|Thị xã Hoàng Mai|Phường Quỳnh Phương
+Nghệ An|Thị xã Hoàng Mai|Phường Quỳnh Thiện
+Nghệ An|Thị xã Hoàng Mai|Xã Quỳnh Liên
+Nghệ An|Thị xã Hoàng Mai|Xã Quỳnh Lộc
+Nghệ An|Thị xã Hoàng Mai|Xã Quỳnh Trang
+Nghệ An|Thị xã Hoàng Mai|Xã Quỳnh Vinh
+Nghệ An|Thị xã Hoàng Mai|Xã Quỳnh Xuân
+-
+Cần Thơ|Quận Bình Thủy|Chọn Phường / Xã
+Cần Thơ|Quận Bình Thủy|Phường An Thới
+Cần Thơ|Quận Bình Thủy|Phường Bình Thủy
+Cần Thơ|Quận Bình Thủy|Phường Bùi Hữu Nghĩa
+Cần Thơ|Quận Bình Thủy|Phường Long Hòa
+Cần Thơ|Quận Bình Thủy|Phường Long Tuyền
+Cần Thơ|Quận Bình Thủy|Phường Thới An Đông
+Cần Thơ|Quận Bình Thủy|Phường Trà An
+Cần Thơ|Quận Bình Thủy|Phường Trà Nóc
+-
+Cần Thơ|Quận Cái Răng|Chọn Phường / Xã
+Cần Thơ|Quận Cái Răng|Phường Ba Láng
+Cần Thơ|Quận Cái Răng|Phường Hưng Phú
+Cần Thơ|Quận Cái Răng|Phường Hưng Thạnh
+Cần Thơ|Quận Cái Răng|Phường Lê Bình
+Cần Thơ|Quận Cái Răng|Phường Phú Thứ
+Cần Thơ|Quận Cái Răng|Phường Tân Phú
+Cần Thơ|Quận Cái Răng|Phường Thường Thạnh
+-
+Cần Thơ|Quận Ninh Kiều|Chọn Phường / Xã
+Cần Thơ|Quận Ninh Kiều|Phường An Bình
+Cần Thơ|Quận Ninh Kiều|Phường An Cư
+Cần Thơ|Quận Ninh Kiều|Phường An Hòa
+Cần Thơ|Quận Ninh Kiều|Phường An Khánh
+Cần Thơ|Quận Ninh Kiều|Phường An Nghiệp
+Cần Thơ|Quận Ninh Kiều|Phường An Phú
+Cần Thơ|Quận Ninh Kiều|Phường Cái Khế
+Cần Thơ|Quận Ninh Kiều|Phường Hưng Lợi
+Cần Thơ|Quận Ninh Kiều|Phường Tân An
+Cần Thơ|Quận Ninh Kiều|Phường Thới Bình
+Cần Thơ|Quận Ninh Kiều|Phường Xuân Khánh
+-
+Cần Thơ|Quận Ô Môn|Chọn Phường / Xã
+Cần Thơ|Quận Ô Môn|Phường Châu Văn Liêm
+Cần Thơ|Quận Ô Môn|Phường Long Hưng
+Cần Thơ|Quận Ô Môn|Phường Phước Thới
+Cần Thơ|Quận Ô Môn|Phường Thới An
+Cần Thơ|Quận Ô Môn|Phường Thới Hòa
+Cần Thơ|Quận Ô Môn|Phường Thới Long
+Cần Thơ|Quận Ô Môn|Phường Trường Lạc
+-
+Cần Thơ|Quận Thốt Nốt|Chọn Phường / Xã
+Cần Thơ|Quận Thốt Nốt|Phường Thạnh Hòa
+Cần Thơ|Quận Thốt Nốt|Phường Thạnh Lộc
+Cần Thơ|Quận Thốt Nốt|Phường Thốt Nốt
+Cần Thơ|Quận Thốt Nốt|Phường Trung Kiên
+Cần Thơ|Quận Thốt Nốt|Phường Tân Hưng
+Cần Thơ|Quận Thốt Nốt|Phường Tân Lộc
+Cần Thơ|Quận Thốt Nốt|Phường Thuận An
+-
+Cần Thơ|Huyện Cờ Đỏ|Chọn Phường / Xã
+Cần Thơ|Huyện Cờ Đỏ|Thị trấn Cờ Đỏ
+Cần Thơ|Huyện Cờ Đỏ|Xã Đông Hiệp
+Cần Thơ|Huyện Cờ Đỏ|Xã Đông Thắng
+Cần Thơ|Huyện Cờ Đỏ|Xã Thạnh Phú
+Cần Thơ|Huyện Cờ Đỏ|Xã Thới Đông
+Cần Thơ|Huyện Cờ Đỏ|Xã Thới Hưng
+Cần Thơ|Huyện Cờ Đỏ|Xã Thới Xuân
+Cần Thơ|Huyện Cờ Đỏ|Xã Trung An
+Cần Thơ|Huyện Cờ Đỏ|Xã Trung Hưng
+Cần Thơ|Huyện Cờ Đỏ|Xã Trung Thạnh
+-
+Cần Thơ|Huyện Phong Điền|Chọn Phường / Xã
+Cần Thơ|Huyện Phong Điền|Thị trấn Phong Điền
+Cần Thơ|Huyện Phong Điền|Xã Giai Xuân
+Cần Thơ|Huyện Phong Điền|Xã Mỹ Khánh
+Cần Thơ|Huyện Phong Điền|Xã Nhơn Ái
+Cần Thơ|Huyện Phong Điền|Xã Nhơn Nghĩa
+Cần Thơ|Huyện Phong Điền|Xã Tân Thới
+-
+Cần Thơ|Huyện Thới Lai|Chọn Phường / Xã
+Cần Thơ|Huyện Thới Lai|Thị trấn Thới Lai
+Cần Thơ|Huyện Thới Lai|Xã Đông Bình
+Cần Thơ|Huyện Thới Lai|Xã Đông Thuận
+Cần Thơ|Huyện Thới Lai|Xã Thới Tân
+Cần Thơ|Huyện Thới Lai|Xã Thới Thạnh
+Cần Thơ|Huyện Thới Lai|Xã Trường Thắng
+Cần Thơ|Huyện Thới Lai|Xã Trường Thành
+Cần Thơ|Huyện Thới Lai|Xã Tân Thạnh
+Cần Thơ|Huyện Thới Lai|Xã Xuân Thắng
+Cần Thơ|Huyện Thới Lai|Xã Xuân Thành
+-
+Hải Phòng|Quận Đồ Sơn|Chọn Phường / Xã
+Hải Phòng|Quận Đồ Sơn|Phường Hợp Đức
+Hải Phòng|Quận Đồ Sơn|Phường Minh Đức
+Hải Phòng|Quận Đồ Sơn|Phường Ngọc Hải
+Hải Phòng|Quận Đồ Sơn|Phường Ngọc Xuyên
+Hải Phòng|Quận Đồ Sơn|Phường Vạn Hương
+Hải Phòng|Quận Đồ Sơn|Phường Bàng La
+-
+Hải Phòng|Quận Dương Kinh|Chọn Phường / Xã
+Hải Phòng|Quận Dương Kinh|Phường Anh Dũng
+Hải Phòng|Quận Dương Kinh|Phường Đa Phúc
+Hải Phòng|Quận Dương Kinh|Phường Hải Thành
+Hải Phòng|Quận Dương Kinh|Phường Hòa Nghĩa
+Hải Phòng|Quận Dương Kinh|Phường Tân Thành
+-
+Hải Phòng|Quận Hải An|Chọn Phường / Xã
+Hải Phòng|Quận Hải An|Phường Cát Bi
+Hải Phòng|Quận Hải An|Phường Đông Hải 1
+Hải Phòng|Quận Hải An|Phường Đông Hải 2
+Hải Phòng|Quận Hải An|Phường Đằng Hải
+Hải Phòng|Quận Hải An|Phường Đằng Lâm
+Hải Phòng|Quận Hải An|Phường Nam Hải
+Hải Phòng|Quận Hải An|Phường Tràng Cát
+-
+Hải Phòng|Quận Hồng Bàng|Chọn Phường / Xã
+Hải Phòng|Quận Hồng Bàng|Phường Hạ Lý
+Hải Phòng|Quận Hồng Bàng|Phường Hoàng Văn Thụ
+Hải Phòng|Quận Hồng Bàng|Phường Hùng Vương
+Hải Phòng|Quận Hồng Bàng|Phường Minh Khai
+Hải Phòng|Quận Hồng Bàng|Phường Phạm Hồng Thái
+Hải Phòng|Quận Hồng Bàng|Phường Quán Toan
+Hải Phòng|Quận Hồng Bàng|Phường Sở Dầu
+Hải Phòng|Quận Hồng Bàng|Phường Thượng Lý
+-
+Hải Phòng|Quận Kiến An|Chọn Phường / Xã
+Hải Phòng|Quận Kiến An|Phường Bắc Sơn
+Hải Phòng|Quận Kiến An|Phường Đồng Hòa
+Hải Phòng|Quận Kiến An|Phường Lãm Hà
+Hải Phòng|Quận Kiến An|Phường Nam Sơn
+Hải Phòng|Quận Kiến An|Phường Ngọc Sơn
+Hải Phòng|Quận Kiến An|Phường Phù Liễn
+Hải Phòng|Quận Kiến An|Phường Quán Trữ
+Hải Phòng|Quận Kiến An|Phường Tràng Minh
+-
+Hải Phòng|Quận Lê Chân|Chọn Phường / Xã
+Hải Phòng|Quận Lê Chân|Phường An Biên
+Hải Phòng|Quận Lê Chân|Phường An Dương
+Hải Phòng|Quận Lê Chân|Phường Cát Dài
+Hải Phòng|Quận Lê Chân|Phường Dư Hàng
+Hải Phòng|Quận Lê Chân|Phường Dư Hàng Kênh
+Hải Phòng|Quận Lê Chân|Phường Đông Hải
+Hải Phòng|Quận Lê Chân|Phường Hồ Nam
+Hải Phòng|Quận Lê Chân|Phường Kênh Dương
+Hải Phòng|Quận Lê Chân|Phường Lam Sơn
+Hải Phòng|Quận Lê Chân|Phường Nghĩa Xá
+Hải Phòng|Quận Lê Chân|Phường Niệm Nghĩa
+Hải Phòng|Quận Lê Chân|Phường Trại Cau
+Hải Phòng|Quận Lê Chân|Phường Vĩnh Niệm
+-
+Hải Phòng|Quận Ngô Quyền|Chọn Phường / Xã
+Hải Phòng|Quận Ngô Quyền|Phường Cầu Đất
+Hải Phòng|Quận Ngô Quyền|Phường Đằng Giang
+Hải Phòng|Quận Ngô Quyền|Phường Đông Khê
+Hải Phòng|Quận Ngô Quyền|Phường Gia Viên
+Hải Phòng|Quận Ngô Quyền|Phường Lạc Viên
+Hải Phòng|Quận Ngô Quyền|Phường Lạch Tray
+Hải Phòng|Quận Ngô Quyền|Phường Máy Chai
+Hải Phòng|Quận Ngô Quyền|Phường Máy Tơ
+Hải Phòng|Quận Ngô Quyền|Phường Vạn Mỹ
+Hải Phòng|Quận Ngô Quyền|Phường Cầu Tre
+-
+Hải Phòng|Huyện An Dương|Chọn Phường / Xã
+Hải Phòng|Huyện An Dương|Thị trấn An Dương
+Hải Phòng|Huyện An Dương|Xã An Đồng
+Hải Phòng|Huyện An Dương|Xã An Hòa
+Hải Phòng|Huyện An Dương|Xã An Hồng
+Hải Phòng|Huyện An Dương|Xã An Hưng
+Hải Phòng|Huyện An Dương|Xã An Sơn
+Hải Phòng|Huyện An Dương|Xã Đại Bản
+Hải Phòng|Huyện An Dương|Xã Hồng Phong
+Hải Phòng|Huyện An Dương|Xã Hồng Thái
+Hải Phòng|Huyện An Dương|Xã Lê Lợi
+Hải Phòng|Huyện An Dương|Xã Lê Thiện
+Hải Phòng|Huyện An Dương|Xã Nam Sơn
+Hải Phòng|Huyện An Dương|Xã Tân Tiến
+Hải Phòng|Huyện An Dương|Xã Tân Viên
+Hải Phòng|Huyện An Dương|Xã Thái Sơn
+Hải Phòng|Huyện An Dương|Xã Thủy Đường
+Hải Phòng|Huyện An Dương|Xã Thủy Sơn
+Hải Phòng|Huyện An Dương|Xã Thủy Triều
+-
+Thừa Thiên Huế|Thành phố Huế|Chọn Phường / Xã
+Thừa Thiên Huế|Thành phố Huế|Phường An Cựu
+Thừa Thiên Huế|Thành phố Huế|Phường An Đông
+Thừa Thiên Huế|Thành phố Huế|Phường An Hòa
+Thừa Thiên Huế|Thành phố Huế|Phường An Tây
+Thừa Thiên Huế|Thành phố Huế|Phường Hương Long
+Thừa Thiên Huế|Thành phố Huế|Phường Hương Sơ
+Thừa Thiên Huế|Thành phố Huế|Phường Kim Long
+Thừa Thiên Huế|Thành phố Huế|Phường Phú Cát
+Thừa Thiên Huế|Thành phố Huế|Phường Phú Hậu
+Thừa Thiên Huế|Thành phố Huế|Phường Phú Hiệp
+Thừa Thiên Huế|Thành phố Huế|Phường Phú Hòa
+Thừa Thiên Huế|Thành phố Huế|Phường Phú Nhuận
+Thừa Thiên Huế|Thành phố Huế|Phường Phú Thượng
+Thừa Thiên Huế|Thành phố Huế|Phường Phước Vĩnh
+Thừa Thiên Huế|Thành phố Huế|Phường Tây Lộc
+Thừa Thiên Huế|Thành phố Huế|Phường Thuận Hòa
+Thừa Thiên Huế|Thành phố Huế|Phường Thuận Lộc
+Thừa Thiên Huế|Thành phố Huế|Phường Thuận Thành
+Thừa Thiên Huế|Thành phố Huế|Phường Thuận An
+Thừa Thiên Huế|Thành phố Huế|Phường Trường An
+Thừa Thiên Huế|Thành phố Huế|Phường Vĩnh Ninh
+Thừa Thiên Huế|Thành phố Huế|Phường Xuân Phú
+Thừa Thiên Huế|Thành phố Huế|Xã Hải Dương
+Thừa Thiên Huế|Thành phố Huế|Xã Hương Phong
+Thừa Thiên Huế|Thành phố Huế|Xã Hương Thọ
+Thừa Thiên Huế|Thành phố Huế|Xã Hương Vinh
+Thừa Thiên Huế|Thành phố Huế|Xã Phú Dương
+Thừa Thiên Huế|Thành phố Huế|Xã Phú Mậu
+Thừa Thiên Huế|Thành phố Huế|Xã Phú Thanh
+Thừa Thiên Huế|Thành phố Huế|Xã Phú Thượng
+Thừa Thiên Huế|Thành phố Huế|Xã Phú Xuân
+Thừa Thiên Huế|Thành phố Huế|Xã Thủy Bằng
+Thừa Thiên Huế|Thành phố Huế|Xã Thủy Thanh
+-
+Thừa Thiên Huế|Thị xã Hương Thủy|Chọn Phường / Xã
+Thừa Thiên Huế|Thị xã Hương Thủy|Phường Phú Bài
+Thừa Thiên Huế|Thị xã Hương Thủy|Phường Thủy Châu
+Thừa Thiên Huế|Thị xã Hương Thủy|Phường Thủy Dương
+Thừa Thiên Huế|Thị xã Hương Thủy|Phường Thủy Lương
+Thừa Thiên Huế|Thị xã Hương Thủy|Phường Thủy Phương
+Thừa Thiên Huế|Thị xã Hương Thủy|Xã Dương Hòa
+Thừa Thiên Huế|Thị xã Hương Thủy|Xã Thủy Bằng
+Thừa Thiên Huế|Thị xã Hương Thủy|Xã Thủy Phù
+Thừa Thiên Huế|Thị xã Hương Thủy|Xã Thủy Tân
+-
+Thừa Thiên Huế|Thị xã Hương Trà|Chọn Phường / Xã
+Thừa Thiên Huế|Thị xã Hương Trà|Phường Hương An
+Thừa Thiên Huế|Thị xã Hương Trà|Phường Hương Chữ
+Thừa Thiên Huế|Thị xã Hương Trà|Phường Hương Hồ
+Thừa Thiên Huế|Thị xã Hương Trà|Phường Hương Vân
+Thừa Thiên Huế|Thị xã Hương Trà|Phường Hương Xuân
+Thừa Thiên Huế|Thị xã Hương Trà|Xã Bình Điền
+Thừa Thiên Huế|Thị xã Hương Trà|Xã Bình Thành
+Thừa Thiên Huế|Thị xã Hương Trà|Xã Hương Bình
+Thừa Thiên Huế|Thị xã Hương Trà|Xã Hương Phong
+Thừa Thiên Huế|Thị xã Hương Trà|Xã Hương Toàn
+-
+Thừa Thiên Huế|Huyện A Lưới|Chọn Phường / Xã
+Thừa Thiên Huế|Huyện A Lưới|Thị trấn A Lưới
+Thừa Thiên Huế|Huyện A Lưới|Xã A Đớt
+Thừa Thiên Huế|Huyện A Lưới|Xã A Ngo
+Thừa Thiên Huế|Huyện A Lưới|Xã A Roàng
+Thừa Thiên Huế|Huyện A Lưới|Xã Đông Sơn
+Thừa Thiên Huế|Huyện A Lưới|Xã Hồng Bắc
+Thừa Thiên Huế|Huyện A Lưới|Xã Hồng Hạ
+Thừa Thiên Huế|Huyện A Lưới|Xã Hồng Kim
+Thừa Thiên Huế|Huyện A Lưới|Xã Hồng Quảng
+Thừa Thiên Huế|Huyện A Lưới|Xã Hồng Thượng
+Thừa Thiên Huế|Huyện A Lưới|Xã Hồng Thái
+Thừa Thiên Huế|Huyện A Lưới|Xã Hương Lâm
+Thừa Thiên Huế|Huyện A Lưới|Xã Hương Nguyên
+Thừa Thiên Huế|Huyện A Lưới|Xã Nhâm
+Thừa Thiên Huế|Huyện A Lưới|Xã Phú Vinh
+Thừa Thiên Huế|Huyện A Lưới|Xã Quảng Nhâm
+Thừa Thiên Huế|Huyện A Lưới|Xã Sơn Thủy
+Thừa Thiên Huế|Huyện A Lưới|Xã Trung Sơn
+-
+Hà Tĩnh|Thành phố Hà Tĩnh|Chọn Phường / Xã
+Hà Tĩnh|Thành phố Hà Tĩnh|Phường Bắc Hà
+Hà Tĩnh|Thành phố Hà Tĩnh|Phường Đại Nài
+Hà Tĩnh|Thành phố Hà Tĩnh|Phường Hà Huy Tập
+Hà Tĩnh|Thành phố Hà Tĩnh|Phường Nam Hà
+Hà Tĩnh|Thành phố Hà Tĩnh|Phường Nguyễn Du
+Hà Tĩnh|Thành phố Hà Tĩnh|Phường Thạch Linh
+Hà Tĩnh|Thành phố Hà Tĩnh|Phường Thạch Quý
+Hà Tĩnh|Thành phố Hà Tĩnh|Phường Tân Giang
+Hà Tĩnh|Thành phố Hà Tĩnh|Phường Trần Phú
+Hà Tĩnh|Thành phố Hà Tĩnh|Phường Văn Yên
+Hà Tĩnh|Thành phố Hà Tĩnh|Xã Đồng Môn
+Hà Tĩnh|Thành phố Hà Tĩnh|Xã Thạch Bình
+Hà Tĩnh|Thành phố Hà Tĩnh|Xã Thạch Hạ
+Hà Tĩnh|Thành phố Hà Tĩnh|Xã Thạch Hưng
+Hà Tĩnh|Thành phố Hà Tĩnh|Xã Thạch Trung
+-
+Hà Tĩnh|Thị xã Hồng Lĩnh|Chọn Phường / Xã
+Hà Tĩnh|Thị xã Hồng Lĩnh|Phường Bắc Hồng
+Hà Tĩnh|Thị xã Hồng Lĩnh|Phường Đậu Liêu
+Hà Tĩnh|Thị xã Hồng Lĩnh|Phường Nam Hồng
+Hà Tĩnh|Thị xã Hồng Lĩnh|Phường Trung Lương
+Hà Tĩnh|Thị xã Hồng Lĩnh|Phường Đức Thuận
+Hà Tĩnh|Thị xã Hồng Lĩnh|Xã Thuận Lộc
+-
+Hà Tĩnh|Huyện Cẩm Xuyên|Chọn Phường / Xã
+Hà Tĩnh|Huyện Cẩm Xuyên|Thị trấn Cẩm Xuyên
+Hà Tĩnh|Huyện Cẩm Xuyên|Thị trấn Thiên Cầm
+Hà Tĩnh|Huyện Cẩm Xuyên|Xã Cẩm Bình
+Hà Tĩnh|Huyện Cẩm Xuyên|Xã Cẩm Dương
+Hà Tĩnh|Huyện Cẩm Xuyên|Xã Cẩm Hà
+Hà Tĩnh|Huyện Cẩm Xuyên|Xã Cẩm Hưng
+Hà Tĩnh|Huyện Cẩm Xuyên|Xã Cẩm Lạc
+Hà Tĩnh|Huyện Cẩm Xuyên|Xã Cẩm Lĩnh
+Hà Tĩnh|Huyện Cẩm Xuyên|Xã Cẩm Lộc
+Hà Tĩnh|Huyện Cẩm Xuyên|Xã Cẩm Minh
+Hà Tĩnh|Huyện Cẩm Xuyên|Xã Cẩm Mỹ
+Hà Tĩnh|Huyện Cẩm Xuyên|Xã Cẩm Nhượng
+Hà Tĩnh|Huyện Cẩm Xuyên|Xã Cẩm Quan
+Hà Tĩnh|Huyện Cẩm Xuyên|Xã Cẩm Quang
+Hà Tĩnh|Huyện Cẩm Xuyên|Xã Cẩm Sơn
+Hà Tĩnh|Huyện Cẩm Xuyên|Xã Cẩm Thạch
+Hà Tĩnh|Huyện Cẩm Xuyên|Xã Cẩm Thành
+Hà Tĩnh|Huyện Cẩm Xuyên|Xã Cẩm Thịnh
+Hà Tĩnh|Huyện Cẩm Xuyên|Xã Cẩm Trung
+Hà Tĩnh|Huyện Cẩm Xuyên|Xã Cẩm Vịnh
+Hà Tĩnh|Huyện Cẩm Xuyên|Xã Nam Phúc Thăng
+-
+Hà Tĩnh|Huyện Can Lộc|Chọn Phường / Xã
+Hà Tĩnh|Huyện Can Lộc|Thị trấn Nghèn
+Hà Tĩnh|Huyện Can Lộc|Xã Gia Hanh
+Hà Tĩnh|Huyện Can Lộc|Xã Khánh Vĩnh Yên
+Hà Tĩnh|Huyện Can Lộc|Xã Kim Song Trường
+Hà Tĩnh|Huyện Can Lộc|Xã Mỹ Lộc
+Hà Tĩnh|Huyện Can Lộc|Xã Phú Lộc
+Hà Tĩnh|Huyện Can Lộc|Xã Quang Lộc
+Hà Tĩnh|Huyện Can Lộc|Xã Sơn Lộc
+Hà Tĩnh|Huyện Can Lộc|Xã Thiên Lộc
+Hà Tĩnh|Huyện Can Lộc|Xã Thường Nga
+Hà Tĩnh|Huyện Can Lộc|Xã Trung Lộc
+Hà Tĩnh|Huyện Can Lộc|Xã Tùng Lộc
+Hà Tĩnh|Huyện Can Lộc|Xã Vĩnh Lộc
+Hà Tĩnh|Huyện Can Lộc|Xã Xuân Lộc
+-
+Hà Tĩnh|Huyện Đức Thọ|Chọn Phường / Xã
+Hà Tĩnh|Huyện Đức Thọ|Thị trấn Đức Thọ
+Hà Tĩnh|Huyện Đức Thọ|Xã An Dũng
+Hà Tĩnh|Huyện Đức Thọ|Xã Bùi La Nhân
+Hà Tĩnh|Huyện Đức Thọ|Xã Hòa Lạc
+Hà Tĩnh|Huyện Đức Thọ|Xã Lâm Trung Thủy
+Hà Tĩnh|Huyện Đức Thọ|Xã Liên Minh
+Hà Tĩnh|Huyện Đức Thọ|Xã Quang Vĩnh
+Hà Tĩnh|Huyện Đức Thọ|Xã Tân Dân
+Hà Tĩnh|Huyện Đức Thọ|Xã Tùng Châu
+Hà Tĩnh|Huyện Đức Thọ|Xã Yên Hồ
+-
+Quảng Trị|Thành phố Đông Hà|Chọn Phường / Xã
+Quảng Trị|Thành phố Đông Hà|Phường 1
+Quảng Trị|Thành phố Đông Hà|Phường 2
+Quảng Trị|Thành phố Đông Hà|Phường 3
+Quảng Trị|Thành phố Đông Hà|Phường 4
+Quảng Trị|Thành phố Đông Hà|Phường 5
+Quảng Trị|Thành phố Đông Hà|Phường Đông Giang
+Quảng Trị|Thành phố Đông Hà|Phường Đông Lễ
+Quảng Trị|Thành phố Đông Hà|Phường Đông Lương
+Quảng Trị|Thành phố Đông Hà|Phường Đông Thanh
+-
+Quảng Trị|Thị xã Quảng Trị|Chọn Phường / Xã
+Quảng Trị|Thị xã Quảng Trị|Phường 1
+Quảng Trị|Thị xã Quảng Trị|Phường 2
+Quảng Trị|Thị xã Quảng Trị|Phường 3
+Quảng Trị|Thị xã Quảng Trị|Phường An Đôn
+Quảng Trị|Thị xã Quảng Trị|Xã Hải Lệ
+-
+Quảng Trị|Huyện Cam Lộ|Chọn Phường / Xã
+Quảng Trị|Huyện Cam Lộ|Thị trấn Cam Lộ
+Quảng Trị|Huyện Cam Lộ|Xã Cam Chính
+Quảng Trị|Huyện Cam Lộ|Xã Cam Hiếu
+Quảng Trị|Huyện Cam Lộ|Xã Cam Nghĩa
+Quảng Trị|Huyện Cam Lộ|Xã Cam Thành
+Quảng Trị|Huyện Cam Lộ|Xã Cam Thủy
+Quảng Trị|Huyện Cam Lộ|Xã Cam Tuyền
+Quảng Trị|Huyện Cam Lộ|Xã Thanh An
+Quảng Trị|Huyện Cam Lộ|Xã Thanh Hội
+-
+Quảng Trị|Huyện Cồn Cỏ|Chọn Phường / Xã
+Quảng Trị|Huyện Cồn Cỏ|Xã Cồn Cỏ
+-
+Quảng Trị|Huyện Đakrông|Chọn Phường / Xã
+Quảng Trị|Huyện Đakrông|Thị trấn Krông Klang
+Quảng Trị|Huyện Đakrông|Xã A Bung
+Quảng Trị|Huyện Đakrông|Xã A Ngo
+Quảng Trị|Huyện Đakrông|Xã Ba Lòng
+Quảng Trị|Huyện Đakrông|Xã Đakrông
+Quảng Trị|Huyện Đakrông|Xã Húc Nghì
+Quảng Trị|Huyện Đakrông|Xã Mò Ó
+Quảng Trị|Huyện Đakrông|Xã Tà Long
+Quảng Trị|Huyện Đakrông|Xã Tà Rụt
+Quảng Trị|Huyện Đakrông|Xã Triệu Nguyên
+-
+Quảng Trị|Huyện Gio Linh|Chọn Phường / Xã
+Quảng Trị|Huyện Gio Linh|Thị trấn Cửa Việt
+Quảng Trị|Huyện Gio Linh|Thị trấn Gio Linh
+Quảng Trị|Huyện Gio Linh|Xã Gio An
+Quảng Trị|Huyện Gio Linh|Xã Gio Bình
+Quảng Trị|Huyện Gio Linh|Xã Gio Châu
+Quảng Trị|Huyện Gio Linh|Xã Gio Hải
+Quảng Trị|Huyện Gio Linh|Xã Gio Mỹ
+Quảng Trị|Huyện Gio Linh|Xã Gio Phong
+Quảng Trị|Huyện Gio Linh|Xã Gio Quang
+Quảng Trị|Huyện Gio Linh|Xã Gio Sơn
+Quảng Trị|Huyện Gio Linh|Xã Gio Thành
+Quảng Trị|Huyện Gio Linh|Xã Gio Việt
+Quảng Trị|Huyện Gio Linh|Xã Hải Thái
+Quảng Trị|Huyện Gio Linh|Xã Linh Hải
+-
+Quảng Trị|Huyện Hải Lăng|Chọn Phường / Xã
+Quảng Trị|Huyện Hải Lăng|Thị trấn Hải Lăng
+Quảng Trị|Huyện Hải Lăng|Xã Hải An
+Quảng Trị|Huyện Hải Lăng|Xã Hải Ba
+Quảng Trị|Huyện Hải Lăng|Xã Hải Chánh
+Quảng Trị|Huyện Hải Lăng|Xã Hải Dương
+Quảng Trị|Huyện Hải Lăng|Xã Hải Hòa
+Quảng Trị|Huyện Hải Lăng|Xã Hải Khê
+Quảng Trị|Huyện Hải Lăng|Xã Hải Lâm
+Quảng Trị|Huyện Hải Lăng|Xã Hải Phú
+Quảng Trị|Huyện Hải Lăng|Xã Hải Quế
+Quảng Trị|Huyện Hải Lăng|Xã Hải Sơn
+Quảng Trị|Huyện Hải Lăng|Xã Hải Thọ
+Quảng Trị|Huyện Hải Lăng|Xã Hải Trường
+Quảng Trị|Huyện Hải Lăng|Xã Hải Xuân
+-
+Quảng Trị|Huyện Hướng Hóa|Chọn Phường / Xã
+Quảng Trị|Huyện Hướng Hóa|Thị trấn Khe Sanh
+Quảng Trị|Huyện Hướng Hóa|Thị trấn Lao Bảo
+Quảng Trị|Huyện Hướng Hóa|Xã A Dơi
+Quảng Trị|Huyện Hướng Hóa|Xã A Túc
+Quảng Trị|Huyện Hướng Hóa|Xã Ba Tầng
+Quảng Trị|Huyện Hướng Hóa|Xã Húc
+Quảng Trị|Huyện Hướng Hóa|Xã Hướng Linh
+Quảng Trị|Huyện Hướng Hóa|Xã Hướng Lập
+Quảng Trị|Huyện Hướng Hóa|Xã Hướng Phùng
+Quảng Trị|Huyện Hướng Hóa|Xã Hướng Sơn
+Quảng Trị|Huyện Hướng Hóa|Xã Hướng Tân
+Quảng Trị|Huyện Hướng Hóa|Xã Hướng Việt
+Quảng Trị|Huyện Hướng Hóa|Xã Tân Hợp
+Quảng Trị|Huyện Hướng Hóa|Xã Tân Liên
+Quảng Trị|Huyện Hướng Hóa|Xã Tân Long
+-
+Quảng Trị|Huyện Triệu Phong|Chọn Phường / Xã
+Quảng Trị|Huyện Triệu Phong|Thị trấn Ái Tử
+Quảng Trị|Huyện Triệu Phong|Xã Triệu An
+Quảng Trị|Huyện Triệu Phong|Xã Triệu Ái
+Quảng Trị|Huyện Triệu Phong|Xã Triệu Đại
+Quảng Trị|Huyện Triệu Phong|Xã Triệu Độ
+Quảng Trị|Huyện Triệu Phong|Xã Triệu Giang
+Quảng Trị|Huyện Triệu Phong|Xã Triệu Hòa
+Quảng Trị|Huyện Triệu Phong|Xã Triệu Lăng
+Quảng Trị|Huyện Triệu Phong|Xã Triệu Long
+Quảng Trị|Huyện Triệu Phong|Xã Triệu Sơn
+Quảng Trị|Huyện Triệu Phong|Xã Triệu Thành
+Quảng Trị|Huyện Triệu Phong|Xã Triệu Thuận
+Quảng Trị|Huyện Triệu Phong|Xã Triệu Trạch

@@ -11,10 +11,9 @@ import DTO.Staffs;
 import DAL.SQLHelper.MySQLHelper;
 
 public class StaffDAL {
-
+    // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
     public ArrayList<Staffs> getStaffList() {
         ArrayList<Staffs> list = new ArrayList<>();
-
         MySQLHelper helper = new MySQLHelper();
         ResultSet resultSet = helper.selectAllFromTable("staffs");
         try {
@@ -38,7 +37,6 @@ public class StaffDAL {
         } catch (SQLException exception) {
             JOptionPane.showMessageDialog(null, exception.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
-
         return list;
     }
 
@@ -117,6 +115,27 @@ public class StaffDAL {
         }
         return staff;
     }
+    // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
+    public boolean updateAddressStaffById(int staffId, String addressValue) {
+        if (addressValue == null || addressValue.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Không có dữ liệu để cập nhật!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
 
+        MySQLHelper helper = new MySQLHelper();
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "staffs");
+        params.put("SET", "address = ?");
+        params.put("WHERE", "staff_id = ?");
+
+        helper.buildingQueryParam(params);
+        ArrayList<Object> valueCondition = new ArrayList<>();
+        valueCondition.add(addressValue);
+        valueCondition.add(staffId);
+
+        return helper.updateData(valueCondition);
+    }
+
+    // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
 
 }

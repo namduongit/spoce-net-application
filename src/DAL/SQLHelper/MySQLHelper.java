@@ -64,6 +64,7 @@ public class MySQLHelper {
         params.putIfAbsent("WHERE", "");            // Thêm nếu chưa có dữ liệu Key
         params.putIfAbsent("OTHER", "");            // Thêm nếu chưa có dữ liệu Key
         params.putIfAbsent("FIELD", "");            // Thêm nếu chưa có dữ liệu Key
+        params.putIfAbsent("SET", "");
 
         this.queryParams = params;
         return this;
@@ -209,6 +210,29 @@ public class MySQLHelper {
         }
         return false;
     }
+
+    public boolean updateData(ArrayList<Object> valueCondition) {
+        try {
+            String sql = "UPDATE "+ this.queryParams.get("TABLE") +" "
+                        +"SET "+ this.queryParams.get("SET") +" "
+                        +"WHERE "+ this.queryParams.get("WHERE");
+
+            PreparedStatement preparedStatement = this.connection.prepareStatement(sql);
+            int index = 1;
+
+            for (Object value : valueCondition) {
+                preparedStatement.setObject(index++, value);
+            }
+
+            int affectedRows = preparedStatement.executeUpdate();
+            return affectedRows > 0;
+
+        } catch (SQLException exception) {
+            JOptionPane.showMessageDialog(null, exception.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
+        return false;
+    }
+
 
     /* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 
