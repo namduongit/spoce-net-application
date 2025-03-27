@@ -8,9 +8,18 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
-import javax.swing.*;
+
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
+import DTO.Accounts;
+import DTO.Staffs;
 import Utils.Helper.CreateComponent;
 import GUI.Components.CustomButton;
 import GUI.Components.CustomCombobox;
@@ -20,9 +29,9 @@ import GUI.Components.CustomTable;
 import GUI.Components.CustomTextField;
 
 public class AccountPanel extends JPanel {
-    private final Font fontSans15 = new Font("Sans", Font.BOLD, 15);
-//    private Accounts currentAccount;
-//    private Staffs currentStaff;
+private final Font fontSans15 = new Font("Sans", Font.BOLD, 15);
+   private Accounts loginAccount;
+   private Staffs loginStaff;
 
     private CardLayout cardLayout;
 
@@ -31,7 +40,9 @@ public class AccountPanel extends JPanel {
 
     private JLabel avatarEmployee;
 
-    public AccountPanel() {
+    public AccountPanel(Accounts loginAccount, Staffs loginStaff) {
+        this.loginAccount = loginAccount;
+        this.loginStaff = loginStaff;
         this.initComponents();
     }
 
@@ -51,14 +62,16 @@ public class AccountPanel extends JPanel {
         playerAccountButton.setBounds(210, 100, 175, 35);
         playerAccountButton.addActionListener(e -> this.cardLayout.show(this.showInfoPanel, "PlayerInfo"));
 
-        CustomButton employeeButton = CreateComponent.createButtonNoIcon("Tài khoản nhân viên");
-        employeeButton.setBounds(400, 100, 175, 35);
-        employeeButton.addActionListener(e -> this.cardLayout.show(this.showInfoPanel, "EmployeeInfo"));
+        if (this.loginAccount.getRole().equalsIgnoreCase("Quản trị viên")) {
+            CustomButton employeeButton = CreateComponent.createButtonNoIcon("Tài khoản nhân viên");
+            employeeButton.setBounds(400, 100, 175, 35);
+            employeeButton.addActionListener(e -> this.cardLayout.show(this.showInfoPanel, "EmployeeInfo"));
+            panel.add(employeeButton);
+        }
 
         panel.add(titlePanel);
         panel.add(selfInfoButton);
         panel.add(playerAccountButton);
-        panel.add(employeeButton);
 
         return panel;
     }
@@ -83,7 +96,7 @@ public class AccountPanel extends JPanel {
         myUsername.setFont(fontSans15);
         myUsername.setBounds(35, 270, 200, 30);
 
-        CustomTextField myUsernameInput = new CustomTextField("namduongit");
+        CustomTextField myUsernameInput = new CustomTextField(this.loginAccount.getUsername());
         myUsernameInput.setBounds(30, 300, 300, 35);
 
         // Email
@@ -91,7 +104,7 @@ public class AccountPanel extends JPanel {
         myEmail.setFont(fontSans15);
         myEmail.setBounds(35, 350, 200, 30);
 
-        CustomTextField myEmailInput = new CustomTextField("nguyennamduong205@gmail.com");
+        CustomTextField myEmailInput = new CustomTextField(this.loginStaff.getEmail());
         myEmailInput.setBounds(30, 380, 300, 35);
 
         // Ngày tạo tài khoản
@@ -99,7 +112,7 @@ public class AccountPanel extends JPanel {
         createAtLabel.setFont(fontSans15);
         createAtLabel.setBounds(35, 430, 200, 30);
 
-        CustomTextField myCreateAtInput = new CustomTextField("2025-01-01");
+        CustomTextField myCreateAtInput = new CustomTextField(this.loginAccount.getCreatedAt().toString());
         myCreateAtInput.setBounds(30, 460, 300, 35);
         myCreateAtInput.setEditable(false);
 
@@ -113,7 +126,7 @@ public class AccountPanel extends JPanel {
         myName.setFont(fontSans15);
         myName.setBounds(430, 30, 200, 30);
 
-        CustomTextField myNameInput = new CustomTextField("Nguyễn Nam Dương");
+        CustomTextField myNameInput = new CustomTextField(this.loginStaff.getFullName());
         myNameInput.setBounds(430, 60, 300, 35);
 
         // Ngày sinh
@@ -121,7 +134,7 @@ public class AccountPanel extends JPanel {
         myBirthdate.setFont(fontSans15);
         myBirthdate.setBounds(430, 110, 200, 30);
 
-        CustomTextField myBirthdateInput = new CustomTextField("14-02-2005");
+        CustomTextField myBirthdateInput = new CustomTextField(this.loginStaff.getBirthDate().toString());
         myBirthdateInput.setBounds(430, 140, 300, 35);
 
         // Số điện thoại
@@ -129,7 +142,7 @@ public class AccountPanel extends JPanel {
         myNumberPhone.setFont(fontSans15);
         myNumberPhone.setBounds(430, 190, 200, 30);
 
-        CustomTextField myNumberPhoneInput = new CustomTextField("0388 853 835");
+        CustomTextField myNumberPhoneInput = new CustomTextField(this.loginStaff.getPhone());
         myNumberPhoneInput.setBounds(430, 220, 300, 35);
 
         // CCCD
@@ -137,7 +150,7 @@ public class AccountPanel extends JPanel {
         myCCCD.setFont(fontSans15);
         myCCCD.setBounds(430, 270, 200, 30);
 
-        CustomTextField myCCCDInput = new CustomTextField("075 200 200 200");
+        CustomTextField myCCCDInput = new CustomTextField(this.loginStaff.getCccd());
         myCCCDInput.setBounds(430, 300, 300, 35);
 
         // Giới tính
@@ -145,12 +158,20 @@ public class AccountPanel extends JPanel {
         myGender.setFont(fontSans15);
         myGender.setBounds(430, 350, 200, 30);
 
-        String[] genders = {"Chưa có", "Nam", "Nữ"};
+        String[] genders = {"Chưa đặt", "Nam", "Nữ"};
         CustomCombobox<String> myGenderInput = new CustomCombobox<>(genders);
         myGenderInput.setBounds(430, 380, 300, 35);
-        myGenderInput.setSelectedIndex(0);
+        String currentGender = loginStaff.getGender();
+        int index = 0;
+        for (int i = 0; i < genders.length; i++) {
+            if (genders[i].equalsIgnoreCase(currentGender)) {
+                index = i;
+                break;
+            }
+        }
+        myGenderInput.setSelectedIndex(index);
 
-        // Địac chỉ
+        // Địa chỉ
         JLabel myAddress = new JLabel("Địa chỉ:");
         myAddress.setFont(fontSans15);
         myAddress.setBounds(430, 430, 200, 30);
@@ -158,7 +179,7 @@ public class AccountPanel extends JPanel {
         JLayeredPane layeredPane = new JLayeredPane();
         layeredPane.setBounds(430, 460, 300, 35);
 
-        CustomTextField myAddressInput = new CustomTextField("Long Khánh, Đồng Nai");
+        CustomTextField myAddressInput = new CustomTextField(this.loginStaff.getAddress());
         myAddressInput.setBounds(0, 0, 300, 35);
 
         CustomButton editAddress = new CustomButton("Chi tiết");
@@ -170,11 +191,6 @@ public class AccountPanel extends JPanel {
         layeredPane.add(myAddressInput, Integer.valueOf(1));
         layeredPane.add(editAddress, Integer.valueOf(2));
 
-        // Đường kẻ thứ 2
-        // JLabel secondLine = new JLabel();
-        // secondLine.setIcon(new ImageIcon(new ImageIcon(System.getProperty("user.dir") +"/src/Assets/Image/card_black.png").getImage().getScaledInstance(10, 500, Image.SCALE_SMOOTH)));
-        // secondLine.setBounds(780, 10, 1, 490);
-
         // Nút đổi mật khẩu
         CustomButton changePassword = new CustomButton("Đổi mật khẩu");
         changePassword.setBounds(830, 60, 200, 30);
@@ -182,7 +198,6 @@ public class AccountPanel extends JPanel {
          // Nút lưu thông tin
         CustomButton changeMyInfo = new CustomButton("Cập nhật thông tin");
         changeMyInfo.setBounds(830, 110, 200, 30);
-
 
         // Thêm các thành phần vào panel
         panel.add(avatarEmployee);
@@ -294,7 +309,7 @@ public class AccountPanel extends JPanel {
         };
 
         CustomTable table = new CustomTable(new DefaultTableModel(data, columnNames));
-        JScrollPane scrollPane = new CustomScrollPane(table);
+        CustomScrollPane scrollPane = new CustomScrollPane(table);
         scrollPane.setBounds(0, 0, 1080, 400);
         tableDataPanel.add(scrollPane);
 
@@ -328,7 +343,6 @@ public class AccountPanel extends JPanel {
         detailButton.setBounds(340, 20, 100, 30);
         detailButton.setBackground(Color.decode("#455A64"));
         detailButton.setForeground(Color.WHITE);
-        detailButton.setBorderSize(0);
         detailButton.setBorderColor(Color.decode("#455A64"));
 
         buttonPanel.add(addButton);
@@ -412,7 +426,7 @@ public class AccountPanel extends JPanel {
         };
 
         CustomTable table = new CustomTable(new DefaultTableModel(data, columnNames));
-        JScrollPane scrollPane = new CustomScrollPane(table);
+        CustomScrollPane scrollPane = new CustomScrollPane(table);
         scrollPane.setBounds(0, 0, 1080, 400);
         tableDataPanel.add(scrollPane);
 

@@ -46,15 +46,15 @@ public class AdminDashboard extends JFrame {
     private JPanel infoPanel;
 
     // Phần nút
-    CustomButton dashBoardButton;
-    CustomButton accountButton;
-    CustomButton historyButton;
-    CustomButton computerButton;
-    CustomButton hardwareButton;
-    CustomButton foodButton;
-    CustomButton billButton;
-    CustomButton chartButton;
-    CustomButton roomButton;
+    private CustomButton dashBoardButton;
+    private CustomButton accountButton;
+    private CustomButton historyButton;
+    private CustomButton computerButton;
+    private CustomButton hardwareButton;
+    private CustomButton foodButton;
+    private CustomButton billButton;
+    private CustomButton chartButton;
+    private CustomButton roomButton;
 
 
     public AdminDashboard(Accounts loginAccount, Staffs loginStaff) {
@@ -63,8 +63,9 @@ public class AdminDashboard extends JFrame {
         this.initComponents();
     }
 
-    private void createLayoutAdmin(JPanel buttonActionPanel) {
-        buttonActionPanel.setLayout(null);
+    private void createButtonLayout(JPanel buttonPanel) {
+        if (this.loginAccount == null || this.loginStaff == null) return;
+        buttonPanel.setLayout(null);
 
         this.dashBoardButton = CreateComponent.createButton("icons8-dashboard-100.png", "Trang chủ");
         this.dashBoardButton.setBounds(10, 5, 230, 50);
@@ -111,62 +112,19 @@ public class AdminDashboard extends JFrame {
             }
         });
 
-        buttonActionPanel.add(dashBoardButton);
-        buttonActionPanel.add(accountButton);
-        buttonActionPanel.add(historyButton);
-        buttonActionPanel.add(computerButton);
-        buttonActionPanel.add(hardwareButton);
-        buttonActionPanel.add(foodButton);
-        buttonActionPanel.add(billButton);
-        buttonActionPanel.add(chartButton);
-        buttonActionPanel.add(roomButton);
-        buttonActionPanel.add(logoutButton);
+        buttonPanel.add(dashBoardButton);
+        buttonPanel.add(accountButton);
+        buttonPanel.add(historyButton);
+        buttonPanel.add(computerButton);
+        buttonPanel.add(hardwareButton);
+        buttonPanel.add(foodButton);
+        buttonPanel.add(billButton);
+        buttonPanel.add(chartButton);
+        buttonPanel.add(roomButton);
+        buttonPanel.add(logoutButton);
 
-        buttonActionPanel.setBounds(0, 80, 250, Utils.Config.ConfigFrame.HEIGHT_FRAME - 80);
-        buttonActionPanel.setBackground(Color.WHITE);
-    }
-
-    private void createLayoutEmployee(JPanel buttonActionPanel) {
-        buttonActionPanel.setLayout(null);
-
-        CustomButton dashBoardButton = CreateComponent.createButton("icons8-dashboard-100.png", "Trang chủ");
-        dashBoardButton.setBounds(10, 5, 230, 50);
-        dashBoardButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "DashBoardPanel"));
-
-        CustomButton accountButton = CreateComponent.createButton("icons8-account-100.png", "Tài khoản");
-        accountButton.setBounds(10, 60, 230, 50);
-        accountButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "AccountPanel"));
-
-        CustomButton foodButton = CreateComponent.createButton("icons8-ingredients-100.png", "Thức ăn");
-        foodButton.setBounds(10, 115, 230, 50);
-        foodButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "FoodPanel"));
-
-        CustomButton billButton = CreateComponent.createButton("icons8-bill-100.png", "Hóa đơn");
-        billButton.setBounds(10, 170, 230, 50);
-        billButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "BillPanel"));
-
-        CustomButton roomButton = CreateComponent.createButton("icons8-hotel-room-key-100.png", "Phòng chơi");
-        roomButton.setBounds(10, 225, 230, 50);
-        roomButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "RoomPanel"));
-
-        CustomButton logoutButton = CreateComponent.createButton("icons8-logout-100.png", "Đăng xuất");
-        logoutButton.setBounds(10, 555, 230, 50);
-        logoutButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-            }
-        });
-
-        buttonActionPanel.add(dashBoardButton);
-        buttonActionPanel.add(accountButton);
-        buttonActionPanel.add(foodButton);
-        buttonActionPanel.add(billButton);
-        buttonActionPanel.add(roomButton);
-        buttonActionPanel.add(logoutButton);
-
-        buttonActionPanel.setBounds(0, 80, 250, Utils.Config.ConfigFrame.HEIGHT_FRAME - 80);
-        buttonActionPanel.setBackground(Color.WHITE);
+        buttonPanel.setBounds(0, 80, 250, Utils.Config.ConfigFrame.HEIGHT_FRAME - 80);
+        buttonPanel.setBackground(Color.WHITE);
     }
 
     private JPanel actionPanelDesign() {
@@ -199,9 +157,7 @@ public class AdminDashboard extends JFrame {
 
         // Phần nút chuyển các CardLayout
         JPanel buttonActionPanel = new JPanel();
-        if (this.loginAccount.getRole().equalsIgnoreCase("Quản trị viên")) {
-            this.createLayoutAdmin(buttonActionPanel);
-        } else this.createLayoutEmployee(buttonActionPanel);
+        this.createButtonLayout(buttonActionPanel);
 
         headActionPanel.setBorder(new MatteBorder(0, 0, 1, 0, Color.decode("#9E9E9E")));
 
@@ -215,23 +171,14 @@ public class AdminDashboard extends JFrame {
     private JPanel infoPanelDesign() {
         this.cardLayout = new CardLayout();
         JPanel panel = new JPanel(this.cardLayout);
-
         DashBoardPanel dashBoardPanel = new DashBoardPanel();
-
-        AccountPanel accountPanel = new AccountPanel();
-
+        AccountPanel accountPanel = new AccountPanel(this.loginAccount, this.loginStaff);
         HistoryPanel historyPanel = new HistoryPanel();
-
         ComputerPanel computerPanel = new ComputerPanel();
-
         HardwarePanel hardwarePanel = new HardwarePanel();
-
         FoodPanel foodPanel = new FoodPanel();
-
         BillPanel billPanel = new BillPanel();
-
         ChartPanel chartPanel = new ChartPanel();
-
         RoomPanel roomPanel = new RoomPanel();
 
         // Thêm trước khi trả về
@@ -276,6 +223,7 @@ public class AdminDashboard extends JFrame {
         this.getContentPane().add(panel);
     }
 
+    @SuppressWarnings("deprecation")
     public static void main(String[] args) {
         Accounts accounts = new Accounts(1, "namduongit", "namduongit", "Quản trị viên", "Đang hoạt động", new Timestamp(1, 1, 1, 1, 1, 1, 1));
         Staffs staffs = new Staffs(1, 1, "Nguyễn Nam Dương", new Date(1, 1, 1), "Nam", "0388853835", "null", "null", "null", "null");

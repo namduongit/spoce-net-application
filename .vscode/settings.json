@@ -10,7 +10,11 @@
         "c:\\libs-api-connect\\mail-1.5.3.jar",
         "c:\\libs-api-connect\\mail-1.4.7.jar",
         "c:\\libs-api-connect\\activation-1.1.1.jar",
-        "c:\\libs-api-connect\\javax.mail.jar"
+        "c:\\libs-api-connect\\javax.mail.jar",
+        "c:\\libs-api-connect\\jakarta.activation-2.0.1.jar",
+        "c:\\libs-api-connect\\jakarta.mail-api-2.1.3.jar",
+        "c:\\libs-api-connect\\javax.mail-1.5.3.jar",
+        "c:\\libs-api-connect\\jfreechart-1.5.4.jar"
     ],
     "java.debug.settings.onBuildFailureProceed": true
 }

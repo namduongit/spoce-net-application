@@ -1,0 +1,570 @@
+--
+Chọn Tỉnh / Thành|Chọn Quận / Huyện|Chọn Phường / Xã
+--
+Hà Nội|Chọn Quận / Huyện|Chọn Phường / Xã
+-
+Hà Nội|Quận Ba Đình|Chọn Phường / Xã
+Hà Nội|Quận Ba Đình|Phường Cống Vị
+Hà Nội|Quận Ba Đình|Phường Điện Biên
+Hà Nội|Quận Ba Đình|Phường Đội Cấn
+Hà Nội|Quận Ba Đình|Phường Giảng Võ
+Hà Nội|Quận Ba Đình|Phường Kim Mã
+Hà Nội|Quận Ba Đình|Phường Liễu Giai
+Hà Nội|Quận Ba Đình|Phường Ngọc Hà
+Hà Nội|Quận Ba Đình|Phường Ngọc Khánh
+Hà Nội|Quận Ba Đình|Phường Nguyễn Trung Trực
+Hà Nội|Quận Ba Đình|Phường Phúc Xá
+Hà Nội|Quận Ba Đình|Phường Quán Thánh
+Hà Nội|Quận Ba Đình|Phường Thành Công
+Hà Nội|Quận Ba Đình|Phường Trúc Bạch
+Hà Nội|Quận Ba Đình|Phường Vĩnh Phúc
+-
+Hà Nội|Quận Bắc Từ Liêm|Chọn Phường / Xã
+Hà Nội|Quận Bắc Từ Liêm|Phường Cổ Nhuế 1
+Hà Nội|Quận Bắc Từ Liêm|Phường Cổ Nhuế 2
+Hà Nội|Quận Bắc Từ Liêm|Phường Đức Thắng
+Hà Nội|Quận Bắc Từ Liêm|Phường Đông Ngạc
+Hà Nội|Quận Bắc Từ Liêm|Phường Thụy Phương
+Hà Nội|Quận Bắc Từ Liêm|Phường Liên Mạc
+Hà Nội|Quận Bắc Từ Liêm|Phường Thượng Cát
+Hà Nội|Quận Bắc Từ Liêm|Phường Tây Tựu
+Hà Nội|Quận Bắc Từ Liêm|Phường Minh Khai
+Hà Nội|Quận Bắc Từ Liêm|Phường Phú Diễn
+Hà Nội|Quận Bắc Từ Liêm|Phường Phúc Diễn
+Hà Nội|Quận Bắc Từ Liêm|Phường Xuân Đỉnh
+Hà Nội|Quận Bắc Từ Liêm|Phường Xuân Tảo
+-
+Hà Nội|Quận Cầu Giấy|Chọn Phường / Xã
+Hà Nội|Quận Cầu Giấy|Phường Dịch Vọng
+Hà Nội|Quận Cầu Giấy|Phường Dịch Vọng Hậu
+Hà Nội|Quận Cầu Giấy|Phường Mai Dịch
+Hà Nội|Quận Cầu Giấy|Phường Nghĩa Đô
+Hà Nội|Quận Cầu Giấy|Phường Nghĩa Tân
+Hà Nội|Quận Cầu Giấy|Phường Quan Hoa
+Hà Nội|Quận Cầu Giấy|Phường Trung Hòa
+Hà Nội|Quận Cầu Giấy|Phường Yên Hòa
+-
+Hà Nội|Quận Đống Đa|Chọn Phường / Xã
+Hà Nội|Quận Đống Đa|Phường Cát Linh
+Hà Nội|Quận Đống Đa|Phường Hàng Bột
+Hà Nội|Quận Đống Đa|Phường Khâm Thiên
+Hà Nội|Quận Đống Đa|Phường Khương Thượng
+Hà Nội|Quận Đống Đa|Phường Kim Liên
+Hà Nội|Quận Đống Đa|Phường Láng Hạ
+Hà Nội|Quận Đống Đa|Phường Láng Thượng
+Hà Nội|Quận Đống Đa|Phường Nam Đồng
+Hà Nội|Quận Đống Đa|Phường Ngã Tư Sở
+Hà Nội|Quận Đống Đa|Phường Ô Chợ Dừa
+Hà Nội|Quận Đống Đa|Phường Phương Liên
+Hà Nội|Quận Đống Đa|Phường Phương Mai
+Hà Nội|Quận Đống Đa|Phường Quang Trung
+Hà Nội|Quận Đống Đa|Phường Quốc Tử Giám
+Hà Nội|Quận Đống Đa|Phường Thịnh Quan
+Hà Nội|Quận Đống Đa|Phường Thổ Quan
+Hà Nội|Quận Đống Đa|Phường Trung Liệt
+Hà Nội|Quận Đống Đa|Phường Trung Phụng
+Hà Nội|Quận Đống Đa|Phường Trung Tự
+Hà Nội|Quận Đống Đa|Phường Văn Chương
+Hà Nội|Quận Đống Đa|Phường Văn Miếu
+-
+Hà Nội|Quận Hà Đông|Chọn Phường / Xã
+Hà Nội|Quận Hà Đông|Phường Biên Giang
+Hà Nội|Quận Hà Đông|Phường Đồng Mai
+Hà Nội|Quận Hà Đông|Phường Yên Nghĩa
+Hà Nội|Quận Hà Đông|Phường Dương Nội
+Hà Nội|Quận Hà Đông|Phường Hà Cầu
+Hà Nội|Quận Hà Đông|Phường La Khê
+Hà Nội|Quận Hà Đông|Phường Mộ Lao
+Hà Nội|Quận Hà Đông|Phường Nguyễn Trãi
+Hà Nội|Quận Hà Đông|Phường Phú La
+Hà Nội|Quận Hà Đông|Phường Phú Lãm
+Hà Nội|Quận Hà Đông|Phường Phú Lương
+Hà Nội|Quận Hà Đông|Phường Kiến Hưng
+Hà Nội|Quận Hà Đông|Phường Phúc La
+Hà Nội|Quận Hà Đông|Phường Quang Trung
+Hà Nội|Quận Hà Đông|Phường Vạn Phúc
+Hà Nội|Quận Hà Đông|Phường Văn Quán
+Hà Nội|Quận Hà Đông|Phường Yết Kiêu
+-
+Hà Nội|Quận Hai Bà Trưng|Chọn Phường / Xã
+Hà Nội|Quận Hai Bà Trưng|Phường Bách Khoa
+Hà Nội|Quận Hai Bà Trưng|Phường Bạch Đằng
+Hà Nội|Quận Hai Bà Trưng|Phường Bạch Mai
+Hà Nội|Quận Hai Bà Trưng|Phường Cầu Dền
+Hà Nội|Quận Hai Bà Trưng|Phường Đống Mác
+Hà Nội|Quận Hai Bà Trưng|Phường Đồng Nhân
+Hà Nội|Quận Hai Bà Trưng|Phường Đồng Tâm
+Hà Nội|Quận Hai Bà Trưng|Phường Lê Đại Hành
+Hà Nội|Quận Hai Bà Trưng|Phường Minh Khai
+Hà Nội|Quận Hai Bà Trưng|Phường Nguyễn Du
+Hà Nội|Quận Hai Bà Trưng|Phường Phạm Đình Hổ
+Hà Nội|Quận Hai Bà Trưng|Phường Phố Huế
+Hà Nội|Quận Hai Bà Trưng|Phường Quỳnh Lôi
+Hà Nội|Quận Hai Bà Trưng|Phường Quỳnh Mai
+Hà Nội|Quận Hai Bà Trưng|Phường Thanh Lương
+Hà Nội|Quận Hai Bà Trưng|Phường Thanh Nhàn
+Hà Nội|Quận Hai Bà Trưng|Phường Trương Định
+Hà Nội|Quận Hai Bà Trưng|Phường Vĩnh Tuy
+-
+Hà Nội|Quận Hoàn Kiếm|Chọn Phường / Xã
+Hà Nội|Quận Hoàn Kiếm|Phường Chương Dương
+Hà Nội|Quận Hoàn Kiếm|Phường Cửa Đông
+Hà Nội|Quận Hoàn Kiếm|Phường Cửa Nam
+Hà Nội|Quận Hoàn Kiếm|Phường Đồng Xuân
+Hà Nội|Quận Hoàn Kiếm|Phường Hàng Bạc
+Hà Nội|Quận Hoàn Kiếm|Phường Hàng Bài
+Hà Nội|Quận Hoàn Kiếm|Phường Hàng Bồ
+Hà Nội|Quận Hoàn Kiếm|Phường Hàng Bông
+Hà Nội|Quận Hoàn Kiếm|Phường Hàng Buồm
+Hà Nội|Quận Hoàn Kiếm|Phường Hàng Đào
+Hà Nội|Quận Hoàn Kiếm|Phường Hàng Gai
+Hà Nội|Quận Hoàn Kiếm|Phường Hàng Mã
+Hà Nội|Quận Hoàn Kiếm|Phường Hàng Trống
+Hà Nội|Quận Hoàn Kiếm|Phường Lý Thái Tổ
+Hà Nội|Quận Hoàn Kiếm|Phường Phan Chu Trinh
+Hà Nội|Quận Hoàn Kiếm|Phường Phúc Tân
+Hà Nội|Quận Hoàn Kiếm|Phường Trần Hưng Đạo
+Hà Nội|Quận Hoàn Kiếm|Phường Tràng Tiền
+-
+Hà Nội|Quận Hoàng Mai|Chọn Phường / Xã
+Hà Nội|Quận Hoàng Mai|Phường Đại Kim
+Hà Nội|Quận Hoàng Mai|Phường Định Công
+Hà Nội|Quận Hoàng Mai|Phường Giáp Bát
+Hà Nội|Quận Hoàng Mai|Phường Hoàng Liệt
+Hà Nội|Quận Hoàng Mai|Phường Hoàng Văn Thụ
+Hà Nội|Quận Hoàng Mai|Phường Lĩnh Nam
+Hà Nội|Quận Hoàng Mai|Phường Mai Động
+Hà Nội|Quận Hoàng Mai|Phường Tân Mai
+Hà Nội|Quận Hoàng Mai|Phường Thanh Trì
+Hà Nội|Quận Hoàng Mai|Phường Thịnh Liệt
+Hà Nội|Quận Hoàng Mai|Phường Trần Phú
+Hà Nội|Quận Hoàng Mai|Phường Tương Mai
+Hà Nội|Quận Hoàng Mai|Phường Vĩnh Hưng
+Hà Nội|Quận Hoàng Mai|Phường Yên Sở
+-
+Hà Nội|Quận Long Biên|Chọn Phường / Xã
+Hà Nội|Quận Long Biên|Phường Bồ Đề
+Hà Nội|Quận Long Biên|Phường Cự Khối
+Hà Nội|Quận Long Biên|Phường Đức Giang
+Hà Nội|Quận Long Biên|Phường Gia Thụy
+Hà Nội|Quận Long Biên|Phường Giang Biên
+Hà Nội|Quận Long Biên|Phường Long Biên
+Hà Nội|Quận Long Biên|Phường Ngọc Lâm
+Hà Nội|Quận Long Biên|Phường Ngọc Thụy
+Hà Nội|Quận Long Biên|Phường Phúc Đồng
+Hà Nội|Quận Long Biên|Phường Phúc Lợi
+Hà Nội|Quận Long Biên|Phường Sài Đồng
+Hà Nội|Quận Long Biên|Phường Thạch Bàn
+Hà Nội|Quận Long Biên|Phường Thượng Thanh
+Hà Nội|Quận Long Biên|Phường Việt Hưng
+-
+Hà Nội|Quận Nam Từ Liêm|Chọn Phường / Xã
+Hà Nội|Quận Nam Từ Liêm|Phường Cầu Diễn
+Hà Nội|Quận Nam Từ Liêm|Phường Mỹ Đình 1
+Hà Nội|Quận Nam Từ Liêm|Phường Mỹ Đình 2
+Hà Nội|Quận Nam Từ Liêm|Phường Phú Đô
+Hà Nội|Quận Nam Từ Liêm|Phường Mễ Trì
+Hà Nội|Quận Nam Từ Liêm|Phường Trung Văn
+Hà Nội|Quận Nam Từ Liêm|Phường Đại Mỗ
+Hà Nội|Quận Nam Từ Liêm|Phường Tây Mỗ
+Hà Nội|Quận Nam Từ Liêm|Phường Phương Canh
+Hà Nội|Quận Nam Từ Liêm|Phường Xuân Phương
+-
+Hà Nội|Quận Tây Hồ|Chọn Phường / Xã
+Hà Nội|Quận Tây Hồ|Phường Bưởi
+Hà Nội|Quận Tây Hồ|Phường Nhật Tân
+Hà Nội|Quận Tây Hồ|Phường Phú Thượng
+Hà Nội|Quận Tây Hồ|Phường Quảng An
+Hà Nội|Quận Tây Hồ|Phường Thụy Khuê
+Hà Nội|Quận Tây Hồ|Phường Tứ Liên
+Hà Nội|Quận Tây Hồ|Phường Xuân La
+Hà Nội|Quận Tây Hồ|Phường Yên Phụ
+-
+Hà Nội|Quận Thanh Xuân|Chọn Phường / Xã
+Hà Nội|Quận Thanh Xuân|Phường Hạ Đình
+Hà Nội|Quận Thanh Xuân|Phường Khương Đình
+Hà Nội|Quận Thanh Xuân|Phường Khương Mai
+Hà Nội|Quận Thanh Xuân|Phường Khương Trung
+Hà Nội|Quận Thanh Xuân|Phường Kim Giang
+Hà Nội|Quận Thanh Xuân|Phường Nhân Chính
+Hà Nội|Quận Thanh Xuân|Phường Phương Liệt
+Hà Nội|Quận Thanh Xuân|Phường Thanh Xuân Bắc
+Hà Nội|Quận Thanh Xuân|Phường Thanh Xuân Nam
+Hà Nội|Quận Thanh Xuân|Phường Thanh Xuân Trung
+Hà Nội|Quận Thanh Xuân|Phường Thượng Đình
+-
+Hà Nội|Thị xã Sơn Tây|Chọn Phường / Xã
+Hà Nội|Thị xã Sơn Tây|Phường Lê Lợi
+Hà Nội|Thị xã Sơn Tây|Phường Ngô Quyền
+Hà Nội|Thị xã Sơn Tây|Phường Phú Thịnh
+Hà Nội|Thị xã Sơn Tây|Phường Quang Trung
+Hà Nội|Thị xã Sơn Tây|Phường Sơn Lộc
+Hà Nội|Thị xã Sơn Tây|Phường Trung Hưng
+Hà Nội|Thị xã Sơn Tây|Phường Trung Sơn Trầm
+Hà Nội|Thị xã Sơn Tây|Phường Viên Sơn
+Hà Nội|Thị xã Sơn Tây|Phường Xuân Khanh
+Hà Nội|Thị xã Sơn Tây|Xã Cổ Đông
+Hà Nội|Thị xã Sơn Tây|Xã Đường Lâm
+Hà Nội|Thị xã Sơn Tây|Xã Kim Sơn
+Hà Nội|Thị xã Sơn Tây|Xã Sơn Đông
+Hà Nội|Thị xã Sơn Tây|Xã Thanh Mỹ
+Hà Nội|Thị xã Sơn Tây|Xã Xuân Sơn
+--
+Thành phố Hồ Chí Minh|Chọn Quận / Huyện|Chọn Phường / Xã
+-
+Thành phố Hồ Chí Minh|Thành phố Thủ Đức|Chọn Phường / Xã
+Thành phố Hồ Chí Minh|Thành phố Thủ Đức|Phường An Khánh
+Thành phố Hồ Chí Minh|Thành phố Thủ Đức|Phường An Lợi Đông
+Thành phố Hồ Chí Minh|Thành phố Thủ Đức|Phường An Phú
+Thành phố Hồ Chí Minh|Thành phố Thủ Đức|Phường Bình Chiểu
+Thành phố Hồ Chí Minh|Thành phố Thủ Đức|Phường Bình Thọ
+Thành phố Hồ Chí Minh|Thành phố Thủ Đức|Phường Bình Trưng Đông
+Thành phố Hồ Chí Minh|Thành phố Thủ Đức|Phường Bình Trưng Tây
+Thành phố Hồ Chí Minh|Thành phố Thủ Đức|Phường Cát Lái
+Thành phố Hồ Chí Minh|Thành phố Thủ Đức|Phường Hiệp Bình Chánh
+Thành phố Hồ Chí Minh|Thành phố Thủ Đức|Phường Hiệp Bình Phước
+Thành phố Hồ Chí Minh|Thành phố Thủ Đức|Phường Hiệp Phú
+Thành phố Hồ Chí Minh|Thành phố Thủ Đức|Phường Linh Chiểu
+Thành phố Hồ Chí Minh|Thành phố Thủ Đức|Phường Linh Đông
+Thành phố Hồ Chí Minh|Thành phố Thủ Đức|Phường Linh Tây
+Thành phố Hồ Chí Minh|Thành phố Thủ Đức|Phường Linh Trung
+Thành phố Hồ Chí Minh|Thành phố Thủ Đức|Phường Linh Xuân
+Thành phố Hồ Chí Minh|Thành phố Thủ Đức|Phường Long Bình
+Thành phố Hồ Chí Minh|Thành phố Thủ Đức|Phường Long Phước
+Thành phố Hồ Chí Minh|Thành phố Thủ Đức|Phường Long Thạnh Mỹ
+Thành phố Hồ Chí Minh|Thành phố Thủ Đức|Phường Long Trường
+Thành phố Hồ Chí Minh|Thành phố Thủ Đức|Phường Phú Hữu
+Thành phố Hồ Chí Minh|Thành phố Thủ Đức|Phường Phước Bình
+Thành phố Hồ Chí Minh|Thành phố Thủ Đức|Phường Phước Long A
+Thành phố Hồ Chí Minh|Thành phố Thủ Đức|Phường Phước Long B
+Thành phố Hồ Chí Minh|Thành phố Thủ Đức|Phường Tam Bình
+Thành phố Hồ Chí Minh|Thành phố Thủ Đức|Phường Tam Phú
+Thành phố Hồ Chí Minh|Thành phố Thủ Đức|Phường Tăng Nhơn Phú A
+Thành phố Hồ Chí Minh|Thành phố Thủ Đức|Phường Tăng Nhơn Phú B
+Thành phố Hồ Chí Minh|Thành phố Thủ Đức|Phường Tân Phú
+Thành phố Hồ Chí Minh|Thành phố Thủ Đức|Phường Thảo Điền
+Thành phố Hồ Chí Minh|Thành phố Thủ Đức|Phường Thạnh Mỹ Lợi
+Thành phố Hồ Chí Minh|Thành phố Thủ Đức|Phường Thủ Thiêm
+Thành phố Hồ Chí Minh|Thành phố Thủ Đức|Phường Trường Thạnh
+Thành phố Hồ Chí Minh|Thành phố Thủ Đức|Phường Trường Thọ
+-
+Thành phố Hồ Chí Minh|Quận 1|Chọn Phường / Xã
+Thành phố Hồ Chí Minh|Quận 1|Phường Bến Nghé
+Thành phố Hồ Chí Minh|Quận 1|Phường Bến Thành
+Thành phố Hồ Chí Minh|Quận 1|Phường Cầu Kho
+Thành phố Hồ Chí Minh|Quận 1|Phường Cầu Ông Lãnh
+Thành phố Hồ Chí Minh|Quận 1|Phường Cô Giang
+Thành phố Hồ Chí Minh|Quận 1|Phường Đa Kao
+Thành phố Hồ Chí Minh|Quận 1|Phường Nguyễn Cư Trinh
+Thành phố Hồ Chí Minh|Quận 1|Phường Nguyễn Thái Bình
+Thành phố Hồ Chí Minh|Quận 1|Phường Phạm Ngũ Lão
+Thành phố Hồ Chí Minh|Quận 1|Phường Tân Định
+-
+Thành phố Hồ Chí Minh|Quận 3|Chọn Phường / Xã
+Thành phố Hồ Chí Minh|Quận 3|Phường 01
+Thành phố Hồ Chí Minh|Quận 3|Phường 02
+Thành phố Hồ Chí Minh|Quận 3|Phường 03
+Thành phố Hồ Chí Minh|Quận 3|Phường 04
+Thành phố Hồ Chí Minh|Quận 3|Phường 05
+Thành phố Hồ Chí Minh|Quận 3|Phường Võ Thị Sáu
+Thành phố Hồ Chí Minh|Quận 3|Phường 09
+Thành phố Hồ Chí Minh|Quận 3|Phường 10
+Thành phố Hồ Chí Minh|Quận 3|Phường 11
+Thành phố Hồ Chí Minh|Quận 3|Phường 12
+Thành phố Hồ Chí Minh|Quận 3|Phường 13
+Thành phố Hồ Chí Minh|Quận 3|Phường 14
+-
+Thành phố Hồ Chí Minh|Quận 4|Chọn Phường / Xã
+Thành phố Hồ Chí Minh|Quận 4|Phường 01
+Thành phố Hồ Chí Minh|Quận 4|Phường 02
+Thành phố Hồ Chí Minh|Quận 4|Phường 03
+Thành phố Hồ Chí Minh|Quận 4|Phường 04
+Thành phố Hồ Chí Minh|Quận 4|Phường 06
+Thành phố Hồ Chí Minh|Quận 4|Phường 08
+Thành phố Hồ Chí Minh|Quận 4|Phường 09
+Thành phố Hồ Chí Minh|Quận 4|Phường 10
+Thành phố Hồ Chí Minh|Quận 4|Phường 13
+Thành phố Hồ Chí Minh|Quận 4|Phường 14
+Thành phố Hồ Chí Minh|Quận 4|Phường 15
+Thành phố Hồ Chí Minh|Quận 4|Phường 16
+Thành phố Hồ Chí Minh|Quận 4|Phường 18
+-
+Thành phố Hồ Chí Minh|Quận 5|Chọn Phường / Xã
+Thành phố Hồ Chí Minh|Quận 5|Phường 01
+Thành phố Hồ Chí Minh|Quận 5|Phường 02
+Thành phố Hồ Chí Minh|Quận 5|Phường 03
+Thành phố Hồ Chí Minh|Quận 5|Phường 04
+Thành phố Hồ Chí Minh|Quận 5|Phường 05
+Thành phố Hồ Chí Minh|Quận 5|Phường 06
+Thành phố Hồ Chí Minh|Quận 5|Phường 07
+Thành phố Hồ Chí Minh|Quận 5|Phường 08
+Thành phố Hồ Chí Minh|Quận 5|Phường 09
+Thành phố Hồ Chí Minh|Quận 5|Phường 10
+Thành phố Hồ Chí Minh|Quận 5|Phường 11
+Thành phố Hồ Chí Minh|Quận 5|Phường 12
+Thành phố Hồ Chí Minh|Quận 5|Phường 13
+Thành phố Hồ Chí Minh|Quận 5|Phường 14
+-
+Thành phố Hồ Chí Minh|Quận 6|Chọn Phường / Xã
+Thành phố Hồ Chí Minh|Quận 6|Phường 01
+Thành phố Hồ Chí Minh|Quận 6|Phường 02
+Thành phố Hồ Chí Minh|Quận 6|Phường 03
+Thành phố Hồ Chí Minh|Quận 6|Phường 04
+Thành phố Hồ Chí Minh|Quận 6|Phường 05
+Thành phố Hồ Chí Minh|Quận 6|Phường 06
+Thành phố Hồ Chí Minh|Quận 6|Phường 07
+Thành phố Hồ Chí Minh|Quận 6|Phường 08
+Thành phố Hồ Chí Minh|Quận 6|Phường 09
+Thành phố Hồ Chí Minh|Quận 6|Phường 10
+Thành phố Hồ Chí Minh|Quận 6|Phường 11
+Thành phố Hồ Chí Minh|Quận 6|Phường 12
+Thành phố Hồ Chí Minh|Quận 6|Phường 13
+Thành phố Hồ Chí Minh|Quận 6|Phường 14
+-
+Thành phố Hồ Chí Minh|Quận 7|Chọn Phường / Xã
+Thành phố Hồ Chí Minh|Quận 7|Phường Bình Thuận
+Thành phố Hồ Chí Minh|Quận 7|Phường Phú Mỹ
+Thành phố Hồ Chí Minh|Quận 7|Phường Phú Thuận
+Thành phố Hồ Chí Minh|Quận 7|Phường Tân Hưng
+Thành phố Hồ Chí Minh|Quận 7|Phường Tân Kiểng
+Thành phố Hồ Chí Minh|Quận 7|Phường Tân Phong
+Thành phố Hồ Chí Minh|Quận 7|Phường Tân Phú
+Thành phố Hồ Chí Minh|Quận 7|Phường Tân Quy
+Thành phố Hồ Chí Minh|Quận 7|Phường Tân Thuận Đông
+Thành phố Hồ Chí Minh|Quận 7|Phường Tân Thuận Tây
+-
+Thành phố Hồ Chí Minh|Quận 8|Chọn Phường / Xã
+Thành phố Hồ Chí Minh|Quận 8|Phường 01
+Thành phố Hồ Chí Minh|Quận 8|Phường 02
+Thành phố Hồ Chí Minh|Quận 8|Phường 03
+Thành phố Hồ Chí Minh|Quận 8|Phường 04
+Thành phố Hồ Chí Minh|Quận 8|Phường 05
+Thành phố Hồ Chí Minh|Quận 8|Phường 06
+Thành phố Hồ Chí Minh|Quận 8|Phường 07
+Thành phố Hồ Chí Minh|Quận 8|Phường 08
+Thành phố Hồ Chí Minh|Quận 8|Phường 09
+Thành phố Hồ Chí Minh|Quận 8|Phường 10
+Thành phố Hồ Chí Minh|Quận 8|Phường 11
+Thành phố Hồ Chí Minh|Quận 8|Phường 12
+Thành phố Hồ Chí Minh|Quận 8|Phường 13
+Thành phố Hồ Chí Minh|Quận 8|Phường 14
+Thành phố Hồ Chí Minh|Quận 8|Phường 15
+Thành phố Hồ Chí Minh|Quận 8|Phường 16
+-
+Thành phố Hồ Chí Minh|Quận 10|Chọn Phường / Xã
+Thành phố Hồ Chí Minh|Quận 10|Phường 01
+Thành phố Hồ Chí Minh|Quận 10|Phường 02
+Thành phố Hồ Chí Minh|Quận 10|Phường 04
+Thành phố Hồ Chí Minh|Quận 10|Phường 05
+Thành phố Hồ Chí Minh|Quận 10|Phường 06
+Thành phố Hồ Chí Minh|Quận 10|Phường 07
+Thành phố Hồ Chí Minh|Quận 10|Phường 08
+Thành phố Hồ Chí Minh|Quận 10|Phường 09
+Thành phố Hồ Chí Minh|Quận 10|Phường 10
+Thành phố Hồ Chí Minh|Quận 10|Phường 11
+Thành phố Hồ Chí Minh|Quận 10|Phường 12
+Thành phố Hồ Chí Minh|Quận 10|Phường 13
+Thành phố Hồ Chí Minh|Quận 10|Phường 14
+Thành phố Hồ Chí Minh|Quận 10|Phường 15
+-
+Thành phố Hồ Chí Minh|Quận 11|Chọn Phường / Xã
+Thành phố Hồ Chí Minh|Quận 11|Phường 01
+Thành phố Hồ Chí Minh|Quận 11|Phường 02
+Thành phố Hồ Chí Minh|Quận 11|Phường 03
+Thành phố Hồ Chí Minh|Quận 11|Phường 04
+Thành phố Hồ Chí Minh|Quận 11|Phường 05
+Thành phố Hồ Chí Minh|Quận 11|Phường 06
+Thành phố Hồ Chí Minh|Quận 11|Phường 07
+Thành phố Hồ Chí Minh|Quận 11|Phường 08
+Thành phố Hồ Chí Minh|Quận 11|Phường 09
+Thành phố Hồ Chí Minh|Quận 11|Phường 10
+Thành phố Hồ Chí Minh|Quận 11|Phường 11
+Thành phố Hồ Chí Minh|Quận 11|Phường 12
+Thành phố Hồ Chí Minh|Quận 11|Phường 13
+Thành phố Hồ Chí Minh|Quận 11|Phường 14
+Thành phố Hồ Chí Minh|Quận 11|Phường 15
+Thành phố Hồ Chí Minh|Quận 11|Phường 16
+-
+Thành phố Hồ Chí Minh|Quận 12|Chọn Phường / Xã
+Thành phố Hồ Chí Minh|Quận 12|Phường An Phú Đông
+Thành phố Hồ Chí Minh|Quận 12|Phường Đông Hưng Thuận
+Thành phố Hồ Chí Minh|Quận 12|Phường Hiệp Thành
+Thành phố Hồ Chí Minh|Quận 12|Phường Tân Chánh Hiệp
+Thành phố Hồ Chí Minh|Quận 12|Phường Tân Hưng Thuận
+Thành phố Hồ Chí Minh|Quận 12|Phường Tân Thới Hiệp
+Thành phố Hồ Chí Minh|Quận 12|Phường Tân Thới Nhất
+Thành phố Hồ Chí Minh|Quận 12|Phường Thạnh Lộc
+Thành phố Hồ Chí Minh|Quận 12|Phường Thạnh Xuân
+Thành phố Hồ Chí Minh|Quận 12|Phường Thới An
+Thành phố Hồ Chí Minh|Quận 12|Phường Trung Mỹ Tây
+-
+Thành phố Hồ Chí Minh|Quận Bình Tân|Chọn Phường / Xã
+Thành phố Hồ Chí Minh|Quận Bình Tân|Phường An Lạc
+Thành phố Hồ Chí Minh|Quận Bình Tân|Phường An Lạc A
+Thành phố Hồ Chí Minh|Quận Bình Tân|Phường Bình Hưng Hòa
+Thành phố Hồ Chí Minh|Quận Bình Tân|Phường Bình Hưng Hoà A
+Thành phố Hồ Chí Minh|Quận Bình Tân|Phường Bình Hưng Hoà B
+Thành phố Hồ Chí Minh|Quận Bình Tân|Phường Bình Trị Đông
+Thành phố Hồ Chí Minh|Quận Bình Tân|Phường Bình Trị Đông A
+Thành phố Hồ Chí Minh|Quận Bình Tân|Phường Bình Trị Đông B
+Thành phố Hồ Chí Minh|Quận Bình Tân|Phường Tân Tạo
+Thành phố Hồ Chí Minh|Quận Bình Tân|Phường Tân Tạo A
+-
+Thành phố Hồ Chí Minh|Quận Bình Thạnh|Chọn Phường / Xã
+Thành phố Hồ Chí Minh|Quận Bình Thạnh|Phường 01
+Thành phố Hồ Chí Minh|Quận Bình Thạnh|Phường 02
+Thành phố Hồ Chí Minh|Quận Bình Thạnh|Phường 03
+Thành phố Hồ Chí Minh|Quận Bình Thạnh|Phường 05
+Thành phố Hồ Chí Minh|Quận Bình Thạnh|Phường 06
+Thành phố Hồ Chí Minh|Quận Bình Thạnh|Phường 07
+Thành phố Hồ Chí Minh|Quận Bình Thạnh|Phường 11
+Thành phố Hồ Chí Minh|Quận Bình Thạnh|Phường 12
+Thành phố Hồ Chí Minh|Quận Bình Thạnh|Phường 13
+Thành phố Hồ Chí Minh|Quận Bình Thạnh|Phường 14
+Thành phố Hồ Chí Minh|Quận Bình Thạnh|Phường 15
+Thành phố Hồ Chí Minh|Quận Bình Thạnh|Phường 17
+Thành phố Hồ Chí Minh|Quận Bình Thạnh|Phường 19
+Thành phố Hồ Chí Minh|Quận Bình Thạnh|Phường 21
+Thành phố Hồ Chí Minh|Quận Bình Thạnh|Phường 22
+Thành phố Hồ Chí Minh|Quận Bình Thạnh|Phường 24
+Thành phố Hồ Chí Minh|Quận Bình Thạnh|Phường 25
+Thành phố Hồ Chí Minh|Quận Bình Thạnh|Phường 26
+Thành phố Hồ Chí Minh|Quận Bình Thạnh|Phường 27
+Thành phố Hồ Chí Minh|Quận Bình Thạnh|Phường 28
+-
+Thành phố Hồ Chí Minh|Quận Gò Vấp|Chọn Phường / Xã
+Thành phố Hồ Chí Minh|Quận Gò Vấp|Phường 01
+Thành phố Hồ Chí Minh|Quận Gò Vấp|Phường 03
+Thành phố Hồ Chí Minh|Quận Gò Vấp|Phường 04
+Thành phố Hồ Chí Minh|Quận Gò Vấp|Phường 05
+Thành phố Hồ Chí Minh|Quận Gò Vấp|Phường 06
+Thành phố Hồ Chí Minh|Quận Gò Vấp|Phường 07
+Thành phố Hồ Chí Minh|Quận Gò Vấp|Phường 08
+Thành phố Hồ Chí Minh|Quận Gò Vấp|Phường 09
+Thành phố Hồ Chí Minh|Quận Gò Vấp|Phường 10
+Thành phố Hồ Chí Minh|Quận Gò Vấp|Phường 11
+Thành phố Hồ Chí Minh|Quận Gò Vấp|Phường 12
+Thành phố Hồ Chí Minh|Quận Gò Vấp|Phường 13
+Thành phố Hồ Chí Minh|Quận Gò Vấp|Phường 14
+Thành phố Hồ Chí Minh|Quận Gò Vấp|Phường 15
+Thành phố Hồ Chí Minh|Quận Gò Vấp|Phường 16
+Thành phố Hồ Chí Minh|Quận Gò Vấp|Phường 17
+-
+Thành phố Hồ Chí Minh|Quận Phú Nhuận|Chọn Phường / Xã
+Thành phố Hồ Chí Minh|Quận Phú Nhuận|Phường 01
+Thành phố Hồ Chí Minh|Quận Phú Nhuận|Phường 02
+Thành phố Hồ Chí Minh|Quận Phú Nhuận|Phường 03
+Thành phố Hồ Chí Minh|Quận Phú Nhuận|Phường 04
+Thành phố Hồ Chí Minh|Quận Phú Nhuận|Phường 05
+Thành phố Hồ Chí Minh|Quận Phú Nhuận|Phường 07
+Thành phố Hồ Chí Minh|Quận Phú Nhuận|Phường 08
+Thành phố Hồ Chí Minh|Quận Phú Nhuận|Phường 09
+Thành phố Hồ Chí Minh|Quận Phú Nhuận|Phường 10
+Thành phố Hồ Chí Minh|Quận Phú Nhuận|Phường 11
+Thành phố Hồ Chí Minh|Quận Phú Nhuận|Phường 13
+Thành phố Hồ Chí Minh|Quận Phú Nhuận|Phường 15
+Thành phố Hồ Chí Minh|Quận Phú Nhuận|Phường 17
+-
+Thành phố Hồ Chí Minh|Quận Tân Bình|Chọn Phường / Xã
+Thành phố Hồ Chí Minh|Quận Tân Bình|Phường 01
+Thành phố Hồ Chí Minh|Quận Tân Bình|Phường 02
+Thành phố Hồ Chí Minh|Quận Tân Bình|Phường 03
+Thành phố Hồ Chí Minh|Quận Tân Bình|Phường 04
+Thành phố Hồ Chí Minh|Quận Tân Bình|Phường 05
+Thành phố Hồ Chí Minh|Quận Tân Bình|Phường 06
+Thành phố Hồ Chí Minh|Quận Tân Bình|Phường 07
+Thành phố Hồ Chí Minh|Quận Tân Bình|Phường 08
+Thành phố Hồ Chí Minh|Quận Tân Bình|Phường 09
+Thành phố Hồ Chí Minh|Quận Tân Bình|Phường 10
+Thành phố Hồ Chí Minh|Quận Tân Bình|Phường 11
+Thành phố Hồ Chí Minh|Quận Tân Bình|Phường 12
+Thành phố Hồ Chí Minh|Quận Tân Bình|Phường 13
+Thành phố Hồ Chí Minh|Quận Tân Bình|Phường 14
+Thành phố Hồ Chí Minh|Quận Tân Bình|Phường 15
+-
+Thành phố Hồ Chí Minh|Quận Tân Phú|Chọn Phường / Xã
+Thành phố Hồ Chí Minh|Quận Tân Phú|Phường Hiệp Tân
+Thành phố Hồ Chí Minh|Quận Tân Phú|Phường Hoà Thạnh
+Thành phố Hồ Chí Minh|Quận Tân Phú|Phường Phú Thạnh
+Thành phố Hồ Chí Minh|Quận Tân Phú|Phường Phú Thọ Hoà
+Thành phố Hồ Chí Minh|Quận Tân Phú|Phường Phú Trung
+Thành phố Hồ Chí Minh|Quận Tân Phú|Phường Sơn Kỳ
+Thành phố Hồ Chí Minh|Quận Tân Phú|Phường Tân Quý
+Thành phố Hồ Chí Minh|Quận Tân Phú|Phường Tân Sơn Nhì
+Thành phố Hồ Chí Minh|Quận Tân Phú|Phường Tân Thành
+Thành phố Hồ Chí Minh|Quận Tân Phú|Phường Tân Thới Hoà
+Thành phố Hồ Chí Minh|Quận Tân Phú|Phường Tây Thạnh
+-
+Thành phố Hồ Chí Minh|Huyện Bình Chánh|Chọn Phường / Xã
+Thành phố Hồ Chí Minh|Huyện Bình Chánh|Thị trấn Tân Túc
+Thành phố Hồ Chí Minh|Huyện Bình Chánh|Xã An Phú Tây
+Thành phố Hồ Chí Minh|Huyện Bình Chánh|Xã Bình Chánh
+Thành phố Hồ Chí Minh|Huyện Bình Chánh|Xã Bình Hưng
+Thành phố Hồ Chí Minh|Huyện Bình Chánh|Xã Bình Lợi
+Thành phố Hồ Chí Minh|Huyện Bình Chánh|Xã Đa Phước
+Thành phố Hồ Chí Minh|Huyện Bình Chánh|Xã Hưng Long
+Thành phố Hồ Chí Minh|Huyện Bình Chánh|Xã Lê Minh Xuân
+Thành phố Hồ Chí Minh|Huyện Bình Chánh|Xã Phạm Văn Hai
+Thành phố Hồ Chí Minh|Huyện Bình Chánh|Xã Phong Phú
+Thành phố Hồ Chí Minh|Huyện Bình Chánh|Xã Quy Đức
+Thành phố Hồ Chí Minh|Huyện Bình Chánh|Xã Tân Kiên
+Thành phố Hồ Chí Minh|Huyện Bình Chánh|Xã Tân Nhựt
+Thành phố Hồ Chí Minh|Huyện Bình Chánh|Xã Tân Quý Tây
+Thành phố Hồ Chí Minh|Huyện Bình Chánh|Xã Vĩnh Lộc A
+Thành phố Hồ Chí Minh|Huyện Bình Chánh|Xã Vĩnh Lộc B
+-
+Thành phố Hồ Chí Minh|Huyện Cần Giờ|Chọn Phường / Xã
+Thành phố Hồ Chí Minh|Huyện Cần Giờ|Thị trấn Cần Thạnh
+Thành phố Hồ Chí Minh|Huyện Cần Giờ|Xã An Thới Đông
+Thành phố Hồ Chí Minh|Huyện Cần Giờ|Xã Bình Khánh
+Thành phố Hồ Chí Minh|Huyện Cần Giờ|Xã Long Hòa
+Thành phố Hồ Chí Minh|Huyện Cần Giờ|Xã Lý Nhơn
+Thành phố Hồ Chí Minh|Huyện Cần Giờ|Xã Tam Thôn Hiệp
+Thành phố Hồ Chí Minh|Huyện Cần Giờ|Xã Thạnh An
+-
+Thành phố Hồ Chí Minh|Huyện Củ Chi|Chọn Phường / Xã
+Thành phố Hồ Chí Minh|Huyện Củ Chi|Thị trấn Củ Chi
+Thành phố Hồ Chí Minh|Huyện Củ Chi|Xã An Nhơn Tây
+Thành phố Hồ Chí Minh|Huyện Củ Chi|Xã An Phú
+Thành phố Hồ Chí Minh|Huyện Củ Chi|Xã Bình Mỹ
+Thành phố Hồ Chí Minh|Huyện Củ Chi|Xã Hòa Phú
+Thành phố Hồ Chí Minh|Huyện Củ Chi|Xã Nhuận Đức
+Thành phố Hồ Chí Minh|Huyện Củ Chi|Xã Phạm Văn Cội
+Thành phố Hồ Chí Minh|Huyện Củ Chi|Xã Phú Hòa Đông
+Thành phố Hồ Chí Minh|Huyện Củ Chi|Xã Phú Mỹ Hưng
+Thành phố Hồ Chí Minh|Huyện Củ Chi|Xã Phước Hiệp
+Thành phố Hồ Chí Minh|Huyện Củ Chi|Xã Phước Thạnh
+Thành phố Hồ Chí Minh|Huyện Củ Chi|Xã Phước Vĩnh An
+Thành phố Hồ Chí Minh|Huyện Củ Chi|Xã Tân An Hội
+Thành phố Hồ Chí Minh|Huyện Củ Chi|Xã Tân Phú Trung
+Thành phố Hồ Chí Minh|Huyện Củ Chi|Xã Tân Thạnh Đông
+Thành phố Hồ Chí Minh|Huyện Củ Chi|Xã Tân Thạnh Tây
+Thành phố Hồ Chí Minh|Huyện Củ Chi|Xã Tân Thông Hội
+Thành phố Hồ Chí Minh|Huyện Củ Chi|Xã Thái Mỹ
+Thành phố Hồ Chí Minh|Huyện Củ Chi|Xã Trung An
+Thành phố Hồ Chí Minh|Huyện Củ Chi|Xã Trung Lập Hạ
+Thành phố Hồ Chí Minh|Huyện Củ Chi|Xã Trung Lập Thượng
+-
+Thành phố Hồ Chí Minh|Huyện Hóc Môn|Chọn Phường / Xã
+Thành phố Hồ Chí Minh|Huyện Hóc Môn|Thị trấn Hóc Môn
+Thành phố Hồ Chí Minh|Huyện Hóc Môn|Xã Bà Điểm
+Thành phố Hồ Chí Minh|Huyện Hóc Môn|Xã Đông Thạnh
+Thành phố Hồ Chí Minh|Huyện Hóc Môn|Xã Nhị Bình
+Thành phố Hồ Chí Minh|Huyện Hóc Môn|Xã Tân Hiệp
+Thành phố Hồ Chí Minh|Huyện Hóc Môn|Xã Tân Thới Nhì
+Thành phố Hồ Chí Minh|Huyện Hóc Môn|Xã Tân Xuân
+Thành phố Hồ Chí Minh|Huyện Hóc Môn|Xã Thới Tam Thôn
+Thành phố Hồ Chí Minh|Huyện Hóc Môn|Xã Trung Chánh
+Thành phố Hồ Chí Minh|Huyện Hóc Môn|Xã Xuân Thới Đông
+Thành phố Hồ Chí Minh|Huyện Hóc Môn|Xã Xuân Thới Sơn
+Thành phố Hồ Chí Minh|Huyện Hóc Môn|Xã Xuân Thới Thượng
+-
+Thành phố Hồ Chí Minh|Huyện Nhà Bè|Chọn Phường / Xã
+Thành phố Hồ Chí Minh|Huyện Nhà Bè|Thị trấn Nhà Bè
+Thành phố Hồ Chí Minh|Huyện Nhà Bè|Xã Hiệp Phước
+Thành phố Hồ Chí Minh|Huyện Nhà Bè|Xã Long Thới
+Thành phố Hồ Chí Minh|Huyện Nhà Bè|Xã Nhơn Đức
+Thành phố Hồ Chí Minh|Huyện Nhà Bè|Xã Phú Xuân
+Thành phố Hồ Chí Minh|Huyện Nhà Bè|Xã Phước Kiển
+Thành phố Hồ Chí Minh|Huyện Nhà Bè|Xã Phước Lộc
+--

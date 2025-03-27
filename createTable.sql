@@ -712,69 +712,11 @@ INSERT INTO motherboards (brand, model, socket, chipset, ram_slots, max_ram, ram
            ('ASUS', 'ASUS ROG Strix Z790-E', 'LGA1700', 'Z790', 4, 192, 7200, 8, 6, 2, 144000, 'Trong kho', 21, 21, 21, '2025-03-13', '2030-03-13');
 
 -- thêm dữ liệu vào bang motherboard_ram
-INSERT INTO motherboard_ram (motherboard_id, ram_id)
-    VALUES (1, 1),
-           (1, 2),
-
-           (2, 3),
-           (2, 4),
-
-           (3, 5),
-           (3, 6),
-
-           (4, 7),
-           (4, 8),
-
-           (5, 9),
-           (5, 10),
-
-           (6, 11),
-           (6, 12),
-
-           (7, 13),
-           (7, 14),
-
-           (8, 15),
-           (8, 16),
-
-           (9, 17),
-           (9, 18),
-
-           (10, 19),
-           (10, 20),
-
-           (11, 21),
-           (11, 22),
-
-           (12, 23),
-           (12, 24),
-
-           (13, 25),
-           (13, 26),
-
-           (14, 27),
-           (14, 28),
-
-           (15, 29),
-           (15, 30),
-
-           (16, 31),
-           (16, 32),
-
-           (17, 33),
-           (17, 34),
-
-           (18, 35),
-           (18, 36),
-
-           (19, 37),
-           (19, 38),
-
-           (20, 39),
-           (20, 40),
-
-           (21, 41),
-           (21, 42);
+INSERT INTO motherboard_ram (motherboard_id, ram_id) VALUES 
+(1, 1), (1, 2), (2, 3), (2, 4), (3, 5), (3, 6), (4, 7), (4, 8), (5, 9), (5, 10), (6, 11), (6, 12),
+(7, 13), (7, 14), (8, 15), (8, 16), (9, 17), (9, 18), (10, 19), (10, 20), (11, 21), (11, 22), (12, 23),
+(12, 24), (13, 25), (13, 26), (14, 27), (14, 28), (15, 29), (15, 30),  (16, 31), (16, 32), (17, 33), (17, 34),
+(18, 35),(18, 36), (19, 37), (19, 38), (20, 39), (20, 40), (21, 41), (21, 42);
 
 -- them du lieu cho bang motherboard_storage
 INSERT INTO motherboard_storage (motherboard_id, storage_id)
@@ -826,8 +768,8 @@ INSERT INTO computers (name, price_per_hour, motherboard_id, mouse_id, keyboard_
 
 INSERT INTO accounts (username, password, role, status)
 VALUES
-    ('namduongit', MD5('123456789'), 'Quản trị viên', 'Offline'),
-    ('luanchenh', MD5('123456789'), 'Quản trị viên', 'Offline');
+    ('namduongit', MD5('NDuong205'), 'Quản trị viên', 'Offline'),
+    ('luanchenh', MD5('luanChenh'), 'Quản trị viên', 'Offline');
 
 -- Thêm 3 nhân viên
 INSERT INTO accounts (username, password, role, status)
@@ -848,13 +790,3 @@ VALUES
     ('alibabaDepZai', MD5('123456789'), 'Người chơi', 'Offline'),
     ('DoMayVoDuoc', MD5('123456789'), 'Người chơi', 'Offline'),
     ('BeNgocLan', MD5('123456789'), 'Người chơi', 'Offline');
-
-use net_gaming_management;
-update staffs
-set email = 'nguyennamduong205@gmail.com'
-where staff_id = 1;
-update staffs
-set email = 'luanchenh192@gmail.com'
-where staff_id = 2;
-
-

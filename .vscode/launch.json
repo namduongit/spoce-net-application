@@ -6,6 +6,48 @@
     "configurations": [
         {
             "type": "java",
+            "name": "AddressSelector",
+            "request": "launch",
+            "mainClass": "Utils.Data.AddressSelector",
+            "projectName": "spoce-net-application_f57ff3ae"
+        },
+        {
+            "type": "java",
+            "name": "AddressComboBox",
+            "request": "launch",
+            "mainClass": "Utils.Data.AddressComboBox",
+            "projectName": "spoce-net-application_f57ff3ae"
+        },
+        {
+            "type": "java",
+            "name": "FilterData",
+            "request": "launch",
+            "mainClass": "Utils.Data.FilterData",
+            "projectName": "spoce-net-application_f57ff3ae"
+        },
+        {
+            "type": "java",
+            "name": "AdminDashboard",
+            "request": "launch",
+            "mainClass": "GUI.main.AdminDashboard",
+            "projectName": "spoce-net-application_f57ff3ae"
+        },
+        {
+            "type": "java",
+            "name": "AdminLoginScreen",
+            "request": "launch",
+            "mainClass": "GUI.main.AdminLoginScreen",
+            "projectName": "spoce-net-application_f57ff3ae"
+        },
+        {
+            "type": "java",
+            "name": "ConfigSQL",
+            "request": "launch",
+            "mainClass": "Utils.Config.ConfigSQL",
+            "projectName": "spoce-net-application_f57ff3ae"
+        },
+        {
+            "type": "java",
             "name": "AccountDAL",
             "request": "launch",
             "mainClass": "DAL.AccountDAL",
