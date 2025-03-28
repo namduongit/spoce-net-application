@@ -27,9 +27,11 @@ public class ComputerPanel extends JPanel{
     private JPanel dataPanel;
     private int selectedItemIndex;
     private JLabel selectionText;
+    private JLabel sessionSelectionText;
     private CustomCombobox<String> statusComboBox;
     private CustomTextField searchTextField;
     private ComputerBLL computerBLL;
+    private ComputerSessionBLL computerSessionBLL;
     private MotherboardBLL motherboardBLL;
     private CpuBLL cpuBLL;
     private GpuBLL gpuBLL;
@@ -40,14 +42,18 @@ public class ComputerPanel extends JPanel{
     private RomBLL romBLL;
     private RoomBLL roomBLL;
     private ArrayList<Computers> list;
+    private ArrayList<ComputerSessions> sessionList;
     private Object[][] data;
     private DefaultTableModel model;
     private String[] columnNames;
+    private String[] sessionColumnNames;
     private CustomTable tableData;
+    private CustomTable sessionData;
     private DefaultTableCellRenderer centeredRenderer;
 
     public ComputerPanel() {
         this.computerBLL = new ComputerBLL();
+        this.computerSessionBLL = new ComputerSessionBLL();
         this.motherboardBLL = new MotherboardBLL();
         this.cpuBLL = new CpuBLL();
         this.gpuBLL = new GpuBLL();
@@ -58,6 +64,7 @@ public class ComputerPanel extends JPanel{
         this.romBLL = new RomBLL();
         this.roomBLL = new RoomBLL();
         this.list = this.computerBLL.getAllComputers();
+        this.sessionList = this.computerSessionBLL.getComputerSessionList();
         this.columnNames = new String[]{
                 "ID",
                 "Tên máy tính",
@@ -71,7 +78,15 @@ public class ComputerPanel extends JPanel{
 //                "ROM",
                 "Phòng",
                 "Giá tiền",
-                "Trạng thái"};
+                "Trạng thái"
+        };
+        this.sessionColumnNames = new String[]{
+                "Session ID",
+                "ID người chơi",
+                "ID máy tính",
+                "Thời gian chơi",
+                "Tổng tiền"
+        };
         this.centeredRenderer = new DefaultTableCellRenderer();
         this.centeredRenderer.setHorizontalAlignment(JLabel.CENTER);
         this.initComponents();
@@ -261,16 +276,17 @@ public class ComputerPanel extends JPanel{
         panel.setLayout(this.cardLayout);
 
         CustomPanel managePanel = this.createManagePanel();
-//        CustomPanel playerPanel = this.createPlayerPanel();
+        CustomPanel playerPanel = this.createPlayerPanel();
 
         panel.add(managePanel, "ManagePanel");
-//        panel.add(playerPanel, "PlayerPanel");
+        panel.add(playerPanel, "PlayerPanel");
 
         return panel;
     }
 
     private void refreshAllDatas() {
         this.list = this.computerBLL.getAllComputers();
+        this.sessionList = this.computerSessionBLL.getComputerSessionList();
     }
 
 
@@ -320,6 +336,34 @@ public class ComputerPanel extends JPanel{
         return data;
     }
 
+    private Object[][] createSessionData() {
+        Object[][] data = new Object[this.list.size()][5];
+
+        for (int i=0; i<this.list.size(); i++) {
+            ComputerSessions session = null;
+            for (ComputerSessions x : this.sessionList) {
+                if (x.getComputerId() == this.list.get(i).getComputerId()) {
+                    session = x;
+                }
+            }
+
+            if (session == null) {
+                data[i][0] = "NULL";
+                data[i][1] = "NULL";
+                data[i][2] = this.list.get(i).getComputerId();
+                data[i][3] = "NULL";
+                data[i][4] = "NULL";
+            } else {
+                data[i][0] = session.getSessionId();
+                data[i][1] = session.getPlayerId() != null ? session.getPlayerId() : "NULL";
+                data[i][2] = session.getComputerId();
+//                data[i][3] = session.;
+//                data[i][4]
+            }
+        }
+        return data;
+    }
+
     private CustomPanel createManagePanel() {
         CustomPanel panel = new CustomPanel();
         panel.setLayout(null);
@@ -331,7 +375,9 @@ public class ComputerPanel extends JPanel{
         tableData = new CustomTable(this.model);
         tableData.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         AdjustTableWidth.automaticallyAdjustTableWidths(tableData);
-        tableData.getColumnModel().getColumn(0).setPreferredWidth(100);
+        tableData.getColumnModel()
+                    .getColumn(0)
+                    .setPreferredWidth(100);
         tableData.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
@@ -472,6 +518,193 @@ public class ComputerPanel extends JPanel{
                             JOptionPane.INFORMATION_MESSAGE
                     );
                 }
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                deleteButton.setForeground(Color.red);
+                deleteButton.setBackground(Color.white);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                deleteButton.setForeground(Color.white);
+                deleteButton.setBackground(Color.red);
+            }
+        });
+
+        panel.add(scroll);
+        panel.add(addButton);
+        panel.add(modifyButton);
+        panel.add(deleteButton);
+
+        return panel;
+    }
+
+    private CustomPanel createPlayerPanel() {
+        CustomPanel panel = new CustomPanel();
+        panel.setLayout(null);
+
+        this.refreshAllDatas();
+        Object[][] data = this.createSessionData();
+        DefaultTableModel model = new DefaultTableModel(data, this.sessionColumnNames);
+
+        sessionData = new CustomTable(model);
+        sessionData.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        AdjustTableWidth.automaticallyAdjustTableWidths(sessionData);
+        sessionData.getColumnModel()
+                .getColumn(0)
+                .setPreferredWidth(100);
+        sessionData.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if (!e.getValueIsAdjusting()) {
+                    if (sessionData.getSelectedRow() != -1) {
+
+                        // Cập nhật tên máy tính được chọn vào label
+                        ComputerPanel.this.selectionText
+                                .setText("Đang chọn: " + sessionData.getValueAt(sessionData.getSelectedRow(), 2).toString());
+                    }
+                }
+            }
+        });
+
+        JScrollPane scroll = new CustomScrollPane(sessionData);
+        scroll.setBounds(0,0,1080,400);
+
+        CustomButton addButton = new CustomButton("Mở máy");
+        addButton.setBackground(Color.decode("#388E3C"));
+        addButton.setBorderColor(Color.decode("#388E3C"));
+        addButton.setForeground(Color.WHITE);
+        addButton.setBounds(30, 416, 100, 35);
+        addButton.setBorderSize(3);
+        addButton.addMouseListener(new MouseListener() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+//                new AddingComputer();
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                addButton.setForeground(Color.decode("#388E3C"));
+                addButton.setBackground(Color.WHITE);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                addButton.setForeground(Color.WHITE);
+                addButton.setBackground(Color.decode("#388E3C"));
+            }
+        });
+
+        CustomButton modifyButton = new CustomButton("Tắt máy");
+        modifyButton.setBackground(Color.pink);
+        modifyButton.setBorderColor(Color.pink);
+        modifyButton.setForeground(Color.WHITE);
+        modifyButton.setBounds(150, 416, 100, 35);
+        modifyButton.setBorderSize(3);
+        modifyButton.addMouseListener(new MouseListener() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+//                if (tableData.getSelectedRow() != -1) {
+//
+//                    // Lấy ra ID máy tính được chọn
+//                    int computerId = (int)tableData.getValueAt(tableData.getSelectedRow(), 0);
+//
+//                    // Lấy ra đối tượng máy tính dựa trên ID được chọn
+//                    Computers computer = ComputerPanel.this.computerBLL
+//                            .getComputerById(computerId);
+//
+//                    // Gọi hàm tạo cửa sổ chỉnh sửa với tham số là đối tượng máy tính
+//                    new DetailsComputer(computer);
+//                } else {
+//                    JOptionPane.showMessageDialog(null, "Bạn chưa chọn máy tính", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+//                }
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                modifyButton.setForeground(Color.pink);
+                modifyButton.setBackground(Color.WHITE);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                modifyButton.setForeground(Color.WHITE);
+                modifyButton.setBackground(Color.pink);
+            }
+        });
+
+        CustomButton deleteButton = new CustomButton("Xóa");
+        deleteButton.setBackground(Color.red);
+        deleteButton.setBorderColor(Color.red);
+        deleteButton.setForeground(Color.WHITE);
+        deleteButton.setBounds(270, 416, 100, 35);
+        deleteButton.setBorderSize(3);
+        deleteButton.addMouseListener(new MouseListener() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+//                if (tableData.getSelectedRow() != -1) {
+//                    // Lấy ID của máy tính được chọn và truyền vào hàm xóa máy tính dựa trên ID
+//                    boolean isDone = ComputerPanel.this.computerBLL.deleteComputerById((int)tableData.getValueAt(tableData.getSelectedRow(), 0));
+//
+//                    // Kiểm tra xóa máy tính thành công hay không
+//                    if (isDone) {
+//                        JOptionPane.showMessageDialog(
+//                                null,
+//                                "Xóa máy tính thành công!",
+//                                "Thông báo",
+//                                JOptionPane.INFORMATION_MESSAGE
+//                        );
+//                    } else {
+//                        JOptionPane.showMessageDialog(
+//                                null,
+//                                "Xóa máy tính thất bại!",
+//                                "Lỗi",
+//                                JOptionPane.WARNING_MESSAGE
+//                        );
+//                    }
+//                } else {
+//                    JOptionPane.showMessageDialog(
+//                            null,
+//                            "Bạn chưa chọn máy tính",
+//                            "Thông báo",
+//                            JOptionPane.INFORMATION_MESSAGE
+//                    );
+//                }
             }
 
             @Override
