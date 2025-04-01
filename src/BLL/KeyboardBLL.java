@@ -30,4 +30,7 @@ public class KeyboardBLL {
     public boolean updateKeyboardById(int id, HashMap<String, Object> newvalues) {
         return this.keyboardDAL.updateKeyboardById(id, newvalues);
     }
+    public boolean deleteKeyboardById(int id) {
+        return this.keyboardDAL.deleteKeyboardById(id);
+    }
 }

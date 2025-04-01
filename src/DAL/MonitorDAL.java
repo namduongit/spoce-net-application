@@ -76,4 +76,14 @@ public class MonitorDAL {
 
         return helper.updateData(newvalues, values);
     }
+    public boolean deleteMonitorById(int id) {
+        MySQLHelper helper = new MySQLHelper();
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "monitors");
+        params.put("WHERE", "monitors.monitor_id = ?");
+        helper.buildingQueryParam(params);
+        ArrayList<Object> values = new ArrayList<>();
+        values.add(id);
+        return helper.deleteData(values);
+    }
 }

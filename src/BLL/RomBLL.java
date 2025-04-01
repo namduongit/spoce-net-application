@@ -26,7 +26,9 @@ public class RomBLL {
     public ArrayList<Roms> getRomsByStatus(String status) {
         return this.romDAL.getRomsByStatus(status);
     }
-
+    public boolean deleteRomById(int id) {
+        return this.romDAL.deleteRomById(id);
+    }
     public boolean updateRomById(int id, HashMap<String, Object> newvalues) {
         return this.romDAL.updateRomById(id, newvalues);
     }

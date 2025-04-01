@@ -75,4 +75,14 @@ public class HeadphoneDAL {
 
         return helper.updateData(newvalues, values);
     }
+    public boolean deleteHeadphoneById(int id) {
+        MySQLHelper helper = new MySQLHelper();
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "headphones");
+        params.put("WHERE", "headphones.headphone_id = ?");
+        helper.buildingQueryParam(params);
+        ArrayList<Object> values = new ArrayList<>();
+        values.add(id);
+        return helper.deleteData(values);
+    }
 }

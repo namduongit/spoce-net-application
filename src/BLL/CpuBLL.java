@@ -19,4 +19,7 @@ public class CpuBLL {
     public Cpus getCpuById(int id) {
         return this.cpuDAL.getCpuById(id);
     }
+    public boolean deleteCpuById(int id) {
+        return this.cpuDAL.deleteCpuById(id);
+    }
 }

@@ -73,4 +73,14 @@ public class MouseDAL {
 
         return helper.updateData(newvalues, values);
     }
+    public boolean deleteMouseById(int id) {
+        MySQLHelper helper = new MySQLHelper();
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "mouse");
+        params.put("WHERE", "mouse.mouse_id = ?");
+        helper.buildingQueryParam(params);
+        ArrayList<Object> values = new ArrayList<>();
+        values.add(id);
+        return helper.deleteData(values);
+    }
 }

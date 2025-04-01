@@ -1,7 +1,6 @@
 package DAL;
 
 import DAL.SQLHelper.MySQLHelper;
-import DTO.Mouse;
 import DTO.Roms;
 
 import javax.swing.*;
@@ -75,5 +74,15 @@ public class RomDAL {
         values.add(id);
 
         return helper.updateData(newvalues, values);
+    }
+    public boolean deleteRomById(int id) {
+        MySQLHelper helper = new MySQLHelper();
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "roms");
+        params.put("WHERE", "roms.rom_id = ?");
+        helper.buildingQueryParam(params);
+        ArrayList<Object> values = new ArrayList<>();
+        values.add(id);
+        return helper.deleteData(values);
     }
 }

@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class GpuDAL {
 
@@ -44,5 +45,16 @@ public class GpuDAL {
         }
 
         return null;
+    }
+
+    public boolean deleteGpuById(int id) {
+        MySQLHelper helper = new MySQLHelper();
+        HashMap<String,String> params = new HashMap<>();
+        params.put("TABLE", "gpus");
+        params.put("WHERE", "gpus.gpu_id= ?");
+        helper.buildingQueryParam(params);
+        ArrayList<Object> values = new ArrayList<>();
+        values.add(id);
+        return helper.deleteData(values);
     }
 }

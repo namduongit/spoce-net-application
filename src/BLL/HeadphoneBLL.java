@@ -30,4 +30,7 @@ public class HeadphoneBLL {
     public boolean updateHeadphoneById(int id, HashMap<String, Object> newvalues) {
         return this.headphoneDAL.updateHeadphoneById(id, newvalues);
     }
+    public boolean deleteHeadphoneById(int id) {
+        return this.headphoneDAL.deleteHeadphoneById(id);
+    }
 }

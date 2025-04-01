@@ -3,12 +3,9 @@ package GUI.panels;
 import BLL.*;
 import DTO.*;
 import GUI.Components.*;
-import GUI.Form.DetailsComputer;
 import Utils.Helper.AdjustTableWidth;
 
 import javax.swing.*;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.*;
@@ -19,7 +16,6 @@ public class HardwarePanel extends JPanel {
     private CustomPanel titlePanel;
     private CustomPanel controlPanel;
     private JPanel dataPanel;
-    private int selectedItemIndex;
     private JLabel selectionText;
     private ComputerBLL computerBLL;
     private MotherboardBLL motherboardBLL;
@@ -30,9 +26,9 @@ public class HardwarePanel extends JPanel {
     private MonitorBLL monitorBLL;
     private HeadphoneBLL headphoneBLL;
     private RomBLL romBLL;
-    private ArrayList<Computers> list;
     private CustomTable tableData;
     private DefaultTableModel tableModel;
+    private String currentType = "Tất cả"; // Theo dõi loại sản phẩm hiện tại
 
     public HardwarePanel() {
         this.computerBLL = new ComputerBLL();
@@ -44,13 +40,12 @@ public class HardwarePanel extends JPanel {
         this.monitorBLL = new MonitorBLL();
         this.headphoneBLL = new HeadphoneBLL();
         this.romBLL = new RomBLL();
-        this.list = this.computerBLL.getAllComputers();
         this.initComponents();
     }
 
     private void initComponents() {
         this.setLayout(null);
-        this.setBackground(Color.decode("#ECF0F1")); // Màu nền nhẹ nhàng
+        this.setBackground(Color.decode("#ECF0F1"));
 
         this.titlePanel = this.createTitlePanel();
         this.controlPanel = this.createControlPanel();
@@ -65,11 +60,10 @@ public class HardwarePanel extends JPanel {
         this.add(dataPanel);
     }
 
-    // Tiêu đề
     private CustomPanel createTitlePanel() {
         CustomPanel panel = new CustomPanel();
         panel.setLayout(null);
-        panel.setBackground(Color.decode("#34495E")); // Xanh đen đậm
+        panel.setBackground(Color.decode("#34495E"));
 
         JLabel title = new JLabel("QUẢN LÝ LINH KIỆN");
         title.setFont(new Font("Sans-serif", Font.PLAIN, 30));
@@ -80,13 +74,11 @@ public class HardwarePanel extends JPanel {
         return panel;
     }
 
-    // Các chức năng
     private CustomPanel createControlPanel() {
         CustomPanel panel = new CustomPanel();
         panel.setLayout(null);
         panel.setBackground(Color.decode("#ECF0F1"));
 
-        // Combobox Loại Sản Phẩm
         JLabel typeHardwareLabel = new JLabel("Loại Sản Phẩm:");
         typeHardwareLabel.setFont(new Font("Sans-serif", Font.PLAIN, 14));
         typeHardwareLabel.setBounds(20, 20, 100, 30);
@@ -95,10 +87,8 @@ public class HardwarePanel extends JPanel {
         CustomCombobox<String> typeComboBox = new CustomCombobox<>(typeList);
         typeComboBox.setBounds(120, 20, 150, 35);
         typeComboBox.setFont(new Font("Sans-serif", Font.PLAIN, 14));
-        typeComboBox.setMaximumRowCount(10); // Hiển thị tối đa 10 mục, không cần cuộn
+        typeComboBox.setMaximumRowCount(10);
 
-
-        // Tìm kiếm
         JLabel searchLabel = new JLabel("Tìm kiếm:");
         searchLabel.setFont(new Font("Sans-serif", Font.PLAIN, 14));
         searchLabel.setBounds(300, 20, 80, 30);
@@ -125,7 +115,6 @@ public class HardwarePanel extends JPanel {
         });
         searchTextField.setForeground(Color.GRAY);
 
-        // Trạng thái
         JLabel filterLabel = new JLabel("Trạng thái:");
         filterLabel.setFont(new Font("Sans-serif", Font.PLAIN, 14));
         filterLabel.setBounds(590, 20, 80, 30);
@@ -135,7 +124,6 @@ public class HardwarePanel extends JPanel {
         statusComboBox.setBounds(660, 20, 150, 35);
         statusComboBox.setFont(new Font("Sans-serif", Font.PLAIN, 14));
 
-        // Lọc
         CustomButton filterButton = new CustomButton("Lọc");
         filterButton.setBackground(Color.decode("#3498DB"));
         filterButton.setBorderColor(Color.decode("#3498DB"));
@@ -156,13 +144,11 @@ public class HardwarePanel extends JPanel {
         filterButton.addActionListener(e -> {
             String searchText = searchTextField.getText();
             String status = (String) statusComboBox.getSelectedItem();
-//            -------
             String type = (String) typeComboBox.getSelectedItem();
-
+            currentType = type;
             filterTable(searchText, status, type);
         });
 
-        // Đặt lại
         CustomButton resetButton = new CustomButton("Đặt lại");
         resetButton.setBackground(Color.decode("#E74C3C"));
         resetButton.setBorderColor(Color.decode("#E74C3C"));
@@ -185,10 +171,10 @@ public class HardwarePanel extends JPanel {
             searchTextField.setForeground(Color.GRAY);
             statusComboBox.setSelectedIndex(0);
             typeComboBox.setSelectedIndex(0);
-            updateTable(computerBLL.getAllComputers());
+            currentType = "Tất cả";
+            updateTable(getAllHardwareComponents());
         });
 
-        // Đang chọn
         selectionText = new JLabel("Đang chọn: NULL");
         selectionText.setFont(new Font("Sans-serif", Font.BOLD, 14));
         selectionText.setForeground(Color.decode("#7F8C8D"));
@@ -206,7 +192,6 @@ public class HardwarePanel extends JPanel {
         return panel;
     }
 
-    // Bảng table
     private JPanel createDataPanel() {
         JPanel panel = new JPanel();
         this.cardLayout = new CardLayout();
@@ -218,38 +203,33 @@ public class HardwarePanel extends JPanel {
         return panel;
     }
 
-    // Tùy cài table
     private CustomPanel createManagePanel() {
         CustomPanel panel = new CustomPanel();
         panel.setLayout(null);
         panel.setBackground(Color.decode("#ECF0F1"));
 
-        String[] columnNames = {"ID", "Tên máy tính", "Bo mạch chủ", "CPU", "GPU", "Chuột",
-                "Bàn phím", "Màn hình", "Tai nghe", "ROM", "Phòng",
-                "Giá tiền", "Trạng thái"};
-
-        tableModel = new DefaultTableModel(getTableData(list), columnNames);
+        String[] columnNames = {"ID", "Tên Sản Phẩm", "Loại", "Giá Tiền", "Trạng thái"};
+        tableModel = new DefaultTableModel(getTableData(getAllHardwareComponents()), columnNames);
         tableData = new CustomTable(tableModel);
         tableData.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         AdjustTableWidth.automaticallyAdjustTableWidths(tableData);
         tableData.getColumnModel().getColumn(0).setPreferredWidth(100);
         tableData.setFont(new Font("Sans-serif", Font.PLAIN, 14));
-        tableData.setRowHeight(30); // Tăng chiều cao dòng cho dễ đọc
+        tableData.setRowHeight(30);
 
         tableData.getSelectionModel().addListSelectionListener(e -> {
             if (!e.getValueIsAdjusting() && tableData.getSelectedRow() != -1) {
-                selectionText.setText("Đang chọn: " + tableData.getValueAt(tableData.getSelectedRow(), 1));
+                selectionText.setText("Đang chọn: " + tableData.getValueAt(tableData.getSelectedRow(), 1) + " (" + tableData.getValueAt(tableData.getSelectedRow(), 2) + ")");
             }
         });
 
         JScrollPane scroll = new CustomScrollPane(tableData);
         scroll.setBounds(0, 0, 1080, 400);
-        scroll.setBorder(BorderFactory.createLineBorder(Color.decode("#BDC3C7"), 1)); // Viền nhẹ
+        scroll.setBorder(BorderFactory.createLineBorder(Color.decode("#BDC3C7"), 1));
 
-        // Nút Thêm
         CustomButton addButton = new CustomButton("Thêm");
-        addButton.setBackground(Color.decode("#2ECC71"));
-        addButton.setBorderColor(Color.decode("#2ECC71"));
+        addButton.setBackground(Color.decode("#388E3C"));
+        addButton.setBorderColor(Color.decode("#388E3C"));
         addButton.setForeground(Color.WHITE);
         addButton.setBounds(30, 416, 100, 40);
         addButton.setBorderSize(3);
@@ -261,14 +241,18 @@ public class HardwarePanel extends JPanel {
 
             @Override
             public void mouseExited(MouseEvent e) {
-                addButton.setBackground(Color.decode("#2ECC71"));
+                addButton.setBackground(Color.decode("#388E3C"));
+            }
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // Giả định có form AddingHardware để thêm linh kiện mới
+                JOptionPane.showMessageDialog(HardwarePanel.this, "Chức năng thêm linh kiện đang được phát triển! Vui lòng tạo form AddingHardware.");
+                // Nếu có form AddingHardware, thay bằng: new AddingHardware();
+                updateTable(getAllHardwareComponents()); // Cập nhật bảng sau khi thêm
             }
         });
-        addButton.addActionListener(e -> {
-            JOptionPane.showMessageDialog(this, "Chức năng thêm đang được phát triển!");
-        });
 
-        // Nút Thay đổi
         CustomButton modifyButton = new CustomButton("Thay đổi");
         modifyButton.setBackground(Color.decode("#F39C12"));
         modifyButton.setBorderColor(Color.decode("#F39C12"));
@@ -285,19 +269,23 @@ public class HardwarePanel extends JPanel {
             public void mouseExited(MouseEvent e) {
                 modifyButton.setBackground(Color.decode("#F39C12"));
             }
-        });
-        modifyButton.addActionListener(e -> {
-            if (tableData.getSelectedRow() != -1) {
-                int computerId = (int) tableData.getValueAt(tableData.getSelectedRow(), 0);
-                Computers computer = computerBLL.getComputerById(computerId);
-                new DetailsComputer(computer);
-                updateTable(computerBLL.getAllComputers());
-            } else {
-                JOptionPane.showMessageDialog(null, "Vui lòng chọn một máy tính!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (tableData.getSelectedRow() != -1) {
+                    int componentId = (int) tableData.getValueAt(tableData.getSelectedRow(), 0);
+                    String componentType = (String) tableData.getValueAt(tableData.getSelectedRow(), 2);
+
+                    // Giả định có form DetailsHardware để chỉnh sửa linh kiện
+                    JOptionPane.showMessageDialog(HardwarePanel.this, "Chức năng thay đổi linh kiện đang được phát triển! Vui lòng tạo form DetailsHardware.");
+                    // Nếu có form DetailsHardware, thay bằng: new DetailsHardware(componentId, componentType);
+                    updateTable(getAllHardwareComponents()); // Cập nhật bảng sau khi thay đổi
+                } else {
+                    JOptionPane.showMessageDialog(null, "Vui lòng chọn một linh kiện!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                }
             }
         });
 
-        // Nút Xóa
         CustomButton deleteButton = new CustomButton("Xóa");
         deleteButton.setBackground(Color.decode("#E74C3C"));
         deleteButton.setBorderColor(Color.decode("#E74C3C"));
@@ -314,9 +302,23 @@ public class HardwarePanel extends JPanel {
             public void mouseExited(MouseEvent e) {
                 deleteButton.setBackground(Color.decode("#E74C3C"));
             }
-        });
-        deleteButton.addActionListener(e -> {
-            JOptionPane.showMessageDialog(this, "Chức năng xóa đang được phát triển!");
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (tableData.getSelectedRow() != -1) {
+                    int componentId = (int) tableData.getValueAt(tableData.getSelectedRow(), 0);
+                    String componentType = (String) tableData.getValueAt(tableData.getSelectedRow(), 2);
+                    boolean isDeleted = deleteHardwareComponent(componentId, componentType);
+                    if (isDeleted) {
+                        JOptionPane.showMessageDialog(HardwarePanel.this, "Xóa linh kiện thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                        updateTable(getAllHardwareComponents()); // Cập nhật bảng sau khi xóa
+                    } else {
+                        JOptionPane.showMessageDialog(HardwarePanel.this, "Xóa linh kiện thất bại!", "Lỗi", JOptionPane.WARNING_MESSAGE);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Vui lòng chọn một linh kiện!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                }
+            }
         });
 
         panel.add(scroll);
@@ -326,90 +328,220 @@ public class HardwarePanel extends JPanel {
         return panel;
     }
 
-    // Lấy dữ liệu cho bảng
-    private Object[][] getTableData(ArrayList<Computers> computers) {
-        Object[][] data = new Object[computers.size()][13];
-        for (int i = 0; i < computers.size(); i++) {
-            Computers computer = computers.get(i);
-            data[i][0] = computer.getComputerId();
-            data[i][1] = computer.getName();
-            Motherboards motherboard = motherboardBLL.getMotherboardById(computer.getComputerId());
-            data[i][2] = motherboard != null ? motherboard.getModel() : "N/A";
-            Cpus cpu = cpuBLL.getCpuById(motherboard != null ? motherboard.getCpuId() : -1);
-            data[i][3] = cpu != null ? cpu.getModel() : "N/A";
-            Gpus gpu = gpuBLL.getGpubyId(motherboard != null ? motherboard.getGpuId() : -1);
-            data[i][4] = gpu != null ? gpu.getModel() : "N/A";
-            Mouse mouse = mouseBLL.getMouseById(computer.getMouseId() == null ? 0 : computer.getMouseId());
-            data[i][5] = mouse != null ? mouse.getModel() : "N/A";
-            Keyboards keyboard = keyboardBLL.getKeyboardById(computer.getKeyboardId() == null ? 0 : computer.getKeyboardId());
-            data[i][6] = keyboard != null ? keyboard.getModel() : "N/A";
-            Monitors monitor = monitorBLL.getMonitorById(computer.getMonitorId() == null ? 0 : computer.getMonitorId());
-            data[i][7] = monitor != null ? monitor.getModel() : "N/A";
-            Headphones headphone = headphoneBLL.getHeadphoneById(computer.getHeadphoneId() == null ? 0 : computer.getHeadphoneId());
-            data[i][8] = headphone != null ? headphone.getModel() : "N/A";
-            Roms rom = romBLL.getRomById(computer.getRomId() == null ? 0 : computer.getRomId());
-            data[i][9] = rom != null ? rom.getModel() : "N/A";
-            data[i][10] = computer.getRoomId();
-            data[i][11] = computer.getPricePerHour();
-            data[i][12] = computer.getStatus();
+    private ArrayList<Object[]> getAllHardwareComponents() {
+        ArrayList<Object[]> components = new ArrayList<>();
+        ArrayList<Computers> computers = computerBLL.getAllComputers();
+
+        for (Computers computer : computers) {
+            // Lấy Motherboard
+            Motherboards motherboard = motherboardBLL.getMotherboardById(computer.getMotherboardId()); // Sửa từ getComputerId thành getMotherboardId
+
+            // RAM
+            Integer romId = computer.getRomId(); // Dùng Integer để xử lý null
+            if (romId != null) {
+                Roms ram = romBLL.getRomById(romId);
+                if (ram != null) {
+                    components.add(new Object[]{ram.getRomId(), ram.getModel(), "Ram", computer.getPricePerHour(), computer.getStatus()});
+                }
+            }
+
+            // CPU
+            if (motherboard != null) {
+                Integer cpuId = motherboard.getCpuId();
+                if (cpuId != null) {
+                    Cpus cpu = cpuBLL.getCpuById(cpuId);
+                    if (cpu != null) {
+                        components.add(new Object[]{cpu.getCpuId(), cpu.getModel(), "CPU", computer.getPricePerHour(), computer.getStatus()});
+                    }
+                }
+            }
+
+            // GPU
+            if (motherboard != null) {
+                Integer gpuId = motherboard.getGpuId();
+                if (gpuId != null) {
+                    Gpus gpu = gpuBLL.getGpubyId(gpuId);
+                    if (gpu != null) {
+                        components.add(new Object[]{gpu.getGpuId(), gpu.getModel(), "GPU", computer.getPricePerHour(), computer.getStatus()});
+                    }
+                }
+            }
+
+            // Mainboard
+            if (motherboard != null) {
+                components.add(new Object[]{motherboard.getMotherboardId(), motherboard.getModel(), "Mainboard", computer.getPricePerHour(), computer.getStatus()});
+            }
+
+            // Mouse
+            Integer mouseId = computer.getMouseId();
+            if (mouseId != null) {
+                Mouse mouse = mouseBLL.getMouseById(mouseId);
+                if (mouse != null) {
+                    components.add(new Object[]{mouse.getMouseId(), mouse.getModel(), "Mouse", computer.getPricePerHour(), computer.getStatus()});
+                }
+            }
+
+            // Keyboard
+            Integer keyboardId = computer.getKeyboardId();
+            if (keyboardId != null) {
+                Keyboards keyboard = keyboardBLL.getKeyboardById(keyboardId);
+                if (keyboard != null) {
+                    components.add(new Object[]{keyboard.getKeyboardId(), keyboard.getModel(), "Keyboard", computer.getPricePerHour(), computer.getStatus()});
+                }
+            }
+
+            // Monitor
+            Integer monitorId = computer.getMonitorId();
+            if (monitorId != null) {
+                Monitors monitor = monitorBLL.getMonitorById(monitorId);
+                if (monitor != null) {
+                    components.add(new Object[]{monitor.getMonitorId(), monitor.getModel(), "Monitor", computer.getPricePerHour(), computer.getStatus()});
+                }
+            }
+
+            // Headphone
+            Integer headphoneId = computer.getHeadphoneId();
+            if (headphoneId != null) {
+                Headphones headphone = headphoneBLL.getHeadphoneById(headphoneId);
+                if (headphone != null) {
+                    components.add(new Object[]{headphone.getHeadphoneId(), headphone.getModel(), "Headphone", computer.getPricePerHour(), computer.getStatus()});
+                }
+            }
+        }
+        return components;
+    }
+
+    private Object[][] getTableData(ArrayList<Object[]> components) {
+        Object[][] data = new Object[components.size()][5];
+        for (int i = 0; i < components.size(); i++) {
+            data[i] = components.get(i);
         }
         return data;
     }
 
-    // Lọc bảng (cập nhật để thêm type)
     private void filterTable(String searchText, String status, String type) {
-        ArrayList<Computers> filteredList = new ArrayList<>();
-        list = computerBLL.getAllComputers();
+        ArrayList<Object[]> allComponents = getAllHardwareComponents();
+        ArrayList<Object[]> filteredList = new ArrayList<>(allComponents);
 
-        for (Computers computer : list) {
+        filteredList.removeIf(component -> {
+            String productName = (String) component[1];
+            String productType = (String) component[2];
+            String componentStatus = (String) component[4];
+
             boolean matchesSearch = searchText.equals("Nhập thông tin tìm kiếm") ||
                     searchText.isEmpty() ||
-                    computer.getName().toLowerCase().contains(searchText.toLowerCase());
-            boolean matchesStatus = status.equals("Tất cả") || computer.getStatus().equals(status);
-            boolean matchesType = type.equals("Tất cả") ||
-                    (type.equals("Ram") && romBLL.getRomById(computer.getRomId()) != null) ||
-                    (type.equals("CPU") && cpuBLL.getCpuById(motherboardBLL.getMotherboardById(computer.getComputerId()).getCpuId()) != null) ||
-                    (type.equals("Memory") && romBLL.getRomById(computer.getRomId()) != null) ||
-                    (type.equals("GPU") && gpuBLL.getGpubyId(motherboardBLL.getMotherboardById(computer.getComputerId()).getGpuId()) != null) ||
-                    (type.equals("Mainboard") && motherboardBLL.getMotherboardById(computer.getComputerId()) != null) ||
-                    (type.equals("Mouse") && mouseBLL.getMouseById(computer.getMouseId()) != null) ||
-                    (type.equals("Keyboard") && keyboardBLL.getKeyboardById(computer.getKeyboardId()) != null) ||
-                    (type.equals("Monitor") && monitorBLL.getMonitorById(computer.getMonitorId()) != null) ||
-                    (type.equals("Headphone") && headphoneBLL.getHeadphoneById(computer.getHeadphoneId()) != null);
+                    productName.toLowerCase().contains(searchText.toLowerCase());
+            boolean matchesStatus = status.equals("Tất cả") || componentStatus.equals(status);
+            boolean matchesType = type.equals("Tất cả") || productType.equals(type) || (type.equals("Memory") && productType.equals("Ram"));
 
-            if (matchesSearch && matchesStatus && matchesType) {
-                filteredList.add(computer);
-            }
-        }
+            return !(matchesSearch && matchesStatus && matchesType);
+        });
+
         updateTable(filteredList);
     }
 
-//    // Lọc bảng
-//    private void filterTable(String searchText, String status) {
-//        ArrayList<Computers> filteredList = new ArrayList<>();
-//        list = computerBLL.getAllComputers();
-//
-//        for (Computers computer : list) {
-//            boolean matchesSearch = searchText.equals("Nhập thông tin tìm kiếm") ||
-//                    searchText.isEmpty() ||
-//                    computer.getName().toLowerCase().contains(searchText.toLowerCase());
-//            boolean matchesStatus = status.equals("Tất cả") ||
-//                    computer.getStatus().equals(status);
-//
-//            if (matchesSearch && matchesStatus) {
-//                filteredList.add(computer);
-//            }
-//        }
-//        updateTable(filteredList);
-//    }
-
-    // Cập nhật bảng
-    private void updateTable(ArrayList<Computers> computers) {
-        tableModel.setDataVector(getTableData(computers),
-                new String[]{"ID", "Tên máy tính", "Bo mạch chủ", "CPU", "GPU", "Chuột",
-                        "Bàn phím", "Màn hình", "Tai nghe", "ROM", "Phòng",
-                        "Giá tiền", "Trạng thái"});
+    private void updateTable(ArrayList<Object[]> components) {
+        tableModel.setDataVector(getTableData(components),
+                new String[]{"ID", "Tên Sản Phẩm", "Loại", "Giá Tiền", "Trạng thái"});
         AdjustTableWidth.automaticallyAdjustTableWidths(tableData);
         tableData.getColumnModel().getColumn(0).setPreferredWidth(100);
+    }
+
+    // Hàm xóa linh kiện dựa trên ID và loại
+//    private boolean deleteHardwareComponent(int id, String type) {
+//        switch (type) {
+//            case "Ram":
+//                return romBLL.deleteRomById(id);
+//            case "CPU":
+//                return cpuBLL.deleteCpuById(id);
+//            case "GPU":
+//                return gpuBLL.deleteGpuById(id);
+//            case "Mainboard":
+//                return motherboardBLL.deleteMotherboardById(id);
+//            case "Mouse":
+//                return mouseBLL.deleteMouseById(id);
+//            case "Keyboard":
+//                return keyboardBLL.deleteKeyboardById(id);
+//            case "Monitor":
+//                return monitorBLL.deleteMonitorById(id);
+//            case "Headphone":
+//                return headphoneBLL.deleteHeadphoneById(id);
+//            default:
+//                return false;
+//        }
+//    }
+    private boolean deleteHardwareComponent(int id, String type) {
+        // Kiểm tra xem linh kiện có đang được sử dụng bởi máy tính nào không
+        ArrayList<Computers> computers = computerBLL.getAllComputers();
+        switch (type) {
+            case "Ram":
+                for (Computers computer : computers) {
+                    if (computer.getRomId() != null && computer.getRomId() == id) {
+                        JOptionPane.showMessageDialog(this, "Không thể xóa RAM vì đang được sử dụng bởi máy tính " + computer.getComputerId(), "Cảnh báo", JOptionPane.WARNING_MESSAGE);
+                        return false;
+                    }
+                }
+                return romBLL.deleteRomById(id);
+            case "CPU":
+                for (Computers computer : computers) {
+                    Motherboards motherboard = motherboardBLL.getMotherboardById(computer.getMotherboardId());
+                    if (motherboard != null && motherboard.getCpuId() != null && motherboard.getCpuId() == id) {
+                        JOptionPane.showMessageDialog(this, "Không thể xóa CPU vì đang được sử dụng bởi máy tính " + computer.getComputerId(), "Cảnh báo", JOptionPane.WARNING_MESSAGE);
+                        return false;
+                    }
+                }
+                return cpuBLL.deleteCpuById(id);
+            case "GPU":
+                for (Computers computer : computers) {
+                    Motherboards motherboard = motherboardBLL.getMotherboardById(computer.getMotherboardId());
+                    if (motherboard != null && motherboard.getGpuId() != null && motherboard.getGpuId() == id) {
+                        JOptionPane.showMessageDialog(this, "Không thể xóa GPU vì đang được sử dụng bởi máy tính " + computer.getComputerId(), "Cảnh báo", JOptionPane.WARNING_MESSAGE);
+                        return false;
+                    }
+                }
+                return gpuBLL.deleteGpuById(id);
+            case "Mainboard":
+                for (Computers computer : computers) {
+                    if (computer.getMotherboardId() == id) {
+                        JOptionPane.showMessageDialog(this, "Không thể xóa Mainboard vì đang được sử dụng bởi máy tính " + computer.getComputerId(), "Cảnh báo", JOptionPane.WARNING_MESSAGE);
+                        return false;
+                    }
+                }
+                return motherboardBLL.deleteMotherboardById(id);
+            case "Mouse":
+                for (Computers computer : computers) {
+                    if (computer.getMouseId() != null && computer.getMouseId() == id) {
+                        JOptionPane.showMessageDialog(this, "Không thể xóa Mouse vì đang được sử dụng bởi máy tính " + computer.getComputerId(), "Cảnh báo", JOptionPane.WARNING_MESSAGE);
+                        return false;
+                    }
+                }
+                return mouseBLL.deleteMouseById(id);
+            case "Keyboard":
+                for (Computers computer : computers) {
+                    if (computer.getKeyboardId() != null && computer.getKeyboardId() == id) {
+                        JOptionPane.showMessageDialog(this, "Không thể xóa Keyboard vì đang được sử dụng bởi máy tính " + computer.getComputerId(), "Cảnh báo", JOptionPane.WARNING_MESSAGE);
+                        return false;
+                    }
+                }
+                return keyboardBLL.deleteKeyboardById(id);
+            case "Monitor":
+                for (Computers computer : computers) {
+                    if (computer.getMonitorId() != null && computer.getMonitorId() == id) {
+                        JOptionPane.showMessageDialog(this, "Không thể xóa Monitor vì đang được sử dụng bởi máy tính " + computer.getComputerId(), "Cảnh báo", JOptionPane.WARNING_MESSAGE);
+                        return false;
+                    }
+                }
+                return monitorBLL.deleteMonitorById(id);
+            case "Headphone":
+                for (Computers computer : computers) {
+                    if (computer.getHeadphoneId() != null && computer.getHeadphoneId() == id) {
+                        JOptionPane.showMessageDialog(this, "Không thể xóa Headphone vì đang được sử dụng bởi máy tính " + computer.getComputerId(), "Cảnh báo", JOptionPane.WARNING_MESSAGE);
+                        return false;
+                    }
+                }
+                return headphoneBLL.deleteHeadphoneById(id);
+            default:
+                return false;
+        }
     }
 }

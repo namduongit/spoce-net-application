@@ -32,4 +32,7 @@ public class MotherboardBLL {
     public boolean updateMotherboardById(int id, HashMap<String, Object> newvalues) {
         return this.motherboardDAL.updateMotherboardById(id, newvalues);
     }
+    public boolean deleteMotherboardById(int id) {
+        return this.motherboardDAL.deleteMotherboardById(id);
+    }
 }
