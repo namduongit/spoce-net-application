@@ -136,6 +136,37 @@ public class StaffDAL {
         return helper.updateData(valueCondition);
     }
 
+    public boolean updateAvatarStaffById(int staffId, String avatarName) {
+        MySQLHelper helper = new MySQLHelper();
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "staffs");
+        params.put("SET", "avatar = ?");
+        params.put("WHERE", "staff_id = ?");
+        helper.buildingQueryParam(params);
+        ArrayList<Object> valueCondition = new ArrayList<>();
+        valueCondition.add(avatarName);
+        valueCondition.add(staffId);
+
+        return helper.updateData(valueCondition);
+    }
+
+    public boolean updateDetailsInfoStaffById(int staffId, HashMap<String, Object> updateValues) {
+        if (updateValues == null || updateValues.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Không có dữ liệu để cập nhật!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        MySQLHelper helper = new MySQLHelper();
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "staffs");
+        params.put("WHERE", "staff_id = ?");
+        helper.buildingQueryParam(params);
+        ArrayList<Object> conditionValues = new ArrayList<>();
+        conditionValues.add(staffId);
+
+        return helper.updateData(updateValues, conditionValues);
+    }
+
     // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
 
 }

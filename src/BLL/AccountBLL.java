@@ -28,6 +28,10 @@ public class AccountBLL {
         return this.accountDAL.updateAccountDetailsById(accountId, updateValues);
     }
 
+    public boolean updatePasswordAccountById(int accountId, String currentPassword, String newPassword) {
+        return this.accountDAL.updatePasswordAccountById(accountId, currentPassword, newPassword);
+    }
+
     // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
 
     public Accounts staffLoginAccount(String username, String password) {

@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
+import java.util.HashMap;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -17,6 +18,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
+import BLL.AccountBLL;
 import BLL.StaffBLL;
 import DTO.Accounts;
 import DTO.Staffs;
@@ -28,9 +30,12 @@ import GUI.Components.CustomScrollPane;
 import GUI.Components.CustomTable;
 import GUI.Components.CustomTextField;
 import GUI.Form.DetailsAddress;
+import GUI.Form.DetailsAuthenticator;
 
 public class AccountPanel extends JPanel {
     private final Font fontSans15 = new Font("Sans", Font.BOLD, 15);
+    private AccountBLL accountBLL;
+    private StaffBLL staffBLL;
 
     private Accounts loginAccount;
     private Staffs loginStaff;
@@ -42,7 +47,7 @@ public class AccountPanel extends JPanel {
 
     private JLabel avatarEmployee;
 
-    // Mấy trường input
+    // Các trường dành cho tài khoản bản thân
     private CustomTextField myUsernameInput;
     private CustomTextField myEmailInput;
     private CustomTextField myCreateAtInput;
@@ -50,9 +55,20 @@ public class AccountPanel extends JPanel {
     private CustomTextField myBirthdateInput;
     private CustomTextField myNumberPhoneInput;
     private CustomTextField myCCCDInput;
+    private CustomCombobox<String> myGenderInput;
     private CustomTextField myAddressInput;
 
+    // Các trường dành cho tài khoản nhân viên (Nhớ phân vùng)
+    private CustomTextField searchEmployeeField;
+    private CustomCombobox<String> statusEmployeeField;
+
+    // Các trường dành cho tài khoản người chơi
+
+
     public AccountPanel(Accounts loginAccount, Staffs loginStaff) {
+        this.accountBLL = new AccountBLL();
+        this.staffBLL = new StaffBLL();
+
         this.loginAccount = loginAccount;
         this.loginStaff = loginStaff;
         this.initComponents();
@@ -110,6 +126,7 @@ public class AccountPanel extends JPanel {
 
         this.myUsernameInput = new CustomTextField(this.loginAccount.getUsername());
         this.myUsernameInput.setBounds(30, 300, 300, 35);
+        this.myUsernameInput.setEditable(false);
 
         // Email
         JLabel myEmail = new JLabel("Địa chỉ email:");
@@ -166,8 +183,8 @@ public class AccountPanel extends JPanel {
         myGender.setBounds(430, 350, 200, 30);
 
         String[] genders = { "Chưa đặt", "Nam", "Nữ" };
-        CustomCombobox<String> myGenderInput = new CustomCombobox<>(genders);
-        myGenderInput.setBounds(430, 380, 300, 35);
+        this.myGenderInput = new CustomCombobox<>(genders);
+        this.myGenderInput.setBounds(430, 380, 300, 35);
         String currentGender = loginStaff.getGender();
         int index = 0;
         for (int i = 0; i < genders.length; i++) {
@@ -190,16 +207,22 @@ public class AccountPanel extends JPanel {
         // Nút đổi mật khẩu
         CustomButton changePassword = new CustomButton("Đổi mật khẩu");
         changePassword.setBounds(830, 60, 200, 30);
+        changePassword.addActionListener(e -> {
+            this.showDialogChangePassword();
+        });
 
         // Nút lưu thông tin
         CustomButton changeMyInfo = new CustomButton("Cập nhật thông tin");
         changeMyInfo.setBounds(830, 110, 200, 30);
+        changeMyInfo.addActionListener(e -> {
+            this.showDialogConfirmChangeInfo();
+        });
 
         // Nút cập nhật địa chỉ
         CustomButton editAddress = new CustomButton("Sửa địa chỉ");
         editAddress.setBounds(830, 160, 200, 30);
         editAddress.addActionListener(e -> {
-            showDialogDetailsAddress();
+            this.showDialogDetailsAddress();
         });
 
         // Thêm các thành phần vào panel
@@ -219,9 +242,10 @@ public class AccountPanel extends JPanel {
         panel.add(this.myNumberPhoneInput);
         panel.add(myCCCD);
         panel.add(this.myCCCDInput);
+        panel.add(myGender);
+        panel.add(this.myGenderInput);
         panel.add(myAddress);
         panel.add(this.myAddressInput);
-        panel.add(myGender);
         panel.add(changePassword);
         panel.add(changeMyInfo);
         panel.add(editAddress);
@@ -229,15 +253,63 @@ public class AccountPanel extends JPanel {
         return panel;
     }
 
-    private void showDialogDetailsAddress() {
-        new DetailsAddress(this.loginStaff).setVisible(true);
-        // Load lại dữ liệu
-        this.loginStaff = new StaffBLL().getStaffById(this.loginStaff.getStaffId());
-        this.myAddressInput.setText(this.loginStaff.getAddress());
+    private void showDialogChangePassword() {
+        new DetailsAuthenticator(this.loginAccount).setVisible(true);
     }
 
-    // ------------------------------------- NỘI DUNG BẢNG
-    // ------------------------------------- //
+    private void showDialogDetailsAddress() {
+        new DetailsAddress(this.loginStaff).setVisible(true);
+    }
+
+    private void showDialogConfirmChangeInfo() {
+        int resultConfirm = JOptionPane.showConfirmDialog(this, "Bạn có chắc với sự thay đổi này ?", "Hỏi cập nhật thông tin", JOptionPane.INFORMATION_MESSAGE);
+        if (resultConfirm == JOptionPane.YES_OPTION) {
+            String emailString = this.myEmailInput.getText();
+            String fullNameString = this.myNameInput.getText();
+            String birthDateString = this.myBirthdateInput.getText();
+            String phoneString = this.myNumberPhoneInput.getText();
+            String cccdString = this.myCCCDInput.getText();
+            String genderString = this.myGenderInput.getSelectedItem().toString();
+
+            if (!Utils.Helper.Comon.isTrueEmail(emailString)) {
+                JOptionPane.showMessageDialog(this, "Vui lòng nhập đúng định dạng Email ! \nVí dụ: example@email.com", "Cảnh báo", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            if (!Utils.Helper.Comon.isTrueDate(birthDateString)) {
+                JOptionPane.showMessageDialog(this, "Vui lòng nhập đúng định dạng ngày tháng sinh nhật ! \nVí dụ: 2005-02-14", "Cảnh báo", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            if (!Utils.Helper.Comon.isTruePhone(phoneString)) {
+                JOptionPane.showMessageDialog(this, "Vui lòng nhập đúng định dạng số điện thoại ! \nVí dụ: 0388853835", "Cảnh báo", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            if (!Utils.Helper.Comon.isTrueCCCD(cccdString)) {
+                JOptionPane.showMessageDialog(this, "Vui lòng nhập đúng định dạng CCCD ! \nVí dụ: 075205000000", "Cảnh báo", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            if (fullNameString.equals("") || fullNameString == null) {
+                JOptionPane.showMessageDialog(this, "Vui lòng không để trống tên ! \nVí dụ: Nguyễn Nam Dương", "Cảnh báo", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            HashMap<String, Object> updateValues = new HashMap<>();
+            updateValues.put("full_name", fullNameString);
+            updateValues.put("birth_date", birthDateString);
+            updateValues.put("gender", genderString);
+            updateValues.put("phone", phoneString);
+            updateValues.put("email", emailString);
+            updateValues.put("cccd", cccdString);
+
+            boolean resultUpdate =this.staffBLL.updateDetailsInfoStaffById(this.loginStaff.getStaffId(), updateValues);
+            JOptionPane.showMessageDialog(this, resultUpdate ? "Đổi thông tin thành công" : "Đổi thông tin thất bại", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
+    // ------------------------------------- NỘI DUNG BẢNG NGƯỜI CHƠI ------------------------------------- //
 
     private CustomPanel createEmployeeInfoPanel() {
         CustomPanel panel = new CustomPanel();
@@ -250,14 +322,14 @@ public class AccountPanel extends JPanel {
 
         JLabel searchLabel = new JLabel("Tìm kiếm:");
         searchLabel.setBounds(20, 20, 80, 30);
-        CustomTextField searchField = new CustomTextField();
-        searchField.setBounds(100, 20, 200, 30);
+        this.searchEmployeeField = new CustomTextField();
+        this.searchEmployeeField.setBounds(100, 20, 200, 30);
 
         JLabel statusLabel = new JLabel("Trạng thái:");
         statusLabel.setBounds(320, 20, 80, 30);
         String[] statuses = { "Tất cả", "Hoạt động", "Bị khóa" };
-        CustomCombobox<String> statusComboBox = new CustomCombobox<>(statuses);
-        statusComboBox.setBounds(400, 20, 150, 30);
+        this.statusEmployeeField = new CustomCombobox<>(statuses);
+        this.statusEmployeeField.setBounds(400, 20, 150, 30);
 
         JLabel roleLabel = new JLabel("Quyền:");
         roleLabel.setBounds(570, 20, 50, 30);
@@ -280,9 +352,9 @@ public class AccountPanel extends JPanel {
         resetButton.setBorderColor(Color.RED);
 
         findDataPanel.add(searchLabel);
-        findDataPanel.add(searchField);
+        findDataPanel.add(searchEmployeeField);
         findDataPanel.add(statusLabel);
-        findDataPanel.add(statusComboBox);
+        findDataPanel.add(statusEmployeeField);
         findDataPanel.add(roleLabel);
         findDataPanel.add(roleComboBox);
         findDataPanel.add(filterButton);
@@ -367,6 +439,8 @@ public class AccountPanel extends JPanel {
 
         return panel;
     }
+
+    // ------------------------------------- NỘI DUNG BẢNG NGƯỜI CHƠI ------------------------------------- //
 
     private CustomPanel createPlayerInfoPanel() {
         CustomPanel panel = new CustomPanel();
@@ -517,7 +591,7 @@ public class AccountPanel extends JPanel {
     }
 
     private String getAvatarPath() {
-        String avatarFile = "getAvatar";
+        String avatarFile = this.loginStaff.getAvatar();
         String basePath = System.getProperty("user.dir") + "/src/Assets/Avatar/";
 
         if (avatarFile == null || avatarFile.isEmpty()) {
@@ -550,9 +624,9 @@ public class AccountPanel extends JPanel {
                 if (oldFile.exists()) {
                     boolean result = oldFile.delete();
                     if (result)
-                        System.out.println("Xóa thành công");
+                        System.out.println("Xóa ảnh cũ thành công");
                     else
-                        System.out.println("Xóa thất bại");
+                        System.out.println("Xóa ảnh cũ thất bại");
                 }
             }
 
@@ -560,11 +634,18 @@ public class AccountPanel extends JPanel {
             File destination = new File(basePath + newFileName);
 
             Files.copy(selectedFile.toPath(), destination.toPath(), StandardCopyOption.REPLACE_EXISTING);
-
+            // Cập nhật lại JLabel
             updateAvatar(destination.getAbsolutePath());
-
-            JOptionPane.showMessageDialog(null, "Ảnh đại diện đã được cập nhật!", "Thành công",
+            // Cập nhật trên database
+            boolean updateResult = new StaffBLL().updateAvatarStaffById(this.loginStaff.getStaffId(), newFileName);
+            if (updateResult) {
+                JOptionPane.showMessageDialog(this, "Ảnh đại diện đã được cập nhật!", "Thành công",
                     JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Ảnh đại diện có lỗi khi cập nhật!", "Có lỗi",
+                    JOptionPane.WARNING_MESSAGE);
+            }
+
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Lỗi khi lưu ảnh!", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }

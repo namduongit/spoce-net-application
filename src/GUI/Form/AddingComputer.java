@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
+@SuppressWarnings("rawtypes")
 public class AddingComputer extends JFrame {
     private JPanel content;
     private CustomTextField nameTextField;

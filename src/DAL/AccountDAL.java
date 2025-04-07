@@ -13,7 +13,6 @@ import DAL.SQLHelper.MySQLHelper;
 
 public class AccountDAL {
     // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    // //
     public ArrayList<Accounts> getAccountList() {
         ArrayList<Accounts> list = new ArrayList<>();
 
@@ -73,8 +72,38 @@ public class AccountDAL {
         return accounts;
     }
 
+    public ArrayList<Accounts> getPLayerAccountList() {
+        ArrayList<Accounts> list = new ArrayList<>();
+        MySQLHelper helper = new MySQLHelper();
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "accounts");
+        params.put("WHERE", "role = ?");
+        helper.buildingQueryParam(params);
+        ArrayList<Object> values = new ArrayList<>();
+        values.add("Người chơi");
+
+        ResultSet resultSet = helper.queryWithParam(values);
+        try {
+            while (resultSet.next()) {
+                list.add(new Accounts(
+                        resultSet.getInt(1),
+                        resultSet.getString(2),
+                        resultSet.getString(3),
+                        resultSet.getString(4),
+                        resultSet.getString(5),
+                        resultSet.getTimestamp(6)));
+            }
+            resultSet.close();
+            helper.closeConnect();
+
+        } catch (SQLException exception) {
+            JOptionPane.showMessageDialog(null, exception.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
+
+        return list;
+    }
+
     // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    // //
 
     public boolean updateAccountDetailsById(int accountId, HashMap<String, Object> updateValues) {
         if (updateValues == null || updateValues.isEmpty()) {
@@ -92,6 +121,25 @@ public class AccountDAL {
 
         ArrayList<Object> conditionValues = new ArrayList<>();
         conditionValues.add(accountId);
+
+        return helper.updateData(updateValues, conditionValues);
+    }
+
+    public boolean updatePasswordAccountById(int accountId, String currentPassword, String newPassword) {
+
+        MySQLHelper helper = new MySQLHelper();
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "accounts");
+        params.put("WHERE", "account_id = ? AND password = ?");
+        helper.buildingQueryParam(params);
+
+        HashMap<String, Object> updateValues = new HashMap<>();
+        updateValues.put("password", Utils.Helper.EncriptString.MD5String(newPassword));
+
+        ArrayList<Object> conditionValues = new ArrayList<>();
+        conditionValues.add(accountId);
+        conditionValues.add(Utils.Helper.EncriptString.MD5String(currentPassword));
 
         return helper.updateData(updateValues, conditionValues);
     }
@@ -135,4 +183,9 @@ public class AccountDAL {
         return account;
     }
 
+
+    public static void main(String[] args) {
+        ArrayList<Accounts> list = new AccountDAL().getPLayerAccountList();
+        for (Accounts ac : list) System.out.println(ac);
+    }
 }
