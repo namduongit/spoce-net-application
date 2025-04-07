@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class CpuDAL {
 
@@ -49,5 +50,16 @@ public class CpuDAL {
         }
 
         return null;
+    }
+
+    public boolean deleteCpuById(int id) {
+        MySQLHelper helper = new MySQLHelper();
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE","cpus");
+        params.put("WHERE","cpus.cpu_id = ?");
+        helper.buildingQueryParam(params);
+        ArrayList<Object> values = new ArrayList<>();
+        values.add(id);
+        return helper.deleteData(values);
     }
 }

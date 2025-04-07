@@ -166,4 +166,14 @@ public class MotherboardDAL {
 
         return helper.updateData(newvalues, values);
     }
+    public boolean deleteMotherboardById(int id) {
+        MySQLHelper helper = new MySQLHelper();
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "motherboards");
+        params.put("WHERE", "motherboards.motherboard_id = ?");
+        helper.buildingQueryParam(params);
+        ArrayList<Object> values = new ArrayList<>();
+        values.add(id);
+        return helper.deleteData(values);
+    }
 }

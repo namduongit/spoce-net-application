@@ -28,4 +28,7 @@ public class MouseBLL {
     public boolean updateMouseById(int id, HashMap<String, Object> newvalues) {
         return this.mouseDAL.updateMouseById(id, newvalues);
     }
+    public boolean deleteMouseById(int id) {
+        return this.mouseDAL.deleteMouseById(id);
+    }
 }

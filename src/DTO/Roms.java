@@ -15,7 +15,6 @@ public class Roms {
     // Constructor không tham số
     public Roms() {
     }
-
     // Constructor có tham số
     public Roms(int romId, String brand, String model, String type, int capacity, Date purchaseDate, Date warrantyExpiry, String status) {
         this.romId = romId;
