@@ -19,4 +19,7 @@ public class GpuBLL {
     public Gpus getGpubyId(int id) {
         return this.gpuDAL.getGpuById(id);
     }
+    public boolean deleteGpuById(int id) {
+        return this.gpuDAL.deleteGpuById(id);
+    }
 }

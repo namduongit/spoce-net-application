@@ -237,7 +237,7 @@ CREATE TABLE IF NOT EXISTS computers (
     rom_id         	INT DEFAULT NULL,
     room_id			INT DEFAULT NULL,
 
-    status         	ENUM('Trong kho', 'Đang sử dụng', 'Thiếu linh kiện', 'Bảo trì', 'Hỏng') DEFAULT 'Trong kho',
+    status         	ENUM('Trong kho', 'Đang sử dụng', 'Thiếu linh kiện', 'Bảo trì', 'Hỏng', 'Đang chờ sử dụng') DEFAULT 'Trong kho',
 
     FOREIGN KEY (motherboard_id) REFERENCES motherboards(motherboard_id) ON DELETE CASCADE,
     FOREIGN KEY (mouse_id) REFERENCES mouse(mouse_id) ON DELETE SET NULL, 							-- Khi xóa bộ phận nào đó thì nó sẽ chuyển thành NULL

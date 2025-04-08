@@ -6,6 +6,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "MainTestCustom",
+            "request": "launch",
+            "mainClass": "GUI.Components.MainTestCustom",
+            "projectName": "spoce-net-application_f57ff3ae"
+        },
+        {
+            "type": "java",
+            "name": "AccountDAL",
+            "request": "launch",
+            "mainClass": "DAL.AccountDAL",
+            "projectName": "spoce-net-application_f57ff3ae"
+        },
+        {
+            "type": "java",
+            "name": "DetailsAuthenticator",
+            "request": "launch",
+            "mainClass": "GUI.Form.DetailsAuthenticator",
+            "projectName": "spoce-net-application_f57ff3ae"
+        },
+        {
+            "type": "java",
             "name": "DetailsAddress",
             "request": "launch",
             "mainClass": "GUI.Form.DetailsAddress",

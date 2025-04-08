@@ -6,6 +6,9 @@ import GUI.Components.*;
 import Utils.Helper.AdjustTableWidth;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.FocusEvent;
@@ -13,6 +16,8 @@ import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class RoomPanel extends JPanel{
     private CustomPanel titlePanel;
@@ -20,6 +25,7 @@ public class RoomPanel extends JPanel{
     private CustomPanel dataPanel;
     private CustomTextField searchTextField;
     private CustomCombobox roomTypeCombobox;
+    private CustomCombobox statusCombobox;
     private JLabel selectedRoom;
     private DefaultTableModel model;
     private CustomTable roomTable;
@@ -28,10 +34,13 @@ public class RoomPanel extends JPanel{
     private String[] roomColumnList;
 
     private RoomBLL roomBLL;
+    private DefaultTableCellRenderer tableCellRenderer;
 
 
     public RoomPanel() {
         this.roomBLL = new RoomBLL();
+        this.tableCellRenderer = new DefaultTableCellRenderer();
+        this.tableCellRenderer.setHorizontalAlignment(JLabel.CENTER);
 
         this.roomList = this.roomBLL.getAllRooms();
         this.roomColumnList = new String[]{
@@ -54,8 +63,8 @@ public class RoomPanel extends JPanel{
         this.dataPanel = this.createDataPanel();
 
         this.titlePanel.setBounds( 10, 0, 1080, 100);
-        this.controlPanel.setBounds(10, 110, 1080, 80);
-        this.dataPanel.setBounds(10,200,1080,518);
+        this.controlPanel.setBounds(10, 110, 1080, 100);
+        this.dataPanel.setBounds(10,220,1080,508);
 
         this.add(this.titlePanel);
         this.add(this.controlPanel);
@@ -76,84 +85,23 @@ public class RoomPanel extends JPanel{
         this.roomTable.getColumnModel()
                         .getColumn(0)
                         .setPreferredWidth(90);
+        this.roomTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if (!e.getValueIsAdjusting()) {
+                    if (roomTable.getSelectedRow() != -1) {
+                        RoomPanel.this.selectedRoom.setText("Đang chọn: " + roomTable.getValueAt(roomTable.getSelectedRow(), 1).toString());
+                    }
+                }
+            }
+
+        });
 
         CustomScrollPane scrollPane = new CustomScrollPane(this.roomTable);
-        scrollPane.setBounds(0,0,1080,450);
-
-
-        CustomButton addButton = new CustomButton("Thêm");
-        addButton.setForeground(Color.WHITE);
-        addButton.setBackground(Color.decode("#388E3C"));
-        addButton.setBorderColor(Color.decode("#388E3C"));
-        addButton.setBorderSize(3);
-        addButton.setBounds(30, 466, 100, 35);
-        addButton.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                addButton.setForeground(Color.decode("#388E3C"));
-                addButton.setBackground(Color.WHITE);
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                addButton.setForeground(Color.WHITE);
-                addButton.setBackground(Color.decode("#388E3C"));
-            }
-        });
-
-        CustomButton modifyButton = new CustomButton("Thay đổi");
-        modifyButton.setForeground(Color.WHITE);
-        modifyButton.setBackground(Color.PINK);
-        modifyButton.setBorderColor(Color.PINK);
-        modifyButton.setBorderSize(3);
-        modifyButton.setBounds(150, 466, 100, 35);
-        modifyButton.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                modifyButton.setForeground(Color.PINK);
-                modifyButton.setBackground(Color.WHITE);
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                modifyButton.setForeground(Color.WHITE);
-                modifyButton.setBackground(Color.PINK);
-            }
-        });
+        scrollPane.setBounds(0,0,1080, 508);
 
         panel.add(scrollPane);
-        panel.add(addButton);
-        panel.add(modifyButton);
 
         return panel;
     }
@@ -177,11 +125,44 @@ public class RoomPanel extends JPanel{
         CustomPanel panel = new CustomPanel();
         panel.setLayout(null);
 
+        Image addImage = new ImageIcon(
+                System.getProperty("user.dir") + "/src/Assets/Icon/add.png"
+        ).getImage()
+         .getScaledInstance(50,50,Image.SCALE_SMOOTH);
+        CustomDesignButton addButton = new CustomDesignButton("Thêm", new ImageIcon(addImage));
+        addButton.setForeground(Color.BLACK);
+        addButton.setBackground(Color.WHITE);
+        addButton.setBorderColor(Color.BLACK);
+        addButton.setBorderSize(3);
+        addButton.setBounds(20, 5, 85, 90);
+
+        Image modifyImage = new ImageIcon(
+                System.getProperty("user.dir") + "/src/Assets/Icon/pencil.png"
+        ).getImage()
+         .getScaledInstance(50,50,Image.SCALE_SMOOTH);
+        CustomDesignButton modifyButton = new CustomDesignButton("Thay đổi", new ImageIcon(modifyImage));
+        modifyButton.setForeground(Color.BLACK);
+        modifyButton.setBackground(Color.WHITE);
+        modifyButton.setBorderColor(Color.BLACK);
+        modifyButton.setBorderSize(3);
+        modifyButton.setBounds(110, 5, 85, 90);
+
+        Image deleteImage = new ImageIcon(
+                System.getProperty("user.dir") + "/src/Assets/Icon/delete.png"
+        ).getImage()
+         .getScaledInstance(50,50,Image.SCALE_SMOOTH);
+        CustomDesignButton deleteButton = new CustomDesignButton("Xóa", new ImageIcon(deleteImage));
+        deleteButton.setBackground(Color.WHITE);
+        deleteButton.setForeground(Color.BLACK);
+        deleteButton.setBorderColor(Color.BLACK);
+        deleteButton.setBorderSize(3);
+        deleteButton.setBounds(200,5,85,90);
+
         JLabel searchLabel = new JLabel("Tìm kiếm:");
-        searchLabel.setBounds(20, 25, 80, 30);
+        searchLabel.setBounds(345, 25, 80, 30);
 
         searchTextField = new CustomTextField("Nhập thông tin tìm kiếm");
-        searchTextField.setBounds(90, 23, 200, 35);
+        searchTextField.setBounds(345, 53, 200, 35);
         searchTextField.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
@@ -200,7 +181,7 @@ public class RoomPanel extends JPanel{
 
 
         JLabel filterLabel = new JLabel("Loại phòng:");
-        filterLabel.setBounds(330, 25, 70, 30);
+        filterLabel.setBounds(550, 25, 70, 30);
 
 
         String[] roomTypeList = {
@@ -211,18 +192,31 @@ public class RoomPanel extends JPanel{
         };
 
         roomTypeCombobox = new CustomCombobox(roomTypeList);
-        roomTypeCombobox.setBounds(405, 23, 150, 35);
+        roomTypeCombobox.setBounds(550, 53, 150, 35);
+
+        JLabel statusLabel = new JLabel("Trạng thái:");
+        statusLabel.setBounds(705,25,70,30);
+
+        String[] statusList = {
+                "Tất cả",
+                "Trống",
+                "Đang hoạt động",
+                "Bảo trì"
+        };
+
+        statusCombobox = new CustomCombobox(statusList);
+        statusCombobox.setBounds(705,53,150,35);
 
         CustomButton filterButton = new CustomButton("Lọc");
         filterButton.setForeground(Color.WHITE);
         filterButton.setBackground(Color.decode("#03A9F4"));
         filterButton.setBorderColor(Color.decode("#03A9F4"));
         filterButton.setBorderSize(3);
-        filterButton.setBounds(595, 23, 100, 35);
+        filterButton.setBounds(860, 53, 100, 35);
         filterButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-
+                RoomPanel.this.filterRoomList();
             }
 
             @Override
@@ -253,11 +247,14 @@ public class RoomPanel extends JPanel{
         resetButton.setBackground(Color.RED);
         resetButton.setBorderColor(Color.RED);
         resetButton.setBorderSize(3);
-        resetButton.setBounds(715, 23, 100, 35);
+        resetButton.setBounds(965, 53, 100, 35);
         resetButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-
+                RoomPanel.this.searchTextField.setText("Nhập thông tin tìm kiếm");
+                RoomPanel.this.roomTypeCombobox.setSelectedIndex(0);
+                RoomPanel.this.statusCombobox.setSelectedIndex(0);
+                RoomPanel.this.resetTable();
             }
 
             @Override
@@ -285,7 +282,7 @@ public class RoomPanel extends JPanel{
 
 
         selectedRoom = new JLabel("Đang chọn: NULL");
-        selectedRoom.setBounds(845,29,300,20);
+        selectedRoom.setBounds(845,15,300,20);
         selectedRoom.setFont(
                 new Font("Sans-serif", Font.BOLD, 12)
         );
@@ -297,6 +294,11 @@ public class RoomPanel extends JPanel{
         panel.add(filterButton);
         panel.add(resetButton);
         panel.add(selectedRoom);
+        panel.add(addButton);
+        panel.add(modifyButton);
+        panel.add(deleteButton);
+        panel.add(statusLabel);
+        panel.add(statusCombobox);
 
         return panel;
     }
@@ -314,5 +316,57 @@ public class RoomPanel extends JPanel{
         }
 
         return data;
+    }
+
+    private void updateTable() {
+        Object[][] data = this.createDataForRoomTable(this.roomList);
+        this.model = new DefaultTableModel(data, this.roomColumnList);
+        this.roomTable.setModel(this.model);
+        this.roomTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        AdjustTableWidth.automaticallyAdjustTableWidths(this.roomTable);
+        this.roomTable.getColumnModel()
+                        .getColumn(0)
+                        .setPreferredWidth(90);
+
+        for (int i=0; i<this.roomTable.getColumnCount(); i++) {
+            this.roomTable.getColumnModel()
+                            .getColumn(i)
+                            .setCellRenderer(this.tableCellRenderer);
+        }
+    }
+
+    private void resetTable() {
+        this.resetList();
+        this.updateTable();
+    }
+
+    private void resetList() {
+        this.roomList = this.roomBLL.getAllRooms();
+    }
+
+    private void filterRoomList() {
+        String searchString = this.searchTextField.getText().trim().equals("Nhập thông tin tìm kiếm") ? "" : this.searchTextField.getText().trim();
+        String roomType = this.roomTypeCombobox.getSelectedItem().toString();
+        String status = this.statusCombobox.getSelectedItem().toString();
+
+        if (searchString.isEmpty() && roomType.equals("Tất cả") && status.equals("Tất cả")) {
+            this.resetTable();
+        } else {
+            this.filterRoomListOnNameAndTypeAndStatus(searchString,roomType,status);
+        }
+    }
+
+    private void filterRoomListOnNameAndTypeAndStatus(String name, String type, String status) {
+        this.resetList();
+
+        List<Rooms> filteredRoomList = this.roomList.stream()
+                                                    .filter(room -> name.isEmpty() || room.getRoomName().toLowerCase().contains(name.toLowerCase()))
+                                                    .filter(room -> type.equals("Tất cả") || room.getType().equals(type))
+                                                    .filter(room -> status.equals("Tất cả") || room.getStatus().equals(status))
+                                                    .collect(Collectors.toList());
+
+        this.roomList = new ArrayList(filteredRoomList);
+
+        this.updateTable();
     }
 }

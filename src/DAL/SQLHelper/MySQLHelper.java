@@ -30,21 +30,21 @@ public class MySQLHelper {
 
     /* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 
-    public String buildingCondition() {
+    private String buildingCondition() {
         if (this.queryParams != null && this.queryParams.get("WHERE") != null && !this.queryParams.get("WHERE").isEmpty()) {
             return "WHERE " + this.queryParams.get("WHERE");
         }
         return "";
     }
 
-    public String buidlingJoinTable() {
+    private String buidlingJoinTable() {
         if (this.queryParams != null && this.queryParams.get("JOIN") != null && !this.queryParams.get("JOIN").isEmpty()) {
             return "JOIN " + this.queryParams.get("JOIN");
         }
         return "";
     }
 
-    public String buidlingFieldInsert() {
+    private String buidlingFieldInsert() {
         if (this.queryParams != null && this.queryParams.get("FIELD") != null && !this.queryParams.get("FIELD").isEmpty()) {
             return "("+ this.queryParams.get("FIELD") +")";
         }

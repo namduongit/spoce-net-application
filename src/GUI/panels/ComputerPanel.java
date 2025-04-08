@@ -161,46 +161,46 @@ public class ComputerPanel extends JPanel{
 
 
         // Khởi tạo một Button với chữ "Người chơi"
-        CustomButton playerButton = CreateComponent.createButtonNoIcon("Người chơi");
+        CustomButton playerButton = CreateComponent.createButtonNoIcon("Máy tính");
         playerButton.setBounds(240,15,200,35);
 
         // Thêm sự kiện cho Button khi được nhấn thì Data Panel sẽ chuyển sang bảng tương ứng
-        playerButton.addActionListener(e -> this.cardLayout.show(this.dataPanel, "PlayerPanel"));
+        playerButton.addActionListener(e -> this.cardLayout.show(this.dataPanel, "ComputerManagementPanel"));
 
 
         // Khởi tạo Label với chữ "Tìm kiếm"
         JLabel searchLabel = new JLabel("Tìm kiếm:");
-//        searchLabel.setBounds(20, 75, 80, 30);
+        searchLabel.setBounds(500, 65, 80, 30);
 
 
         // Khởi tạo một Text Field để nhập thông tin tìm kiếm
         searchTextField = new CustomTextField("Nhập thông tin tìm kiếm");
-//        searchTextField.setBounds(90, 73, 200, 35);
+        searchTextField.setBounds(500, 93, 200, 35);
 
         // Tạo Placeholder cho Text Field
-//        searchTextField.addFocusListener(new FocusListener() {
-//
-//            @Override
-//            public void focusGained(FocusEvent e) {
-//                // Khi người dùng focus vào Text Field, nếu nội dung Text Field là Placeholder thì xóa Placeholder để người dùng nhập nội dung tìm kiếm
-//                if (searchTextField.getText().equals("Nhập thông tin tìm kiếm")) {
-//                    searchTextField.setText("");
-//                }
-//            }
-//
-//            @Override
-//            public void focusLost(FocusEvent e) {
-//                // Nếu Text Field không bị focus nữa mà nội dung tìm kiếm là rỗng thì đặt lại nội dung là Placeholder
-//                if (searchTextField.getText().equals("")) {
-//                    searchTextField.setText("Nhập thông tin tìm kiếm");
-//                }
-//            }
-//        });
+        searchTextField.addFocusListener(new FocusListener() {
+
+            @Override
+            public void focusGained(FocusEvent e) {
+                // Khi người dùng focus vào Text Field, nếu nội dung Text Field là Placeholder thì xóa Placeholder để người dùng nhập nội dung tìm kiếm
+                if (searchTextField.getText().equals("Nhập thông tin tìm kiếm")) {
+                    searchTextField.setText("");
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                // Nếu Text Field không bị focus nữa mà nội dung tìm kiếm là rỗng thì đặt lại nội dung là Placeholder
+                if (searchTextField.getText().equals("")) {
+                    searchTextField.setText("Nhập thông tin tìm kiếm");
+                }
+            }
+        });
 
 
         // Tạo JLabel vơi chữ "Trạng thái"
         JLabel filterLabel = new JLabel("Trạng thái:");
-//        filterLabel.setBounds(330, 75, 70, 30);
+        filterLabel.setBounds(705, 65, 70, 30);
 
 
         // Mảng lưu các giá trị của Combobox trạng thái
@@ -215,7 +215,7 @@ public class ComputerPanel extends JPanel{
 
         // Khởi tạo Combobox trạng thái bằng mảng lưu các giá trị
         statusComboBox = new CustomCombobox<>(statusList);
-//        statusComboBox.setBounds(405, 73, 150, 35);
+        statusComboBox.setBounds(705, 93, 150, 35);
 
 
         // Tạo một Button với chữ "Lọc"
@@ -228,7 +228,7 @@ public class ComputerPanel extends JPanel{
         filterButton.setBorderColor(Color.decode("#03A9F4"));
             // Màu chữ
         filterButton.setForeground(Color.WHITE);
-        filterButton.setBounds(595, 73, 100, 35);
+        filterButton.setBounds(860, 93, 100, 35);
             // Tạo hiệu ứng khi hover qua Button và hành động khi click vào button
         filterButton.addMouseListener(new MouseListener() {
 
@@ -274,7 +274,7 @@ public class ComputerPanel extends JPanel{
         resetButton.setForeground(Color.WHITE);
             // Chỉnh kích thước của Border
         resetButton.setBorderSize(3);
-        resetButton.setBounds(715, 73, 100, 35);
+        resetButton.setBounds(965, 93, 100, 35);
         resetButton.addMouseListener(new MouseListener() {
 
             @Override
@@ -323,16 +323,14 @@ public class ComputerPanel extends JPanel{
         selectionText.setFont(
                 new Font("Sans-serif", Font.BOLD, 12)
         );
-        selectionText.setBounds(845,79,300,20);
+        selectionText.setBounds(845,29,300,20);
 
 
-        CustomButton addButton = new CustomButton("Thêm");
-        addButton.setIcon(new ImageIcon(
-                new ImageIcon(
-                        System.getProperty("user.dir") + "/src/Assets/Icon/add.png"
-                ).getImage()
-                 .getScaledInstance(50,50, Image.SCALE_SMOOTH)
-        ));
+        Image addImage = new ImageIcon(
+                System.getProperty("user.dir") + "/src/Assets/Icon/add.png"
+        ).getImage()
+         .getScaledInstance(50,50,Image.SCALE_SMOOTH);
+        CustomDesignButton addButton = new CustomDesignButton("Thêm", new ImageIcon(addImage));
         addButton.setVerticalTextPosition(SwingConstants.BOTTOM);
         addButton.setHorizontalTextPosition(SwingConstants.CENTER);
         addButton.setBackground(Color.WHITE);
@@ -370,13 +368,11 @@ public class ComputerPanel extends JPanel{
             }
         });
 
-        CustomButton modifyButton = new CustomButton("Thay đổi");
-        modifyButton.setIcon(new ImageIcon(
-                new ImageIcon(
-                        System.getProperty("user.dir") + "/src/Assets/Icon/pencil.png"
-                ).getImage()
-                 .getScaledInstance(50,50,Image.SCALE_SMOOTH)
-        ));
+        Image modifyImage = new ImageIcon(
+                System.getProperty("user.dir") + "/src/Assets/Icon/pencil.png"
+        ).getImage()
+         .getScaledInstance(50,50,Image.SCALE_SMOOTH);
+        CustomDesignButton modifyButton = new CustomDesignButton("Thay đổi", new ImageIcon(modifyImage));
         modifyButton.setVerticalTextPosition(SwingConstants.BOTTOM);
         modifyButton.setHorizontalTextPosition(SwingConstants.CENTER);
         modifyButton.setBackground(Color.WHITE);
@@ -427,13 +423,11 @@ public class ComputerPanel extends JPanel{
             }
         });
 
-        CustomButton deleteButton = new CustomButton("Xóa");
-        deleteButton.setIcon(new ImageIcon(
-                new ImageIcon(
-                        System.getProperty("user.dir") + "/src/Assets/Icon/delete.png"
+        Image deleteImage = new ImageIcon(
+                System.getProperty("user.dir") + "/src/Assets/Icon/delete.png"
                 ).getImage()
-                 .getScaledInstance(50,50,Image.SCALE_SMOOTH)
-        ));
+                 .getScaledInstance(50,50,Image.SCALE_SMOOTH);
+        CustomDesignButton deleteButton = new CustomDesignButton("Xóa", new ImageIcon(deleteImage));
         deleteButton.setVerticalTextPosition(SwingConstants.BOTTOM);
         deleteButton.setHorizontalTextPosition(SwingConstants.CENTER);
         deleteButton.setBackground(Color.WHITE);
@@ -528,11 +522,11 @@ public class ComputerPanel extends JPanel{
         CustomPanel managePanel = this.createManagePanel();
 
         // Khởi tạo Card Quản lý phiên chơi
-        CustomPanel playerPanel = this.createPlayerPanel();
+        CustomPanel computerManagementPanel = this.createComputerManagaementPanel();
 
         // Thêm các Card vào Panel (CardLayout)
         panel.add(managePanel, "ManagePanel");
-        panel.add(playerPanel, "PlayerPanel");
+        panel.add(computerManagementPanel, "ComputerManagementPanel");
 
         return panel;
     }
@@ -668,7 +662,7 @@ public class ComputerPanel extends JPanel{
         return panel;
     }
 
-    private CustomPanel createPlayerPanel() {
+    private CustomPanel createComputerManagaementPanel() {
         CustomPanel panel = new CustomPanel();
         panel.setLayout(null);
 
@@ -697,160 +691,10 @@ public class ComputerPanel extends JPanel{
         });
 
         JScrollPane scroll = new CustomScrollPane(sessionData);
-        scroll.setBounds(0,0,1080,400);
+        scroll.setBounds(0,0,1080,468);
 
-        CustomButton addButton = new CustomButton("Mở máy");
-        addButton.setBackground(Color.decode("#388E3C"));
-        addButton.setBorderColor(Color.decode("#388E3C"));
-        addButton.setForeground(Color.WHITE);
-        addButton.setBounds(30, 416, 100, 35);
-        addButton.setBorderSize(3);
-        addButton.addMouseListener(new MouseListener() {
-
-            @Override
-            public void mouseClicked(MouseEvent e) {
-//                new AddingComputer();
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                addButton.setForeground(Color.decode("#388E3C"));
-                addButton.setBackground(Color.WHITE);
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                addButton.setForeground(Color.WHITE);
-                addButton.setBackground(Color.decode("#388E3C"));
-            }
-        });
-
-        CustomButton modifyButton = new CustomButton("Tắt máy");
-        modifyButton.setBackground(Color.pink);
-        modifyButton.setBorderColor(Color.pink);
-        modifyButton.setForeground(Color.WHITE);
-        modifyButton.setBounds(150, 416, 100, 35);
-        modifyButton.setBorderSize(3);
-        modifyButton.addMouseListener(new MouseListener() {
-
-            @Override
-            public void mouseClicked(MouseEvent e) {
-//                if (tableData.getSelectedRow() != -1) {
-//
-//                    // Lấy ra ID máy tính được chọn
-//                    int computerId = (int)tableData.getValueAt(tableData.getSelectedRow(), 0);
-//
-//                    // Lấy ra đối tượng máy tính dựa trên ID được chọn
-//                    Computers computer = ComputerPanel.this.computerBLL
-//                            .getComputerById(computerId);
-//
-//                    // Gọi hàm tạo cửa sổ chỉnh sửa với tham số là đối tượng máy tính
-//                    new DetailsComputer(computer);
-//                } else {
-//                    JOptionPane.showMessageDialog(null, "Bạn chưa chọn máy tính", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-//                }
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                modifyButton.setForeground(Color.pink);
-                modifyButton.setBackground(Color.WHITE);
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                modifyButton.setForeground(Color.WHITE);
-                modifyButton.setBackground(Color.pink);
-            }
-        });
-
-        CustomButton deleteButton = new CustomButton("Xóa");
-        deleteButton.setBackground(Color.red);
-        deleteButton.setBorderColor(Color.red);
-        deleteButton.setForeground(Color.WHITE);
-        deleteButton.setBounds(270, 416, 100, 35);
-        deleteButton.setBorderSize(3);
-        deleteButton.addMouseListener(new MouseListener() {
-
-            @Override
-            public void mouseClicked(MouseEvent e) {
-//                if (tableData.getSelectedRow() != -1) {
-//                    // Lấy ID của máy tính được chọn và truyền vào hàm xóa máy tính dựa trên ID
-//                    boolean isDone = ComputerPanel.this.computerBLL.deleteComputerById((int)tableData.getValueAt(tableData.getSelectedRow(), 0));
-//
-//                    // Kiểm tra xóa máy tính thành công hay không
-//                    if (isDone) {
-//                        JOptionPane.showMessageDialog(
-//                                null,
-//                                "Xóa máy tính thành công!",
-//                                "Thông báo",
-//                                JOptionPane.INFORMATION_MESSAGE
-//                        );
-//                    } else {
-//                        JOptionPane.showMessageDialog(
-//                                null,
-//                                "Xóa máy tính thất bại!",
-//                                "Lỗi",
-//                                JOptionPane.WARNING_MESSAGE
-//                        );
-//                    }
-//                } else {
-//                    JOptionPane.showMessageDialog(
-//                            null,
-//                            "Bạn chưa chọn máy tính",
-//                            "Thông báo",
-//                            JOptionPane.INFORMATION_MESSAGE
-//                    );
-//                }
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                deleteButton.setForeground(Color.red);
-                deleteButton.setBackground(Color.white);
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                deleteButton.setForeground(Color.white);
-                deleteButton.setBackground(Color.red);
-            }
-        });
 
         panel.add(scroll);
-        panel.add(addButton);
-        panel.add(modifyButton);
-        panel.add(deleteButton);
 
         return panel;
     }

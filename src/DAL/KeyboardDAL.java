@@ -74,4 +74,14 @@ public class KeyboardDAL {
 
         return helper.updateData(newvalues, values);
     }
+    public boolean deleteKeyboardById(int id) {
+        MySQLHelper helper = new MySQLHelper();
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "keyboards");
+        params.put("WHERE", "keyboards.keyboard_id = ?");
+        helper.buildingQueryParam(params);
+        ArrayList<Object> values = new ArrayList<>();
+        values.add(id);
+        return helper.deleteData(values);
+    }
 }

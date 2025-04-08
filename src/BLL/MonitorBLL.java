@@ -29,4 +29,7 @@ public class MonitorBLL {
     public boolean updateMonitorById(int id, HashMap<String, Object> newvalues) {
         return this.monitorDAL.updateMonitorById(id, newvalues);
     }
+    public boolean deleteMonitorById(int id) {
+        return this.monitorDAL.deleteMonitorById(id);
+    }
 }
