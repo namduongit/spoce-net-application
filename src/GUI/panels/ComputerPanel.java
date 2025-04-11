@@ -114,11 +114,11 @@ public class ComputerPanel extends JPanel{
         this.controlPanel = this.createControlPanel();
 
         // Panel hiển thị chứa JTable hiển thị thông tin
-        this.dataPanel = this.createDataPanel();
+        this.dataPanel = this.createManagePanel();
 
         this.titlePanel.setBounds(10, 0, 1080, 100);
-        this.controlPanel.setBounds(10, 110, 1080, 160);
-        this.dataPanel.setBounds(10,280,1080,468);
+        this.controlPanel.setBounds(10, 110, 1080, 95);
+        this.dataPanel.setBounds(10,215,1080,533);
 
         // Thêm các Panel thành phần vào Panel tổng để hiển thị lên
         this.add(titlePanel);
@@ -154,28 +154,46 @@ public class ComputerPanel extends JPanel{
 
         // Khởi tạo một Button với chữ "Kho"
         CustomButton manageButton = CreateComponent.createButtonNoIcon("Kho");
-        manageButton.setBounds(20,15,200,35);
+//        manageButton.setBounds(20,15,200,35);
 
         // Thêm sự kiện cho Button khi được nhấn thì Data Panel (card layout) sẽ chuyển thành bảng tương ứng
-        manageButton.addActionListener(e -> this.cardLayout.show(this.dataPanel, "ManagePanel"));
+//        manageButton.addActionListener(e -> this.cardLayout.show(this.dataPanel, "ManagePanel"));
 
 
         // Khởi tạo một Button với chữ "Người chơi"
         CustomButton playerButton = CreateComponent.createButtonNoIcon("Máy tính");
-        playerButton.setBounds(240,15,200,35);
+//        playerButton.setBounds(240,15,200,35);
 
         // Thêm sự kiện cho Button khi được nhấn thì Data Panel sẽ chuyển sang bảng tương ứng
-        playerButton.addActionListener(e -> this.cardLayout.show(this.dataPanel, "ComputerManagementPanel"));
+//        playerButton.addActionListener(e -> this.cardLayout.show(this.dataPanel, "ComputerManagementPanel"));
+
+        String[] sectionList = {
+                "Kho",
+                "Máy tính"
+        };
+
+//        CustomCombobox sectionCombobox = new CustomCombobox(sectionList);
+//        sectionCombobox.setBounds(340, 38, 120, 35);
+//        sectionCombobox.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                if (sectionCombobox.getSelectedItem().toString().equals("Kho")) {
+//                    ComputerPanel.this.cardLayout.show(ComputerPanel.this.dataPanel, "ManagePanel");
+//                } else if (sectionCombobox.getSelectedItem().toString().equals("Máy tính")) {
+//                    ComputerPanel.this.cardLayout.show(ComputerPanel.this.dataPanel, "ComputerManagementPanel");
+//                }
+//            }
+//        });
 
 
         // Khởi tạo Label với chữ "Tìm kiếm"
         JLabel searchLabel = new JLabel("Tìm kiếm:");
-        searchLabel.setBounds(500, 65, 80, 30);
+        searchLabel.setBounds(475, 10, 80, 30);
 
 
         // Khởi tạo một Text Field để nhập thông tin tìm kiếm
         searchTextField = new CustomTextField("Nhập thông tin tìm kiếm");
-        searchTextField.setBounds(500, 93, 200, 35);
+        searchTextField.setBounds(475, 38, 200, 35);
 
         // Tạo Placeholder cho Text Field
         searchTextField.addFocusListener(new FocusListener() {
@@ -200,7 +218,7 @@ public class ComputerPanel extends JPanel{
 
         // Tạo JLabel vơi chữ "Trạng thái"
         JLabel filterLabel = new JLabel("Trạng thái:");
-        filterLabel.setBounds(705, 65, 70, 30);
+        filterLabel.setBounds(690, 10, 70, 30);
 
 
         // Mảng lưu các giá trị của Combobox trạng thái
@@ -215,7 +233,7 @@ public class ComputerPanel extends JPanel{
 
         // Khởi tạo Combobox trạng thái bằng mảng lưu các giá trị
         statusComboBox = new CustomCombobox<>(statusList);
-        statusComboBox.setBounds(705, 93, 150, 35);
+        statusComboBox.setBounds(690, 38, 150, 35);
 
 
         // Tạo một Button với chữ "Lọc"
@@ -228,7 +246,7 @@ public class ComputerPanel extends JPanel{
         filterButton.setBorderColor(Color.decode("#03A9F4"));
             // Màu chữ
         filterButton.setForeground(Color.WHITE);
-        filterButton.setBounds(860, 93, 100, 35);
+        filterButton.setBounds(860, 38, 100, 35);
             // Tạo hiệu ứng khi hover qua Button và hành động khi click vào button
         filterButton.addMouseListener(new MouseListener() {
 
@@ -274,7 +292,7 @@ public class ComputerPanel extends JPanel{
         resetButton.setForeground(Color.WHITE);
             // Chỉnh kích thước của Border
         resetButton.setBorderSize(3);
-        resetButton.setBounds(965, 93, 100, 35);
+        resetButton.setBounds(965, 38, 100, 35);
         resetButton.addMouseListener(new MouseListener() {
 
             @Override
@@ -323,20 +341,20 @@ public class ComputerPanel extends JPanel{
         selectionText.setFont(
                 new Font("Sans-serif", Font.BOLD, 12)
         );
-        selectionText.setBounds(845,29,300,20);
+        selectionText.setBounds(860,10,300,20);
 
 
         Image addImage = new ImageIcon(
                 System.getProperty("user.dir") + "/src/Assets/Icon/add.png"
         ).getImage()
-         .getScaledInstance(50,50,Image.SCALE_SMOOTH);
+         .getScaledInstance(30,30,Image.SCALE_SMOOTH);
         CustomDesignButton addButton = new CustomDesignButton("Thêm", new ImageIcon(addImage));
         addButton.setVerticalTextPosition(SwingConstants.BOTTOM);
         addButton.setHorizontalTextPosition(SwingConstants.CENTER);
         addButton.setBackground(Color.WHITE);
         addButton.setBorderColor(Color.BLACK);
         addButton.setForeground(Color.BLACK);
-        addButton.setBounds(20, 60, 85, 90);
+        addButton.setBounds(20, 10, 75, 70);
         addButton.setBorderSize(3);
         addButton.addMouseListener(new MouseListener() {
 
@@ -371,14 +389,14 @@ public class ComputerPanel extends JPanel{
         Image modifyImage = new ImageIcon(
                 System.getProperty("user.dir") + "/src/Assets/Icon/pencil.png"
         ).getImage()
-         .getScaledInstance(50,50,Image.SCALE_SMOOTH);
-        CustomDesignButton modifyButton = new CustomDesignButton("Thay đổi", new ImageIcon(modifyImage));
+         .getScaledInstance(30,30,Image.SCALE_SMOOTH);
+        CustomDesignButton modifyButton = new CustomDesignButton("Sửa", new ImageIcon(modifyImage));
         modifyButton.setVerticalTextPosition(SwingConstants.BOTTOM);
         modifyButton.setHorizontalTextPosition(SwingConstants.CENTER);
         modifyButton.setBackground(Color.WHITE);
         modifyButton.setBorderColor(Color.BLACK);
         modifyButton.setForeground(Color.BLACK);
-        modifyButton.setBounds(110, 60, 85, 90);
+        modifyButton.setBounds(110, 10, 75, 70);
         modifyButton.setBorderSize(3);
         modifyButton.addMouseListener(new MouseListener() {
 
@@ -426,14 +444,14 @@ public class ComputerPanel extends JPanel{
         Image deleteImage = new ImageIcon(
                 System.getProperty("user.dir") + "/src/Assets/Icon/delete.png"
                 ).getImage()
-                 .getScaledInstance(50,50,Image.SCALE_SMOOTH);
+                 .getScaledInstance(30,30,Image.SCALE_SMOOTH);
         CustomDesignButton deleteButton = new CustomDesignButton("Xóa", new ImageIcon(deleteImage));
         deleteButton.setVerticalTextPosition(SwingConstants.BOTTOM);
         deleteButton.setHorizontalTextPosition(SwingConstants.CENTER);
         deleteButton.setBackground(Color.WHITE);
         deleteButton.setBorderColor(Color.BLACK);
         deleteButton.setForeground(Color.BLACK);
-        deleteButton.setBounds(200, 60, 85, 90);
+        deleteButton.setBounds(200, 10, 75, 70);
         deleteButton.setBorderSize(3);
         deleteButton.addMouseListener(new MouseListener() {
 
@@ -507,26 +525,6 @@ public class ComputerPanel extends JPanel{
         panel.add(modifyButton);
         panel.add(deleteButton);
 
-        return panel;
-    }
-
-    // Hàm khởi tạo Data Panel
-    private JPanel createDataPanel() {
-
-        // Tạo một JPanel vơi Layout là Card Layout
-        JPanel panel = new JPanel();
-        this.cardLayout = new CardLayout();
-        panel.setLayout(this.cardLayout);
-
-        // Khởi tạo Card Quản lý máy tính
-        CustomPanel managePanel = this.createManagePanel();
-
-        // Khởi tạo Card Quản lý phiên chơi
-        CustomPanel computerManagementPanel = this.createComputerManagaementPanel();
-
-        // Thêm các Card vào Panel (CardLayout)
-        panel.add(managePanel, "ManagePanel");
-        panel.add(computerManagementPanel, "ComputerManagementPanel");
 
         return panel;
     }
@@ -653,7 +651,7 @@ public class ComputerPanel extends JPanel{
         });
 
         JScrollPane scroll = new CustomScrollPane(tableData);
-        scroll.setBounds(0,0,1080,468);
+        scroll.setBounds(0,0,1080,533);
 
 
 
@@ -662,7 +660,7 @@ public class ComputerPanel extends JPanel{
         return panel;
     }
 
-    private CustomPanel createComputerManagaementPanel() {
+    private CustomPanel createComputerManagementPanel() {
         CustomPanel panel = new CustomPanel();
         panel.setLayout(null);
 
@@ -691,7 +689,7 @@ public class ComputerPanel extends JPanel{
         });
 
         JScrollPane scroll = new CustomScrollPane(sessionData);
-        scroll.setBounds(0,0,1080,468);
+        scroll.setBounds(0,0,1080,533);
 
 
         panel.add(scroll);

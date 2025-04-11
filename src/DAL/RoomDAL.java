@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class RoomDAL {
     public ArrayList<Rooms> getRoomList() {
@@ -56,5 +57,45 @@ public class RoomDAL {
         }
 
         return arr;
+    }
+
+    public boolean deleteRoomById(int id) {
+        MySQLHelper helper = new MySQLHelper();
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "rooms");
+        params.put("WHERE", "rooms.room_id = ?");
+
+        helper.buildingQueryParam(params);
+
+        ArrayList<Object> values = new ArrayList<>();
+        values.add(id);
+
+        return helper.deleteData(values);
+    }
+
+    public boolean updateRoomById(int roomId, HashMap<String, Object> updateValues) {
+        MySQLHelper helper = new MySQLHelper();
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "rooms");
+        params.put("WHERE", "rooms.room_id = ?");
+        helper.buildingQueryParam(params);
+
+        ArrayList<Object> conditionValues = new ArrayList<>();
+        conditionValues.add(roomId);
+
+        return helper.updateData(updateValues, conditionValues);
+    }
+
+    public boolean insertRoom(ArrayList<Object> values) {
+        MySQLHelper helper = new MySQLHelper();
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "rooms");
+        params.put("FIELD", "room_name, max_computers, type, status");
+        helper.buildingQueryParam(params);
+
+        return helper.insertData(values);
     }
 }

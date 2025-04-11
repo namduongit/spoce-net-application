@@ -10,10 +10,7 @@ import GUI.panels.ComputerPanel;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -95,9 +92,39 @@ public class DetailsComputer extends JFrame {
 
         JLabel nameLabel = new JLabel("Tên máy tính:");
         nameTextField = new CustomTextField(this.computer.getName());
+        nameTextField.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (nameTextField.getText().equals("Nhập tên máy tính")) {
+                    nameTextField.setText("");
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (nameTextField.getText().isEmpty()) {
+                    nameTextField.setText("Nhập tên máy tính");
+                }
+            }
+        });
 
         JLabel priceLabel = new JLabel("Giá một giờ chơi:");
         priceTextField = new CustomTextField(this.computer.getPricePerHour()+"");
+        priceTextField.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (priceTextField.getText().equals("Nhập giá một giờ chơi")) {
+                    priceTextField.setText("");
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (priceTextField.getText().isEmpty()) {
+                    priceTextField.setText("Nhập giá một giờ chơi");
+                }
+            }
+        });
 
         JLabel motherboardLabel = new JLabel("Bo mạch chủ:");
         ArrayList<String> motherboardList = new ArrayList<>();
@@ -402,162 +429,14 @@ public class DetailsComputer extends JFrame {
         idTextField.setText(this.computer.getComputerId()+"");
         nameTextField.setText(this.computer.getName());
         priceTextField.setText(this.computer.getPricePerHour()+"");
-
-        ArrayList<String> motherboardList = new ArrayList<>();
-
-        for (Motherboards x : this.motherboardBLL.getMotherboardsByStatus("Trong kho")) {
-            motherboardList.add(x.getMotherboardId() + ". " + x.getModel());
-        }
-
-        String motherboardName = new String();
-        for (Motherboards x : this.motherboardBLL.getAllMotherboards()) {
-            if (x.getMotherboardId() == this.computer.getMotherboardId()) {
-                motherboardName = x.getModel();
-                break;
-            }
-        }
-
-        motherboardList.add(0, "Đang chọn: " + motherboardName);
-        motherboardCb = new CustomCombobox<>(motherboardList);
-
-        ArrayList<String> mouseList = new ArrayList<>();
-        for (Mouse x : this.mouseBLL.getMousesByStatus("Trong kho")) {
-            mouseList.add(x.getMouseId() + ". " + x.getModel());
-        }
-
-        if (this.currentMouseId == 0) {
-            mouseList.add(0, "Không gắn chuột");
-        } else {
-            String mouseName = new String();
-            for (Mouse x : this.mouseBLL.getAllMouses()) {
-                if (x.getMouseId() == this.computer.getMouseId()) {
-                    mouseName = x.getModel();
-                }
-            }
-            mouseList.add(0, "Đang chọn: " + mouseName);
-            mouseList.add(1, "Gỡ chuột");
-        }
-
-        mouseCb = new CustomCombobox<>(mouseList);
-
-        ArrayList<String> keyboardList = new ArrayList<>();
-        for (Keyboards x : this.keyboardBLL.getKeyboardsByStatus("Trong kho")) {
-            keyboardList.add(x.getKeyboardId() + ". " + x.getModel());
-        }
-
-        if (this.currentKeyboardId == 0) {
-            keyboardList.add(0, "Không gắn bàn phím");
-        } else {
-            String keyboardName = new String();
-            for (Keyboards x : this.keyboardBLL.getAllKeyboards()) {
-                if (x.getKeyboardId() == this.computer.getKeyboardId()) {
-                    keyboardName = x.getModel();
-                }
-            }
-            keyboardList.add(0, "Đang chọn: " + keyboardName);
-            keyboardList.add(1, "Gỡ bàn phím");
-        }
-
-        keyboardCb = new CustomCombobox<>(keyboardList);
-
-        JLabel monitorLabel = new JLabel("Màn hình:");
-        ArrayList<String> monitorList = new ArrayList<>();
-        for (Monitors x : this.monitorBLL.getMonitorsByStatus("Trong kho")) {
-            monitorList.add(x.getMonitorId() + ". " + x.getModel());
-        }
-
-        if (this.currentMonitorId == 0) {
-            monitorList.add(0, "Không gắn màn hình");
-        } else {
-            String monitorName = new String();
-            for (Monitors x : this.monitorBLL.getAllMonitors()) {
-                if (x.getMonitorId() == this.computer.getMonitorId()) {
-                    monitorName = x.getModel();
-                }
-            }
-            monitorList.add(0, "Đang chọn: " + monitorName);
-            monitorList.add(1, "Gỡ màn hình");
-        }
-
-
-        monitorCb = new CustomCombobox<>(monitorList);
-
-        JLabel headphoneLabel = new JLabel("Tai nghe:");
-        ArrayList<String> headphoneList = new ArrayList<>();
-        for (Headphones x : this.headphoneBLL.getHeadphonesByStatus("Trong kho")) {
-            headphoneList.add(x.getHeadphoneId() + ". " + x.getModel());
-        }
-
-        if (this.currentHeadphoneId == 0) {
-            headphoneList.add(0, "Không gắn tai nghe");
-        } else {
-            String headphoneName = new String();
-            for (Headphones x : this.headphoneBLL.getAllHeadphones()) {
-                if (x.getHeadphoneId() == this.computer.getHeadphoneId()) {
-                    headphoneName = x.getModel();
-                }
-            }
-            headphoneList.add(0, "Đang chọn: " + headphoneName);
-            headphoneList.add(1, "Gỡ tai nghe");
-        }
-
-
-        headphoneCb = new CustomCombobox<>(headphoneList);
-
-        JLabel romLabel = new JLabel("Rom:");
-        ArrayList<String> romList = new ArrayList<>();
-        for (Roms x : this.romBLL.getRomsByStatus("Trong kho")) {
-            romList.add(x.getRomId() + ". " + x.getModel());
-        }
-
-        if (this.currentRomId == 0) {
-            romList.add(0, "Không gắn rom");
-        } else {
-            String romName = new String();
-            for (Roms x : this.romBLL.getAllRoms()) {
-                if (x.getRomId() == this.computer.getRomId()) {
-                    romName = x.getModel();
-                }
-            }
-            romList.add(0, "Đang chọn: " + romName);
-            romList.add(1, "Gỡ rom");
-        }
-
-
-        romCb = new CustomCombobox<>(romList);
-
-        JLabel roomLabel = new JLabel("Phòng:");
-        ArrayList<String> roomList = new ArrayList<>();
-        for (Rooms x : this.roomBLL.getRoomsByStatus("Trống")) {
-            if (x.getRoomId() != this.currentRoomId) {
-                roomList.add(x.getRoomId() + ". " + x.getRoomName());
-            }
-        }
-
-        if (this.currentRoomId == 0) {
-            roomList.add(0,"Không có phòng");
-        } else {
-            String roomName = new String();
-            for (Rooms x : this.roomBLL.getAllRooms()) {
-                if (x.getRoomId() == this.computer.getRoomId()) {
-                    roomName = x.getRoomName();
-                }
-            }
-            roomList.add(0, "Đang chọn: " + roomName);
-            roomList.add(1, "Tháo máy khỏi phòng hiện tại");
-        }
-
-        roomCb = new CustomCombobox<>(roomList);
-
-        JLabel statusLabel = new JLabel("Trạng thái:");
-        ArrayList<String> statusList = new ArrayList<>();
-        statusList.add("Đang chọn: " + this.computer.getStatus());
-        for (String x : this.statusList) {
-            if (!x.equals(this.computer.getStatus())) {
-                statusList.add(x);
-            }
-        }
-        statusCb = new CustomCombobox<>(statusList);
+        motherboardCb.setSelectedIndex(0);
+        mouseCb.setSelectedIndex(0);
+        keyboardCb.setSelectedIndex(0);
+        monitorCb.setSelectedIndex(0);
+        headphoneCb.setSelectedIndex(0);
+        romCb.setSelectedIndex(0);
+        roomCb.setSelectedIndex(0);
+        statusCb.setSelectedIndex(0);
     }
 
     public void updateDatas() {

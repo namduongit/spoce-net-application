@@ -3,6 +3,8 @@ package GUI.panels;
 import BLL.RoomBLL;
 import DTO.Rooms;
 import GUI.Components.*;
+import GUI.Form.AddingRoom;
+import GUI.Form.DetailsRoom;
 import Utils.Helper.AdjustTableWidth;
 
 import javax.swing.*;
@@ -63,8 +65,8 @@ public class RoomPanel extends JPanel{
         this.dataPanel = this.createDataPanel();
 
         this.titlePanel.setBounds( 10, 0, 1080, 100);
-        this.controlPanel.setBounds(10, 110, 1080, 100);
-        this.dataPanel.setBounds(10,220,1080,508);
+        this.controlPanel.setBounds(10, 110, 1080, 95);
+        this.dataPanel.setBounds(10,215,1080,513);
 
         this.add(this.titlePanel);
         this.add(this.controlPanel);
@@ -99,7 +101,7 @@ public class RoomPanel extends JPanel{
         });
 
         CustomScrollPane scrollPane = new CustomScrollPane(this.roomTable);
-        scrollPane.setBounds(0,0,1080, 508);
+        scrollPane.setBounds(0,0,1080, 513);
 
         panel.add(scrollPane);
 
@@ -128,41 +130,76 @@ public class RoomPanel extends JPanel{
         Image addImage = new ImageIcon(
                 System.getProperty("user.dir") + "/src/Assets/Icon/add.png"
         ).getImage()
-         .getScaledInstance(50,50,Image.SCALE_SMOOTH);
+         .getScaledInstance(30,30,Image.SCALE_SMOOTH);
         CustomDesignButton addButton = new CustomDesignButton("Thêm", new ImageIcon(addImage));
         addButton.setForeground(Color.BLACK);
         addButton.setBackground(Color.WHITE);
         addButton.setBorderColor(Color.BLACK);
         addButton.setBorderSize(3);
-        addButton.setBounds(20, 5, 85, 90);
+        addButton.setBounds(20, 10, 75, 70);
+        addButton.addActionListener(e -> new AddingRoom());
 
         Image modifyImage = new ImageIcon(
                 System.getProperty("user.dir") + "/src/Assets/Icon/pencil.png"
         ).getImage()
-         .getScaledInstance(50,50,Image.SCALE_SMOOTH);
-        CustomDesignButton modifyButton = new CustomDesignButton("Thay đổi", new ImageIcon(modifyImage));
+         .getScaledInstance(30,30,Image.SCALE_SMOOTH);
+        CustomDesignButton modifyButton = new CustomDesignButton("Sửa", new ImageIcon(modifyImage));
         modifyButton.setForeground(Color.BLACK);
         modifyButton.setBackground(Color.WHITE);
         modifyButton.setBorderColor(Color.BLACK);
         modifyButton.setBorderSize(3);
-        modifyButton.setBounds(110, 5, 85, 90);
+        modifyButton.setBounds(110, 10, 75, 70);
+        modifyButton.addActionListener(e -> {
+            if (this.roomTable.getSelectedRow() == -1) {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Bạn chưa chọn phòng chơi",
+                        "Thông báo",
+                        JOptionPane.INFORMATION_MESSAGE
+                );
+            } else {
+                new DetailsRoom((int)this.roomTable.getValueAt(this.roomTable.getSelectedRow(),0));
+            }
+        });
 
         Image deleteImage = new ImageIcon(
                 System.getProperty("user.dir") + "/src/Assets/Icon/delete.png"
         ).getImage()
-         .getScaledInstance(50,50,Image.SCALE_SMOOTH);
+         .getScaledInstance(30,30,Image.SCALE_SMOOTH);
         CustomDesignButton deleteButton = new CustomDesignButton("Xóa", new ImageIcon(deleteImage));
         deleteButton.setBackground(Color.WHITE);
         deleteButton.setForeground(Color.BLACK);
         deleteButton.setBorderColor(Color.BLACK);
         deleteButton.setBorderSize(3);
-        deleteButton.setBounds(200,5,85,90);
+        deleteButton.setBounds(200,10,75,70);
+        deleteButton.addActionListener(e -> {
+            if (this.roomTable.getSelectedRow() == -1) {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Bạn chưa chọn phòng chơi",
+                        "Thông báo",
+                        JOptionPane.INFORMATION_MESSAGE
+                );
+            } else {
+                int result = JOptionPane.showConfirmDialog(
+                                null,
+                                "Bạn chắc chắn muốn xóa phòng chơi?",
+                                "Thông báo",
+                                JOptionPane.YES_NO_OPTION
+                             );
+
+                if (result == JOptionPane.YES_OPTION) {
+                    this.roomBLL.deleteRoomById((int)this.roomTable.getValueAt(this.roomTable.getSelectedRow(),0));
+                    this.resetTable();
+                }
+            }
+        });
 
         JLabel searchLabel = new JLabel("Tìm kiếm:");
-        searchLabel.setBounds(345, 25, 80, 30);
+        searchLabel.setBounds(310, 10, 80, 30);
 
         searchTextField = new CustomTextField("Nhập thông tin tìm kiếm");
-        searchTextField.setBounds(345, 53, 200, 35);
+        searchTextField.setBounds(310, 38, 200, 35);
         searchTextField.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
@@ -181,7 +218,7 @@ public class RoomPanel extends JPanel{
 
 
         JLabel filterLabel = new JLabel("Loại phòng:");
-        filterLabel.setBounds(550, 25, 70, 30);
+        filterLabel.setBounds(525, 10, 70, 30);
 
 
         String[] roomTypeList = {
@@ -192,10 +229,10 @@ public class RoomPanel extends JPanel{
         };
 
         roomTypeCombobox = new CustomCombobox(roomTypeList);
-        roomTypeCombobox.setBounds(550, 53, 150, 35);
+        roomTypeCombobox.setBounds(525, 38, 150, 35);
 
         JLabel statusLabel = new JLabel("Trạng thái:");
-        statusLabel.setBounds(705,25,70,30);
+        statusLabel.setBounds(690,10,70,30);
 
         String[] statusList = {
                 "Tất cả",
@@ -205,14 +242,14 @@ public class RoomPanel extends JPanel{
         };
 
         statusCombobox = new CustomCombobox(statusList);
-        statusCombobox.setBounds(705,53,150,35);
+        statusCombobox.setBounds(690,38,150,35);
 
         CustomButton filterButton = new CustomButton("Lọc");
         filterButton.setForeground(Color.WHITE);
         filterButton.setBackground(Color.decode("#03A9F4"));
         filterButton.setBorderColor(Color.decode("#03A9F4"));
         filterButton.setBorderSize(3);
-        filterButton.setBounds(860, 53, 100, 35);
+        filterButton.setBounds(860, 38, 100, 35);
         filterButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -247,7 +284,7 @@ public class RoomPanel extends JPanel{
         resetButton.setBackground(Color.RED);
         resetButton.setBorderColor(Color.RED);
         resetButton.setBorderSize(3);
-        resetButton.setBounds(965, 53, 100, 35);
+        resetButton.setBounds(965, 38, 100, 35);
         resetButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -282,7 +319,7 @@ public class RoomPanel extends JPanel{
 
 
         selectedRoom = new JLabel("Đang chọn: NULL");
-        selectedRoom.setBounds(845,15,300,20);
+        selectedRoom.setBounds(860,10,300,20);
         selectedRoom.setFont(
                 new Font("Sans-serif", Font.BOLD, 12)
         );
