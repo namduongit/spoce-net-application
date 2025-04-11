@@ -10,6 +10,26 @@ public class Headphones {
     private Date purchaseDate;
     private Date warrantyExpiry;
     private String status;
+    private double price;
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public Headphones(int headphoneId, String brand, String model, String type, Date purchaseDate, Date warrantyExpiry, String status, double price) {
+        this.headphoneId = headphoneId;
+        this.brand = brand;
+        this.model = model;
+        this.type = type;
+        this.purchaseDate = purchaseDate;
+        this.warrantyExpiry = warrantyExpiry;
+        this.status = status;
+        this.price = price;
+    }
 
     // Constructor không tham số
     public Headphones() {
@@ -24,6 +44,14 @@ public class Headphones {
         this.purchaseDate = purchaseDate;
         this.warrantyExpiry = warrantyExpiry;
         this.status = status;
+    }
+
+    public Headphones(int id, String brand, String model, Date purchaseDate, Date warrantyExpiry) {
+        this.headphoneId = id;
+        this.brand = brand;
+        this.model = model;
+        this.purchaseDate = purchaseDate;
+        this.warrantyExpiry = warrantyExpiry;
     }
 
     // Getter và Setter

@@ -24,7 +24,8 @@ public class MouseDAL {
                         rs.getString("model"),
                         rs.getDate("purchase_date"),
                         rs.getDate("warranty_expiry"),
-                        rs.getString("status")
+                        rs.getString("status"),
+                        rs.getDouble("price")
                 ));
             }
             rs.close();
@@ -81,6 +82,32 @@ public class MouseDAL {
         helper.buildingQueryParam(params);
         ArrayList<Object> values = new ArrayList<>();
         values.add(id);
-        return helper.deleteData(values);
+        boolean result = helper.deleteData(values);
+        helper.closeConnect();
+        return result;
+    }
+    public boolean addMouse(Mouse mouse) {
+        MySQLHelper helper = new MySQLHelper();
+        if(this.getMouseById(mouse.getMouseId()) != null) {
+            JOptionPane.showMessageDialog(null, "ID " + mouse.getMouseId() + " đã tồn tại!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        ArrayList<Object> values = new ArrayList<>();
+            values.add(mouse.getMouseId());
+            values.add(mouse.getBrand());
+            values.add(mouse.getModel());
+            values.add(mouse.getPurchaseDate());
+            values.add(mouse.getWarrantyExpiry());
+            values.add(mouse.getStatus());
+            values.add(mouse.getPrice());
+
+         HashMap<String, String> params = new HashMap<>();
+         params.put("TABLE", "mouse");
+         params.put("FIELD", "mouse_id,brand,model,purchase_date,warranty_expiry,status,price");
+         helper.buildingQueryParam(params);
+
+        boolean result = helper.insertData(values);
+        helper.closeConnect();
+        return result;
     }
 }

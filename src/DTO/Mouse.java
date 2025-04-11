@@ -9,6 +9,25 @@ public class Mouse {
     private Date purchaseDate;
     private Date warrantyExpiry;
     private String status;
+    private double price;
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public Mouse(int mouseId, String brand, String model, Date purchaseDate, Date warrantyExpiry, String status, double price) {
+        this.mouseId = mouseId;
+        this.brand = brand;
+        this.model = model;
+        this.purchaseDate = purchaseDate;
+        this.warrantyExpiry = warrantyExpiry;
+        this.status = status;
+        this.price = price;
+    }
 
     // Constructor không tham số
     public Mouse() {
@@ -22,6 +41,20 @@ public class Mouse {
         this.purchaseDate = purchaseDate;
         this.warrantyExpiry = warrantyExpiry;
         this.status = status;
+    }
+
+    public Mouse(int id, String brand, String model) {
+        this.mouseId = id;
+        this.brand = brand;
+        this.model = model;
+    }
+
+    public Mouse(int id, String brand, String model, Date purchaseDate, Date warrantyExpiry) {
+        this.mouseId = id;
+        this.brand = brand;
+        this.model = model;
+        this.purchaseDate = purchaseDate;
+        this.warrantyExpiry = warrantyExpiry;
     }
 
     // Getter và Setter

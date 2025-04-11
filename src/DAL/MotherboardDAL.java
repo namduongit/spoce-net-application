@@ -36,7 +36,8 @@ public class MotherboardDAL {
                         rs.getInt("psu_id"),
                         rs.getInt("gpu_id"),
                         rs.getDate("purchase_date"),
-                        rs.getDate("warranty_expiry")
+                        rs.getDate("warranty_expiry"),
+                        rs.getDouble("price")
                 ));
             }
             rs.close();
@@ -141,7 +142,8 @@ public class MotherboardDAL {
                         rs.getInt("psu_id"),
                         rs.getInt("gpu_id"),
                         rs.getDate("purchase_date"),
-                        rs.getDate("warranty_expiry")
+                        rs.getDate("warranty_expiry"),
+                        rs.getDouble("price")
                 ));
             }
             rs.close();
@@ -174,6 +176,44 @@ public class MotherboardDAL {
         helper.buildingQueryParam(params);
         ArrayList<Object> values = new ArrayList<>();
         values.add(id);
-        return helper.deleteData(values);
+        boolean result = helper.deleteData(values);
+        helper.closeConnect();
+        return result;
+    }
+    public boolean addMotherboard(Motherboards motherboard) {
+        MySQLHelper helper = new MySQLHelper();
+        if(this.getMotherboardById(motherboard.getMotherboardId()) != null) {
+            JOptionPane.showMessageDialog(null, "ID " + motherboard.getMotherboardId() + " đã tồn tại!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        ArrayList<Object> values = new ArrayList<>();
+            values.add(motherboard.getMotherboardId());
+            values.add(motherboard.getBrand());
+            values.add(motherboard.getModel());
+            values.add(motherboard.getSocket());
+            values.add(motherboard.getChipset());
+            values.add(motherboard.getRamSlots());
+            values.add(motherboard.getMaxRam());
+            values.add(motherboard.getRamSpeed());
+            values.add(motherboard.getStorageSlots());
+            values.add(motherboard.getSataPorts());
+            values.add(motherboard.getM2Slots());
+            values.add(motherboard.getMaxStorageCapacity());
+            values.add(motherboard.getStatus());
+            values.add(motherboard.getCpuId());
+            values.add(motherboard.getPsuId());
+            values.add(motherboard.getGpuId());
+            values.add(motherboard.getPurchaseDate());
+            values.add(motherboard.getWarrantyExpiry());
+            values.add(motherboard.getPrice());
+
+         HashMap<String, String> params = new HashMap<>();
+         params.put("TABLE", "motherboards");
+         params.put("FIELD", "motherboard_id,brand,model,socket,chipset,ram_slots,max_ram,ram_speed,storage_slots,sata_ports,m2_slots,max_storage_capacity,status,cpu_id,psu_id,gpu_id,purchase_date,warranty_expiry,price");
+         helper.buildingQueryParam(params);
+
+        boolean result = helper.insertData(values);
+        helper.closeConnect();
+        return result;
     }
 }

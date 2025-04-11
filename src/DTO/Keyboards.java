@@ -9,6 +9,25 @@ public class Keyboards {
     private Date purchaseDate;
     private Date warrantyExpiry;
     private String status;
+    private double price;
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public Keyboards(int keyboardId, String brand, String model, Date purchaseDate, Date warrantyExpiry, String status, double price) {
+        this.keyboardId = keyboardId;
+        this.brand = brand;
+        this.model = model;
+        this.purchaseDate = purchaseDate;
+        this.warrantyExpiry = warrantyExpiry;
+        this.status = status;
+        this.price = price;
+    }
 
     // Constructor không tham số
     public Keyboards() {
@@ -22,6 +41,15 @@ public class Keyboards {
         this.purchaseDate = purchaseDate;
         this.warrantyExpiry = warrantyExpiry;
         this.status = status;
+    }
+
+
+    public Keyboards(int id, String brand, String model, Date purchaseDate, Date warrantyExpiry) {
+        this.keyboardId = id;
+        this.brand = brand;
+        this.model = model;
+        this.purchaseDate = purchaseDate;
+        this.warrantyExpiry = warrantyExpiry;
     }
 
     // Getter và Setter
