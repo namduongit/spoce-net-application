@@ -4,37 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="62dcb59d-8ce0-47e1-a5ea-b8e40b7265e0" name="Changes" comment="SQL">
-<<<<<<< HEAD
-      <change afterPath="$PROJECT_DIR$/src/GUI/Form/DetailsHardware.java" afterDir="false" />
+    <list default="true" id="62dcb59d-8ce0-47e1-a5ea-b8e40b7265e0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-=======
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Assets/Icon/icons8-password-100.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/BLL/ComputerSessionBLL.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/DAL/ComputerSessionDAL.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/GUI/Components/CustomDesignButton.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/GUI/Components/MainTestCustom.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/GUI/Form/AddingHardware$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/GUI/Form/AddingHardware$2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/GUI/Form/AddingHardware.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/GUI/Form/DetailsAuthenticator.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$10.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$11.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$8.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$9.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/AddingHardware$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/AddingHardware$2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/AddingHardware.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assets/Icon/icons8-password-100.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/Components/CustomDesignButton.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/Components/MainTestCustom.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/Form/AddingHardware.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/Form/DetailsAuthenticator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/launch.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/launch.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Assets/Avatar/avatar_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Assets/Avatar/avatar_1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/BLL/AccountBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/BLL/AccountBLL.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/BLL/CpuBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/BLL/CpuBLL.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/BLL/GpuBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/BLL/GpuBLL.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/BLL/HeadphoneBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/BLL/HeadphoneBLL.class" afterDir="false" />
@@ -43,8 +14,6 @@
       <change beforePath="$PROJECT_DIR$/bin/BLL/MotherboardBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/BLL/MotherboardBLL.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/BLL/MouseBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/BLL/MouseBLL.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/BLL/RomBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/BLL/RomBLL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/BLL/StaffBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/BLL/StaffBLL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/DAL/AccountDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DAL/AccountDAL.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/DAL/CpuDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DAL/CpuDAL.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/DAL/GpuDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DAL/GpuDAL.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/DAL/HeadphoneDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DAL/HeadphoneDAL.class" afterDir="false" />
@@ -54,20 +23,28 @@
       <change beforePath="$PROJECT_DIR$/bin/DAL/MouseDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DAL/MouseDAL.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/DAL/RomDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DAL/RomDAL.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/DAL/SQLHelper/MySQLHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DAL/SQLHelper/MySQLHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/DAL/StaffDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DAL/StaffDAL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/DTO/Cpus.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DTO/Cpus.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/DTO/Gpus.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DTO/Gpus.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/DTO/Headphones.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DTO/Headphones.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/DTO/Keyboards.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DTO/Keyboards.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/DTO/Monitors.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DTO/Monitors.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/DTO/Motherboards.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DTO/Motherboards.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/DTO/Mouse.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DTO/Mouse.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/DTO/Roms.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DTO/Roms.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/AddingComputer$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/AddingComputer$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/AddingComputer$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/AddingComputer$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/AddingComputer$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/AddingComputer$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/AddingComputer.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/AddingComputer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/AccountPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/AccountPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/AddingHardware$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/AddingHardware$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/AddingHardware$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/AddingHardware$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/AddingHardware.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/AddingHardware.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$10.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$11.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$4.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$5.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$6.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$9.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/GUI/panels/HardwarePanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/HardwarePanel$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/GUI/panels/HardwarePanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/HardwarePanel$2.class" afterDir="false" />
@@ -76,124 +53,15 @@
       <change beforePath="$PROJECT_DIR$/bin/GUI/panels/HardwarePanel$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/HardwarePanel$5.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/GUI/panels/HardwarePanel$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/HardwarePanel$6.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/GUI/panels/HardwarePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/HardwarePanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Utils/Helper/Comon.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Utils/Helper/Comon.class" afterDir="false" />
->>>>>>> 1637d2177d824f914fe332b4a138ed53f29aa76d
-      <change beforePath="$PROJECT_DIR$/createTable.sql" beforeDir="false" afterPath="$PROJECT_DIR$/createTable.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Avatar/avatar_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Avatar/avatar_1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/AccountBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/AccountBLL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/CpuBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/CpuBLL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/GpuBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/GpuBLL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/HeadphoneBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/HeadphoneBLL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/KeyboardBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/KeyboardBLL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/MonitorBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/MonitorBLL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/MotherboardBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/MotherboardBLL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/MouseBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/MouseBLL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/RomBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/RomBLL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/StaffBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/StaffBLL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/AccountDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/AccountDAL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/CpuDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/CpuDAL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/GpuDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/GpuDAL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/HeadphoneDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/HeadphoneDAL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/KeyboardDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/KeyboardDAL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/MonitorDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/MonitorDAL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/MotherboardDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/MotherboardDAL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/MouseDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/MouseDAL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/RomDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/RomDAL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/SQLHelper/MySQLHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/SQLHelper/MySQLHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/StaffDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/StaffDAL.class" afterDir="false" />
-<<<<<<< HEAD
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DTO/Cpus.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DTO/Cpus.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DTO/Gpus.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DTO/Gpus.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DTO/Headphones.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DTO/Headphones.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DTO/Keyboards.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DTO/Keyboards.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DTO/Monitors.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DTO/Monitors.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DTO/Motherboards.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DTO/Motherboards.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DTO/Mouse.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DTO/Mouse.class" afterDir="false" />
-=======
->>>>>>> 1637d2177d824f914fe332b4a138ed53f29aa76d
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DTO/Roms.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DTO/Roms.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/AddingComputer$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/AddingComputer$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/AddingComputer$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/AddingComputer$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/AddingComputer$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/AddingComputer$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/AddingComputer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/AddingComputer.class" afterDir="false" />
-<<<<<<< HEAD
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/AddingHardware$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/AddingHardware$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/AddingHardware$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/AddingHardware$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/RoomPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/RoomPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Utils/Config/ConfigSQL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Utils/Config/ConfigSQL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Utils/Helper/AdjustTableWidth.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Utils/Helper/AdjustTableWidth.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/AddingHardware.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/AddingHardware.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/AccountPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/AccountPanel.class" afterDir="false" />
-=======
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/AccountPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/AccountPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$10.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$9.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel.class" afterDir="false" />
->>>>>>> 1637d2177d824f914fe332b4a138ed53f29aa76d
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/HardwarePanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/HardwarePanel$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/HardwarePanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/HardwarePanel$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/HardwarePanel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/HardwarePanel$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/HardwarePanel$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/HardwarePanel$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/HardwarePanel$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/HardwarePanel$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/HardwarePanel$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/HardwarePanel$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/HardwarePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/HardwarePanel.class" afterDir="false" />
-<<<<<<< HEAD
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Utils/Helper/Comon.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/Utils/Helper/Comon.class" afterDir="false" />
-=======
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/RoomPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/RoomPanel$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/RoomPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/RoomPanel$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/RoomPanel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/RoomPanel$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/RoomPanel$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/RoomPanel$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/RoomPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Utils/Helper/Comon.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/Utils/Helper/Comon.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Assets/Avatar/avatar_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/Avatar/avatar_1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BLL/AccountBLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/AccountBLL.java" afterDir="false" />
->>>>>>> 1637d2177d824f914fe332b4a138ed53f29aa76d
-      <change beforePath="$PROJECT_DIR$/src/BLL/CpuBLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/CpuBLL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BLL/GpuBLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/GpuBLL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BLL/HeadphoneBLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/HeadphoneBLL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BLL/KeyboardBLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/KeyboardBLL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BLL/MonitorBLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/MonitorBLL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BLL/MotherboardBLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/MotherboardBLL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BLL/MouseBLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/MouseBLL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BLL/RomBLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/RomBLL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BLL/StaffBLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/StaffBLL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DAL/AccountDAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/AccountDAL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DAL/CpuDAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/CpuDAL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DAL/GpuDAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/GpuDAL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DAL/HeadphoneDAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/HeadphoneDAL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DAL/KeyboardDAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/KeyboardDAL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DAL/MonitorDAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/MonitorDAL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DAL/MotherboardDAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/MotherboardDAL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DAL/MouseDAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/MouseDAL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DAL/RomDAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/RomDAL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DAL/SQLHelper/MySQLHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/SQLHelper/MySQLHelper.java" afterDir="false" />
-<<<<<<< HEAD
-      <change beforePath="$PROJECT_DIR$/src/DTO/Cpus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/Cpus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DTO/Gpus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/Gpus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DTO/Headphones.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/Headphones.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DTO/Keyboards.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/Keyboards.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DTO/Monitors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/Monitors.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DTO/Motherboards.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/Motherboards.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DTO/Mouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/Mouse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DTO/Roms.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/Roms.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/DetailsHardware.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/DetailsHardware.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Utils/Config/ConfigSQL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/Utils/Config/ConfigSQL.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/Form/AddingHardware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Form/AddingHardware.java" afterDir="false" />
-=======
-      <change beforePath="$PROJECT_DIR$/src/DAL/StaffDAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/StaffDAL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DTO/Roms.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DTO/Roms.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Form/AddingComputer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Form/AddingComputer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/panels/AccountPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/panels/AccountPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/panels/ComputerPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/panels/ComputerPanel.java" afterDir="false" />
->>>>>>> 1637d2177d824f914fe332b4a138ed53f29aa76d
-      <change beforePath="$PROJECT_DIR$/src/GUI/panels/HardwarePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/panels/HardwarePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/panels/RoomPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/panels/RoomPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/Helper/Comon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/Helper/Comon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Form/DetailsHardware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Form/DetailsHardware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils/Config/ConfigSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/Config/ConfigSQL.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -234,7 +102,6 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-<<<<<<< HEAD
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Application.AccountDAL.executor&quot;: &quot;Run&quot;,
@@ -278,37 +145,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-=======
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.AddingHardware.executor": "Run",
-    "Application.AdminDashboard.executor": "Run",
-    "Application.AdminLoginScreen.executor": "Run",
-    "Application.App.executor": "Run",
-    "Application.ConfigSQL.executor": "Run",
-    "Application.DetailsComputer.executor": "Run",
-    "Application.SendEmail.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "Merging main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Caidat/hoctap/hk2 - nam 2/java/project/spoce-net-application",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "advanced.settings",
-    "vue.rearranger.settings.migration": "true"
-  }
-}]]></component>
-  <component name="RunManager" selected="Application.AdminDashboard">
->>>>>>> 1637d2177d824f914fe332b4a138ed53f29aa76d
     <configuration name="AddingHardware" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GUI.Form.AddingHardware" />
       <module name="spoce-net-application" />
@@ -358,13 +194,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.AdminDashboard" />
-<<<<<<< HEAD
         <item itemvalue="Application.AccountDAL" />
         <item itemvalue="Application.AddingHardware" />
         <item itemvalue="Application.DetailsComputer" />
-=======
-        <item itemvalue="Application.AddingHardware" />
->>>>>>> 1637d2177d824f914fe332b4a138ed53f29aa76d
         <item itemvalue="Application.App" />
       </list>
     </recent_temporary>
@@ -443,7 +275,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Edit path file" />
     <MESSAGE value="SQL" />
-    <option name="LAST_COMMIT_MESSAGE" value="SQL" />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

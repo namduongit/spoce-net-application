@@ -56,7 +56,7 @@ public class DetailsHardware extends JFrame {
     private void initComponents() {
         this.setTitle("Chi tiết linh kiện");
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.setSize(550, 700);
+        this.setSize(550, 900);
         this.setResizable(false);
 
         this.content = createContent();
@@ -109,7 +109,7 @@ public class DetailsHardware extends JFrame {
         // Panel chứa các trường động
         dynamicFieldsPanel = new JPanel();
         dynamicFieldsPanel.setLayout(null);
-        dynamicFieldsPanel.setBounds(20, 270, 500, 300);
+        dynamicFieldsPanel.setBounds(20, 290, 510, 500);
         dynamicFieldsPanel.setBackground(Color.decode("#ECF0F1"));
 
         // Đường phân cách
@@ -121,11 +121,11 @@ public class DetailsHardware extends JFrame {
                 g.fillRect(0, 0, getWidth(), getHeight());
             }
         };
-        separator.setBounds(270, 155, 1, 400);
+        separator.setBounds(270, 155, 1, 600);
 
         // Nút lưu thay đổi
         CustomButton saveBtn = Utils.Helper.CreateComponent.createBlueButton("Lưu thay đổi");
-        saveBtn.setBounds(20, 620, 120, 35);
+        saveBtn.setBounds(20, 820, 100, 35);
         saveBtn.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -145,7 +145,7 @@ public class DetailsHardware extends JFrame {
 
         // Nút đóng
         CustomButton closeBtn = Utils.Helper.CreateComponent.createOrangeButton("Đóng");
-        closeBtn.setBounds(150, 620, 100, 35);
+        closeBtn.setBounds(140, 820, 100, 35);
         closeBtn.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -164,16 +164,16 @@ public class DetailsHardware extends JFrame {
         });
 
         // Đặt vị trí
-        idLabel.setBounds(20, 10, 200, 20);
-        idField.setBounds(20, 35, 500, 30);
-        modelLabel.setBounds(20, 75, 200, 20);
-        modelField.setBounds(20, 100, 500, 30);
-        typeLabel.setBounds(20, 145, 200, 20);
-        typeComboBox.setBounds(20, 170, 225, 35);
-        priceLabel.setBounds(295, 145, 200, 20);
-        priceField.setBounds(295, 170, 225, 35);
-        statusLabel.setBounds(20, 215, 200, 20);
-        statusComboBox.setBounds(20, 240, 225, 35);
+        idLabel.setBounds(20, 20, 200, 20);      // Tăng khoảng cách trên cùng
+        idField.setBounds(20, 45, 510, 30);
+        modelLabel.setBounds(20, 85, 200, 20);
+        modelField.setBounds(20, 110, 510, 30);
+        typeLabel.setBounds(20, 150, 200, 20);
+        typeComboBox.setBounds(20, 175, 225, 35);
+        priceLabel.setBounds(275, 150, 200, 20); // Điều chỉnh sang phải một chút
+        priceField.setBounds(275, 175, 255, 35);
+        statusLabel.setBounds(20, 220, 200, 20);
+        statusComboBox.setBounds(20, 245, 225, 35);
 
         // Thêm vào panel
         panel.add(idLabel);

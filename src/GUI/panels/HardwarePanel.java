@@ -456,6 +456,8 @@ public class HardwarePanel extends JPanel {
     private void updateTable(ArrayList<Object[]> components) {
         tableModel.setDataVector(getTableData(components),
                 new String[]{"ID", "Tên Sản Phẩm", "Loại", "Giá Tiền", "Trạng thái"});
+//        tableData = new CustomTable(tableModel);
+//        tableData.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         AdjustTableWidth.automaticallyAdjustTableWidths(tableData);
         tableData.getColumnModel().getColumn(0).setPreferredWidth(100);
         tableData.getColumnModel().getColumn(3).setPreferredWidth(150); // Đảm bảo cột "Giá Tiền" đủ rộng
