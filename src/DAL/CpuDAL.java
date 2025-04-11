@@ -28,7 +28,8 @@ public class CpuDAL {
                         rs.getBoolean("integrated_gpu"),
                         rs.getDate("purchase_date"),
                         rs.getDate("warranty_expiry"),
-                        rs.getString("status")
+                        rs.getString("status"),
+                        rs.getDouble("price")
                 ));
             }
             rs.close();
@@ -52,6 +53,19 @@ public class CpuDAL {
         return null;
     }
 
+    public boolean updateCpuById(int id, HashMap<String, Object> updates) {
+        MySQLHelper helper = new MySQLHelper();
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "cpus");
+        params.put("WHERE", "cpus.cpu_id = ?");
+        helper.buildingQueryParam(params);
+        ArrayList<Object> conditionValues = new ArrayList<>();
+        conditionValues.add(id);
+        boolean result = helper.updateData(updates, conditionValues);
+        helper.closeConnect();
+        return result;
+    }
+
     public boolean deleteCpuById(int id) {
         MySQLHelper helper = new MySQLHelper();
         HashMap<String, String> params = new HashMap<>();
@@ -60,6 +74,36 @@ public class CpuDAL {
         helper.buildingQueryParam(params);
         ArrayList<Object> values = new ArrayList<>();
         values.add(id);
-        return helper.deleteData(values);
+        boolean r = helper.deleteData(values);
+        helper.closeConnect();
+        return r;
+    }
+    public boolean addCpu(Cpus cpu) {
+        MySQLHelper helper = new MySQLHelper();
+        if(this.getCpuById(cpu.getCpuId()) != null) {
+            JOptionPane.showMessageDialog(null, "ID " + cpu.getCpuId() + " đã tồn tại!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        ArrayList<Object> values = new ArrayList<>();
+            values.add(cpu.getCpuId());
+            values.add(cpu.getBrand());
+            values.add(cpu.getModel());
+            values.add(cpu.getClockSpeed());
+            values.add(cpu.getCores());
+            values.add(cpu.getThreads());
+            values.add(cpu.isIntegratedGpu());
+            values.add(cpu.getPurchaseDate());
+            values.add(cpu.getWarrantyExpiry());
+            values.add(cpu.getStatus());
+            values.add(cpu.getPrice());
+
+       HashMap<String, String> params = new HashMap<>();
+       params.put("TABLE","cpus");
+       params.put("FIELD","cpu_id,brand,model,clock_speed,cores,threads,integrated_gpu,purchase_date,warranty_expiry,status,price");
+       helper.buildingQueryParam(params);
+
+        boolean result = helper.insertData(values);
+        helper.closeConnect();
+        return result;
     }
 }

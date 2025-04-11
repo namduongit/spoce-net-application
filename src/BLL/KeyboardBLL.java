@@ -33,4 +33,7 @@ public class KeyboardBLL {
     public boolean deleteKeyboardById(int id) {
         return this.keyboardDAL.deleteKeyboardById(id);
     }
+    public boolean addKeyboard(Keyboards keyboard) {
+        return this.keyboardDAL.addKeyboard(keyboard);
+    }
 }

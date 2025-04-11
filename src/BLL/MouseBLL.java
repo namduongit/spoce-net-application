@@ -31,4 +31,7 @@ public class MouseBLL {
     public boolean deleteMouseById(int id) {
         return this.mouseDAL.deleteMouseById(id);
     }
+    public boolean addMouse(Mouse mouse) {
+        return this.mouseDAL.addMouse(mouse);
+    }
 }

@@ -33,4 +33,7 @@ public class HeadphoneBLL {
     public boolean deleteHeadphoneById(int id) {
         return this.headphoneDAL.deleteHeadphoneById(id);
     }
+    public boolean addHeadphone(Headphones headphones) {
+        return this.headphoneDAL.addHeadphone(headphones);
+    }
 }

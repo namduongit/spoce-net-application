@@ -25,7 +25,8 @@ public class KeyboardDAL {
                         rs.getString("model"),
                         rs.getDate("purchase_date"),
                         rs.getDate("warranty_expiry"),
-                        rs.getString("status")
+                        rs.getString("status"),
+                        rs.getDouble("price")
                 ));
             }
             rs.close();
@@ -82,6 +83,33 @@ public class KeyboardDAL {
         helper.buildingQueryParam(params);
         ArrayList<Object> values = new ArrayList<>();
         values.add(id);
-        return helper.deleteData(values);
+        boolean result = helper.deleteData(values);
+        helper.closeConnect();
+        return result;
+    }
+
+    public boolean addKeyboard(Keyboards keyboard) {
+        MySQLHelper helper = new MySQLHelper();
+        if(this.getKeyboardById(keyboard.getKeyboardId()) != null) {
+            JOptionPane.showMessageDialog(null, "ID " + keyboard.getKeyboardId() + " đã tồn tại!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        ArrayList<Object> values = new ArrayList<>();
+            values.add(keyboard.getKeyboardId());
+            values.add(keyboard.getBrand());
+            values.add(keyboard.getModel());
+            values.add(keyboard.getPurchaseDate());
+            values.add(keyboard.getWarrantyExpiry());
+            values.add(keyboard.getStatus());
+            values.add(keyboard.getPrice());
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "keyboards");
+        params.put("FIELD", "keyboard_id, brand, model, purchase_date, warranty_expiry, status, price");
+        helper.buildingQueryParam(params);
+
+        boolean result = helper.insertData(values);
+        helper.closeConnect();
+        return result;
     }
 }

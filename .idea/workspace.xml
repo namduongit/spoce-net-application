@@ -5,31 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="62dcb59d-8ce0-47e1-a5ea-b8e40b7265e0" name="Changes" comment="SQL">
-      <change afterPath="$PROJECT_DIR$/src/GUI/Form/AddingRoom.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/Form/DetailsRoom.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/RoomBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/RoomBLL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/RoomDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/RoomDAL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/RoomPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/RoomPanel$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/RoomPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/RoomPanel$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/RoomPanel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/RoomPanel$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/RoomPanel$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/RoomPanel$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/RoomPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/RoomPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BLL/RoomBLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/RoomBLL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DAL/RoomDAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/RoomDAL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Form/AddingComputer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Form/AddingComputer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Form/DetailsComputer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Form/DetailsComputer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/panels/ComputerPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/panels/ComputerPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/panels/RoomPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/panels/RoomPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/DetailsHardware.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/DetailsHardware.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/HardwarePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/HardwarePanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Form/DetailsHardware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Form/DetailsHardware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/panels/HardwarePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/panels/HardwarePanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +35,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/namduongit/spoce-net-application.git&quot;,
-    &quot;accountId&quot;: &quot;20b56b38-814f-4b8e-a4dd-02db64bcf7b6&quot;
+    &quot;accountId&quot;: &quot;197bc58e-d94a-44c2-b42b-171a4b33486f&quot;
   }
 }</component>
   <component name="ProblemsViewState">
@@ -72,6 +52,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Application.AccountDAL.executor&quot;: &quot;Run&quot;,
     &quot;Application.AddingHardware.executor&quot;: &quot;Run&quot;,
     &quot;Application.AdminDashboard.executor&quot;: &quot;Run&quot;,
     &quot;Application.AdminLoginScreen.executor&quot;: &quot;Run&quot;,
@@ -85,7 +66,7 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Caidat/hoctap/hk2 - nam 2/java/project/spoce-net-application&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Nam2-ki2/JavaSql&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -99,6 +80,19 @@
   }
 }</component>
   <component name="RunManager" selected="Application.AdminDashboard">
+    <configuration name="AccountDAL" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="DAL.AccountDAL" />
+      <module name="spoce-net-application" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="DAL.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AddingHardware" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GUI.Form.AddingHardware" />
       <module name="spoce-net-application" />
@@ -132,10 +126,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="DetailsComputer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GUI.Form.DetailsComputer" />
+      <module name="spoce-net-application" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="GUI.Form.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.AdminDashboard" />
+        <item itemvalue="Application.AccountDAL" />
         <item itemvalue="Application.AddingHardware" />
+        <item itemvalue="Application.DetailsComputer" />
         <item itemvalue="Application.App" />
       </list>
     </recent_temporary>
@@ -143,8 +152,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23726.103" />
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23726.103" />
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.145" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.145" />
       </set>
     </attachedChunks>
   </component>
@@ -177,9 +186,18 @@
       <workItem from="1743487923181" duration="1493000" />
       <workItem from="1743490364386" duration="103000" />
       <workItem from="1743496732810" duration="5144000" />
-      <workItem from="1743514784438" duration="3342000" />
-      <workItem from="1744092452655" duration="13280000" />
-      <workItem from="1744338542760" duration="13863000" />
+      <workItem from="1743514784438" duration="5487000" />
+      <workItem from="1743562440506" duration="95000" />
+      <workItem from="1743569730531" duration="1529000" />
+      <workItem from="1743671147539" duration="65000" />
+      <workItem from="1744044070194" duration="8980000" />
+      <workItem from="1744080529909" duration="348000" />
+      <workItem from="1744081190218" duration="685000" />
+      <workItem from="1744092545541" duration="43000" />
+      <workItem from="1744093200316" duration="799000" />
+      <workItem from="1744275222725" duration="15421000" />
+      <workItem from="1744301576760" duration="4578000" />
+      <workItem from="1744352224633" duration="984000" />
     </task>
     <task id="LOCAL-00001" summary="Edit path file">
       <option name="closed" value="true" />
@@ -206,14 +224,14 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Edit path file" />
     <MESSAGE value="SQL" />
-    <option name="LAST_COMMIT_MESSAGE" value="SQL" />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/GUI/panels/AccountPanel.java</url>
-          <line>565</line>
+          <line>639</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

@@ -13,6 +13,29 @@ public class Cpus {
     private Date purchaseDate;
     private Date warrantyExpiry;
     private String status;
+    private double price;
+
+    public Cpus(int cpuId, String brand, String model, float clockSpeed, int cores, int threads, boolean integratedGpu, Date purchaseDate, Date warrantyExpiry, String status, double price) {
+        this.cpuId = cpuId;
+        this.brand = brand;
+        this.model = model;
+        this.clockSpeed = clockSpeed;
+        this.cores = cores;
+        this.threads = threads;
+        this.integratedGpu = integratedGpu;
+        this.purchaseDate = purchaseDate;
+        this.warrantyExpiry = warrantyExpiry;
+        this.status = status;
+        this.price = price;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
 
     // Constructor không tham số
     public Cpus() {
@@ -30,6 +53,16 @@ public class Cpus {
         this.purchaseDate = purchaseDate;
         this.warrantyExpiry = warrantyExpiry;
         this.status = status;
+    }
+
+
+
+    public Cpus(int id, String brand, String model, Date purchaseDate, Date warrantyExpiry) {
+        this.cpuId = id;
+        this.brand = brand;
+        this.model = model;
+        this.purchaseDate = purchaseDate;
+        this.warrantyExpiry = warrantyExpiry;
     }
 
     // Getter và Setter

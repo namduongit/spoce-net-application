@@ -11,6 +11,27 @@ public class Monitors {
     private Date purchaseDate;
     private Date warrantyExpiry;
     private String status;
+    private double price;
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public Monitors(int monitorId, String brand, String model, float size, int refreshRate, Date purchaseDate, Date warrantyExpiry, String status, double price) {
+        this.monitorId = monitorId;
+        this.brand = brand;
+        this.model = model;
+        this.size = size;
+        this.refreshRate = refreshRate;
+        this.purchaseDate = purchaseDate;
+        this.warrantyExpiry = warrantyExpiry;
+        this.status = status;
+        this.price = price;
+    }
 
     // Constructor không tham số
     public Monitors() {
@@ -26,6 +47,16 @@ public class Monitors {
         this.purchaseDate = purchaseDate;
         this.warrantyExpiry = warrantyExpiry;
         this.status = status;
+    }
+
+
+
+    public Monitors(int id, String brand, String model, Date purchaseDate, Date warrantyExpiry) {
+        this.monitorId = id;
+        this.brand = brand;
+        this.model = model;
+        this.purchaseDate = purchaseDate;
+        this.warrantyExpiry = warrantyExpiry;
     }
 
     // Getter và Setter
