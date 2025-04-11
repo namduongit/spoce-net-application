@@ -4,64 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="62dcb59d-8ce0-47e1-a5ea-b8e40b7265e0" name="Changes" comment="">
+    <list default="true" id="62dcb59d-8ce0-47e1-a5ea-b8e40b7265e0" name="Changes" comment="SQL">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/BLL/CpuBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/BLL/CpuBLL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/BLL/GpuBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/BLL/GpuBLL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/BLL/HeadphoneBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/BLL/HeadphoneBLL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/BLL/KeyboardBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/BLL/KeyboardBLL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/BLL/MonitorBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/BLL/MonitorBLL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/BLL/MotherboardBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/BLL/MotherboardBLL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/BLL/MouseBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/BLL/MouseBLL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/BLL/RomBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/BLL/RomBLL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/DAL/CpuDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DAL/CpuDAL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/DAL/GpuDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DAL/GpuDAL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/DAL/HeadphoneDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DAL/HeadphoneDAL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/DAL/KeyboardDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DAL/KeyboardDAL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/DAL/MonitorDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DAL/MonitorDAL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/DAL/MotherboardDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DAL/MotherboardDAL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/DAL/MouseDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DAL/MouseDAL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/DAL/RomDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DAL/RomDAL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/DAL/SQLHelper/MySQLHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DAL/SQLHelper/MySQLHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/DTO/Cpus.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DTO/Cpus.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/DTO/Gpus.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DTO/Gpus.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/DTO/Headphones.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DTO/Headphones.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/DTO/Keyboards.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DTO/Keyboards.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/DTO/Monitors.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DTO/Monitors.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/DTO/Motherboards.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DTO/Motherboards.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/DTO/Mouse.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DTO/Mouse.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/DTO/Roms.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DTO/Roms.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/AddingHardware$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/AddingHardware$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/AddingHardware$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/AddingHardware$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/AddingHardware.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/AddingHardware.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$10.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$11.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$9.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/HardwarePanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/HardwarePanel$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/HardwarePanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/HardwarePanel$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/HardwarePanel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/HardwarePanel$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/HardwarePanel$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/HardwarePanel$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/HardwarePanel$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/HardwarePanel$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/HardwarePanel$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/HardwarePanel$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/HardwarePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/HardwarePanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/RoomPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/RoomPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Utils/Config/ConfigSQL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Utils/Config/ConfigSQL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Utils/Helper/AdjustTableWidth.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Utils/Helper/AdjustTableWidth.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/AddingHardware.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/AddingHardware.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/DetailsHardware.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/DetailsHardware.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Utils/Config/ConfigSQL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/Utils/Config/ConfigSQL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Form/AddingHardware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Form/AddingHardware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/HardwarePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/HardwarePanel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/Form/DetailsHardware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Form/DetailsHardware.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/Config/ConfigSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/Config/ConfigSQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/panels/HardwarePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/panels/HardwarePanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -249,6 +197,7 @@
       <workItem from="1744093200316" duration="799000" />
       <workItem from="1744275222725" duration="15421000" />
       <workItem from="1744301576760" duration="4578000" />
+      <workItem from="1744352224633" duration="984000" />
     </task>
     <task id="LOCAL-00001" summary="Edit path file">
       <option name="closed" value="true" />

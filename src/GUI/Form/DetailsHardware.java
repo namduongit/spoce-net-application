@@ -124,7 +124,7 @@ public class DetailsHardware extends JFrame {
         separator.setBounds(270, 155, 1, 600);
 
         // Nút lưu thay đổi
-        CustomButton saveBtn = Utils.Helper.CreateComponent.createBlueButton("Lưu thay đổi");
+        CustomButton saveBtn = Utils.Helper.CreateComponent.createBlueButton("Lưu");
         saveBtn.setBounds(20, 820, 100, 35);
         saveBtn.addMouseListener(new MouseAdapter() {
             @Override

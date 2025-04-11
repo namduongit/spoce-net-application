@@ -445,7 +445,7 @@ public class HardwarePanel extends JPanel {
                     searchText.isEmpty() ||
                     productName.toLowerCase().contains(searchText.toLowerCase());
             boolean matchesStatus = status.equals("Tất cả") || componentStatus.equals(status);
-            boolean matchesType = type.equals("Tất cả") || productType.equals(type) ||  productType.equals("Rom");
+            boolean matchesType = type.equals("Tất cả") || productType.equals(type);// ||  productType.equals("Rom");
 
             return !(matchesSearch && matchesStatus && matchesType);
         });
