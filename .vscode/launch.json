@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "AddingPLayer",
+            "request": "launch",
+            "mainClass": "GUI.Form.AddingPLayer",
+            "projectName": "spoce-net-application_f57ff3ae"
+        },
+        {
+            "type": "java",
             "name": "MainTestCustom",
             "request": "launch",
             "mainClass": "GUI.Components.MainTestCustom",

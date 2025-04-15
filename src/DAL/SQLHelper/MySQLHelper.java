@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -213,9 +212,12 @@ public class MySQLHelper {
 
     public boolean updateData(ArrayList<Object> valueCondition) {
         try {
+            String join = this.buidlingJoinTable(); 
             String sql = "UPDATE "+ this.queryParams.get("TABLE") +" "
+                        + join + " "
                         +"SET "+ this.queryParams.get("SET") +" "
                         +"WHERE "+ this.queryParams.get("WHERE");
+            
 
             PreparedStatement preparedStatement = this.connection.prepareStatement(sql);
             int index = 1;

@@ -5,14 +5,14 @@ import java.math.BigDecimal;
 public class Players {
     private int playerId;
     private int accountId;
-    private BigDecimal balance;
+    private int balance;
 
     // Constructor không tham số
     public Players() {
     }
 
     // Constructor có tham số
-    public Players(int playerId, int accountId, BigDecimal balance) {
+    public Players(int playerId, int accountId, int balance) {
         this.playerId = playerId;
         this.accountId = accountId;
         this.balance = balance;
@@ -35,11 +35,11 @@ public class Players {
         this.accountId = accountId;
     }
 
-    public BigDecimal getBalance() {
+    public int getBalance() {
         return balance;
     }
 
-    public void setBalance(BigDecimal balance) {
+    public void setBalance(int balance) {
         this.balance = balance;
     }
 

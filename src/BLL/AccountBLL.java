@@ -22,6 +22,22 @@ public class AccountBLL {
         return this.accountDAL.getAccountById(accountId);
     }
 
+    public Accounts getAccountByUsername(String username) {
+        return this.accountDAL.getAccountByUsername(username);
+    }
+
+    public ArrayList<Object[]> getInfoPLayerAccountList() {
+        return this.accountDAL.getInfoPlayerAccountList();
+    }
+
+    public ArrayList<Object[]> filterPlayerAccountList(String searchText, String status) {
+        return this.accountDAL.filterPlayerAccountList(searchText, status);
+    }
+
+    public ArrayList<Object[]> getInfoStaffAccountList() {
+        return this.accountDAL.getInfoStaffAccountList();
+    } 
+
     // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
 
     public boolean updateAccountDetailsById(int accountId, HashMap<String, Object> updateValues) {
@@ -34,6 +50,31 @@ public class AccountBLL {
 
     // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
 
+    public boolean createPlayerAccount(String username, String password) {
+        return this.accountDAL.createPlayerAccount(username, password);
+    }
+
+    public boolean updateBalancePlayerAccount(String username, int newBalance) {
+        return this.accountDAL.updateBalancePlayerAccount(username, newBalance);
+    }
+
+    public boolean updateAccountStatus(int accountId, String status) {
+        return this.accountDAL.updateAccountStatus(accountId, status);
+    }
+
+    public boolean createStaffAccount(String username, String password, String role) {
+        return this.accountDAL.createStaffAccount(username, password, role);
+    }
+
+
+    // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
+
+    public boolean deleteAccountByUsername(String username) {
+        return this.accountDAL.deleteAccountByUsername(username);
+    }
+
+    // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
+    
     public Accounts staffLoginAccount(String username, String password) {
         return this.accountDAL.staffLoginAccount(username, password);
     }

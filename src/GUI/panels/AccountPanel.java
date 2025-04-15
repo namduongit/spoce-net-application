@@ -4,10 +4,13 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.swing.BorderFactory;
@@ -16,6 +19,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 import BLL.AccountBLL;
@@ -29,8 +33,11 @@ import GUI.Components.CustomPanel;
 import GUI.Components.CustomScrollPane;
 import GUI.Components.CustomTable;
 import GUI.Components.CustomTextField;
+import GUI.Form.AddingPlayer;
+import GUI.Form.AddingStaff;
 import GUI.Form.DetailsAddress;
 import GUI.Form.DetailsAuthenticator;
+import GUI.Form.EditingPlayerForm;
 
 public class AccountPanel extends JPanel {
     private final Font fontSans15 = new Font("Sans", Font.BOLD, 15);
@@ -59,20 +66,61 @@ public class AccountPanel extends JPanel {
     private CustomTextField myAddressInput;
 
     // Các trường dành cho tài khoản nhân viên (Nhớ phân vùng)
-    private CustomTextField searchEmployeeField;
-    private CustomCombobox<String> statusEmployeeField;
+    private JLabel staffClicked;
+
+    private ArrayList<Object[]> staffAccountList;
+    private CustomTable staffAccountTable;
+    private CustomScrollPane scrollPanelStaffAccount;
+    private CustomPanel panelDataStaffAccount;
+
+    private CustomTextField searchEmployeeAccount;
+    private CustomCombobox<String> statusEmployeeAccount;
+    private CustomCombobox<String> roleEmmployeeAccount;
+    private CustomCombobox<String> orderSortEmployeeByName;
+    private CustomCombobox<String> orderSortEmployeeByCreateAt;
+    @SuppressWarnings("unused")
+    private CustomButton filterStaffAccount;
+    @SuppressWarnings("unused")
+    private CustomButton resetFilterStaffAccount;
+
 
     // Các trường dành cho tài khoản người chơi
+    private JLabel playerClicked;
 
+    private ArrayList<Object[]> playerAccountList;
+    private CustomTable playerAccountTable;
+    private CustomScrollPane scrollPanelPlayerAccount;
+    private CustomPanel panelDataPlayerAccount;
 
+    private CustomTextField searchPlayerAccount;
+    private CustomCombobox<String> statusPlayerAccount;
+    private CustomCombobox<String> orderSortPlayerByName;
+    private CustomCombobox<String> orderSortPlayerByBalance;
+    private CustomButton filterPlayerAccount;
+    private CustomButton resetFilterPlayerAccount;
+
+    
     public AccountPanel(Accounts loginAccount, Staffs loginStaff) {
         this.accountBLL = new AccountBLL();
         this.staffBLL = new StaffBLL();
+
+        this.playerAccountList = new ArrayList<>();
 
         this.loginAccount = loginAccount;
         this.loginStaff = loginStaff;
         this.initComponents();
     }
+
+
+    private CustomButton createButton(String text, Color backgroundColor, Color foregroundColor) {
+        CustomButton button = new CustomButton(text);
+        button.setBackground(backgroundColor);
+        button.setForeground(foregroundColor);
+        button.setBorderSize(0);
+        button.setBorderColor(backgroundColor);
+        return button;
+    }
+
 
     private JPanel createButtonPanel() {
         JPanel panel = new JPanel();
@@ -309,7 +357,44 @@ public class AccountPanel extends JPanel {
         }
     }
 
-    // ------------------------------------- NỘI DUNG BẢNG NGƯỜI CHƠI ------------------------------------- //
+    // ------------------------------------- NỘI DUNG BẢNG NHÂN VIÊN ------------------------------------- //
+
+    private void initStaffAccount(ArrayList<Object[]> dataObjects) {
+        this.staffAccountList = this.accountBLL.getInfoStaffAccountList();
+        for (Object object : this.staffAccountList) {
+            dataObjects.add((Object[]) object);
+        }
+    }
+
+    private void reloadStaffAccountTable() {
+        this.staffAccountList = this.accountBLL.getInfoStaffAccountList();
+
+        ArrayList<Object[]> dataObjects = new ArrayList<>();
+        for (Object object : this.staffAccountList) {
+            dataObjects.add((Object[]) object);
+        }
+
+        Object[][] newData = dataObjects.toArray(new Object[0][]);
+        String[] columnNames = { "Mã tài khoản", "Tên đăng nhập", "Họ và tên", "Chức vụ", "Trạng thái", "Ngày tạo tài khoản" };
+
+        DefaultTableModel model = new DefaultTableModel(newData, columnNames);
+        this.staffAccountTable.setModel(model);
+
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int i = 0; i < this.staffAccountTable.getColumnModel().getColumnCount(); i++) {
+            this.staffAccountTable.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
+
+        this.staffClicked.setText("Đang chọn: NULL");
+        this.statusEmployeeAccount.setSelectedItem("Tất cả");
+        this.searchEmployeeAccount.setText("");
+        this.roleEmmployeeAccount.setSelectedItem("Tất cả");
+        this.orderSortEmployeeByName.setSelectedItem("Mặc định");
+        this.orderSortEmployeeByCreateAt.setSelectedItem("Mặc định");
+    }
+
+    
 
     private CustomPanel createEmployeeInfoPanel() {
         CustomPanel panel = new CustomPanel();
@@ -318,83 +403,115 @@ public class AccountPanel extends JPanel {
         CustomPanel findDataPanel = new CustomPanel();
         findDataPanel.setLayout(null);
         findDataPanel.setBackground(Color.WHITE);
-        findDataPanel.setBounds(10, 0, 1080, 80);
+        findDataPanel.setBounds(10, 0, 1080, 100);
 
         JLabel searchLabel = new JLabel("Tìm kiếm:");
         searchLabel.setBounds(20, 20, 80, 30);
-        this.searchEmployeeField = new CustomTextField();
-        this.searchEmployeeField.setBounds(100, 20, 200, 30);
+        this.searchEmployeeAccount = new CustomTextField("Nhập thông tin tìm kiếm");
+        this.searchEmployeeAccount.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (searchEmployeeAccount.getText().equals("Nhập thông tin tìm kiếm")) {
+                    searchEmployeeAccount.setText("");
+                }
+            }
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (searchEmployeeAccount.getText().equals("")) {
+                    searchEmployeeAccount.setText("Nhập thông tin tìm kiếm");
+                }
+                
+            }
+        });
+        this.searchEmployeeAccount.setBounds(100, 20, 200, 30);
 
         JLabel statusLabel = new JLabel("Trạng thái:");
-        statusLabel.setBounds(320, 20, 80, 30);
+        statusLabel.setBounds(330, 20, 80, 30);
         String[] statuses = { "Tất cả", "Hoạt động", "Bị khóa" };
-        this.statusEmployeeField = new CustomCombobox<>(statuses);
-        this.statusEmployeeField.setBounds(400, 20, 150, 30);
+        this.statusEmployeeAccount = new CustomCombobox<>(statuses);
+        this.statusEmployeeAccount.setBounds(420, 20, 160, 30);
 
         JLabel roleLabel = new JLabel("Quyền:");
-        roleLabel.setBounds(570, 20, 50, 30);
+        roleLabel.setBounds(610, 20, 50, 30);
         String[] roles = { "Tất cả", "Quản trị viên", "Người dùng" };
-        CustomCombobox<String> roleComboBox = new CustomCombobox<>(roles);
-        roleComboBox.setBounds(620, 20, 150, 30);
+        this.roleEmmployeeAccount = new CustomCombobox<>(roles);
+        this.roleEmmployeeAccount.setBounds(670, 20, 160, 30);
 
         CustomButton filterButton = new CustomButton("Lọc");
-        filterButton.setBounds(800, 15, 80, 30);
+        filterButton.setBounds(870, 20, 120, 30);
         filterButton.setBackground(new Color(70, 130, 180));
         filterButton.setForeground(Color.WHITE);
         filterButton.setBorderSize(0);
         filterButton.setBorderColor(new Color(70, 130, 180));
 
         CustomButton resetButton = new CustomButton("Đặt lại");
-        resetButton.setBounds(890, 15, 80, 30);
+        resetButton.setBounds(870, 58, 120, 30);
         resetButton.setBackground(Color.RED);
         resetButton.setForeground(Color.WHITE);
         resetButton.setBorderSize(0);
         resetButton.setBorderColor(Color.RED);
+        resetButton.addActionListener(e -> {
+            reloadStaffAccountTable();
+        });
+
+        JLabel orderName = new JLabel("Lọc tên:");
+        orderName.setBounds(20, 58, 80, 30);
+        String[] sortOrder = {"Mặc định", "Theo tên tăng dần", "Theo tên giảm dần", "Theo chưa có tên"};
+        this.orderSortEmployeeByName = new CustomCombobox<>(sortOrder);
+        this.orderSortEmployeeByName.setBounds(100, 58, 200, 30);
+
+        JLabel orderCreateAt = new JLabel("Lọc ngày tạo:");
+        orderCreateAt.setBounds(330, 58, 80, 30);
+        String[] orderSortByCreateAt = {"Mặc định", "Ngày tăng dần", "Ngày giảm dần"};
+        this.orderSortEmployeeByCreateAt = new CustomCombobox<>(orderSortByCreateAt);
+        this.orderSortEmployeeByCreateAt.setBounds(420, 58, 160, 30);
+
+        this.staffClicked = new JLabel("Đang chọn: NULL");
+        this.staffClicked.setBounds(610, 58, 200, 30);
 
         findDataPanel.add(searchLabel);
-        findDataPanel.add(searchEmployeeField);
+        findDataPanel.add(this.searchEmployeeAccount);
         findDataPanel.add(statusLabel);
-        findDataPanel.add(statusEmployeeField);
+        findDataPanel.add(this.statusEmployeeAccount);
         findDataPanel.add(roleLabel);
-        findDataPanel.add(roleComboBox);
+        findDataPanel.add(this.roleEmmployeeAccount);
         findDataPanel.add(filterButton);
         findDataPanel.add(resetButton);
+        findDataPanel.add(orderName);
+        findDataPanel.add(this.orderSortEmployeeByName);
+        findDataPanel.add(orderCreateAt);
+        findDataPanel.add(this.orderSortEmployeeByCreateAt);
+        findDataPanel.add(this.staffClicked);
 
-        CustomPanel tableDataPanel = new CustomPanel();
-        tableDataPanel.setLayout(null);
-        tableDataPanel.setBackground(Color.WHITE);
-        tableDataPanel.setBounds(10, 90, 1080, 400);
+        this.panelDataStaffAccount = new CustomPanel();
+        this.panelDataStaffAccount.setLayout(null);
+        this.panelDataStaffAccount.setBackground(Color.WHITE);
+        this.panelDataStaffAccount.setBounds(10, 110, 1080, 380);
 
-        String[] columnNames = { "Mã tài khoản", "Tên đăng nhập", "Họ và tên", "Chức vụ", "Trạng thái" };
-        Object[][] data = {
-                { "TK001", "namduongit", "Nguyễn Nam Dương", "Quản trị viên", "Đang hoạt động" },
-                { "TK001", "namduongit", "Nguyễn Nam Dương", "Quản trị viên", "Đang hoạt động" },
-                { "TK001", "namduongit", "Nguyễn Nam Dương", "Quản trị viên", "Đang hoạt động" },
-                { "TK001", "namduongit", "Nguyễn Nam Dương", "Quản trị viên", "Đang hoạt động" },
-                { "TK001", "namduongit", "Nguyễn Nam Dương", "Quản trị viên", "Đang hoạt động" },
-                { "TK001", "namduongit", "Nguyễn Nam Dương", "Quản trị viên", "Đang hoạt động" },
-                { "TK001", "namduongit", "Nguyễn Nam Dương", "Quản trị viên", "Đang hoạt động" },
-                { "TK001", "namduongit", "Nguyễn Nam Dương", "Quản trị viên", "Đang hoạt động" },
-                { "TK001", "namduongit", "Nguyễn Nam Dương", "Quản trị viên", "Đang hoạt động" },
-                { "TK001", "namduongit", "Nguyễn Nam Dương", "Quản trị viên", "Đang hoạt động" },
-                { "TK001", "namduongit", "Nguyễn Nam Dương", "Quản trị viên", "Đang hoạt động" },
-                { "TK001", "namduongit", "Nguyễn Nam Dương", "Quản trị viên", "Đang hoạt động" },
-                { "TK001", "namduongit", "Nguyễn Nam Dương", "Quản trị viên", "Đang hoạt động" },
-                { "TK001", "namduongit", "Nguyễn Nam Dương", "Quản trị viên", "Đang hoạt động" },
-                { "TK001", "namduongit", "Nguyễn Nam Dương", "Quản trị viên", "Đang hoạt động" },
-                { "TK001", "namduongit", "Nguyễn Nam Dương", "Quản trị viên", "Đang hoạt động" },
-                { "TK001", "namduongit", "Nguyễn Nam Dương", "Quản trị viên", "Đang hoạt động" },
-                { "TK001", "namduongit", "Nguyễn Nam Dương", "Quản trị viên", "Đang hoạt động" },
-                { "TK001", "namduongit", "Nguyễn Nam Dương", "Quản trị viên", "Đang hoạt động" },
-                { "TK001", "namduongit", "Nguyễn Nam Dương", "Quản trị viên", "Đang hoạt động" },
-                { "TK001", "namduongit", "Nguyễn Nam Dương", "Quản trị viên", "Đang hoạt động" },
-                { "TK001", "namduongit", "Nguyễn Nam Dương", "Quản trị viên", "Đang hoạt động" }
-        };
+        String[] columnNames = { "Mã tài khoản", "Tên đăng nhập", "Họ và tên", "Chức vụ", "Trạng thái", "Ngày tạo tài khoản" };
+        ArrayList<Object[]> dataObjects = new ArrayList<>();
+        this.initStaffAccount(dataObjects);
+        Object[][] data = dataObjects.toArray(new Object[0][]);
 
-        CustomTable table = new CustomTable(new DefaultTableModel(data, columnNames));
-        CustomScrollPane scrollPane = new CustomScrollPane(table);
-        scrollPane.setBounds(0, 0, 1080, 400);
-        tableDataPanel.add(scrollPane);
+        this.staffAccountTable = new CustomTable(new DefaultTableModel(data, columnNames));
+        this.staffAccountTable.getSelectionModel().addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting()) {
+                int selectedRow = this.staffAccountTable.getSelectedRow();
+                if (selectedRow != -1) {
+                    int columnCount = this.staffAccountTable.getColumnCount();
+                    Object[] rowData = new Object[columnCount];
+                    for (int i = 0; i < columnCount; i++) {
+                        rowData[i] = this.staffAccountTable.getValueAt(selectedRow, i);
+                    }
+    
+                    this.staffClicked.setText("Đang chọn: "+ rowData[0] +" | "+ rowData[1]);
+                }
+            }
+        });
+
+        this.scrollPanelStaffAccount = new CustomScrollPane(this.staffAccountTable);
+        this.scrollPanelStaffAccount.setBounds(0, 0, 1080, 400);
+        this.panelDataStaffAccount.add(this.scrollPanelStaffAccount);
 
         CustomPanel buttonPanel = new CustomPanel();
         buttonPanel.setLayout(null);
@@ -407,6 +524,9 @@ public class AccountPanel extends JPanel {
         addButton.setForeground(Color.WHITE);
         addButton.setBorderSize(0);
         addButton.setBorderColor(new Color(34, 177, 76));
+        addButton.addActionListener(e -> {
+            new AddingStaff().setVisible(true);
+        });
 
         CustomButton editButton = new CustomButton("Thay đổi");
         editButton.setBounds(120, 20, 100, 30);
@@ -415,12 +535,30 @@ public class AccountPanel extends JPanel {
         editButton.setBorderSize(0);
         editButton.setBorderColor(Color.decode("#795548"));
 
-        CustomButton lockButton = new CustomButton("Khóa");
-        lockButton.setBounds(230, 20, 100, 30);
-        lockButton.setBackground(Color.decode("#E57373"));
-        lockButton.setForeground(Color.WHITE);
-        lockButton.setBorderSize(0);
-        lockButton.setBorderColor(Color.decode("#E57373"));
+        CustomButton deleteButton = new CustomButton("Xóa");
+        deleteButton.setBounds(230, 20, 100, 30);
+        deleteButton.setBackground(Color.decode("#E57373"));
+        deleteButton.setForeground(Color.WHITE);
+        deleteButton.setBorderSize(0);
+        deleteButton.setBorderColor(Color.decode("#E57373"));
+        deleteButton.addActionListener(e -> {
+            String[] path = this.staffClicked.getText().split(" \\| ");
+            if (path.length == 1) {
+                JOptionPane.showMessageDialog(this, "Bạn chưa chọn tài khoản nào để xóa", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            } else {
+                int resultConfirm = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn xóa tài khoản này không ?");
+                if (resultConfirm == 0) {
+                    String username = path[path.length - 1];
+                    boolean resultDelete = this.accountBLL.deleteAccountByUsername(username);
+                    if (resultDelete) {
+                        JOptionPane.showMessageDialog(this, "Xóa tài khoản "+ username +" thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                        this.reloadStaffAccountTable();
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Có lỗi trong khi xóa tài khoản", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                }
+            }
+        });
 
         CustomButton detailButton = new CustomButton("Chi tiết");
         detailButton.setBounds(340, 20, 100, 30);
@@ -430,17 +568,76 @@ public class AccountPanel extends JPanel {
 
         buttonPanel.add(addButton);
         buttonPanel.add(editButton);
-        buttonPanel.add(lockButton);
+        buttonPanel.add(deleteButton);
         buttonPanel.add(detailButton);
 
         panel.add(findDataPanel);
-        panel.add(tableDataPanel);
+        panel.add(this.panelDataStaffAccount);
         panel.add(buttonPanel);
 
         return panel;
     }
 
     // ------------------------------------- NỘI DUNG BẢNG NGƯỜI CHƠI ------------------------------------- //
+
+    private void initPlayerAccount(ArrayList<Object[]> dataObjects) {
+        this.playerAccountList = this.accountBLL.getInfoPLayerAccountList();
+        for (Object object : this.playerAccountList) {
+            dataObjects.add((Object[]) object);
+        }
+    }
+
+    private void reloadPlayerAccountTable() {
+        this.playerAccountList = this.accountBLL.getInfoPLayerAccountList();
+
+        ArrayList<Object[]> dataObjects = new ArrayList<>();
+        for (Object object : this.playerAccountList) {
+            dataObjects.add((Object[]) object);
+        }
+
+        Object[][] newData = dataObjects.toArray(new Object[0][]);
+        String[] columnNames = { "Mã tài khoản", "Tên đăng nhập", "Số dư", "Trạng thái", "Ngày tạo" };
+
+        DefaultTableModel model = new DefaultTableModel(newData, columnNames);
+        this.playerAccountTable.setModel(model);
+
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int i = 0; i < this.playerAccountTable.getColumnModel().getColumnCount(); i++) {
+            this.playerAccountTable.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
+
+        this.playerClicked.setText("Đang chọn: NULL");
+        this.statusPlayerAccount.setSelectedItem("Tất cả");
+        this.searchPlayerAccount.setText("");
+    }
+
+    private void filterDataPlayerAccount() {
+        String textField = this.searchPlayerAccount.getText().trim();
+        String statusField = this.statusPlayerAccount.getSelectedItem().toString();
+
+
+        this.playerAccountList = this.accountBLL.filterPlayerAccountList(textField, statusField);
+
+        ArrayList<Object[]> dataObjects = new ArrayList<>();
+        for (Object object : this.playerAccountList) {
+            dataObjects.add((Object[]) object);
+        }
+
+        Object[][] newData = dataObjects.toArray(new Object[0][]);
+        String[] columnNames = { "Mã tài khoản", "Tên đăng nhập", "Số dư", "Trạng thái", "Ngày tạo" };
+
+        DefaultTableModel model = new DefaultTableModel(newData, columnNames);
+        this.playerAccountTable.setModel(model);
+
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int i = 0; i < this.playerAccountTable.getColumnModel().getColumnCount(); i++) {
+            this.playerAccountTable.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
+
+    }
+
 
     private CustomPanel createPlayerInfoPanel() {
         CustomPanel panel = new CustomPanel();
@@ -453,108 +650,128 @@ public class AccountPanel extends JPanel {
 
         JLabel searchLabel = new JLabel("Tìm kiếm:");
         searchLabel.setBounds(20, 20, 80, 30);
-        CustomTextField searchField = new CustomTextField();
-        searchField.setBounds(100, 20, 200, 30);
+        searchPlayerAccount = new CustomTextField();
+        searchPlayerAccount.setBounds(100, 20, 200, 30);
 
         JLabel statusLabel = new JLabel("Trạng thái:");
         statusLabel.setBounds(320, 20, 80, 30);
-        String[] statuses = { "Tất cả", "Hoạt động", "Bị khóa" };
-        CustomCombobox<String> statusComboBox = new CustomCombobox<>(statuses);
-        statusComboBox.setBounds(400, 20, 150, 30);
+        String[] statuses = { "Tất cả", "Online", "Offline", "Locked" };
 
-        CustomButton filterButton = new CustomButton("Lọc");
-        filterButton.setBounds(600, 15, 80, 30);
-        filterButton.setBackground(new Color(70, 130, 180));
-        filterButton.setForeground(Color.WHITE);
-        filterButton.setBorderSize(0);
-        filterButton.setBorderColor(new Color(70, 130, 180));
+        this.statusPlayerAccount = new CustomCombobox<>(statuses);
+        this.statusPlayerAccount.setBounds(400, 20, 150, 30);
 
-        CustomButton resetButton = new CustomButton("Đặt lại");
-        resetButton.setBounds(690, 15, 80, 30);
-        resetButton.setBackground(Color.RED);
-        resetButton.setForeground(Color.WHITE);
-        resetButton.setBorderSize(0);
-        resetButton.setBorderColor(Color.RED);
+        this.filterPlayerAccount = new CustomButton("Lọc");
+        this.filterPlayerAccount.setBounds(590, 20, 120, 30);
+        this.filterPlayerAccount.setBackground(new Color(70, 130, 180));
+        this.filterPlayerAccount.setForeground(Color.WHITE);
+        this.filterPlayerAccount.setBorderSize(0);
+        this.filterPlayerAccount.setBorderColor(new Color(70, 130, 180));
+        this.filterPlayerAccount.addActionListener(e -> {
+            this.filterDataPlayerAccount();
+        });
+
+        this.resetFilterPlayerAccount = new CustomButton("Đặt lại");
+        this.resetFilterPlayerAccount.setBounds(730, 20, 120, 30);
+        this.resetFilterPlayerAccount.setBackground(Color.RED);
+        this.resetFilterPlayerAccount.setForeground(Color.WHITE);
+        this.resetFilterPlayerAccount.setBorderSize(0);
+        this.resetFilterPlayerAccount.setBorderColor(Color.RED);
+        this.resetFilterPlayerAccount.addActionListener(e -> {
+            this.searchPlayerAccount.setText("");
+            this.statusPlayerAccount.setSelectedItem("Tất cả");
+            this.filterDataPlayerAccount();
+        });
+
+        this.playerClicked = new JLabel("Đang chọn: NULL");
+        this.playerClicked.setBounds(880, 20, 170, 30);
 
         findDataPanel.add(searchLabel);
-        findDataPanel.add(searchField);
+        findDataPanel.add(this.searchPlayerAccount);
         findDataPanel.add(statusLabel);
-        findDataPanel.add(statusComboBox);
-        findDataPanel.add(filterButton);
-        findDataPanel.add(resetButton);
+        findDataPanel.add(this.statusPlayerAccount);
+        findDataPanel.add(this.filterPlayerAccount);
+        findDataPanel.add(this.resetFilterPlayerAccount);
+        findDataPanel.add(this.playerClicked);
 
-        CustomPanel tableDataPanel = new CustomPanel();
-        tableDataPanel.setLayout(null);
-        tableDataPanel.setBackground(Color.WHITE);
-        tableDataPanel.setBounds(10, 90, 1080, 400);
+        this.panelDataPlayerAccount = new CustomPanel();
+        this.panelDataPlayerAccount.setLayout(null);
+        this.panelDataPlayerAccount.setBackground(Color.WHITE);
+        this.panelDataPlayerAccount.setBounds(10, 90, 1080, 400);
 
-        String[] columnNames = { "Mã tài khoản", "Tên đăng nhập", "Số dư", "Trạng thái" };
-        Object[][] data = {
-                { "TK001", "namduongit", "10000000", "Đang hoạt động" },
-                { "TK001", "namduongit", "10000000", "Đang hoạt động" },
-                { "TK001", "namduongit", "10000000", "Đang hoạt động" },
-                { "TK001", "namduongit", "10000000", "Đang hoạt động" },
-                { "TK001", "namduongit", "10000000", "Đang hoạt động" },
-                { "TK001", "namduongit", "10000000", "Đang hoạt động" },
-                { "TK001", "namduongit", "10000000", "Đang hoạt động" },
-                { "TK001", "namduongit", "10000000", "Đang hoạt động" },
-                { "TK001", "namduongit", "10000000", "Đang hoạt động" },
-                { "TK001", "namduongit", "10000000", "Đang hoạt động" },
-                { "TK001", "namduongit", "10000000", "Đang hoạt động" },
-                { "TK001", "namduongit", "10000000", "Đang hoạt động" },
-                { "TK001", "namduongit", "10000000", "Đang hoạt động" },
-                { "TK001", "namduongit", "10000000", "Đang hoạt động" },
-                { "TK001", "namduongit", "10000000", "Đang hoạt động" },
-                { "TK001", "namduongit", "10000000", "Đang hoạt động" },
-                { "TK001", "namduongit", "10000000", "Đang hoạt động" },
-                { "TK001", "namduongit", "10000000", "Đang hoạt động" }
-        };
+        String[] columnNames = { "Mã tài khoản", "Tên đăng nhập", "Số dư", "Trạng thái", "Ngày tạo" };
+        ArrayList<Object[]> dataObjects = new ArrayList<>();
+        this.initPlayerAccount(dataObjects);
+        Object[][] data = dataObjects.toArray(new Object[0][]);
 
-        CustomTable table = new CustomTable(new DefaultTableModel(data, columnNames));
-        CustomScrollPane scrollPane = new CustomScrollPane(table);
-        scrollPane.setBounds(0, 0, 1080, 400);
-        tableDataPanel.add(scrollPane);
+        this.playerAccountTable = new CustomTable(new DefaultTableModel(data, columnNames));
+        this.playerAccountTable.getSelectionModel().addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting()) {
+                int selectedRow = this.playerAccountTable.getSelectedRow();
+                if (selectedRow != -1) {
+                    int columnCount = this.playerAccountTable.getColumnCount();
+                    Object[] rowData = new Object[columnCount];
+                    for (int i = 0; i < columnCount; i++) {
+                        rowData[i] = this.playerAccountTable.getValueAt(selectedRow, i);
+                    }
+    
+                    this.playerClicked.setText("Đang chọn: "+ rowData[0] +" | "+ rowData[1]);
+                }
+            }
+        });
+        this.scrollPanelPlayerAccount = new CustomScrollPane(this.playerAccountTable);
+        this.scrollPanelPlayerAccount.setBounds(0, 0, 1080, 400);
+        this.panelDataPlayerAccount.add(this.scrollPanelPlayerAccount);
 
         CustomPanel buttonPanel = new CustomPanel();
         buttonPanel.setLayout(null);
         buttonPanel.setBounds(10, 500, 1080, 65);
         buttonPanel.setBackground(Color.WHITE);
 
-        CustomButton addButton = new CustomButton("Thêm");
+        CustomButton addButton = this.createButton("Thêm", new Color(34, 177, 76), Color.WHITE);
         addButton.setBounds(10, 20, 100, 30);
-        addButton.setBackground(new Color(34, 177, 76));
-        addButton.setForeground(Color.WHITE);
-        addButton.setBorderSize(0);
-        addButton.setBorderColor(new Color(34, 177, 76));
+        addButton.addActionListener(e -> {
+            new AddingPlayer().setVisible(true);
+        });
 
-        CustomButton editButton = new CustomButton("Thay đổi");
+        CustomButton editButton = this.createButton("Thay đổi", Color.decode("#795548"), Color.WHITE);
         editButton.setBounds(120, 20, 100, 30);
-        editButton.setBackground(Color.decode("#795548"));
-        editButton.setForeground(Color.WHITE);
-        editButton.setBorderSize(0);
-        editButton.setBorderColor(Color.decode("#795548"));
+        editButton.addActionListener(e -> {
+            String[] path = this.playerClicked.getText().split(" \\| ");
+            if (path.length == 1) {
+                JOptionPane.showMessageDialog(this, "Bạn chưa chọn tài khoản nào để xóa", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            } else {
+                new EditingPlayerForm(this.playerClicked.getText()).setVisible(true);
+            }
+        });
 
-        CustomButton lockButton = new CustomButton("Khóa");
-        lockButton.setBounds(230, 20, 100, 30);
-        lockButton.setBackground(Color.decode("#E57373"));
-        lockButton.setForeground(Color.WHITE);
-        lockButton.setBorderSize(0);
-        lockButton.setBorderColor(Color.decode("#E57373"));
+        CustomButton deleteButton = this.createButton("Xóa", Color.decode("#E57373"), Color.WHITE);
+        deleteButton.setBounds(230, 20, 100, 30);
+        deleteButton.addActionListener(e -> {
+            String[] path = this.playerClicked.getText().split(" \\| ");
+            if (path.length == 1) {
+                JOptionPane.showMessageDialog(this, "Bạn chưa chọn tài khoản nào để xóa", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            } else {
+                int resultConfirm = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn xóa tài khoản này không ?");
+                if (resultConfirm == 0) {
+                    String username = path[path.length - 1];
+                    boolean resultDelete = this.accountBLL.deleteAccountByUsername(username);
+                    if (resultDelete) {
+                        JOptionPane.showMessageDialog(this, "Xóa tài khoản "+ username +" thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                        this.reloadPlayerAccountTable();
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Có lỗi trong khi xóa tài khoản", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                }
+            }
+        });
 
-        CustomButton detailButton = new CustomButton("Chi tiết");
-        detailButton.setBounds(340, 20, 100, 30);
-        detailButton.setBackground(Color.decode("#455A64"));
-        detailButton.setForeground(Color.WHITE);
-        detailButton.setBorderSize(0);
-        detailButton.setBorderColor(Color.decode("#455A64"));
 
         buttonPanel.add(addButton);
         buttonPanel.add(editButton);
-        buttonPanel.add(lockButton);
-        buttonPanel.add(detailButton);
+        buttonPanel.add(deleteButton);
 
         panel.add(findDataPanel);
-        panel.add(tableDataPanel);
+        panel.add(this.panelDataPlayerAccount);
         panel.add(buttonPanel);
 
         return panel;

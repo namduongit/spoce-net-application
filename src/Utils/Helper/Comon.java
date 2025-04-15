@@ -61,7 +61,17 @@ public class Comon {
         return result.trim();
     }
 
-    public static void main(String[] args) {
-        System.out.println(formatMoney("10000"));
+    public static boolean isTrueNumber(String numberValue) {
+        if (numberValue == null || numberValue.trim().isEmpty()) {
+            return false;
+        }
+
+        try {
+            Integer.parseInt(numberValue.trim());
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
+    
 }

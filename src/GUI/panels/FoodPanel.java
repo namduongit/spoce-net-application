@@ -19,6 +19,7 @@ import GUI.Components.CustomCombobox;
 import GUI.Components.CustomPanel;
 import GUI.Components.CustomScrollPane;
 import GUI.Components.CustomTextField;
+import GUI.Components.CustomDesignButton;
 import GUI.Form.DetailsFood;
 
 import java.util.ArrayList;
@@ -281,12 +282,12 @@ public class FoodPanel extends JPanel {
         panel.setBackground(Color.WHITE);
 
         CustomButton addButton = Utils.Helper.CreateComponent.createGreenButton("Thêm");
-        ;
+        
         addButton.setBounds(50, 10, 100, 30);
         panel.add(addButton);
 
         CustomButton editButton = Utils.Helper.CreateComponent.createBlueButton("Chỉnh sửa");
-        ;
+        
         editButton.setBounds(170, 10, 100, 30);
         editButton.addActionListener(e -> {
             if (this.currentFoods == null) {
