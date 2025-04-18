@@ -32,4 +32,8 @@ public class ComputerBLL {
     public boolean insertComputer(ArrayList<Object> values) {
         return this.computerDAL.insertComputer(values);
     }
+
+    public ArrayList<Computers> getComputersByStatus(String status) {
+        return this.computerDAL.getComputerSByStatus(status);
+    }
 }

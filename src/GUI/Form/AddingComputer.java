@@ -48,7 +48,7 @@ public class AddingComputer extends JFrame {
         this.romBLL = new RomBLL();
         this.roomBLL = new RoomBLL();
         this.computerBLL = new ComputerBLL();
-        this.statusList = new ArrayList<>(Arrays.asList("Trong kho", "Đang sử dụng", "Thiếu linh kiện", "Bảo trì", "Hỏng"));
+        this.statusList = new ArrayList<>(Arrays.asList("Trong kho", "Đang sử dụng", "Đang chờ sử dụng", "Thiếu linh kiện", "Bảo trì", "Hỏng"));
         this.initComponents();
     }
 

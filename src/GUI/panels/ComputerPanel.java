@@ -85,15 +85,6 @@ public class ComputerPanel extends JPanel{
                 "Trạng thái"
         };
 
-        // Mảng các thuộc tính của Jtable hiển thị phiên chơi
-        this.sessionColumnNames = new String[]{
-                "Session ID",
-                "ID người chơi",
-                "ID máy tính",
-                "Thời gian chơi",
-                "Tổng tiền"
-        };
-
         // Khởi tạo object dùng để canh giữa cho chữ trong ô trong JTable
         this.centeredRenderer = new DefaultTableCellRenderer();
         this.centeredRenderer.setHorizontalAlignment(JLabel.CENTER);
@@ -118,7 +109,7 @@ public class ComputerPanel extends JPanel{
 
         this.titlePanel.setBounds(10, 0, 1080, 100);
         this.controlPanel.setBounds(10, 110, 1080, 95);
-        this.dataPanel.setBounds(10,215,1080,533);
+        this.dataPanel.setBounds(10,215,1080,503);
 
         // Thêm các Panel thành phần vào Panel tổng để hiển thị lên
         this.add(titlePanel);
@@ -150,41 +141,6 @@ public class ComputerPanel extends JPanel{
         // Khởi tạo Panel
         CustomPanel panel = new CustomPanel();
         panel.setLayout(null);
-
-
-        // Khởi tạo một Button với chữ "Kho"
-        CustomButton manageButton = CreateComponent.createButtonNoIcon("Kho");
-//        manageButton.setBounds(20,15,200,35);
-
-        // Thêm sự kiện cho Button khi được nhấn thì Data Panel (card layout) sẽ chuyển thành bảng tương ứng
-//        manageButton.addActionListener(e -> this.cardLayout.show(this.dataPanel, "ManagePanel"));
-
-
-        // Khởi tạo một Button với chữ "Người chơi"
-        CustomButton playerButton = CreateComponent.createButtonNoIcon("Máy tính");
-//        playerButton.setBounds(240,15,200,35);
-
-        // Thêm sự kiện cho Button khi được nhấn thì Data Panel sẽ chuyển sang bảng tương ứng
-//        playerButton.addActionListener(e -> this.cardLayout.show(this.dataPanel, "ComputerManagementPanel"));
-
-        String[] sectionList = {
-                "Kho",
-                "Máy tính"
-        };
-
-//        CustomCombobox sectionCombobox = new CustomCombobox(sectionList);
-//        sectionCombobox.setBounds(340, 38, 120, 35);
-//        sectionCombobox.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                if (sectionCombobox.getSelectedItem().toString().equals("Kho")) {
-//                    ComputerPanel.this.cardLayout.show(ComputerPanel.this.dataPanel, "ManagePanel");
-//                } else if (sectionCombobox.getSelectedItem().toString().equals("Máy tính")) {
-//                    ComputerPanel.this.cardLayout.show(ComputerPanel.this.dataPanel, "ComputerManagementPanel");
-//                }
-//            }
-//        });
-
 
         // Khởi tạo Label với chữ "Tìm kiếm"
         JLabel searchLabel = new JLabel("Tìm kiếm:");
@@ -226,6 +182,7 @@ public class ComputerPanel extends JPanel{
                 "Tất cả" ,
                 "Trong kho",
                 "Đang sử dụng",
+                "Đang chờ sử dụng",
                 "Thiếu linh kiện",
                 "Bảo trì",
                 "Hỏng"
@@ -512,8 +469,6 @@ public class ComputerPanel extends JPanel{
 
 
         // Thêm tất cả component vào Panel điều khiển
-        panel.add(playerButton);
-        panel.add(manageButton);
         panel.add(searchLabel);
         panel.add(searchTextField);
         panel.add(filterLabel);
@@ -585,35 +540,6 @@ public class ComputerPanel extends JPanel{
         return data;
     }
 
-    private Object[][] createSessionData() {
-        Object[][] data = new Object[this.list.size()][5];
-
-        for (int i=0; i<this.list.size(); i++) {
-            ComputerSessions session = null;
-            for (ComputerSessions x : this.sessionList) {
-                if (x.getComputerId() == this.list.get(i).getComputerId()) {
-                    session = x;
-                }
-            }
-
-            if (session == null) {
-                data[i][0] = "NULL";
-                data[i][1] = "NULL";
-                data[i][2] = this.list.get(i).getComputerId();
-                data[i][3] = "NULL";
-                data[i][4] = "NULL";
-            } else {
-                data[i][0] = session.getSessionId();
-                data[i][1] = session.getPlayerId() != null ? session.getPlayerId() : "NULL";
-                data[i][2] = session.getComputerId();
-//                data[i][3] = session.;
-//                data[i][4]
-            }
-        }
-        return data;
-    }
-
-
     // Hàm tạo Panel thành phần của Data Panel (CardLayout)
     private CustomPanel createManagePanel() {
         CustomPanel panel = new CustomPanel();
@@ -651,45 +577,8 @@ public class ComputerPanel extends JPanel{
         });
 
         JScrollPane scroll = new CustomScrollPane(tableData);
-        scroll.setBounds(0,0,1080,533);
+        scroll.setBounds(0,0,1080,503);
 
-
-
-        panel.add(scroll);
-
-        return panel;
-    }
-
-    private CustomPanel createComputerManagementPanel() {
-        CustomPanel panel = new CustomPanel();
-        panel.setLayout(null);
-
-        this.refreshAllDatas();
-        Object[][] data = this.createSessionData();
-        DefaultTableModel model = new DefaultTableModel(data, this.sessionColumnNames);
-
-        sessionData = new CustomTable(model);
-        sessionData.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        AdjustTableWidth.automaticallyAdjustTableWidths(sessionData);
-        sessionData.getColumnModel()
-                .getColumn(0)
-                .setPreferredWidth(90);
-        sessionData.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-            @Override
-            public void valueChanged(ListSelectionEvent e) {
-                if (!e.getValueIsAdjusting()) {
-                    if (sessionData.getSelectedRow() != -1) {
-
-                        // Cập nhật tên máy tính được chọn vào label
-                        ComputerPanel.this.selectionText
-                                .setText("Đang chọn: " + sessionData.getValueAt(sessionData.getSelectedRow(), 2).toString());
-                    }
-                }
-            }
-        });
-
-        JScrollPane scroll = new CustomScrollPane(sessionData);
-        scroll.setBounds(0,0,1080,533);
 
 
         panel.add(scroll);

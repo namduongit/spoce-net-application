@@ -101,4 +101,14 @@ public class ComputerDAL {
 
         return helper.insertData(values);
     }
+
+    public ArrayList<Computers> getComputerSByStatus(String status) {
+        ArrayList<Computers> list = new ArrayList<>();
+        for (Computers x : this.getComputerList()) {
+            if (x.getStatus().equals(status)) {
+                list.add(x);
+            }
+        }
+        return list;
+    }
 }

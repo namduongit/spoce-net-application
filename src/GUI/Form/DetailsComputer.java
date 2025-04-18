@@ -63,7 +63,7 @@ public class DetailsComputer extends JFrame {
         this.currentRomId = computer.getRomId() == null ? 0 : computer.getRomId();
         this.currentRoomId = computer.getRoomId() == null ? 0 : computer.getRoomId();
         this.currentStatus = computer.getStatus();
-        this.statusList = new ArrayList<>(Arrays.asList("Trong kho", "Đang sử dụng", "Thiếu linh kiện", "Bảo trì", "Hỏng"));
+        this.statusList = new ArrayList<>(Arrays.asList("Trong kho", "Đang sử dụng", "Đang chờ sử dụng", "Thiếu linh kiện", "Bảo trì", "Hỏng"));
         this.initComponents();
     }
 
