@@ -32,4 +32,7 @@ public class MonitorBLL {
     public boolean deleteMonitorById(int id) {
         return this.monitorDAL.deleteMonitorById(id);
     }
+    public boolean addMonitor(Monitors monitor) {
+        return this.monitorDAL.addMonitor(monitor);
+    }
 }

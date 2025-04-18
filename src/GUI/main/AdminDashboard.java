@@ -48,7 +48,7 @@ public class AdminDashboard extends JFrame {
     // Phần nút
     private CustomButton dashBoardButton;
     private CustomButton accountButton;
-    private CustomButton historyButton;
+    // private CustomButton historyButton;
     private CustomButton computerButton;
     private CustomButton hardwareButton;
     private CustomButton foodButton;
@@ -60,6 +60,8 @@ public class AdminDashboard extends JFrame {
     public AdminDashboard(Accounts loginAccount, Staffs loginStaff) {
         this.loginAccount = loginAccount;
         this.loginStaff = loginStaff;
+        System.out.println(this.loginAccount);
+        System.out.println(this.loginStaff);
         this.initComponents();
     }
 
@@ -75,33 +77,58 @@ public class AdminDashboard extends JFrame {
         this.accountButton.setBounds(10, 60, 230, 50);
         this.accountButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "AccountPanel"));
 
-        this.historyButton = CreateComponent.createButton("icons8-payment-history-100.png", "Lịch sử");
-        this.historyButton.setBounds(10, 115, 230, 50);
-        this.historyButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "HistoryPanel"));
+        // this.historyButton = CreateComponent.createButton("icons8-payment-history-100.png", "Lịch sử");
+        // this.historyButton.setBounds(10, 115, 230, 50);
+        // this.historyButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "HistoryPanel"));
+
+        // this.computerButton = CreateComponent.createButton("icons8-computer-100.png", "Máy tính");
+        // this.computerButton.setBounds(10, 170, 230, 50);
+        // this.computerButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "ComputerPanel"));
+
+        // this.hardwareButton = CreateComponent.createButton("icons8-ethernet-on-100.png", "Linh kiện");
+        // this.hardwareButton.setBounds(10, 225, 230, 50);
+        // this.hardwareButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "HardwarePanel"));
+
+        // this.foodButton = CreateComponent.createButton("icons8-ingredients-100.png", "Thức ăn");
+        // this.foodButton.setBounds(10, 280, 230, 50);
+        // this.foodButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "FoodPanel"));
+
+        // this.billButton = CreateComponent.createButton("icons8-bill-100.png", "Hóa đơn");
+        // this.billButton.setBounds(10, 335, 230, 50);
+        // this.billButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "BillPanel"));
+
+        // this.chartButton = CreateComponent.createButton("icons8-chart-100.png", "Thống kê");
+        // this.chartButton.setBounds(10, 390, 230, 50);
+        // this.chartButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "ChartPanel"));
+
+        // this.roomButton = CreateComponent.createButton("icons8-hotel-room-key-100.png", "Phòng chơi");
+        // this.roomButton.setBounds(10, 445, 230, 50);
+        // this.roomButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "RoomPanel"));
 
         this.computerButton = CreateComponent.createButton("icons8-computer-100.png", "Máy tính");
-        this.computerButton.setBounds(10, 170, 230, 50);
+        this.computerButton.setBounds(10, 115, 230, 50);
         this.computerButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "ComputerPanel"));
 
         this.hardwareButton = CreateComponent.createButton("icons8-ethernet-on-100.png", "Linh kiện");
-        this.hardwareButton.setBounds(10, 225, 230, 50);
+        this.hardwareButton.setBounds(10, 170, 230, 50);
         this.hardwareButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "HardwarePanel"));
 
         this.foodButton = CreateComponent.createButton("icons8-ingredients-100.png", "Thức ăn");
-        this.foodButton.setBounds(10, 280, 230, 50);
+        this.foodButton.setBounds(10, 225, 230, 50);
         this.foodButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "FoodPanel"));
 
         this.billButton = CreateComponent.createButton("icons8-bill-100.png", "Hóa đơn");
-        this.billButton.setBounds(10, 335, 230, 50);
+        this.billButton.setBounds(10, 280, 230, 50);
         this.billButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "BillPanel"));
 
         this.chartButton = CreateComponent.createButton("icons8-chart-100.png", "Thống kê");
-        this.chartButton.setBounds(10, 390, 230, 50);
+        this.chartButton.setBounds(10, 335, 230, 50);
         this.chartButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "ChartPanel"));
 
         this.roomButton = CreateComponent.createButton("icons8-hotel-room-key-100.png", "Phòng chơi");
-        this.roomButton.setBounds(10, 445, 230, 50);
+        this.roomButton.setBounds(10, 390, 230, 50);
         this.roomButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "RoomPanel"));
+
 
         CustomButton logoutButton = CreateComponent.createButton("icons8-logout-100.png", "Đăng xuất");
         logoutButton.setBounds(10, 555, 230, 50);
@@ -114,7 +141,7 @@ public class AdminDashboard extends JFrame {
 
         buttonPanel.add(dashBoardButton);
         buttonPanel.add(accountButton);
-        buttonPanel.add(historyButton);
+        // buttonPanel.add(historyButton);
         buttonPanel.add(computerButton);
         buttonPanel.add(hardwareButton);
         buttonPanel.add(foodButton);
@@ -173,7 +200,7 @@ public class AdminDashboard extends JFrame {
         JPanel panel = new JPanel(this.cardLayout);
         DashBoardPanel dashBoardPanel = new DashBoardPanel();
         AccountPanel accountPanel = new AccountPanel(this.loginAccount, this.loginStaff);
-        HistoryPanel historyPanel = new HistoryPanel();
+        // HistoryPanel historyPanel = new HistoryPanel();
         ComputerPanel computerPanel = new ComputerPanel();
         HardwarePanel hardwarePanel = new HardwarePanel();
         FoodPanel foodPanel = new FoodPanel();
@@ -184,7 +211,7 @@ public class AdminDashboard extends JFrame {
         // Thêm trước khi trả về
         panel.add(dashBoardPanel, "DashBoardPanel");
         panel.add(accountPanel, "AccountPanel");
-        panel.add(historyPanel, "HistoryPanel");
+        // panel.add(historyPanel, "HistoryPanel");
         panel.add(computerPanel, "ComputerPanel");
         panel.add(hardwarePanel, "HardwarePanel");
         panel.add(foodPanel, "FoodPanel");

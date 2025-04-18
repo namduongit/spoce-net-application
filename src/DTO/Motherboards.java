@@ -21,6 +21,37 @@ public class Motherboards {
     private Integer gpuId;
     private Date purchaseDate;
     private Date warrantyExpiry;
+    private double price;
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public Motherboards(int motherboardId, String brand, String model, String socket, String chipset, int ramSlots, int maxRam, int ramSpeed, int storageSlots, int sataPorts, int m2Slots, int maxStorageCapacity, String status, Integer cpuId, Integer psuId, Integer gpuId, Date purchaseDate, Date warrantyExpiry, double price) {
+        this.motherboardId = motherboardId;
+        this.brand = brand;
+        this.model = model;
+        this.socket = socket;
+        this.chipset = chipset;
+        this.ramSlots = ramSlots;
+        this.maxRam = maxRam;
+        this.ramSpeed = ramSpeed;
+        this.storageSlots = storageSlots;
+        this.sataPorts = sataPorts;
+        this.m2Slots = m2Slots;
+        this.maxStorageCapacity = maxStorageCapacity;
+        this.status = status;
+        this.cpuId = cpuId;
+        this.psuId = psuId;
+        this.gpuId = gpuId;
+        this.purchaseDate = purchaseDate;
+        this.warrantyExpiry = warrantyExpiry;
+        this.price = price;
+    }
 
     // Constructor không tham số
     public Motherboards() {
@@ -44,6 +75,20 @@ public class Motherboards {
         this.cpuId = cpuId;
         this.psuId = psuId;
         this.gpuId = gpuId;
+        this.purchaseDate = purchaseDate;
+        this.warrantyExpiry = warrantyExpiry;
+    }
+
+    public Motherboards(int id, String brand, String model) {
+        this.motherboardId = id;
+        this.brand = brand;
+        this.model = model;
+    }
+
+    public Motherboards(int id, String brand, String model, Date purchaseDate, Date warrantyExpiry) {
+        this.motherboardId = id;
+        this.brand = brand;
+        this.model = model;
         this.purchaseDate = purchaseDate;
         this.warrantyExpiry = warrantyExpiry;
     }

@@ -26,7 +26,8 @@ public class HeadphoneDAL {
                         rs.getString("type"),
                         rs.getDate("purchase_date"),
                         rs.getDate("warranty_expiry"),
-                        rs.getString("status")
+                        rs.getString("status"),
+                        rs.getDouble("price")
                 ));
             }
             rs.close();
@@ -75,14 +76,44 @@ public class HeadphoneDAL {
 
         return helper.updateData(newvalues, values);
     }
+
     public boolean deleteHeadphoneById(int id) {
         MySQLHelper helper = new MySQLHelper();
         HashMap<String, String> params = new HashMap<>();
         params.put("TABLE", "headphones");
-        params.put("WHERE", "headphones.headphone_id = ?");
+        params.put("WHERE", "headphone_id = ?");
         helper.buildingQueryParam(params);
         ArrayList<Object> values = new ArrayList<>();
         values.add(id);
-        return helper.deleteData(values);
+        boolean result = helper.deleteData(values);
+        helper.closeConnect();
+        return result;
+    }
+
+    public boolean addHeadphone(Headphones headphone) {
+        MySQLHelper helper = new MySQLHelper();
+        if(this.getHeadphoneById(headphone.getHeadphoneId()) != null) {
+            JOptionPane.showMessageDialog(null, "ID " + headphone.getHeadphoneId() + " đã tồn tại!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        ArrayList<Object> values = new ArrayList<>();
+            values.add(headphone.getHeadphoneId());
+            values.add(headphone.getBrand());
+            values.add(headphone.getModel());
+            values.add(headphone.getType());
+            values.add(headphone.getPurchaseDate());
+            values.add(headphone.getWarrantyExpiry());
+            values.add(headphone.getStatus());
+            values.add(headphone.getPrice());
+
+        // Thiết lập queryParams trước khi insert
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "headphones");
+        params.put("FIELD", "headphone_id, brand, model, type, purchase_date, warranty_expiry, status, price");
+        helper.buildingQueryParam(params);
+
+        boolean result = helper.insertData(values);
+        helper.closeConnect();
+        return result;
     }
 }

@@ -47,9 +47,19 @@ public class FoodBLL {
         return this.foodDAL.updateFoodDetailsById(foodId, updateValues);
     }
 
-     // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
+    // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
 
-     public boolean deleteFoodById(int foodId) {
-        return this.foodDAL.deleteFoodById(foodId);
-     }
+    public boolean deleteFoodById(int foodId) {
+       return this.foodDAL.deleteFoodById(foodId);
+    }
+     
+    // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
+
+    public boolean createNewFood(String name, int price, int quantity, int categoryId, String image) {
+       return this.foodDAL.createNewFood(name, price, quantity, categoryId, image);
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new FoodBLL().createNewFood("Test function", 0, 1, 1, null));
+    }
 }

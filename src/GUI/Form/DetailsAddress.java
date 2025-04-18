@@ -116,17 +116,41 @@ public class DetailsAddress extends JFrame {
     }
 
     private void loadDataFromCurrentStaff() {
-        if (this.editStaff != null && (this.editStaff.getAddress() != null || !this.editStaff.getAddress().isEmpty())) {
-            String[] regexStrings = this.editStaff.getAddress().split(", ");
-            // Tỉnh thành, Thành phố, Phường, Nhà
+        String address = this.editStaff.getAddress();
+    
+        if (address == null || address.trim().isEmpty()) {
+            this.provinceComboBox.setSelectedIndex(0);
+            updateCityList(); // cập nhật sau khi set tỉnh
+            this.cityComboBox.setSelectedIndex(0);
+            updateWardList(); // cập nhật sau khi set thành phố
+            this.wardComboBox.setSelectedIndex(0);
+            this.houseInput.setText("");
+            return;
+        }
+    
+        String[] regexStrings = address.split(", ");
+        // Đảm bảo dữ liệu đủ 4 phần: Tỉnh, Thành phố, Phường, Nhà
+        if (regexStrings.length >= 3) {
             this.provinceComboBox.setSelectedItem(regexStrings[0]);
+            updateCityList();
             this.cityComboBox.setSelectedItem(regexStrings[1]);
+            updateWardList();
             this.wardComboBox.setSelectedItem(regexStrings[2]);
-            String lastString = "";
+    
+            // Ghép phần còn lại thành địa chỉ nhà
+            StringBuilder houseBuilder = new StringBuilder();
             for (int i = 3; i < regexStrings.length; i++) {
-                lastString += regexStrings[i] +" ";
+                houseBuilder.append(regexStrings[i]).append(" ");
             }
-            this.houseInput.setText(lastString.trim());
+            this.houseInput.setText(houseBuilder.toString().trim());
+        } else {
+            // Nếu dữ liệu không đủ, reset về mặc định
+            this.provinceComboBox.setSelectedIndex(0);
+            updateCityList();
+            this.cityComboBox.setSelectedIndex(0);
+            updateWardList();
+            this.wardComboBox.setSelectedIndex(0);
+            this.houseInput.setText("");
         }
     }
 

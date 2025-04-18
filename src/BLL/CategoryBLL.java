@@ -18,4 +18,8 @@ public class CategoryBLL {
     public ArrayList<Categories> getAllCategories() {
         return this.categoryDAL.getAllCategoryList();
     }
+
+    public boolean createNewCategory(String name) {
+        return this.categoryDAL.createNewCategory(name);
+    }
 }

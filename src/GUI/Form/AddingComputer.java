@@ -8,6 +8,8 @@ import GUI.Components.CustomTextField;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -71,11 +73,41 @@ public class AddingComputer extends JFrame {
 
         // Tên máy tính
         JLabel nameLabel = new JLabel("Tên máy tính:");
-        nameTextField = new CustomTextField();
+        nameTextField = new CustomTextField("Nhập tên máy tính");
+        nameTextField.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (nameTextField.getText().equals("Nhập tên máy tính")) {
+                    nameTextField.setText("");
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (nameTextField.getText().isEmpty()) {
+                    nameTextField.setText("Nhập tên máy tính");
+                }
+            }
+        });
 
         // Giá một giờ chơi
         JLabel priceLabel = new JLabel("Giá một giờ chơi:");
         priceTextField = new CustomTextField();
+        priceTextField.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (priceTextField.getText().equals("Nhập giá một giờ chơi")) {
+                    priceTextField.setText("");
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (priceTextField.getText().isEmpty()) {
+                    priceTextField.setText("Nhập giá một giờ chơi");
+                }
+            }
+        });
 
         // Bo mạch chủ
         JLabel motherboardLabel = new JLabel("Bo mạch chủ:");
@@ -311,10 +343,18 @@ public class AddingComputer extends JFrame {
             );
             return;
         } else {
-            values.add(this.priceTextField.getText());
+            try {
+                int price = Integer.parseInt(this.priceTextField.getText().trim());
+                if (price < 0) {
+                    throw new NumberFormatException();
+                }
+                values.add(price);
+            } catch (NumberFormatException e) {
+
+            }
         }
 
-        if (this.motherboardCb.getSelectedItem().toString().equals("Chọn linh kiện")) {
+        if (this.motherboardCb.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(
                     null,
                     "Bo mạch chủ không được rỗng!",
@@ -335,7 +375,7 @@ public class AddingComputer extends JFrame {
             this.motherboardBLL.updateMotherboardById(id, statusValue);
         }
 
-        if (this.mouseCb.getSelectedItem().toString().equals("Chọn linh kiện")) {
+        if (this.mouseCb.getSelectedIndex() == 0) {
             values.add(null);
         } else {
             int id = getIdFromString(this.mouseCb
@@ -350,7 +390,7 @@ public class AddingComputer extends JFrame {
             this.mouseBLL.updateMouseById(id, statusValue);
         }
 
-        if (this.keyboardCb.getSelectedItem().toString().equals("Chọn linh kiện")) {
+        if (this.keyboardCb.getSelectedIndex() == 0) {
             values.add(null);
         } else {
             int id = getIdFromString(this.keyboardCb
@@ -365,7 +405,7 @@ public class AddingComputer extends JFrame {
             this.keyboardBLL.updateKeyboardById(id, statusValue);
         }
 
-        if (this.monitorCb.getSelectedItem().toString().equals("Chọn linh kiện")) {
+        if (this.monitorCb.getSelectedIndex() == 0) {
             values.add(null);
         } else {
             int id = getIdFromString(this.monitorCb
@@ -380,7 +420,7 @@ public class AddingComputer extends JFrame {
             this.monitorBLL.updateMonitorById(id, statusValue);
         }
 
-        if (this.headphoneCb.getSelectedItem().toString().equals("Chọn linh kiện")) {
+        if (this.headphoneCb.getSelectedIndex() == 0) {
             values.add(null);
         } else {
             int id = getIdFromString(this.headphoneCb
@@ -395,7 +435,7 @@ public class AddingComputer extends JFrame {
             this.headphoneBLL.updateHeadphoneById(id, statusValue);
         }
 
-        if (this.romCb.getSelectedItem().toString().equals("Chọn linh kiện")) {
+        if (this.romCb.getSelectedIndex() == 0) {
             values.add(null);
         } else {
             int id = getIdFromString(this.romCb
@@ -410,7 +450,7 @@ public class AddingComputer extends JFrame {
             this.romBLL.updateRomById(id, statusValue);
         }
 
-        if (this.roomCb.getSelectedItem().toString().equals("Chọn phòng")) {
+        if (this.roomCb.getSelectedIndex() == 0) {
             values.add(null);
         } else {
             values.add(
@@ -421,7 +461,7 @@ public class AddingComputer extends JFrame {
             );
         }
 
-        if (this.statusCb.getSelectedItem().toString().equals("Chọn trạng thái")) {
+        if (this.statusCb.getSelectedIndex() == 0) {
             values.add("Trong kho");
         } else {
             values.add(
@@ -451,8 +491,8 @@ public class AddingComputer extends JFrame {
     }
 
     private void resetForm() {
-        this.nameTextField.setText("");
-        this.priceTextField.setText("");
+        this.nameTextField.setText("Nhập tên máy tính");
+        this.priceTextField.setText("Nhập giá một giờ chơi");
         this.motherboardCb.setSelectedIndex(0);
         this.mouseCb.setSelectedIndex(0);
         this.keyboardCb.setSelectedIndex(0);

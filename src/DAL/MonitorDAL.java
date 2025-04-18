@@ -27,7 +27,8 @@ public class MonitorDAL {
                         rs.getInt("refresh_rate"),
                         rs.getDate("purchase_date"),
                         rs.getDate("warranty_expiry"),
-                        rs.getString("status")
+                        rs.getString("status"),
+                        rs.getDouble("price")
                 ));
             }
             rs.close();
@@ -84,6 +85,35 @@ public class MonitorDAL {
         helper.buildingQueryParam(params);
         ArrayList<Object> values = new ArrayList<>();
         values.add(id);
-        return helper.deleteData(values);
+        boolean r = helper.deleteData(values);
+        helper.closeConnect();
+        return r;
+    }
+    public boolean addMonitor(Monitors monitor) {
+        MySQLHelper helper = new MySQLHelper();
+        if(this.getMonitorById(monitor.getMonitorId()) != null) {
+            JOptionPane.showMessageDialog(null, "ID " + monitor.getMonitorId() + " đã tồn tại!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        ArrayList<Object> values = new ArrayList<>();
+            values.add(monitor.getMonitorId());
+            values.add(monitor.getBrand());
+            values.add(monitor.getModel());
+            values.add(monitor.getSize());
+            values.add(monitor.getRefreshRate());
+            values.add(monitor.getPurchaseDate());
+            values.add(monitor.getWarrantyExpiry());
+            values.add(monitor.getStatus());
+            values.add(monitor.getPrice());
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "monitors");
+        params.put("FIELD", "monitor_id,brand,model,size,refresh_rate,purchase_date,warranty_expiry,status");
+        helper.buildingQueryParam(params);
+
+
+        boolean result = helper.insertData(values);
+        helper.closeConnect();
+        return result;
     }
 }

@@ -21,13 +21,14 @@ public class MySQLHelper {
     public MySQLHelper() {
         try {
             this.connection = DriverManager.getConnection(Utils.Config.ConfigSQL.URL, ConfigSQL.USER_NAME, ConfigSQL.PASSWORD);
+            this.queryParams = new HashMap<>(); // Khởi tạo queryParams ngay trong constructor
         } catch (SQLException exception) {
             String messenger = exception.getMessage();
-            JOptionPane.showMessageDialog(null, messenger, "Lỗi", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Không thể kết nối đến cơ sở dữ liệu: "+ messenger , "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    /* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+    /* -------------------------Các phương thức hỗ trợ-------------------------------------------------------------------------------------------------------------------------------------------------- */
 
     private String buildingCondition() {
         if (this.queryParams != null && this.queryParams.get("WHERE") != null && !this.queryParams.get("WHERE").isEmpty()) {
@@ -50,7 +51,7 @@ public class MySQLHelper {
         return "";
     }
 
-    /* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+    /* ---------------------------Thiết lập queryParams------------------------------------------------------------------------------------------------------------------------------------------------ */
 
     public MySQLHelper buildingQueryParam(Map<String, String> params) {
         if (params == null) {
@@ -69,7 +70,7 @@ public class MySQLHelper {
         return this;
     }
 
-    /* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+    /* ------------------------Các phương thức truy vấn--------------------------------------------------------------------------------------------------------------------------------------------------- */
 
     public ResultSet query(String sql) {
         if (this.connection == null) {
@@ -98,34 +99,38 @@ public class MySQLHelper {
 
     public ResultSet queryWithParam(ArrayList<Object> values) {
         try {
+            if (this.queryParams == null || this.queryParams.get("TABLE") == null || this.queryParams.get("TABLE").isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Tên bảng chưa được thiết lập!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                return null;
+            }
             String select = this.queryParams.get("SELECT");
             String table = this.queryParams.get("TABLE");
             String join = this.buidlingJoinTable();
             String where = this.buildingCondition();
             String other = this.queryParams.get("OTHER");
 
-            String sql = "SELECT " + select + " FROM " + table + " \n"
-                    + join + " \n"
-                    + where + " \n"
-                    + other;
+            String sql = "SELECT " + select + " FROM " + table + "\n" + join + "\n" + where + "\n" + other;
+            System.out.println("SQL Query: " + sql); // Log để kiểm tra
 
             PreparedStatement preparedStatement = this.connection.prepareStatement(sql);
-
-            if (values.size() > 0) {
+            if (values != null && !values.isEmpty()) {
                 for (int i = 0; i < values.size(); i++) {
                     preparedStatement.setObject(i + 1, values.get(i));
                 }
             }
-
             return preparedStatement.executeQuery();
         } catch (SQLException exception) {
             JOptionPane.showMessageDialog(null, exception.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+            return null;
         }
-        return null;
     }
 
     public boolean insertData(ArrayList<Object> values) {
         try {
+            if (this.queryParams == null || this.queryParams.get("TABLE") == null || this.queryParams.get("TABLE").isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Tên bảng chưa được thiết lập!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
             String table = this.queryParams.get("TABLE");
             String field = this.buidlingFieldInsert();
 
@@ -138,6 +143,8 @@ public class MySQLHelper {
             }
 
             String sql = "INSERT INTO " + table + " " + field + " VALUES (" + insertValue + ")";
+            System.out.println("SQL Insert: " + sql); // Log để kiểm tra
+            System.out.println("Values: " + values); // Log dữ liệu đầu vào
 
             PreparedStatement preparedStatement = this.connection.prepareStatement(sql);
             for (int i = 0; i < values.size(); i++) {
@@ -149,9 +156,10 @@ public class MySQLHelper {
             return rowsInserted > 0;
 
         } catch (SQLException exception) {
-            JOptionPane.showMessageDialog(null, exception.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Lỗi SQL: " + exception.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+            exception.printStackTrace();
+            return false;
         }
-        return false;
     }
 
     public boolean deleteData(ArrayList<Object> values) {

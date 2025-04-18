@@ -35,4 +35,7 @@ public class MotherboardBLL {
     public boolean deleteMotherboardById(int id) {
         return this.motherboardDAL.deleteMotherboardById(id);
     }
+    public boolean addMotherboard(Motherboards motherboard) {
+        return this.motherboardDAL.addMotherboard(motherboard);
+    }
 }

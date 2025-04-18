@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "AddingOrder",
+            "request": "launch",
+            "mainClass": "GUI.Form.AddingOrder",
+            "projectName": "spoce-net-application_f57ff3ae"
+        },
+        {
+            "type": "java",
+            "name": "FoodBLL",
+            "request": "launch",
+            "mainClass": "BLL.FoodBLL",
+            "projectName": "spoce-net-application_f57ff3ae"
+        },
+        {
+            "type": "java",
             "name": "AddingPLayer",
             "request": "launch",
             "mainClass": "GUI.Form.AddingPLayer",

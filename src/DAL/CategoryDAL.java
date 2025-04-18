@@ -63,5 +63,19 @@ public class CategoryDAL {
         return result;
     }
 
+    public boolean createNewCategory(String name) {
+        MySQLHelper helper = new MySQLHelper();
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "categories");
+        params.put("FIELD", "name");
+        
+        helper.buildingQueryParam(params);
+            
+        ArrayList<Object> values = new ArrayList<>();
+        values.add(name);
+
+        return helper.insertData(values);
+    }
 
 }

@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.swing.JOptionPane;
 
@@ -228,6 +229,27 @@ public class FoodDAL {
         helper.buildingQueryParam(params);
 
         return helper.deleteData(new ArrayList<>(List.of(foodId)));
+    }
+
+    // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
+
+    public boolean createNewFood(String name, int price, int quantity, int categoryId, String image) {
+        MySQLHelper helper = new MySQLHelper();
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "foods");
+        params.put("FIELD", "name, price, quantity, category_id, image");
+        
+        helper.buildingQueryParam(params);
+
+        ArrayList<Object> values = new ArrayList<>();
+        values.add(name);
+        values.add(price);
+        values.add(quantity);
+        values.add(categoryId);
+        values.add(image);
+
+
+        return helper.insertData(values);
     }
 }
 

@@ -288,6 +288,80 @@ public class AccountDAL {
     
         return list;
     }
+
+    public ArrayList<Object[]> filterStaffAccountList(String searchText, String status, String role, String orderName, String orderCreateAt) {
+        ArrayList<Object[]> list = new ArrayList<>();
+        MySQLHelper helper = new MySQLHelper();
+        HashMap<String, String> params = new HashMap<>();
+        
+        params.put("TABLE", "accounts");
+        params.put("JOIN", "staffs staff ON accounts.account_id = staff.account_id");
+        params.put("SELECT", "accounts.account_id, username, full_name, role, status, created_at");
+    
+        ArrayList<String> whereConditions = new ArrayList<>();
+        ArrayList<Object> values = new ArrayList<>();
+    
+        if (searchText != null && !searchText.isEmpty()) {
+            whereConditions.add("username LIKE ?");
+            values.add("%" + searchText + "%");
+        }
+    
+        if (status != null && !status.equalsIgnoreCase("Tất cả")) {
+            whereConditions.add("status = ?");
+            values.add(status);
+        }
+    
+        if (role != null && !role.equalsIgnoreCase("Tất cả")) {
+            whereConditions.add("role = ?");
+            values.add(role);
+        }
+    
+        // Kết hợp điều kiện WHERE
+        if (!whereConditions.isEmpty()) {
+            String whereClause = String.join(" AND ", whereConditions);
+            params.put("WHERE", whereClause);
+        }
+    
+        // Order by
+        ArrayList<String> sortOrder = new ArrayList<>();
+        if (orderName != null && !orderName.equalsIgnoreCase("Mặc định")) {
+            if (orderName.equalsIgnoreCase("Theo tên tăng dần")) sortOrder.add("username ASC");
+            if (orderName.equalsIgnoreCase("Theo tên giảm dần")) sortOrder.add("username DESC");
+        }
+    
+        if (orderCreateAt != null && !orderCreateAt.equalsIgnoreCase("Mặc định")) {
+            if (orderCreateAt.equalsIgnoreCase("Ngày tăng dần")) sortOrder.add("created_at ASC");
+            if (orderCreateAt.equalsIgnoreCase("Ngày giảm dần")) sortOrder.add("created_at DESC");
+        }
+    
+        if (!sortOrder.isEmpty()) {
+            params.put("OTHER", "ORDER BY " + String.join(", ", sortOrder));
+        }
+    
+        // Xây dựng query và thực thi
+        helper.buildingQueryParam(params);
+        ResultSet rs = helper.queryWithParam(values);
+    
+        try {
+            while (rs != null && rs.next()) {
+                Object[] row = new Object[6];
+                row[0] = rs.getInt("account_id");
+                row[1] = rs.getString("username");
+                row[2] = rs.getString("full_name");
+                row[3] = rs.getString("role");
+                row[4] = rs.getString("status");
+                row[5] = rs.getTimestamp("created_at");
+                list.add(row);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            helper.closeConnect(); 
+        }
+    
+        return list;
+    }
+    
     
 
 

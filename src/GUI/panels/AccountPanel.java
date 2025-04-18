@@ -388,10 +388,37 @@ public class AccountPanel extends JPanel {
 
         this.staffClicked.setText("Đang chọn: NULL");
         this.statusEmployeeAccount.setSelectedItem("Tất cả");
-        this.searchEmployeeAccount.setText("");
+        this.searchEmployeeAccount.setText("Nhập thông tin tìm kiếm");
         this.roleEmmployeeAccount.setSelectedItem("Tất cả");
         this.orderSortEmployeeByName.setSelectedItem("Mặc định");
         this.orderSortEmployeeByCreateAt.setSelectedItem("Mặc định");
+    }
+
+    private void filterDataStaffAccount() {
+        String searchText = this.searchEmployeeAccount.getText().equals("Nhập thông tin tìm kiếm") ? "" : this.searchEmployeeAccount.getText();
+        String status = this.statusEmployeeAccount.getSelectedItem().toString();
+        String role = this.roleEmmployeeAccount.getSelectedItem().toString();
+        String orderName = this.orderSortEmployeeByName.getSelectedItem().toString();
+        String orderCreateAt = this.orderSortEmployeeByCreateAt.getSelectedItem().toString();
+
+       this.staffAccountList = this.accountBLL.filterStaffAccountList(searchText, status, role, orderName, orderCreateAt);
+
+        ArrayList<Object[]> dataObjects = new ArrayList<>();
+        for (Object object : this.playerAccountList) {
+            dataObjects.add((Object[]) object);
+        }
+
+        Object[][] newData = dataObjects.toArray(new Object[0][]);
+        String[] columnNames = { "Mã tài khoản", "Tên đăng nhập", "Họ và tên", "Chức vụ", "Trạng thái", "Ngày tạo tài khoản" };
+
+        DefaultTableModel model = new DefaultTableModel(newData, columnNames);
+        this.staffAccountTable.setModel(model);
+
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int i = 0; i < this.staffAccountTable.getColumnModel().getColumnCount(); i++) {
+            this.staffAccountTable.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
     }
 
     
@@ -433,7 +460,7 @@ public class AccountPanel extends JPanel {
 
         JLabel roleLabel = new JLabel("Quyền:");
         roleLabel.setBounds(610, 20, 50, 30);
-        String[] roles = { "Tất cả", "Quản trị viên", "Người dùng" };
+        String[] roles = { "Tất cả", "Quản trị viên", "Nhân viên" };
         this.roleEmmployeeAccount = new CustomCombobox<>(roles);
         this.roleEmmployeeAccount.setBounds(670, 20, 160, 30);
 
@@ -443,6 +470,9 @@ public class AccountPanel extends JPanel {
         filterButton.setForeground(Color.WHITE);
         filterButton.setBorderSize(0);
         filterButton.setBorderColor(new Color(70, 130, 180));
+        filterButton.addActionListener(e -> {
+            this.filterDataStaffAccount();
+        });
 
         CustomButton resetButton = new CustomButton("Đặt lại");
         resetButton.setBounds(870, 58, 120, 30);
@@ -451,12 +481,19 @@ public class AccountPanel extends JPanel {
         resetButton.setBorderSize(0);
         resetButton.setBorderColor(Color.RED);
         resetButton.addActionListener(e -> {
-            reloadStaffAccountTable();
+            this.staffClicked.setText("Đang chọn: NULL");
+            this.statusEmployeeAccount.setSelectedItem("Tất cả");
+            this.searchEmployeeAccount.setText("Nhập thông tin tìm kiếm");
+            this.roleEmmployeeAccount.setSelectedItem("Tất cả");
+            this.orderSortEmployeeByName.setSelectedItem("Mặc định");
+            this.orderSortEmployeeByCreateAt.setSelectedItem("Mặc định");
+            this.reloadStaffAccountTable();
+            this.filterDataStaffAccount();
         });
 
         JLabel orderName = new JLabel("Lọc tên:");
         orderName.setBounds(20, 58, 80, 30);
-        String[] sortOrder = {"Mặc định", "Theo tên tăng dần", "Theo tên giảm dần", "Theo chưa có tên"};
+        String[] sortOrder = {"Mặc định", "Theo tên tăng dần", "Theo tên giảm dần"};
         this.orderSortEmployeeByName = new CustomCombobox<>(sortOrder);
         this.orderSortEmployeeByName.setBounds(100, 58, 200, 30);
 
@@ -786,11 +823,15 @@ public class AccountPanel extends JPanel {
 
         CustomPanel playerAccountPanel = this.createPlayerInfoPanel();
 
-        CustomPanel employeePanel = this.createEmployeeInfoPanel();
+        // CustomPanel employeePanel = this.createEmployeeInfoPanel();
 
         panel.add(selfInfoPanel, "MyInfo");
         panel.add(playerAccountPanel, "PlayerInfo");
-        panel.add(employeePanel, "EmployeeInfo");
+        
+        if (this.loginAccount.getRole().equals("Quản trị viên")) {
+            CustomPanel employeePanel = this.createPlayerInfoPanel();
+            panel.add(employeePanel, "EmployeeInfo");
+        }
         return panel;
     }
 

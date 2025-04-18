@@ -26,7 +26,8 @@ public class RomDAL {
                         rs.getInt("capacity"),
                         rs.getDate("purchase_date"),
                         rs.getDate("warranty_expiry"),
-                        rs.getString("status")
+                        rs.getString("status"),
+                        rs.getDouble("price")
                 ));
             }
             rs.close();
@@ -83,6 +84,39 @@ public class RomDAL {
         helper.buildingQueryParam(params);
         ArrayList<Object> values = new ArrayList<>();
         values.add(id);
-        return helper.deleteData(values);
+        boolean res = helper.deleteData(values);
+        helper.closeConnect();
+        return res;
+    }
+    public boolean addRom(Roms rom) {
+        MySQLHelper helper = new MySQLHelper();
+
+        // Kiểm tra xem ID đã tồn tại chưa
+        if (this.getRomById(rom.getRomId()) != null) {
+            JOptionPane.showMessageDialog(null, "ID " + rom.getRomId() + " đã tồn tại!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        // Chuẩn bị danh sách giá trị theo thứ tự cột trong bảng roms
+        ArrayList<Object> values = new ArrayList<>();
+        values.add(rom.getRomId());
+        values.add(rom.getBrand());
+        values.add(rom.getModel());
+        values.add(rom.getType());
+        values.add(rom.getCapacity());
+        values.add(rom.getPurchaseDate());
+        values.add(rom.getWarrantyExpiry());
+        values.add(rom.getStatus());
+        values.add(rom.getPrice());
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "roms");
+        params.put("FIELD", "rom_id,brand,model,type,capacity,purchase_date,warranty_expiry,status,price");
+        helper.buildingQueryParam(params);
+
+        // Gọi insertData với danh sách giá trị
+        boolean success = helper.insertData(values);
+        helper.closeConnect();
+        return success;
     }
 }

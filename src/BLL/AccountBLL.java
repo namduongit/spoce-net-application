@@ -38,6 +38,10 @@ public class AccountBLL {
         return this.accountDAL.getInfoStaffAccountList();
     } 
 
+    public ArrayList<Object[]> filterStaffAccountList(String searchText, String status, String role, String orderName, String orderCreateAt) {
+        return this.accountDAL.filterStaffAccountList(searchText, status, role, orderName, orderCreateAt);
+    }
+
     // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
 
     public boolean updateAccountDetailsById(int accountId, HashMap<String, Object> updateValues) {
@@ -78,5 +82,4 @@ public class AccountBLL {
     public Accounts staffLoginAccount(String username, String password) {
         return this.accountDAL.staffLoginAccount(username, password);
     }
-
 }

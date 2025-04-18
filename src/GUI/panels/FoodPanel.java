@@ -20,6 +20,8 @@ import GUI.Components.CustomPanel;
 import GUI.Components.CustomScrollPane;
 import GUI.Components.CustomTextField;
 import GUI.Components.CustomDesignButton;
+import GUI.Form.AddingFood;
+import GUI.Form.AddingOrder;
 import GUI.Form.DetailsFood;
 
 import java.util.ArrayList;
@@ -282,12 +284,13 @@ public class FoodPanel extends JPanel {
         panel.setBackground(Color.WHITE);
 
         CustomButton addButton = Utils.Helper.CreateComponent.createGreenButton("Thêm");
-        
         addButton.setBounds(50, 10, 100, 30);
-        panel.add(addButton);
-
-        CustomButton editButton = Utils.Helper.CreateComponent.createBlueButton("Chỉnh sửa");
+        addButton.addActionListener(e -> {
+            AddingFood addingFoodForm = new AddingFood();
+            addingFoodForm.setVisible(true);
+        });
         
+        CustomButton editButton = Utils.Helper.CreateComponent.createBlueButton("Chỉnh sửa");
         editButton.setBounds(170, 10, 100, 30);
         editButton.addActionListener(e -> {
             if (this.currentFoods == null) {
@@ -297,11 +300,10 @@ public class FoodPanel extends JPanel {
                 new DetailsFood(this.foodBLL.getFoodByID(this.currentFoods.getFoodId())).setVisible(true);
                 ;
             }
+            this.reloadFoodPanel();
         });
-        panel.add(editButton);
 
         CustomButton deleteButton = Utils.Helper.CreateComponent.createOrangeButton("Xóa");
-        ;
         deleteButton.setBounds(290, 10, 100, 30);
         deleteButton.addActionListener(e -> {
             if (this.currentFoods != null) {
@@ -312,7 +314,7 @@ public class FoodPanel extends JPanel {
                 if (option == JOptionPane.YES_OPTION) {
                     if (this.foodBLL.deleteFoodById(this.currentFoods.getFoodId())) {
                         JOptionPane.showMessageDialog(null, "Xóa thành công", "Thông báo",
-                                JOptionPane.INFORMATION_MESSAGE);
+                                JOptionPane.INFORMATION_MESSAGE);    
                     } else {
                         JOptionPane.showMessageDialog(null, "Xóa thất bại", "Thông báo", JOptionPane.ERROR_MESSAGE);
                     }
@@ -323,8 +325,24 @@ public class FoodPanel extends JPanel {
             } else {
                 JOptionPane.showMessageDialog(null, "Bạn chưa chọn sản phẩm", "Thông báo", JOptionPane.WARNING_MESSAGE);
             }
+            this.reloadFoodPanel();
         });
+
+        CustomButton addNewCategory = Utils.Helper.CreateComponent.createGrayButton("Thêm loại");
+        addNewCategory.setBounds(410, 10, 100, 30);
+
+
+        CustomButton createBillOrder = Utils.Helper.CreateComponent.createBrownButton("Tạo hóa đơn");
+        createBillOrder.setBounds(530, 10, 150, 30);
+        createBillOrder.addActionListener(e -> {
+            new AddingOrder().setVisible(true);
+        });
+
+        panel.add(addButton);
+        panel.add(editButton);
         panel.add(deleteButton);
+        panel.add(addNewCategory);
+        panel.add(createBillOrder);
 
         return panel;
     }

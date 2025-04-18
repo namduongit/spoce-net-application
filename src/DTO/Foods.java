@@ -1,6 +1,5 @@
 package DTO;
 
-import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 public class Foods {

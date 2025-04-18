@@ -94,4 +94,24 @@ public class CreateComponent {
 
         return button;
     }
+
+    public static CustomButton createGrayButton(String textContent) {
+        CustomButton button = new CustomButton(textContent);
+        button.setBorderColor(Color.decode("#37474F"));
+        button.setFont(new Font("Sans-serif", Font.BOLD, 13));
+        button.setBackground(Color.decode("#37474F"));
+        button.setForeground(Color.WHITE);
+        
+        return button;
+    }
+
+    public static CustomButton createBrownButton(String textContent) {
+        CustomButton button = new CustomButton(textContent);
+        button.setBorderColor(Color.decode("#5D4037"));
+        button.setFont(new Font("Sans-serif", Font.BOLD, 13));
+        button.setBackground(Color.decode("#5D4037"));
+        button.setForeground(Color.WHITE);
+
+        return button;
+    }
 }
