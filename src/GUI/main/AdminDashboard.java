@@ -17,21 +17,12 @@ import javax.swing.border.MatteBorder;
 
 import DTO.Accounts;
 import DTO.Staffs;
+import GUI.panels.*;
 import Utils.Helper.CreateComponent;
 import GUI.Components.CustomButton;
-import GUI.panels.AccountPanel;
-import GUI.panels.BillPanel;
-import GUI.panels.ChartPanel;
-import GUI.panels.ComputerPanel;
-import GUI.panels.DashBoardPanel;
-import GUI.panels.FoodPanel;
-import GUI.panels.HardwarePanel;
-import GUI.panels.HistoryPanel;
-import GUI.panels.RoomPanel;
 
 
-
-public class AdminDashboard extends JFrame {
+ public class AdminDashboard extends JFrame {
    private Accounts loginAccount;
    private Staffs loginStaff;
 
@@ -55,6 +46,7 @@ public class AdminDashboard extends JFrame {
     private CustomButton billButton;
     private CustomButton chartButton;
     private CustomButton roomButton;
+    private CustomButton computerManagingButton;
 
 
     public AdminDashboard(Accounts loginAccount, Staffs loginStaff) {
@@ -103,6 +95,11 @@ public class AdminDashboard extends JFrame {
         this.roomButton.setBounds(10, 445, 230, 50);
         this.roomButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "RoomPanel"));
 
+        this.computerManagingButton = CreateComponent.createButton("icons8-computer-100.png", "Bật tắt máy");
+        this.computerManagingButton.setBounds(10, 500, 230, 50);
+        this.computerManagingButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "ComputerManagingPanel"));
+
+
         CustomButton logoutButton = CreateComponent.createButton("icons8-logout-100.png", "Đăng xuất");
         logoutButton.setBounds(10, 555, 230, 50);
         logoutButton.addActionListener(new ActionListener() {
@@ -121,6 +118,7 @@ public class AdminDashboard extends JFrame {
         buttonPanel.add(billButton);
         buttonPanel.add(chartButton);
         buttonPanel.add(roomButton);
+        buttonPanel.add(computerManagingButton);
         buttonPanel.add(logoutButton);
 
         buttonPanel.setBounds(0, 80, 250, Utils.Config.ConfigFrame.HEIGHT_FRAME - 80);
@@ -180,6 +178,7 @@ public class AdminDashboard extends JFrame {
         BillPanel billPanel = new BillPanel();
         ChartPanel chartPanel = new ChartPanel();
         RoomPanel roomPanel = new RoomPanel();
+        ComputerManagingPanel computerManagingPanel = new ComputerManagingPanel();
 
         // Thêm trước khi trả về
         panel.add(dashBoardPanel, "DashBoardPanel");
@@ -191,6 +190,7 @@ public class AdminDashboard extends JFrame {
         panel.add(billPanel, "BillPanel");
         panel.add(chartPanel, "ChartPanel");
         panel.add(roomPanel, "RoomPanel");
+        panel.add(computerManagingPanel, "ComputerManagingPanel");
 
         // Tạo đường viền ở bên trái
         panel.setBorder(new MatteBorder(0, 1, 0, 0, Color.decode("#9E9E9E")));
