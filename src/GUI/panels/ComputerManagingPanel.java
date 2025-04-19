@@ -3,12 +3,12 @@ package GUI.panels;
 import BLL.ComputerBLL;
 import BLL.ComputerSessionBLL;
 import BLL.RoomBLL;
+import DTO.Accounts;
 import DTO.Computers;
 import DTO.Rooms;
+import DTO.Staffs;
 import GUI.Card.ComputerCard;
 import GUI.Components.*;
-import GUI.Form.AddingComputer;
-import GUI.Form.DetailsComputer;
 import Utils.Helper.CreateComponent;
 
 import javax.swing.*;
@@ -20,6 +20,12 @@ import java.util.HashMap;
 import java.util.stream.Collectors;
 
 public class ComputerManagingPanel extends JPanel {
+    @SuppressWarnings("unused")
+    private Accounts loginAccount;
+    @SuppressWarnings("unused")
+    private Staffs loginStaff;
+
+    
     private CustomPanel titlePanel;
     private CustomPanel dataPanel;
     private CustomPanel playedComputerPanel;
@@ -27,7 +33,7 @@ public class ComputerManagingPanel extends JPanel {
     private CustomPanel controlPanel;
     private JScrollPane scrollPane;
     private CustomTextField searchTextField;
-    private CustomCombobox statusComboBox;
+    private CustomCombobox<String> statusComboBox;
     private JLabel selectionText;
     private ComputerBLL computerBLL;
     private ComputerSessionBLL computerSessionBLL;
@@ -35,6 +41,7 @@ public class ComputerManagingPanel extends JPanel {
     private CardLayout cardLayout;
     private CustomDesignButton turnOnButton;
     private CustomDesignButton turnOffButton;
+    @SuppressWarnings("unused")
     private CustomDesignButton controlButton;
     private int currentSelectedId;
     private String currentPanel;
@@ -42,7 +49,10 @@ public class ComputerManagingPanel extends JPanel {
     private ArrayList<Computers> playedComputerList;
     private ArrayList<Computers> idlingComputerList;
     
-    public ComputerManagingPanel() {
+    public ComputerManagingPanel(Accounts loginAccount, Staffs loginStaff) {
+        this.loginAccount = loginAccount;
+        this.loginStaff = loginStaff;
+
         this.currentPanel = "PlayedComputer";
         this.currentSelectedId = -1;
         this.computerBLL = new ComputerBLL();

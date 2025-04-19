@@ -78,9 +78,11 @@ public class MySQLHelper {
             return null;
         }
         try (PreparedStatement statement = this.connection.prepareStatement(sql)) {
+    
             return statement.executeQuery();
         } catch (SQLException exception) {
             JOptionPane.showMessageDialog(null, exception.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+            System.out.println("Lỗi lệnh query ở ResultSet query");
         }
         return null;
     }
@@ -93,6 +95,7 @@ public class MySQLHelper {
             return statement.executeQuery();
         } catch (SQLException exception) {
             JOptionPane.showMessageDialog(null, exception.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+            System.out.println("Lỗi lệnh query ở ResultSet selectAllFromTable");
         }
         return null;
     }
@@ -106,11 +109,11 @@ public class MySQLHelper {
             String select = this.queryParams.get("SELECT");
             String table = this.queryParams.get("TABLE");
             String join = this.buidlingJoinTable();
+           // String set = this.queryParams.get("SET").isEmpty() || this.queryParams.get("SET") == null ? "" : this.queryParams.get("SET");
             String where = this.buildingCondition();
             String other = this.queryParams.get("OTHER");
 
             String sql = "SELECT " + select + " FROM " + table + "\n" + join + "\n" + where + "\n" + other;
-            System.out.println("SQL Query: " + sql); // Log để kiểm tra
 
             PreparedStatement preparedStatement = this.connection.prepareStatement(sql);
             if (values != null && !values.isEmpty()) {
@@ -121,6 +124,7 @@ public class MySQLHelper {
             return preparedStatement.executeQuery();
         } catch (SQLException exception) {
             JOptionPane.showMessageDialog(null, exception.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+            System.out.println("Lỗi lệnh query ở ResultSet queryWithParam");
             return null;
         }
     }
@@ -143,8 +147,6 @@ public class MySQLHelper {
             }
 
             String sql = "INSERT INTO " + table + " " + field + " VALUES (" + insertValue + ")";
-            System.out.println("SQL Insert: " + sql); // Log để kiểm tra
-            System.out.println("Values: " + values); // Log dữ liệu đầu vào
 
             PreparedStatement preparedStatement = this.connection.prepareStatement(sql);
             for (int i = 0; i < values.size(); i++) {
@@ -158,9 +160,60 @@ public class MySQLHelper {
         } catch (SQLException exception) {
             JOptionPane.showMessageDialog(null, "Lỗi SQL: " + exception.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
             exception.printStackTrace();
+            System.out.println("Lỗi lệnh query ở boolean insertData");
             return false;
         }
     }
+
+    public int insertDataLastest(ArrayList<Object> values) {
+        try {
+            if (this.queryParams == null || this.queryParams.get("TABLE") == null || this.queryParams.get("TABLE").isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Tên bảng chưa được thiết lập!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                return -1;
+            }
+            String table = this.queryParams.get("TABLE");
+            String field = this.buidlingFieldInsert();
+
+            StringBuilder insertValue = new StringBuilder();
+            for (int i = 0; i < values.size(); i++) {
+                insertValue.append("?");
+                if (i < values.size() - 1) {
+                    insertValue.append(", ");
+                }
+            }
+
+            String sql = "INSERT INTO " + table + " " + field + " VALUES (" + insertValue + ")";
+
+            PreparedStatement preparedStatement = this.connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+
+            for (int i = 0; i < values.size(); i++) {
+                preparedStatement.setObject(i + 1, values.get(i));
+            }
+
+            int affectedRows = preparedStatement.executeUpdate();
+
+            if (affectedRows == 0) {
+                JOptionPane.showMessageDialog(null, "Insert không thành công, không có dòng nào được tạo!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                return -1;
+            }
+
+            try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    return generatedKeys.getInt(1); // Trả về ID vừa insert
+                } else {
+                    JOptionPane.showMessageDialog(null, "Không lấy được ID của dòng vừa thêm!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                    return -1;
+                }
+            }
+
+        } catch (SQLException exception) {
+            JOptionPane.showMessageDialog(null, "Lỗi SQL: " + exception.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+            exception.printStackTrace();
+            System.out.println("Lỗi lệnh query ở int insertDataLastest");
+            return -1;
+        }
+    }
+
 
     public boolean deleteData(ArrayList<Object> values) {
         try {
@@ -179,6 +232,7 @@ public class MySQLHelper {
             }
         } catch (SQLException exception) {
             JOptionPane.showMessageDialog(null, exception.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+            System.out.println("Lỗi lệnh query ở boolean deleteData");
         }
         return false;
     }
@@ -214,6 +268,7 @@ public class MySQLHelper {
             }
         } catch (SQLException exception) {
             JOptionPane.showMessageDialog(null, exception.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+            System.out.println("Lỗi lệnh query ở boolean updateData 2 tham số");
         }
         return false;
     }
@@ -221,11 +276,17 @@ public class MySQLHelper {
     public boolean updateData(ArrayList<Object> valueCondition) {
         try {
             String join = this.buidlingJoinTable(); 
+            String whereClause = this.buildingCondition();
             String sql = "UPDATE "+ this.queryParams.get("TABLE") +" "
                         + join + " "
                         +"SET "+ this.queryParams.get("SET") +" "
-                        +"WHERE "+ this.queryParams.get("WHERE");
-            
+                        +whereClause;
+            System.out.println("Lệnh INSERT: "+ sql);
+
+            System.out.println("Dánh sách truyền vào: ");
+            for(Object object : valueCondition) {
+                System.out.print(object +" ");
+            }
 
             PreparedStatement preparedStatement = this.connection.prepareStatement(sql);
             int index = 1;
@@ -239,9 +300,32 @@ public class MySQLHelper {
 
         } catch (SQLException exception) {
             JOptionPane.showMessageDialog(null, exception.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+            System.out.println("Lỗi lệnh query ở boolean updateData 1 tham số");
         }
         return false;
     }
+
+
+    public boolean executeUpdateWithParams(String sql, Object[] values) {
+        if (this.connection == null) {
+            JOptionPane.showMessageDialog(null, "Chưa kết nối đến database!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+    
+        try (PreparedStatement statement = this.connection.prepareStatement(sql)) {
+            for (int i = 0; i < values.length; i++) {
+                statement.setObject(i + 1, values[i]);
+            }
+    
+            int affectedRows = statement.executeUpdate();
+            return affectedRows > 0;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+            System.out.println("Lỗi lệnh query ở boolean executeUpdateWithParams");
+            return false;
+        }
+    }
+    
 
 
     /* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
@@ -267,10 +351,11 @@ public class MySQLHelper {
             }
 
             ResultSet resultSet = preparedStatement.executeQuery();
-            return resultSet != null;
+            return resultSet.next();
 
         } catch (SQLException exception) {
             JOptionPane.showMessageDialog(null, exception.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+            System.out.println("Lỗi lệnh query ở boolean existsDataInTable");
         }
         return false;
     }

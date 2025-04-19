@@ -7,7 +7,6 @@ import java.awt.event.FocusListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
-import java.math.BigDecimal;
 
 import GUI.Components.CustomPanel;
 

@@ -21,14 +21,14 @@ public class DetailsComputer extends JFrame {
     private CustomTextField idTextField;
     private CustomTextField nameTextField;
     private CustomTextField priceTextField;
-    private CustomCombobox motherboardCb;
-    private CustomCombobox mouseCb;
-    private CustomCombobox keyboardCb;
-    private CustomCombobox monitorCb;
-    private CustomCombobox headphoneCb;
-    private CustomCombobox romCb;
-    private CustomCombobox roomCb;
-    private CustomCombobox statusCb;
+    private CustomCombobox<String> motherboardCb;
+    private CustomCombobox<String> mouseCb;
+    private CustomCombobox<String> keyboardCb;
+    private CustomCombobox<String> monitorCb;
+    private CustomCombobox<String> headphoneCb;
+    private CustomCombobox<String> romCb;
+    private CustomCombobox<String> roomCb;
+    private CustomCombobox<String> statusCb;
     private MotherboardBLL motherboardBLL;
     private MouseBLL mouseBLL;
     private KeyboardBLL keyboardBLL;
@@ -44,6 +44,7 @@ public class DetailsComputer extends JFrame {
     private int currentHeadphoneId;
     private int currentRomId;
     private int currentRoomId;
+    @SuppressWarnings("unused")
     private String currentStatus;
 
     public DetailsComputer(Computers computer) {

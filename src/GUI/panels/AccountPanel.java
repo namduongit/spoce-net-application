@@ -94,7 +94,9 @@ public class AccountPanel extends JPanel {
 
     private CustomTextField searchPlayerAccount;
     private CustomCombobox<String> statusPlayerAccount;
+    @SuppressWarnings("unused")
     private CustomCombobox<String> orderSortPlayerByName;
+    @SuppressWarnings("unused")
     private CustomCombobox<String> orderSortPlayerByBalance;
     private CustomButton filterPlayerAccount;
     private CustomButton resetFilterPlayerAccount;
@@ -423,6 +425,7 @@ public class AccountPanel extends JPanel {
 
     
 
+    @SuppressWarnings("unused")
     private CustomPanel createEmployeeInfoPanel() {
         CustomPanel panel = new CustomPanel();
         panel.setLayout(null);

@@ -2,13 +2,15 @@ package DAL;
 
 import DAL.SQLHelper.MySQLHelper;
 import DTO.Headphones;
-import DTO.Mouse;
 
-import javax.swing.*;
+
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import javax.swing.JOptionPane;
 
 public class HeadphoneDAL {
 

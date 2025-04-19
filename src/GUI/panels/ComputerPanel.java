@@ -6,7 +6,6 @@ import GUI.Components.*;
 import GUI.Form.AddingComputer;
 import GUI.Form.DetailsComputer;
 import Utils.Helper.AdjustTableWidth;
-import Utils.Helper.CreateComponent;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -16,11 +15,15 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.stream.Collectors;
 import java.util.List;
 
 public class ComputerPanel extends JPanel{
+    @SuppressWarnings("unused")
+    private Accounts loginAccount;
+    @SuppressWarnings("unused")
+    private Staffs loginStaff;
+
     private CardLayout cardLayout;
     private CustomPanel titlePanel;
     private CustomPanel controlPanel;
@@ -51,7 +54,10 @@ public class ComputerPanel extends JPanel{
     private CustomTable sessionData;
     private DefaultTableCellRenderer centeredRenderer;
 
-    public ComputerPanel() {
+    public ComputerPanel(Accounts loginAccount, Staffs loginStaff) {
+        this.loginAccount = loginAccount;
+        this.loginStaff = loginStaff;
+        
 
         // Các BLL dùng để truy xuất dữ liệu
         this.computerBLL = new ComputerBLL();
@@ -646,7 +652,7 @@ public class ComputerPanel extends JPanel{
                                                 .collect(Collectors.toList());
 
         // Cập nhật lại danh sách máy tính đã lọc vào array list
-        this.list = new ArrayList(filteredList);
+        this.list = new ArrayList<Computers>(filteredList);
 
         // Cập nhật lại nội dung hiển thị trong bảng
         Object[][] data = this.createData(this.list);

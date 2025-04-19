@@ -4,8 +4,10 @@ import javax.swing.*;
 
 import BLL.CategoryBLL;
 import BLL.FoodBLL;
+import DTO.Accounts;
 import DTO.Categories;
 import DTO.Foods;
+import DTO.Staffs;
 
 import java.awt.*;
 import java.awt.event.FocusEvent;
@@ -19,7 +21,6 @@ import GUI.Components.CustomCombobox;
 import GUI.Components.CustomPanel;
 import GUI.Components.CustomScrollPane;
 import GUI.Components.CustomTextField;
-import GUI.Components.CustomDesignButton;
 import GUI.Form.AddingFood;
 import GUI.Form.AddingOrder;
 import GUI.Form.DetailsFood;
@@ -30,6 +31,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class FoodPanel extends JPanel {
+    @SuppressWarnings("unused")
+    private Accounts loginAccount;
+    @SuppressWarnings("unused")
+    private Staffs loginStaff;
+
     private FoodBLL foodBLL;
     private CategoryBLL categoryBLL;
 
@@ -47,7 +53,10 @@ public class FoodPanel extends JPanel {
     private CustomCombobox<String> statusComboBoxCategory;
     private JLabel nameCurrentFood;
 
-    public FoodPanel() {
+    public FoodPanel(Accounts loginAccount, Staffs loginStaff) {
+        this.loginAccount = loginAccount;
+        this.loginStaff = loginStaff;
+
         this.foodBLL = new FoodBLL();
         this.categoryBLL = new CategoryBLL();
         this.foodList = this.foodBLL.getAllFoods();
@@ -335,7 +344,7 @@ public class FoodPanel extends JPanel {
         CustomButton createBillOrder = Utils.Helper.CreateComponent.createBrownButton("Tạo hóa đơn");
         createBillOrder.setBounds(530, 10, 150, 30);
         createBillOrder.addActionListener(e -> {
-            new AddingOrder().setVisible(true);
+            new AddingOrder(this.loginStaff).setVisible(true);
         });
 
         panel.add(addButton);

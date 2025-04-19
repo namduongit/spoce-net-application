@@ -1,4 +1,4 @@
- package GUI.main;
+package GUI.main;
 
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -8,10 +8,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.MatteBorder;
 
@@ -21,12 +24,10 @@ import GUI.panels.*;
 import Utils.Helper.CreateComponent;
 import GUI.Components.CustomButton;
 
+public class AdminDashboard extends JFrame {
+    private Accounts loginAccount;
+    private Staffs loginStaff;
 
- public class AdminDashboard extends JFrame {
-   private Accounts loginAccount;
-   private Staffs loginStaff;
-
-    // Thông tin cơ bản nhân viên
     private JLabel iconLogo;
     private JLabel nameStaffs;
     private JLabel roleAccount;
@@ -36,10 +37,8 @@ import GUI.Components.CustomButton;
     private CardLayout cardLayout;
     private JPanel infoPanel;
 
-    // Phần nút
     private CustomButton dashBoardButton;
     private CustomButton accountButton;
-    // private CustomButton historyButton;
     private CustomButton computerButton;
     private CustomButton hardwareButton;
     private CustomButton foodButton;
@@ -48,118 +47,136 @@ import GUI.Components.CustomButton;
     private CustomButton roomButton;
     private CustomButton computerManagingButton;
 
+    private JPanel currentShowingPanel;
 
     public AdminDashboard(Accounts loginAccount, Staffs loginStaff) {
         this.loginAccount = loginAccount;
         this.loginStaff = loginStaff;
-        System.out.println(this.loginAccount);
-        System.out.println(this.loginStaff);
+
         this.initComponents();
     }
 
     private void createButtonLayout(JPanel buttonPanel) {
-        if (this.loginAccount == null || this.loginStaff == null) return;
+        if (this.loginAccount == null || this.loginStaff == null)
+            return;
+
+
         buttonPanel.setLayout(null);
+        buttonPanel.setBounds(0, 80, 250, Utils.Config.ConfigFrame.HEIGHT_FRAME - 80);
+        buttonPanel.setBackground(Color.WHITE);
+
+        List<CustomButton> buttons = new ArrayList<>();
 
         this.dashBoardButton = CreateComponent.createButton("icons8-dashboard-100.png", "Trang chủ");
-        this.dashBoardButton.setBounds(10, 5, 230, 50);
-        this.dashBoardButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "DashBoardPanel"));
+        this.dashBoardButton.addActionListener(e -> {
+            this.switchPanel(new DashBoardPanel());
+        });
+        buttons.add(this.dashBoardButton);
 
         this.accountButton = CreateComponent.createButton("icons8-account-100.png", "Tài khoản");
-        this.accountButton.setBounds(10, 60, 230, 50);
-        this.accountButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "AccountPanel"));
+        this.accountButton.addActionListener(e -> {
+            this.switchPanel(new AccountPanel(this.loginAccount, this.loginStaff));
+        });
+        buttons.add(this.accountButton);
 
-        // this.historyButton = CreateComponent.createButton("icons8-payment-history-100.png", "Lịch sử");
-        // this.historyButton.setBounds(10, 115, 230, 50);
-        // this.historyButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "HistoryPanel"));
 
-        // this.computerButton = CreateComponent.createButton("icons8-computer-100.png", "Máy tính");
-        // this.computerButton.setBounds(10, 170, 230, 50);
-        // this.computerButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "ComputerPanel"));
+        if (this.loginAccount.getRole().equalsIgnoreCase("Quản trị viên")) {
+            this.computerButton = CreateComponent.createButton("icons8-computer-100.png", "Máy tính");
+            this.computerButton.addActionListener(e -> {
+                this.switchPanel(new ComputerPanel(this.loginAccount, this.loginStaff));
+            });
+            buttons.add(this.computerButton);
 
-        // this.hardwareButton = CreateComponent.createButton("icons8-ethernet-on-100.png", "Linh kiện");
-        // this.hardwareButton.setBounds(10, 225, 230, 50);
-        // this.hardwareButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "HardwarePanel"));
+            this.hardwareButton = CreateComponent.createButton("icons8-ethernet-on-100.png", "Linh kiện");
+            this.hardwareButton.addActionListener(e -> {
+                this.switchPanel(new HardwarePanel());
+            });
+            buttons.add(this.hardwareButton);
 
-        // this.foodButton = CreateComponent.createButton("icons8-ingredients-100.png", "Thức ăn");
-        // this.foodButton.setBounds(10, 280, 230, 50);
-        // this.foodButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "FoodPanel"));
+            this.foodButton = CreateComponent.createButton("icons8-ingredients-100.png", "Thức ăn");
+            this.foodButton.addActionListener(e -> {
+                this.switchPanel(new FoodPanel(this.loginAccount, this.loginStaff));
+            });
+            buttons.add(this.foodButton);
 
-        // this.billButton = CreateComponent.createButton("icons8-bill-100.png", "Hóa đơn");
-        // this.billButton.setBounds(10, 335, 230, 50);
-        // this.billButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "BillPanel"));
+            this.billButton = CreateComponent.createButton("icons8-bill-100.png", "Hóa đơn");
+            this.billButton.addActionListener(e -> {
+                this.switchPanel(new BillPanel());
+            });
+            buttons.add(this.billButton);
 
-        // this.chartButton = CreateComponent.createButton("icons8-chart-100.png", "Thống kê");
-        // this.chartButton.setBounds(10, 390, 230, 50);
-        // this.chartButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "ChartPanel"));
+            this.chartButton = CreateComponent.createButton("icons8-chart-100.png", "Thống kê");
+            this.chartButton.addActionListener(e -> {
+                this.switchPanel(new ChartPanel());
+            });
+            buttons.add(this.chartButton);
 
-        // this.roomButton = CreateComponent.createButton("icons8-hotel-room-key-100.png", "Phòng chơi");
-        // this.roomButton.setBounds(10, 445, 230, 50);
-        // this.roomButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "RoomPanel"));
+            this.roomButton = CreateComponent.createButton("icons8-hotel-room-key-100.png", "Phòng chơi");
+            this.roomButton.addActionListener(e -> {
+                this.switchPanel(new RoomPanel());
+            });
+            buttons.add(this.roomButton);
 
-        this.computerButton = CreateComponent.createButton("icons8-computer-100.png", "Máy tính");
-        this.computerButton.setBounds(10, 115, 230, 50);
-        this.computerButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "ComputerPanel"));
+            this.computerManagingButton = CreateComponent.createButton("icons8-computer-100.png", "Bật tắt máy");
+            this.computerManagingButton.addActionListener(e -> {
+                this.switchPanel(new ComputerManagingPanel(this.loginAccount, this.loginStaff));
+            });
+            buttons.add(this.computerManagingButton);
 
-        this.hardwareButton = CreateComponent.createButton("icons8-ethernet-on-100.png", "Linh kiện");
-        this.hardwareButton.setBounds(10, 170, 230, 50);
-        this.hardwareButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "HardwarePanel"));
+        } else if (this.loginAccount.getRole().equalsIgnoreCase("Nhân viên")) {
+            this.foodButton = CreateComponent.createButton("icons8-ingredients-100.png", "Thức ăn");
+            this.foodButton.addActionListener(e -> {
+                this.switchPanel(new FoodPanel(this.loginAccount, this.loginStaff));
+            });
+            buttons.add(this.foodButton);
 
-        this.foodButton = CreateComponent.createButton("icons8-ingredients-100.png", "Thức ăn");
-        this.foodButton.setBounds(10, 225, 230, 50);
-        this.foodButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "FoodPanel"));
+            this.billButton = CreateComponent.createButton("icons8-bill-100.png", "Hóa đơn");
+            this.billButton.addActionListener(e -> {
+                this.switchPanel(new BillPanel());
+            });
+            buttons.add(this.billButton);
 
-        this.billButton = CreateComponent.createButton("icons8-bill-100.png", "Hóa đơn");
-        this.billButton.setBounds(10, 280, 230, 50);
-        this.billButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "BillPanel"));
-
-        this.chartButton = CreateComponent.createButton("icons8-chart-100.png", "Thống kê");
-        this.chartButton.setBounds(10, 335, 230, 50);
-        this.chartButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "ChartPanel"));
-
-        this.roomButton = CreateComponent.createButton("icons8-hotel-room-key-100.png", "Phòng chơi");
-        this.roomButton.setBounds(10, 390, 230, 50);
-        this.roomButton.addActionListener(e -> this.cardLayout.show(this.infoPanel, "RoomPanel"));
-
+            this.computerManagingButton = CreateComponent.createButton("icons8-computer-100.png", "Bật tắt máy");
+            this.computerManagingButton.addActionListener(e -> {
+                this.switchPanel(new ComputerManagingPanel(this.loginAccount, this.loginStaff));
+            });
+            buttons.add(this.computerManagingButton);
+        }
 
         CustomButton logoutButton = CreateComponent.createButton("icons8-logout-100.png", "Đăng xuất");
-        logoutButton.setBounds(10, 555, 230, 50);
-        logoutButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        logoutButton.addActionListener(e -> {
+            int resultLogout = JOptionPane.showConfirmDialog(
+                    AdminDashboard.this,
+                    "Bạn có chắc chắn đăng xuất hay không ?",
+                    "Thông báo",
+                    JOptionPane.OK_OPTION,
+                    JOptionPane.PLAIN_MESSAGE);
+            if (resultLogout == JOptionPane.OK_OPTION) {
                 dispose();
             }
         });
+        buttons.add(logoutButton);
 
-        buttonPanel.add(dashBoardButton);
-        buttonPanel.add(accountButton);
-        // buttonPanel.add(historyButton);
-        buttonPanel.add(computerButton);
-        buttonPanel.add(hardwareButton);
-        buttonPanel.add(foodButton);
-        buttonPanel.add(billButton);
-        buttonPanel.add(chartButton);
-        buttonPanel.add(roomButton);
-        buttonPanel.add(computerManagingButton);
-        buttonPanel.add(logoutButton);
-
-        buttonPanel.setBounds(0, 80, 250, Utils.Config.ConfigFrame.HEIGHT_FRAME - 80);
-        buttonPanel.setBackground(Color.WHITE);
+        int y = 5;
+        for (CustomButton btn : buttons) {
+            btn.setBounds(10, y, 230, 50);
+            buttonPanel.add(btn);
+            y += 55;
+        }
     }
 
     private JPanel actionPanelDesign() {
         JPanel panel = new JPanel();
         panel.setLayout(null);
 
-        // Phần hiển thị thông tin cơ bản nhân viên
         JPanel headActionPanel = new JPanel();
         headActionPanel.setLayout(null);
 
         this.iconLogo = new JLabel();
         this.iconLogo.setIcon(
                 new ImageIcon(new ImageIcon(System.getProperty("user.dir") + "/src/Assets/Icon/icons8-employee-100.png")
-                .getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH)));
-                this.iconLogo.setBounds(10, 10, 50, 50);
+                        .getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH)));
+        this.iconLogo.setBounds(10, 10, 50, 50);
         this.nameStaffs = new JLabel(this.loginStaff.getFullName());
         this.nameStaffs.setFont(new Font("Sans-serif", Font.BOLD, 15));
         this.nameStaffs.setForeground(Color.BLACK);
@@ -175,7 +192,6 @@ import GUI.Components.CustomButton;
         headActionPanel.setBounds(0, 0, 250, 80);
         headActionPanel.setBackground(Color.WHITE);
 
-        // Phần nút chuyển các CardLayout
         JPanel buttonActionPanel = new JPanel();
         this.createButtonLayout(buttonActionPanel);
 
@@ -189,34 +205,20 @@ import GUI.Components.CustomButton;
     }
 
     private JPanel infoPanelDesign() {
-        this.cardLayout = new CardLayout();
-        JPanel panel = new JPanel(this.cardLayout);
-        DashBoardPanel dashBoardPanel = new DashBoardPanel();
-        AccountPanel accountPanel = new AccountPanel(this.loginAccount, this.loginStaff);
-        // HistoryPanel historyPanel = new HistoryPanel();
-        ComputerPanel computerPanel = new ComputerPanel();
-        HardwarePanel hardwarePanel = new HardwarePanel();
-        FoodPanel foodPanel = new FoodPanel();
-        BillPanel billPanel = new BillPanel();
-        ChartPanel chartPanel = new ChartPanel();
-        RoomPanel roomPanel = new RoomPanel();
-        ComputerManagingPanel computerManagingPanel = new ComputerManagingPanel();
-
-        // Thêm trước khi trả về
-        panel.add(dashBoardPanel, "DashBoardPanel");
-        panel.add(accountPanel, "AccountPanel");
-        // panel.add(historyPanel, "HistoryPanel");
-        panel.add(computerPanel, "ComputerPanel");
-        panel.add(hardwarePanel, "HardwarePanel");
-        panel.add(foodPanel, "FoodPanel");
-        panel.add(billPanel, "BillPanel");
-        panel.add(chartPanel, "ChartPanel");
-        panel.add(roomPanel, "RoomPanel");
-        panel.add(computerManagingPanel, "ComputerManagingPanel");
-
-        // Tạo đường viền ở bên trái
+        JPanel panel = new JPanel(null);
         panel.setBorder(new MatteBorder(0, 1, 0, 0, Color.decode("#9E9E9E")));
         return panel;
+    }
+
+    private void switchPanel(JPanel newPanel) {
+        if (currentShowingPanel != null) {
+            this.infoPanel.remove(currentShowingPanel);
+        }
+        this.currentShowingPanel = newPanel;
+        newPanel.setBounds(0, 0, this.infoPanel.getWidth(), this.infoPanel.getHeight());
+        this.infoPanel.add(newPanel);
+        this.infoPanel.revalidate();
+        this.infoPanel.repaint();
     }
 
     private void initComponents() {
@@ -235,7 +237,8 @@ import GUI.Components.CustomButton;
         this.infoPanel = this.infoPanelDesign();
 
         this.actionPanel.setBounds(0, 0, 250, Utils.Config.ConfigFrame.HEIGHT_FRAME);
-        this.infoPanel.setBounds(250, 0, Utils.Config.ConfigFrame.WIDTH_FRAME - 250, Utils.Config.ConfigFrame.HEIGHT_FRAME);
+        this.infoPanel.setBounds(250, 0, Utils.Config.ConfigFrame.WIDTH_FRAME - 250,
+                Utils.Config.ConfigFrame.HEIGHT_FRAME);
 
         panel.add(actionPanel);
         panel.add(infoPanel);
@@ -243,12 +246,15 @@ import GUI.Components.CustomButton;
         panel.setBackground(Color.WHITE);
 
         this.getContentPane().add(panel);
+        this.switchPanel(new DashBoardPanel());
     }
 
     @SuppressWarnings("deprecation")
     public static void main(String[] args) {
-        Accounts accounts = new Accounts(1, "namduongit", "namduongit", "Quản trị viên", "Đang hoạt động", new Timestamp(1, 1, 1, 1, 1, 1, 1));
-        Staffs staffs = new Staffs(1, 1, "Nguyễn Nam Dương", new Date(1, 1, 1), "Nam", "0388853835", "null", "null", "null", "null");
+        Accounts accounts = new Accounts(1, "namduongit", "namduongit", "Quản trị viên", "Đang hoạt động",
+                new Timestamp(1, 1, 1, 1, 1, 1, 1));
+        Staffs staffs = new Staffs(1, 1, "Nguyễn Nam Dương", new Date(1, 1, 1), "Nam", "0388853835", "null", "null",
+                "null", "null");
         new AdminDashboard(accounts, staffs).setVisible(true);
     }
 }

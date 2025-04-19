@@ -1,6 +1,5 @@
 package DTO;
 
-import java.math.BigDecimal;
 
 public class Players {
     private int playerId;

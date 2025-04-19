@@ -18,8 +18,8 @@ public class AddingRoom extends JFrame {
     private JPanel content;
     private CustomTextField nameTextField;
     private CustomTextField numberOfComputersTextField;
-    private CustomCombobox roomTypeCombobox;
-    private CustomCombobox roomStatusCombobox;
+    private CustomCombobox<String> roomTypeCombobox;
+    private CustomCombobox<String> roomStatusCombobox;
 
     private RoomBLL roomBLL;
 
@@ -93,7 +93,7 @@ public class AddingRoom extends JFrame {
                 "Phòng gaming",
                 "Phòng thi đấu"
         };
-        roomTypeCombobox = new CustomCombobox(typeList);
+        roomTypeCombobox = new CustomCombobox<String>(typeList);
         roomTypeCombobox.setBounds(20,165,500,30);
 
         JLabel roomStatusLabel = new JLabel("Trạng thái:");
@@ -105,7 +105,7 @@ public class AddingRoom extends JFrame {
                 "Đang hoạt động",
                 "Bảo trì"
         };
-        roomStatusCombobox = new CustomCombobox(statusList);
+        roomStatusCombobox = new CustomCombobox<String>(statusList);
         roomStatusCombobox.setBounds(20,230,500,30);
 
         CustomButton saveButton = Utils.Helper.CreateComponent.createBlueButton("Lưu lại");

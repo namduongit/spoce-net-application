@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "FoodBillDAL",
+            "request": "launch",
+            "mainClass": "DAL.FoodBillDAL",
+            "projectName": "spoce-net-application_f57ff3ae"
+        },
+        {
+            "type": "java",
+            "name": "FoodOrderDAL",
+            "request": "launch",
+            "mainClass": "DAL.FoodOrderDAL",
+            "projectName": "spoce-net-application_f57ff3ae"
+        },
+        {
+            "type": "java",
             "name": "AddingOrder",
             "request": "launch",
             "mainClass": "GUI.Form.AddingOrder",
