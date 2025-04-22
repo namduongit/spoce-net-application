@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "PieChartExample",
+            "request": "launch",
+            "mainClass": "PieChartExample",
+            "projectName": "spoce-net-application_f57ff3ae"
+        },
+        {
+            "type": "java",
+            "name": "ChartExample",
+            "request": "launch",
+            "mainClass": "ChartExample",
+            "projectName": "spoce-net-application_f57ff3ae"
+        },
+        {
+            "type": "java",
             "name": "FoodBillDAL",
             "request": "launch",
             "mainClass": "DAL.FoodBillDAL",
