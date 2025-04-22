@@ -49,9 +49,9 @@ public class ComputerPanel extends JPanel{
     private Object[][] data;
     private DefaultTableModel model;
     private String[] columnNames;
-    private String[] sessionColumnNames;
+    // private String[] sessionColumnNames;
     private CustomTable tableData;
-    private CustomTable sessionData;
+    // private CustomTable sessionData;
     private DefaultTableCellRenderer centeredRenderer;
 
     public ComputerPanel(Accounts loginAccount, Staffs loginStaff) {

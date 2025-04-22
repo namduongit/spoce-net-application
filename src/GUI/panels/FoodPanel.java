@@ -339,6 +339,36 @@ public class FoodPanel extends JPanel {
 
         CustomButton addNewCategory = Utils.Helper.CreateComponent.createGrayButton("Thêm loại");
         addNewCategory.setBounds(410, 10, 100, 30);
+        addNewCategory.addActionListener(e -> {
+            String newCate = JOptionPane.showInputDialog("Nhập tên loại bạn muốn thêm:");
+            
+            if (newCate != null && !newCate.trim().isEmpty()) {
+                int confirm = JOptionPane.showConfirmDialog(
+                    null,
+                    "Bạn có chắc muốn thêm loại \"" + newCate + "\" không?",
+                    "Xác nhận thêm loại",
+                    JOptionPane.YES_NO_OPTION
+                );
+
+                if (newCate.isEmpty() || newCate == null) {
+                    JOptionPane.showMessageDialog(this, "Vui lòng nhập thông tin loại sản phẩm mới !", "Cảnh báo", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+                
+                if (newCate.length() < 4) {
+                    JOptionPane.showMessageDialog(this, "Tên của loại sản phẩm mới phải có ít nhất 4 kí tự !", "Cảnh báo", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+
+
+                if (confirm == JOptionPane.YES_OPTION) {
+                    System.out.println("Thêm loại: " + newCate);
+                    // Thêm vào cơ sở dữ liệu / danh sách ở đây nếu cần
+
+                }
+            }
+        });
+        
 
 
         CustomButton createBillOrder = Utils.Helper.CreateComponent.createBrownButton("Tạo hóa đơn");

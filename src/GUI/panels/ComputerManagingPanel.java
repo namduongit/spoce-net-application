@@ -324,11 +324,6 @@ public class ComputerManagingPanel extends JPanel {
         selectionText.setBounds(860,10,300,20);
 
 
-        Image addImage = new ImageIcon(
-                System.getProperty("user.dir") + "/src/Assets/Icon/add.png"
-        ).getImage()
-                .getScaledInstance(30,30,Image.SCALE_SMOOTH);
-
         if (this.currentPanel.equals("PlayedComputer")) {
             panel.add(turnOffButton);
         } else if (this.currentPanel.equals("IdlingComputer")) {

@@ -1,11 +1,8 @@
 package GUI.main;
 
-import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -33,8 +30,6 @@ public class AdminDashboard extends JFrame {
     private JLabel roleAccount;
 
     private JPanel actionPanel;
-
-    private CardLayout cardLayout;
     private JPanel infoPanel;
 
     private CustomButton dashBoardButton;

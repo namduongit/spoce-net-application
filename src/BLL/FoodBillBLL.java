@@ -18,6 +18,6 @@ public class FoodBillBLL {
     }
     
     public boolean updateTotalPrice(int billId, int totalPrice) {
-        return this.foodBillDAL.updateTotalPrice(billId, billId);
+        return this.foodBillDAL.updateTotalPrice(billId, totalPrice);
     }
 }
