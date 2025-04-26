@@ -11,14 +11,14 @@ import java.awt.*;
 public class CustomPieChart extends JPanel {
     private JFreeChart chart;
     private ChartPanel chartPanel;
-    private DefaultPieDataset<String> dataset;
+    private DefaultPieDataset dataset;
 
     public CustomPieChart(String[] labels, Number[] values) {
         if (labels.length != values.length) {
             throw new IllegalArgumentException("Số lượng label và value không khớp.");
         }
 
-        dataset = new DefaultPieDataset<>();
+        dataset = new DefaultPieDataset();
         for (int i = 0; i < labels.length; i++) {
             dataset.setValue(labels[i], values[i]);
         }
