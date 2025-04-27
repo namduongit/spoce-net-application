@@ -9,7 +9,7 @@ public class ComputerSessions {
     private Date startTime;
     private Date endTime;
     private int duration; // Tính toán tự động từ start_time và end_time
-    private double totalCost;
+    private int totalCost;
     private boolean isGuest;
     private int staffId;
 
@@ -18,7 +18,7 @@ public class ComputerSessions {
     }
 
     // Constructor có tham số
-    public ComputerSessions(int sessionId, Integer playerId, int computerId, Date startTime, Date endTime, int duration, double totalCost, boolean isGuest, int staffId) {
+    public ComputerSessions(int sessionId, Integer playerId, int computerId, Date startTime, Date endTime, int duration, int totalCost, boolean isGuest, int staffId) {
         this.sessionId = sessionId;
         this.playerId = playerId;
         this.computerId = computerId;
@@ -79,11 +79,11 @@ public class ComputerSessions {
         this.duration = duration;
     }
 
-    public double getTotalCost() {
+    public int getTotalCost() {
         return totalCost;
     }
 
-    public void setTotalCost(double totalCost) {
+    public void setTotalCost(int totalCost) {
         this.totalCost = totalCost;
     }
 

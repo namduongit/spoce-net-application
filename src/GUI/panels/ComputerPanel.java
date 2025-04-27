@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 import java.util.List;
 
+@SuppressWarnings("unused")
 public class ComputerPanel extends JPanel{
     @SuppressWarnings("unused")
     private Accounts loginAccount;

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.sql.Date;
 
+@SuppressWarnings("unused")
 public class AddingHardware extends JFrame {
     private JPanel content;
     private CustomTextField idField;

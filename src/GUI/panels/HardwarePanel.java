@@ -14,6 +14,7 @@ import java.awt.event.*;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+@SuppressWarnings("unused")
 public class HardwarePanel extends JPanel {
     private CardLayout cardLayout;
     private CustomPanel titlePanel;

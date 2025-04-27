@@ -15,6 +15,7 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+@SuppressWarnings("rawtypes")
 public class DetailsRoom extends JFrame {
     private JPanel content;
     private CustomCombobox roomStatusCombobox;
@@ -53,6 +54,7 @@ public class DetailsRoom extends JFrame {
         this.setVisible(true);
     }
 
+    @SuppressWarnings("unchecked")
     private JPanel createContent() {
         JPanel panel = new JPanel();
         panel.setLayout(null);

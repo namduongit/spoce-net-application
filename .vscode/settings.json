@@ -14,7 +14,17 @@
         "c:\\libs-api-connect\\jakarta.activation-2.0.1.jar",
         "c:\\libs-api-connect\\jakarta.mail-api-2.1.3.jar",
         "c:\\libs-api-connect\\javax.mail-1.5.3.jar",
-        "c:\\libs-api-connect\\jfreechart-1.5.4.jar"
+        "c:\\libs-api-connect\\jfreechart-1.5.4.jar",
+        "c:\\libs-api-connect\\ironpdf-2023.4.4.jar",
+        "c:\\libs-api-connect\\itext-asian-5.2.0.jar",
+        "c:\\libs-api-connect\\pdfbox-3.0.4.jar",
+        "c:\\libs-api-connect\\itext-2.1.3.jar",
+        "c:\\libs-api-connect\\itextpdf-5.5.9.jar",
+        "c:\\libs-api-connect\\html2pdf-6.1.0.jar",
+        "c:\\libs-api-connect\\io-7.0.0.jar",
+        "c:\\libs-api-connect\\kernel-7.0.0.jar",
+        "c:\\libs-api-connect\\layout-7.0.0.jar",
+        "c:\\libs-api-connect\\pdfa-7.0.0.jar"
     ],
     "java.debug.settings.onBuildFailureProceed": true
 }

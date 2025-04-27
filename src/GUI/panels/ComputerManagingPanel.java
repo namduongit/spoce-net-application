@@ -19,10 +19,9 @@ import java.util.List;
 import java.util.HashMap;
 import java.util.stream.Collectors;
 
+@SuppressWarnings("unused")
 public class ComputerManagingPanel extends JPanel {
-    @SuppressWarnings("unused")
     private Accounts loginAccount;
-    @SuppressWarnings("unused")
     private Staffs loginStaff;
 
     
@@ -52,6 +51,9 @@ public class ComputerManagingPanel extends JPanel {
     public ComputerManagingPanel(Accounts loginAccount, Staffs loginStaff) {
         this.loginAccount = loginAccount;
         this.loginStaff = loginStaff;
+
+        System.out.println(loginAccount);
+        System.out.println(loginStaff);
 
         this.currentPanel = "PlayedComputer";
         this.currentSelectedId = -1;

@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
+@SuppressWarnings("unused")
 public class DetailsHardware extends JFrame {
     private JPanel content;
     private CustomTextField idField;

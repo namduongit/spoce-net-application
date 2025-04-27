@@ -6,6 +6,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ChangeMinToDate",
+            "request": "launch",
+            "mainClass": "Utils.Helper.ChangeMinToDate",
+            "projectName": "spoce-net-application_f57ff3ae"
+        },
+        {
+            "type": "java",
+            "name": "HTMLToPDF",
+            "request": "launch",
+            "mainClass": "Utils.Helper.HTMLToPDF",
+            "projectName": "spoce-net-application_f57ff3ae"
+        },
+        {
+            "type": "java",
+            "name": "PrintPDF",
+            "request": "launch",
+            "mainClass": "Utils.Helper.PrintPDF",
+            "projectName": "spoce-net-application_f57ff3ae"
+        },
+        {
+            "type": "java",
             "name": "PieChartExample",
             "request": "launch",
             "mainClass": "PieChartExample",

@@ -11,8 +11,10 @@ import java.awt.*;
 public class CustomPieChart extends JPanel {
     private JFreeChart chart;
     private ChartPanel chartPanel;
+    @SuppressWarnings("rawtypes")
     private DefaultPieDataset dataset;
 
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     public CustomPieChart(String[] labels, Number[] values) {
         if (labels.length != values.length) {
             throw new IllegalArgumentException("Số lượng label và value không khớp.");
