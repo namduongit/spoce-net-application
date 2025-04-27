@@ -302,7 +302,9 @@ CREATE TABLE IF NOT EXISTS computer_sessions (
     duration     INT GENERATED ALWAYS AS (TIMESTAMPDIFF(MINUTE, start_time, end_time)) STORED,
     total_cost   DECIMAL(10,2) NOT NULL DEFAULT 0, 
     is_guest     BOOLEAN GENERATED ALWAYS AS (player_id IS NULL) STORED,
+    staff_id     INT NOT NULL,
 
+    FOREIGN KEY (staff_id) REFERENCES staffs(staff_id),
     FOREIGN KEY (player_id) REFERENCES players(player_id),
     FOREIGN KEY (computer_id) REFERENCES computers(computer_id) ON DELETE CASCADE
     );

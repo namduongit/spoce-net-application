@@ -34,7 +34,6 @@ public class ComputerPanel extends JPanel{
     private CustomCombobox<String> statusComboBox;
     private CustomTextField searchTextField;
     private ComputerBLL computerBLL;
-    private ComputerSessionBLL computerSessionBLL;
     private MotherboardBLL motherboardBLL;
     private CpuBLL cpuBLL;
     private GpuBLL gpuBLL;
@@ -45,7 +44,6 @@ public class ComputerPanel extends JPanel{
     private RomBLL romBLL;
     private RoomBLL roomBLL;
     private ArrayList<Computers> list;
-    private ArrayList<ComputerSessions> sessionList;
     private Object[][] data;
     private DefaultTableModel model;
     private String[] columnNames;
@@ -61,7 +59,6 @@ public class ComputerPanel extends JPanel{
 
         // Các BLL dùng để truy xuất dữ liệu
         this.computerBLL = new ComputerBLL();
-        this.computerSessionBLL = new ComputerSessionBLL();
         this.motherboardBLL = new MotherboardBLL();
         this.cpuBLL = new CpuBLL();
         this.gpuBLL = new GpuBLL();
@@ -72,20 +69,11 @@ public class ComputerPanel extends JPanel{
         this.romBLL = new RomBLL();
         this.roomBLL = new RoomBLL();
         this.list = this.computerBLL.getAllComputers(); // Mảng lưu các máy tính
-        this.sessionList = this.computerSessionBLL.getComputerSessionList(); // Mảng lưu các phiên chơi
 
         // Mảng các thuộc tính của JTable hiển thị máy tính
         this.columnNames = new String[]{
                 "ID",
                 "Tên máy tính",
-//                "Bo mạch chủ",
-//                "CPU",
-//                "GPU",
-//                "Chuột",
-//                "Bàn phím",
-//                "Màn hình",
-//                "Tai nghe",
-//                "ROM",
                 "Phòng",
                 "Giá tiền",
                 "Trạng thái"
@@ -493,7 +481,6 @@ public class ComputerPanel extends JPanel{
     // Hàm đọc lại dữ liệu từ database cho mảng máy tính và mảng phiên chơi
     private void refreshAllDatas() {
         this.list = this.computerBLL.getAllComputers();
-        this.sessionList = this.computerSessionBLL.getComputerSessionList();
     }
 
 
@@ -505,30 +492,6 @@ public class ComputerPanel extends JPanel{
         for (int i=0; i<list.size(); i++) {
             data[i][0] = list.get(i).getComputerId();
             data[i][1] = list.get(i).getName();
-
-//            Motherboards motherboard = this.motherboardBLL.getMotherboardById(list.get(i).getMotherboardId());
-//            data[i][2] = motherboard.getModel();
-
-//            Cpus cpu = this.cpuBLL.getCpuById(motherboard.getCpuId());
-//            data[i][3] = cpu.getModel();
-//
-//            Gpus gpu = this.gpuBLL.getGpubyId(motherboard.getGpuId());
-//            data[i][4] = gpu.getModel();
-//
-//            Mouse mouse = this.mouseBLL.getMouseById(list.get(i).getMouseId());
-//            data[i][5] = mouse.getModel();
-//
-//            Keyboards keyboard = this.keyboardBLL.getKeyboardById(list.get(i).getKeyboardId());
-//            data[i][6] = keyboard.getModel();
-//
-//            Monitors monitor = this.monitorBLL.getMonitorById(list.get(i).getMonitorId());
-//            data[i][7] = monitor.getModel();
-//
-//            Headphones headphone = this.headphoneBLL.getHeadphoneById(list.get(i).getHeadphoneId());
-//            data[i][8] = headphone.getModel();
-//
-//            Roms rom = this.romBLL.getRomById(list.get(i).getRomId());
-//            data[i][9] = rom.getModel();
 
             // Nếu máy tính chưa có ID phòng thì hiển thị "Không có Phòng"
             // Ngược lại hiển thị lên tên phòng (Lấy ra object Phòng thông qua ID)

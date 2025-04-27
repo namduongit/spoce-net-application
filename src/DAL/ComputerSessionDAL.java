@@ -20,14 +20,15 @@ public class ComputerSessionDAL {
             while (rs.next()) {
                 arr.add(
                     new ComputerSessions(
-                        rs.getInt(0),
-                        (Integer)rs.getObject(1),
-                        rs.getInt(2),
-                        rs.getDate(3),
-                        rs.getDate(4),
-                        rs.getInt(5),
-                        rs.getDouble(6),
-                        rs.getBoolean(7)
+                        rs.getInt("session_id"),
+                        (Integer)rs.getObject("player_id"),
+                        rs.getInt("computer_id"),
+                        rs.getDate("start_time"),
+                        rs.getDate("end_time"),
+                        rs.getInt("duration"),
+                        rs.getDouble("total_cost"),
+                        rs.getBoolean("is_guest"),
+                        rs.getInt("staff_id")
                     )
                 );
             }
@@ -36,7 +37,7 @@ public class ComputerSessionDAL {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(
                     null,
-                    e.getMessage(),
+                    "Never",
                     "Lỗi",
                     JOptionPane.ERROR_MESSAGE
             );
@@ -50,7 +51,7 @@ public class ComputerSessionDAL {
 
         HashMap<String, String> params = new HashMap<>();
         params.put("TABLE", "computer_sessions");
-        params.put("FIELD", "computer_id");
+        params.put("FIELD", "computer_id, staff_id");
         helper.buildingQueryParam(params);
 
         return helper.insertData(values);

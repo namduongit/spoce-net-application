@@ -96,7 +96,7 @@ public class AdminDashboard extends JFrame {
 
             this.billButton = CreateComponent.createButton("icons8-bill-100.png", "Hóa đơn");
             this.billButton.addActionListener(e -> {
-                this.switchPanel(new BillPanel());
+                this.switchPanel(new BillPanel(this.loginAccount, this.loginStaff));
             });
             buttons.add(this.billButton);
 
@@ -127,7 +127,7 @@ public class AdminDashboard extends JFrame {
 
             this.billButton = CreateComponent.createButton("icons8-bill-100.png", "Hóa đơn");
             this.billButton.addActionListener(e -> {
-                this.switchPanel(new BillPanel());
+                this.switchPanel(new BillPanel(this.loginAccount, this.loginStaff));
             });
             buttons.add(this.billButton);
 

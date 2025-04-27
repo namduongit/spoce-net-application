@@ -442,6 +442,7 @@ public class ComputerManagingPanel extends JPanel {
 
         ArrayList<Object> values = new ArrayList<>();
         values.add(this.currentSelectedId);
+        values.add(this.loginStaff.getStaffId());
 
         if (this.computerSessionBLL.insertComputerSession(values)) {
             HashMap<String, Object> updateValues = new HashMap<>();
