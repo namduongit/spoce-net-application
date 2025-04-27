@@ -6,6 +6,7 @@ import DTO.ComputerSessions;
 import javax.swing.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -98,5 +99,42 @@ public class ComputerSessionDAL {
         values.add(computerId);
 
         return helper.updateData(values);
+    }
+
+    // Lấy dữ liệu doanh thu máy
+    public ArrayList<Object[]> getComputerRevenue(LocalDateTime start, LocalDateTime end) {
+        ArrayList<Object[]> list = new ArrayList<>();
+        MySQLHelper helper = new MySQLHelper();
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "computer_sessions cs");
+        params.put("JOIN", "computers c ON cs.computer_id = c.computer_id");
+        params.put("SELECT", "c.name, SUM(cs.total_cost) as total_cost");
+        params.put("WHERE", "cs.start_time BETWEEN ? AND ?");
+        params.put("GROUP BY", "c.computer_id, c.name");
+
+        helper.buildingQueryParam(params);
+        System.out.println("Query: " + params); // Gỡ lỗi
+        
+        ArrayList<Object> values = new ArrayList<>();
+        values.add(java.sql.Timestamp.valueOf(start));
+        values.add(java.sql.Timestamp.valueOf(end));
+
+        ResultSet resultSet = helper.queryWithParam(values);
+        try {
+            while (resultSet.next()) {
+                Object[] row = new Object[]{
+                    resultSet.getString("name"),
+                    resultSet.getDouble("total_cost")
+                };
+                list.add(row);
+            }
+            resultSet.close();
+            helper.closeConnect();
+        } catch (SQLException exception) {
+            JOptionPane.showMessageDialog(null, exception.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
+
+        return list;
     }
 }

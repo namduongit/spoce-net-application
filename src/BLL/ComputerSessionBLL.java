@@ -3,6 +3,7 @@ package BLL;
 import DAL.ComputerSessionDAL;
 import DTO.ComputerSessions;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -15,6 +16,11 @@ public class ComputerSessionBLL {
 
     public ArrayList<ComputerSessions> getComputerSessionList() {
         return this.computerSessionDAL.getComputerSessionList();
+    }
+
+      // Lấy dữ liệu cho biểu đồ doanh thu máy
+    public ArrayList<Object[]> getComputerRevenue(LocalDateTime start, LocalDateTime end) {
+        return computerSessionDAL.getComputerRevenue(start, end);
     }
 
     public boolean insertComputerSession(ArrayList<Object> values) {

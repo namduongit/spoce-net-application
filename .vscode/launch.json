@@ -6,6 +6,48 @@
     "configurations": [
         {
             "type": "java",
+            "name": "test",
+            "request": "launch",
+            "mainClass": "test",
+            "projectName": "spoce-net-application_dd316008"
+        },
+        {
+            "type": "java",
+            "name": "AdminDashboard",
+            "request": "launch",
+            "mainClass": "GUI.main.AdminDashboard",
+            "projectName": "spoce-net-application_dd316008"
+        },
+        {
+            "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "App",
+            "projectName": "spoce-net-application_dd316008"
+        },
+        {
+            "type": "java",
+            "name": "AdminLoginScreen",
+            "request": "launch",
+            "mainClass": "GUI.main.AdminLoginScreen",
+            "projectName": "spoce-net-application_dd316008"
+        },
+        {
+            "type": "java",
+            "name": "PieChartExample",
+            "request": "launch",
+            "mainClass": "PieChartExample",
+            "projectName": "spoce-net-application_dd316008"
+        },
+        {
+            "type": "java",
+            "name": "ChartExample",
+            "request": "launch",
+            "mainClass": "ChartExample",
+            "projectName": "spoce-net-application_dd316008"
+        },
+        {
+            "type": "java",
             "name": "PieChartExample",
             "request": "launch",
             "mainClass": "PieChartExample",
