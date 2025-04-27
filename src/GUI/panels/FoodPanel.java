@@ -363,14 +363,17 @@ public class FoodPanel extends JPanel {
 
                 if (confirm == JOptionPane.YES_OPTION) {
                     System.out.println("Thêm loại: " + newCate);
-                    // Thêm vào cơ sở dữ liệu / danh sách ở đây nếu cần
+                    boolean resultAdd = this.categoryBLL.createNewCategory(newCate);
+                    if (resultAdd) {
+                        JOptionPane.showMessageDialog(this, "Thêm loại mới thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Thêm loại mới thất bại", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                    }
 
                 }
             }
         });
         
-
-
         CustomButton createBillOrder = Utils.Helper.CreateComponent.createBrownButton("Tạo hóa đơn");
         createBillOrder.setBounds(530, 10, 150, 30);
         createBillOrder.addActionListener(e -> {

@@ -19,7 +19,11 @@ public class CategoryBLL {
         return this.categoryDAL.getAllCategoryList();
     }
 
-    public boolean createNewCategory(String name) {
-        return this.categoryDAL.createNewCategory(name);
+    public boolean createNewCategory(String categoryName) {
+        return this.categoryDAL.createNewCategory(categoryName);
+    }
+
+    public boolean deleteCategoryById(int categoryId) {
+        return this.categoryDAL.deleteCategoryById(categoryId);
     }
 }
