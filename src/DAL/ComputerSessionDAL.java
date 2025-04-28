@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -21,14 +22,15 @@ public class ComputerSessionDAL {
             while (rs.next()) {
                 arr.add(
                     new ComputerSessions(
-                        rs.getInt(0),
-                        (Integer)rs.getObject(1),
-                        rs.getInt(2),
-                        rs.getDate(3),
-                        rs.getDate(4),
-                        rs.getInt(5),
-                        rs.getDouble(6),
-                        rs.getBoolean(7)
+                        rs.getInt("session_id"),
+                        (Integer)rs.getObject("player_id"),
+                        rs.getInt("computer_id"),
+                        rs.getDate("start_time"),
+                        rs.getDate("end_time"),
+                        rs.getInt("duration"),
+                        rs.getDouble("total_cost"),
+                        rs.getBoolean("is_guest"),
+                        rs.getInt("staff_id")
                     )
                 );
             }
@@ -37,7 +39,7 @@ public class ComputerSessionDAL {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(
                     null,
-                    e.getMessage(),
+                    "Never",
                     "Lỗi",
                     JOptionPane.ERROR_MESSAGE
             );
@@ -51,7 +53,7 @@ public class ComputerSessionDAL {
 
         HashMap<String, String> params = new HashMap<>();
         params.put("TABLE", "computer_sessions");
-        params.put("FIELD", "computer_id");
+        params.put("FIELD", "computer_id, staff_id");
         helper.buildingQueryParam(params);
 
         return helper.insertData(values);
@@ -103,38 +105,48 @@ public class ComputerSessionDAL {
 
     // Lấy dữ liệu doanh thu máy
     public ArrayList<Object[]> getComputerRevenue(LocalDateTime start, LocalDateTime end) {
-        ArrayList<Object[]> list = new ArrayList<>();
-        MySQLHelper helper = new MySQLHelper();
+    ArrayList<Object[]> list = new ArrayList<>();
+    MySQLHelper helper = new MySQLHelper();
 
-        HashMap<String, String> params = new HashMap<>();
-        params.put("TABLE", "computer_sessions cs");
-        params.put("JOIN", "computers c ON cs.computer_id = c.computer_id");
-        params.put("SELECT", "c.name, SUM(cs.total_cost) as total_cost");
-        params.put("WHERE", "cs.start_time BETWEEN ? AND ?");
-        params.put("GROUP BY", "c.computer_id, c.name");
+    HashMap<String, String> params = new HashMap<>();
+    params.put("TABLE", "computer_sessions cs");
+    params.put("JOIN", "computers c ON cs.computer_id = c.computer_id");
+    params.put("SELECT", "c.name, SUM(cs.total_cost) as total_cost");
+    params.put("WHERE", "cs.start_time BETWEEN ? AND ?");
+    params.put("GROUP BY", "c.computer_id, c.name");
 
-        helper.buildingQueryParam(params);
-        System.out.println("Query: " + params); // Gỡ lỗi
-        
-        ArrayList<Object> values = new ArrayList<>();
-        values.add(java.sql.Timestamp.valueOf(start));
-        values.add(java.sql.Timestamp.valueOf(end));
+    helper.buildingQueryParam(params);
+    // System.out.println("Query Computer : " + params);
 
-        ResultSet resultSet = helper.queryWithParam(values);
-        try {
-            while (resultSet.next()) {
-                Object[] row = new Object[]{
-                    resultSet.getString("name"),
-                    resultSet.getDouble("total_cost")
-                };
-                list.add(row);
-            }
-            resultSet.close();
-            helper.closeConnect();
-        } catch (SQLException exception) {
-            JOptionPane.showMessageDialog(null, exception.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+    ArrayList<Object> values = new ArrayList<>();
+    values.add(java.sql.Timestamp.valueOf(start));
+    values.add(java.sql.Timestamp.valueOf(end));
+
+    ResultSet resultSet = helper.queryWithParam(values);
+    try {
+        while (resultSet.next()) {
+            String name = resultSet.getString("name");
+            double totalCost = resultSet.getDouble("total_cost");
+            // System.out.println("ResultSet: Name=" + name + ", TotalCost=" + totalCost);
+            Object[] row = new Object[]{name, totalCost};
+            list.add(row);
         }
-
-        return list;
+        // list.stream().forEach(r -> {
+        //     System.out.println("List :" + r[0]);
+        // });
+        // for(int i = 0; i < list.size(); i++) {
+        //     System.out.println("List " + i + ": " + list.get(i)[0] + ", " + list.get(i)[1]);
+        // }
+        // list = [
+        // ["Máy 1", 50000.0],
+        // ["Máy 2", 70000.0],
+        // ["Máy 3", 45000.0]
+        // ];
+        resultSet.close();
+        helper.closeConnect();
+    } catch (SQLException exception) {
+        JOptionPane.showMessageDialog(null, exception.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+    }
+    return list;
     }
 }

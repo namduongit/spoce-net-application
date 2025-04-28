@@ -11,13 +11,14 @@ public class ComputerSessions {
     private int duration; // Tính toán tự động từ start_time và end_time
     private double totalCost;
     private boolean isGuest;
+    private int staffId;
 
     // Constructor không tham số
     public ComputerSessions() {
     }
 
     // Constructor có tham số
-    public ComputerSessions(int sessionId, Integer playerId, int computerId, Date startTime, Date endTime, int duration, double totalCost, boolean isGuest) {
+    public ComputerSessions(int sessionId, Integer playerId, int computerId, Date startTime, Date endTime, int duration, double totalCost, boolean isGuest, int staffId) {
         this.sessionId = sessionId;
         this.playerId = playerId;
         this.computerId = computerId;
@@ -26,6 +27,7 @@ public class ComputerSessions {
         this.duration = duration;
         this.totalCost = totalCost;
         this.isGuest = isGuest;
+        this.staffId = staffId;
     }
 
     // Getter và Setter
@@ -93,6 +95,14 @@ public class ComputerSessions {
         isGuest = guest;
     }
 
+    public int getStaffId() {
+        return this.staffId;
+    }
+
+    public void setStaffId(int staffId) {
+        this.staffId = staffId;
+    }
+
     // Phương thức toString để hiển thị thông tin
     @Override
     public String toString() {
@@ -105,6 +115,7 @@ public class ComputerSessions {
                 ", duration=" + duration +
                 ", totalCost=" + totalCost +
                 ", isGuest=" + isGuest +
+                ", staffId=" + staffId +
                 '}';
     }
 }

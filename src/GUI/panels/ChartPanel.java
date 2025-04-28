@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import BLL.FoodRevenueBLL;
+import DTO.FoodRevenue;
 import BLL.ComputerSessionBLL;
 import GUI.Components.CustomButton;
 import GUI.Components.CustomCombobox;
@@ -137,7 +138,7 @@ public class ChartPanel extends JPanel {
         LocalDateTime todayStart = LocalDateTime.now().withHour(0).withMinute(0).withSecond(0).withNano(0);
         LocalDateTime todayEnd = LocalDateTime.now().withHour(23).withMinute(59).withSecond(59).withNano(999999999);
 
-        ArrayList<Object[]> data = foodRevenueBLL.getFoodRevenue(todayStart, todayEnd);
+        ArrayList<FoodRevenue> data = foodRevenueBLL.getFoodRevenue(todayStart, todayEnd);
         System.out.println("DefaultChart FoodRevenue data size: " + data.size());
 
         // Nếu không có dữ liệu, trả về biểu đồ "Không có dữ liệu"
@@ -150,16 +151,16 @@ public class ChartPanel extends JPanel {
         // Chuyển dữ liệu thành labels và values, bỏ qua các bản ghi không hợp lệ
         ArrayList<String> validLabels = new ArrayList<>();
         ArrayList<Number> validValues = new ArrayList<>();
-        for (Object[] row : data) {
+        for (FoodRevenue revenue : data) {
             try {
-                String name = (String) row[0];
-                Double revenue = (Double) row[1];
-                if (name != null && !name.trim().isEmpty() && revenue != null && revenue > 0) {
+                String name = revenue.getFood();
+                Double totalRevenue = revenue.getTotalRevenue();
+                if (name != null && !name.trim().isEmpty() && totalRevenue != null && totalRevenue > 0) {
                     validLabels.add(name);
-                    validValues.add(revenue);
-                    System.out.println("DefaultChart Food: " + name + ", Revenue: " + revenue);
+                    validValues.add(totalRevenue);
+                    System.out.println("DefaultChart Food: " + name + ", Revenue: " + totalRevenue);
                 } else {
-                    System.out.println("Skipped invalid data: Name=" + name + ", Revenue=" + revenue);
+                    System.out.println("Skipped invalid data: Name=" + name + ", Revenue=" + totalRevenue);
                 }
             } catch (Exception e) {
                 System.err.println("Error processing default chart data: " + e.getMessage());
@@ -227,7 +228,7 @@ public class ChartPanel extends JPanel {
 
     // Biểu đồ doanh thu món ăn
     private CustomPieChart createFoodRevenueChart(LocalDateTime start, LocalDateTime end) {
-        ArrayList<Object[]> data = foodRevenueBLL.getFoodRevenue(start, end);
+        ArrayList<FoodRevenue> data = foodRevenueBLL.getFoodRevenue(start, end);
         System.out.println("FoodRevenue data size: " + data.size());
 
         if (data.isEmpty()) {
@@ -237,16 +238,16 @@ public class ChartPanel extends JPanel {
 
         ArrayList<String> validLabels = new ArrayList<>();
         ArrayList<Number> validValues = new ArrayList<>();
-        for (Object[] row : data) {
+        for (FoodRevenue revenue : data) {
             try {
-                String name = (String) row[0];
-                Double revenue = (Double) row[1];
-                if (name != null && !name.trim().isEmpty() && revenue != null && revenue > 0) {
+                String name = revenue.getFood();
+                Double totalRevenue = revenue.getTotalRevenue();
+                if (name != null && !name.trim().isEmpty() && totalRevenue != null && totalRevenue > 0) {
                     validLabels.add(name);
-                    validValues.add(revenue);
-                    System.out.println("Food: " + name + ", Revenue: " + revenue);
+                    validValues.add(totalRevenue);
+                    System.out.println("Food: " + name + ", Revenue: " + totalRevenue);
                 } else {
-                    System.out.println("Skipped invalid data: Name=" + name + ", Revenue=" + revenue);
+                    System.out.println("Skipped invalid data: Name=" + name + ", Revenue=" + totalRevenue);
                 }
             } catch (Exception e) {
                 System.err.println("Error processing food revenue data: " + e.getMessage());
@@ -294,6 +295,7 @@ public class ChartPanel extends JPanel {
             return createDefaultChart();
         }
 
-        return new CustomPieChart(validLabels.toArray(new String[0]), validValues.toArray(new Number[0]));
+        //Chuyển ArrayList thành mảng
+        return new CustomPieChart(validLabels.toArray(new String[0]), validValues.toArray(new Number[0])); 
     }
 }
