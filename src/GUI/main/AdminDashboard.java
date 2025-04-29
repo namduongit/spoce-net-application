@@ -244,12 +244,12 @@ public class AdminDashboard extends JFrame {
         this.switchPanel(new DashBoardPanel());
     }
 
-    // @SuppressWarnings("deprecation")
-    // public static void main(String[] args) {
-    //     Accounts accounts = new Accounts(1, "namduongit", "namduongit", "Quản trị viên", "Đang hoạt động",
-    //             new Timestamp(1, 1, 1, 1, 1, 1, 1));
-    //     Staffs staffs = new Staffs(1, 1, "Nguyễn Nam Dương", new Date(1, 1, 1), "Nam", "0388853835", "null", "null",
-    //             "null", "null");
-    //     new AdminDashboard(accounts, staffs).setVisible(true);
-    // }
+    @SuppressWarnings("deprecation")
+    public static void main(String[] args) {
+        Accounts accounts = new Accounts(1, "namduongit", "namduongit", "Quản trị viên", "Đang hoạt động",
+                new Timestamp(1, 1, 1, 1, 1, 1, 1));
+        Staffs staffs = new Staffs(1, 1, "Nguyễn Nam Dương", new Date(1, 1, 1), "Nam", "0388853835", "null", "null",
+                "null", "null");
+        new AdminDashboard(accounts, staffs).setVisible(true);
+    }
 }

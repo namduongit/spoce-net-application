@@ -41,4 +41,21 @@ public class ComputerSessionBLL {
     public HashMap<String, Object> getComputerInfoAndRoomInfoOfSession(int sessionId) {
         return this.computerSessionDAL.getComputerInfoAndRoomInfoOfSession(sessionId);
     }
+
+    public ArrayList<String> getRoomNames() {
+        return computerSessionDAL.getRoomNames();
+    }
+
+    public ArrayList<String> getComputersInRoom(String roomName) {
+        return computerSessionDAL.getComputersInRoom(roomName);
+    }
+
+    public ArrayList<Object[]> getComputersWithRevenue(LocalDateTime start, LocalDateTime end) {
+        return computerSessionDAL.getComputersWithRevenue(start, end);
+    }
+    public ArrayList<String> getAllRooms() {
+        return computerSessionDAL.getAllRooms();
+    }
+
+
 }
