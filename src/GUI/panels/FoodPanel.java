@@ -30,7 +30,6 @@ import javax.swing.*;
 public class FoodPanel extends JPanel {
     @SuppressWarnings("unused")
     private Accounts loginAccount;
-    @SuppressWarnings("unused")
     private Staffs loginStaff;
 
     private FoodBLL foodBLL;
@@ -336,9 +335,45 @@ public class FoodPanel extends JPanel {
 
         CustomButton addNewCategory = Utils.Helper.CreateComponent.createGrayButton("Thêm loại");
         addNewCategory.setBounds(410, 10, 100, 30);
+<<<<<<< HEAD
         addNewCategory.addActionListener(e -> new AddingCategory());
+=======
+        addNewCategory.addActionListener(e -> {
+            String newCate = JOptionPane.showInputDialog("Nhập tên loại bạn muốn thêm:");
+            
+            if (newCate != null && !newCate.trim().isEmpty()) {
+                int confirm = JOptionPane.showConfirmDialog(
+                    null,
+                    "Bạn có chắc muốn thêm loại \"" + newCate + "\" không?",
+                    "Xác nhận thêm loại",
+                    JOptionPane.YES_NO_OPTION
+                );
+
+                if (newCate.isEmpty() || newCate == null) {
+                    JOptionPane.showMessageDialog(this, "Vui lòng nhập thông tin loại sản phẩm mới !", "Cảnh báo", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+                
+                if (newCate.length() < 4) {
+                    JOptionPane.showMessageDialog(this, "Tên của loại sản phẩm mới phải có ít nhất 4 kí tự !", "Cảnh báo", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+>>>>>>> cf6316c8d30efa685b73925425c971abc5b430f3
 
 
+                if (confirm == JOptionPane.YES_OPTION) {
+                    System.out.println("Thêm loại: " + newCate);
+                    boolean resultAdd = this.categoryBLL.createNewCategory(newCate);
+                    if (resultAdd) {
+                        JOptionPane.showMessageDialog(this, "Thêm loại mới thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Thêm loại mới thất bại", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                    }
+
+                }
+            }
+        });
+        
         CustomButton createBillOrder = Utils.Helper.CreateComponent.createBrownButton("Tạo hóa đơn");
         createBillOrder.setBounds(530, 10, 150, 30);
         createBillOrder.addActionListener(e -> {

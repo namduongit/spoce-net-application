@@ -10,7 +10,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.*;
 
+<<<<<<< HEAD
 @SuppressWarnings({"unused", "FieldMayBeFinal"})
+=======
+@SuppressWarnings("unused")
+>>>>>>> cf6316c8d30efa685b73925425c971abc5b430f3
 public class AddingHardware extends JFrame {
     private JPanel content;
     private CustomTextField idField;

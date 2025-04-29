@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.swing.JOptionPane;
 
@@ -63,7 +64,7 @@ public class CategoryDAL {
         return result;
     }
 
-    public boolean createNewCategory(String name) {
+    public boolean createNewCategory(String categoryName) {
         MySQLHelper helper = new MySQLHelper();
 
         HashMap<String, String> params = new HashMap<>();
@@ -73,9 +74,18 @@ public class CategoryDAL {
         helper.buildingQueryParam(params);
             
         ArrayList<Object> values = new ArrayList<>();
-        values.add(name);
+        values.add(categoryName);
 
         return helper.insertData(values);
     }
 
+    public boolean deleteCategoryById(int categoryId) {
+                MySQLHelper helper = new MySQLHelper();
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "categories");
+        params.put("WHERE", "category_id = ?");
+        helper.buildingQueryParam(params);
+
+        return helper.deleteData(new ArrayList<>(List.of(categoryId)));
+    }
 }

@@ -300,7 +300,7 @@ CREATE TABLE IF NOT EXISTS computer_sessions (
     start_time   DATETIME DEFAULT CURRENT_TIMESTAMP,
     end_time     DATETIME DEFAULT NULL,
     duration     INT GENERATED ALWAYS AS (TIMESTAMPDIFF(MINUTE, start_time, end_time)) STORED,
-    total_cost   DECIMAL(10,2) NOT NULL DEFAULT 0, 
+    total_cost   INT NOT NULL DEFAULT 0, 
     is_guest     BOOLEAN GENERATED ALWAYS AS (player_id IS NULL) STORED,
     staff_id     INT NOT NULL,
 

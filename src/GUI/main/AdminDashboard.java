@@ -1,11 +1,14 @@
 package GUI.main;
 
+<<<<<<< HEAD
 import DTO.Accounts;
 import DTO.Staffs;
 import GUI.Components.CustomButton;
 import GUI.panels.*;
 import Utils.Helper.CreateComponent;
 import java.awt.CardLayout;
+=======
+>>>>>>> cf6316c8d30efa685b73925425c971abc5b430f3
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -30,8 +33,6 @@ public class AdminDashboard extends JFrame {
     private JLabel roleAccount;
 
     private JPanel actionPanel;
-
-    private CardLayout cardLayout;
     private JPanel infoPanel;
 
     private CustomButton dashBoardButton;

@@ -27,8 +27,8 @@ public class RoomPanel extends JPanel{
     private CustomPanel controlPanel;
     private CustomPanel dataPanel;
     private CustomTextField searchTextField;
-    private CustomCombobox roomTypeCombobox;
-    private CustomCombobox statusCombobox;
+    private CustomCombobox<String> roomTypeCombobox;
+    private CustomCombobox<String> statusCombobox;
     private JLabel selectedRoom;
     private DefaultTableModel model;
     private CustomTable roomTable;
@@ -229,7 +229,7 @@ public class RoomPanel extends JPanel{
                 "Phòng thi đấu"
         };
 
-        roomTypeCombobox = new CustomCombobox(roomTypeList);
+        roomTypeCombobox = new CustomCombobox<String>(roomTypeList);
         roomTypeCombobox.setBounds(525, 38, 150, 35);
 
         JLabel statusLabel = new JLabel("Trạng thái:");
@@ -242,7 +242,7 @@ public class RoomPanel extends JPanel{
                 "Bảo trì"
         };
 
-        statusCombobox = new CustomCombobox(statusList);
+        statusCombobox = new CustomCombobox<String>(statusList);
         statusCombobox.setBounds(690,38,150,35);
 
         CustomButton filterButton = new CustomButton("Lọc");
@@ -403,7 +403,7 @@ public class RoomPanel extends JPanel{
                                                     .filter(room -> status.equals("Tất cả") || room.getStatus().equals(status))
                                                     .collect(Collectors.toList());
 
-        this.roomList = new ArrayList(filteredRoomList);
+        this.roomList = new ArrayList<Rooms>(filteredRoomList);
 
         this.updateTable();
     }

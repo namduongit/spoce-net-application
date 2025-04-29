@@ -18,11 +18,17 @@ import java.util.List;
 import java.util.stream.Collectors;
 import javax.swing.*;
 
+<<<<<<< HEAD
 @SuppressWarnings({"unused", "FieldMayBeFinal"})
 public class ComputerManagingPanel extends JPanel {
     
     private Accounts loginAccount;
 
+=======
+@SuppressWarnings("unused")
+public class ComputerManagingPanel extends JPanel {
+    private Accounts loginAccount;
+>>>>>>> cf6316c8d30efa685b73925425c971abc5b430f3
     private Staffs loginStaff;
 
     
@@ -53,6 +59,9 @@ public class ComputerManagingPanel extends JPanel {
     public ComputerManagingPanel(Accounts loginAccount, Staffs loginStaff) {
         this.loginAccount = loginAccount;
         this.loginStaff = loginStaff;
+
+        System.out.println(loginAccount);
+        System.out.println(loginStaff);
 
         this.currentPanel = "PlayedComputer";
         this.currentSelectedId = -1;
@@ -324,11 +333,6 @@ public class ComputerManagingPanel extends JPanel {
         );
         selectionText.setBounds(860,10,300,20);
 
-
-        Image addImage = new ImageIcon(
-                System.getProperty("user.dir") + "/src/Assets/Icon/add.png"
-        ).getImage()
-                .getScaledInstance(30,30,Image.SCALE_SMOOTH);
 
         if (this.currentPanel.equals("PlayedComputer")) {
             panel.add(turnOffButton);

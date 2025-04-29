@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
+@SuppressWarnings("unused")
 public class DetailsComputer extends JFrame {
     private JPanel content;
     private Computers computer;
@@ -44,7 +45,6 @@ public class DetailsComputer extends JFrame {
     private int currentHeadphoneId;
     private int currentRomId;
     private int currentRoomId;
-    @SuppressWarnings("unused")
     private String currentStatus;
 
     public DetailsComputer(Computers computer) {

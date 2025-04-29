@@ -26,7 +26,7 @@ public class ComputerSessionDAL {
                         rs.getDate("start_time"),
                         rs.getDate("end_time"),
                         rs.getInt("duration"),
-                        rs.getDouble("total_cost"),
+                        rs.getInt("total_cost"),
                         rs.getBoolean("is_guest"),
                         rs.getInt("staff_id")
                     )
@@ -37,7 +37,7 @@ public class ComputerSessionDAL {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(
                     null,
-                    "Never",
+                    "Lỗi ComputerSessionDAL dòng 42",
                     "Lỗi",
                     JOptionPane.ERROR_MESSAGE
             );

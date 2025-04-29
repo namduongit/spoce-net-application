@@ -2,6 +2,7 @@ package GUI.panels;
 
 import BLL.ComputerSessionBLL;
 import BLL.FoodRevenueBLL;
+
 import DTO.FoodRevenue;
 import GUI.Components.CustomButton;
 import GUI.Components.CustomCombobox;
@@ -190,6 +191,7 @@ public class ChartPanel extends JPanel {
         }
 
         // Xác thực định dạng ngày
+        @SuppressWarnings("unused")
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDateTime start = null, end = null;
         try {
