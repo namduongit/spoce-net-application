@@ -35,8 +35,8 @@ public class FoodBillDAL {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(
                     null,
-                    "Never",
-                    "Lỗi tại FoodBillDAL dòng 38",
+                    "Lỗi truy vấn dữ liệu FoodBillDAL lấy tất cả Hóa đơn",
+                    "Lỗi",
                     JOptionPane.ERROR_MESSAGE
             );
         }
@@ -79,8 +79,8 @@ public class FoodBillDAL {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(
                     null,
-                    "Never",
-                    "Lỗi tại FoodBillDAL dòng 38",
+                    "Lỗi truy vấn dữ liệu FoodBillDAL lấy hóa đơn theo danh mục",
+                    "Lỗi",
                     JOptionPane.ERROR_MESSAGE
             );
         }
@@ -88,6 +88,54 @@ public class FoodBillDAL {
 
         return list;
     }
+
+    public ArrayList<Object[]> getDetailFoodBillById(int foodBillId) {
+        ArrayList<Object[]> list = new ArrayList<>();
+
+        MySQLHelper helper = new MySQLHelper();
+
+        HashMap<String, String> params = new HashMap<>();
+
+        params.put("TABLE", "food_bills");
+        params.put("JOIN", "food_orders on food_bills.bill_id = food_orders.bill_id\n" +
+                               "join foods on food_orders.food_id = foods.food_id");
+        params.put("WHERE", "food_bills.bill_id = ?");
+        helper.buildingQueryParam(params);
+
+        ArrayList<Object> values = new ArrayList<>();
+        values.add(foodBillId);
+
+        try {
+            ResultSet rs = helper.queryWithParam(values);
+            while (rs.next()) {
+                list.add(new Object[] {
+                    rs.getInt("bill_id"),
+                    rs.getInt("player_id"),
+                    rs.getInt("staff_id"),
+                    rs.getInt("total_price"),
+                    rs.getString("status"),
+                    rs.getInt("food_id"),
+                    rs.getInt("quantity"),
+                    rs.getString("name"),
+                    rs.getInt("price"),
+                    rs.getTimestamp("created_at")
+                });
+            }
+            rs.close();
+            helper.closeConnect();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Lỗi truy vấn dữ liệu FoodBillDAL lấy hóa đơn theo mã hóa đơn",
+                    "Lỗi",
+                    JOptionPane.ERROR_MESSAGE
+            );
+        }
+        return list;
+    }
+
+    // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     public int createLastestBill(int staffId) {
         MySQLHelper helper = new MySQLHelper();
@@ -103,7 +151,9 @@ public class FoodBillDAL {
         return helper.insertDataLastest(values);
     }
 
-    public boolean updateTotalPriceByBillId(int billId) {
+    // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    public boolean updateTotalPriceByBillId(int foodBillId) {
         MySQLHelper helper = new MySQLHelper();
     
         String sql = "UPDATE food_bills fb " +
@@ -116,10 +166,10 @@ public class FoodBillDAL {
                      ") AS total_data ON fb.bill_id = total_data.bill_id " +
                      "SET fb.total_price = total_data.total";
     
-        return helper.executeUpdateWithParams(sql, new Object[]{billId});
+        return helper.executeUpdateWithParams(sql, new Object[]{foodBillId});
     }
 
-    public boolean updateTotalPrice(int billId, int totalPrice) {
+    public boolean updateTotalPrice(int foodBillId, int totalPrice) {
         MySQLHelper helper = new MySQLHelper();
         HashMap<String, String> params = new HashMap<>();
 
@@ -130,10 +180,44 @@ public class FoodBillDAL {
 
         ArrayList<Object> valueCondition = new ArrayList<>();
         valueCondition.add(totalPrice);
-        valueCondition.add(billId);
+        valueCondition.add(foodBillId);
 
         return helper.updateData(valueCondition);
     }
+
+    public boolean updateCofirmFoodBill(int foodBillId) {
+        MySQLHelper helper = new MySQLHelper();
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "food_bills");
+        params.put("SET", "status = ?");
+        params.put("WHERE", "bill_id = ?");
+        helper.buildingQueryParam(params);
+
+
+        ArrayList<Object> valueCondition = new ArrayList<>();
+        valueCondition.add("Đã xử lý");
+        valueCondition.add(foodBillId);
+
+        return helper.updateData(valueCondition);
+    }
+
+    public boolean updateCancelFoodBill(int foodBillId) {
+        MySQLHelper helper = new MySQLHelper();
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "food_bills");
+        params.put("SET", "status = ?");
+        params.put("WHERE", "bill_id = ?");
+        helper.buildingQueryParam(params);
+
+
+        ArrayList<Object> valueCondition = new ArrayList<>();
+        valueCondition.add("Đã hủy");
+        valueCondition.add(foodBillId);
+
+        return helper.updateData(valueCondition);
+    }
+
+
 
     
 }

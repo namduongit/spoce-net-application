@@ -7,7 +7,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import javax.swing.*;
@@ -15,7 +14,6 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-
 
 import BLL.*;
 import DTO.Accounts;
@@ -29,7 +27,6 @@ import Utils.Helper.AdjustTableWidth;
 import Utils.Helper.CreateComponent;
 import Utils.Helper.Comon;
 import Utils.Helper.ChangeMinToDate;
-
 
 public class BillPanel extends JPanel {
     @SuppressWarnings("unused")
@@ -56,7 +53,6 @@ public class BillPanel extends JPanel {
     private StaffBLL staffBLL;
     private AccountBLL accountBLL;
     private CategoryBLL categoryBLL;
-
 
     private ComputerSessionBLL computerSessionBLL;
     private ArrayList<ComputerSessions> sessionList;
@@ -165,6 +161,7 @@ public class BillPanel extends JPanel {
     private CustomPanel createFoodBillControlPanel() {
         CustomPanel panel = new CustomPanel();
         panel.setLayout(null);
+        panel.setBackground(Color.WHITE);
 
         JLabel timeLabel = new JLabel("Khoảng thời gian:");
         timeLabel.setBounds(10, 10, 100, 30);
@@ -211,7 +208,7 @@ public class BillPanel extends JPanel {
         ArrayList<String> categoryList = new ArrayList<>();
         categoryList.add("Tất cả");
         for (Categories x : this.categoryBLL.getAllCategories()) {
-            categoryList.add(x.getCategoryId() +" - "+ x.getName());
+            categoryList.add(x.getCategoryId() + " - " + x.getName());
         }
         this.foodBillTypeCombobox = new CustomCombobox<>(categoryList);
         this.foodBillTypeCombobox.setBounds(220, 38, 150, 35);
@@ -219,96 +216,8 @@ public class BillPanel extends JPanel {
         // Trạng thái hóa đơn
         JLabel foodBillStatusLabel = new JLabel("Trạng thái");
         foodBillStatusLabel.setBounds(380, 10, 100, 30);
-        
+
         this.foodBillStatusCombobox.setBounds(380, 38, 150, 35);
-
-        // Tạo một button hủy đơn
-        CustomButton cancelButton = new CustomButton("Hủy đơn");
-        // Chỉnh kích thước của Border
-        cancelButton.setBorderSize(3);
-        // Màu nền
-        cancelButton.setBackground(Color.decode("#F44336"));
-        // Màu border
-        cancelButton.setBorderColor(Color.decode("#F44336"));
-        // Màu chữ
-        cancelButton.setForeground(Color.WHITE);
-
-        cancelButton.setBounds(545, 38, 100, 35);
-        cancelButton.addMouseListener(new MouseListener() {
-
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                // Khi di chuột vào thì Button sẽ đổi màu
-                cancelButton.setForeground(Color.decode("#F44336"));
-                cancelButton.setBackground(Color.WHITE);
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                // Khi chuột ra khỏi Button thì Button sẽ trở về màu cũ
-                cancelButton.setForeground(Color.WHITE);
-                cancelButton.setBackground(Color.decode("#F44336"));
-            }
-        });
-
-        // Tạo một button với xác nhận đơn
-        CustomButton confirmButton = new CustomButton("Xác nhận");
-        // Chỉnh kích thước của Border
-        confirmButton.setBorderSize(3);
-        // Màu nền
-        confirmButton.setBackground(Color.decode("#00695C"));
-        // Màu border
-        confirmButton.setBorderColor(Color.decode("#00695C"));
-        // Màu chữ
-        confirmButton.setForeground(Color.WHITE);
-
-        confirmButton.setBounds(650, 38, 100, 35);
-        confirmButton.addMouseListener(new MouseListener() {
-
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                // Khi di chuột vào thì Button sẽ đổi màu
-                confirmButton.setForeground(Color.decode("#00695C"));
-                confirmButton.setBackground(Color.WHITE);
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                // Khi chuột ra khỏi Button thì Button sẽ trở về màu cũ
-                confirmButton.setForeground(Color.WHITE);
-                confirmButton.setBackground(Color.decode("#00695C"));
-            }
-        });
 
         // Tạo hiệu ứng khi hover qua Button và hành động khi click vào button
         // Tạo một Button với chữ "Lọc"
@@ -330,7 +239,7 @@ public class BillPanel extends JPanel {
 
                 // Khi Button lọc được click thì sẽ gọi hàm lọc lại bảng
                 BillPanel.this.filterFoodBillList();
-                
+
             }
 
             @Override
@@ -412,9 +321,9 @@ public class BillPanel extends JPanel {
         // Khởi tạo Button in hóa đơn
         CustomButton printButton = new CustomButton("In hóa đơn");
         // Màu nền
-        printButton.setBackground(Color.green);
+        printButton.setBackground(Color.decode("#4527A0"));
         // Màu border
-        printButton.setBorderColor(Color.green);
+        printButton.setBorderColor(Color.decode("#4527A0"));
         // Màu chữ
         printButton.setForeground(Color.WHITE);
         // Chỉnh kích thước của Border
@@ -440,7 +349,7 @@ public class BillPanel extends JPanel {
             @Override
             public void mouseEntered(MouseEvent e) {
                 // Khi di chuột vào thì Button sẽ đổi màu
-                printButton.setForeground(Color.green);
+                printButton.setForeground(Color.decode("#4527A0"));
                 printButton.setBackground(Color.WHITE);
             }
 
@@ -448,14 +357,14 @@ public class BillPanel extends JPanel {
             public void mouseExited(MouseEvent e) {
                 // Khi chuột ra khỏi Button thì Button sẽ trở về màu cũ
                 printButton.setForeground(Color.WHITE);
-                printButton.setBackground(Color.green);
+                printButton.setBackground(Color.decode("#4527A0"));
             }
         });
 
         selectionTextFoodBill = new JLabel("Đang chọn: NULL");
         selectionTextFoodBill.setFont(
                 new Font("Sans-serif", Font.BOLD, 12));
-        selectionTextFoodBill.setBounds(545, 10, 300, 20);
+        selectionTextFoodBill.setBounds(755, 10, 300, 20);
 
         panel.add(timeLabel);
         panel.add(monthTextFieldFoodBill);
@@ -468,8 +377,6 @@ public class BillPanel extends JPanel {
         panel.add(this.foodBillStatusCombobox);
 
         panel.add(filterButton);
-        panel.add(cancelButton);
-        panel.add(confirmButton);
         panel.add(selectionTextFoodBill);
         panel.add(resetButton);
         panel.add(printButton);
@@ -636,9 +543,9 @@ public class BillPanel extends JPanel {
         // Khởi tạo Button in hóa đơn
         CustomButton printButton = new CustomButton("In hóa đơn");
         // Màu nền
-        printButton.setBackground(Color.green);
+        printButton.setBackground(Color.decode("#4527A0"));
         // Màu border
-        printButton.setBorderColor(Color.green);
+        printButton.setBorderColor(Color.decode("#4527A0"));
         // Màu chữ
         printButton.setForeground(Color.WHITE);
         // Chỉnh kích thước của Border
@@ -664,7 +571,7 @@ public class BillPanel extends JPanel {
             @Override
             public void mouseEntered(MouseEvent e) {
                 // Khi di chuột vào thì Button sẽ đổi màu
-                printButton.setForeground(Color.green);
+                printButton.setForeground(Color.decode("#4527A0"));
                 printButton.setBackground(Color.WHITE);
             }
 
@@ -672,7 +579,7 @@ public class BillPanel extends JPanel {
             public void mouseExited(MouseEvent e) {
                 // Khi chuột ra khỏi Button thì Button sẽ trở về màu cũ
                 printButton.setForeground(Color.WHITE);
-                printButton.setBackground(Color.green);
+                printButton.setBackground(Color.decode("#4527A0"));
             }
         });
 
@@ -726,7 +633,7 @@ public class BillPanel extends JPanel {
 
         this.tableFoodBill.getColumnModel()
                 .getColumn(0)
-                .setPreferredWidth(100);
+                .setPreferredWidth(80);
 
         for (int i = 0; i < this.tableFoodBill.getColumnCount(); i++) {
             this.tableFoodBill.getColumnModel()
@@ -758,7 +665,7 @@ public class BillPanel extends JPanel {
 
         this.tableFoodBill.getColumnModel()
                 .getColumn(0)
-                .setPreferredWidth(100);
+                .setPreferredWidth(80);
     }
 
     private void filterSessionList() {
@@ -834,7 +741,8 @@ public class BillPanel extends JPanel {
 
         String foodBillStatus = this.foodBillStatusCombobox.getSelectedItem().toString();
 
-        if (month.isEmpty() && year.isEmpty() && foodType.equalsIgnoreCase("Tất cả") && foodBillStatus.equalsIgnoreCase("Tất cả") && foodType.equalsIgnoreCase("Tất cả")) {
+        if (month.isEmpty() && year.isEmpty() && foodType.equalsIgnoreCase("Tất cả")
+                && foodBillStatus.equalsIgnoreCase("Tất cả") && foodType.equalsIgnoreCase("Tất cả")) {
             this.resetFoodBillDataPanel();
         } else {
 
@@ -856,15 +764,14 @@ public class BillPanel extends JPanel {
             }
 
             // Nếu người dùng không nhập tháng năm (rỗng) thì cho bằng -1
-       
+
             int monthInt = month.isEmpty() ? -1 : Integer.parseInt(month);
             int yearInt = year.isEmpty() ? -1 : Integer.parseInt(year);
 
             // Đọc lại dữ liệu trước khi lọc
             if (foodType.isEmpty()) {
                 this.foodBillList = this.foodBillBLL.getFoodBillList();
-            }
-            else {
+            } else {
                 String[] regexFoodType = foodType.split(" - ");
                 String idTypeFood = regexFoodType[0];
                 System.out.println(idTypeFood);
@@ -874,13 +781,13 @@ public class BillPanel extends JPanel {
             // Lọc dữ liệu
             List<FoodBills> list = this.foodBillList.stream()
                     .filter(foodBill -> month.isEmpty()
-                                || foodBill.getCreatedAt().toLocalDateTime().getMonthValue() == monthInt)
+                            || foodBill.getCreatedAt().toLocalDateTime().getMonthValue() == monthInt)
                     .filter(foodBill -> year.isEmpty()
-                                || foodBill.getCreatedAt().toLocalDateTime().getYear() == yearInt)
-                    
+                            || foodBill.getCreatedAt().toLocalDateTime().getYear() == yearInt)
+
                     .filter(foodBill -> foodBillStatus.equalsIgnoreCase("Tất cả")
-                                || foodBill.getStatus().equalsIgnoreCase(foodBillStatus))
-                    .collect(Collectors.toList());          
+                            || foodBill.getStatus().equalsIgnoreCase(foodBillStatus))
+                    .collect(Collectors.toList());
 
             this.foodBillList = new ArrayList<>(list);
             this.updateFoodBillDataPanel(this.foodBillList);
@@ -919,7 +826,6 @@ public class BillPanel extends JPanel {
 
     private void initComponents() {
         this.setLayout(null);
-        this.setBackground(Color.WHITE);
 
         headerPanel = this.createHeaderPanel();
 
@@ -962,10 +868,10 @@ public class BillPanel extends JPanel {
         for (int i = 0; i < list.size(); i++) {
             data[i][0] = list.get(i).getBillId();
             data[i][1] = this.accountBLL.getAccountById(
-                this.staffBLL.getStaffById(list.get(i)
-                        .getStaffId())
-                        .getAccountId())
-                .getUsername();
+                    this.staffBLL.getStaffById(list.get(i)
+                            .getStaffId())
+                            .getAccountId())
+                    .getUsername();
             data[i][2] = Comon.formatMoney(list.get(i).getTotalPrice() + "");
             data[i][3] = list.get(i).getStatus();
             data[i][4] = list.get(i).getCreatedAt();
@@ -1018,7 +924,7 @@ public class BillPanel extends JPanel {
         AdjustTableWidth.automaticallyAdjustTableWidths(this.tableFoodBill);
 
         // Điều chỉnh width của cột ID
-        this.tableFoodBill.getColumnModel().getColumn(0).setPreferredWidth(100);
+        this.tableFoodBill.getColumnModel().getColumn(0).setPreferredWidth(80);
 
         // THêm sự kiện khi chọn một dòng nào đó trong table
         this.tableFoodBill.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
@@ -1036,9 +942,152 @@ public class BillPanel extends JPanel {
 
         // Thêm bảng vào ScrollPane
         JScrollPane scrollPane = new CustomScrollPane(this.tableFoodBill);
-        scrollPane.setBounds(0, 0, 1080, 453);
+        scrollPane.setBounds(0, 10, 1080, 360);
+
+        CustomPanel buttonPanel = new CustomPanel();
+        buttonPanel.setLayout(null);
+
+        buttonPanel.setBounds(0, 380, 1080, 65);
+        buttonPanel.setBackground(Color.WHITE);
+
+        // Tạo một button hủy đơn
+        CustomButton cancelButton = new CustomButton("Hủy đơn");
+        // Chỉnh kích thước của Border
+        cancelButton.setBorderSize(3);
+        // Màu nền
+        cancelButton.setBackground(Color.decode("#F44336"));
+        // Màu border
+        cancelButton.setBorderColor(Color.decode("#F44336"));
+        // Màu chữ
+        cancelButton.setForeground(Color.WHITE);
+
+        cancelButton.setBounds(140, 15, 100, 35);
+        cancelButton.addMouseListener(new MouseListener() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                BillPanel.this.updateCancelFoodBill();
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                // Khi di chuột vào thì Button sẽ đổi màu
+                cancelButton.setForeground(Color.decode("#F44336"));
+                cancelButton.setBackground(Color.WHITE);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                // Khi chuột ra khỏi Button thì Button sẽ trở về màu cũ
+                cancelButton.setForeground(Color.WHITE);
+                cancelButton.setBackground(Color.decode("#F44336"));
+            }
+        });
+
+        // Tạo một button với xác nhận đơn
+        CustomButton confirmButton = new CustomButton("Xác nhận");
+        // Chỉnh kích thước của Border
+        confirmButton.setBorderSize(3);
+        // Màu nền
+        confirmButton.setBackground(Color.decode("#00695C"));
+        // Màu border
+        confirmButton.setBorderColor(Color.decode("#00695C"));
+        // Màu chữ
+        confirmButton.setForeground(Color.WHITE);
+
+        confirmButton.setBounds(20, 15, 100, 35);
+        confirmButton.addMouseListener(new MouseListener() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                BillPanel.this.updateCofirmFoodBill();
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                // Khi di chuột vào thì Button sẽ đổi màu
+                confirmButton.setForeground(Color.decode("#00695C"));
+                confirmButton.setBackground(Color.WHITE);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                // Khi chuột ra khỏi Button thì Button sẽ trở về màu cũ
+                confirmButton.setForeground(Color.WHITE);
+                confirmButton.setBackground(Color.decode("#00695C"));
+            }
+        });
+
+        // Tạo một button chi tiết đơn
+        CustomButton detailButton = new CustomButton("Chi tiết");
+        // Chỉnh kích thước của Border
+        detailButton.setBorderSize(3);
+        // Màu nền
+        detailButton.setBackground(Color.decode("#6D4C41"));
+        // Màu border
+        detailButton.setBorderColor(Color.decode("#6D4C41"));
+        // Màu chữ
+        detailButton.setForeground(Color.WHITE);
+
+        detailButton.setBounds(260, 15, 100, 35);
+        detailButton.addMouseListener(new MouseListener() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                // Khi di chuột vào thì Button sẽ đổi màu
+                detailButton.setForeground(Color.decode("#6D4C41"));
+                detailButton.setBackground(Color.WHITE);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                // Khi chuột ra khỏi Button thì Button sẽ trở về màu cũ
+                detailButton.setForeground(Color.WHITE);
+                detailButton.setBackground(Color.decode("#6D4C41"));
+            }
+        });
+
+        buttonPanel.add(confirmButton);
+        buttonPanel.add(cancelButton);
+        buttonPanel.add(detailButton);
 
         panel.add(scrollPane);
+        panel.add(buttonPanel);
 
         return panel;
     }
@@ -1084,5 +1133,95 @@ public class BillPanel extends JPanel {
         panel.add(scrollPane);
 
         return panel;
+    }
+
+    private void updateCofirmFoodBill() {
+        int confirmUpdate = JOptionPane.showConfirmDialog(this, "Bạn có chắc cập nhật trạng thái hóa đơn ?",
+                "Thông báo", JOptionPane.YES_NO_OPTION);
+
+        if (confirmUpdate == JOptionPane.NO_OPTION)
+            return;
+
+        String[] regexString = this.selectionTextFoodBill.getText().split("\\s+");
+        if (Comon.isTrueNumber(regexString[regexString.length - 1])) {
+
+            int row = this.tableFoodBill.getSelectedRow();
+            if (row != -1) {
+                String valueStatus = (String) this.tableFoodBill.getValueAt(row, 3);
+                if (valueStatus.equalsIgnoreCase("Đã xử lý") || valueStatus.equalsIgnoreCase("Đã hủy")) {
+                    JOptionPane.showMessageDialog(this, "Hóa đơn đã hủy hoặc đã xử lý thì không xác nhận lại được",
+                            "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                    return;
+                }
+
+                boolean resultUpdate = this.foodBillBLL
+                        .updateCofirmFoodBill(Integer.parseInt(regexString[regexString.length - 1]));
+                if (resultUpdate) {
+                    JOptionPane.showMessageDialog(this, "Cập nhật trạng thái hóa đơn thành công", "Thông báo",
+                            JOptionPane.INFORMATION_MESSAGE);
+                    this.filterFoodBillList();
+                    return;
+                }
+                JOptionPane.showMessageDialog(this, "Cập nhật trạng thái hóa đơn thất bại", "Thông báo",
+                        JOptionPane.INFORMATION_MESSAGE);
+                return;
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Có lỗi xảy ra vui lòng chọn dòng khác", "Thông báo",
+                        JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn hóa đơn để xác nhận", "Thông báo",
+                    JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+    }
+
+
+
+    private void updateCancelFoodBill() {
+        int confirmUpdate = JOptionPane.showConfirmDialog(this, "Bạn có chắc cập nhật trạng thái hóa đơn ?",
+                "Thông báo", JOptionPane.YES_NO_OPTION);
+
+        if (confirmUpdate == JOptionPane.NO_OPTION)
+            return;
+
+        String[] regexString = this.selectionTextFoodBill.getText().split("\\s+");
+        if (Comon.isTrueNumber(regexString[regexString.length - 1])) {
+
+            int row = this.tableFoodBill.getSelectedRow();
+            if (row != -1) {
+                String valueStatus = (String) this.tableFoodBill.getValueAt(row, 3);
+                if (valueStatus.equalsIgnoreCase("Đã xử lý")) {
+                    JOptionPane.showMessageDialog(this, "Hóa đơn đã xử lý thì không hủy được",
+                            "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                    return;
+                }
+
+                boolean resultUpdate = this.foodBillBLL
+                        .updateCancelFoodBill(Integer.parseInt(regexString[regexString.length - 1]));
+                if (resultUpdate) {
+                    JOptionPane.showMessageDialog(this, "Cập nhật trạng thái hóa đơn thành công", "Thông báo",
+                            JOptionPane.INFORMATION_MESSAGE);
+                    this.filterFoodBillList();
+                    return;
+                }
+                JOptionPane.showMessageDialog(this, "Cập nhật trạng thái hóa đơn thất bại", "Thông báo",
+                        JOptionPane.INFORMATION_MESSAGE);
+                return;
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Có lỗi xảy ra vui lòng chọn dòng khác", "Thông báo",
+                        JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn hóa đơn để xác nhận", "Thông báo",
+                    JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
     }
 }

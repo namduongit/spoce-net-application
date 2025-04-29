@@ -20,9 +20,17 @@ public class FoodBillBLL {
         return this.foodBillDAL.getFoodBillByCategoryId(categoryId);
     }
 
+    public ArrayList<Object[]> getDetailFoodBillById(int foodBillId) {
+        return this.foodBillDAL.getDetailFoodBillById(foodBillId);
+    }
+
+
+
     public int createLastestBill(int staffId) {
         return this.foodBillDAL.createLastestBill(staffId);
     }
+
+
 
     public boolean updateTotalPriceByBillId(int billId) {
         return this.foodBillDAL.updateTotalPriceByBillId(billId);
@@ -32,10 +40,23 @@ public class FoodBillBLL {
         return this.foodBillDAL.updateTotalPrice(billId, totalPrice);
     }
 
+    public boolean updateCofirmFoodBill(int foodBillId) {
+        return this.foodBillDAL.updateCofirmFoodBill(foodBillId);
+    }
+
+    public boolean updateCancelFoodBill(int foodBillId) {
+        return this.foodBillDAL.updateCancelFoodBill(foodBillId);
+    }
+
+
     public static void main(String[] args) {
-        ArrayList<FoodBills> list = new FoodBillBLL().getFoodBillByCategoryId(1);
-        for (FoodBills fb : list) {
-            System.out.println(fb);
+        ArrayList<Object[]> list = new FoodBillBLL().getDetailFoodBillById(3);
+        for (Object[] object : list) {
+            for (Object ob : object) {
+                System.out.print(ob +" ");
+            }
+            System.out.println();
         }
     }
+
 }
