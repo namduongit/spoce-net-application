@@ -18,7 +18,6 @@ import GUI.Components.CustomTextField;
 import Utils.Helper.CreateComponent;
 
 public class AddingOrder extends JFrame {
-    @SuppressWarnings("unused")
     private Staffs loginStaff;
 
     private FoodBillBLL foodBillBLL;

@@ -45,7 +45,6 @@ public class DetailsComputer extends JFrame {
     private int currentHeadphoneId;
     private int currentRomId;
     private int currentRoomId;
-    @SuppressWarnings("unused")
     private String currentStatus;
 
     public DetailsComputer(Computers computer) {

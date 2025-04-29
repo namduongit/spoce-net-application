@@ -109,12 +109,13 @@ public class MySQLHelper {
             String select = this.queryParams.get("SELECT");
             String table = this.queryParams.get("TABLE");
             String join = this.buidlingJoinTable();
-           // String set = this.queryParams.get("SET").isEmpty() || this.queryParams.get("SET") == null ? "" : this.queryParams.get("SET");
             String where = this.buildingCondition();
+            // du ma thang nao ko them cai nay do  , fix loi lon
+            String groupBy = this.queryParams.get("GROUP BY") != null && !this.queryParams.get("GROUP BY").isEmpty() ? "GROUP BY " + this.queryParams.get("GROUP BY") : "";
             String other = this.queryParams.get("OTHER");
-
-            String sql = "SELECT " + select + " FROM " + table + "\n" + join + "\n" + where + "\n" + other;
-
+    
+            String sql = "SELECT " + select + " FROM " + table + "\n" + join + "\n" + where + "\n" + groupBy + "\n" + other;
+    
             PreparedStatement preparedStatement = this.connection.prepareStatement(sql);
             if (values != null && !values.isEmpty()) {
                 for (int i = 0; i < values.size(); i++) {

@@ -33,7 +33,6 @@ import java.util.stream.Collectors;
 public class FoodPanel extends JPanel {
     @SuppressWarnings("unused")
     private Accounts loginAccount;
-    @SuppressWarnings("unused")
     private Staffs loginStaff;
 
     private FoodBLL foodBLL;

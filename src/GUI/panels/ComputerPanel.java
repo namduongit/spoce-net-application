@@ -20,9 +20,7 @@ import java.util.List;
 
 @SuppressWarnings("unused")
 public class ComputerPanel extends JPanel{
-    @SuppressWarnings("unused")
     private Accounts loginAccount;
-    @SuppressWarnings("unused")
     private Staffs loginStaff;
 
     private CardLayout cardLayout;

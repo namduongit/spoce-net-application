@@ -6,6 +6,7 @@
     "configurations": [
         {
             "type": "java",
+<<<<<<< HEAD
             "name": "ChangeMinToDate",
             "request": "launch",
             "mainClass": "Utils.Helper.ChangeMinToDate",
@@ -24,6 +25,47 @@
             "request": "launch",
             "mainClass": "Utils.Helper.PrintPDF",
             "projectName": "spoce-net-application_f57ff3ae"
+=======
+            "name": "test",
+            "request": "launch",
+            "mainClass": "test",
+            "projectName": "spoce-net-application_dd316008"
+        },
+        {
+            "type": "java",
+            "name": "AdminDashboard",
+            "request": "launch",
+            "mainClass": "GUI.main.AdminDashboard",
+            "projectName": "spoce-net-application_dd316008"
+        },
+        {
+            "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "App",
+            "projectName": "spoce-net-application_dd316008"
+        },
+        {
+            "type": "java",
+            "name": "AdminLoginScreen",
+            "request": "launch",
+            "mainClass": "GUI.main.AdminLoginScreen",
+            "projectName": "spoce-net-application_dd316008"
+        },
+        {
+            "type": "java",
+            "name": "PieChartExample",
+            "request": "launch",
+            "mainClass": "PieChartExample",
+            "projectName": "spoce-net-application_dd316008"
+        },
+        {
+            "type": "java",
+            "name": "ChartExample",
+            "request": "launch",
+            "mainClass": "ChartExample",
+            "projectName": "spoce-net-application_dd316008"
+>>>>>>> edc8d71b34e381aaa4af0a44986a32cec70d98af
         },
         {
             "type": "java",

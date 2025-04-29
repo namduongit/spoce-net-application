@@ -7,6 +7,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import javax.swing.*;
@@ -15,8 +16,10 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
+
 import BLL.*;
 import DTO.Accounts;
+import DTO.Categories;
 import DTO.ComputerSessions;
 import DTO.FoodBills;
 import DTO.Rooms;
@@ -24,10 +27,14 @@ import DTO.Staffs;
 import GUI.Components.*;
 import Utils.Helper.AdjustTableWidth;
 import Utils.Helper.CreateComponent;
+import Utils.Helper.Comon;
+import Utils.Helper.ChangeMinToDate;
 
-@SuppressWarnings("unused")
+
 public class BillPanel extends JPanel {
+    @SuppressWarnings("unused")
     private Staffs loginStaff;
+    @SuppressWarnings("unused")
     private Accounts loginAccount;
 
     private CustomPanel headerPanel;
@@ -45,10 +52,13 @@ public class BillPanel extends JPanel {
     private CustomTable tableSession;
 
     private RoomBLL roomBLL;
-    private ComputerSessionBLL computerSessionBLL;
     private ComputerBLL computerBLL;
     private StaffBLL staffBLL;
     private AccountBLL accountBLL;
+    private CategoryBLL categoryBLL;
+
+
+    private ComputerSessionBLL computerSessionBLL;
     private ArrayList<ComputerSessions> sessionList;
     private String[] columnNameSession;
     private DefaultTableCellRenderer rendererSession;
@@ -57,21 +67,32 @@ public class BillPanel extends JPanel {
     private CustomTextField monthTextFieldFoodBill;
     private CustomTextField yearTextFieldFoodBill;
     private JLabel selectionTextFoodBill;
+
+    private CustomCombobox<String> foodBillTypeCombobox;
+    private CustomCombobox<String> foodBillStatusCombobox;
     private CustomTable tableFoodBill;
 
     private FoodBillBLL foodBillBLL;
     private ArrayList<FoodBills> foodBillList;
     private String[] columnNameFoodBill;
-    private DefaultTableCellRenderer rendererSessionFoodBill;
+    private DefaultTableCellRenderer rendererFoodBill;
 
     public BillPanel(Accounts loginAccount, Staffs loginStaff) {
         this.loginAccount = loginAccount;
         this.loginStaff = loginStaff;
-        this.roomBLL = new RoomBLL();
+
+        this.filterCardLayout = new CardLayout();
+        this.dataCardLayout = new CardLayout();
+
         this.staffBLL = new StaffBLL();
         this.accountBLL = new AccountBLL();
+
+        this.roomBLL = new RoomBLL();
         this.computerBLL = new ComputerBLL();
         this.computerSessionBLL = new ComputerSessionBLL();
+
+        this.categoryBLL = new CategoryBLL();
+
         this.sessionList = this.computerSessionBLL.getComputerSessionList();
         this.columnNameSession = new String[] {
                 "Mã phiên chơi",
@@ -82,10 +103,22 @@ public class BillPanel extends JPanel {
         };
         this.rendererSession = new DefaultTableCellRenderer();
         this.rendererSession.setHorizontalAlignment(JLabel.CENTER);
-        this.dataCardLayout = new CardLayout();
 
-        this.filterCardLayout = new CardLayout();
+        // Phần chuẩn bị cho foodBillPanel
+        this.foodBillBLL = new FoodBillBLL();
+        this.foodBillList = this.foodBillBLL.getFoodBillList();
+        this.columnNameFoodBill = new String[] {
+                "Mã hóa đơn",
+                "Tài khoản nhân viên",
+                "Tổng tiền",
+                "Trạng thái",
+                "Ngày tạo"
+        };
+        this.rendererFoodBill = new DefaultTableCellRenderer();
+        this.rendererFoodBill.setHorizontalAlignment(JLabel.CENTER);
 
+        String[] foodBillStatus = new String[] { "Tất cả", "Chưa xử lý", "Đã xử lý", "Đã hủy" };
+        this.foodBillStatusCombobox = new CustomCombobox<>(foodBillStatus);
 
         this.initComponents();
     }
@@ -114,6 +147,11 @@ public class BillPanel extends JPanel {
         billButton.addActionListener(e -> {
             this.dataCardLayout.show(this.dataPanel, "BillPanel");
             this.filterCardLayout.show(this.controlPanel, "BillPanel");
+            this.monthTextFieldFoodBill.setText("Nhập tháng");
+            this.yearTextFieldFoodBill.setText("Nhập năm");
+            this.foodBillStatusCombobox.setSelectedIndex(0);
+            this.selectionTextFoodBill.setText("Đang chọn: NULL");
+            this.resetFoodBillDataPanel();
         });
         billButton.setBounds(205, 100, 165, 35);
 
@@ -136,7 +174,7 @@ public class BillPanel extends JPanel {
         monthTextFieldFoodBill.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
-                if (monthTextFieldFoodBill.getText().equals("Nhập tháng")) {
+                if (monthTextFieldFoodBill.getText().equalsIgnoreCase("Nhập tháng")) {
                     monthTextFieldFoodBill.setText("");
                 }
             }
@@ -154,7 +192,7 @@ public class BillPanel extends JPanel {
         yearTextFieldFoodBill.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
-                if (yearTextFieldFoodBill.getText().equals("Nhập năm")) {
+                if (yearTextFieldFoodBill.getText().equalsIgnoreCase("Nhập năm")) {
                     yearTextFieldFoodBill.setText("");
                 }
             }
@@ -167,6 +205,112 @@ public class BillPanel extends JPanel {
             }
         });
 
+        JLabel foodBillCategoryLabel = new JLabel("Loại sản phẩm:");
+        foodBillCategoryLabel.setBounds(220, 10, 100, 30);
+
+        ArrayList<String> categoryList = new ArrayList<>();
+        categoryList.add("Tất cả");
+        for (Categories x : this.categoryBLL.getAllCategories()) {
+            categoryList.add(x.getCategoryId() +" - "+ x.getName());
+        }
+        this.foodBillTypeCombobox = new CustomCombobox<>(categoryList);
+        this.foodBillTypeCombobox.setBounds(220, 38, 150, 35);
+
+        // Trạng thái hóa đơn
+        JLabel foodBillStatusLabel = new JLabel("Trạng thái");
+        foodBillStatusLabel.setBounds(380, 10, 100, 30);
+        
+        this.foodBillStatusCombobox.setBounds(380, 38, 150, 35);
+
+        // Tạo một button hủy đơn
+        CustomButton cancelButton = new CustomButton("Hủy đơn");
+        // Chỉnh kích thước của Border
+        cancelButton.setBorderSize(3);
+        // Màu nền
+        cancelButton.setBackground(Color.decode("#F44336"));
+        // Màu border
+        cancelButton.setBorderColor(Color.decode("#F44336"));
+        // Màu chữ
+        cancelButton.setForeground(Color.WHITE);
+
+        cancelButton.setBounds(545, 38, 100, 35);
+        cancelButton.addMouseListener(new MouseListener() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                // Khi di chuột vào thì Button sẽ đổi màu
+                cancelButton.setForeground(Color.decode("#F44336"));
+                cancelButton.setBackground(Color.WHITE);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                // Khi chuột ra khỏi Button thì Button sẽ trở về màu cũ
+                cancelButton.setForeground(Color.WHITE);
+                cancelButton.setBackground(Color.decode("#F44336"));
+            }
+        });
+
+        // Tạo một button với xác nhận đơn
+        CustomButton confirmButton = new CustomButton("Xác nhận");
+        // Chỉnh kích thước của Border
+        confirmButton.setBorderSize(3);
+        // Màu nền
+        confirmButton.setBackground(Color.decode("#00695C"));
+        // Màu border
+        confirmButton.setBorderColor(Color.decode("#00695C"));
+        // Màu chữ
+        confirmButton.setForeground(Color.WHITE);
+
+        confirmButton.setBounds(650, 38, 100, 35);
+        confirmButton.addMouseListener(new MouseListener() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                // Khi di chuột vào thì Button sẽ đổi màu
+                confirmButton.setForeground(Color.decode("#00695C"));
+                confirmButton.setBackground(Color.WHITE);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                // Khi chuột ra khỏi Button thì Button sẽ trở về màu cũ
+                confirmButton.setForeground(Color.WHITE);
+                confirmButton.setBackground(Color.decode("#00695C"));
+            }
+        });
+
+        // Tạo hiệu ứng khi hover qua Button và hành động khi click vào button
         // Tạo một Button với chữ "Lọc"
         CustomButton filterButton = new CustomButton("Lọc");
         // Chỉnh kích thước của Border
@@ -185,8 +329,8 @@ public class BillPanel extends JPanel {
             public void mouseClicked(MouseEvent e) {
 
                 // Khi Button lọc được click thì sẽ gọi hàm lọc lại bảng
-                // BillPanel.this.filterSessionList();
-                System.out.println("Sửa lại lọc hóa đơn chỗ 189");
+                BillPanel.this.filterFoodBillList();
+                
             }
 
             @Override
@@ -217,9 +361,9 @@ public class BillPanel extends JPanel {
         // Khởi tạo Button đặt lại
         CustomButton resetButton = new CustomButton("Đặt lại");
         // Màu nền
-        resetButton.setBackground(Color.RED);
+        resetButton.setBackground(Color.decode("#424242"));
         // Màu border
-        resetButton.setBorderColor(Color.RED);
+        resetButton.setBorderColor(Color.decode("#424242"));
         // Màu chữ
         resetButton.setForeground(Color.WHITE);
         // Chỉnh kích thước của Border
@@ -236,6 +380,8 @@ public class BillPanel extends JPanel {
 
                 BillPanel.this.yearTextFieldFoodBill
                         .setText("Nhập năm");
+                BillPanel.this.foodBillTypeCombobox.setSelectedIndex(0);
+                BillPanel.this.foodBillStatusCombobox.setSelectedIndex(0);
             }
 
             @Override
@@ -251,7 +397,7 @@ public class BillPanel extends JPanel {
             @Override
             public void mouseEntered(MouseEvent e) {
                 // Khi di chuột vào thì Button sẽ đổi màu
-                resetButton.setForeground(Color.RED);
+                resetButton.setForeground(Color.decode("#424242"));
                 resetButton.setBackground(Color.WHITE);
             }
 
@@ -259,7 +405,7 @@ public class BillPanel extends JPanel {
             public void mouseExited(MouseEvent e) {
                 // Khi chuột ra khỏi Button thì Button sẽ trở về màu cũ
                 resetButton.setForeground(Color.WHITE);
-                resetButton.setBackground(Color.RED);
+                resetButton.setBackground(Color.decode("#424242"));
             }
         });
 
@@ -306,16 +452,24 @@ public class BillPanel extends JPanel {
             }
         });
 
-
         selectionTextFoodBill = new JLabel("Đang chọn: NULL");
         selectionTextFoodBill.setFont(
                 new Font("Sans-serif", Font.BOLD, 12));
-                selectionTextFoodBill.setBounds(755, 10, 300, 20);
+        selectionTextFoodBill.setBounds(545, 10, 300, 20);
 
         panel.add(timeLabel);
         panel.add(monthTextFieldFoodBill);
         panel.add(yearTextFieldFoodBill);
+
+        panel.add(foodBillCategoryLabel);
+        panel.add(foodBillTypeCombobox);
+
+        panel.add(foodBillStatusLabel);
+        panel.add(this.foodBillStatusCombobox);
+
         panel.add(filterButton);
+        panel.add(cancelButton);
+        panel.add(confirmButton);
         panel.add(selectionTextFoodBill);
         panel.add(resetButton);
         panel.add(printButton);
@@ -335,7 +489,7 @@ public class BillPanel extends JPanel {
         monthTextFieldSession.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
-                if (monthTextFieldSession.getText().equals("Nhập tháng")) {
+                if (monthTextFieldSession.getText().equalsIgnoreCase("Nhập tháng")) {
                     monthTextFieldSession.setText("");
                 }
             }
@@ -353,7 +507,7 @@ public class BillPanel extends JPanel {
         yearTextFieldSession.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
-                if (yearTextFieldSession.getText().equals("Nhập năm")) {
+                if (yearTextFieldSession.getText().equalsIgnoreCase("Nhập năm")) {
                     yearTextFieldSession.setText("");
                 }
             }
@@ -541,7 +695,7 @@ public class BillPanel extends JPanel {
         return panel;
     }
 
-    // Phương thức reset lại table
+    // Phương thức reset lại table session
     private void resetSessionDataPanel() {
         this.sessionList = this.computerSessionBLL.getComputerSessionList();
         Object[][] data = this.createSessionData(this.sessionList);
@@ -549,6 +703,7 @@ public class BillPanel extends JPanel {
         this.tableSession.setModel(model);
         this.tableSession.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         AdjustTableWidth.automaticallyAdjustTableWidths(this.tableSession);
+
         this.tableSession.getColumnModel()
                 .getColumn(0)
                 .setPreferredWidth(100);
@@ -560,31 +715,64 @@ public class BillPanel extends JPanel {
         }
     }
 
+    // Phương thức reset lại table food bill
+    private void resetFoodBillDataPanel() {
+        this.foodBillList = this.foodBillBLL.getFoodBillList();
+        Object[][] data = this.createFoodBillData(this.foodBillList);
+        DefaultTableModel model = new DefaultTableModel(data, this.columnNameFoodBill);
+        this.tableFoodBill.setModel(model);
+        this.tableFoodBill.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        AdjustTableWidth.automaticallyAdjustTableWidths(this.tableFoodBill);
 
-    // Phương thức cập nhật table dựa trên mảng đưa vào
+        this.tableFoodBill.getColumnModel()
+                .getColumn(0)
+                .setPreferredWidth(100);
+
+        for (int i = 0; i < this.tableFoodBill.getColumnCount(); i++) {
+            this.tableFoodBill.getColumnModel()
+                    .getColumn(i)
+                    .setCellRenderer(this.rendererFoodBill);
+        }
+    }
+
+    // Phương thức cập nhật table session dựa trên mảng đưa vào
     private void updateSessionDataPanel(ArrayList<ComputerSessions> list) {
         Object[][] data = this.createSessionData(list);
         DefaultTableModel model = new DefaultTableModel(data, this.columnNameSession);
         this.tableSession.setModel(model);
         this.tableSession.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         AdjustTableWidth.automaticallyAdjustTableWidths(this.tableSession);
+
         this.tableSession.getColumnModel()
                 .getColumn(0)
                 .setPreferredWidth(100);
     }
 
+    // Phương thức cập nhật table food bill dựa vào mảng đưa vào
+    private void updateFoodBillDataPanel(ArrayList<FoodBills> list) {
+        Object[][] data = this.createFoodBillData(list);
+        DefaultTableModel model = new DefaultTableModel(data, this.columnNameFoodBill);
+        this.tableFoodBill.setModel(model);
+        this.tableFoodBill.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        AdjustTableWidth.automaticallyAdjustTableWidths(this.tableFoodBill);
+
+        this.tableFoodBill.getColumnModel()
+                .getColumn(0)
+                .setPreferredWidth(100);
+    }
+
     private void filterSessionList() {
-        String month = this.monthTextFieldSession.getText().equals("Nhập tháng")
+        String month = this.monthTextFieldSession.getText().equalsIgnoreCase("Nhập tháng")
                 ? ""
                 : this.monthTextFieldSession.getText();
 
-        String year = this.yearTextFieldSession.getText().equals("Nhập năm")
+        String year = this.yearTextFieldSession.getText().equalsIgnoreCase("Nhập năm")
                 ? ""
                 : this.yearTextFieldSession.getText();
 
         String roomType = this.roomTypeCombobox.getSelectedItem().toString();
 
-        if (month.isEmpty() && year.isEmpty() && roomType.equals("Tất cả")) {
+        if (month.isEmpty() && year.isEmpty() && roomType.equalsIgnoreCase("Tất cả")) {
             this.resetSessionDataPanel();
         } else {
 
@@ -615,9 +803,9 @@ public class BillPanel extends JPanel {
                     .filter(session -> month.isEmpty()
                             || session.getStartTime().toLocalDate().getMonthValue() == monthInt)
                     .filter(session -> year.isEmpty() || session.getStartTime().toLocalDate().getYear() == yearInt)
-                    .filter(session -> roomType.equals("Tất cả")
+                    .filter(session -> roomType.equalsIgnoreCase("Tất cả")
                             || roomBLL.getRoomById(computerBLL.getComputerById(session.getComputerId()).getRoomId())
-                                    .getRoomName().equals(roomType))
+                                    .getRoomName().equalsIgnoreCase(roomType))
                     .collect(Collectors.toList());
 
             // Sau khi lọc sẽ cập nhật vào table
@@ -628,6 +816,79 @@ public class BillPanel extends JPanel {
         // Căn giữa lại các cột
         for (int i = 0; i < this.tableSession.getColumnCount(); i++) {
             this.tableSession.getColumnModel().getColumn(i).setCellRenderer(this.rendererSession);
+        }
+    }
+
+    private void filterFoodBillList() {
+        String month = this.monthTextFieldFoodBill.getText().equalsIgnoreCase("Nhập tháng")
+                ? ""
+                : this.monthTextFieldFoodBill.getText();
+
+        String year = this.yearTextFieldFoodBill.getText().equalsIgnoreCase("Nhập năm")
+                ? ""
+                : this.yearTextFieldFoodBill.getText();
+
+        String foodType = this.foodBillTypeCombobox.getSelectedItem().toString().equalsIgnoreCase("Tất cả")
+                ? ""
+                : this.foodBillTypeCombobox.getSelectedItem().toString();
+
+        String foodBillStatus = this.foodBillStatusCombobox.getSelectedItem().toString();
+
+        if (month.isEmpty() && year.isEmpty() && foodType.equalsIgnoreCase("Tất cả") && foodBillStatus.equalsIgnoreCase("Tất cả") && foodType.equalsIgnoreCase("Tất cả")) {
+            this.resetFoodBillDataPanel();
+        } else {
+
+            // Nếu chỉ nhập một trong hai tháng hoặc năm thì thông báo lỗi
+            if ((month.isEmpty() && !year.isEmpty()) || (!month.isEmpty() && year.isEmpty())) {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Vui lòng nhập đủ tháng và năm!",
+                        "Lỗi",
+                        JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            // Trường hợp không nhập tháng, năm thì không kiểm tra tháng, năm
+            if (!month.isEmpty() && !year.isEmpty()) {
+                if (!this.checkDate(month, year)) {
+                    return;
+                }
+            }
+
+            // Nếu người dùng không nhập tháng năm (rỗng) thì cho bằng -1
+       
+            int monthInt = month.isEmpty() ? -1 : Integer.parseInt(month);
+            int yearInt = year.isEmpty() ? -1 : Integer.parseInt(year);
+
+            // Đọc lại dữ liệu trước khi lọc
+            if (foodType.isEmpty()) {
+                this.foodBillList = this.foodBillBLL.getFoodBillList();
+            }
+            else {
+                String[] regexFoodType = foodType.split(" - ");
+                String idTypeFood = regexFoodType[0];
+                System.out.println(idTypeFood);
+                this.foodBillList = this.foodBillBLL.getFoodBillByCategoryId(Integer.parseInt(idTypeFood));
+            }
+
+            // Lọc dữ liệu
+            List<FoodBills> list = this.foodBillList.stream()
+                    .filter(foodBill -> month.isEmpty()
+                                || foodBill.getCreatedAt().toLocalDateTime().getMonthValue() == monthInt)
+                    .filter(foodBill -> year.isEmpty()
+                                || foodBill.getCreatedAt().toLocalDateTime().getYear() == yearInt)
+                    
+                    .filter(foodBill -> foodBillStatus.equalsIgnoreCase("Tất cả")
+                                || foodBill.getStatus().equalsIgnoreCase(foodBillStatus))
+                    .collect(Collectors.toList());          
+
+            this.foodBillList = new ArrayList<>(list);
+            this.updateFoodBillDataPanel(this.foodBillList);
+        }
+
+        // Căn giữa lại các cột
+        for (int i = 0; i < this.tableFoodBill.getColumnCount(); i++) {
+            this.tableFoodBill.getColumnModel().getColumn(i).setCellRenderer(this.rendererFoodBill);
         }
     }
 
@@ -685,11 +946,29 @@ public class BillPanel extends JPanel {
                             .getStaffId())
                             .getAccountId())
                     .getUsername();
-            data[i][2] = Utils.Helper.ChangeMinToDate.changeData(list.get(i).getDuration());
-            data[i][3] = Utils.Helper.Comon.formatMoney(list.get(i).getTotalCost() + "");
+            data[i][2] = ChangeMinToDate.changeData(list.get(i).getDuration());
+            data[i][3] = Comon.formatMoney(list.get(i).getTotalCost() + "");
             data[i][4] = list.get(i).getPlayerId() == null
                     ? "Mở máy"
                     : list.get(i).getPlayerId();
+        }
+
+        return data;
+    }
+
+    private Object[][] createFoodBillData(ArrayList<FoodBills> list) {
+        Object[][] data = new Object[this.sessionList.size()][5];
+
+        for (int i = 0; i < list.size(); i++) {
+            data[i][0] = list.get(i).getBillId();
+            data[i][1] = this.accountBLL.getAccountById(
+                this.staffBLL.getStaffById(list.get(i)
+                        .getStaffId())
+                        .getAccountId())
+                .getUsername();
+            data[i][2] = Comon.formatMoney(list.get(i).getTotalPrice() + "");
+            data[i][3] = list.get(i).getStatus();
+            data[i][4] = list.get(i).getCreatedAt();
         }
 
         return data;
@@ -726,6 +1005,41 @@ public class BillPanel extends JPanel {
         CustomPanel panel = new CustomPanel();
         panel.setLayout(null);
 
+        // Đọc dữ liệu mới nhất
+        this.foodBillList = this.foodBillBLL.getFoodBillList();
+        DefaultTableModel model = new DefaultTableModel(this.createFoodBillData(this.foodBillList),
+                this.columnNameFoodBill);
+        this.tableFoodBill = new CustomTable(model);
+
+        // Tắt tự điều chỉnh kích thước của table
+        this.tableFoodBill.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        // Gọi hàm căn lại width các cột dựa trên giá trị dài nhất trong cột
+        AdjustTableWidth.automaticallyAdjustTableWidths(this.tableFoodBill);
+
+        // Điều chỉnh width của cột ID
+        this.tableFoodBill.getColumnModel().getColumn(0).setPreferredWidth(100);
+
+        // THêm sự kiện khi chọn một dòng nào đó trong table
+        this.tableFoodBill.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if (!e.getValueIsAdjusting()) {
+                    if (tableFoodBill.getSelectedRow() != -1) {
+                        BillPanel.this.selectionTextFoodBill
+                                .setText("Đang chọn hóa đơn "
+                                        + tableFoodBill.getValueAt(tableFoodBill.getSelectedRow(), 0));
+                    }
+                }
+            }
+        });
+
+        // Thêm bảng vào ScrollPane
+        JScrollPane scrollPane = new CustomScrollPane(this.tableFoodBill);
+        scrollPane.setBounds(0, 0, 1080, 453);
+
+        panel.add(scrollPane);
+
         return panel;
     }
 
@@ -736,7 +1050,8 @@ public class BillPanel extends JPanel {
 
         // Đọc dữ liệu mới nhất
         this.sessionList = this.computerSessionBLL.getComputerSessionList();
-        DefaultTableModel model = new DefaultTableModel(this.createSessionData(this.sessionList), this.columnNameSession);
+        DefaultTableModel model = new DefaultTableModel(this.createSessionData(this.sessionList),
+                this.columnNameSession);
         this.tableSession = new CustomTable(model);
 
         // Tắt tự động điều chỉnh kích thước của table
@@ -755,7 +1070,8 @@ public class BillPanel extends JPanel {
                 if (!e.getValueIsAdjusting()) {
                     if (tableSession.getSelectedRow() != -1) {
                         BillPanel.this.selectionTextSession
-                                .setText("Đang chọn phiên chơi " + tableSession.getValueAt(tableSession.getSelectedRow(), 0));
+                                .setText("Đang chọn phiên chơi "
+                                        + tableSession.getValueAt(tableSession.getSelectedRow(), 0));
                     }
                 }
             }

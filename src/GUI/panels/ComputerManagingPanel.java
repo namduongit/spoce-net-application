@@ -40,7 +40,6 @@ public class ComputerManagingPanel extends JPanel {
     private CardLayout cardLayout;
     private CustomDesignButton turnOnButton;
     private CustomDesignButton turnOffButton;
-    @SuppressWarnings("unused")
     private CustomDesignButton controlButton;
     private int currentSelectedId;
     private String currentPanel;

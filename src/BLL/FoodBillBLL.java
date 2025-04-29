@@ -1,12 +1,23 @@
 package BLL;
 
+import java.util.ArrayList;
+
 import DAL.FoodBillDAL;
+import DTO.FoodBills;
 
 public class FoodBillBLL {
     private FoodBillDAL foodBillDAL;
 
     public FoodBillBLL() {
         this.foodBillDAL = new FoodBillDAL();
+    }
+
+    public ArrayList<FoodBills> getFoodBillList() {
+        return this.foodBillDAL.getFoodBillList();
+    }
+
+    public ArrayList<FoodBills> getFoodBillByCategoryId(int categoryId) {
+        return this.foodBillDAL.getFoodBillByCategoryId(categoryId);
     }
 
     public int createLastestBill(int staffId) {
@@ -19,5 +30,12 @@ public class FoodBillBLL {
     
     public boolean updateTotalPrice(int billId, int totalPrice) {
         return this.foodBillDAL.updateTotalPrice(billId, totalPrice);
+    }
+
+    public static void main(String[] args) {
+        ArrayList<FoodBills> list = new FoodBillBLL().getFoodBillByCategoryId(1);
+        for (FoodBills fb : list) {
+            System.out.println(fb);
+        }
     }
 }

@@ -6,6 +6,8 @@ import DTO.ComputerSessions;
 import javax.swing.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -37,7 +39,7 @@ public class ComputerSessionDAL {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(
                     null,
-                    "Never",
+                    "Lỗi ComputerSessionDAL dòng 42",
                     "Lỗi",
                     JOptionPane.ERROR_MESSAGE
             );
@@ -91,8 +93,8 @@ public class ComputerSessionDAL {
 
         HashMap<String, String> params = new HashMap<>();
         params.put("TABLE", "computer_sessions");
-        params.put("SET", "total_cost = FLOOR( (duration / 60) * " + pricePerHour + " )");
-        params.put("WHERE", "computer_id = ? AND total_cost = 0");
+        params.put("SET", "total_cost = (duration/60) * " + pricePerHour);
+        params.put("WHERE", "computer_id = ? AND total_cost = 0.00");
         helper.buildingQueryParam(params);
 
         ArrayList<Object> values = new ArrayList<>();
@@ -100,24 +102,51 @@ public class ComputerSessionDAL {
 
         return helper.updateData(values);
     }
-    /**
-    'computer_sessions', 'CREATE TABLE `computer_sessions` (
-    \n  `session_id` int NOT NULL AUTO_INCREMENT,
-    \n  `player_id` int DEFAULT NULL,
-    \n  `computer_id` int NOT NULL,
-    \n  `start_time` datetime DEFAULT CURRENT_TIMESTAMP,
-    \n  `end_time` datetime DEFAULT NULL,
-    \n  `duration` int GENERATED ALWAYS AS (timestampdiff(MINUTE,`start_time`,`end_time`)) STORED,
-    \n  `total_cost` int DEFAULT NULL,
-    \n  `is_guest` tinyint(1) GENERATED ALWAYS AS ((`player_id` is null)) STORED,
-    \n  `staff_id` int NOT NULL,
-    \n  PRIMARY KEY (`session_id`),
-    \n  KEY `staff_id` (`staff_id`),
-    \n  KEY `player_id` (`player_id`),
-    \n  KEY `computer_id` (`computer_id`),
-    \n  CONSTRAINT `computer_sessions_ibfk_1` FOREIGN KEY (`staff_id`) REFERENCES `staffs` (`staff_id`),
-    \n  CONSTRAINT `computer_sessions_ibfk_2` FOREIGN KEY (`player_id`) REFERENCES `players` (`player_id`),
-    \n  CONSTRAINT `computer_sessions_ibfk_3` FOREIGN KEY (`computer_id`) REFERENCES `computers` (`computer_id`) ON DELETE CASCADE\n) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci'
 
-     */
+    // Lấy dữ liệu doanh thu máy
+    public ArrayList<Object[]> getComputerRevenue(LocalDateTime start, LocalDateTime end) {
+    ArrayList<Object[]> list = new ArrayList<>();
+    MySQLHelper helper = new MySQLHelper();
+
+    HashMap<String, String> params = new HashMap<>();
+    params.put("TABLE", "computer_sessions cs");
+    params.put("JOIN", "computers c ON cs.computer_id = c.computer_id");
+    params.put("SELECT", "c.name, SUM(cs.total_cost) as total_cost");
+    params.put("WHERE", "cs.start_time BETWEEN ? AND ?");
+    params.put("GROUP BY", "c.computer_id, c.name");
+
+    helper.buildingQueryParam(params);
+    // System.out.println("Query Computer : " + params);
+
+    ArrayList<Object> values = new ArrayList<>();
+    values.add(java.sql.Timestamp.valueOf(start));
+    values.add(java.sql.Timestamp.valueOf(end));
+
+    ResultSet resultSet = helper.queryWithParam(values);
+    try {
+        while (resultSet.next()) {
+            String name = resultSet.getString("name");
+            double totalCost = resultSet.getDouble("total_cost");
+            // System.out.println("ResultSet: Name=" + name + ", TotalCost=" + totalCost);
+            Object[] row = new Object[]{name, totalCost};
+            list.add(row);
+        }
+        // list.stream().forEach(r -> {
+        //     System.out.println("List :" + r[0]);
+        // });
+        // for(int i = 0; i < list.size(); i++) {
+        //     System.out.println("List " + i + ": " + list.get(i)[0] + ", " + list.get(i)[1]);
+        // }
+        // list = [
+        // ["Máy 1", 50000.0],
+        // ["Máy 2", 70000.0],
+        // ["Máy 3", 45000.0]
+        // ];
+        resultSet.close();
+        helper.closeConnect();
+    } catch (SQLException exception) {
+        JOptionPane.showMessageDialog(null, exception.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+    }
+    return list;
+    }
 }

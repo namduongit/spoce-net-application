@@ -6,8 +6,7 @@ public class FoodBills {
     private int billId;
     private Integer playerId;
     private int staffId;
-    private double totalPrice;
-    private String paymentMethod;
+    private int totalPrice;
     private String status;
     private Timestamp createdAt;
 
@@ -16,12 +15,11 @@ public class FoodBills {
     }
 
     // Constructor có tham số
-    public FoodBills(int billId, Integer playerId, int staffId, double totalPrice, String paymentMethod, String status, Timestamp createdAt) {
+    public FoodBills(int billId, Integer playerId, int staffId, int totalPrice, String status, Timestamp createdAt) {
         this.billId = billId;
         this.playerId = playerId;
         this.staffId = staffId;
         this.totalPrice = totalPrice;
-        this.paymentMethod = paymentMethod;
         this.status = status;
         this.createdAt = createdAt;
     }
@@ -51,21 +49,14 @@ public class FoodBills {
         this.staffId = staffId;
     }
 
-    public double getTotalPrice() {
+    public int getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(double totalPrice) {
+    public void setTotalPrice(int totalPrice) {
         this.totalPrice = totalPrice;
     }
 
-    public String getPaymentMethod() {
-        return paymentMethod;
-    }
-
-    public void setPaymentMethod(String paymentMethod) {
-        this.paymentMethod = paymentMethod;
-    }
 
     public String getStatus() {
         return status;
@@ -91,7 +82,6 @@ public class FoodBills {
                 ", playerId=" + playerId +
                 ", staffId=" + staffId +
                 ", totalPrice=" + totalPrice +
-                ", paymentMethod='" + paymentMethod + '\'' +
                 ", status='" + status + '\'' +
                 ", createdAt=" + createdAt +
                 '}';
