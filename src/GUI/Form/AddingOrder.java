@@ -1,11 +1,5 @@
 package GUI.Form;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.util.ArrayList;
-import java.util.HashSet;
-
 import BLL.FoodBLL;
 import BLL.FoodBillBLL;
 import BLL.FoodOrderBLL;
@@ -16,9 +10,14 @@ import GUI.Components.CustomCombobox;
 import GUI.Components.CustomScrollPane;
 import GUI.Components.CustomTextField;
 import Utils.Helper.CreateComponent;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+import java.util.HashSet;
+import javax.swing.*;
 
+@SuppressWarnings({"unused", "FieldMayBeFinal"})
 public class AddingOrder extends JFrame {
-    @SuppressWarnings("unused")
     private Staffs loginStaff;
 
     private FoodBillBLL foodBillBLL;

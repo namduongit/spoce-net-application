@@ -10,19 +10,19 @@ import DTO.Staffs;
 import GUI.Card.ComputerCard;
 import GUI.Components.*;
 import Utils.Helper.CreateComponent;
-
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.HashMap;
+import java.util.List;
 import java.util.stream.Collectors;
+import javax.swing.*;
 
+@SuppressWarnings({"unused", "FieldMayBeFinal"})
 public class ComputerManagingPanel extends JPanel {
-    @SuppressWarnings("unused")
+    
     private Accounts loginAccount;
-    @SuppressWarnings("unused")
+
     private Staffs loginStaff;
 
     
@@ -36,19 +36,20 @@ public class ComputerManagingPanel extends JPanel {
     private CustomCombobox<String> statusComboBox;
     private JLabel selectionText;
     private ComputerBLL computerBLL;
+
     private ComputerSessionBLL computerSessionBLL;
     private RoomBLL roomBLL;
     private CardLayout cardLayout;
     private CustomDesignButton turnOnButton;
+   
     private CustomDesignButton turnOffButton;
-    @SuppressWarnings("unused")
     private CustomDesignButton controlButton;
     private int currentSelectedId;
     private String currentPanel;
 
     private ArrayList<Computers> playedComputerList;
     private ArrayList<Computers> idlingComputerList;
-    
+
     public ComputerManagingPanel(Accounts loginAccount, Staffs loginStaff) {
         this.loginAccount = loginAccount;
         this.loginStaff = loginStaff;
@@ -517,11 +518,6 @@ public class ComputerManagingPanel extends JPanel {
     
     private void resetDataPanel() {
         this.resetData();
-
-        for (Computers x : this.playedComputerList) {
-            System.out.println(x.getComputerId() + " ");
-        }
-
         this.removeAll();
         this.revalidate();
         this.repaint();

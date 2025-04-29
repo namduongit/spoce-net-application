@@ -24,6 +24,7 @@ import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+@SuppressWarnings({"unused", "FieldMayBeFinal"})
 public class AdminLoginScreen extends JFrame {
     private AccountBLL accountBLL;
     private StaffBLL staffBLL;

@@ -2,14 +2,12 @@ package DAL;
 
 import DAL.SQLHelper.MySQLHelper;
 import DTO.ComputerSessions;
-
-import javax.swing.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
-
 import java.util.ArrayList;
 import java.util.HashMap;
+import javax.swing.*;
 
 public class ComputerSessionDAL {
 

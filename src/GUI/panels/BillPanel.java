@@ -24,6 +24,7 @@ import GUI.Components.*;
 import Utils.Helper.AdjustTableWidth;
 import Utils.Helper.CreateComponent;
 
+@SuppressWarnings({"unused", "FieldMayBeFinal"})
 public class BillPanel extends JPanel{
     private Staffs loginStaff;
     private Accounts loginAccount;
@@ -155,6 +156,29 @@ public class BillPanel extends JPanel{
         }
         roomTypeCombobox = new CustomCombobox<>(roomTypeList);
         roomTypeCombobox.setBounds(220,38,150,35);
+
+        CustomButton detailButton = new CustomButton("Chi tiết");
+        detailButton.setBorderSize(3);
+        detailButton.setBorderColor(Color.orange);
+        detailButton.setBackground(Color.orange);
+        detailButton.setForeground(Color.white);
+        detailButton.setBounds(650, 38, 100, 35);
+        detailButton.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                
+            }
+        });
 
         // Tạo một Button với chữ "Lọc"
         CustomButton filterButton = new CustomButton("Lọc");

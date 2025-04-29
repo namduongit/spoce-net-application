@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "AdminLoginScreen",
+            "request": "launch",
+            "mainClass": "GUI.main.AdminLoginScreen",
+            "projectName": "spoce-net-application_fc943d68"
+        },
+        {
+            "type": "java",
             "name": "test",
             "request": "launch",
             "mainClass": "test",

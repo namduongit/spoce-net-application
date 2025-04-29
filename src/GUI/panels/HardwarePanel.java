@@ -6,14 +6,15 @@ import GUI.Components.*;
 import GUI.Form.AddingHardware;
 import GUI.Form.DetailsHardware;
 import Utils.Helper.AdjustTableWidth;
-
-import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.*;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 
+@SuppressWarnings({"unused", "FieldMayBeFinal"})
 public class HardwarePanel extends JPanel {
     private CardLayout cardLayout;
     private CustomPanel titlePanel;
@@ -32,6 +33,7 @@ public class HardwarePanel extends JPanel {
     private CustomTable tableData;
     private DefaultTableModel tableModel;
     private String currentType = "Tất cả";
+    private DefaultTableCellRenderer tableCellRenderer;
     private static final DecimalFormat df = new DecimalFormat("#,###"); // Định dạng số với dấu chấm phân cách
 
     public HardwarePanel() {
@@ -44,12 +46,14 @@ public class HardwarePanel extends JPanel {
         this.monitorBLL = new MonitorBLL();
         this.headphoneBLL = new HeadphoneBLL();
         this.romBLL = new RomBLL();
+        this.tableCellRenderer = new DefaultTableCellRenderer();
+        this.tableCellRenderer.setHorizontalAlignment(JLabel.CENTER);
         this.initComponents();
     }
 
     private void initComponents() {
         this.setLayout(null);
-        this.setBackground(Color.decode("#ECF0F1"));
+        this.setBackground(Color.WHITE);
 
         this.titlePanel = this.createTitlePanel();
         this.controlPanel = this.createControlPanel();
@@ -67,11 +71,9 @@ public class HardwarePanel extends JPanel {
     private CustomPanel createTitlePanel() {
         CustomPanel panel = new CustomPanel();
         panel.setLayout(null);
-        panel.setBackground(Color.decode("#34495E"));
 
         JLabel title = new JLabel("QUẢN LÝ LINH KIỆN");
         title.setFont(new Font("Sans-serif", Font.PLAIN, 30));
-        title.setForeground(Color.WHITE);
         title.setBounds(400, 25, 500, 50);
 
         panel.add(title);
@@ -81,7 +83,6 @@ public class HardwarePanel extends JPanel {
     private CustomPanel createControlPanel() {
         CustomPanel panel = new CustomPanel();
         panel.setLayout(null);
-        panel.setBackground(Color.decode("#ECF0F1"));
 
         JLabel typeHardwareLabel = new JLabel("Loại Sản Phẩm:");
         typeHardwareLabel.setFont(new Font("Sans-serif", Font.PLAIN, 14));
@@ -210,7 +211,6 @@ public class HardwarePanel extends JPanel {
     private CustomPanel createManagePanel() {
         CustomPanel panel = new CustomPanel();
         panel.setLayout(null);
-        panel.setBackground(Color.decode("#ECF0F1"));
 
         String[] columnNames = {"ID", "Tên Sản Phẩm", "Loại", "Giá Tiền", "Trạng thái"};
         tableModel = new DefaultTableModel(getTableData(getAllHardwareComponents()), columnNames);
@@ -462,6 +462,9 @@ public class HardwarePanel extends JPanel {
         tableData.getColumnModel().getColumn(0).setPreferredWidth(100);
         tableData.getColumnModel().getColumn(3).setPreferredWidth(150); // Đảm bảo cột "Giá Tiền" đủ rộng
         tableData.getColumnModel().getColumn(4).setPreferredWidth(329); // cot "Trang thai" max chieu rong
+        for (int i=0; i<this.tableData.getColumnCount(); i++) {
+            this.tableData.getColumnModel().getColumn(i).setCellRenderer(this.tableCellRenderer);
+        }
     }
 
     private boolean deleteHardwareComponent(int id, String type) {

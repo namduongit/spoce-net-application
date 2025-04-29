@@ -18,10 +18,9 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 import java.util.List;
 
+@SuppressWarnings({"unused", "FieldMayBeFinal"})
 public class ComputerPanel extends JPanel{
-    @SuppressWarnings("unused")
     private Accounts loginAccount;
-    @SuppressWarnings("unused")
     private Staffs loginStaff;
 
     private CardLayout cardLayout;

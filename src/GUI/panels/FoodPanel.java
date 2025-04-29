@@ -1,34 +1,31 @@
 package GUI.panels;
 
-import javax.swing.*;
-
 import BLL.CategoryBLL;
 import BLL.FoodBLL;
 import DTO.Accounts;
 import DTO.Categories;
 import DTO.Foods;
 import DTO.Staffs;
-
-import java.awt.*;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
 import GUI.Card.FoodCard;
 import GUI.Components.CustomButton;
 import GUI.Components.CustomCombobox;
 import GUI.Components.CustomPanel;
 import GUI.Components.CustomScrollPane;
 import GUI.Components.CustomTextField;
+import GUI.Form.AddingCategory;
 import GUI.Form.AddingFood;
 import GUI.Form.AddingOrder;
 import GUI.Form.DetailsFood;
-
+import java.awt.*;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.swing.*;
 
 public class FoodPanel extends JPanel {
     @SuppressWarnings("unused")
@@ -339,6 +336,7 @@ public class FoodPanel extends JPanel {
 
         CustomButton addNewCategory = Utils.Helper.CreateComponent.createGrayButton("Thêm loại");
         addNewCategory.setBounds(410, 10, 100, 30);
+        addNewCategory.addActionListener(e -> new AddingCategory());
 
 
         CustomButton createBillOrder = Utils.Helper.CreateComponent.createBrownButton("Tạo hóa đơn");
