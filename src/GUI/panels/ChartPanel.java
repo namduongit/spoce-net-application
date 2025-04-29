@@ -1,21 +1,21 @@
 package GUI.panels;
 
-import javax.swing.*;
-import java.awt.*;
-import java.util.ArrayList;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
+import BLL.ComputerSessionBLL;
 import BLL.FoodRevenueBLL;
 
 import DTO.FoodRevenue;
-import BLL.ComputerSessionBLL;
 import GUI.Components.CustomButton;
 import GUI.Components.CustomCombobox;
 import GUI.Components.CustomPanel;
 import GUI.Components.CustomPieChart;
 import GUI.Components.CustomTextField;
+import java.awt.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import javax.swing.*;
 
+@SuppressWarnings({"unused", "FieldMayBeFinal"})
 public class ChartPanel extends JPanel {
     private FoodRevenueBLL foodRevenueBLL;
     private ComputerSessionBLL sessionBLL;

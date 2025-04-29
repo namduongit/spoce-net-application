@@ -23,6 +23,7 @@ import DTO.FoodBills;
 import DTO.Rooms;
 import DTO.Staffs;
 import GUI.Components.*;
+import GUI.Form.DetailsComputerSessionBill;
 import Utils.Helper.AdjustTableWidth;
 import Utils.Helper.CreateComponent;
 import Utils.Helper.Comon;
@@ -31,7 +32,6 @@ import Utils.Helper.ChangeMinToDate;
 public class BillPanel extends JPanel {
     @SuppressWarnings("unused")
     private Staffs loginStaff;
-    @SuppressWarnings("unused")
     private Accounts loginAccount;
 
     private CustomPanel headerPanel;
@@ -438,6 +438,50 @@ public class BillPanel extends JPanel {
         roomTypeCombobox = new CustomCombobox<>(roomTypeList);
         roomTypeCombobox.setBounds(220, 38, 150, 35);
 
+        CustomButton detailButton = new CustomButton("Chi tiết");
+        detailButton.setBorderSize(3);
+        detailButton.setBorderColor(Color.orange);
+        detailButton.setBackground(Color.orange);
+        detailButton.setForeground(Color.WHITE);
+        detailButton.setBounds(650, 38, 100, 35);
+        detailButton.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (BillPanel.this.tableSession.getSelectedRow() == -1) {
+                    JOptionPane.showMessageDialog(
+                        null,
+                        "Bạn chưa chọn hóa đơn để xem chi tiết!",
+                        "Lỗi",
+                        JOptionPane.ERROR_MESSAGE
+                    );
+                } else {
+                    new DetailsComputerSessionBill(1);
+                }
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                detailButton.setBackground(Color.WHITE);
+                detailButton.setForeground(Color.ORANGE);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                detailButton.setBackground(Color.ORANGE);
+                detailButton.setForeground(Color.WHITE);
+            }
+        });
+
         // Tạo một Button với chữ "Lọc"
         CustomButton filterButton = new CustomButton("Lọc");
         // Chỉnh kích thước của Border
@@ -587,13 +631,14 @@ public class BillPanel extends JPanel {
         selectionTextSession = new JLabel("Đang chọn: NULL");
         selectionTextSession.setFont(
                 new Font("Sans-serif", Font.BOLD, 12));
-        selectionTextSession.setBounds(755, 10, 300, 20);
+        selectionTextSession.setBounds(655, 10, 300, 20);
 
         panel.add(timeLabel);
         panel.add(monthTextFieldSession);
         panel.add(yearTextFieldSession);
         panel.add(roomTypeLabel);
         panel.add(roomTypeCombobox);
+        panel.add(detailButton);
         panel.add(filterButton);
         panel.add(selectionTextSession);
         panel.add(resetButton);

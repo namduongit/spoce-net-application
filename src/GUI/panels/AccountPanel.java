@@ -1,5 +1,21 @@
 package GUI.panels;
 
+import BLL.AccountBLL;
+import BLL.StaffBLL;
+import DTO.Accounts;
+import DTO.Staffs;
+import GUI.Components.CustomButton;
+import GUI.Components.CustomCombobox;
+import GUI.Components.CustomPanel;
+import GUI.Components.CustomScrollPane;
+import GUI.Components.CustomTable;
+import GUI.Components.CustomTextField;
+import GUI.Form.AddingPlayer;
+import GUI.Form.AddingStaff;
+import GUI.Form.DetailsAddress;
+import GUI.Form.DetailsAuthenticator;
+import GUI.Form.EditingPlayerForm;
+import Utils.Helper.CreateComponent;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -12,7 +28,6 @@ import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -22,23 +37,7 @@ import javax.swing.JPanel;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
-import BLL.AccountBLL;
-import BLL.StaffBLL;
-import DTO.Accounts;
-import DTO.Staffs;
-import Utils.Helper.CreateComponent;
-import GUI.Components.CustomButton;
-import GUI.Components.CustomCombobox;
-import GUI.Components.CustomPanel;
-import GUI.Components.CustomScrollPane;
-import GUI.Components.CustomTable;
-import GUI.Components.CustomTextField;
-import GUI.Form.AddingPlayer;
-import GUI.Form.AddingStaff;
-import GUI.Form.DetailsAddress;
-import GUI.Form.DetailsAuthenticator;
-import GUI.Form.EditingPlayerForm;
-
+@SuppressWarnings({"unused", "FieldMayBeFinal"})
 public class AccountPanel extends JPanel {
     private final Font fontSans15 = new Font("Sans", Font.BOLD, 15);
     private AccountBLL accountBLL;

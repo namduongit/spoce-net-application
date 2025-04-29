@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@SuppressWarnings({"unused", "FieldMayBeFinal", "rawtypes"})
 public class RoomPanel extends JPanel{
     private CustomPanel titlePanel;
     private CustomPanel controlPanel;

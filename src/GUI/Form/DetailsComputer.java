@@ -4,16 +4,13 @@ import BLL.*;
 import DTO.*;
 import GUI.Components.CustomButton;
 import GUI.Components.CustomCombobox;
-import GUI.Components.CustomPanel;
 import GUI.Components.CustomTextField;
-import GUI.panels.ComputerPanel;
-
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import javax.swing.*;
 
 @SuppressWarnings("unused")
 public class DetailsComputer extends JFrame {
@@ -90,6 +87,7 @@ public class DetailsComputer extends JFrame {
         JLabel idLabel = new JLabel("Mã máy tính:");
         idTextField = new CustomTextField(this.computer.getComputerId()+"");
         idTextField.setEditable(false);
+        idTextField.setFocusable(false);
 
         JLabel nameLabel = new JLabel("Tên máy tính:");
         nameTextField = new CustomTextField(this.computer.getName());

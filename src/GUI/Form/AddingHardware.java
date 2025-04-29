@@ -3,14 +3,14 @@ package GUI.Form;
 import BLL.*;
 import DTO.*;
 import GUI.Components.*;
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.sql.Date;
+import javax.swing.*;
 
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "FieldMayBeFinal"})
 public class AddingHardware extends JFrame {
     private JPanel content;
     private CustomTextField idField;

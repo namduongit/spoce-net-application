@@ -2,7 +2,6 @@ package BLL;
 
 import DAL.ComputerSessionDAL;
 import DTO.ComputerSessions;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,5 +36,9 @@ public class ComputerSessionBLL {
 
     public boolean updateTotalCostOfComputerSession(int computerId, int pricePerHour) {
         return this.computerSessionDAL.updateTotalCostOfComputerSession(computerId, pricePerHour);
+    }
+
+    public HashMap<String, Object> getComputerInfoAndRoomInfoOfSession(int sessionId) {
+        return this.computerSessionDAL.getComputerInfoAndRoomInfoOfSession(sessionId);
     }
 }

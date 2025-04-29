@@ -7,6 +7,15 @@
         {
             "type": "java",
 <<<<<<< HEAD
+            "name": "AdminLoginScreen",
+            "request": "launch",
+            "mainClass": "GUI.main.AdminLoginScreen",
+            "projectName": "spoce-net-application_fc943d68"
+        },
+        {
+            "type": "java",
+=======
+<<<<<<< HEAD
             "name": "ChangeMinToDate",
             "request": "launch",
             "mainClass": "Utils.Helper.ChangeMinToDate",
@@ -26,6 +35,7 @@
             "mainClass": "Utils.Helper.PrintPDF",
             "projectName": "spoce-net-application_f57ff3ae"
 =======
+>>>>>>> cf6316c8d30efa685b73925425c971abc5b430f3
             "name": "test",
             "request": "launch",
             "mainClass": "test",

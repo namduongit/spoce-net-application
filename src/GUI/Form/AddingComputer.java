@@ -5,8 +5,6 @@ import DTO.*;
 import GUI.Components.CustomButton;
 import GUI.Components.CustomCombobox;
 import GUI.Components.CustomTextField;
-
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
@@ -15,8 +13,9 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import javax.swing.*;
 
-@SuppressWarnings("rawtypes")
+@SuppressWarnings({"unused", "FieldMayBeFinal", "rawtypes"})
 public class AddingComputer extends JFrame {
     private JPanel content;
     private CustomTextField nameTextField;

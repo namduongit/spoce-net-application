@@ -1,17 +1,16 @@
 package GUI.Form;
 
+import BLL.AccountBLL;
+import GUI.Components.CustomButton;
+import GUI.Components.CustomPasswordField;
+import GUI.Components.CustomTextField;
 import java.awt.Font;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-import BLL.AccountBLL;
-import GUI.Components.CustomButton;
-import GUI.Components.CustomTextField;
-import GUI.Components.CustomPasswordField;
-
+@SuppressWarnings({"unused", "FieldMayBeFinal"})
 public class AddingPlayer extends JFrame {
     private AccountBLL accountBLL;
 

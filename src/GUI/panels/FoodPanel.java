@@ -1,20 +1,11 @@
 package GUI.panels;
 
-import javax.swing.*;
-
 import BLL.CategoryBLL;
 import BLL.FoodBLL;
 import DTO.Accounts;
 import DTO.Categories;
 import DTO.Foods;
 import DTO.Staffs;
-
-import java.awt.*;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
 import GUI.Card.FoodCard;
 import GUI.Components.CustomButton;
 import GUI.Components.CustomCombobox;
@@ -24,11 +15,16 @@ import GUI.Components.CustomTextField;
 import GUI.Form.AddingFood;
 import GUI.Form.AddingOrder;
 import GUI.Form.DetailsFood;
-
+import java.awt.*;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.swing.*;
 
 public class FoodPanel extends JPanel {
     @SuppressWarnings("unused")
