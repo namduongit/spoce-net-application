@@ -18,17 +18,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 import javax.swing.*;
 
-<<<<<<< HEAD
 @SuppressWarnings({"unused", "FieldMayBeFinal"})
 public class ComputerManagingPanel extends JPanel {
     
     private Accounts loginAccount;
 
-=======
-@SuppressWarnings("unused")
-public class ComputerManagingPanel extends JPanel {
-    private Accounts loginAccount;
->>>>>>> cf6316c8d30efa685b73925425c971abc5b430f3
     private Staffs loginStaff;
 
     

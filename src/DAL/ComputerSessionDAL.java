@@ -147,4 +147,45 @@ public class ComputerSessionDAL {
     }
     return list;
     }
+
+    public HashMap<String, Object> getComputerInfoAndRoomInfoOfSession(int sessionId) {
+        MySQLHelper helper = new MySQLHelper();
+        HashMap<String, Object> map = new HashMap<>();
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "computer_sessions cs");
+        params.put("WHERE", "cs.session_id = ?");
+        params.put("JOIN", "computers c ON cs.computer_id = c.computer_id JOIN rooms r ON c.room_id = r.room_id");
+        params.put("SELECT", "r.room_id, r.room_name, c.computer_id, c.name, c.price_per_hour, cs.start_time, cs.end_time, cs.duration, cs.total_cost");
+        helper.buildingQueryParam(params);
+
+        ArrayList<Object> values = new ArrayList<>();
+        values.add(sessionId);
+
+        try {
+            ResultSet rs = helper.queryWithParam(values);
+            while (rs.next()) {
+                map.put("room_id", rs.getInt("room_id"));
+                map.put("room_name", rs.getString("room_name"));
+                map.put("computer_id", rs.getInt("computer_id"));
+                map.put("name", rs.getString("name"));
+                map.put("price_per_hour", rs.getInt("price_per_hour"));
+                map.put("start_time", rs.getTimestamp("start_time"));
+                map.put("end_time", rs.getTimestamp("end_time"));
+                map.put("duration", rs.getInt("duration"));
+                map.put("total_cost", rs.getInt("total_cost"));
+            }
+            rs.close();
+            helper.closeConnect();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(
+                null,
+                "Lỗi tại hàm getComputerInfoAndRoomInfoOfSession",
+                "Lỗi",
+                JOptionPane.ERROR_MESSAGE
+            );
+        }
+
+        return map;
+    }
 }

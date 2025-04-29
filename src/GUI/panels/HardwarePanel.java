@@ -14,11 +14,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
-<<<<<<< HEAD
 @SuppressWarnings({"unused", "FieldMayBeFinal"})
-=======
-@SuppressWarnings("unused")
->>>>>>> cf6316c8d30efa685b73925425c971abc5b430f3
 public class HardwarePanel extends JPanel {
     private CardLayout cardLayout;
     private CustomPanel titlePanel;

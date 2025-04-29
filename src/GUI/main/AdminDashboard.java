@@ -1,14 +1,11 @@
 package GUI.main;
 
-<<<<<<< HEAD
 import DTO.Accounts;
 import DTO.Staffs;
 import GUI.Components.CustomButton;
 import GUI.panels.*;
 import Utils.Helper.CreateComponent;
 import java.awt.CardLayout;
-=======
->>>>>>> cf6316c8d30efa685b73925425c971abc5b430f3
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -247,12 +244,12 @@ public class AdminDashboard extends JFrame {
         this.switchPanel(new DashBoardPanel());
     }
 
-    @SuppressWarnings("deprecation")
-    public static void main(String[] args) {
-        Accounts accounts = new Accounts(1, "namduongit", "namduongit", "Quản trị viên", "Đang hoạt động",
-                new Timestamp(1, 1, 1, 1, 1, 1, 1));
-        Staffs staffs = new Staffs(1, 1, "Nguyễn Nam Dương", new Date(1, 1, 1), "Nam", "0388853835", "null", "null",
-                "null", "null");
-        new AdminDashboard(accounts, staffs).setVisible(true);
-    }
+    // @SuppressWarnings("deprecation")
+    // public static void main(String[] args) {
+    //     Accounts accounts = new Accounts(1, "namduongit", "namduongit", "Quản trị viên", "Đang hoạt động",
+    //             new Timestamp(1, 1, 1, 1, 1, 1, 1));
+    //     Staffs staffs = new Staffs(1, 1, "Nguyễn Nam Dương", new Date(1, 1, 1), "Nam", "0388853835", "null", "null",
+    //             "null", "null");
+    //     new AdminDashboard(accounts, staffs).setVisible(true);
+    // }
 }

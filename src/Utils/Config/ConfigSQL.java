@@ -14,11 +14,7 @@ public class ConfigSQL {
     public static String URLServer = "jdbc:mysql://128.199.154.64:3306/net_gaming_management";
     // Kết nối Local
     public static String USER_NAME = "root";
-<<<<<<< HEAD
     public static String PASSWORD = "123456";
-=======
-    public static String PASSWORD = "NDuong205";
->>>>>>> cf6316c8d30efa685b73925425c971abc5b430f3
     public static String URL = "jdbc:mysql://localhost:3306/net_gaming_management";
 
 

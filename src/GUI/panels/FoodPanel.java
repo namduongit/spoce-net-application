@@ -12,7 +12,6 @@ import GUI.Components.CustomCombobox;
 import GUI.Components.CustomPanel;
 import GUI.Components.CustomScrollPane;
 import GUI.Components.CustomTextField;
-import GUI.Form.AddingCategory;
 import GUI.Form.AddingFood;
 import GUI.Form.AddingOrder;
 import GUI.Form.DetailsFood;
@@ -335,9 +334,6 @@ public class FoodPanel extends JPanel {
 
         CustomButton addNewCategory = Utils.Helper.CreateComponent.createGrayButton("Thêm loại");
         addNewCategory.setBounds(410, 10, 100, 30);
-<<<<<<< HEAD
-        addNewCategory.addActionListener(e -> new AddingCategory());
-=======
         addNewCategory.addActionListener(e -> {
             String newCate = JOptionPane.showInputDialog("Nhập tên loại bạn muốn thêm:");
             
@@ -358,7 +354,6 @@ public class FoodPanel extends JPanel {
                     JOptionPane.showMessageDialog(this, "Tên của loại sản phẩm mới phải có ít nhất 4 kí tự !", "Cảnh báo", JOptionPane.WARNING_MESSAGE);
                     return;
                 }
->>>>>>> cf6316c8d30efa685b73925425c971abc5b430f3
 
 
                 if (confirm == JOptionPane.YES_OPTION) {
