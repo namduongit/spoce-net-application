@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 
 @SuppressWarnings({"unused", "FieldMayBeFinal"})
 public class ChartPanel extends JPanel {
@@ -383,7 +384,7 @@ public class ChartPanel extends JPanel {
                 displayRoomInfo(room, computerData, roomRevenueMap);
             }
             double totalAllRooms = roomRevenueMap.values().stream().mapToDouble(Double::doubleValue).sum();
-            addLabel("Tổng tất cả phòng: " + formatCurrency(totalAllRooms), Font.BOLD, 14, Color.RED);
+            addLabel("Tổng tất cả phòng: " + formatCurrency(totalAllRooms), Font.BOLD, 14, Color.RED, 10);
         } else {
             displayRoomInfo(selectedRoom, computerData, roomRevenueMap);
         }
@@ -402,7 +403,7 @@ public class ChartPanel extends JPanel {
     }
 
     private void displayRoomInfo(String room, ArrayList<Object[]> computerData, HashMap<String, Double> roomRevenueMap) {
-        addLabel("Phòng: " + room, Font.BOLD, 14, Color.BLACK);
+        addLabel("Phòng: " + room, Font.BOLD, 14, Color.BLACK, 10);
 
         boolean hasComputers = false;
         for (Object[] row : computerData) {
@@ -413,16 +414,16 @@ public class ChartPanel extends JPanel {
                 int duration = (Integer) row[1];
                 double totalCost = (Double) row[2];
                 addLabel(String.format("  Máy: %s - Thời Gian: %d phút - Giá: %s", computerName, duration, formatCurrency(totalCost)),
-                    Font.PLAIN, 12, Color.BLACK);
+                    Font.PLAIN, 12, Color.BLACK, 20);
             }
         }
 
         if (!hasComputers) {
-            addLabel("  Không có", Font.PLAIN, 12, Color.BLACK);
+            addLabel("  Không có", Font.PLAIN, 12, Color.BLACK, 20);
         }
 
         double roomRevenue = roomRevenueMap.getOrDefault(room, 0.0);
-        addLabel("  Tổng tiền: " + formatCurrency(roomRevenue), Font.PLAIN, 12, Color.BLUE);
+        addLabel("  Tổng tiền: " + formatCurrency(roomRevenue), Font.PLAIN, 12, Color.BLUE, 20);
         infoContentPanel.add(Box.createVerticalStrut(10));
     }
 
@@ -431,7 +432,7 @@ public class ChartPanel extends JPanel {
         ArrayList<Object[]> categoryData = foodRevenueBLL.getFoodRevenueByCategory(start, end, selectedCategory);
 
         if (categoryData.isEmpty()) {
-            addLabel("Không có dữ liệu doanh thu trong khoảng thời gian này!", Font.PLAIN, 14, Color.BLACK);
+            addLabel("Không có dữ liệu doanh thu trong khoảng thời gian này!", Font.PLAIN, 14, Color.BLACK, 10);
         } else {
             displayCategoryData(categoryData);
         }
@@ -453,24 +454,24 @@ public class ChartPanel extends JPanel {
 
             if (!categoryName.equals(currentCategory)) {
                 if (!currentCategory.isEmpty()) {
-                    addLabel("  Tổng tiền: " + formatCurrency(categoryTotal), Font.PLAIN, 12, Color.BLUE);
+                    addLabel("  Tổng tiền: " + formatCurrency(categoryTotal), Font.PLAIN, 12, Color.BLUE, 20);
                     infoContentPanel.add(Box.createVerticalStrut(10));
                 }
                 currentCategory = categoryName;
                 categoryTotal = 0;
-                addLabel(currentCategory + ":", Font.BOLD, 14, Color.BLACK);
+                addLabel(currentCategory + ":", Font.BOLD, 14, Color.BLACK, 10);
             }
 
-            addLabel(String.format("  %s - Giá: %s - SL: %d", foodName, formatCurrency(price), quantity), Font.PLAIN, 12, Color.BLACK);
+            addLabel(String.format("  %s - Giá: %s - SL: %d", foodName, formatCurrency(price), quantity), Font.PLAIN, 12, Color.BLACK, 20);
             categoryTotal += total;
             overallTotal += total;
         }
 
         if (!currentCategory.isEmpty()) {
-            addLabel("  Tổng tiền: " + formatCurrency(categoryTotal), Font.PLAIN, 12, Color.BLUE);
+            addLabel("  Tổng tiền: " + formatCurrency(categoryTotal), Font.PLAIN, 12, Color.BLUE, 20);
         }
 
-        addLabel("Tổng tiền: " + formatCurrency(overallTotal), Font.BOLD, 14, Color.RED);
+        addLabel("Tổng tiền: " + formatCurrency(overallTotal), Font.BOLD, 14, Color.RED, 10);
     }
 
     private void updateBillStatusInfo(LocalDateTime start, LocalDateTime end) {
@@ -481,15 +482,16 @@ public class ChartPanel extends JPanel {
             int canceledCount = statusCounts.getOrDefault("Đã hủy", 0);
 
             addLabel(String.format("Hóa đơn: Đã xử lý: %d, Chưa xử lý: %d, Đã hủy: %d", processedCount, pendingCount, canceledCount),
-                Font.PLAIN, 12, Color.BLACK);
+                Font.PLAIN, 12, Color.BLACK, 10);
         }
     }
 
-    private void addLabel(String text, int style, int size, Color color) {
+    private void addLabel(String text, int style, int size, Color color, int leftPadding) {
         JLabel label = new JLabel(text);
         label.setFont(new Font("Sans-serif", style, size));
         label.setForeground(color);
         label.setAlignmentX(Component.LEFT_ALIGNMENT);
+        label.setBorder(new EmptyBorder(0, leftPadding, 0, 0)); // Thêm thụt lề bên trái
         infoContentPanel.add(label);
     }
 }
