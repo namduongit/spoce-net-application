@@ -94,12 +94,8 @@ public class HeadphoneDAL {
 
     public boolean addHeadphone(Headphones headphone) {
         MySQLHelper helper = new MySQLHelper();
-        if(this.getHeadphoneById(headphone.getHeadphoneId()) != null) {
-            JOptionPane.showMessageDialog(null, "ID " + headphone.getHeadphoneId() + " đã tồn tại!", "Lỗi", JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
+       
         ArrayList<Object> values = new ArrayList<>();
-            values.add(headphone.getHeadphoneId());
             values.add(headphone.getBrand());
             values.add(headphone.getModel());
             values.add(headphone.getType());
@@ -111,7 +107,7 @@ public class HeadphoneDAL {
         // Thiết lập queryParams trước khi insert
         HashMap<String, String> params = new HashMap<>();
         params.put("TABLE", "headphones");
-        params.put("FIELD", "headphone_id, brand, model, type, purchase_date, warranty_expiry, status, price");
+        params.put("FIELD", "brand, model, type, purchase_date, warranty_expiry, status, price");
         helper.buildingQueryParam(params);
 
         boolean result = helper.insertData(values);

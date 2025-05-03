@@ -30,6 +30,15 @@ public class Gpus {
         this.status = status;
         this.price = price;
     }
+    public Gpus(String brand, String model, int vram, Date purchaseDate, Date warrantyExpiry, String status, double price) {
+        this.brand = brand;
+        this.model = model;
+        this.vram = vram;
+        this.purchaseDate = purchaseDate;
+        this.warrantyExpiry = warrantyExpiry;
+        this.status = status;
+        this.price = price;
+    }
 
     // Constructor không tham số
     public Gpus() {

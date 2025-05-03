@@ -80,12 +80,9 @@ public class CpuDAL {
     }
     public boolean addCpu(Cpus cpu) {
         MySQLHelper helper = new MySQLHelper();
-        if(this.getCpuById(cpu.getCpuId()) != null) {
-            JOptionPane.showMessageDialog(null, "ID " + cpu.getCpuId() + " đã tồn tại!", "Lỗi", JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
+       
         ArrayList<Object> values = new ArrayList<>();
-            values.add(cpu.getCpuId());
+            // values.add(cpu.getCpuId());
             values.add(cpu.getBrand());
             values.add(cpu.getModel());
             values.add(cpu.getClockSpeed());
@@ -99,7 +96,7 @@ public class CpuDAL {
 
        HashMap<String, String> params = new HashMap<>();
        params.put("TABLE","cpus");
-       params.put("FIELD","cpu_id,brand,model,clock_speed,cores,threads,integrated_gpu,purchase_date,warranty_expiry,status,price");
+       params.put("FIELD","brand,model,clock_speed,cores,threads,integrated_gpu,purchase_date,warranty_expiry,status,price");
        helper.buildingQueryParam(params);
 
         boolean result = helper.insertData(values);

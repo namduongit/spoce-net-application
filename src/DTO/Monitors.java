@@ -32,6 +32,16 @@ public class Monitors {
         this.status = status;
         this.price = price;
     }
+    public Monitors(String brand, String model, float size, int refreshRate, Date purchaseDate, Date warrantyExpiry, String status, double price) {
+        this.brand = brand;
+        this.model = model;
+        this.size = size;
+        this.refreshRate = refreshRate;
+        this.purchaseDate = purchaseDate;
+        this.warrantyExpiry = warrantyExpiry;
+        this.status = status;
+        this.price = price;
+    }
 
     // Constructor không tham số
     public Monitors() {

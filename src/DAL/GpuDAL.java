@@ -77,13 +77,10 @@ public class GpuDAL {
 
     public boolean addGpu(Gpus gpu) {
         MySQLHelper helper = new MySQLHelper();
-        if(this.getGpuById(gpu.getGpuId()) != null) {
-            JOptionPane.showMessageDialog(null,"ID" + gpu.getGpuId() + "đã tồn tại!", "Lỗi", JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
+      
 
         ArrayList<Object> values = new ArrayList<>();
-            values.add(gpu.getGpuId());
+            // values.add(gpu.getGpuId());
             values.add(gpu.getBrand());
             values.add(gpu.getModel());
             values.add(gpu.getVram());
@@ -95,7 +92,7 @@ public class GpuDAL {
 
         HashMap<String,String> params = new HashMap<>();
         params.put("TABLE", "gpus");
-        params.put("FIELD", "gpu_id,brand,model,vram,purchase_date,warranty_expiry,status,price");
+        params.put("FIELD", "brand,model,vram,purchase_date,warranty_expiry,status,price");
         helper.buildingQueryParam(params);
 
        boolean result = helper.insertData(values);

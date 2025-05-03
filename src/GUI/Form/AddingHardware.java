@@ -13,7 +13,6 @@ import javax.swing.*;
 @SuppressWarnings({"unused", "FieldMayBeFinal"})
 public class AddingHardware extends JFrame {
     private JPanel content;
-    private CustomTextField idField;
     private CustomTextField modelField;
     private CustomTextField priceField;
     private CustomCombobox<String> typeComboBox;
@@ -29,6 +28,7 @@ public class AddingHardware extends JFrame {
     private MonitorBLL monitorBLL;
     private HeadphoneBLL headphoneBLL;
     private RomBLL romBLL;
+    private RamBLL ramBLL;
     private ArrayList<String> statusList;
 
     public AddingHardware() {
@@ -41,6 +41,7 @@ public class AddingHardware extends JFrame {
         this.monitorBLL = new MonitorBLL();
         this.headphoneBLL = new HeadphoneBLL();
         this.romBLL = new RomBLL();
+        this.ramBLL = new RamBLL();
         this.statusList = new ArrayList<>(Arrays.asList("Trong kho", "Đang sử dụng", "Thiếu linh kiện", "Bảo trì", "Hỏng"));
 
         this.initComponents();
@@ -49,7 +50,7 @@ public class AddingHardware extends JFrame {
     private void initComponents() {
         this.setTitle("Thêm linh kiện");
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.setSize(550, 900);
+        this.setSize(550, 860);
         this.setResizable(false);
 
         this.content = createContent();
@@ -63,13 +64,6 @@ public class AddingHardware extends JFrame {
         panel.setLayout(null);
         panel.setBackground(Color.decode("#ECF0F1"));
 
-        // ID
-        JLabel idLabel = new JLabel("ID:");
-        idLabel.setFont(new Font("Sans-serif", Font.PLAIN, 14));
-        idField = new CustomTextField("Nhập ID");
-        idField.setForeground(Color.GRAY);
-        addPlaceholderBehavior(idField, "Nhập ID");
-
         // Tên sản phẩm
         JLabel modelLabel = new JLabel("Tên sản phẩm:");
         modelLabel.setFont(new Font("Sans-serif", Font.PLAIN, 14));
@@ -81,7 +75,7 @@ public class AddingHardware extends JFrame {
         JLabel typeLabel = new JLabel("Loại linh kiện:");
         typeLabel.setFont(new Font("Sans-serif", Font.PLAIN, 14));
         ArrayList<String> typeList = new ArrayList<>(Arrays.asList(
-                "Chọn loại", "Rom", "CPU", "GPU", "Mainboard", "Mouse", "Keyboard", "Monitor", "Headphone"
+                "Chọn loại","RAM","Rom", "CPU", "GPU", "Mainboard", "Mouse", "Keyboard", "Monitor", "Headphone"
         ));
         typeComboBox = new CustomCombobox<>(typeList);
         typeComboBox.setFont(new Font("Sans-serif", Font.PLAIN, 14));
@@ -106,7 +100,7 @@ public class AddingHardware extends JFrame {
         // Panel chứa các trường động
         dynamicFieldsPanel = new JPanel();
         dynamicFieldsPanel.setLayout(null);
-        dynamicFieldsPanel.setBounds(20, 290, 510, 500); // Tăng chiều rộng lên 510 để vừa với frame
+        dynamicFieldsPanel.setBounds(20, 250, 510, 500);
         dynamicFieldsPanel.setBackground(Color.decode("#ECF0F1"));
 
         // Đường phân cách
@@ -118,11 +112,11 @@ public class AddingHardware extends JFrame {
                 g.fillRect(0, 0, getWidth(), getHeight());
             }
         };
-        separator.setBounds(270, 155, 1, 600); // Tăng chiều cao lên 600 để khớp với dynamicFieldsPanel
+        separator.setBounds(270, 115, 1, 600);
 
         // Nút lưu
         CustomButton saveBtn = Utils.Helper.CreateComponent.createBlueButton("Lưu lại");
-        saveBtn.setBounds(20, 820, 100, 35); // Di chuyển xuống dưới cùng
+        saveBtn.setBounds(20, 780, 100, 35);
         saveBtn.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -142,7 +136,7 @@ public class AddingHardware extends JFrame {
 
         // Nút đặt lại
         CustomButton resetBtn = Utils.Helper.CreateComponent.createOrangeButton("Đặt lại");
-        resetBtn.setBounds(140, 820, 100, 35); // Di chuyển xuống dưới cùng
+        resetBtn.setBounds(140, 780, 100, 35);
         resetBtn.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -161,20 +155,16 @@ public class AddingHardware extends JFrame {
         });
 
         // Đặt vị trí các thành phần
-        idLabel.setBounds(20, 20, 200, 20);      // Tăng khoảng cách trên cùng
-        idField.setBounds(20, 45, 510, 30);
-        modelLabel.setBounds(20, 85, 200, 20);
-        modelField.setBounds(20, 110, 510, 30);
-        typeLabel.setBounds(20, 150, 200, 20);
-        typeComboBox.setBounds(20, 175, 225, 35);
-        priceLabel.setBounds(275, 150, 200, 20); // Điều chỉnh sang phải một chút
-        priceField.setBounds(275, 175, 255, 35);
-        statusLabel.setBounds(20, 220, 200, 20);
-        statusComboBox.setBounds(20, 245, 225, 35);
+        modelLabel.setBounds(20, 20, 200, 20);
+        modelField.setBounds(20, 45, 510, 30);
+        typeLabel.setBounds(20, 85, 200, 20);
+        typeComboBox.setBounds(20, 110, 225, 35);
+        priceLabel.setBounds(275, 85, 200, 20);
+        priceField.setBounds(275, 110, 255, 35);
+        statusLabel.setBounds(20, 155, 200, 20);
+        statusComboBox.setBounds(20, 180, 225, 35);
 
         // Thêm vào panel
-        panel.add(idLabel);
-        panel.add(idField);
         panel.add(modelLabel);
         panel.add(modelField);
         panel.add(typeLabel);
@@ -191,7 +181,6 @@ public class AddingHardware extends JFrame {
         return panel;
     }
 
-    // Thêm hành vi placeholder cho các trường văn bản
     private void addPlaceholderBehavior(CustomTextField textField, String placeholder) {
         textField.setText(placeholder);
         textField.addFocusListener(new FocusAdapter() {
@@ -312,6 +301,17 @@ public class AddingHardware extends JFrame {
                 yOffset += 40;
                 addDateField(dynamicFieldsPanel, "Hết bảo hành:", "warrantyExpiryField", yOffset);
                 break;
+            case "RAM":
+                addTextField(dynamicFieldsPanel, "Thương hiệu:", "brandField", yOffset);
+                yOffset += 40;
+                addTextField(dynamicFieldsPanel, "Dung lượng (GB):", "capacityField", yOffset);
+                yOffset += 40;
+                addTextField(dynamicFieldsPanel, "Tốc độ (MHz):", "speedField", yOffset);
+                yOffset += 40;
+                addDateField(dynamicFieldsPanel, "Ngày mua:", "purchaseDateField", yOffset);
+                yOffset += 40;
+                addDateField(dynamicFieldsPanel, "Hết bảo hành:", "warrantyExpiryField", yOffset);
+                break;
             default:
                 break;
         }
@@ -325,7 +325,7 @@ public class AddingHardware extends JFrame {
         label.setFont(new Font("Sans-serif", Font.PLAIN, 14));
         label.setBounds(0, yOffset, 200, 20);
         CustomTextField textField = new CustomTextField();
-        textField.setBounds(210, yOffset, 290, 30); // Tăng khoảng cách bên trái lên 210 để căn chỉnh đẹp hơn
+        textField.setBounds(210, yOffset, 290, 30);
         textField.setName(fieldName);
         panel.add(label);
         panel.add(textField);
@@ -337,7 +337,7 @@ public class AddingHardware extends JFrame {
         label.setBounds(0, yOffset, 200, 20);
         CustomTextField textField = new CustomTextField("YYYY-MM-DD");
         textField.setForeground(Color.GRAY);
-        textField.setBounds(210, yOffset, 290, 30); // Tăng khoảng cách bên trái lên 210
+        textField.setBounds(210, yOffset, 290, 30);
         textField.setName(fieldName);
         textField.addFocusListener(new FocusAdapter() {
             @Override
@@ -364,7 +364,7 @@ public class AddingHardware extends JFrame {
         label.setFont(new Font("Sans-serif", Font.PLAIN, 14));
         label.setBounds(0, yOffset, 200, 20);
         JCheckBox checkBox = new JCheckBox();
-        checkBox.setBounds(210, yOffset, 20, 30); // Tăng khoảng cách bên trái lên 210
+        checkBox.setBounds(210, yOffset, 20, 30);
         checkBox.setName(fieldName);
         panel.add(label);
         panel.add(checkBox);
@@ -372,16 +372,14 @@ public class AddingHardware extends JFrame {
 
     private void insertDatas() {
         try {
-            String idText = idField.getText().trim();
             String modelText = modelField.getText().trim();
             String priceText = priceField.getText().trim();
 
-            if (idText.equals("Nhập ID") || modelText.equals("Nhập tên sản phẩm") || priceText.equals("Nhập giá tiền")) {
-                JOptionPane.showMessageDialog(this, "ID, Tên sản phẩm, và Giá tiền không được để trống!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            if (modelText.equals("Nhập tên sản phẩm") || priceText.equals("Nhập giá tiền")) {
+                JOptionPane.showMessageDialog(this, "Tên sản phẩm và Giá tiền không được để trống!", "Lỗi", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
-            int id = Integer.parseInt(idText);
             String model = modelText;
             double price = Double.parseDouble(priceText);
             String type = typeComboBox.getSelectedItem().toString();
@@ -397,7 +395,7 @@ public class AddingHardware extends JFrame {
                 return;
             }
 
-            boolean success = addHardware(id, model, type, price, status);
+            boolean success = addHardware(model, type, price, status);
             if (success) {
                 JOptionPane.showMessageDialog(this, "Thêm linh kiện thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                 resetForm();
@@ -406,13 +404,13 @@ public class AddingHardware extends JFrame {
                 JOptionPane.showMessageDialog(this, "Thêm linh kiện thất bại!", "Lỗi", JOptionPane.ERROR_MESSAGE);
             }
         } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this, "ID và Giá tiền phải là số hợp lệ!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Giá tiền phải là số hợp lệ!", "Lỗi", JOptionPane.ERROR_MESSAGE);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Đã xảy ra lỗi: " + ex.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    private boolean addHardware(int id, String model, String type, double price, String status) {
+    private boolean addHardware(String model, String type, double price, String status) {
         Component[] components = dynamicFieldsPanel.getComponents();
         String brand = getFieldValue(components, "brandField");
         Date purchaseDate = parseDate(getFieldValue(components, "purchaseDateField"));
@@ -423,18 +421,18 @@ public class AddingHardware extends JFrame {
                 case "Rom":
                     String ramType = getFieldValue(components, "typeField");
                     int capacity = Integer.parseInt(getFieldValue(components, "capacityField", "0"));
-                    Roms ram = new Roms(id, brand, model, ramType, capacity, purchaseDate, warrantyExpiry, status, price);
-                    return romBLL.addRom(ram);
+                    Roms rom = new Roms(brand, model, ramType, capacity, purchaseDate, warrantyExpiry, status, price);
+                    return romBLL.addRom(rom);
                 case "CPU":
                     float clockSpeed = Float.parseFloat(getFieldValue(components, "clockSpeedField", "0"));
                     int cores = Integer.parseInt(getFieldValue(components, "coresField", "0"));
                     int threads = Integer.parseInt(getFieldValue(components, "threadsField", "0"));
                     boolean integratedGpu = getCheckboxValue(components, "integratedGpuField");
-                    Cpus cpu = new Cpus(id, brand, model, clockSpeed, cores, threads, integratedGpu, purchaseDate, warrantyExpiry, status, price);
+                    Cpus cpu = new Cpus(brand, model, clockSpeed, cores, threads, integratedGpu, purchaseDate, warrantyExpiry, status, price);
                     return cpuBLL.addCpu(cpu);
                 case "GPU":
                     int vram = Integer.parseInt(getFieldValue(components, "vramField", "0"));
-                    Gpus gpu = new Gpus(id, brand, model, vram, purchaseDate, warrantyExpiry, status, price);
+                    Gpus gpu = new Gpus(brand, model, vram, purchaseDate, warrantyExpiry, status, price);
                     return gpuBLL.addGpu(gpu);
                 case "Mainboard":
                     String socket = getFieldValue(components, "socketField");
@@ -446,23 +444,28 @@ public class AddingHardware extends JFrame {
                     int sataPorts = Integer.parseInt(getFieldValue(components, "sataPortsField", "0"));
                     int m2Slots = Integer.parseInt(getFieldValue(components, "m2SlotsField", "0"));
                     int maxStorageCapacity = Integer.parseInt(getFieldValue(components, "maxStorageCapacityField", "0"));
-                    Motherboards motherboard = new Motherboards(id, brand, model, socket, chipset, ramSlots, maxRam, ramSpeed, storageSlots, sataPorts, m2Slots, maxStorageCapacity, status, null, null, null, purchaseDate, warrantyExpiry, price);
+                    Motherboards motherboard = new Motherboards(brand, model, socket, chipset, ramSlots, maxRam, ramSpeed, storageSlots, sataPorts, m2Slots, maxStorageCapacity, status, null, null, null, purchaseDate, warrantyExpiry, price);
                     return motherboardBLL.addMotherboard(motherboard);
                 case "Mouse":
-                    Mouse mouse = new Mouse(id, brand, model, purchaseDate, warrantyExpiry, status, price);
+                    Mouse mouse = new Mouse(brand, model, purchaseDate, warrantyExpiry, status, price);
                     return mouseBLL.addMouse(mouse);
                 case "Keyboard":
-                    Keyboards keyboard = new Keyboards(id, brand, model, purchaseDate, warrantyExpiry, status, price);
+                    Keyboards keyboard = new Keyboards(brand, model, purchaseDate, warrantyExpiry, status, price);
                     return keyboardBLL.addKeyboard(keyboard);
                 case "Monitor":
                     float size = Float.parseFloat(getFieldValue(components, "sizeField", "0"));
                     int refreshRate = Integer.parseInt(getFieldValue(components, "refreshRateField", "0"));
-                    Monitors monitor = new Monitors(id, brand, model, size, refreshRate, purchaseDate, warrantyExpiry, status, price);
+                    Monitors monitor = new Monitors(brand, model, size, refreshRate, purchaseDate, warrantyExpiry, status, price);
                     return monitorBLL.addMonitor(monitor);
                 case "Headphone":
                     String headphoneType = getFieldValue(components, "typeField");
-                    Headphones headphone = new Headphones(id, brand, model, headphoneType, purchaseDate, warrantyExpiry, status, price);
+                    Headphones headphone = new Headphones(brand, model, headphoneType, purchaseDate, warrantyExpiry, status, price);
                     return headphoneBLL.addHeadphone(headphone);
+                case "RAM":
+                    int ramCapacity = Integer.parseInt(getFieldValue(components, "capacityField", "0"));
+                    int speed = Integer.parseInt(getFieldValue(components, "speedField", "0"));
+                    Rams ram = new Rams(brand, model, ramCapacity, speed, purchaseDate, warrantyExpiry, status, price);
+                    return ramBLL.addRam(ram);
                 default:
                     return false;
             }
@@ -506,8 +509,6 @@ public class AddingHardware extends JFrame {
     }
 
     private void resetForm() {
-        idField.setText("Nhập ID");
-        idField.setForeground(Color.GRAY);
         modelField.setText("Nhập tên sản phẩm");
         modelField.setForeground(Color.GRAY);
         typeComboBox.setSelectedIndex(0);

@@ -28,6 +28,14 @@ public class Mouse {
         this.status = status;
         this.price = price;
     }
+    public Mouse(String brand, String model, Date purchaseDate, Date warrantyExpiry, String status, double price) {
+        this.brand = brand;
+        this.model = model;
+        this.purchaseDate = purchaseDate;
+        this.warrantyExpiry = warrantyExpiry;
+        this.status = status;
+        this.price = price;
+    }
 
     // Constructor không tham số
     public Mouse() {

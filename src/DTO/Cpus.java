@@ -28,6 +28,18 @@ public class Cpus {
         this.status = status;
         this.price = price;
     }
+    public Cpus( String brand, String model, float clockSpeed, int cores, int threads, boolean integratedGpu, Date purchaseDate, Date warrantyExpiry, String status, double price) {
+        this.brand = brand;
+        this.model = model;
+        this.clockSpeed = clockSpeed;
+        this.cores = cores;
+        this.threads = threads;
+        this.integratedGpu = integratedGpu;
+        this.purchaseDate = purchaseDate;
+        this.warrantyExpiry = warrantyExpiry;
+        this.status = status;
+        this.price = price;
+    }
 
     public double getPrice() {
         return price;

@@ -88,12 +88,8 @@ public class MouseDAL {
     }
     public boolean addMouse(Mouse mouse) {
         MySQLHelper helper = new MySQLHelper();
-        if(this.getMouseById(mouse.getMouseId()) != null) {
-            JOptionPane.showMessageDialog(null, "ID " + mouse.getMouseId() + " đã tồn tại!", "Lỗi", JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
+       
         ArrayList<Object> values = new ArrayList<>();
-            values.add(mouse.getMouseId());
             values.add(mouse.getBrand());
             values.add(mouse.getModel());
             values.add(mouse.getPurchaseDate());
@@ -103,7 +99,7 @@ public class MouseDAL {
 
          HashMap<String, String> params = new HashMap<>();
          params.put("TABLE", "mouse");
-         params.put("FIELD", "mouse_id,brand,model,purchase_date,warranty_expiry,status,price");
+         params.put("FIELD", "brand,model,purchase_date,warranty_expiry,status,price");
          helper.buildingQueryParam(params);
 
         boolean result = helper.insertData(values);
