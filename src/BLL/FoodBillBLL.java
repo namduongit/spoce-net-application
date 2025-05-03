@@ -57,6 +57,9 @@ public class FoodBillBLL {
             }
             System.out.println();
         }
+
+//        ArrayList<FoodBills> list = new FoodBillBLL().getFoodBillList();
+//        for (FoodBills bl : list) System.out.println(bl);
     }
 
 }

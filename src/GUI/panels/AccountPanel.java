@@ -76,7 +76,6 @@ public class AccountPanel extends JPanel {
     private CustomCombobox<String> statusEmployeeAccount;
     private CustomCombobox<String> roleEmmployeeAccount;
     private CustomCombobox<String> orderSortEmployeeByName;
-    private CustomCombobox<String> orderSortEmployeeByCreateAt;
     @SuppressWarnings("unused")
     private CustomButton filterStaffAccount;
     @SuppressWarnings("unused")
@@ -392,7 +391,6 @@ public class AccountPanel extends JPanel {
         this.searchEmployeeAccount.setText("Nhập thông tin tìm kiếm");
         this.roleEmmployeeAccount.setSelectedItem("Tất cả");
         this.orderSortEmployeeByName.setSelectedItem("Mặc định");
-        this.orderSortEmployeeByCreateAt.setSelectedItem("Mặc định");
     }
 
     private void filterDataStaffAccount() {
@@ -400,12 +398,11 @@ public class AccountPanel extends JPanel {
         String status = this.statusEmployeeAccount.getSelectedItem().toString();
         String role = this.roleEmmployeeAccount.getSelectedItem().toString();
         String orderName = this.orderSortEmployeeByName.getSelectedItem().toString();
-        String orderCreateAt = this.orderSortEmployeeByCreateAt.getSelectedItem().toString();
 
-       this.staffAccountList = this.accountBLL.filterStaffAccountList(searchText, status, role, orderName, orderCreateAt);
+       this.staffAccountList = this.accountBLL.filterStaffAccountList(searchText, status, role, orderName);
 
         ArrayList<Object[]> dataObjects = new ArrayList<>();
-        for (Object object : this.playerAccountList) {
+        for (Object object : this.staffAccountList) {
             dataObjects.add((Object[]) object);
         }
 
@@ -456,7 +453,7 @@ public class AccountPanel extends JPanel {
 
         JLabel statusLabel = new JLabel("Trạng thái:");
         statusLabel.setBounds(330, 20, 80, 30);
-        String[] statuses = { "Tất cả", "Hoạt động", "Bị khóa" };
+        String[] statuses = { "Tất cả", "Online", "Offline", "Locked" };
         this.statusEmployeeAccount = new CustomCombobox<>(statuses);
         this.statusEmployeeAccount.setBounds(420, 20, 160, 30);
 
@@ -488,7 +485,6 @@ public class AccountPanel extends JPanel {
             this.searchEmployeeAccount.setText("Nhập thông tin tìm kiếm");
             this.roleEmmployeeAccount.setSelectedItem("Tất cả");
             this.orderSortEmployeeByName.setSelectedItem("Mặc định");
-            this.orderSortEmployeeByCreateAt.setSelectedItem("Mặc định");
             this.reloadStaffAccountTable();
             this.filterDataStaffAccount();
         });
@@ -499,11 +495,6 @@ public class AccountPanel extends JPanel {
         this.orderSortEmployeeByName = new CustomCombobox<>(sortOrder);
         this.orderSortEmployeeByName.setBounds(100, 58, 200, 30);
 
-        JLabel orderCreateAt = new JLabel("Lọc ngày tạo:");
-        orderCreateAt.setBounds(330, 58, 80, 30);
-        String[] orderSortByCreateAt = {"Mặc định", "Ngày tăng dần", "Ngày giảm dần"};
-        this.orderSortEmployeeByCreateAt = new CustomCombobox<>(orderSortByCreateAt);
-        this.orderSortEmployeeByCreateAt.setBounds(420, 58, 160, 30);
 
         this.staffClicked = new JLabel("Đang chọn: NULL");
         this.staffClicked.setBounds(610, 58, 200, 30);
@@ -518,8 +509,6 @@ public class AccountPanel extends JPanel {
         findDataPanel.add(resetButton);
         findDataPanel.add(orderName);
         findDataPanel.add(this.orderSortEmployeeByName);
-        findDataPanel.add(orderCreateAt);
-        findDataPanel.add(this.orderSortEmployeeByCreateAt);
         findDataPanel.add(this.staffClicked);
 
         this.panelDataStaffAccount = new CustomPanel();
@@ -831,7 +820,7 @@ public class AccountPanel extends JPanel {
         panel.add(playerAccountPanel, "PlayerInfo");
         
         if (this.loginAccount.getRole().equals("Quản trị viên")) {
-            CustomPanel employeePanel = this.createPlayerInfoPanel();
+            CustomPanel employeePanel = this.createEmployeeInfoPanel();
             panel.add(employeePanel, "EmployeeInfo");
         }
         return panel;

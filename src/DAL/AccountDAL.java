@@ -289,7 +289,7 @@ public class AccountDAL {
         return list;
     }
 
-    public ArrayList<Object[]> filterStaffAccountList(String searchText, String status, String role, String orderName, String orderCreateAt) {
+    public ArrayList<Object[]> filterStaffAccountList(String searchText, String status, String role, String orderName) {
         ArrayList<Object[]> list = new ArrayList<>();
         MySQLHelper helper = new MySQLHelper();
         HashMap<String, String> params = new HashMap<>();
@@ -327,11 +327,6 @@ public class AccountDAL {
         if (orderName != null && !orderName.equalsIgnoreCase("Mặc định")) {
             if (orderName.equalsIgnoreCase("Theo tên tăng dần")) sortOrder.add("username ASC");
             if (orderName.equalsIgnoreCase("Theo tên giảm dần")) sortOrder.add("username DESC");
-        }
-    
-        if (orderCreateAt != null && !orderCreateAt.equalsIgnoreCase("Mặc định")) {
-            if (orderCreateAt.equalsIgnoreCase("Ngày tăng dần")) sortOrder.add("created_at ASC");
-            if (orderCreateAt.equalsIgnoreCase("Ngày giảm dần")) sortOrder.add("created_at DESC");
         }
     
         if (!sortOrder.isEmpty()) {

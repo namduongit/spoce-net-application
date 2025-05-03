@@ -38,8 +38,8 @@ public class AccountBLL {
         return this.accountDAL.getInfoStaffAccountList();
     } 
 
-    public ArrayList<Object[]> filterStaffAccountList(String searchText, String status, String role, String orderName, String orderCreateAt) {
-        return this.accountDAL.filterStaffAccountList(searchText, status, role, orderName, orderCreateAt);
+    public ArrayList<Object[]> filterStaffAccountList(String searchText, String status, String role, String orderName) {
+        return this.accountDAL.filterStaffAccountList(searchText, status, role, orderName);
     }
 
     // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
