@@ -5,328 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f693d12-b197-4983-bdfc-22b0e0ede1a8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/flying_saucer_core_9_1_22.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/flying_saucer_pdf_itext5_9_1_22.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/itextpdf_5_5_13_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/jakarta_activation_2_0_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/jakarta_mail_api_2_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/javax_mail.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/jfreechart_1_5_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/jsoup_1_15_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/GUI/Form/DetailsFoodOrderBill.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Utils/Fonts/DejaVuMathTeXGyre.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Utils/Fonts/DejaVuSans-Bold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Utils/Fonts/DejaVuSans-BoldOblique.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Utils/Fonts/DejaVuSans-ExtraLight.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Utils/Fonts/DejaVuSans-Oblique.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Utils/Fonts/DejaVuSans.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Utils/Fonts/DejaVuSansCondensed-Bold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Utils/Fonts/DejaVuSansCondensed-BoldOblique.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Utils/Fonts/DejaVuSansCondensed-Oblique.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Utils/Fonts/DejaVuSansCondensed.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Utils/Fonts/DejaVuSansMono-Bold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Utils/Fonts/DejaVuSansMono-BoldOblique.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Utils/Fonts/DejaVuSansMono-Oblique.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Utils/Fonts/DejaVuSansMono.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Utils/Fonts/DejaVuSerif-Bold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Utils/Fonts/DejaVuSerif-BoldItalic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Utils/Fonts/DejaVuSerif-Italic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Utils/Fonts/DejaVuSerif.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Utils/Fonts/DejaVuSerifCondensed-Bold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Utils/Fonts/DejaVuSerifCondensed-BoldItalic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Utils/Fonts/DejaVuSerifCondensed-Italic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Utils/Fonts/DejaVuSerifCondensed.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Utils/Helper/InvoicePrinter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/Form/DetailsFoodOrderBill.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Utils/Fonts/DejaVuMathTeXGyre.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Utils/Fonts/DejaVuSans-Bold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Utils/Fonts/DejaVuSans-BoldOblique.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Utils/Fonts/DejaVuSans-ExtraLight.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Utils/Fonts/DejaVuSans-Oblique.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Utils/Fonts/DejaVuSans.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Utils/Fonts/DejaVuSansCondensed-Bold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Utils/Fonts/DejaVuSansCondensed-BoldOblique.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Utils/Fonts/DejaVuSansCondensed-Oblique.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Utils/Fonts/DejaVuSansCondensed.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Utils/Fonts/DejaVuSansMono-Bold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Utils/Fonts/DejaVuSansMono-BoldOblique.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Utils/Fonts/DejaVuSansMono-Oblique.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Utils/Fonts/DejaVuSansMono.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Utils/Fonts/DejaVuSerif-Bold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Utils/Fonts/DejaVuSerif-BoldItalic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Utils/Fonts/DejaVuSerif-Italic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Utils/Fonts/DejaVuSerif.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Utils/Fonts/DejaVuSerifCondensed-Bold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Utils/Fonts/DejaVuSerifCondensed-BoldItalic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Utils/Fonts/DejaVuSerifCondensed-Italic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Utils/Fonts/DejaVuSerifCondensed.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Utils/Helper/InvoicePrinter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/javax_mail_1_5_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/javax_mail_1_5_3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/jfreechart_1_0_19.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bills/Invoice_SatMay0311-48-59ICT2025.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/activation_1_1_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/flying_saucer_core_9_1_22.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/flying_saucer_pdf_itext5_9_1_22.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/itextpdf_5_5_13_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/jakarta_activation_2_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/jakarta_mail_api_2_1_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/javax_mail.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/javax_mail_1_5_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/jfreechart_1_5_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/jsoup_1_15_4.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/BLL/FoodBillBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/BLL/FoodBillBLL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/DetailsComputerSessionBill.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/DetailsComputerSessionBill.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$10.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$11.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$12.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$13.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$14.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$14.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$15.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$15.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$16.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$16.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$9.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/BillPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/BillPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/PieChartExample.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Utils/Config/ConfigSQL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Utils/Config/ConfigSQL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Utils/Helper/HTMLToPDF.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/createTable.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/App.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Assets/Avatar/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Assets/Avatar/non_avatar.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Assets/Icon/icons8-account-100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Assets/Icon/icons8-bill-100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Assets/Icon/icons8-chart-100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Assets/Icon/icons8-computer-100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Assets/Icon/icons8-cyber-security-100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Assets/Icon/icons8-dashboard-100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Assets/Icon/icons8-employee-100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Assets/Icon/icons8-ethernet-on-100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Assets/Icon/icons8-forget-96.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Assets/Icon/icons8-growth-100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Assets/Icon/icons8-hotel-room-key-100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Assets/Icon/icons8-ingredients-100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Assets/Icon/icons8-logout-100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Assets/Icon/icons8-management-100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Assets/Icon/icons8-password-50.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Assets/Icon/icons8-payment-history-100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Assets/Icon/icons8-target-100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Assets/Image/MENU.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Assets/Image/infomation-dashboard.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Assets/Image/spoce_net_gaming.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Assets/Image/undraw_forgot-password_odai.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Assets/Image/undraw_personal-goals_f9bb.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/CardPanel/AccountPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/CardPanel/BillPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/CardPanel/ChartPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/CardPanel/ComputerPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/CardPanel/DashBoardPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/CardPanel/FoodPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/CardPanel/HardwarePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/CardPanel/HistoryPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/CardPanel/RoomPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Components/CustomButton.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Components/CustomPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Components/CustomPasswordField.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Components/CustomTextField.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/DAO/AccountDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/DAO/StaffDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/MAIN_GUI/AdminDashboard$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/MAIN_GUI/AdminDashboard$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/MAIN_GUI/AdminDashboard.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/MAIN_GUI/AdminLoginScreen$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/MAIN_GUI/AdminLoginScreen$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/MAIN_GUI/AdminLoginScreen$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/MAIN_GUI/AdminLoginScreen$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/MAIN_GUI/AdminLoginScreen.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/MAIN_GUI/ForgetPass.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/MAIN_GUI/MachineSelectionScreen.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/MAIN_GUI/UserDashboardScreen.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/MAIN_GUI/UserLoginScreen.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Pojo/Accounts.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Pojo/Categories.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Pojo/ComputerSessions.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Pojo/Computers.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Pojo/Cpus.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Pojo/FoodBills.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Pojo/FoodOrders.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Pojo/Foods.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Pojo/Gpus.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Pojo/Headphones.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Pojo/Keyboards.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Pojo/Monitors.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Pojo/MotherboardRam.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Pojo/MotherboardStorage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Pojo/Motherboards.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Pojo/Mouse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Pojo/PasswordResetOtps.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Pojo/Players.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Pojo/Psus.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Pojo/Rams.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Pojo/Roms.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Pojo/Rooms.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Pojo/Staffs.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Pojo/Storages.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Pojo/Transactions.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/SQLHelper/MySQLHelper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Utils/Config/ConfigEmail.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Utils/Config/ConfigFrame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Utils/Config/ConfigSQL.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Utils/Helper/CreateComponent$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Utils/Helper/CreateComponent$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Utils/Helper/CreateComponent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Utils/Helper/EncriptString.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Utils/Helper/SendEmail$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Utils/Helper/SendEmail.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/netgaming-management-app/Utils/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Avatar/avatar_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Avatar/non_avatar.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Food/15.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Food/17.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Food/21.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Food/23.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Food/24.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Food/banh-mi-thit-nuong.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Food/banh-mochi.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Food/bun-bo-hue.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Food/ca-phe-sua-da.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Food/che-thap-cam.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Food/com-ga-xoi-mo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Food/com-tam-suon-bi-cha.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Food/hu-tieu-nam-vang.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Food/mi-quang-tom-thit.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Food/none.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Food/nuoc-ep-cam.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Food/nuoc-ep-oi.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Food/pho-tai-chin.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Food/rau-cau-dua.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Food/sinh-to-bo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Food/soda-chanh-day.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Food/sua-chua-nep-cam.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Food/tra-dao-cam-sa.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Food/tra-sua-tran-chau.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Icon/add.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Icon/delete.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Icon/icons8-account-100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Icon/icons8-address-100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Icon/icons8-bill-100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Icon/icons8-change-100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Icon/icons8-chart-100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Icon/icons8-cheque-100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Icon/icons8-computer-100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Icon/icons8-create-100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Icon/icons8-cyber-security-100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Icon/icons8-dashboard-100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Icon/icons8-employee-100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Icon/icons8-ethernet-on-100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Icon/icons8-forget-96.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Icon/icons8-growth-100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Icon/icons8-hotel-room-key-100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Icon/icons8-ingredients-100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Icon/icons8-logout-100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Icon/icons8-management-100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Icon/icons8-password-100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Icon/icons8-password-50.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Icon/icons8-payment-history-100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Icon/icons8-target-100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Icon/info.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Icon/pencil.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Image/MENU.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Image/card_black.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Image/infomation-dashboard.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Image/spoce_net_gaming.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Image/undraw_forgot-password_odai.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Assets/Image/undraw_personal-goals_f9bb.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/AccountBLL.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/CategoryBLL.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/FoodBLL.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/FoodBillBLL.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/FoodOrderBLL.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/PlayerBLL.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/ChartExample.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/AccountDAL.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/CategoryDAL.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/ComputerSessionDAL.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/FoodBillDAL.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/FoodDAL.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/FoodOrderDAL.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/HeadphoneDAL.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/KeyboardDAL.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/MonitorDAL.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/PlayerDAL.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/SQLHelper/HDSuDung.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/SQLHelper/MySQLHelper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DTO/ComputerSessions.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DTO/Foods.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DTO/Players.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Card/FoodCard$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Card/FoodCard$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Card/FoodCard.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Components/CustomChart.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Components/CustomPieChart.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/AddingFood.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/AddingOrder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/AddingPlayer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/AddingRoom.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/AddingStaff.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/DetailsAddress.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/DetailsComputer$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/DetailsComputer$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/DetailsComputer$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/DetailsComputer$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/DetailsComputer$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/DetailsComputer$6.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/DetailsComputer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/DetailsStaffs.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/EditingPlayerForm.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/main/AdminDashboard.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/AccountPanel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/AccountPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$6.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerManagingPanel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerManagingPanel$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerManagingPanel$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerManagingPanel$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerManagingPanel$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerManagingPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$6.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel$7.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/FoodPanel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/FoodPanel$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/FoodPanel$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/FoodPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/PieChartExample.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Utils/Data/AddressInfo.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Utils/Helper/Comon.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Utils/Helper/CreateComponent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Utils/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spoce-net-application.iml" beforeDir="false" afterPath="$PROJECT_DIR$/spoce-net-application.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BLL/AccountBLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/AccountBLL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BLL/FoodBillBLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/FoodBillBLL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DAL/AccountDAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/AccountDAL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Form/DetailsComputerSessionBill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Form/DetailsComputerSessionBill.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/main/AdminLoginScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/main/AdminLoginScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/main/ForgetPass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/main/ForgetPass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/panels/AccountPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/panels/AccountPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/panels/BillPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/panels/BillPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PieChartExample.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/Config/ConfigEmail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/Config/ConfigEmail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/main/AdminLoginScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/main/AdminLoginScreen.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Utils/Config/ConfigSQL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/Utils/Config/ConfigSQL.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Utils/Config/ConfigSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/Config/ConfigSQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/Helper/HTMLToPDF.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/Helper/SendEmail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/Helper/SendEmail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/table_output.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/trigger.sql" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -370,7 +64,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/libs-api-connect/flying-saucer-core-9.1.22.jar",
+    "last_opened_file_path": "C:/Caidat/hoctap/hk2 - nam 2/java/project/spoce-net-application",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -383,7 +77,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.AdminDashboard">
+  <component name="RunManager" selected="Application.AdminLoginScreen">
     <configuration name="AdminDashboard" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GUI.main.AdminDashboard" />
       <module name="spoce-net-application" />
@@ -438,12 +132,20 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.AdminDashboard" />
         <item itemvalue="Application.AdminLoginScreen" />
+        <item itemvalue="Application.AdminDashboard" />
         <item itemvalue="Application.InvoicePrinter" />
         <item itemvalue="Application.FoodBillBLL" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23726.103" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23726.103" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
