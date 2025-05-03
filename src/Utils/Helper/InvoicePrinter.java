@@ -255,10 +255,4 @@ public class InvoicePrinter {
         this.printInvoice(html);
     }
 
-
-
-    public static void main(String[] args) {
-        InvoicePrinter printer = new InvoicePrinter();
-        printer.printFoodOrder(3);
-    }
 }
