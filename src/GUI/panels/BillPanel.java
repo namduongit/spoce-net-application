@@ -24,14 +24,13 @@ import DTO.Rooms;
 import DTO.Staffs;
 import GUI.Components.*;
 import GUI.Form.DetailsComputerSessionBill;
-import Utils.Helper.AdjustTableWidth;
-import Utils.Helper.CreateComponent;
-import Utils.Helper.Comon;
-import Utils.Helper.ChangeMinToDate;
+import GUI.Form.DetailsFoodOrderBill;
+import Utils.Helper.*;
 
 public class BillPanel extends JPanel {
     @SuppressWarnings("unused")
     private Staffs loginStaff;
+    @SuppressWarnings("unused")
     private Accounts loginAccount;
 
     private CustomPanel headerPanel;
@@ -333,7 +332,8 @@ public class BillPanel extends JPanel {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-
+                System.out.println("Đã ấn vào nút in hóa đơn trên giao diện");
+                BillPanel.this.printFoodBill();
             }
 
             @Override
@@ -450,12 +450,23 @@ public class BillPanel extends JPanel {
                 if (BillPanel.this.tableSession.getSelectedRow() == -1) {
                     JOptionPane.showMessageDialog(
                         null,
-                        "Bạn chưa chọn hóa đơn để xem chi tiết!",
+                        "Bạn chưa chọn phiên chơi để xem chi tiết!",
                         "Lỗi",
                         JOptionPane.ERROR_MESSAGE
                     );
                 } else {
-                    new DetailsComputerSessionBill(1);
+                    String[] regexStrings = BillPanel.this.selectionTextSession.getText().split("\\s+");
+                    if (regexStrings[regexStrings.length - 1].equalsIgnoreCase("NULL")) {
+                        JOptionPane.showMessageDialog(
+                                null,
+                                "Bạn chưa chọn phiên chơi để xem chi tiết!",
+                                "Lỗi",
+                                JOptionPane.ERROR_MESSAGE
+                        );
+                        return;
+                    }
+
+                    new DetailsComputerSessionBill(Integer.parseInt(regexStrings[regexStrings.length - 1])).setVisible(true);
                 }
             }
 
@@ -599,7 +610,8 @@ public class BillPanel extends JPanel {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-
+                System.out.println("Đã ấn nút in hóa đơn phiên chơi trên giao diện");
+                BillPanel.this.printSessionBill();
             }
 
             @Override
@@ -908,7 +920,7 @@ public class BillPanel extends JPanel {
     }
 
     private Object[][] createFoodBillData(ArrayList<FoodBills> list) {
-        Object[][] data = new Object[this.sessionList.size()][5];
+        Object[][] data = new Object[this.foodBillList.size()][5];
 
         for (int i = 0; i < list.size(); i++) {
             data[i][0] = list.get(i).getBillId();
@@ -1099,7 +1111,27 @@ public class BillPanel extends JPanel {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-
+                if (BillPanel.this.tableFoodBill.getSelectedRow() == -1) {
+                    JOptionPane.showMessageDialog(
+                            null,
+                            "Bạn chưa chọn hóa đơn để xem chi tiết!",
+                            "Lỗi",
+                            JOptionPane.ERROR_MESSAGE
+                    );
+                }
+                else {
+                    String[] regexStrings = BillPanel.this.selectionTextFoodBill.getText().split("\\s+");
+                    if (regexStrings[regexStrings.length - 1].equalsIgnoreCase("NULL")) {
+                        JOptionPane.showMessageDialog(
+                                null,
+                                "Bạn chưa chọn hóa đơn để xem chi tiết!",
+                                "Lỗi",
+                                JOptionPane.ERROR_MESSAGE
+                        );
+                        return;
+                    }
+                    new DetailsFoodOrderBill(Integer.parseInt(regexStrings[regexStrings.length - 1])).setVisible(true);
+                }
             }
 
             @Override
@@ -1224,6 +1256,40 @@ public class BillPanel extends JPanel {
         }
     }
 
+    private void printFoodBill() {
+        int confirmUpdate = JOptionPane.showConfirmDialog(this, "Bạn có chắc in hóa đơn ?",
+                "Thông báo", JOptionPane.YES_NO_OPTION);
+
+        if (confirmUpdate == JOptionPane.NO_OPTION)
+            return;
+
+        String[] regexString = this.selectionTextFoodBill.getText().split("\\s+");
+        if (Comon.isTrueNumber(regexString[regexString.length - 1])) {
+            new InvoicePrinter().printFoodOrder(Integer.parseInt(regexString[regexString.length - 1]));
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn hóa đơn để in", "Thông báo",
+                    JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
+    private void printSessionBill() {
+        int confirmUpdate = JOptionPane.showConfirmDialog(this, "Bạn có chắc in hóa đơn ?",
+                "Thông báo", JOptionPane.YES_NO_OPTION);
+
+        if (confirmUpdate == JOptionPane.NO_OPTION)
+            return;
+
+        String[] regexString = this.selectionTextSession.getText().split("\\s+");
+        if (Comon.isTrueNumber(regexString[regexString.length - 1])) {
+            new InvoicePrinter().printSessionOrder(Integer.parseInt(regexString[regexString.length - 1]));
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn hóa đơn để in", "Thông báo",
+                    JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
 
 
     private void updateCancelFoodBill() {
@@ -1234,7 +1300,7 @@ public class BillPanel extends JPanel {
             return;
 
         String[] regexString = this.selectionTextFoodBill.getText().split("\\s+");
-        if (Comon.isTrueNumber(regexString[regexString.length - 1])) {
+         if (Comon.isTrueNumber(regexString[regexString.length - 1])) {
 
             int row = this.tableFoodBill.getSelectedRow();
             if (row != -1) {
@@ -1263,7 +1329,7 @@ public class BillPanel extends JPanel {
                 return;
             }
 
-        } else {
+        }else {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn hóa đơn để xác nhận", "Thông báo",
                     JOptionPane.INFORMATION_MESSAGE);
             return;

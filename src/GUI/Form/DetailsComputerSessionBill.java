@@ -35,7 +35,6 @@ public class DetailsComputerSessionBill extends JFrame {
 
         this.add(content);
         this.setLocationRelativeTo(null);
-        this.setVisible(true);
     }
 
     private JPanel createContent() {

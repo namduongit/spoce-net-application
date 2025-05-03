@@ -127,7 +127,7 @@ public class AdminLoginScreen extends JFrame {
         forgotPassword.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                new ForgetPass().setVisible(true);
+                new ForgetPass().setVisible(true);
             }
         });
 
@@ -173,6 +173,7 @@ public class AdminLoginScreen extends JFrame {
                 Staffs staffs = this.staffBLL.getStaffById(accounts.getAccountId());
                 JOptionPane.showMessageDialog(null, "Đăng nhập thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                 dispose();
+                // Update status Online or Offline
                 new AdminDashboard(accounts, staffs).setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(null, "Tài khoản không tồn tại\nVui lòng kiểm tra lại tài khoản hoặc mật khẩu\nNếu quên bạn có thể đổi mật khẩu", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
