@@ -78,6 +78,45 @@ public class StaffDAL {
         return staff;
     }
 
+    public Staffs getStaffByAccountId(int accountId) {
+        Staffs staff = null;
+        MySQLHelper helper = new MySQLHelper();
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "staffs");
+        params.put("WHERE", "account_id = ?");
+
+        ArrayList<Object> values = new ArrayList<>();
+        values.add(accountId);
+        helper.buildingQueryParam(params);
+
+        ResultSet resultSet = helper.queryWithParam(values);
+        if (resultSet != null) {
+            try {
+                if (resultSet.next()) {
+                    staff = new Staffs(
+                            resultSet.getInt("staff_id"),
+                            resultSet.getInt("account_id"),
+                            resultSet.getString("full_name"),
+                            resultSet.getDate("birth_date"),
+                            resultSet.getString("gender"),
+                            resultSet.getString("phone"),
+                            resultSet.getString("email"),
+                            resultSet.getString("address"),
+                            resultSet.getString("cccd"),
+                            resultSet.getString("avatar")
+                    );
+                    resultSet.close();
+                    helper.closeConnect();
+                }
+            } catch (SQLException exception) {
+                JOptionPane.showMessageDialog(null, exception.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        return staff;
+    }
+
+
     public Staffs getStaffByEmail(String staffEmail) {
         Staffs staff = null;
         MySQLHelper helper = new MySQLHelper();

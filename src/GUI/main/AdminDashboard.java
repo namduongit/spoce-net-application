@@ -172,7 +172,7 @@ public class AdminDashboard extends JFrame {
                 new ImageIcon(new ImageIcon(System.getProperty("user.dir") + "/src/Assets/Icon/icons8-employee-100.png")
                         .getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH)));
         this.iconLogo.setBounds(10, 10, 50, 50);
-        this.nameStaffs = new JLabel(this.loginStaff.getFullName());
+        this.nameStaffs = new JLabel(this.loginStaff.getFullName() != null ? this.loginStaff.getFullName() : "Chưa đặt tên");
         this.nameStaffs.setFont(new Font("Sans-serif", Font.BOLD, 15));
         this.nameStaffs.setForeground(Color.BLACK);
         this.nameStaffs.setBounds(80, 10, 150, 30);

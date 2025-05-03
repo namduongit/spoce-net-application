@@ -23,6 +23,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.HashMap;
 
 @SuppressWarnings({"unused", "FieldMayBeFinal"})
 public class AdminLoginScreen extends JFrame {
@@ -170,10 +171,23 @@ public class AdminLoginScreen extends JFrame {
             String password = new String(passwordInput.getPassword());
             Accounts accounts = this.accountBLL.staffLoginAccount(userName, Utils.Helper.EncriptString.MD5String(password));
             if (accounts != null) {
-                Staffs staffs = this.staffBLL.getStaffById(accounts.getAccountId());
+                Staffs staffs = this.staffBLL.getStaffByAccountId(accounts.getAccountId());
+                if (accounts.getStatus().equalsIgnoreCase("Locked")) {
+                    JOptionPane.showMessageDialog(null, "Tài khoản bị khóa vui lòng liên hệ quản trị viên", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                    return;
+                }
+//                if (accounts.getStatus().equalsIgnoreCase("Online")) {
+//                    JOptionPane.showMessageDialog(null, "Tài khoản đang hoạt động. Vui lòng đăng nhập tài khoản khác", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+//                    return;
+//                }
+
+
                 JOptionPane.showMessageDialog(null, "Đăng nhập thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                 dispose();
                 // Update status Online or Offline
+                HashMap<String, Object> updateValues = new HashMap<>();
+                updateValues.put("status", "Online");
+                this.accountBLL.updateAccountDetailsById(accounts.getAccountId(), updateValues);
                 new AdminDashboard(accounts, staffs).setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(null, "Tài khoản không tồn tại\nVui lòng kiểm tra lại tài khoản hoặc mật khẩu\nNếu quên bạn có thể đổi mật khẩu", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
