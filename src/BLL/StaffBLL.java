@@ -24,6 +24,11 @@ public class StaffBLL {
     public Staffs getStaffByEmail(String staffEmail) {
         return this.staffDAL.getStaffByEmail(staffEmail);
     }
+
+    public Staffs getStaffByAccountId(int accountId) {
+        return this.staffDAL.getStaffByAccountId(accountId);
+    }
+
     // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
     public boolean updateAddressStaffById(int staffId, String addressValue) {
         return this.staffDAL.updateAddressStaffById(staffId, addressValue);

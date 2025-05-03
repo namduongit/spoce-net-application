@@ -5,22 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f693d12-b197-4983-bdfc-22b0e0ede1a8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Bills/Invoice_SatMay0311-48-59ICT2025.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/activation_1_1_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/flying_saucer_core_9_1_22.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/flying_saucer_pdf_itext5_9_1_22.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/itextpdf_5_5_13_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/jakarta_activation_2_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/jakarta_mail_api_2_1_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/javax_mail.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/javax_mail_1_5_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/jfreechart_1_5_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/jsoup_1_15_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Assets/Icon/icons8-details-100.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUI/Form/DetailsAccount.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUI/Form/EditAccount.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/StaffBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/StaffBLL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/StaffDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/StaffDAL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/main/AdminDashboard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/main/AdminDashboard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/main/AdminLoginScreen$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/main/AdminLoginScreen$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/main/AdminLoginScreen$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/main/AdminLoginScreen$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/main/AdminLoginScreen$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/main/AdminLoginScreen$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/main/AdminLoginScreen$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/main/AdminLoginScreen$4.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/main/AdminLoginScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/main/AdminLoginScreen.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Utils/Config/ConfigSQL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/Utils/Config/ConfigSQL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/Config/ConfigSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/Config/ConfigSQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/AccountPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/AccountPanel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/AccountPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/AccountPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BLL/StaffBLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/StaffBLL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DAL/StaffDAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/StaffDAL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/main/AdminDashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/main/AdminDashboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/main/AdminLoginScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/main/AdminLoginScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/panels/AccountPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/panels/AccountPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +67,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Caidat/hoctap/hk2 - nam 2/java/project/spoce-net-application",
+    "last_opened_file_path": "U:/NamII/HocKiII/Java/spoce-net-application/src/Assets/Icon",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -77,6 +80,11 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="U:\NamII\HocKiII\Java\spoce-net-application\src\Assets\Icon" />
+    </key>
+  </component>
   <component name="RunManager" selected="Application.AdminLoginScreen">
     <configuration name="AdminDashboard" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GUI.main.AdminDashboard" />
@@ -139,14 +147,6 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23726.103" />
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23726.103" />
-      </set>
-    </attachedChunks>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -156,7 +156,7 @@
       <option name="presentableId" value="Default" />
       <updated>1746152797072</updated>
       <workItem from="1746152801636" duration="12105000" />
-      <workItem from="1746232541482" duration="8712000" />
+      <workItem from="1746232541482" duration="15437000" />
     </task>
     <servers />
   </component>

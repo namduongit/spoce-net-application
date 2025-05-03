@@ -10,11 +10,7 @@ import GUI.Components.CustomPanel;
 import GUI.Components.CustomScrollPane;
 import GUI.Components.CustomTable;
 import GUI.Components.CustomTextField;
-import GUI.Form.AddingPlayer;
-import GUI.Form.AddingStaff;
-import GUI.Form.DetailsAddress;
-import GUI.Form.DetailsAuthenticator;
-import GUI.Form.EditingPlayerForm;
+import GUI.Form.*;
 import Utils.Helper.CreateComponent;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -562,6 +558,15 @@ public class AccountPanel extends JPanel {
         editButton.setForeground(Color.WHITE);
         editButton.setBorderSize(0);
         editButton.setBorderColor(Color.decode("#795548"));
+        editButton.addActionListener(e -> {
+            int row = this.staffAccountTable.getSelectedRow();
+            if (row == -1) {
+                JOptionPane.showMessageDialog(this, "Vui lòng chọn tài khoản", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+            int accountId = Integer.parseInt(this.staffAccountTable.getValueAt(row, 0).toString());
+            new EditAccount(accountId).setVisible(true);
+        });
 
         CustomButton deleteButton = new CustomButton("Xóa");
         deleteButton.setBounds(230, 20, 100, 30);
@@ -593,6 +598,15 @@ public class AccountPanel extends JPanel {
         detailButton.setBackground(Color.decode("#455A64"));
         detailButton.setForeground(Color.WHITE);
         detailButton.setBorderColor(Color.decode("#455A64"));
+        detailButton.addActionListener(e -> {
+            int row = this.staffAccountTable.getSelectedRow();
+            if (row == -1) {
+                JOptionPane.showMessageDialog(this, "Vui lòng chọn tài khoản", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+            int accountId = Integer.parseInt(this.staffAccountTable.getValueAt(row, 0).toString());
+            new DetailsAccount(accountId).setVisible(true);
+        });
 
         buttonPanel.add(addButton);
         buttonPanel.add(editButton);
