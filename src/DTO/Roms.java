@@ -24,6 +24,16 @@ public class Roms {
         this.status = status;
         this.price = price;
     }
+    public Roms(String brand, String model, String type, int capacity, Date purchaseDate, Date warrantyExpiry, String status, double price) {
+        this.brand = brand;
+        this.model = model;
+        this.type = type;
+        this.capacity = capacity;
+        this.purchaseDate = purchaseDate;
+        this.warrantyExpiry = warrantyExpiry;
+        this.status = status;
+        this.price = price;
+    }
 
     // Constructor không tham số
     public Roms() {

@@ -30,11 +30,12 @@ public class HardwarePanel extends JPanel {
     private MonitorBLL monitorBLL;
     private HeadphoneBLL headphoneBLL;
     private RomBLL romBLL;
+    private RamBLL ramBLL;
     private CustomTable tableData;
     private DefaultTableModel tableModel;
     private String currentType = "Tất cả";
     private DefaultTableCellRenderer tableCellRenderer;
-    private static final DecimalFormat df = new DecimalFormat("#,###"); // Định dạng số với dấu chấm phân cách
+    private static final DecimalFormat df = new DecimalFormat("#,###");
 
     public HardwarePanel() {
         this.computerBLL = new ComputerBLL();
@@ -46,6 +47,7 @@ public class HardwarePanel extends JPanel {
         this.monitorBLL = new MonitorBLL();
         this.headphoneBLL = new HeadphoneBLL();
         this.romBLL = new RomBLL();
+        this.ramBLL = new RamBLL();
         this.tableCellRenderer = new DefaultTableCellRenderer();
         this.tableCellRenderer.setHorizontalAlignment(JLabel.CENTER);
         this.initComponents();
@@ -88,7 +90,7 @@ public class HardwarePanel extends JPanel {
         typeHardwareLabel.setFont(new Font("Sans-serif", Font.PLAIN, 14));
         typeHardwareLabel.setBounds(20, 20, 100, 30);
 
-        String[] typeList = {"Tất cả", "Rom", "CPU", "GPU", "Mainboard", "Mouse", "Keyboard", "Monitor", "Headphone"};
+        String[] typeList = {"Tất cả", "RAM", "Rom", "CPU", "GPU", "Mainboard", "Mouse", "Keyboard", "Monitor", "Headphone"};
         CustomCombobox<String> typeComboBox = new CustomCombobox<>(typeList);
         typeComboBox.setBounds(120, 20, 150, 35);
         typeComboBox.setFont(new Font("Sans-serif", Font.PLAIN, 14));
@@ -218,8 +220,8 @@ public class HardwarePanel extends JPanel {
         tableData.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         AdjustTableWidth.automaticallyAdjustTableWidths(tableData);
         tableData.getColumnModel().getColumn(0).setPreferredWidth(100);
-        tableData.getColumnModel().getColumn(3).setPreferredWidth(150); // Tăng chiều rộng cột "Giá Tiền"
-        tableData.getColumnModel().getColumn(4).setPreferredWidth(328);  // tang max bi loi =(( , cha hieu
+        tableData.getColumnModel().getColumn(3).setPreferredWidth(150);
+        tableData.getColumnModel().getColumn(4).setPreferredWidth(328);
 
         tableData.setFont(new Font("Sans-serif", Font.PLAIN, 14));
         tableData.setRowHeight(30);
@@ -254,7 +256,7 @@ public class HardwarePanel extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 new AddingHardware();
-                updateTable(getAllHardwareComponents()); // Cập nhật bảng sau khi thêm
+                updateTable(getAllHardwareComponents());
             }
         });
 
@@ -280,8 +282,8 @@ public class HardwarePanel extends JPanel {
                 if (tableData.getSelectedRow() != -1) {
                     int componentId = (int) tableData.getValueAt(tableData.getSelectedRow(), 0);
                     String componentType = (String) tableData.getValueAt(tableData.getSelectedRow(), 2);
-                     new DetailsHardware (componentType,componentId ); // Hiển thị chi tiết
-                    updateTable(getAllHardwareComponents()); // Cập nhật bảng sau khi thay đổi
+                    new DetailsHardware(componentType, componentId);
+                    updateTable(getAllHardwareComponents());
                 } else {
                     JOptionPane.showMessageDialog(null, "Vui lòng chọn một linh kiện!", "Thông báo", JOptionPane.WARNING_MESSAGE);
                 }
@@ -339,7 +341,7 @@ public class HardwarePanel extends JPanel {
             JOptionPane.showMessageDialog(this, "Không thể tải dữ liệu ROM!", "Lỗi", JOptionPane.WARNING_MESSAGE);
         } else {
             for (Roms rom : roms) {
-                String formattedPrice = df.format(rom.getPrice()); // Định dạng giá tiền
+                String formattedPrice = df.format(rom.getPrice());
                 components.add(new Object[]{rom.getRomId(), rom.getModel(), "Rom", formattedPrice, rom.getStatus()});
             }
         }
@@ -421,6 +423,17 @@ public class HardwarePanel extends JPanel {
             }
         }
 
+        // RAM
+        ArrayList<Rams> rams = ramBLL.getAllRams();
+        if (rams == null || rams.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Không thể tải dữ liệu RAM!", "Lỗi", JOptionPane.WARNING_MESSAGE);
+        } else {
+            for (Rams ram : rams) {
+                String formattedPrice = df.format(ram.getPrice());
+                components.add(new Object[]{ram.getRamId(), ram.getModel(), "RAM", formattedPrice, ram.getStatus()});
+            }
+        }
+
         return components;
     }
 
@@ -445,7 +458,7 @@ public class HardwarePanel extends JPanel {
                     searchText.isEmpty() ||
                     productName.toLowerCase().contains(searchText.toLowerCase());
             boolean matchesStatus = status.equals("Tất cả") || componentStatus.equals(status);
-            boolean matchesType = type.equals("Tất cả") || productType.equals(type);// ||  productType.equals("Rom");
+            boolean matchesType = type.equals("Tất cả") || productType.equals(type);
 
             return !(matchesSearch && matchesStatus && matchesType);
         });
@@ -456,13 +469,11 @@ public class HardwarePanel extends JPanel {
     private void updateTable(ArrayList<Object[]> components) {
         tableModel.setDataVector(getTableData(components),
                 new String[]{"ID", "Tên Sản Phẩm", "Loại", "Giá Tiền", "Trạng thái"});
-//        tableData = new CustomTable(tableModel);
-//        tableData.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         AdjustTableWidth.automaticallyAdjustTableWidths(tableData);
         tableData.getColumnModel().getColumn(0).setPreferredWidth(100);
-        tableData.getColumnModel().getColumn(3).setPreferredWidth(150); // Đảm bảo cột "Giá Tiền" đủ rộng
-        tableData.getColumnModel().getColumn(4).setPreferredWidth(329); // cot "Trang thai" max chieu rong
-        for (int i=0; i<this.tableData.getColumnCount(); i++) {
+        tableData.getColumnModel().getColumn(3).setPreferredWidth(150);
+        tableData.getColumnModel().getColumn(4).setPreferredWidth(329);
+        for (int i = 0; i < this.tableData.getColumnCount(); i++) {
             this.tableData.getColumnModel().getColumn(i).setCellRenderer(this.tableCellRenderer);
         }
     }
@@ -485,82 +496,10 @@ public class HardwarePanel extends JPanel {
                 return monitorBLL.deleteMonitorById(id);
             case "Headphone":
                 return headphoneBLL.deleteHeadphoneById(id);
+            case "RAM":
+                return ramBLL.deleteRamById(id);
             default:
                 return false;
         }
     }
 }
-//    private boolean deleteHardwareComponent(int id, String type) {
-//        // Kiểm tra xem linh kiện có đang được sử dụng bởi máy tính nào không
-//        ArrayList<Computers> computers = computerBLL.getAllComputers();
-//        switch (type) {
-//            case "Ram":
-//                for (Computers computer : computers) {
-//                    if (computer.getRomId() != null && computer.getRomId() == id) {
-//                        JOptionPane.showMessageDialog(this, "Không thể xóa RAM vì đang được sử dụng bởi máy tính " + computer.getComputerId(), "Cảnh báo", JOptionPane.WARNING_MESSAGE);
-//                        return false;
-//                    }
-//                }
-//                return romBLL.deleteRomById(id);
-//            case "CPU":
-//                for (Computers computer : computers) {
-//                    Motherboards motherboard = motherboardBLL.getMotherboardById(computer.getMotherboardId());
-//                    if (motherboard != null && motherboard.getCpuId() != null && motherboard.getCpuId() == id) {
-//                        JOptionPane.showMessageDialog(this, "Không thể xóa CPU vì đang được sử dụng bởi máy tính " + computer.getComputerId(), "Cảnh báo", JOptionPane.WARNING_MESSAGE);
-//                        return false;
-//                    }
-//                }
-//                return cpuBLL.deleteCpuById(id);
-//            case "GPU":
-//                for (Computers computer : computers) {
-//                    Motherboards motherboard = motherboardBLL.getMotherboardById(computer.getMotherboardId());
-//                    if (motherboard != null && motherboard.getGpuId() != null && motherboard.getGpuId() == id) {
-//                        JOptionPane.showMessageDialog(this, "Không thể xóa GPU vì đang được sử dụng bởi máy tính " + computer.getComputerId(), "Cảnh báo", JOptionPane.WARNING_MESSAGE);
-//                        return false;
-//                    }
-//                }
-//                return gpuBLL.deleteGpuById(id);
-//            case "Mainboard":
-//                for (Computers computer : computers) {
-//                    if (computer.getMotherboardId() == id) {
-//                        JOptionPane.showMessageDialog(this, "Không thể xóa Mainboard vì đang được sử dụng bởi máy tính " + computer.getComputerId(), "Cảnh báo", JOptionPane.WARNING_MESSAGE);
-//                        return false;
-//                    }
-//                }
-//                return motherboardBLL.deleteMotherboardById(id);
-//            case "Mouse":
-//                for (Computers computer : computers) {
-//                    if (computer.getMouseId() != null && computer.getMouseId() == id) {
-//                        JOptionPane.showMessageDialog(this, "Không thể xóa Mouse vì đang được sử dụng bởi máy tính " + computer.getComputerId(), "Cảnh báo", JOptionPane.WARNING_MESSAGE);
-//                        return false;
-//                    }
-//                }
-//                return mouseBLL.deleteMouseById(id);
-//            case "Keyboard":
-//                for (Computers computer : computers) {
-//                    if (computer.getKeyboardId() != null && computer.getKeyboardId() == id) {
-//                        JOptionPane.showMessageDialog(this, "Không thể xóa Keyboard vì đang được sử dụng bởi máy tính " + computer.getComputerId(), "Cảnh báo", JOptionPane.WARNING_MESSAGE);
-//                        return false;
-//                    }
-//                }
-//                return keyboardBLL.deleteKeyboardById(id);
-//            case "Monitor":
-//                for (Computers computer : computers) {
-//                    if (computer.getMonitorId() != null && computer.getMonitorId() == id) {
-//                        JOptionPane.showMessageDialog(this, "Không thể xóa Monitor vì đang được sử dụng bởi máy tính " + computer.getComputerId(), "Cảnh báo", JOptionPane.WARNING_MESSAGE);
-//                        return false;
-//                    }
-//                }
-//                return monitorBLL.deleteMonitorById(id);
-//            case "Headphone":
-//                for (Computers computer : computers) {
-//                    if (computer.getHeadphoneId() != null && computer.getHeadphoneId() == id) {
-//                        JOptionPane.showMessageDialog(this, "Không thể xóa Headphone vì đang được sử dụng bởi máy tính " + computer.getComputerId(), "Cảnh báo", JOptionPane.WARNING_MESSAGE);
-//                        return false;
-//                    }
-//                }
-//                return headphoneBLL.deleteHeadphoneById(id);
-//            default:
-//                return false;
-//        }
-//    }

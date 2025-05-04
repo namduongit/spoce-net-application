@@ -93,12 +93,8 @@ public class MonitorDAL {
     }
     public boolean addMonitor(Monitors monitor) {
         MySQLHelper helper = new MySQLHelper();
-        if(this.getMonitorById(monitor.getMonitorId()) != null) {
-            JOptionPane.showMessageDialog(null, "ID " + monitor.getMonitorId() + " đã tồn tại!", "Lỗi", JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
+      
         ArrayList<Object> values = new ArrayList<>();
-            values.add(monitor.getMonitorId());
             values.add(monitor.getBrand());
             values.add(monitor.getModel());
             values.add(monitor.getSize());
@@ -110,7 +106,7 @@ public class MonitorDAL {
 
         HashMap<String, String> params = new HashMap<>();
         params.put("TABLE", "monitors");
-        params.put("FIELD", "monitor_id,brand,model,size,refresh_rate,purchase_date,warranty_expiry,status");
+        params.put("FIELD", "brand,model,size,refresh_rate,purchase_date,warranty_expiry,status");
         helper.buildingQueryParam(params);
 
 
