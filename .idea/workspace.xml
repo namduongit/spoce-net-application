@@ -5,7 +5,64 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f693d12-b197-4983-bdfc-22b0e0ede1a8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/DataBase/alter.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Assets/Icon/icons8-game-100.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Assets/Icon/icons8-login-100.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUI/main/ComputerChooseDashboard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUI/main/PlayerLoginScreen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/AccountBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/AccountBLL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/ComputerSessionBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/ComputerSessionBLL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/RomBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/RomBLL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/CpuDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/CpuDAL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/GpuDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/GpuDAL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/HeadphoneDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/HeadphoneDAL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/KeyboardDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/KeyboardDAL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/MonitorDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/MonitorDAL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/MotherboardDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/MotherboardDAL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/MouseDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/MouseDAL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/RomDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/RomDAL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DTO/Cpus.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DTO/Cpus.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DTO/Gpus.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DTO/Gpus.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DTO/Headphones.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DTO/Headphones.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DTO/Keyboards.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DTO/Keyboards.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DTO/Monitors.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DTO/Monitors.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DTO/Motherboards.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DTO/Motherboards.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DTO/Mouse.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DTO/Mouse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DTO/Rams.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DTO/Rams.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DTO/Roms.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DTO/Roms.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/AddingHardware$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/AddingHardware$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/AddingHardware$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/AddingHardware$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/AddingHardware$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/AddingHardware$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/AddingHardware$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/AddingHardware$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/AddingHardware.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/AddingHardware.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/DetailsHardware$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/DetailsHardware$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/DetailsHardware$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/DetailsHardware$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/DetailsHardware$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/DetailsHardware$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/DetailsHardware$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/DetailsHardware$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/DetailsHardware.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/DetailsHardware.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/main/ChooseComputer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/main/ChooseComputer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$12.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$13.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$14.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$14.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$15.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$15.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$16.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$16.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/HardwarePanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/HardwarePanel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/HardwarePanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/HardwarePanel$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/HardwarePanel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/HardwarePanel$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/HardwarePanel$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/HardwarePanel$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/HardwarePanel$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/HardwarePanel$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/HardwarePanel$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/HardwarePanel$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/HardwarePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/HardwarePanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BLL/AccountBLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/AccountBLL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BLL/ComputerSessionBLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/ComputerSessionBLL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DAL/AccountDAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/AccountDAL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DAL/ComputerSessionDAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/ComputerSessionDAL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DAL/HeadphoneDAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/HeadphoneDAL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/main/ChooseComputer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/main/ChooseComputer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/panels/BillPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/panels/BillPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils/Config/ConfigSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/Config/ConfigSQL.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +102,7 @@
     "Application.ChooseComputer.executor": "Run",
     "Application.FoodBillBLL.executor": "Run",
     "Application.InvoicePrinter.executor": "Run",
+    "Application.PlayerLoginScreen.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -69,19 +127,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.ChooseComputer">
-    <configuration name="AdminDashboard" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="GUI.main.AdminDashboard" />
-      <module name="spoce-net-application" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="GUI.main.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="AdminDashboard" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GUI.main.AdminDashboard" />
       <module name="spoce-net-application" />
@@ -173,25 +218,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="InvoicePrinter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Utils.Helper.InvoicePrinter" />
-      <module name="spoce-net-application" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Utils.Helper.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.ChooseComputer" />
         <item itemvalue="Application.AdminLoginScreen" />
-        <item itemvalue="Application.AdminDashboard" />
-        <item itemvalue="Application.InvoicePrinter" />
         <item itemvalue="Application.FoodBillBLL" />
       </list>
     </recent_temporary>
@@ -208,6 +238,7 @@
       <workItem from="1746232541482" duration="15725000" />
       <workItem from="1746276430252" duration="1266000" />
       <workItem from="1746281701135" duration="3181000" />
+      <workItem from="1746342856002" duration="15543000" />
     </task>
     <servers />
   </component>

@@ -82,4 +82,9 @@ public class AccountBLL {
     public Accounts staffLoginAccount(String username, String password) {
         return this.accountDAL.staffLoginAccount(username, password);
     }
+    public Accounts playerLoginAccount(String username, String password) {
+        return this.accountDAL.playerLoginAccount(username, password);
+    }
+
+
 }

@@ -904,11 +904,12 @@ public class BillPanel extends JPanel {
 
         for (int i = 0; i < list.size(); i++) {
             data[i][0] = list.get(i).getSessionId();
-            data[i][1] = this.accountBLL.getAccountById(
+            data[i][1] = list.get(i)
+                    .getStaffId() > 0 ?  this.accountBLL.getAccountById(
                     this.staffBLL.getStaffById(list.get(i)
                             .getStaffId())
                             .getAccountId())
-                    .getUsername();
+                    .getUsername() : "Khách tự đăng nhập";
             data[i][2] = ChangeMinToDate.changeData(list.get(i).getDuration());
             data[i][3] = Comon.formatMoney(list.get(i).getTotalCost() + "");
             data[i][4] = list.get(i).getPlayerId() == null

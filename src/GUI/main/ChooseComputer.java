@@ -27,6 +27,8 @@ public class ChooseComputer extends JFrame {
     JPanel dataButtonPanel;
     CustomScrollPane scrollDataPanel;
 
+    private JLabel chooseComputer;
+
     public ChooseComputer() {
         this.computerBLL = new ComputerBLL();
         this.roomBLL = new RoomBLL();
@@ -50,6 +52,7 @@ public class ChooseComputer extends JFrame {
         this.setSize(1200, 600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
         this.setLayout(null);
 
         // Panel chọn phòng và trạng thái
@@ -72,6 +75,10 @@ public class ChooseComputer extends JFrame {
         this.statusCombobox.setBounds(550, 15, 200, 35);
         chooseRoomPanel.add(this.statusCombobox);
 
+        this.chooseComputer = new JLabel("Đang chọn: NULL");
+        this.chooseComputer.setBounds(800, 15, 100, 25);
+        chooseRoomPanel.add(this.chooseComputer);
+
         this.add(chooseRoomPanel);
 
         // Panel chứa danh sách máy tính dạng nút
@@ -86,6 +93,9 @@ public class ChooseComputer extends JFrame {
 
         for (Computers computers : this.computerList) {
             CustomButton button = Utils.Helper.CreateComponent.createButton("icons8-this-pc-100.png", computers.getName());
+            button.addActionListener(e -> {
+                this.chooseComputer.setText("Đang chọn: "+ computers.getComputerId());
+            });
             this.dataButtonPanel.add(button);
         }
 
@@ -102,6 +112,19 @@ public class ChooseComputer extends JFrame {
 
         CustomButton chooseComputerButton = Utils.Helper.CreateComponent.createGreenButton("Chọn máy");
         chooseComputerButton.setBounds(20, 20, 150, 30);
+        chooseComputerButton.addActionListener(e -> {
+            String[] regexStrings = this.chooseComputer.getText().split("\\s+");
+            if (regexStrings[regexStrings.length - 1].equalsIgnoreCase("NULL")) {
+                JOptionPane.showMessageDialog(this, "Vui lòng chọn máy tính", "Cảnh báo", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            int computerId = Integer.parseInt(regexStrings[regexStrings.length - 1]);
+            int result = JOptionPane.showConfirmDialog(this, "Chắc chắn chọn máy này chứ ?", "Thông báo", JOptionPane.YES_NO_OPTION);
+            if (result == JOptionPane.OK_OPTION) {
+                new PlayerLoginScreen(computerId).setVisible(true);
+                this.dispose();
+            }
+        });
         buttonPanel.add(chooseComputerButton);
 
         CustomButton detailsComputerButton = Utils.Helper.CreateComponent.createBrownButton("Thông tin");
