@@ -20,7 +20,7 @@ public class MySQLHelper {
 
     public MySQLHelper() {
         try {
-            this.connection = DriverManager.getConnection(Utils.Config.ConfigSQL.URL, ConfigSQL.USER_NAME, ConfigSQL.PASSWORD);
+            this.connection = DriverManager.getConnection(Utils.Config.ConfigSQL.URLServer, ConfigSQL.USER_NAMEServer, ConfigSQL.PASSWORDServer);
             this.queryParams = new HashMap<>(); // Khởi tạo queryParams ngay trong constructor
         } catch (SQLException exception) {
             String messenger = exception.getMessage();
