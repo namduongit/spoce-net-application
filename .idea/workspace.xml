@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f693d12-b197-4983-bdfc-22b0e0ede1a8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Utils/Config/ConfigSQL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/Utils/Config/ConfigSQL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DAL/SQLHelper/MySQLHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/SQLHelper/MySQLHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/Config/ConfigSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/Config/ConfigSQL.java" afterDir="false" />
-    </list>
+    <list default="true" id="3f693d12-b197-4983-bdfc-22b0e0ede1a8" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -163,7 +158,7 @@
       <workItem from="1746152801636" duration="12105000" />
       <workItem from="1746232541482" duration="15437000" />
       <workItem from="1746264259592" duration="1942000" />
-      <workItem from="1746331905016" duration="1001000" />
+      <workItem from="1746331905016" duration="1731000" />
     </task>
     <servers />
   </component>
