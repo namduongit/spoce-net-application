@@ -49,17 +49,4 @@ public class FoodBillBLL {
     }
 
 
-    public static void main(String[] args) {
-        ArrayList<Object[]> list = new FoodBillBLL().getDetailFoodBillById(3);
-        for (Object[] object : list) {
-            for (Object ob : object) {
-                System.out.print(ob +" ");
-            }
-            System.out.println();
-        }
-
-//        ArrayList<FoodBills> list = new FoodBillBLL().getFoodBillList();
-//        for (FoodBills bl : list) System.out.println(bl);
-    }
-
 }
