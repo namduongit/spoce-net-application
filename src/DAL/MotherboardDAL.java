@@ -182,12 +182,8 @@ public class MotherboardDAL {
     }
     public boolean addMotherboard(Motherboards motherboard) {
         MySQLHelper helper = new MySQLHelper();
-        if(this.getMotherboardById(motherboard.getMotherboardId()) != null) {
-            JOptionPane.showMessageDialog(null, "ID " + motherboard.getMotherboardId() + " đã tồn tại!", "Lỗi", JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
+    
         ArrayList<Object> values = new ArrayList<>();
-            values.add(motherboard.getMotherboardId());
             values.add(motherboard.getBrand());
             values.add(motherboard.getModel());
             values.add(motherboard.getSocket());
@@ -209,7 +205,7 @@ public class MotherboardDAL {
 
          HashMap<String, String> params = new HashMap<>();
          params.put("TABLE", "motherboards");
-         params.put("FIELD", "motherboard_id,brand,model,socket,chipset,ram_slots,max_ram,ram_speed,storage_slots,sata_ports,m2_slots,max_storage_capacity,status,cpu_id,psu_id,gpu_id,purchase_date,warranty_expiry,price");
+         params.put("FIELD", "brand,model,socket,chipset,ram_slots,max_ram,ram_speed,storage_slots,sata_ports,m2_slots,max_storage_capacity,status,cpu_id,psu_id,gpu_id,purchase_date,warranty_expiry,price");
          helper.buildingQueryParam(params);
 
         boolean result = helper.insertData(values);

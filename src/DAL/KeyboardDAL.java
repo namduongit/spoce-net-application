@@ -92,12 +92,8 @@ public class KeyboardDAL {
 
     public boolean addKeyboard(Keyboards keyboard) {
         MySQLHelper helper = new MySQLHelper();
-        if(this.getKeyboardById(keyboard.getKeyboardId()) != null) {
-            JOptionPane.showMessageDialog(null, "ID " + keyboard.getKeyboardId() + " đã tồn tại!", "Lỗi", JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
+       
         ArrayList<Object> values = new ArrayList<>();
-            values.add(keyboard.getKeyboardId());
             values.add(keyboard.getBrand());
             values.add(keyboard.getModel());
             values.add(keyboard.getPurchaseDate());
@@ -107,7 +103,7 @@ public class KeyboardDAL {
 
         HashMap<String, String> params = new HashMap<>();
         params.put("TABLE", "keyboards");
-        params.put("FIELD", "keyboard_id, brand, model, purchase_date, warranty_expiry, status, price");
+        params.put("FIELD", "brand, model, purchase_date, warranty_expiry, status, price");
         helper.buildingQueryParam(params);
 
         boolean result = helper.insertData(values);

@@ -30,6 +30,15 @@ public class Headphones {
         this.status = status;
         this.price = price;
     }
+    public Headphones( String brand, String model, String type, Date purchaseDate, Date warrantyExpiry, String status, double price) {
+        this.brand = brand;
+        this.model = model;
+        this.type = type;
+        this.purchaseDate = purchaseDate;
+        this.warrantyExpiry = warrantyExpiry;
+        this.status = status;
+        this.price = price;
+    }
 
     // Constructor không tham số
     public Headphones() {

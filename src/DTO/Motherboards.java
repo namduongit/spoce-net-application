@@ -78,6 +78,26 @@ public class Motherboards {
         this.purchaseDate = purchaseDate;
         this.warrantyExpiry = warrantyExpiry;
     }
+    public Motherboards( String brand, String model, String socket, String chipset, int ramSlots, int maxRam, int ramSpeed, int storageSlots, int sataPorts, int m2Slots, int maxStorageCapacity, String status, Integer cpuId, Integer psuId, Integer gpuId, Date purchaseDate, Date warrantyExpiry, double price) {
+        this.brand = brand;
+        this.model = model;
+        this.socket = socket;
+        this.chipset = chipset;
+        this.ramSlots = ramSlots;
+        this.maxRam = maxRam;
+        this.ramSpeed = ramSpeed;
+        this.storageSlots = storageSlots;
+        this.sataPorts = sataPorts;
+        this.m2Slots = m2Slots;
+        this.maxStorageCapacity = maxStorageCapacity;
+        this.status = status;
+        this.cpuId = cpuId;
+        this.psuId = psuId;
+        this.gpuId = gpuId;
+        this.purchaseDate = purchaseDate;
+        this.warrantyExpiry = warrantyExpiry;
+        this.price = price;
+    }
 
     public Motherboards(int id, String brand, String model) {
         this.motherboardId = id;

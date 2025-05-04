@@ -829,6 +829,10 @@ ALTER TABLE monitors
 ALTER TABLE headphones
     ADD COLUMN price DECIMAL(10,2) NOT NULL DEFAULT 0 AFTER model;
 
+-- Thêm cột price vào bảng rams
+ALTER TABLE rams
+    ADD COLUMN price DECIMAL(10,2) NOT NULL DEFAULT 0 AFTER model;
+
 UPDATE roms SET price = CASE
                             WHEN model = 'Phoenix TrustedCore' THEN 800000
                             WHEN model = 'Phoenix SecureCore Tiano' THEN 1200000
@@ -997,22 +1001,13 @@ UPDATE headphones SET price = CASE
                                   ELSE 0
     END;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+-- Cập nhật giá tiền cho các bản ghi hiện có
+UPDATE rams SET price = CASE
+                                  WHEN model = 'Corsair Vengeance LPX' THEN 1200000
+                                  WHEN model = 'Kingston Fury Beast' THEN 1500000
+                                  WHEN model = 'G.Skill Ripjaws V' THEN 2200000
+                                  WHEN model = 'Crucial DDR5 Pro' THEN 2800000
+                                  ELSE 0
+    END;
 
 SET SQL_SAFE_UPDATES = 1;
