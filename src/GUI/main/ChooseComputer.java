@@ -7,6 +7,7 @@ import DTO.Rooms;
 import GUI.Components.CustomButton;
 import GUI.Components.CustomCombobox;
 import GUI.Components.CustomScrollPane;
+import GUI.Form.DetailsComputerSpecs;
 
 import javax.swing.*;
 import java.awt.*;
@@ -99,13 +100,10 @@ public class ChooseComputer extends JFrame {
 
         for (Computers computers : this.computerList) {
             CustomButton button = Utils.Helper.CreateComponent.createButton("icons8-this-pc-100.png", computers.getName());
-<<<<<<< HEAD
             button.addActionListener(e -> this.currentSelectedComputerId = computers.getComputerId());
-=======
             button.addActionListener(e -> {
                 this.chooseComputer.setText("Đang chọn: "+ computers.getComputerId());
             });
->>>>>>> da1ae80e792a70be0047a789b677431eda9a34c8
             this.dataButtonPanel.add(button);
         }
 
@@ -139,6 +137,7 @@ public class ChooseComputer extends JFrame {
 
         CustomButton detailsComputerButton = Utils.Helper.CreateComponent.createBrownButton("Thông tin");
         detailsComputerButton.setBounds(190, 20, 150, 30);
+        detailsComputerButton.addActionListener(e -> new DetailsComputerSpecs(this.currentSelectedComputerId).setVisible(true));
         buttonPanel.add(detailsComputerButton);
 
         CustomButton filterComputerButton = Utils.Helper.CreateComponent.createOrangeButton("Lọc");
