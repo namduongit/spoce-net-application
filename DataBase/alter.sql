@@ -36,3 +36,7 @@ MODIFY COLUMN price INT NOT NULL DEFAULT 0;
 
 ALTER TABLE net_gaming_management.storages
 MODIFY COLUMN price INT NOT NULL DEFAULT 0;
+
+
+ALTER TABLE net_gaming_management.computer_sessions
+MODIFY COLUMN staff_id INT DEFAULT NULL;
