@@ -111,4 +111,13 @@ public class ComputerDAL {
         }
         return list;
     }
+
+    public HashMap<String, Object> getComputerInfoAndSpec(int computerId) {
+        MySQLHelper helper = new MySQLHelper();
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "computers c");
+        params.put("WHERE", "c.computer_id = ?");
+        params.put("JOIN", "motherboards m ON c.motherboard_id = m.motherboard_id JOIN cpus ON m.cpu_id = cpus.cpu_id JOIN gpus ON m.gpu_id = gpus.gpu_id JOIN psus ON m.psu_id = psus.psu_id");
+    }
 }
