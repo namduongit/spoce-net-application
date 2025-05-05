@@ -36,4 +36,8 @@ public class ComputerBLL {
     public ArrayList<Computers> getComputersByStatus(String status) {
         return this.computerDAL.getComputerSByStatus(status);
     }
+
+    public HashMap<String, Object> getComputerInfoAndSpec(int computerId) {
+        return this.computerDAL.getComputerInfoAndSpec(computerId);
+    }
 }

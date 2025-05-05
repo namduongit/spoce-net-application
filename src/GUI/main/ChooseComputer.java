@@ -7,11 +7,13 @@ import DTO.Rooms;
 import GUI.Components.CustomButton;
 import GUI.Components.CustomCombobox;
 import GUI.Components.CustomScrollPane;
+import GUI.Form.DetailsComputerSpecs;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ChooseComputer extends JFrame {
     private ComputerBLL computerBLL;
@@ -24,8 +26,14 @@ public class ChooseComputer extends JFrame {
     private ArrayList<String> statusStrings;
     private CustomCombobox<String> statusCombobox;
 
-    JPanel dataButtonPanel;
-    CustomScrollPane scrollDataPanel;
+    private int currentSelectedComputerId;
+
+    private JPanel dataButtonPanel;
+    private JPanel computerPanel;
+    private CustomScrollPane scrollDataPanel;
+
+    private int cols;
+    private int rows;
 
     private JLabel chooseComputer;
 
@@ -43,7 +51,8 @@ public class ChooseComputer extends JFrame {
         }
 
         this.statusStrings = new ArrayList<>(List.of("Tất cả", "Đang sử dụng", "Đang chờ sử dụng"));
-
+        this.cols = 4;
+        this.rows = (int) Math.ceil((double) this.computerList.size() / cols);
         this.initComponent();
     }
 
@@ -82,17 +91,16 @@ public class ChooseComputer extends JFrame {
         this.add(chooseRoomPanel);
 
         // Panel chứa danh sách máy tính dạng nút
-        JPanel computerPanel = new JPanel(new BorderLayout());
+        computerPanel = new JPanel(new BorderLayout());
         computerPanel.setBounds(0, 65, 1200, 425);
 
+        this.rows = (int) Math.ceil((double) this.computerList.size() / cols);
         this.dataButtonPanel = new JPanel();
-
-        int cols = 4;
-        int rows = (int) Math.ceil((double) this.computerList.size() / cols);
         this.dataButtonPanel.setLayout(new GridLayout(rows, cols, 20, 20));
 
         for (Computers computers : this.computerList) {
             CustomButton button = Utils.Helper.CreateComponent.createButton("icons8-this-pc-100.png", computers.getName());
+            button.addActionListener(e -> this.currentSelectedComputerId = computers.getComputerId());
             button.addActionListener(e -> {
                 this.chooseComputer.setText("Đang chọn: "+ computers.getComputerId());
             });
@@ -129,9 +137,72 @@ public class ChooseComputer extends JFrame {
 
         CustomButton detailsComputerButton = Utils.Helper.CreateComponent.createBrownButton("Thông tin");
         detailsComputerButton.setBounds(190, 20, 150, 30);
+        detailsComputerButton.addActionListener(e -> new DetailsComputerSpecs(this.currentSelectedComputerId).setVisible(true));
         buttonPanel.add(detailsComputerButton);
 
+        CustomButton filterComputerButton = Utils.Helper.CreateComponent.createOrangeButton("Lọc");
+        filterComputerButton.setBounds(360, 20, 150, 30);
+        filterComputerButton.addActionListener(e -> this.filterComputerList());
+        buttonPanel.add(filterComputerButton);
+
+        CustomButton resetComputerButton = Utils.Helper.CreateComponent.createBlueButton("Đặt lại");
+        resetComputerButton.setBounds(530, 20, 150, 30);
+        resetComputerButton.addActionListener(e -> this.resetComputerList());
+        buttonPanel.add(resetComputerButton);
+
         this.add(buttonPanel);
+    }
+
+    private void filterComputerList() {
+        String roomId = this.roomCombobox.getSelectedItem().toString().equals("Tất cả") ? "" : this.roomCombobox.getSelectedItem().toString().split(" ")[0];
+        String status = this.statusCombobox.getSelectedItem().toString();
+
+        this.computerList = this.computerBLL.getAllComputers();
+        List<Computers> filteredList = this.computerList.stream()
+                                                        .filter(computer -> roomId.isEmpty() || computer.getRoomId() == Integer.parseInt(roomId))
+                                                        .filter(computer -> status.equals("Tất cả") || computer.getStatus().equals(status))
+                                                        .collect(Collectors.toList());
+
+        this.computerList = new ArrayList<>(filteredList);
+
+        this.computerPanel.removeAll();
+        this.computerPanel.revalidate();
+        this.computerPanel.repaint();
+
+        this.rows = (int) Math.ceil((double) this.computerList.size() / this.cols);
+        this.dataButtonPanel = new JPanel(new GridLayout(this.rows, this.cols, 20, 20));
+        for (Computers computers : this.computerList) {
+            CustomButton button = Utils.Helper.CreateComponent.createButton("icons8-this-pc-100.png", computers.getName());
+            button.addActionListener(e -> this.currentSelectedComputerId = computers.getComputerId());
+            this.dataButtonPanel.add(button);
+        }
+
+        this.dataButtonPanel.setPreferredSize(new Dimension(1200, rows * 50));
+
+        this.scrollDataPanel = new CustomScrollPane(this.dataButtonPanel);
+        this.computerPanel.add(this.scrollDataPanel, BorderLayout.CENTER);
+    }
+
+    private void resetComputerList() {
+        this.computerList = this.computerBLL.getAllComputers();
+        this.computerPanel.removeAll();
+        this.computerPanel.revalidate();
+        this.computerPanel.repaint();
+
+        this.rows = (int) Math.ceil((double) this.computerList.size() / this.cols);
+        this.dataButtonPanel = new JPanel(new GridLayout(this.rows, this.cols, 20, 20));
+        for (Computers computer : this.computerList) {
+            CustomButton button = Utils.Helper.CreateComponent.createButton("icons8-this-pc-100.png", computer.getName());
+            button.addActionListener(e -> this.currentSelectedComputerId = computer.getComputerId());
+            this.dataButtonPanel.add(button);
+        }
+
+        this.dataButtonPanel.setPreferredSize(new Dimension(1200, this.rows * 50));
+        this.scrollDataPanel = new CustomScrollPane(this.dataButtonPanel);
+        this.computerPanel.add(this.scrollDataPanel, BorderLayout.CENTER);
+
+        this.roomCombobox.setSelectedIndex(0);
+        this.statusCombobox.setSelectedIndex(0);
     }
 
     public static void main(String[] args) {

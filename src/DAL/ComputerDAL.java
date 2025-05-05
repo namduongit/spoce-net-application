@@ -111,4 +111,90 @@ public class ComputerDAL {
         }
         return list;
     }
+
+    public HashMap<String, Object> getComputerInfoAndSpec(int computerId) {
+        HashMap<String, Object> result = new HashMap<>();
+        HashMap<Integer, Object> ramList = new HashMap<>();
+        HashMap<Integer, Object> storageList = new HashMap<>();
+        MySQLHelper helper = new MySQLHelper();
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "computers c");
+        params.put("WHERE", "c.computer_id = ?");
+        params.put("JOIN",
+                "motherboards m ON c.motherboard_id = m.motherboard_id " +
+                "JOIN cpus ON m.cpu_id = cpus.cpu_id " +
+                "JOIN gpus ON m.gpu_id = gpus.gpu_id " +
+                "JOIN psus ON m.psu_id = psus.psu_id " +
+                "LEFT JOIN mouse ON c.mouse_id = mouse.mouse_id " +
+                "LEFT JOIN keyboards ON c.keyboard_id = keyboards.keyboard_id " +
+                "LEFT JOIN monitors ON c.monitor_id = monitors.monitor_id " +
+                "LEFT JOIN headphones ON c.headphone_id = headphones.headphone_id " +
+                "LEFT JOIN roms ON c.rom_id = roms.rom_id " +
+                "JOIN motherboard_ram mr ON m.motherboard_id = mr.motherboard_id " +
+                "JOIN rams ON mr.ram_id = rams.ram_id " +
+                "JOIN motherboard_storage ms ON m.motherboard_id = ms.motherboard_id " +
+                "JOIN storages ON ms.storage_id = storages.storage_id ");
+        params.put("SELECT",
+                "c.computer_id, c.name, c.price_per_hour, c.status, " +
+                "m.model AS motherboard_name, " +
+                "cpus.model AS cpu_name, " +
+                "gpus.model AS gpu_name, " +
+                "psus.model AS psu_name, " +
+                "mouse.model AS mouse_name, " +
+                "keyboards.model AS keyboard_name, " +
+                "monitors.model AS monitor_name, " +
+                "headphones.model AS headphone_name, " +
+                "roms.model AS rom_name, " +
+                "rams.ram_id, " +
+                "rams.model AS ram_name, " +
+                "storages.storage_id, " +
+                "storages.model AS storage_name");
+
+        helper.buildingQueryParam(params);
+
+        ArrayList<Object> conditionValues = new ArrayList<>();
+        conditionValues.add(computerId);
+
+        try {
+            ResultSet rs = helper.queryWithParam(conditionValues);
+            boolean isFirstRow = true;
+            while (rs.next()) {
+                if (isFirstRow) {
+                    result.put("computer_id", rs.getInt("computer_id"));
+                    result.put("name", rs.getString("name"));
+                    result.put("price_per_hour", rs.getInt("price_per_hour"));
+                    result.put("status", rs.getString("status"));
+                    result.put("motherboard_name", rs.getString("motherboard_name"));
+                    result.put("cpu_name", rs.getString("cpu_name"));
+                    result.put("gpu_name", rs.getString("gpu_name"));
+                    result.put("psu_name", rs.getString("psu_name"));
+                    result.put("mouse_name", rs.getString("mouse_name"));
+                    result.put("keyboard_name", rs.getString("keyboard_name"));
+                    result.put("monitor_name", rs.getString("monitor_name"));
+                    result.put("headphone_name", rs.getString("headphone_name"));
+                    result.put("rom_name", rs.getString("rom_name"));
+
+                    isFirstRow = false;
+                }
+
+                ramList.put(rs.getInt("ram_id"), rs.getString("ram_name"));
+                storageList.put(rs.getInt("storage_id"), rs.getString("storage_name"));
+            }
+            rs.close();
+            helper.closeConnect();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Lỗi ở phương thức getComputerInfoAndSpec",
+                    "Lỗi",
+                    JOptionPane.ERROR_MESSAGE
+            );
+        }
+
+        result.put("ram", ramList);
+        result.put("storage", storageList);
+
+        return result;
+    }
 }
