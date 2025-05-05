@@ -25,9 +25,20 @@ public class ComputerSessionBLL {
     public boolean insertComputerSession(ArrayList<Object> values) {
         return this.computerSessionDAL.insertComputerSession(values);
     }
+    public int insertValueComputerSession(int computerId, int playerId) {
+        return this.computerSessionDAL.insertValueComputerSession(computerId, playerId);
+    }
+
+    public int getInsertLastestSession(int computerId) {
+        return this.computerSessionDAL.getInsertLastestSession(computerId);
+    }
 
     public boolean updateComputerSession(int computerId, HashMap<String, Object> updatingValues) {
         return this.computerSessionDAL.updateComputerSession(computerId, updatingValues);
+    }
+
+    public boolean updateSessionCost(int sessionId, int totalMoney) {
+        return this.computerSessionDAL.updateSessionCost(sessionId, totalMoney);
     }
 
     public boolean updateEndTimeOfComputerSession(int computerId) {

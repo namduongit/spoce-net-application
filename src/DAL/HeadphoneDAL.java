@@ -29,7 +29,7 @@ public class HeadphoneDAL {
                         rs.getDate("purchase_date"),
                         rs.getDate("warranty_expiry"),
                         rs.getString("status"),
-                        rs.getDouble("price")
+                        rs.getInt("price")
                 ));
             }
             rs.close();

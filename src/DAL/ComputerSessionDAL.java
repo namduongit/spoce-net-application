@@ -2,10 +2,14 @@ package DAL;
 
 import DAL.SQLHelper.MySQLHelper;
 import DTO.ComputerSessions;
+
+import java.sql.Array;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import javax.swing.*;
 
@@ -54,6 +58,38 @@ public class ComputerSessionDAL {
         return helper.insertData(values);
     }
 
+    // Này dùng để tài khoản tự đăng nhập (khách hàng)
+    public int insertValueComputerSession(int computerId, int playerId) {
+        MySQLHelper helper = new MySQLHelper();
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "computer_sessions");
+        params.put("FIELD", "computer_id, player_id");
+        helper.buildingQueryParam(params);
+
+        ArrayList<Object> values = new ArrayList<>();
+        values.add(computerId);
+        values.add(playerId);
+
+        return helper.insertDataLastest(values);
+    }
+
+    public int getInsertLastestSession(int computerId) {
+        ArrayList<ComputerSessions> list = this.getComputerSessionList();
+        Collections.sort(list, new Comparator<ComputerSessions>() {
+            @Override
+            public int compare(ComputerSessions o1, ComputerSessions o2) {
+                return o2.getSessionId() - o1.getSessionId();
+            }
+        });
+
+        for (ComputerSessions computerSessions : list) {
+            if (computerSessions.getComputerId() == computerId) return computerSessions.getSessionId();
+        }
+
+        return -1;
+    }
+
     public boolean updateComputerSession(int computerId, HashMap<String, Object> updatingValues) {
         MySQLHelper helper = new MySQLHelper();
 
@@ -64,6 +100,23 @@ public class ComputerSessionDAL {
 
         ArrayList<Object> conditionValues = new ArrayList<>();
         conditionValues.add(computerId);
+
+        return helper.updateData(updatingValues, conditionValues);
+    }
+
+    public boolean updateSessionCost(int sessionId, int totalMoney) {
+        MySQLHelper helper = new MySQLHelper();
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "computer_sessions");
+        params.put("WHERE", "computer_sessions.session_id = ?");
+        helper.buildingQueryParam(params);
+
+        ArrayList<Object> conditionValues = new ArrayList<>();
+        conditionValues.add(sessionId);
+
+        HashMap<String, Object> updatingValues = new HashMap<>();
+        updatingValues.put("total_cost", totalMoney);
 
         return helper.updateData(updatingValues, conditionValues);
     }
