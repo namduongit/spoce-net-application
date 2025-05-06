@@ -4,21 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0bdff552-49c0-492a-a09d-0536acea60c4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spoce-net-application.iml" beforeDir="false" afterPath="$PROJECT_DIR$/spoce-net-application.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BLL/FoodOrderBLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/FoodOrderBLL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DAL/FoodOrderDAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/FoodOrderDAL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Card/ComputerCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Card/ComputerCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Card/FoodCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Card/FoodCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Form/AddingOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Form/AddingOrder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/panels/BillPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/panels/BillPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/panels/ComputerManagingPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/panels/ComputerManagingPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/panels/ComputerPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/panels/ComputerPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/panels/FoodPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/panels/FoodPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/Config/ConfigSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/Config/ConfigSQL.java" afterDir="false" />
-    </list>
+    <list default="true" id="0bdff552-49c0-492a-a09d-0536acea60c4" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
