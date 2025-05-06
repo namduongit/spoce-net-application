@@ -1005,11 +1005,36 @@ UPDATE headphones SET price = CASE
 
 -- Cập nhật giá tiền cho các bản ghi hiện có
 UPDATE rams SET price = CASE
-                                  WHEN model = 'Corsair Vengeance LPX' THEN 1200000
-                                  WHEN model = 'Kingston Fury Beast' THEN 1500000
-                                  WHEN model = 'G.Skill Ripjaws V' THEN 2200000
-                                  WHEN model = 'Crucial DDR5 Pro' THEN 2800000
-                                  ELSE 0
+WHEN model = 'Corsair Vengeance LPX' THEN 1200000
+WHEN model = 'Kingston Fury Beast' THEN 1500000
+WHEN model = 'G.Skill Ripjaws V' THEN 2200000
+WHEN model = 'Crucial DDR5 Pro' THEN 2800000
+ELSE 0
     END;
+
+
+INSERT INTO purchase_receipts (staff_id, status, note)
+VALUES
+    (1, 'Chờ xác nhận', 'Nhập hàng tuần đầu tháng'),
+    (2, 'Chờ xác nhận', 'Nhập thêm hàng do thiếu'),
+    (1, 'Đã xác nhận', 'Phiếu nhập đã kiểm kho');
+-- Chi tiết cho receipt_id = 1
+INSERT INTO purchase_receipt_detail (receipt_id, food_id, quantity, price)
+VALUES
+    (1, 1, 10, 15000),
+    (1, 2, 5, 22000),
+    (1, 3, 8, 18000);
+
+-- Chi tiết cho receipt_id = 2
+INSERT INTO purchase_receipt_detail (receipt_id, food_id, quantity, price)
+VALUES
+    (2, 4, 12, 25000),
+    (2, 5, 6, 30000);
+
+-- Chi tiết cho receipt_id = 3
+INSERT INTO purchase_receipt_detail (receipt_id, food_id, quantity, price)
+VALUES
+    (3, 6, 15, 10000),
+    (3, 7, 20, 12000);
 
 SET SQL_SAFE_UPDATES = 1;

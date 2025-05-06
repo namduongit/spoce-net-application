@@ -271,29 +271,6 @@ public class ComputerSessionDAL {
         return computers;
     }
 
-    public ArrayList<String> getRoomNames() {
-        ArrayList<String> roomNames = new ArrayList<>();
-        MySQLHelper helper = new MySQLHelper();
-
-        HashMap<String, String> params = new HashMap<>();
-        params.put("TABLE", "rooms");
-        params.put("SELECT", "room_name");
-
-        helper.buildingQueryParam(params);
-
-        ResultSet resultSet = helper.queryWithParam(new ArrayList<>());
-        try {
-            while (resultSet.next()) {
-                roomNames.add(resultSet.getString("room_name"));
-            }
-            resultSet.close();
-            helper.closeConnect();
-        } catch (SQLException exception) {
-            JOptionPane.showMessageDialog(null, exception.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
-        }
-
-        return roomNames;
-    }
 
     // Thêm phương thức để lấy tất cả các phòng
     public ArrayList<String> getAllRooms() {
@@ -303,7 +280,6 @@ public class ComputerSessionDAL {
         HashMap<String, String> params = new HashMap<>();
         params.put("TABLE", "rooms");
         params.put("SELECT", "room_name");
-        params.put("ORDER BY", "room_name");
 
         helper.buildingQueryParam(params);
 

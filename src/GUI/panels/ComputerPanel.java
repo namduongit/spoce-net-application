@@ -501,7 +501,7 @@ public class ComputerPanel extends JPanel{
                                     .getRoomById(list.get(i).getRoomId())
                                     .getRoomName();
 
-            data[i][3] = list.get(i).getPricePerHour() + "đ";
+            data[i][3] = Utils.Helper.Comon.formatMoney(list.get(i).getPricePerHour()+"");
             data[i][4] = list.get(i).getStatus();
         }
 

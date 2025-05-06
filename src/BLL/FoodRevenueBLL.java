@@ -32,7 +32,7 @@ public class FoodRevenueBLL {
     public HashMap<String, Integer> getBillStatusCounts(LocalDateTime start, LocalDateTime end) {
         return foodRevenueDAL.getBillStatusCounts(start, end);
     }
-    public ArrayList<String> getCategory() {
-        return foodRevenueDAL.getCategory();
+    public ArrayList<String> getAllCategory() {
+        return foodRevenueDAL.getAllCategory();
     }
 }

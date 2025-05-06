@@ -14,7 +14,7 @@ public class ComputerCard extends CustomPanel {
     private int computerId;
     private String computerName;
     private String roomType;
-    private int pricePerHour;
+    private String pricePerHour;
     private Border blackBorder;
     private Border blueBorder;
 
@@ -34,11 +34,11 @@ public class ComputerCard extends CustomPanel {
         this.roomType = roomType;
     }
 
-    public int getPricePerHour() {
+    public String getPricePerHour() {
         return pricePerHour;
     }
 
-    public void setPricePerHour(int pricePerHour) {
+    public void setPricePerHour(String pricePerHour) {
         this.pricePerHour = pricePerHour;
     }
 
@@ -66,7 +66,7 @@ public class ComputerCard extends CustomPanel {
         this.computerId = computerId;
     }
 
-    public ComputerCard(int computerId, String computerName, String roomType, int pricePerHour) {
+    public ComputerCard(int computerId, String computerName, String roomType, String pricePerHour) {
         this.computerId = computerId;
         this.computerName = computerName;
         this.roomType = roomType;

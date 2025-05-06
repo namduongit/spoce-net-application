@@ -4,13 +4,249 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0bdff552-49c0-492a-a09d-0536acea60c4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Assets/Icon/icons8-edit-chat-history-100.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/panels/InboundPanel.java" afterDir="false" />
+    <list default="true" id="2fd5298c-8ded-4541-913f-688b0c64ef55" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/bin/Assets/Icon/icons8-details-100.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Assets/Icon/icons8-game-100.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Assets/Icon/icons8-login-100.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Assets/Icon/icons8-this-pc-100.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/BLL/RamBLL.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Bills/Invoice_SatMay0311-48-59ICT2025.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Bills/Invoice_SatMay0319-49-56ICT2025.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/DAL/RamDAL.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/GUI/Form/AddingHardware$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/GUI/Form/AddingHardware$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/GUI/Form/AddingHardware$3.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/GUI/Form/AddingHardware$4.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/GUI/Form/DetailsAccount.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/GUI/Form/DetailsComputerSpecs.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/GUI/Form/DetailsHardware$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/GUI/Form/DetailsHardware$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/GUI/Form/DetailsHardware$3.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/GUI/Form/DetailsHardware$4.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/GUI/Form/EditAccount.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/GUI/main/ChooseComputer.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/GUI/main/ComputerChooseDashboard.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/GUI/main/PlayerLoginScreen$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/GUI/main/PlayerLoginScreen$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/GUI/main/PlayerLoginScreen.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/GUI/panels/AccountPanel$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/GUI/panels/HardwarePanel$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/GUI/panels/HardwarePanel$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/GUI/panels/HardwarePanel$3.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/GUI/panels/HardwarePanel$4.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/GUI/panels/HardwarePanel$5.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/GUI/panels/HardwarePanel$6.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Utils/Fonts/Roboto_Condensed-Black.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Assets/Icon/icons8-cancel-100.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Assets/Icon/icons8-yes-100.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/BLL/PurchaseReceiptBLL.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DAL/PurchaseReceiptDAL.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DTO/PurchaseReceipt.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DTO/PurchaseReceiptDetail.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataBase/createTable.sql" beforeDir="false" afterPath="$PROJECT_DIR$/DataBase/createTable.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataBase/trigger.sql" beforeDir="false" afterPath="$PROJECT_DIR$/DataBase/trigger.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/main/AdminDashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/main/AdminDashboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/BLL/CategoryBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/BLL/CategoryBLL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/BLL/ComputerBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/BLL/ComputerBLL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/BLL/ComputerSessionBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/BLL/ComputerSessionBLL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/BLL/CpuBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/BLL/CpuBLL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/BLL/FoodBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/BLL/FoodBLL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/BLL/FoodOrderBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/BLL/FoodOrderBLL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/BLL/FoodRevenueBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/BLL/FoodRevenueBLL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/BLL/GpuBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/BLL/GpuBLL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/BLL/HeadphoneBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/BLL/HeadphoneBLL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/BLL/KeyboardBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/BLL/KeyboardBLL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/BLL/MonitorBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/BLL/MonitorBLL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/BLL/MotherboardBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/BLL/MotherboardBLL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/BLL/MouseBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/BLL/MouseBLL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/BLL/PlayerBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/BLL/PlayerBLL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/BLL/RoomBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/BLL/RoomBLL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/DAL/CategoryDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DAL/CategoryDAL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/DAL/ComputerDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DAL/ComputerDAL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/DAL/ComputerSessionDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DAL/ComputerSessionDAL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/DAL/FoodBillDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DAL/FoodBillDAL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/DAL/FoodDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DAL/FoodDAL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/DAL/FoodOrderDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DAL/FoodOrderDAL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/DAL/FoodRevenueDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DAL/FoodRevenueDAL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/DAL/PlayerDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DAL/PlayerDAL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/DAL/RoomDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DAL/RoomDAL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/DAL/SQLHelper/MySQLHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DAL/SQLHelper/MySQLHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/DTO/Accounts.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DTO/Accounts.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/DTO/Categories.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DTO/Categories.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/DTO/ComputerSessions.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DTO/ComputerSessions.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/DTO/Computers.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DTO/Computers.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/DTO/FoodBills.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DTO/FoodBills.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/DTO/FoodOrders.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DTO/FoodOrders.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/DTO/FoodRevenue.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DTO/FoodRevenue.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/DTO/Foods.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DTO/Foods.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/DTO/MotherboardRam.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DTO/MotherboardRam.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/DTO/MotherboardStorage.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DTO/MotherboardStorage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/DTO/Players.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DTO/Players.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/DTO/Psus.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DTO/Psus.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/DTO/Rooms.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DTO/Rooms.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/DTO/Staffs.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DTO/Staffs.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/DTO/Storages.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/DTO/Storages.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Card/ComputerCard$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Card/ComputerCard$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Card/ComputerCard$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Card/ComputerCard$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Card/ComputerCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Card/ComputerCard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Card/FoodCard$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Card/FoodCard$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Card/FoodCard$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Card/FoodCard$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Card/FoodCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Card/FoodCard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Components/CustomButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Components/CustomButton.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Components/CustomChart.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Components/CustomChart.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Components/CustomComboBoxUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Components/CustomComboBoxUI$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Components/CustomComboBoxUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Components/CustomComboBoxUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Components/CustomCombobox.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Components/CustomCombobox.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Components/CustomDesignButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Components/CustomDesignButton.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Components/CustomPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Components/CustomPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Components/CustomPasswordField.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Components/CustomPasswordField.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Components/CustomPieChart.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Components/CustomPieChart.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Components/CustomScrollPane.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Components/CustomScrollPane.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Components/CustomTable$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Components/CustomTable$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Components/CustomTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Components/CustomTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Components/CustomTextField.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Components/CustomTextField.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Components/MainTestCustom.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Components/MainTestCustom.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/AddingCategory$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/AddingCategory$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/AddingCategory$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/AddingCategory$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/AddingCategory$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/AddingCategory$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/AddingCategory.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/AddingCategory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/AddingComputer$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/AddingComputer$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/AddingComputer$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/AddingComputer$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/AddingComputer$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/AddingComputer$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/AddingComputer$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/AddingComputer$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/AddingComputer$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/AddingComputer$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/AddingComputer.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/AddingComputer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/AddingFood.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/AddingFood.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/AddingHardware$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/AddingHardware$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/AddingHardware.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/AddingHardware.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/AddingOrder.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/AddingOrder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/AddingPlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/AddingPlayer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/AddingRoom$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/AddingRoom$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/AddingRoom$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/AddingRoom$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/AddingRoom$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/AddingRoom$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/AddingRoom$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/AddingRoom$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/AddingRoom.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/AddingRoom.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/AddingStaff.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/AddingStaff.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/DetailsAddress.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/DetailsAddress.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/DetailsAuthenticator.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/DetailsAuthenticator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/DetailsComputer$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/DetailsComputer$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/DetailsComputer$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/DetailsComputer$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/DetailsComputer$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/DetailsComputer$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/DetailsComputer$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/DetailsComputer$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/DetailsComputer$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/DetailsComputer$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/DetailsComputer$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/DetailsComputer$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/DetailsComputer.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/DetailsComputer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/DetailsFood.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/DetailsFood.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/DetailsHardware.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/DetailsHardware.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/DetailsRoom$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/DetailsRoom$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/DetailsRoom$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/DetailsRoom$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/DetailsRoom$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/DetailsRoom$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/DetailsRoom$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/DetailsRoom$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/DetailsRoom.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/DetailsRoom.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/DetailsStaffs.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/DetailsStaffs.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/Form/EditingPlayerForm.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Form/EditingPlayerForm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/AccountPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/AccountPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$11.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$12.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$13.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$14.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$14.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$15.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$15.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$16.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$16.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/BillPanel$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/BillPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/BillPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/ChartPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/ChartPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/ComputerManagingPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/ComputerManagingPanel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/ComputerManagingPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/ComputerManagingPanel$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/ComputerManagingPanel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/ComputerManagingPanel$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/ComputerManagingPanel$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/ComputerManagingPanel$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/ComputerManagingPanel$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/ComputerManagingPanel$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/ComputerManagingPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/ComputerManagingPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/ComputerPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/DashBoardPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/DashBoardPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/FoodPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/FoodPanel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/FoodPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/FoodPanel$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/FoodPanel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/FoodPanel$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/FoodPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/FoodPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/HardwarePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/HardwarePanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/RoomPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/RoomPanel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/RoomPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/RoomPanel$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/RoomPanel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/RoomPanel$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/RoomPanel$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/RoomPanel$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GUI/panels/RoomPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/panels/RoomPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Utils/Config/ConfigFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Utils/Config/ConfigFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Utils/Config/ConfigSQL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Utils/Config/ConfigSQL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Utils/Helper/AddressComboBox.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Utils/Helper/AddressComboBox.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Utils/Helper/AdjustTableWidth.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Utils/Helper/AdjustTableWidth.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Utils/Helper/ChangeMinToDate.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Utils/Helper/ChangeMinToDate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Utils/Helper/Comon.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Utils/Helper/Comon.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Utils/Helper/CreateComponent$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Utils/Helper/CreateComponent$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Utils/Helper/CreateComponent$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Utils/Helper/CreateComponent$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Utils/Helper/CreateComponent.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Utils/Helper/CreateComponent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Utils/Helper/EncriptString.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Utils/Helper/EncriptString.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/ComputerSessionBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/ComputerSessionBLL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/FoodOrderBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/FoodOrderBLL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/FoodRevenueBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/FoodRevenueBLL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/ComputerSessionDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/ComputerSessionDAL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/FoodOrderDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/FoodOrderDAL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/FoodRevenueDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/FoodRevenueDAL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Card/ComputerCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Card/ComputerCard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Card/FoodCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Card/FoodCard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/AddingOrder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/AddingOrder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$11.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$12.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$13.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$14.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$14.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$15.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$15.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$16.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$16.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/BillPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ChartPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ChartPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerManagingPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerManagingPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/ComputerPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/FoodPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/FoodPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/InboundPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/InboundPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spoce-net-application.iml" beforeDir="false" afterPath="$PROJECT_DIR$/spoce-net-application.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BLL/ComputerSessionBLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/ComputerSessionBLL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BLL/FoodOrderBLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/FoodOrderBLL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BLL/FoodRevenueBLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/FoodRevenueBLL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DAL/ComputerSessionDAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/ComputerSessionDAL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DAL/FoodOrderDAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/FoodOrderDAL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DAL/FoodRevenueDAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/FoodRevenueDAL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Card/ComputerCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Card/ComputerCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Card/FoodCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Card/FoodCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Form/AddingOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Form/AddingOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/panels/BillPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/panels/BillPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/panels/ChartPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/panels/ChartPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/panels/ComputerManagingPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/panels/ComputerManagingPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/panels/ComputerPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/panels/ComputerPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/panels/FoodPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/panels/FoodPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/panels/InboundPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/panels/InboundPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,39 +260,13 @@
       </list>
     </option>
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 3
-}</component>
-  <component name="ProjectId" id="2wgDQkn8KcfWJghCPpaqnF8AWc9" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.AdminLoginScreen.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
+    "Application.PurchaseReceiptDAL.executor": "Run",
+    "git-widget-placeholder": "Merging main",
     "last_opened_file_path": "U:/NamII/HocKiII/Java/spoce-net-application/src/Assets/Icon",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.33718246",
-    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
-    "vue.rearranger.settings.migration": "true"
+    "node.js.selected.package.tslint": "(autodetect)"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -64,21 +274,43 @@
       <recent name="U:\NamII\HocKiII\Java\spoce-net-application\src\Assets\Icon" />
     </key>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="RunManager">
+    <configuration name="PurchaseReceiptDAL" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="DAL.PurchaseReceiptDAL" />
+      <module name="spoce-net-application" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="DAL.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.PurchaseReceiptDAL" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="0bdff552-49c0-492a-a09d-0536acea60c4" name="Changes" comment="" />
-      <created>1746454313186</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1746454313186</updated>
-      <workItem from="1746454315663" duration="271000" />
-      <workItem from="1746529400147" duration="2954000" />
-    </task>
     <servers />
   </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/DAL/PurchaseReceiptDAL.java</url>
+          <line>51</line>
+          <properties class="DAL.PurchaseReceiptDAL" method="main">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
