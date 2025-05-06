@@ -53,10 +53,6 @@ public class ComputerSessionBLL {
         return this.computerSessionDAL.getComputerInfoAndRoomInfoOfSession(sessionId);
     }
 
-    public ArrayList<String> getRoomNames() {
-        return computerSessionDAL.getRoomNames();
-    }
-
     public ArrayList<String> getComputersInRoom(String roomName) {
         return computerSessionDAL.getComputersInRoom(roomName);
     }

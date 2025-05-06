@@ -44,7 +44,7 @@ public class FoodRevenueDAL {
         return list;
     }
 
-    public ArrayList<String> getCategory() {
+    public ArrayList<String> getAllCategory() {
         ArrayList<String> list = new ArrayList<>();
         MySQLHelper helper = new MySQLHelper();
 
@@ -111,7 +111,7 @@ public class FoodRevenueDAL {
         params.put("TABLE", "food_bills fb");
         params.put("JOIN", "food_orders fo ON fo.bill_id = fb.bill_id JOIN foods f ON f.food_id = fo.food_id");
         params.put("SELECT", "SUM(fo.quantity * f.price) as total");
-        params.put("WHERE", "fb.created_at BETWEEN ? AND ? AND fb.status != 'Đã hủy'");
+        params.put("WHERE", "fb.created_at BETWEEN ? AND ? AND fb.status != 'Đã hủy' AND fb.status != 'Chưa xử lý'"); 
 
         helper.buildingQueryParam(params);
 
