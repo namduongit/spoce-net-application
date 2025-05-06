@@ -14,12 +14,12 @@ public class FoodCard extends CustomPanel {
     private int idProduct;
     private String imageProduct;
     private String nameProduct;
-    private int priceProduct;
+    private String priceProduct;
     private int typeProduct;
     private String statusProduct;
 
 
-    public FoodCard(String imageProduct, int idProduct, String nameProduct, int priceProduct,
+    public FoodCard(String imageProduct, int idProduct, String nameProduct, String priceProduct,
                     int typeProduct, String statusProduct) {
         this.idProduct = idProduct;
         this.imageProduct = imageProduct;
@@ -104,7 +104,7 @@ public class FoodCard extends CustomPanel {
         return nameProduct;
     }
 
-    public int getPriceProduct() {
+    public String getPriceProduct() {
         return priceProduct;
     }
 

@@ -6,6 +6,7 @@ import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -68,6 +69,8 @@ public class BillPanel extends JPanel {
     private CustomTable tableFoodBill;
 
     private FoodBillBLL foodBillBLL;
+    private FoodOrderBLL foodOrderBLL;
+    private FoodBLL foodBLL;
     private ArrayList<FoodBills> foodBillList;
     private String[] columnNameFoodBill;
     private DefaultTableCellRenderer rendererFoodBill;
@@ -85,6 +88,8 @@ public class BillPanel extends JPanel {
         this.roomBLL = new RoomBLL();
         this.computerBLL = new ComputerBLL();
         this.computerSessionBLL = new ComputerSessionBLL();
+        this.foodOrderBLL = new FoodOrderBLL();
+        this.foodBLL = new FoodBLL();
 
         this.categoryBLL = new CategoryBLL();
 
@@ -1232,6 +1237,27 @@ public class BillPanel extends JPanel {
                     return;
                 }
 
+                if (!this.checkQuantityOfBill(Integer.parseInt(regexString[regexString.length - 1]))) {
+                    JOptionPane.showMessageDialog(
+                            null,
+                            "Số lượng trong kho không đủ!",
+                            "Lỗi",
+                            JOptionPane.ERROR_MESSAGE
+                    );
+                    if (this.foodBillBLL.updateCancelFoodBill(Integer.parseInt(regexString[regexString.length - 1]))) {
+                        JOptionPane.showMessageDialog(
+                                null,
+                                "Đơn hàng đã bị hủy do không đủ số lượng!",
+                                "Lỗi",
+                                JOptionPane.INFORMATION_MESSAGE
+                        );
+                    }
+                    this.filterFoodBillList();
+                    return;
+                }
+
+                this.updateFoodQuantityBasedOnBillId(Integer.parseInt(regexString[regexString.length - 1]));
+
                 boolean resultUpdate = this.foodBillBLL
                         .updateCofirmFoodBill(Integer.parseInt(regexString[regexString.length - 1]));
                 if (resultUpdate) {
@@ -1334,6 +1360,28 @@ public class BillPanel extends JPanel {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn hóa đơn để xác nhận", "Thông báo",
                     JOptionPane.INFORMATION_MESSAGE);
             return;
+        }
+    }
+
+    private boolean checkQuantityOfBill(int billId) {
+        ArrayList<ArrayList<Integer>> orderDetails = this.foodOrderBLL.getOrderDetailFromBillId(billId);
+
+        for (ArrayList<Integer> detail : orderDetails) {
+            if (this.foodBLL.getFoodByID(detail.get(0)).getQuantity() < detail.get(1)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private void updateFoodQuantityBasedOnBillId(int billId) {
+        ArrayList<ArrayList<Integer>> orderDetails = this.foodOrderBLL.getOrderDetailFromBillId(billId);
+
+        for (ArrayList<Integer> detail : orderDetails) {
+            HashMap<String, Object> updateValues = new HashMap<>();
+            updateValues.put("quantity", this.foodBLL.getFoodByID(detail.get(0)).getQuantity() - detail.get(1));
+            this.foodBLL.updateFoodDetailsById(detail.get(0), updateValues);
         }
     }
 }

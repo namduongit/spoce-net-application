@@ -117,7 +117,7 @@ public class ComputerManagingPanel extends JPanel {
 
         for (Computers x : this.playedComputerList) {
             Rooms room = this.roomBLL.getRoomById(x.getRoomId());
-            ComputerCard computerCard = new ComputerCard(x.getComputerId(), x.getName(), room.getRoomName(), x.getPricePerHour());
+            ComputerCard computerCard = new ComputerCard(x.getComputerId(), x.getName(), room.getRoomName(), Utils.Helper.Comon.formatMoney(x.getPricePerHour()+""));
             computerCard.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
@@ -140,7 +140,7 @@ public class ComputerManagingPanel extends JPanel {
 
         for (Computers x : this.idlingComputerList) {
             Rooms room = this.roomBLL.getRoomById(x.getRoomId());
-            ComputerCard computerCard = new ComputerCard(x.getComputerId(), x.getName(), room.getRoomName(), x.getPricePerHour());
+            ComputerCard computerCard = new ComputerCard(x.getComputerId(), x.getName(), room.getRoomName(), Utils.Helper.Comon.formatMoney(x.getPricePerHour()+""));
             computerCard.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {

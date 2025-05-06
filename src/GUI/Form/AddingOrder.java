@@ -1,8 +1,10 @@
 package GUI.Form;
 
+import BLL.CategoryBLL;
 import BLL.FoodBLL;
 import BLL.FoodBillBLL;
 import BLL.FoodOrderBLL;
+import DTO.Categories;
 import DTO.Foods;
 import DTO.Staffs;
 import GUI.Components.CustomButton;
@@ -22,11 +24,13 @@ public class AddingOrder extends JFrame {
 
     private FoodBillBLL foodBillBLL;
     private FoodOrderBLL foodOrderBLL;
+    private CategoryBLL categoryBLL;
 
     private JPanel itemPanel;
     private CustomButton addItemButton;
     private CustomButton saveButton;
     private CustomButton billingButton;
+    private CustomCombobox<String> foodCategoryCombobox;
 
     private JLabel totalBill;
 
@@ -34,12 +38,14 @@ public class AddingOrder extends JFrame {
     private ArrayList<JTextField> quantityFieldList = new ArrayList<>();
     private ArrayList<JPanel> rowPanelList = new ArrayList<>();
     private ArrayList<Foods> foodList;
+    private ArrayList<Categories> categoryList;
 
     public AddingOrder(Staffs loginStaffs) {
         this.loginStaff = loginStaffs;
 
         this.foodBillBLL = new FoodBillBLL();
         this.foodOrderBLL = new FoodOrderBLL();
+        this.categoryBLL = new CategoryBLL();
 
         this.setTitle("Thêm hóa đơn");
         this.setSize(600, 500);
@@ -51,6 +57,7 @@ public class AddingOrder extends JFrame {
         this.setResizable(false);
 
         this.foodList = new FoodBLL().getAllFoods();
+        this.categoryList = this.categoryBLL.getAllCategories();
 
         this.itemPanel = new JPanel();
         this.itemPanel.setLayout(new BoxLayout(itemPanel, BoxLayout.Y_AXIS));
@@ -64,23 +71,39 @@ public class AddingOrder extends JFrame {
         add(scrollPane);
 
         this.addItemButton = CreateComponent.createBlueButton("Thêm món");
-        this.addItemButton.setBounds(25, 400, 120, 30);
+        this.addItemButton.setBounds(405, 400, 150, 30);
         this.addItemButton.addActionListener(this::addItemRow);
         this.add(addItemButton);
+//        435, 400, 120, 30
 
         this.saveButton = CreateComponent.createOrangeButton("Đặt món");
-        this.saveButton.setBounds(150, 400, 120, 30);
+        this.saveButton.setBounds(25, 400, 120, 30);
         this.saveButton.addActionListener(e -> saveOrder());
         this.add(saveButton);
+//        310, 400, 120, 30
 
         this.billingButton = CreateComponent.createBrownButton("Tính tiền");
-        this.billingButton.setBounds(275, 400, 120, 30);
+        this.billingButton.setBounds(150, 400, 120, 30);
         this.billingButton.addActionListener(e -> updateTotal());
         this.add(billingButton);
+//        435, 400, 120, 30
 
         this.totalBill = new JLabel("Tổng tiền:");
         this.totalBill.setBounds(25, 360, 500, 30);
         this.add(totalBill);
+
+        JLabel foodCategoryLabel = new JLabel("Loại món");
+        foodCategoryLabel.setBounds(340, 360, 80, 30);
+        this.add(foodCategoryLabel);
+
+        ArrayList<String> categoryNameList = new ArrayList<>();
+        categoryNameList.add("Tất cả");
+        for (Categories x : this.categoryList) {
+            categoryNameList.add(x.getCategoryId() + " - " + x.getName());
+        }
+        foodCategoryCombobox = new CustomCombobox<>(categoryNameList);
+        foodCategoryCombobox.setBounds(405, 360, 150, 30);
+        this.add(foodCategoryCombobox);
 
         this.addItemRow(null);
     }
@@ -96,9 +119,19 @@ public class AddingOrder extends JFrame {
 
         CustomCombobox<String> foodCombo = new CustomCombobox<>();
         foodCombo.setPreferredSize(new Dimension(200, 30));
-        for (Foods food : foodList) {
-            foodCombo.addItem(food.getFoodId() + " - " + food.getName());
+        if (this.foodCategoryCombobox.getSelectedItem().toString().equals("Tất cả")) {
+            for (Foods food : foodList) {
+                foodCombo.addItem(food.getFoodId() + " - " + food.getName());
+            }
+        } else {
+            int categoryId = this.getIdFromCategorySelection(this.foodCategoryCombobox.getSelectedItem().toString());
+            for (Foods food : foodList) {
+                if (food.getCategoryId() == categoryId) {
+                    foodCombo.addItem(food.getFoodId() + " - " + food.getName());
+                }
+            }
         }
+
 
         JLabel labelQuantity = new JLabel("Số lượng:");
         labelQuantity.setPreferredSize(new Dimension(60, 30));
@@ -269,6 +302,11 @@ public class AddingOrder extends JFrame {
             }
         }
         return total;
+    }
+
+    private int getIdFromCategorySelection(String categorySelection) {
+        String[] arr = categorySelection.split(" - ");
+        return Integer.parseInt(arr[0]);
     }
 
     public static void main(String[] args) {

@@ -175,7 +175,7 @@ public class FoodPanel extends JPanel {
                     fd.getImage(),
                     fd.getFoodId(),
                     fd.getName(),
-                    fd.getPrice(),
+                    Utils.Helper.Comon.formatMoney(fd.getPrice()+""),
                     fd.getCategoryId(),
                     fd.getStatus());
 
@@ -250,7 +250,7 @@ public class FoodPanel extends JPanel {
                     fd.getImage(),
                     fd.getFoodId(),
                     fd.getName(),
-                    fd.getPrice(),
+                    Utils.Helper.Comon.formatMoney(fd.getPrice()+""),
                     fd.getCategoryId(),
                     fd.getStatus());
 
