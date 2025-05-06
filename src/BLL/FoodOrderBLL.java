@@ -2,6 +2,8 @@ package BLL;
 
 import DAL.FoodOrderDAL;
 
+import java.util.ArrayList;
+
 public class FoodOrderBLL {
     private FoodOrderDAL foodOrderDAL;
     
@@ -13,5 +15,7 @@ public class FoodOrderBLL {
         return this.foodOrderDAL.insertDataBill(billId, foodId, quantity);
     }
 
-    
+    public ArrayList<ArrayList<Integer>> getOrderDetailFromBillId(int billId) {
+        return this.foodOrderDAL.getOrderDetailFromBillId(billId);
+    }
 }
