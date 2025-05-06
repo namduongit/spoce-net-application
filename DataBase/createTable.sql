@@ -207,22 +207,22 @@ CREATE TABLE IF NOT EXISTS motherboards (
 
 -- Bảng trung gian để cắm các thiết bị nhiều nhiều
 CREATE TABLE IF NOT EXISTS motherboard_ram ( -- Mạch chủ với RAM
-                                               motherboard_id  INT NOT NULL,
-                                               ram_id         INT NOT NULL,
+   motherboard_id  INT NOT NULL,
+   ram_id         INT NOT NULL,
 
-                                               PRIMARY KEY (motherboard_id, ram_id),
+   PRIMARY KEY (motherboard_id, ram_id),
     FOREIGN KEY (motherboard_id) REFERENCES motherboards(motherboard_id) ON DELETE CASCADE,
     FOREIGN KEY (ram_id) REFERENCES rams(ram_id) ON DELETE CASCADE
-    );
+);
 
 CREATE TABLE IF NOT EXISTS motherboard_storage ( -- Mạch chủ với bộ nhớ
-                                                   motherboard_id  INT NOT NULL,
-                                                   storage_id     INT NOT NULL,
+   motherboard_id  INT NOT NULL,
+   storage_id     INT NOT NULL,
 
-                                                   PRIMARY KEY (motherboard_id, storage_id),
+   PRIMARY KEY (motherboard_id, storage_id),
     FOREIGN KEY (motherboard_id) REFERENCES motherboards(motherboard_id) ON DELETE CASCADE,
     FOREIGN KEY (storage_id) REFERENCES storages(storage_id) ON DELETE CASCADE
-    );
+);
 
 -- Máy tính
 CREATE TABLE IF NOT EXISTS computers (
@@ -251,9 +251,9 @@ CREATE TABLE IF NOT EXISTS computers (
 
 -- Bảng thức ăn
 CREATE TABLE IF NOT EXISTS categories (
-                                          category_id INT AUTO_INCREMENT PRIMARY KEY,
-                                          name	    varchar(100) not null
-    );
+      category_id INT AUTO_INCREMENT PRIMARY KEY,
+      name	    varchar(100) not null
+);
 
 CREATE TABLE IF NOT EXISTS foods (
                                      food_id         INT AUTO_INCREMENT PRIMARY KEY,
@@ -314,27 +314,29 @@ SELECT COUNT(*) AS SoLuongBang
 FROM information_schema.tables
 WHERE table_schema = 'net_gaming_management';
 
--- Trigger
 
-DELIMITER $$
 
-CREATE TRIGGER after_account_insert
-    AFTER INSERT ON accounts
-    FOR EACH ROW
-BEGIN
-    -- Nếu là Quản trị viên hoặc Nhân viên, thêm vào bảng staffs với thông tin mặc định
-    IF NEW.role IN ('Quản trị viên', 'Nhân viên') THEN
-        INSERT INTO staffs (account_id, full_name, birth_date, gender, phone, email, address, cccd, avatar)
-        VALUES (NEW.account_id, 'Chưa cập nhật', '2000-01-01', 'Chưa đặt', NULL, NULL, NULL, NULL, NULL);
+-- Bảng phiếu nhập
+CREATE TABLE IF NOT EXISTS purchase_receipts (
+    receipt_id INT PRIMARY KEY AUTO_INCREMENT,
+    create_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    update_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    staff_id INT,
+    status ENUM('Chờ xác nhận', 'Đã xác nhận', 'Đã hủy') DEFAULT 'Chờ xác nhận',
+    note TEXT,
+    total INT DEFAULT 0
+);
 
-    -- Nếu là Người chơi, thêm vào bảng players với số dư mặc định là 0
-    ELSEIF NEW.role = 'Người chơi' THEN
-        INSERT INTO players (account_id, balance)
-        VALUES (NEW.account_id, 0);
-END IF;
-END$$
-
-DELIMITER ;
+-- Bảng chi tiết phiếu nhập
+CREATE TABLE IF NOT EXISTS purchase_receipt_detail (
+    receipt_id INT,
+    food_id INT,
+    quantity INT NOT NULL,
+    price INT NOT NULL,
+    PRIMARY KEY (receipt_id, food_id),
+    FOREIGN KEY (receipt_id) REFERENCES purchase_receipts(receipt_id) ON DELETE CASCADE,
+    FOREIGN KEY (food_id) REFERENCES foods(food_id) ON DELETE CASCADE
+);
 
 
 

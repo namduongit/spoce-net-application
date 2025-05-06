@@ -41,6 +41,7 @@ public class AdminDashboard extends JFrame {
     private CustomButton chartButton;
     private CustomButton roomButton;
     private CustomButton computerManagingButton;
+    private CustomButton inBoundButton;
 
     private JPanel currentShowingPanel;
 
@@ -117,6 +118,12 @@ public class AdminDashboard extends JFrame {
                 this.switchPanel(new ComputerManagingPanel(this.loginAccount, this.loginStaff));
             });
             buttons.add(this.computerManagingButton);
+
+            this.inBoundButton = CreateComponent.createButton("icons8-edit-chat-history-100.png", "Phiếu nhập");
+            this.inBoundButton.addActionListener(e -> {
+                this.switchPanel(new InboundPanel());
+            });
+            buttons.add(this.inBoundButton);
 
         } else if (this.loginAccount.getRole().equalsIgnoreCase("Nhân viên")) {
             this.foodButton = CreateComponent.createButton("icons8-ingredients-100.png", "Thức ăn");
