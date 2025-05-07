@@ -8,10 +8,12 @@ import DTO.PurchaseReceipt;
 import DTO.Staffs;
 import GUI.Components.*;
 import GUI.Form.AddingInbound;
+import GUI.Form.DetailsInbound;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.FocusEvent;
@@ -37,11 +39,13 @@ public class InboundPanel extends JPanel {
     private Object[][] data;
     private DefaultTableModel model;
     private CustomTable tableData;
+    private int currentSelectedId = -1;
     //------------------------------------------------------
     private PurchaseReceiptBLL purchaseReceiptBLL;
     private StaffBLL staffBLL;
     private AccountBLL accountBLL;
     private ArrayList<PurchaseReceipt> list;
+    private DefaultTableCellRenderer renderer;
 
 
 
@@ -49,6 +53,8 @@ public class InboundPanel extends JPanel {
         // Init
         this.accounts = accounts;
         this.staffs = staffs;
+        this.renderer = new DefaultTableCellRenderer();
+        this.renderer.setHorizontalAlignment(JLabel.CENTER);
 
         // BLL Layer
         this.purchaseReceiptBLL = new PurchaseReceiptBLL();
@@ -95,9 +101,9 @@ public class InboundPanel extends JPanel {
 
         // Detail phieu nhap
         Image infoImage = new ImageIcon(
-                System.getProperty("user.dir") + "/src/Assets/Icon/info.png"
+                System.getProperty("user.dir") + "/src/Assets/Icon/pencil.png"
         ).getImage().getScaledInstance(30,30,Image.SCALE_SMOOTH);
-        CustomDesignButton detailButton = new CustomDesignButton("Chi tiết", new ImageIcon(infoImage));
+        CustomDesignButton detailButton = new CustomDesignButton("Sửa", new ImageIcon(infoImage));
         detailButton.setVerticalTextPosition(SwingConstants.BOTTOM);
         detailButton.setHorizontalTextPosition(SwingConstants.CENTER);
         detailButton.setBackground(Color.WHITE);
@@ -105,6 +111,19 @@ public class InboundPanel extends JPanel {
         detailButton.setForeground(Color.BLACK);
         detailButton.setBounds(125, 40, 90, 70);
         detailButton.setBorderSize(3);
+        detailButton.addActionListener(e -> {
+            if (currentSelectedId == -1) {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Bạn chưa chọn phiếu nhập!",
+                        "Lỗi",
+                        JOptionPane.ERROR_MESSAGE
+                );
+                return;
+            }
+
+            new DetailsInbound(currentSelectedId).setVisible(true);
+        });
 
         // Cofirm phieu nhap
         Image confirmImage = new ImageIcon(
@@ -118,6 +137,55 @@ public class InboundPanel extends JPanel {
         confirmButon.setForeground(Color.BLACK);
         confirmButon.setBounds(230, 40, 90, 70);
         confirmButon.setBorderSize(3);
+        confirmButon.addActionListener(e -> {
+            if (currentSelectedId == -1) {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Bạn chưa chọn phiếu nhập!",
+                        "Lỗi",
+                        JOptionPane.ERROR_MESSAGE
+                );
+                return;
+            }
+
+            PurchaseReceipt purchaseReceipt = this.purchaseReceiptBLL.getPurchaseReceiptById(this.currentSelectedId);
+            if (purchaseReceipt.getStatus().equals("Đã xác nhận")) {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Phiếu nhập đã được xác nhận!",
+                        "Lỗi",
+                        JOptionPane.ERROR_MESSAGE
+                );
+
+                return;
+            } else if (purchaseReceipt.getStatus().equals("Đã hủy")) {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Phiếu nhập đã hủy thì không thể xác nhận!",
+                        "Lỗi",
+                        JOptionPane.ERROR_MESSAGE
+                );
+
+                return;
+            }
+
+            if (this.purchaseReceiptBLL.confirmInbound(this.currentSelectedId)) {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Xác nhận đơn hàng thành công!",
+                        "Thông báo",
+                        JOptionPane.INFORMATION_MESSAGE
+                );
+            } else {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Xác nhận đơn hàng thất bại!",
+                        "Lỗi",
+                        JOptionPane.ERROR_MESSAGE
+                );
+            }
+            this.refreshTable();
+        });
 
 
         // Cancel phieu nhap
@@ -132,6 +200,55 @@ public class InboundPanel extends JPanel {
         cancelButton.setForeground(Color.BLACK);
         cancelButton.setBounds(335, 40, 90, 70);
         cancelButton.setBorderSize(3);
+        cancelButton.addActionListener(e -> {
+            if (currentSelectedId == -1) {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Bạn chưa chọn phiếu nhập!",
+                        "Lỗi",
+                        JOptionPane.ERROR_MESSAGE
+                );
+                return;
+            }
+
+            PurchaseReceipt purchaseReceipt = this.purchaseReceiptBLL.getPurchaseReceiptById(this.currentSelectedId);
+            if (purchaseReceipt.getStatus().equals("Đã xác nhận")) {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Phiếu nhập đã xác nhận thì không thể hủy!",
+                        "Lỗi",
+                        JOptionPane.ERROR_MESSAGE
+                );
+
+                return;
+            } else if (purchaseReceipt.getStatus().equals("Đã hủy")) {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Phiếu nhập đã hủy!",
+                        "Lỗi",
+                        JOptionPane.ERROR_MESSAGE
+                );
+
+                return;
+            }
+
+            if (this.purchaseReceiptBLL.cancelInbound(this.currentSelectedId)) {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Hủy đơn hàng thành công!",
+                        "Thông báo",
+                        JOptionPane.INFORMATION_MESSAGE
+                );
+            } else {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Hủy đơn hàng thất bại!",
+                        "Lỗi",
+                        JOptionPane.ERROR_MESSAGE
+                );
+            }
+            this.refreshTable();
+        });
 
 
         // Phần tìm kiếm input
@@ -262,6 +379,16 @@ public class InboundPanel extends JPanel {
         this.list = this.purchaseReceiptBLL.getPurchaseReceiptList();
     }
 
+    private void refreshTable() {
+        this.refreshAllDatas();
+        Object[][] data = this.createData(this.list);
+        DefaultTableModel model = new DefaultTableModel(data, this.columnNames);
+        this.tableData.setModel(model);
+        for (int i=0; i<this.tableData.getColumnCount(); i++) {
+            this.tableData.getColumnModel().getColumn(i).setCellRenderer(this.renderer);
+        }
+    }
+
     private Object[][] createData(ArrayList<PurchaseReceipt> list) {
         Object[][] data = new Object[list.size()][6];
         //{"Mã phiếu nhập", "Ngày tạo", "Nhân viên lập", "Tổng tiên", "Trạng thái", "Ngày cập nhật"};
@@ -295,6 +422,7 @@ public class InboundPanel extends JPanel {
                 if (!e.getValueIsAdjusting()) {
                     if (tableData.getSelectedRow() != -1) {
                         InboundPanel.this.selectionText.setText("Đang chọn: " + InboundPanel.this.tableData.getValueAt(tableData.getSelectedRow(), 0));
+                        InboundPanel.this.currentSelectedId = Integer.parseInt(""+InboundPanel.this.tableData.getValueAt(tableData.getSelectedRow(), 0));
                     }
                 }
             }

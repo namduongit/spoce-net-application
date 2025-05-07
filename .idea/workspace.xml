@@ -4,10 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="2fd5298c-8ded-4541-913f-688b0c64ef55" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/bin/GUI/main/AdminDashboard.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/main/AdminDashboard.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/Utils/Config/ConfigSQL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Utils/Config/ConfigSQL.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Utils/Config/ConfigSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/Config/ConfigSQL.java" afterDir="false" />
+=======
+    <list default="true" id="0bdff552-49c0-492a-a09d-0536acea60c4" name="Changes" comment="Pull">
+      <change afterPath="$PROJECT_DIR$/src/GUI/Form/DetailsInbound.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/PurchaseReceiptDetailBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/PurchaseReceiptDetailBLL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/PurchaseReceiptDetailDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/PurchaseReceiptDetailDAL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/InboundPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/InboundPanel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/InboundPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/InboundPanel$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/InboundPanel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/InboundPanel$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/InboundPanel$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/InboundPanel$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/InboundPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/InboundPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BLL/PurchaseReceiptBLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/PurchaseReceiptBLL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BLL/PurchaseReceiptDetailBLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/PurchaseReceiptDetailBLL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DAL/PurchaseReceiptDAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/PurchaseReceiptDAL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DAL/PurchaseReceiptDetailDAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/PurchaseReceiptDetailDAL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/panels/InboundPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/panels/InboundPanel.java" afterDir="false" />
+>>>>>>> cc87748a17ad6987dfb3582aff2b94f2cb9b696f
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,67 +45,66 @@
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
     &quot;state&quot;: &quot;OPEN&quot;,
+<<<<<<< HEAD
     &quot;assignee&quot;: &quot;congquan92&quot;
+=======
+    &quot;assignee&quot;: &quot;luanchenh&quot;
+>>>>>>> cc87748a17ad6987dfb3582aff2b94f2cb9b696f
   }
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/namduongit/spoce-net-application.git&quot;,
+<<<<<<< HEAD
     &quot;accountId&quot;: &quot;197bc58e-d94a-44c2-b42b-171a4b33486f&quot;
+=======
+    &quot;accountId&quot;: &quot;20b56b38-814f-4b8e-a4dd-02db64bcf7b6&quot;
+>>>>>>> cc87748a17ad6987dfb3582aff2b94f2cb9b696f
   }
 }</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 4
+  &quot;associatedIndex&quot;: 3
 }</component>
-  <component name="ProjectId" id="2wj1EBhbC7DqOVn7VJf7k08Npic" />
+  <component name="ProjectId" id="2wgDQkn8KcfWJghCPpaqnF8AWc9" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Application.AddingOrder.executor&quot;: &quot;Run&quot;,
     &quot;Application.AdminLoginScreen.executor&quot;: &quot;Run&quot;,
-    &quot;Application.PurchaseReceiptDAL.executor&quot;: &quot;Run&quot;,
+    &quot;Application.DetailsInbound.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;U:/NamII/HocKiII/Java/spoce-net-application/src/Assets/Icon&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/libs-api-connect/mysql-connector-j-9.1.0.jar&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.33718246&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="U:\NamII\HocKiII\Java\spoce-net-application\src\Assets\Icon" />
-    </key>
-  </component>
-  <component name="RunManager">
-    <configuration name="PurchaseReceiptDAL" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="DAL.PurchaseReceiptDAL" />
-      <module name="spoce-net-application" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="DAL.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.PurchaseReceiptDAL" />
-      </list>
-    </recent_temporary>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23726.103" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23726.103" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -100,24 +117,49 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="2fd5298c-8ded-4541-913f-688b0c64ef55" name="Changes" comment="" />
-      <created>1746540056162</created>
+      <changelist id="0bdff552-49c0-492a-a09d-0536acea60c4" name="Changes" comment="" />
+      <created>1746454313186</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
+<<<<<<< HEAD
       <updated>1746540056162</updated>
       <workItem from="1746540061147" duration="1080000" />
       <workItem from="1746575586012" duration="8093000" />
       <workItem from="1746620885977" duration="200000" />
       <workItem from="1746626181895" duration="579000" />
       <workItem from="1746626792414" duration="277000" />
+=======
+      <updated>1746454313186</updated>
+      <workItem from="1746454315663" duration="210000" />
+      <workItem from="1746538885522" duration="876000" />
+      <workItem from="1746576864946" duration="826000" />
+      <workItem from="1746624013860" duration="4115000" />
+>>>>>>> cc87748a17ad6987dfb3582aff2b94f2cb9b696f
     </task>
+    <task id="LOCAL-00001" summary="Pull">
+      <option name="closed" value="true" />
+      <created>1746539753583</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1746539753583</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Pull">
+      <option name="closed" value="true" />
+      <created>1746539760712</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1746539760712</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Pull" />
+    <option name="LAST_COMMIT_MESSAGE" value="Pull" />
   </component>
 </project>
