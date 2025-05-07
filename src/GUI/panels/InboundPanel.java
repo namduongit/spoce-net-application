@@ -3,9 +3,11 @@ package GUI.panels;
 import BLL.AccountBLL;
 import BLL.PurchaseReceiptBLL;
 import BLL.StaffBLL;
+import DTO.Accounts;
 import DTO.PurchaseReceipt;
 import DTO.Staffs;
 import GUI.Components.*;
+import GUI.Form.AddingInbound;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -17,6 +19,8 @@ import java.awt.event.FocusListener;
 import java.util.ArrayList;
 
 public class InboundPanel extends JPanel {
+    private Accounts accounts;
+    private Staffs staffs;
 
     CustomPanel titlePanel;
     //------------------------------------------------------
@@ -41,7 +45,10 @@ public class InboundPanel extends JPanel {
 
 
 
-    public InboundPanel() {
+    public InboundPanel(Accounts accounts, Staffs staffs) {
+        // Init
+        this.accounts = accounts;
+        this.staffs = staffs;
 
         // BLL Layer
         this.purchaseReceiptBLL = new PurchaseReceiptBLL();
@@ -80,8 +87,11 @@ public class InboundPanel extends JPanel {
         addButton.setBackground(Color.WHITE);
         addButton.setBorderColor(Color.BLACK);
         addButton.setForeground(Color.BLACK);
-        addButton.setBounds(20, 10, 90, 70);
+        addButton.setBounds(20, 40, 90, 70);
         addButton.setBorderSize(3);
+        addButton.addActionListener(e -> {
+            new AddingInbound(this.staffs).setVisible(true);
+        });
 
         // Detail phieu nhap
         Image infoImage = new ImageIcon(
@@ -93,7 +103,7 @@ public class InboundPanel extends JPanel {
         detailButton.setBackground(Color.WHITE);
         detailButton.setBorderColor(Color.BLACK);
         detailButton.setForeground(Color.BLACK);
-        detailButton.setBounds(125, 10, 90, 70);
+        detailButton.setBounds(125, 40, 90, 70);
         detailButton.setBorderSize(3);
 
         // Cofirm phieu nhap
@@ -106,7 +116,7 @@ public class InboundPanel extends JPanel {
         confirmButon.setBackground(Color.WHITE);
         confirmButon.setBorderColor(Color.BLACK);
         confirmButon.setForeground(Color.BLACK);
-        confirmButon.setBounds(230, 10, 90, 70);
+        confirmButon.setBounds(230, 40, 90, 70);
         confirmButon.setBorderSize(3);
 
 
@@ -120,7 +130,7 @@ public class InboundPanel extends JPanel {
         cancelButton.setBackground(Color.WHITE);
         cancelButton.setBorderColor(Color.BLACK);
         cancelButton.setForeground(Color.BLACK);
-        cancelButton.setBounds(335, 10, 90, 70);
+        cancelButton.setBounds(335, 40, 90, 70);
         cancelButton.setBorderSize(3);
 
 
@@ -150,8 +160,25 @@ public class InboundPanel extends JPanel {
         JLabel dateStart = new JLabel("Ngày bắt đầu");
         dateStart.setBounds(475, 80, 80, 30);
 
-        dateStartTextField = new CustomTextField();
+        dateStartTextField = new CustomTextField("2000-01-01");
         dateStartTextField.setBounds(475, 108, 200, 35);
+        dateStartTextField.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                String text = InboundPanel.this.dateStartTextField.getText();
+                if (text.equalsIgnoreCase("2000-01-01")) {
+                    InboundPanel.this.dateStartTextField.setText("");
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                String text = InboundPanel.this.dateStartTextField.getText();
+                if (text.equalsIgnoreCase("")) {
+                    InboundPanel.this.dateStartTextField.setText("2000-01-01");
+                }
+            }
+        });
 
 
         JLabel filterLabel = new JLabel("Trạng thái:");
@@ -164,9 +191,25 @@ public class InboundPanel extends JPanel {
         JLabel dateEnd = new JLabel("Ngày kết thúc");
         dateEnd.setBounds(690, 80, 80, 30);
 
-        dateEndTextField = new CustomTextField();
-        dateEndTextField.setBounds(690, 108, 200, 35);
+        dateEndTextField = new CustomTextField("2030-01-01");
+        dateEndTextField.setBounds(690, 108, 150, 35);
+        dateEndTextField.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                String text = InboundPanel.this.dateEndTextField.getText();
+                if (text.equalsIgnoreCase("2030-01-01")) {
+                    InboundPanel.this.dateEndTextField.setText("");
+                }
+            }
 
+            @Override
+            public void focusLost(FocusEvent e) {
+                String text = InboundPanel.this.dateEndTextField.getText();
+                if (text.equalsIgnoreCase("")) {
+                    InboundPanel.this.dateEndTextField.setText("2030-01-01");
+                }
+            }
+        });
 
         // Tạo một Button với chữ "Lọc"
         CustomButton filterButton = new CustomButton("Lọc");

@@ -73,5 +73,36 @@ public class Comon {
             return false;
         }
     }
+
+    public static boolean isTrueDateString(String dateValue) {
+        String[] regexStrings = dateValue.split("-");
+        if (regexStrings.length != 3) return false;
+
+        String year = regexStrings[0];
+        String month = regexStrings[1];
+        String day = regexStrings[2];
+
+        if (!isTrueNumber(year) || !isTrueNumber(month) || !isTrueNumber(day)) return false;
+
+        int yearInt = Integer.parseInt(year);
+        int monthInt = Integer.parseInt(month);
+        int dayInt = Integer.parseInt(day);
+
+        if (yearInt > 2025) return false;
+        if (monthInt < 1 || monthInt > 12) return false;
+        if (dayInt < 1 || dayInt > 31) return false;
+
+        // Xử lý tháng có 30 ngày
+        if ((monthInt == 4 || monthInt == 6 || monthInt == 9 || monthInt == 11) && dayInt > 30) return false;
+
+        // Xử lý tháng 2
+        if (monthInt == 2) {
+            boolean isLeap = (yearInt % 4 == 0 && (yearInt % 100 != 0 || yearInt % 400 == 0));
+            if ((isLeap && dayInt > 29) || (!isLeap && dayInt > 28)) return false;
+        }
+
+        return true;
+    }
+
     
 }

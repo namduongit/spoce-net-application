@@ -121,7 +121,7 @@ public class AdminDashboard extends JFrame {
 
             this.inBoundButton = CreateComponent.createButton("icons8-edit-chat-history-100.png", "Phiếu nhập");
             this.inBoundButton.addActionListener(e -> {
-                this.switchPanel(new InboundPanel());
+                this.switchPanel(new InboundPanel(this.loginAccount, this.loginStaff));
             });
             buttons.add(this.inBoundButton);
 
