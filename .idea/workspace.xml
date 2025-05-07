@@ -5,15 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2fd5298c-8ded-4541-913f-688b0c64ef55" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/launch.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/GUI/main/AdminDashboard.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/main/AdminDashboard.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/Utils/Config/ConfigSQL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Utils/Config/ConfigSQL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Utils/Helper/Comon.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Utils/Helper/Comon.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Utils/Helper/InvoicePrinter.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Utils/Helper/InvoicePrinter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Utils/Config/ConfigSQL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/Utils/Config/ConfigSQL.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Utils/Config/ConfigSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/Config/ConfigSQL.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -116,6 +109,7 @@
       <workItem from="1746575586012" duration="8093000" />
       <workItem from="1746620885977" duration="200000" />
       <workItem from="1746626181895" duration="579000" />
+      <workItem from="1746626792414" duration="277000" />
     </task>
     <servers />
   </component>
