@@ -48,9 +48,19 @@ public class PurchaseReceiptDAL {
         return null;
     }
 
+    public int createLastestPurchaseReceipt(int staffId, String note) {
+        MySQLHelper helper = new MySQLHelper();
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "purchase_receipts");
+        params.put("FIELD", "staff_id, note");
+        helper.buildingQueryParam(params);
 
-    public static void main(String[] args) {
-        PurchaseReceipt list = new PurchaseReceiptDAL().getPurchaseReceiptById(1);
-        System.out.println(list);
+        ArrayList<Object> values = new ArrayList<>();
+        values.add(staffId);
+        values.add(note);
+
+        return helper.insertDataLastest(values);
     }
+
+
 }

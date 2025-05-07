@@ -17,4 +17,8 @@ public class PurchaseReceiptBLL {
     public PurchaseReceipt getPurchaseReceiptById(int purchaseReceiptId) {
         return this.purchaseReceiptDAL.getPurchaseReceiptById(purchaseReceiptId);
     }
+
+    public int createLastestPurchaseReceipt(int staffId, String note) {
+        return this.purchaseReceiptDAL.createLastestPurchaseReceipt(staffId, note);
+    }
 }
