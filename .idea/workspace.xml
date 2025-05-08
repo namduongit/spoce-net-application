@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2fd5298c-8ded-4541-913f-688b0c64ef55" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/bin/GUI/main/AdminDashboard.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/main/AdminDashboard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Utils/Config/ConfigSQL.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Utils/Config/ConfigSQL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/InboundPanel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/InboundPanel$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/InboundPanel$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/InboundPanel$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Form/DetailsInbound.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Form/DetailsInbound.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/panels/BillPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/panels/BillPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/panels/InboundPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/panels/InboundPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Utils/Config/ConfigSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/Config/ConfigSQL.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,14 +77,6 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23726.103" />
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23726.103" />
-      </set>
-    </attachedChunks>
-  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>

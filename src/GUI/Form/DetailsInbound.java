@@ -188,6 +188,7 @@ public class DetailsInbound extends JFrame {
 
         CustomButton exitButton = CreateComponent.createOrangeButton("Thoát");
         exitButton.setBounds(575, 565, 100, 30);
+        exitButton.addActionListener(e -> this.dispose());
 
         this.add(idLabel);
         this.add(idTextField);

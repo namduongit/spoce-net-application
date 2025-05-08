@@ -5,6 +5,8 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -393,15 +395,15 @@ public class BillPanel extends JPanel {
         CustomPanel panel = new CustomPanel();
         panel.setLayout(null);
 
-        JLabel timeLabel = new JLabel("Khoảng thời gian:");
+        JLabel timeLabel = new JLabel("Ngày bắt đầu:");
         timeLabel.setBounds(10, 10, 100, 30);
 
-        monthTextFieldSession = new CustomTextField("Nhập tháng");
-        monthTextFieldSession.setBounds(10, 38, 90, 35);
+        monthTextFieldSession = new CustomTextField("Nhập ngày bắt đầu");
+        monthTextFieldSession.setBounds(10, 38, 130, 35);
         monthTextFieldSession.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
-                if (monthTextFieldSession.getText().equalsIgnoreCase("Nhập tháng")) {
+                if (monthTextFieldSession.getText().equalsIgnoreCase("Nhập ngày bắt đầu")) {
                     monthTextFieldSession.setText("");
                 }
             }
@@ -409,17 +411,20 @@ public class BillPanel extends JPanel {
             @Override
             public void focusLost(FocusEvent e) {
                 if (monthTextFieldSession.getText().isEmpty()) {
-                    monthTextFieldSession.setText("Nhập tháng");
+                    monthTextFieldSession.setText("Nhập ngày bắt đầu");
                 }
             }
         });
 
-        yearTextFieldSession = new CustomTextField("Nhập năm");
-        yearTextFieldSession.setBounds(105, 38, 90, 35);
+        JLabel endDateLabel = new JLabel("Ngày kết thúc:");
+        endDateLabel.setBounds(150, 10, 100, 30);
+
+        yearTextFieldSession = new CustomTextField("Nhập ngày kết thúc");
+        yearTextFieldSession.setBounds(150, 38, 130, 35);
         yearTextFieldSession.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
-                if (yearTextFieldSession.getText().equalsIgnoreCase("Nhập năm")) {
+                if (yearTextFieldSession.getText().equalsIgnoreCase("Nhập ngày kết thúc")) {
                     yearTextFieldSession.setText("");
                 }
             }
@@ -427,13 +432,13 @@ public class BillPanel extends JPanel {
             @Override
             public void focusLost(FocusEvent e) {
                 if (yearTextFieldSession.getText().isEmpty()) {
-                    yearTextFieldSession.setText("Nhập năm");
+                    yearTextFieldSession.setText("Nhập ngày kết thúc");
                 }
             }
         });
 
         JLabel roomTypeLabel = new JLabel("Loại phòng:");
-        roomTypeLabel.setBounds(220, 10, 70, 30);
+        roomTypeLabel.setBounds(290, 10, 70, 30);
 
         ArrayList<String> roomTypeList = new ArrayList<>();
         roomTypeList.add("Tất cả");
@@ -441,7 +446,7 @@ public class BillPanel extends JPanel {
             roomTypeList.add(x.getRoomName());
         }
         roomTypeCombobox = new CustomCombobox<>(roomTypeList);
-        roomTypeCombobox.setBounds(220, 38, 150, 35);
+        roomTypeCombobox.setBounds(290, 38, 150, 35);
 
         CustomButton detailButton = new CustomButton("Chi tiết");
         detailButton.setBorderSize(3);
@@ -656,6 +661,7 @@ public class BillPanel extends JPanel {
         panel.add(roomTypeLabel);
         panel.add(roomTypeCombobox);
         panel.add(detailButton);
+        panel.add(endDateLabel);
         panel.add(filterButton);
         panel.add(selectionTextSession);
         panel.add(resetButton);
@@ -731,47 +737,54 @@ public class BillPanel extends JPanel {
     }
 
     private void filterSessionList() {
-        String month = this.monthTextFieldSession.getText().equalsIgnoreCase("Nhập tháng")
-                ? ""
-                : this.monthTextFieldSession.getText();
-
-        String year = this.yearTextFieldSession.getText().equalsIgnoreCase("Nhập năm")
-                ? ""
-                : this.yearTextFieldSession.getText();
+        String startDate = this.monthTextFieldSession.getText().trim().equals("Nhập ngày bắt đầu") ? "" : this.monthTextFieldSession.getText().trim();
+        String endDate = this.yearTextFieldSession.getText().trim().equals("Nhập ngày kết thúc") ? "" : this.yearTextFieldSession.getText();
 
         String roomType = this.roomTypeCombobox.getSelectedItem().toString();
 
-        if (month.isEmpty() && year.isEmpty() && roomType.equalsIgnoreCase("Tất cả")) {
+        if (startDate.isEmpty() && endDate.isEmpty() && roomType.equalsIgnoreCase("Tất cả")) {
             this.resetSessionDataPanel();
         } else {
-
-            // Nếu chỉ nhập một trong hai tháng hoặc năm thì thông báo lỗi
-            if ((month.isEmpty() && !year.isEmpty()) || (!month.isEmpty() && year.isEmpty())) {
+            if ((!startDate.isEmpty() && endDate.isEmpty()) || (startDate.isEmpty() && !endDate.isEmpty())) {
                 JOptionPane.showMessageDialog(
                         null,
-                        "Vui lòng nhập đủ tháng và năm!",
+                        "Vui lòng nhập đủ cả 2 ngày!",
                         "Lỗi",
-                        JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.ERROR_MESSAGE
+                );
                 return;
             }
 
-            // Trường hợp không nhập tháng, năm thì không kiểm tra tháng, năm
-            if (!month.isEmpty() && !year.isEmpty()) {
-                if (!this.checkDate(month, year)) {
-                    return;
-                }
+            if ((!startDate.isEmpty() && !endDate.isEmpty()) && (!Comon.isTrueDate(startDate) || !Comon.isTrueDate(endDate))) {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Ngày không hợp lệ!",
+                        "Lỗi",
+                        JOptionPane.ERROR_MESSAGE
+                );
+                return;
             }
 
-            // Nếu người dùng không nhập tháng năm (rỗng) thì cho bằng -1
-            int monthInt = month.isEmpty() ? -1 : Integer.parseInt(month);
-            int yearInt = year.isEmpty() ? -1 : Integer.parseInt(year);
+            LocalDate startDateObj = this.getLocalDateFromString(startDate);
+            LocalDate endDateObj = this.getLocalDateFromString(endDate);
 
+            if ((!startDate.isEmpty() && !endDate.isEmpty()) && startDateObj.isAfter(endDateObj)) {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Ngày bắt đầu phải bằng hoặc trước ngày kết thúc!",
+                        "Lỗi",
+                        JOptionPane.ERROR_MESSAGE
+                );
+                return;
+            }
+
+
+            ZoneId zoneId = ZoneId.of("UTC+7");
             // Đọc lại dữ liệu trước khi lọc
             this.sessionList = this.computerSessionBLL.getComputerSessionList();
             List<ComputerSessions> list = this.sessionList.stream()
-                    .filter(session -> month.isEmpty()
-                            || session.getStartTime().toLocalDate().getMonthValue() == monthInt)
-                    .filter(session -> year.isEmpty() || session.getStartTime().toLocalDate().getYear() == yearInt)
+                    .filter(session -> (startDate.isEmpty() && endDate.isEmpty())
+                            || session.getStartTime().toLocalDate().isEqual(startDateObj) || session.getStartTime().toLocalDate().isEqual(endDateObj) || (session.getStartTime().toLocalDate().isAfter(startDateObj) && session.getStartTime().toLocalDate().isBefore(endDateObj)))
                     .filter(session -> roomType.equalsIgnoreCase("Tất cả")
                             || roomBLL.getRoomById(computerBLL.getComputerById(session.getComputerId()).getRoomId())
                                     .getRoomName().equalsIgnoreCase(roomType))
@@ -786,6 +799,13 @@ public class BillPanel extends JPanel {
         for (int i = 0; i < this.tableSession.getColumnCount(); i++) {
             this.tableSession.getColumnModel().getColumn(i).setCellRenderer(this.rendererSession);
         }
+    }
+
+    private LocalDate getLocalDateFromString(String dateStr) {
+        if (dateStr.isEmpty()) return null;
+
+        String[] arr = dateStr.split("-");
+        return LocalDate.of(Integer.parseInt(arr[0]), Integer.parseInt(arr[1]), Integer.parseInt(arr[2]));
     }
 
     private void filterFoodBillList() {
