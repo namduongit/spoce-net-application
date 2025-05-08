@@ -21,4 +21,16 @@ public class PurchaseReceiptBLL {
     public int createLastestPurchaseReceipt(int staffId, String note) {
         return this.purchaseReceiptDAL.createLastestPurchaseReceipt(staffId, note);
     }
+
+    public boolean updateNote(int id, String note) {
+        return this.purchaseReceiptDAL.updateNote(id, note);
+    }
+
+    public boolean confirmInbound(int id) {
+        return this.purchaseReceiptDAL.confirmInbound(id);
+    }
+
+    public boolean cancelInbound(int id) {
+        return this.purchaseReceiptDAL.cancelInbound(id);
+    }
 }

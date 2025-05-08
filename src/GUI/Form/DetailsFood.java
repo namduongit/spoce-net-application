@@ -122,7 +122,7 @@ public class DetailsFood extends JFrame {
         this.fooodPriceTextField = new CustomTextField(this.currentFood.getPrice() + "");
         this.fooodPriceTextField.setBounds(25, 305, 425, 30);
 
-        JLabel foodQuantityLabel = new JLabel("Số lượng còn lại (Enter để cập nhật):");
+        JLabel foodQuantityLabel = new JLabel("Số lượng còn lại:");
         foodQuantityLabel.setBounds(25, 335, 425, 25);
         this.foodQuantityTextField = new CustomTextField(this.currentFood.getQuantity() + "");
         this.foodQuantityTextField.setBounds(25, 360, 425, 30);
@@ -146,6 +146,8 @@ public class DetailsFood extends JFrame {
             JOptionPane.showMessageDialog(null, "Đã cập nhật số lượng và trạng thái!", "Thông báo",
                     JOptionPane.INFORMATION_MESSAGE);
         });
+        this.foodQuantityTextField.setEditable(false);
+        this.foodQuantityTextField.setFocusable(false);
 
         JLabel foodCreateAt = new JLabel("Ngày tạo:");
         foodCreateAt.setBounds(25, 390, 425, 25);
@@ -272,14 +274,15 @@ public class DetailsFood extends JFrame {
                 if (confirm == javax.swing.JOptionPane.NO_OPTION) {
                     foodStatusCombobox.setSelectedItem("Còn hàng");
                 } else {
-                    this.foodQuantityTextField.setText("0");
+                    // this.foodQuantityTextField.setText("0");
+                    // Tại số lượng sẽ không thay đổi
                 }
             }
         } else if (selectedStatus.equals("Còn hàng")) {
             if (Integer.parseInt(foodQuantityTextField.getText()) == 0) {
                 javax.swing.JOptionPane.showMessageDialog(
                         this,
-                        "Bạn cần cập nhật số lượng sản phẩm trước khi đặt trạng thái 'Còn hàng'!",
+                        "Bạn cần nhập số lượng sản phẩm trước khi đặt trạng thái 'Còn hàng'!",
                         "Lỗi",
                         javax.swing.JOptionPane.ERROR_MESSAGE);
                 foodStatusCombobox.setSelectedItem("Hết hàng");

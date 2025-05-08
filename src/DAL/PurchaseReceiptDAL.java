@@ -62,5 +62,54 @@ public class PurchaseReceiptDAL {
         return helper.insertDataLastest(values);
     }
 
+    public boolean updateNote(int id, String note) {
+        MySQLHelper helper = new MySQLHelper();
 
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "purchase_receipts");
+        params.put("WHERE", "receipt_id = ?");
+        helper.buildingQueryParam(params);
+
+        HashMap<String, Object> changedValues = new HashMap<>();
+        changedValues.put("note", note);
+
+        ArrayList<Object> values = new ArrayList<>();
+        values.add(id);
+
+        return helper.updateData(changedValues, values);
+    }
+
+    public boolean confirmInbound(int id) {
+        MySQLHelper helper = new MySQLHelper();
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "purchase_receipts");
+        params.put("WHERE", "receipt_id = ?");
+        helper.buildingQueryParam(params);
+
+        HashMap<String, Object> changedValues = new HashMap<>();
+        changedValues.put("status", "Đã xác nhận");
+
+        ArrayList<Object> values = new ArrayList<>();
+        values.add(id);
+
+        return helper.updateData(changedValues, values);
+    }
+
+    public boolean cancelInbound(int id) {
+        MySQLHelper helper = new MySQLHelper();
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("TABLE", "purchase_receipts");
+        params.put("WHERE", "receipt_id = ?");
+        helper.buildingQueryParam(params);
+
+        HashMap<String, Object> changedValues = new HashMap<>();
+        changedValues.put("status", "Đã hủy");
+
+        ArrayList<Object> values = new ArrayList<>();
+        values.add(id);
+
+        return helper.updateData(changedValues, values);
+    }
 }

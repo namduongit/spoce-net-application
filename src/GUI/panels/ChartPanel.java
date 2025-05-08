@@ -1,6 +1,7 @@
 package GUI.panels;
 
 import BLL.ComputerSessionBLL;
+import BLL.FoodBLL;
 import BLL.FoodRevenueBLL;
 import DTO.FoodRevenue;
 import GUI.Components.*;
@@ -19,6 +20,7 @@ public class ChartPanel extends JPanel {
   
     private final FoodRevenueBLL foodRevenueBLL;
     private final ComputerSessionBLL sessionBLL;
+    private final FoodBLL foodBLL;
 
     // Các panel chính của giao diện
     private CustomPanel headerPanel; 
@@ -35,6 +37,7 @@ public class ChartPanel extends JPanel {
     // Các thành phần giao diện cho bộ lọc
     private CustomCombobox<String> roomComboBox; // Chọn phòng máy
     private CustomCombobox<String> categoryComboBox; // Chọn loại sản phẩm
+    private CustomCombobox<String> foodCombobox; // Chọn coi nhập thức ăn nào
     private CustomTextField startDateField; 
     private CustomTextField endDateField;
     private CustomButton applyFilterButton; 
@@ -52,6 +55,8 @@ public class ChartPanel extends JPanel {
     public ChartPanel() {
         foodRevenueBLL = new FoodRevenueBLL();
         sessionBLL = new ComputerSessionBLL();
+        this.foodBLL = new FoodBLL();
+
         initComponents();
     }
 
@@ -92,8 +97,14 @@ public class ChartPanel extends JPanel {
         // Nút "Hóa đơn" 
         CustomButton billButton = new CustomButton("Hóa đơn");
         billButton.addActionListener(e -> switchToPanel("BillPanel", "CategoryFilter"));
-        billButton.setBounds(205, 100, 165, 35);
+        billButton.setBounds(205, 100, 175, 35);
         panel.add(billButton);
+
+        // Nút "Phiếu nhập"
+        CustomButton inboundButton = new CustomButton("Phiếu nhập");
+        inboundButton.addActionListener(e -> switchToPanel("InBoundPanel", "InBoundFilter"));
+        inboundButton.setBounds(390, 100, 175, 35);
+        panel.add(inboundButton);
 
         return panel;
     }
@@ -143,6 +154,12 @@ public class ChartPanel extends JPanel {
         categoryComboBox = new CustomCombobox<>(categories);
         categoryComboBox.setBounds(100, 0, 200, 35);
         categoryFilterPanel.add(categoryComboBox);
+
+        // Bộ lọc tên sản phẩm
+        CustomPanel foodInboundPanel = new CustomPanel();
+        foodInboundPanel.setLayout(null);
+        foodInboundPanel.setBackground(Color.WHITE);
+        
 
         // Thêm các bộ lọc vào filterSwitchPanel
         filterSwitchPanel.add(roomFilterPanel, "RoomFilter");

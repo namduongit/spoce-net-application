@@ -1165,6 +1165,7 @@ public class BillPanel extends JPanel {
             }
         });
 
+
         buttonPanel.add(confirmButton);
         buttonPanel.add(cancelButton);
         buttonPanel.add(detailButton);
