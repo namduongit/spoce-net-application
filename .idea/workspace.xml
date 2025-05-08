@@ -4,32 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2fd5298c-8ded-4541-913f-688b0c64ef55" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/PurchaseReceiptDetailBLL.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/PurchaseReceiptDetailDAL.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/Form/AddingInbound.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/InboundPanel$3.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/InboundPanel$4.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BLL/PurchaseReceiptDetailBLL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DAL/PurchaseReceiptDetailDAL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/Form/AddingInbound.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataBase/alter.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataBase/createTable.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataBase/trigger.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/PurchaseReceiptBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/PurchaseReceiptBLL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/PurchaseReceiptDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/PurchaseReceiptDAL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/main/AdminDashboard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/main/AdminDashboard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/InboundPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/InboundPanel$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/InboundPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/InboundPanel$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/InboundPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/InboundPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/Utils/Helper/Comon.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/Utils/Helper/Comon.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BLL/PurchaseReceiptBLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/PurchaseReceiptBLL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DAL/PurchaseReceiptDAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/PurchaseReceiptDAL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/main/AdminDashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/main/AdminDashboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/panels/InboundPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/panels/InboundPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/Helper/Comon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/Helper/Comon.java" afterDir="false" />
-    </list>
+    <list default="true" id="2fd5298c-8ded-4541-913f-688b0c64ef55" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -107,6 +82,7 @@
       <updated>1746540056162</updated>
       <workItem from="1746540061147" duration="1080000" />
       <workItem from="1746575586012" duration="8093000" />
+      <workItem from="1746622180377" duration="26000" />
     </task>
     <servers />
   </component>
