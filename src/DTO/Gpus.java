@@ -10,15 +10,7 @@ public class Gpus {
     private Date purchaseDate;
     private Date warrantyExpiry;
     private String status;
-    private double price;
 
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
 
     public Gpus(int gpuId, String brand, String model, int vram, Date purchaseDate, Date warrantyExpiry, String status, double price) {
         this.gpuId = gpuId;
@@ -28,16 +20,14 @@ public class Gpus {
         this.purchaseDate = purchaseDate;
         this.warrantyExpiry = warrantyExpiry;
         this.status = status;
-        this.price = price;
     }
-    public Gpus(String brand, String model, int vram, Date purchaseDate, Date warrantyExpiry, String status, double price) {
+    public Gpus(String brand, String model, int vram, Date purchaseDate, Date warrantyExpiry, String status) {
         this.brand = brand;
         this.model = model;
         this.vram = vram;
         this.purchaseDate = purchaseDate;
         this.warrantyExpiry = warrantyExpiry;
         this.status = status;
-        this.price = price;
     }
 
     // Constructor không tham số

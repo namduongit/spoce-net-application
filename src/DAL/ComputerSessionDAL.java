@@ -3,7 +3,6 @@ package DAL;
 import DAL.SQLHelper.MySQLHelper;
 import DTO.ComputerSessions;
 
-import java.sql.Array;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;

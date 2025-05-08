@@ -16,7 +16,6 @@ public class DetailsHardware extends JFrame {
     private JPanel content;
     private CustomTextField idField;
     private CustomTextField modelField;
-    private CustomTextField priceField;
     private CustomCombobox<String> typeComboBox;
     private CustomCombobox<String> statusComboBox;
     private JPanel dynamicFieldsPanel;
@@ -34,7 +33,7 @@ public class DetailsHardware extends JFrame {
     private ArrayList<String> statusList;
 
     private String hardwareType; // Loại linh kiện được chọn
-    private int hardwareId;      // ID của linh kiện cần hiển thị chi tiết
+    private int hardwareId; // ID của linh kiện cần hiển thị chi tiết
 
     public DetailsHardware(String type, int id) {
         this.hardwareType = type;
@@ -50,7 +49,8 @@ public class DetailsHardware extends JFrame {
         this.headphoneBLL = new HeadphoneBLL();
         this.romBLL = new RomBLL();
         this.ramBLL = new RamBLL();
-        this.statusList = new ArrayList<>(Arrays.asList("Trong kho", "Đang sử dụng", "Thiếu linh kiện", "Bảo trì", "Hỏng"));
+        this.statusList = new ArrayList<>(
+                Arrays.asList("Trong kho", "Đang sử dụng", "Thiếu linh kiện", "Bảo trì", "Hỏng"));
 
         this.initComponents();
         this.loadHardwareDetails(); // Tải thông tin chi tiết khi khởi tạo
@@ -89,16 +89,10 @@ public class DetailsHardware extends JFrame {
         JLabel typeLabel = new JLabel("Loại linh kiện:");
         typeLabel.setFont(new Font("Sans-serif", Font.PLAIN, 14));
         ArrayList<String> typeList = new ArrayList<>(Arrays.asList(
-                "Chọn loại", "Rom", "RAM", "CPU", "GPU", "Mainboard", "Mouse", "Keyboard", "Monitor", "Headphone"
-        ));
+                "Chọn loại", "Rom", "RAM", "CPU", "GPU", "Mainboard", "Mouse", "Keyboard", "Monitor", "Headphone"));
         typeComboBox = new CustomCombobox<>(typeList);
         typeComboBox.setFont(new Font("Sans-serif", Font.PLAIN, 14));
         typeComboBox.setEnabled(false); // Không cho thay đổi loại
-
-        // Giá tiền
-        JLabel priceLabel = new JLabel("Giá tiền (VNĐ):");
-        priceLabel.setFont(new Font("Sans-serif", Font.PLAIN, 14));
-        priceField = new CustomTextField("");
 
         // Trạng thái
         JLabel statusLabel = new JLabel("Trạng thái:");
@@ -112,19 +106,20 @@ public class DetailsHardware extends JFrame {
         // Panel chứa các trường động
         dynamicFieldsPanel = new JPanel();
         dynamicFieldsPanel.setLayout(null);
-        dynamicFieldsPanel.setBounds(20, 290, 510, 500);
+        dynamicFieldsPanel.setBounds(20, 300, 510, 500);
         dynamicFieldsPanel.setBackground(Color.decode("#ECF0F1"));
 
         // Đường phân cách
-        JPanel separator = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                g.setColor(Color.decode("#BDC3C7"));
-                g.fillRect(0, 0, getWidth(), getHeight());
-            }
-        };
-        separator.setBounds(270, 155, 1, 600);
+        // JPanel separator = new JPanel() {
+        //     @Override
+        //     protected void paintComponent(Graphics g) {
+        //         super.paintComponent(g);
+        //         g.setColor(Color.decode("#BDC3C7"));
+        //         g.fillRect(0, 0, getWidth(), getHeight());
+        //     }
+        // };
+        // separator.setBounds(270, 115, 1, 500);
+        //không cần thiết (vì price đã bị xóa =))
 
         // Nút lưu thay đổi
         CustomButton saveBtn = Utils.Helper.CreateComponent.createBlueButton("Lưu");
@@ -134,11 +129,13 @@ public class DetailsHardware extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 updateHardware();
             }
+
             @Override
             public void mouseEntered(MouseEvent e) {
                 saveBtn.setBackground(Color.WHITE);
                 saveBtn.setForeground(Color.decode("#1E88E5"));
             }
+
             @Override
             public void mouseExited(MouseEvent e) {
                 saveBtn.setBackground(Color.decode("#1E88E5"));
@@ -154,11 +151,13 @@ public class DetailsHardware extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 dispose();
             }
+
             @Override
             public void mouseEntered(MouseEvent e) {
                 closeBtn.setBackground(Color.WHITE);
                 closeBtn.setForeground(Color.decode("#DD2C00"));
             }
+
             @Override
             public void mouseExited(MouseEvent e) {
                 closeBtn.setBackground(Color.decode("#DD2C00"));
@@ -173,8 +172,6 @@ public class DetailsHardware extends JFrame {
         modelField.setBounds(20, 110, 510, 30);
         typeLabel.setBounds(20, 150, 200, 20);
         typeComboBox.setBounds(20, 175, 225, 35);
-        priceLabel.setBounds(275, 150, 200, 20);
-        priceField.setBounds(275, 175, 255, 35);
         statusLabel.setBounds(20, 220, 200, 20);
         statusComboBox.setBounds(20, 245, 225, 35);
 
@@ -185,12 +182,10 @@ public class DetailsHardware extends JFrame {
         panel.add(modelField);
         panel.add(typeLabel);
         panel.add(typeComboBox);
-        panel.add(priceLabel);
-        panel.add(priceField);
         panel.add(statusLabel);
         panel.add(statusComboBox);
         panel.add(dynamicFieldsPanel);
-        panel.add(separator);
+        // panel.add(separator);
         panel.add(saveBtn);
         panel.add(closeBtn);
 
@@ -201,39 +196,48 @@ public class DetailsHardware extends JFrame {
         switch (hardwareType) {
             case "Rom":
                 Roms rom = romBLL.getRomById(hardwareId);
-                if (rom != null) loadRomDetails(rom);
+                if (rom != null)
+                    loadRomDetails(rom);
                 break;
             case "RAM":
                 Rams ram = ramBLL.getRamById(hardwareId);
-                if (ram != null) loadRamDetails(ram);
+                if (ram != null)
+                    loadRamDetails(ram);
                 break;
             case "CPU":
                 Cpus cpu = cpuBLL.getCpuById(hardwareId);
-                if (cpu != null) loadCpuDetails(cpu);
+                if (cpu != null)
+                    loadCpuDetails(cpu);
                 break;
             case "GPU":
                 Gpus gpu = gpuBLL.getGpubyId(hardwareId);
-                if (gpu != null) loadGpuDetails(gpu);
+                if (gpu != null)
+                    loadGpuDetails(gpu);
                 break;
             case "Mainboard":
                 Motherboards motherboard = motherboardBLL.getMotherboardById(hardwareId);
-                if (motherboard != null) loadMotherboardDetails(motherboard);
+                if (motherboard != null)
+                    loadMotherboardDetails(motherboard);
                 break;
             case "Mouse":
                 Mouse mouse = mouseBLL.getMouseById(hardwareId);
-                if (mouse != null) loadMouseDetails(mouse);
+                if (mouse != null)
+                    loadMouseDetails(mouse);
                 break;
             case "Keyboard":
                 Keyboards keyboard = keyboardBLL.getKeyboardById(hardwareId);
-                if (keyboard != null) loadKeyboardDetails(keyboard);
+                if (keyboard != null)
+                    loadKeyboardDetails(keyboard);
                 break;
             case "Monitor":
                 Monitors monitor = monitorBLL.getMonitorById(hardwareId);
-                if (monitor != null) loadMonitorDetails(monitor);
+                if (monitor != null)
+                    loadMonitorDetails(monitor);
                 break;
             case "Headphone":
                 Headphones headphone = headphoneBLL.getHeadphoneById(hardwareId);
-                if (headphone != null) loadHeadphoneDetails(headphone);
+                if (headphone != null)
+                    loadHeadphoneDetails(headphone);
                 break;
             default:
                 JOptionPane.showMessageDialog(this, "Loại linh kiện không hợp lệ!", "Lỗi", JOptionPane.ERROR_MESSAGE);
@@ -245,7 +249,6 @@ public class DetailsHardware extends JFrame {
         idField.setText(String.valueOf(rom.getRomId()));
         modelField.setText(rom.getModel());
         typeComboBox.setSelectedItem("Rom");
-        priceField.setText(String.valueOf(rom.getPrice()));
         statusComboBox.setSelectedItem(rom.getStatus());
 
         int yOffset = 10;
@@ -253,7 +256,8 @@ public class DetailsHardware extends JFrame {
         yOffset += 40;
         addTextField(dynamicFieldsPanel, "Loại:", "typeField", yOffset, rom.getType());
         yOffset += 40;
-        addTextField(dynamicFieldsPanel, "Dung lượng (GB):", "capacityField", yOffset, String.valueOf(rom.getCapacity()));
+        addTextField(dynamicFieldsPanel, "Dung lượng (GB):", "capacityField", yOffset,
+                String.valueOf(rom.getCapacity()));
         yOffset += 40;
         addDateField(dynamicFieldsPanel, "Ngày mua:", "purchaseDateField", yOffset, rom.getPurchaseDate());
         yOffset += 40;
@@ -266,13 +270,13 @@ public class DetailsHardware extends JFrame {
         idField.setText(String.valueOf(ram.getRamId()));
         modelField.setText(ram.getModel());
         typeComboBox.setSelectedItem("RAM");
-        priceField.setText(String.valueOf(ram.getPrice()));
         statusComboBox.setSelectedItem(ram.getStatus());
 
         int yOffset = 10;
         addTextField(dynamicFieldsPanel, "Thương hiệu:", "brandField", yOffset, ram.getBrand());
         yOffset += 40;
-        addTextField(dynamicFieldsPanel, "Dung lượng (GB):", "capacityField", yOffset, String.valueOf(ram.getCapacity()));
+        addTextField(dynamicFieldsPanel, "Dung lượng (GB):", "capacityField", yOffset,
+                String.valueOf(ram.getCapacity()));
         yOffset += 40;
         addTextField(dynamicFieldsPanel, "Tốc độ (MHz):", "speedField", yOffset, String.valueOf(ram.getSpeed()));
         yOffset += 40;
@@ -287,13 +291,13 @@ public class DetailsHardware extends JFrame {
         idField.setText(String.valueOf(cpu.getCpuId()));
         modelField.setText(cpu.getModel());
         typeComboBox.setSelectedItem("CPU");
-        priceField.setText(String.valueOf(cpu.getPrice()));
         statusComboBox.setSelectedItem(cpu.getStatus());
 
         int yOffset = 10;
         addTextField(dynamicFieldsPanel, "Thương hiệu:", "brandField", yOffset, cpu.getBrand());
         yOffset += 40;
-        addTextField(dynamicFieldsPanel, "Tốc độ (GHz):", "clockSpeedField", yOffset, String.valueOf(cpu.getClockSpeed()));
+        addTextField(dynamicFieldsPanel, "Tốc độ (GHz):", "clockSpeedField", yOffset,
+                String.valueOf(cpu.getClockSpeed()));
         yOffset += 40;
         addTextField(dynamicFieldsPanel, "Số lõi:", "coresField", yOffset, String.valueOf(cpu.getCores()));
         yOffset += 40;
@@ -312,7 +316,6 @@ public class DetailsHardware extends JFrame {
         idField.setText(String.valueOf(gpu.getGpuId()));
         modelField.setText(gpu.getModel());
         typeComboBox.setSelectedItem("GPU");
-        priceField.setText(String.valueOf(gpu.getPrice()));
         statusComboBox.setSelectedItem(gpu.getStatus());
 
         int yOffset = 10;
@@ -331,7 +334,6 @@ public class DetailsHardware extends JFrame {
         idField.setText(String.valueOf(motherboard.getMotherboardId()));
         modelField.setText(motherboard.getModel());
         typeComboBox.setSelectedItem("Mainboard");
-        priceField.setText(String.valueOf(motherboard.getPrice()));
         statusComboBox.setSelectedItem(motherboard.getStatus());
 
         int yOffset = 10;
@@ -341,23 +343,30 @@ public class DetailsHardware extends JFrame {
         yOffset += 40;
         addTextField(dynamicFieldsPanel, "Chipset:", "chipsetField", yOffset, motherboard.getChipset());
         yOffset += 40;
-        addTextField(dynamicFieldsPanel, "Khe RAM:", "ramSlotsField", yOffset, String.valueOf(motherboard.getRamSlots()));
+        addTextField(dynamicFieldsPanel, "Khe RAM:", "ramSlotsField", yOffset,
+                String.valueOf(motherboard.getRamSlots()));
         yOffset += 40;
-        addTextField(dynamicFieldsPanel, "RAM tối đa (GB):", "maxRamField", yOffset, String.valueOf(motherboard.getMaxRam()));
+        addTextField(dynamicFieldsPanel, "RAM tối đa (GB):", "maxRamField", yOffset,
+                String.valueOf(motherboard.getMaxRam()));
         yOffset += 40;
-        addTextField(dynamicFieldsPanel, "Tốc độ RAM (MHz):", "ramSpeedField", yOffset, String.valueOf(motherboard.getRamSpeed()));
+        addTextField(dynamicFieldsPanel, "Tốc độ RAM (MHz):", "ramSpeedField", yOffset,
+                String.valueOf(motherboard.getRamSpeed()));
         yOffset += 40;
-        addTextField(dynamicFieldsPanel, "Khe lưu trữ:", "storageSlotsField", yOffset, String.valueOf(motherboard.getStorageSlots()));
+        addTextField(dynamicFieldsPanel, "Khe lưu trữ:", "storageSlotsField", yOffset,
+                String.valueOf(motherboard.getStorageSlots()));
         yOffset += 40;
-        addTextField(dynamicFieldsPanel, "Cổng SATA:", "sataPortsField", yOffset, String.valueOf(motherboard.getSataPorts()));
+        addTextField(dynamicFieldsPanel, "Cổng SATA:", "sataPortsField", yOffset,
+                String.valueOf(motherboard.getSataPorts()));
         yOffset += 40;
         addTextField(dynamicFieldsPanel, "Khe M.2:", "m2SlotsField", yOffset, String.valueOf(motherboard.getM2Slots()));
         yOffset += 40;
-        addTextField(dynamicFieldsPanel, "Dung lượng tối đa (TB):", "maxStorageCapacityField", yOffset, String.valueOf(motherboard.getMaxStorageCapacity()));
+        addTextField(dynamicFieldsPanel, "Dung lượng tối đa (TB):", "maxStorageCapacityField", yOffset,
+                String.valueOf(motherboard.getMaxStorageCapacity()));
         yOffset += 40;
         addDateField(dynamicFieldsPanel, "Ngày mua:", "purchaseDateField", yOffset, motherboard.getPurchaseDate());
         yOffset += 40;
-        addDateField(dynamicFieldsPanel, "Hết bảo hành:", "warrantyExpiryField", yOffset, motherboard.getWarrantyExpiry());
+        addDateField(dynamicFieldsPanel, "Hết bảo hành:", "warrantyExpiryField", yOffset,
+                motherboard.getWarrantyExpiry());
         dynamicFieldsPanel.revalidate();
         dynamicFieldsPanel.repaint();
     }
@@ -366,7 +375,6 @@ public class DetailsHardware extends JFrame {
         idField.setText(String.valueOf(mouse.getMouseId()));
         modelField.setText(mouse.getModel());
         typeComboBox.setSelectedItem("Mouse");
-        priceField.setText(String.valueOf(mouse.getPrice()));
         statusComboBox.setSelectedItem(mouse.getStatus());
 
         int yOffset = 10;
@@ -383,7 +391,6 @@ public class DetailsHardware extends JFrame {
         idField.setText(String.valueOf(keyboard.getKeyboardId()));
         modelField.setText(keyboard.getModel());
         typeComboBox.setSelectedItem("Keyboard");
-        priceField.setText(String.valueOf(keyboard.getPrice()));
         statusComboBox.setSelectedItem(keyboard.getStatus());
 
         int yOffset = 10;
@@ -400,7 +407,6 @@ public class DetailsHardware extends JFrame {
         idField.setText(String.valueOf(monitor.getMonitorId()));
         modelField.setText(monitor.getModel());
         typeComboBox.setSelectedItem("Monitor");
-        priceField.setText(String.valueOf(monitor.getPrice()));
         statusComboBox.setSelectedItem(monitor.getStatus());
 
         int yOffset = 10;
@@ -408,7 +414,8 @@ public class DetailsHardware extends JFrame {
         yOffset += 40;
         addTextField(dynamicFieldsPanel, "Kích thước (inch):", "sizeField", yOffset, String.valueOf(monitor.getSize()));
         yOffset += 40;
-        addTextField(dynamicFieldsPanel, "Tần số quét (Hz):", "refreshRateField", yOffset, String.valueOf(monitor.getRefreshRate()));
+        addTextField(dynamicFieldsPanel, "Tần số quét (Hz):", "refreshRateField", yOffset,
+                String.valueOf(monitor.getRefreshRate()));
         yOffset += 40;
         addDateField(dynamicFieldsPanel, "Ngày mua:", "purchaseDateField", yOffset, monitor.getPurchaseDate());
         yOffset += 40;
@@ -421,7 +428,6 @@ public class DetailsHardware extends JFrame {
         idField.setText(String.valueOf(headphone.getHeadphoneId()));
         modelField.setText(headphone.getModel());
         typeComboBox.setSelectedItem("Headphone");
-        priceField.setText(String.valueOf(headphone.getPrice()));
         statusComboBox.setSelectedItem(headphone.getStatus());
 
         int yOffset = 10;
@@ -431,7 +437,8 @@ public class DetailsHardware extends JFrame {
         yOffset += 40;
         addDateField(dynamicFieldsPanel, "Ngày mua:", "purchaseDateField", yOffset, headphone.getPurchaseDate());
         yOffset += 40;
-        addDateField(dynamicFieldsPanel, "Hết bảo hành:", "warrantyExpiryField", yOffset, headphone.getWarrantyExpiry());
+        addDateField(dynamicFieldsPanel, "Hết bảo hành:", "warrantyExpiryField", yOffset,
+                headphone.getWarrantyExpiry());
         dynamicFieldsPanel.revalidate();
         dynamicFieldsPanel.repaint();
     }
@@ -463,6 +470,7 @@ public class DetailsHardware extends JFrame {
                     textField.setForeground(Color.BLACK);
                 }
             }
+
             @Override
             public void focusLost(FocusEvent e) {
                 if (textField.getText().isEmpty()) {
@@ -490,19 +498,14 @@ public class DetailsHardware extends JFrame {
     private void updateHardware() {
         try {
             String model = modelField.getText().trim();
-            String priceText = priceField.getText().trim();
-            if (model.isEmpty() || priceText.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Tên sản phẩm và Giá tiền không được để trống!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            if (model.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Tên sản phẩm không được để trống!", "Lỗi",
+                        JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
-            double price = Double.parseDouble(priceText);
-            String status = statusComboBox.getSelectedIndex() == 0 ? "Trong kho" : statusComboBox.getSelectedItem().toString();
-
-            if (price < 0) {
-                JOptionPane.showMessageDialog(this, "Giá tiền không được âm!", "Lỗi", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
+            String status = statusComboBox.getSelectedIndex() == 0 ? "Trong kho"
+                    : statusComboBox.getSelectedItem().toString();
 
             Component[] components = dynamicFieldsPanel.getComponents();
             String brand = getFieldValue(components, "brandField");
@@ -511,7 +514,6 @@ public class DetailsHardware extends JFrame {
 
             HashMap<String, Object> updates = new HashMap<>();
             updates.put("model", model);
-            updates.put("price", price);
             updates.put("status", status);
             updates.put("brand", brand);
             updates.put("purchase_date", purchaseDate);
@@ -549,7 +551,8 @@ public class DetailsHardware extends JFrame {
                     updates.put("storage_slots", Integer.parseInt(getFieldValue(components, "storageSlotsField", "0")));
                     updates.put("sata_ports", Integer.parseInt(getFieldValue(components, "sataPortsField", "0")));
                     updates.put("m2_slots", Integer.parseInt(getFieldValue(components, "m2SlotsField", "0")));
-                    updates.put("max_storage_capacity", Integer.parseInt(getFieldValue(components, "maxStorageCapacityField", "0")));
+                    updates.put("max_storage_capacity",
+                            Integer.parseInt(getFieldValue(components, "maxStorageCapacityField", "0")));
                     success = motherboardBLL.updateMotherboardById(hardwareId, updates);
                     break;
                 case "Mouse":
@@ -570,16 +573,17 @@ public class DetailsHardware extends JFrame {
             }
 
             if (success) {
-                JOptionPane.showMessageDialog(this, "Cập nhật linh kiện thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Cập nhật linh kiện thành công!", "Thông báo",
+                        JOptionPane.INFORMATION_MESSAGE);
                 dispose();
             } else {
                 JOptionPane.showMessageDialog(this, "Cập nhật linh kiện thất bại!", "Lỗi", JOptionPane.ERROR_MESSAGE);
             }
         } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this, "Dữ liệu số không hợp lệ: " + ex.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Dữ liệu số không hợp lệ: " + ex.getMessage(), "Lỗi",
+                    JOptionPane.ERROR_MESSAGE);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Đã xảy ra lỗi: " + ex.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
-            ex.printStackTrace();
         }
     }
 
@@ -607,11 +611,13 @@ public class DetailsHardware extends JFrame {
     }
 
     private Date parseDate(String dateStr) {
-        if (dateStr == null || dateStr.isEmpty() || dateStr.equals("YYYY-MM-DD")) return null;
+        if (dateStr == null || dateStr.isEmpty() || dateStr.equals("YYYY-MM-DD"))
+            return null;
         try {
             return Date.valueOf(dateStr);
         } catch (IllegalArgumentException e) {
-            JOptionPane.showMessageDialog(this, "Định dạng ngày không hợp lệ (YYYY-MM-DD): " + dateStr, "Lỗi", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Định dạng ngày không hợp lệ (YYYY-MM-DD): " + dateStr, "Lỗi",
+                    JOptionPane.ERROR_MESSAGE);
             return null;
         }
     }

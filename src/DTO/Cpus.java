@@ -13,7 +13,6 @@ public class Cpus {
     private Date purchaseDate;
     private Date warrantyExpiry;
     private String status;
-    private double price;
 
     public Cpus(int cpuId, String brand, String model, float clockSpeed, int cores, int threads, boolean integratedGpu, Date purchaseDate, Date warrantyExpiry, String status, double price) {
         this.cpuId = cpuId;
@@ -26,9 +25,8 @@ public class Cpus {
         this.purchaseDate = purchaseDate;
         this.warrantyExpiry = warrantyExpiry;
         this.status = status;
-        this.price = price;
     }
-    public Cpus( String brand, String model, float clockSpeed, int cores, int threads, boolean integratedGpu, Date purchaseDate, Date warrantyExpiry, String status, double price) {
+    public Cpus( String brand, String model, float clockSpeed, int cores, int threads, boolean integratedGpu, Date purchaseDate, Date warrantyExpiry, String status) {
         this.brand = brand;
         this.model = model;
         this.clockSpeed = clockSpeed;
@@ -38,16 +36,8 @@ public class Cpus {
         this.purchaseDate = purchaseDate;
         this.warrantyExpiry = warrantyExpiry;
         this.status = status;
-        this.price = price;
     }
 
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
 
     // Constructor không tham số
     public Cpus() {

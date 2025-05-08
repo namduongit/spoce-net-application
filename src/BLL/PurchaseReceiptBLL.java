@@ -3,6 +3,7 @@ package BLL;
 import DAL.PurchaseReceiptDAL;
 import DTO.PurchaseReceipt;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class PurchaseReceiptBLL {
@@ -12,6 +13,10 @@ public class PurchaseReceiptBLL {
 
     public ArrayList<PurchaseReceipt> getPurchaseReceiptList() {
         return this.purchaseReceiptDAL.getPurchaseReceiptList();
+    }
+
+    public ArrayList<Object[]> getInboundRevenueByCategory(LocalDateTime start, LocalDateTime end, String category) {
+        return this.purchaseReceiptDAL.getInboundRevenueByCategory(start, end, category);
     }
 
     public PurchaseReceipt getPurchaseReceiptById(int purchaseReceiptId) {

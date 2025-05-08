@@ -11,7 +11,6 @@ public class Roms {
     private Date purchaseDate;
     private Date warrantyExpiry;
     private String status;
-    private double price;
 
     public Roms(int romId, String brand, String model, String type, int capacity, Date purchaseDate, Date warrantyExpiry, String status, double price) {
         this.romId = romId;
@@ -22,9 +21,8 @@ public class Roms {
         this.purchaseDate = purchaseDate;
         this.warrantyExpiry = warrantyExpiry;
         this.status = status;
-        this.price = price;
     }
-    public Roms(String brand, String model, String type, int capacity, Date purchaseDate, Date warrantyExpiry, String status, double price) {
+    public Roms(String brand, String model, String type, int capacity, Date purchaseDate, Date warrantyExpiry, String status) {
         this.brand = brand;
         this.model = model;
         this.type = type;
@@ -32,7 +30,6 @@ public class Roms {
         this.purchaseDate = purchaseDate;
         this.warrantyExpiry = warrantyExpiry;
         this.status = status;
-        this.price = price;
     }
 
     // Constructor không tham số
@@ -51,13 +48,6 @@ public class Roms {
     }
 
     // Getter và Setter
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
     public int getRomId() {
         return romId;
     }

@@ -9,15 +9,6 @@ public class Mouse {
     private Date purchaseDate;
     private Date warrantyExpiry;
     private String status;
-    private double price;
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
 
     public Mouse(int mouseId, String brand, String model, Date purchaseDate, Date warrantyExpiry, String status, double price) {
         this.mouseId = mouseId;
@@ -26,15 +17,13 @@ public class Mouse {
         this.purchaseDate = purchaseDate;
         this.warrantyExpiry = warrantyExpiry;
         this.status = status;
-        this.price = price;
     }
-    public Mouse(String brand, String model, Date purchaseDate, Date warrantyExpiry, String status, double price) {
+    public Mouse(String brand, String model, Date purchaseDate, Date warrantyExpiry, String status) {
         this.brand = brand;
         this.model = model;
         this.purchaseDate = purchaseDate;
         this.warrantyExpiry = warrantyExpiry;
         this.status = status;
-        this.price = price;
     }
 
     // Constructor không tham số

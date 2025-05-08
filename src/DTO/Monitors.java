@@ -11,15 +11,7 @@ public class Monitors {
     private Date purchaseDate;
     private Date warrantyExpiry;
     private String status;
-    private double price;
 
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
 
     public Monitors(int monitorId, String brand, String model, float size, int refreshRate, Date purchaseDate, Date warrantyExpiry, String status, double price) {
         this.monitorId = monitorId;
@@ -30,9 +22,8 @@ public class Monitors {
         this.purchaseDate = purchaseDate;
         this.warrantyExpiry = warrantyExpiry;
         this.status = status;
-        this.price = price;
     }
-    public Monitors(String brand, String model, float size, int refreshRate, Date purchaseDate, Date warrantyExpiry, String status, double price) {
+    public Monitors(String brand, String model, float size, int refreshRate, Date purchaseDate, Date warrantyExpiry, String status) {
         this.brand = brand;
         this.model = model;
         this.size = size;
@@ -40,7 +31,6 @@ public class Monitors {
         this.purchaseDate = purchaseDate;
         this.warrantyExpiry = warrantyExpiry;
         this.status = status;
-        this.price = price;
     }
 
     // Constructor không tham số

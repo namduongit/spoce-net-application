@@ -8,7 +8,6 @@ import GUI.Form.DetailsHardware;
 import Utils.Helper.AdjustTableWidth;
 import java.awt.*;
 import java.awt.event.*;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -35,7 +34,6 @@ public class HardwarePanel extends JPanel {
     private DefaultTableModel tableModel;
     private String currentType = "Tất cả";
     private DefaultTableCellRenderer tableCellRenderer;
-    private static final DecimalFormat df = new DecimalFormat("#,###");
 
     public HardwarePanel() {
         this.computerBLL = new ComputerBLL();
@@ -214,17 +212,33 @@ public class HardwarePanel extends JPanel {
         CustomPanel panel = new CustomPanel();
         panel.setLayout(null);
 
-        String[] columnNames = {"ID", "Tên Sản Phẩm", "Loại", "Giá Tiền", "Trạng thái"};
+        String[] columnNames = {"ID", "Tên Sản Phẩm", "Loại", "Trạng thái"};
         tableModel = new DefaultTableModel(getTableData(getAllHardwareComponents()), columnNames);
         tableData = new CustomTable(tableModel);
-        tableData.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        AdjustTableWidth.automaticallyAdjustTableWidths(tableData);
-        tableData.getColumnModel().getColumn(0).setPreferredWidth(100);
-        tableData.getColumnModel().getColumn(3).setPreferredWidth(150);
-        tableData.getColumnModel().getColumn(4).setPreferredWidth(328);
+        tableData.setAutoResizeMode(JTable.AUTO_RESIZE_OFF); // tắt tự động điều chỉnh kích thước bảng
 
-        tableData.setFont(new Font("Sans-serif", Font.PLAIN, 14));
-        tableData.setRowHeight(30);
+        // Đặt chiều rộng cố định cho các cột
+        tableData.getColumnModel().getColumn(0).setPreferredWidth(150); // ID
+        tableData.getColumnModel().getColumn(1).setPreferredWidth(400); // Tên Sản Phẩm
+        tableData.getColumnModel().getColumn(2).setPreferredWidth(200); // Loại
+        tableData.getColumnModel().getColumn(3).setPreferredWidth(330); // Trạng thái
+
+        // Tùy chỉnh giao diện bảng
+        tableData.setFont(new Font("Sans-serif", Font.PLAIN, 16));
+        tableData.setRowHeight(40);
+        tableData.setGridColor(Color.decode("#ECF0F1")); //Đặt màu đường kẻ lưới giữa các ô
+        tableData.setShowGrid(true); // Hiện đường kẻ lưới
+        tableData.setBackground(Color.WHITE);
+        tableData.getTableHeader().setFont(new Font("Sans-serif", Font.BOLD, 16));
+        tableData.getTableHeader().setBackground(Color.decode("#3498DB"));//màu nền cho tiêu đề cột 
+        tableData.getTableHeader().setForeground(Color.WHITE); //màu chữ cho tiêu đề cột
+        tableData.getTableHeader().setReorderingAllowed(false); // Không cho phép kéo thả tiêu đề cột
+        
+
+        // Áp dụng renderer cho tất cả cột
+        for (int i = 0; i < tableData.getColumnCount(); i++) {
+            tableData.getColumnModel().getColumn(i).setCellRenderer(tableCellRenderer);
+        }
 
         tableData.getSelectionModel().addListSelectionListener(e -> {
             if (!e.getValueIsAdjusting() && tableData.getSelectedRow() != -1) {
@@ -235,6 +249,7 @@ public class HardwarePanel extends JPanel {
         JScrollPane scroll = new CustomScrollPane(tableData);
         scroll.setBounds(0, 0, 1080, 400);
         scroll.setBorder(BorderFactory.createLineBorder(Color.decode("#BDC3C7"), 1));
+        scroll.getViewport().setBackground(Color.WHITE);
 
         CustomButton addButton = new CustomButton("Thêm");
         addButton.setBackground(Color.decode("#388E3C"));
@@ -341,8 +356,7 @@ public class HardwarePanel extends JPanel {
             JOptionPane.showMessageDialog(this, "Không thể tải dữ liệu ROM!", "Lỗi", JOptionPane.WARNING_MESSAGE);
         } else {
             for (Roms rom : roms) {
-                String formattedPrice = df.format(rom.getPrice());
-                components.add(new Object[]{rom.getRomId(), rom.getModel(), "Rom", formattedPrice, rom.getStatus()});
+                components.add(new Object[]{rom.getRomId(), rom.getModel(), "Rom", rom.getStatus()});
             }
         }
 
@@ -352,8 +366,7 @@ public class HardwarePanel extends JPanel {
             JOptionPane.showMessageDialog(this, "Không thể tải dữ liệu CPU!", "Lỗi", JOptionPane.WARNING_MESSAGE);
         } else {
             for (Cpus cpu : cpus) {
-                String formattedPrice = df.format(cpu.getPrice());
-                components.add(new Object[]{cpu.getCpuId(), cpu.getModel(), "CPU", formattedPrice, cpu.getStatus()});
+                components.add(new Object[]{cpu.getCpuId(), cpu.getModel(), "CPU", cpu.getStatus()});
             }
         }
 
@@ -363,8 +376,7 @@ public class HardwarePanel extends JPanel {
             JOptionPane.showMessageDialog(this, "Không thể tải dữ liệu GPU!", "Lỗi", JOptionPane.WARNING_MESSAGE);
         } else {
             for (Gpus gpu : gpus) {
-                String formattedPrice = df.format(gpu.getPrice());
-                components.add(new Object[]{gpu.getGpuId(), gpu.getModel(), "GPU", formattedPrice, gpu.getStatus()});
+                components.add(new Object[]{gpu.getGpuId(), gpu.getModel(), "GPU", gpu.getStatus()});
             }
         }
 
@@ -374,8 +386,7 @@ public class HardwarePanel extends JPanel {
             JOptionPane.showMessageDialog(this, "Không thể tải dữ liệu Mainboard!", "Lỗi", JOptionPane.WARNING_MESSAGE);
         } else {
             for (Motherboards motherboard : motherboards) {
-                String formattedPrice = df.format(motherboard.getPrice());
-                components.add(new Object[]{motherboard.getMotherboardId(), motherboard.getModel(), "Mainboard", formattedPrice, motherboard.getStatus()});
+                components.add(new Object[]{motherboard.getMotherboardId(), motherboard.getModel(), "Mainboard", motherboard.getStatus()});
             }
         }
 
@@ -385,8 +396,7 @@ public class HardwarePanel extends JPanel {
             JOptionPane.showMessageDialog(this, "Không thể tải dữ liệu Mouse!", "Lỗi", JOptionPane.WARNING_MESSAGE);
         } else {
             for (Mouse mouse : mice) {
-                String formattedPrice = df.format(mouse.getPrice());
-                components.add(new Object[]{mouse.getMouseId(), mouse.getModel(), "Mouse", formattedPrice, mouse.getStatus()});
+                components.add(new Object[]{mouse.getMouseId(), mouse.getModel(), "Mouse", mouse.getStatus()});
             }
         }
 
@@ -396,8 +406,7 @@ public class HardwarePanel extends JPanel {
             JOptionPane.showMessageDialog(this, "Không thể tải dữ liệu Keyboard!", "Lỗi", JOptionPane.WARNING_MESSAGE);
         } else {
             for (Keyboards keyboard : keyboards) {
-                String formattedPrice = df.format(keyboard.getPrice());
-                components.add(new Object[]{keyboard.getKeyboardId(), keyboard.getModel(), "Keyboard", formattedPrice, keyboard.getStatus()});
+                components.add(new Object[]{keyboard.getKeyboardId(), keyboard.getModel(), "Keyboard", keyboard.getStatus()});
             }
         }
 
@@ -407,8 +416,7 @@ public class HardwarePanel extends JPanel {
             JOptionPane.showMessageDialog(this, "Không thể tải dữ liệu Monitor!", "Lỗi", JOptionPane.WARNING_MESSAGE);
         } else {
             for (Monitors monitor : monitors) {
-                String formattedPrice = df.format(monitor.getPrice());
-                components.add(new Object[]{monitor.getMonitorId(), monitor.getModel(), "Monitor", formattedPrice, monitor.getStatus()});
+                components.add(new Object[]{monitor.getMonitorId(), monitor.getModel(), "Monitor", monitor.getStatus()});
             }
         }
 
@@ -418,8 +426,7 @@ public class HardwarePanel extends JPanel {
             JOptionPane.showMessageDialog(this, "Không thể tải dữ liệu Headphone!", "Lỗi", JOptionPane.WARNING_MESSAGE);
         } else {
             for (Headphones headphone : headphones) {
-                String formattedPrice = df.format(headphone.getPrice());
-                components.add(new Object[]{headphone.getHeadphoneId(), headphone.getModel(), "Headphone", formattedPrice, headphone.getStatus()});
+                components.add(new Object[]{headphone.getHeadphoneId(), headphone.getModel(), "Headphone", headphone.getStatus()});
             }
         }
 
@@ -429,8 +436,7 @@ public class HardwarePanel extends JPanel {
             JOptionPane.showMessageDialog(this, "Không thể tải dữ liệu RAM!", "Lỗi", JOptionPane.WARNING_MESSAGE);
         } else {
             for (Rams ram : rams) {
-                String formattedPrice = df.format(ram.getPrice());
-                components.add(new Object[]{ram.getRamId(), ram.getModel(), "RAM", formattedPrice, ram.getStatus()});
+                components.add(new Object[]{ram.getRamId(), ram.getModel(), "RAM", ram.getStatus()});
             }
         }
 
@@ -438,7 +444,7 @@ public class HardwarePanel extends JPanel {
     }
 
     private Object[][] getTableData(ArrayList<Object[]> components) {
-        Object[][] data = new Object[components.size()][5];
+        Object[][] data = new Object[components.size()][4];
         for (int i = 0; i < components.size(); i++) {
             data[i] = components.get(i);
         }
@@ -452,7 +458,7 @@ public class HardwarePanel extends JPanel {
         filteredList.removeIf(component -> {
             String productName = (String) component[1];
             String productType = (String) component[2];
-            String componentStatus = (String) component[4];
+            String componentStatus = (String) component[3];
 
             boolean matchesSearch = searchText.equals("Nhập thông tin tìm kiếm") ||
                     searchText.isEmpty() ||
@@ -468,13 +474,15 @@ public class HardwarePanel extends JPanel {
 
     private void updateTable(ArrayList<Object[]> components) {
         tableModel.setDataVector(getTableData(components),
-                new String[]{"ID", "Tên Sản Phẩm", "Loại", "Giá Tiền", "Trạng thái"});
-        AdjustTableWidth.automaticallyAdjustTableWidths(tableData);
-        tableData.getColumnModel().getColumn(0).setPreferredWidth(100);
-        tableData.getColumnModel().getColumn(3).setPreferredWidth(150);
-        tableData.getColumnModel().getColumn(4).setPreferredWidth(329);
-        for (int i = 0; i < this.tableData.getColumnCount(); i++) {
-            this.tableData.getColumnModel().getColumn(i).setCellRenderer(this.tableCellRenderer);
+                new String[]{"ID", "Tên Sản Phẩm", "Loại", "Trạng thái"});
+        // Đặt lại chiều rộng cột cố định
+        tableData.getColumnModel().getColumn(0).setPreferredWidth(150); // ID
+        tableData.getColumnModel().getColumn(1).setPreferredWidth(400); // Tên Sản Phẩm
+        tableData.getColumnModel().getColumn(2).setPreferredWidth(200); // Loại
+        tableData.getColumnModel().getColumn(3).setPreferredWidth(330); // Trạng thái
+        // Áp dụng renderer
+        for (int i = 0; i < tableData.getColumnCount(); i++) {
+            tableData.getColumnModel().getColumn(i).setCellRenderer(tableCellRenderer);
         }
     }
 

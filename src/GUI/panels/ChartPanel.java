@@ -3,41 +3,52 @@ package GUI.panels;
 import BLL.ComputerSessionBLL;
 import BLL.FoodBLL;
 import BLL.FoodRevenueBLL;
+import BLL.PurchaseReceiptBLL;
 import DTO.FoodRevenue;
 import GUI.Components.*;
 import java.awt.*;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-@SuppressWarnings({"unused", "FieldMayBeFinal"})
 public class ChartPanel extends JPanel {
   
     private final FoodRevenueBLL foodRevenueBLL;
     private final ComputerSessionBLL sessionBLL;
-    private final FoodBLL foodBLL;
+    private final PurchaseReceiptBLL purchaseReceiptBLL;
 
     // Các panel chính của giao diện
     private CustomPanel headerPanel; 
     private CustomPanel filterPanel;
     private CustomPanel dataPanel; 
+
     private CustomPanel chartDisplayPanel; 
     private CustomPanel infoPanel; 
+
     private CustomPanel sessionPanel; 
     private CustomPanel billPanel; 
+    private CustomPanel inboundPanel;
+    
     private CustomPanel filterSwitchPanel; 
+    private CustomPanel infomationSwitchPanel;
+
     private CardLayout cardLayout; 
     private CardLayout filterCardLayout; 
+    private CardLayout infomationCardLayout;
 
     // Các thành phần giao diện cho bộ lọc
     private CustomCombobox<String> roomComboBox; // Chọn phòng máy
     private CustomCombobox<String> categoryComboBox; // Chọn loại sản phẩm
-    private CustomCombobox<String> foodCombobox; // Chọn coi nhập thức ăn nào
+    private CustomCombobox<String> inboundCateCombobox; // Chọn coi nhập thức ăn nào
     private CustomTextField startDateField; 
     private CustomTextField endDateField;
     private CustomButton applyFilterButton; 
@@ -55,7 +66,7 @@ public class ChartPanel extends JPanel {
     public ChartPanel() {
         foodRevenueBLL = new FoodRevenueBLL();
         sessionBLL = new ComputerSessionBLL();
-        this.foodBLL = new FoodBLL();
+        purchaseReceiptBLL = new PurchaseReceiptBLL();
 
         initComponents();
     }
@@ -113,8 +124,10 @@ public class ChartPanel extends JPanel {
     private void switchToPanel(String panelName, String filterName) {
         cardLayout.show(chartDisplayPanel, panelName); 
         filterCardLayout.show(filterSwitchPanel, filterName); // Chuyển đổi bộ lọc tương ứng
+        infomationCardLayout.show(infomationSwitchPanel, filterName);// Chuyển đổi bảng hiển thị thông tin của chart tương ứng
+
         currentPanel = panelName;
-        updateChart(); // Cập nhật biểu đồ
+        // updateChart(); // Cập nhật biểu đồ
     }
 
     // Tạo panel bộ lọc, chứa các tùy chọn lọc dữ liệu (phòng máy, loại sản phẩm, ngày)
@@ -156,14 +169,24 @@ public class ChartPanel extends JPanel {
         categoryFilterPanel.add(categoryComboBox);
 
         // Bộ lọc tên sản phẩm
-        CustomPanel foodInboundPanel = new CustomPanel();
-        foodInboundPanel.setLayout(null);
-        foodInboundPanel.setBackground(Color.WHITE);
+        CustomPanel inboundFilterPanel = new CustomPanel();
+        inboundFilterPanel.setLayout(null);
+        inboundFilterPanel.setBackground(Color.WHITE);
+        JLabel categoriesLabel = new JLabel("Loại sản phẩm:");
+        categoriesLabel.setBounds(0, 0, 100, 35);
+        inboundFilterPanel.add(categoriesLabel);
+        ArrayList<String> cates = new ArrayList<>(foodRevenueBLL.getAllCategory());
+        cates.add(0, "Tất cả");
+        inboundCateCombobox = new CustomCombobox<>(cates);
+        inboundCateCombobox.setBounds(100, 0, 200, 35);
+        inboundFilterPanel.add(inboundCateCombobox);
         
 
         // Thêm các bộ lọc vào filterSwitchPanel
         filterSwitchPanel.add(roomFilterPanel, "RoomFilter");
         filterSwitchPanel.add(categoryFilterPanel, "CategoryFilter");
+        filterSwitchPanel.add(inboundFilterPanel, "InBoundFilter");
+
         filterCardLayout.show(filterSwitchPanel, "CategoryFilter"); // Mặc định hiển thị bộ lọc "loại sản phẩm"
         panel.add(filterSwitchPanel);
 
@@ -172,7 +195,21 @@ public class ChartPanel extends JPanel {
         startDateLabel.setBounds(350, 20, 80, 35);
         panel.add(startDateLabel);
         String today = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        startDateField = new CustomTextField(today);
+        startDateField = new CustomTextField("2000-01-01");
+        startDateField.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (startDateField.getText().equalsIgnoreCase("2000-01-01")) {
+                    startDateField.setText("");
+                }
+            }
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (startDateField.getText().equalsIgnoreCase("")) {
+                    startDateField.setText("2000-01-01");
+                }
+            }
+        });
         startDateField.setBounds(420, 20, 150, 35);
         panel.add(startDateField);
 
@@ -181,6 +218,20 @@ public class ChartPanel extends JPanel {
         endDateLabel.setBounds(600, 20, 80, 35);
         panel.add(endDateLabel);
         endDateField = new CustomTextField(today);
+        endDateField.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (endDateField.getText().equalsIgnoreCase(today)) {
+                    endDateField.setText("");
+                }
+            }
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (endDateField.getText().equalsIgnoreCase("")) {
+                    endDateField.setText(today);
+                }
+            }
+        });
         endDateField.setBounds(670, 20, 150, 35);
         panel.add(endDateField);
 
@@ -217,9 +268,16 @@ public class ChartPanel extends JPanel {
         billPanel.setBackground(Color.WHITE);
         billPanel.add(createPlaceholderLabel(), BorderLayout.CENTER);
 
+        // Panel cho biểu đồ thống kê
+        inboundPanel = new CustomPanel();
+        inboundPanel.setLayout(new BorderLayout());
+        inboundPanel.setBackground(Color.WHITE);
+        inboundPanel.add(createPlaceholderLabel(), BorderLayout.CENTER);
+
         // Thêm các panel biểu đồ vào chartDisplayPanel
         chartDisplayPanel.add(sessionPanel, "SessionPanel");
         chartDisplayPanel.add(billPanel, "BillPanel");
+        chartDisplayPanel.add(inboundPanel, "InBoundPanel");
         cardLayout.show(chartDisplayPanel, "BillPanel"); // Mặc định hiển thị panel hóa đơn
 
         // Panel thông tin chi tiết
@@ -302,9 +360,12 @@ public class ChartPanel extends JPanel {
         if (currentPanel.equals("SessionPanel")) {
             String selectedRoom = roomComboBox.getSelectedItem() != null ? roomComboBox.getSelectedItem().toString() : "Tất cả";
             updatePanelWithChart(sessionPanel, createComputerRevenueChart(start, end, selectedRoom, computerData));
-        } else {
+        } else if (currentPanel.equals("BillPanel")) {
             String selectedCategory = categoryComboBox.getSelectedItem().toString();
             updatePanelWithChart(billPanel, createFoodRevenueChart(start, end, selectedCategory));
+        } else if (currentPanel.equals("InBoundPanel")) {
+            String selectedCate = inboundCateCombobox.getSelectedItem().toString();
+            updatePanelWithChart(inboundPanel, createInboundRevenueChart(start, end, selectedCate));
         }
     }
 
@@ -315,6 +376,27 @@ public class ChartPanel extends JPanel {
         panel.add(pieChart, BorderLayout.CENTER);
         panel.revalidate();
         panel.repaint();
+    }
+
+
+    private CustomPieChart createInboundRevenueChart(LocalDateTime start, LocalDateTime end, String category) {
+        ArrayList<Object[]> data = purchaseReceiptBLL.getInboundRevenueByCategory(start, end, category);
+
+        if (data.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Không có dữ liệu doanh thu món ăn trong khoảng thời gian này!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            return createEmptyPieChart("Không có dữ liệu");
+        }
+
+        ArrayList<String> labels = new ArrayList<>();
+        ArrayList<Number> values = new ArrayList<>();
+        for (Object[] row : data) {
+            labels.add((String) row[9]); // Tên món ăn
+            values.add((int)row[10] * (int)row[11]); // Tổng tiền món đó
+        }
+
+        CustomPieChart pieChart = new CustomPieChart(labels.toArray(new String[0]), values.toArray(new Number[0]));
+        pieChart.getChart().setTitle("Thống kê phiếu nhập");
+        return pieChart;
     }
 
     // Tạo biểu đồ doanh thu món ăn
