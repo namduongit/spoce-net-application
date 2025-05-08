@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <list default="true" id="2fd5298c-8ded-4541-913f-688b0c64ef55" name="Changes" comment="" />
 =======
     <list default="true" id="2fd5298c-8ded-4541-913f-688b0c64ef55" name="Changes" comment="">
@@ -16,20 +17,16 @@
 =======
     <list default="true" id="0bdff552-49c0-492a-a09d-0536acea60c4" name="Changes" comment="Pull">
       <change afterPath="$PROJECT_DIR$/src/GUI/Form/DetailsInbound.java" afterDir="false" />
+=======
+    <list default="true" id="2fd5298c-8ded-4541-913f-688b0c64ef55" name="Changes" comment="">
+>>>>>>> 1de56e5d90308321be8313bbf9b486d6b56cf647
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/PurchaseReceiptDetailBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/PurchaseReceiptDetailBLL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/PurchaseReceiptDetailDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/PurchaseReceiptDetailDAL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/InboundPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/InboundPanel$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/InboundPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/InboundPanel$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/InboundPanel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/InboundPanel$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/InboundPanel$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/InboundPanel$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/InboundPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/InboundPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BLL/PurchaseReceiptBLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/PurchaseReceiptBLL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BLL/PurchaseReceiptDetailBLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/PurchaseReceiptDetailBLL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DAL/PurchaseReceiptDAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/PurchaseReceiptDAL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DAL/PurchaseReceiptDetailDAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/PurchaseReceiptDetailDAL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Form/DetailsInbound.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Form/DetailsInbound.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/panels/BillPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/panels/BillPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/panels/InboundPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/panels/InboundPanel.java" afterDir="false" />
->>>>>>> cc87748a17ad6987dfb3582aff2b94f2cb9b696f
+      <change beforePath="$PROJECT_DIR$/src/Utils/Config/ConfigSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/Config/ConfigSQL.java" afterDir="false" />
     </list>
 >>>>>>> cc87748a17ad6987dfb3582aff2b94f2cb9b696f
     <option name="SHOW_DIALOG" value="false" />
@@ -50,21 +47,14 @@
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
     &quot;state&quot;: &quot;OPEN&quot;,
-<<<<<<< HEAD
     &quot;assignee&quot;: &quot;congquan92&quot;
-=======
-    &quot;assignee&quot;: &quot;luanchenh&quot;
->>>>>>> cc87748a17ad6987dfb3582aff2b94f2cb9b696f
+
   }
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/namduongit/spoce-net-application.git&quot;,
-<<<<<<< HEAD
     &quot;accountId&quot;: &quot;197bc58e-d94a-44c2-b42b-171a4b33486f&quot;
-=======
-    &quot;accountId&quot;: &quot;20b56b38-814f-4b8e-a4dd-02db64bcf7b6&quot;
->>>>>>> cc87748a17ad6987dfb3582aff2b94f2cb9b696f
   }
 }</component>
   <component name="MarkdownSettingsMigration">
@@ -106,14 +96,6 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23726.103" />
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23726.103" />
-      </set>
-    </attachedChunks>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
         <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.145" />
         <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.145" />
       </set>
@@ -126,7 +108,6 @@
       <created>1746454313186</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-<<<<<<< HEAD
       <updated>1746540056162</updated>
       <workItem from="1746540061147" duration="1080000" />
       <workItem from="1746575586012" duration="8093000" />
@@ -136,6 +117,7 @@
       <workItem from="1746620885977" duration="200000" />
       <workItem from="1746626181895" duration="579000" />
       <workItem from="1746626792414" duration="277000" />
+<<<<<<< HEAD
 >>>>>>> 01e0bf46f096588b90ceaf0ddca1ee6386e90b91
 =======
       <updated>1746454313186</updated>
@@ -144,6 +126,8 @@
       <workItem from="1746576864946" duration="826000" />
       <workItem from="1746624013860" duration="4115000" />
 >>>>>>> cc87748a17ad6987dfb3582aff2b94f2cb9b696f
+=======
+>>>>>>> 1de56e5d90308321be8313bbf9b486d6b56cf647
     </task>
     <task id="LOCAL-00001" summary="Pull">
       <option name="closed" value="true" />

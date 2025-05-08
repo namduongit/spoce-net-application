@@ -9,6 +9,7 @@ import DTO.Staffs;
 import GUI.Components.*;
 import GUI.Form.AddingInbound;
 import GUI.Form.DetailsInbound;
+import Utils.Helper.Comon;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -18,7 +19,11 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class InboundPanel extends JPanel {
     private Accounts accounts;
@@ -335,6 +340,7 @@ public class InboundPanel extends JPanel {
         filterButton.setBorderColor(Color.decode("#03A9F4"));
         filterButton.setForeground(Color.WHITE);
         filterButton.setBounds(860, 38, 100, 35);
+        filterButton.addActionListener(e -> filterTable());
 
 
         CustomButton resetButton = new CustomButton("Đặt lại");
@@ -343,6 +349,13 @@ public class InboundPanel extends JPanel {
         resetButton.setForeground(Color.WHITE);
         resetButton.setBorderSize(3);
         resetButton.setBounds(965, 38, 100, 35);
+        resetButton.addActionListener(e -> {
+            this.refreshTable();
+            this.searchTextField.setText("Nhập thông tin tìm kiếm");
+            this.statusCombobox.setSelectedIndex(0);
+            this.dateStartTextField.setText("2000-01-01");
+            this.dateEndTextField.setText("2030-01-01");
+        });
 
 
         selectionText = new JLabel("Đang chọn: NULL");
@@ -433,6 +446,63 @@ public class InboundPanel extends JPanel {
         panel.add(scroll);
 
         return panel;
+    }
+
+    private void filterTable() {
+        String id = this.searchTextField.getText().trim().equals("Nhập thông tin tìm kiếm") ? "" : this.searchTextField.getText().trim();
+        String status = this.statusCombobox.getSelectedItem() != null ? this.statusCombobox.getSelectedItem().toString() : "";
+        String startDate = this.dateStartTextField.getText().trim();
+        String endDate = this.dateEndTextField.getText().trim();
+
+        if (!Comon.isTrueDate(startDate) || !Comon.isTrueDate(endDate)) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Ngày không hợp lệ!",
+                    "Lỗi",
+                    JOptionPane.ERROR_MESSAGE
+            );
+            return;
+        }
+
+        this.refreshAllDatas();
+        LocalDate startDateObj = this.getLocalDateFromString(startDate);
+        LocalDate endDateObj = this.getLocalDateFromString(endDate);
+
+        if (startDateObj.isAfter(endDateObj)) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Ngày bắt đầu phải bằng hoặc trước ngày kết thúc!",
+                    "Lỗi",
+                    JOptionPane.ERROR_MESSAGE
+            );
+            return;
+        }
+
+        ZoneId zoneId = ZoneId.of("UTC+7");
+
+
+        List<PurchaseReceipt> filteredList = this.list.stream()
+                                                      .filter(bill -> id.isEmpty() || bill.getReceiptId() == Integer.parseInt(id))
+                                                      .filter(bill -> status.equals("Tất cả") || bill.getStatus().equals(status))
+                                                      .filter(bill -> bill.getCreateAt().toInstant().atZone(zoneId).toLocalDate().isEqual(startDateObj) ||
+                                                                      bill.getCreateAt().toInstant().atZone(zoneId).toLocalDate().isEqual(endDateObj) ||
+                                                                      (bill.getCreateAt().toLocalDateTime().toLocalDate().isAfter(startDateObj) && bill.getCreateAt().toLocalDateTime().toLocalDate().isBefore(endDateObj))
+                                                             )
+                                                      .collect(Collectors.toList());
+        
+        this.list = new ArrayList<>(filteredList);
+        
+        Object[][] data = this.createData(this.list);
+        DefaultTableModel model = new DefaultTableModel(data, this.columnNames);
+        this.tableData.setModel(model);
+        for (int i=0; i<this.tableData.getColumnCount(); i++) {
+            this.tableData.getColumnModel().getColumn(i).setCellRenderer(this.renderer);
+        }
+    }
+
+    private LocalDate getLocalDateFromString(String dateStr) {
+        String[] arr = dateStr.split("-");
+        return LocalDate.of(Integer.parseInt(arr[0]), Integer.parseInt(arr[1]), Integer.parseInt(arr[2]));
     }
     // -------------------------------------------------------------------
 
