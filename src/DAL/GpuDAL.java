@@ -25,8 +25,7 @@ public class GpuDAL {
                         rs.getInt("vram"),
                         rs.getDate("purchase_date"),
                         rs.getDate("warranty_expiry"),
-                        rs.getString("status"),
-                        rs.getDouble("price")
+                        rs.getString("status")
                 ));
             }
         } catch (SQLException e) {
@@ -87,12 +86,11 @@ public class GpuDAL {
             values.add(gpu.getPurchaseDate());
             values.add(gpu.getWarrantyExpiry());
             values.add(gpu.getStatus());
-            values.add(gpu.getPrice());
 
 
         HashMap<String,String> params = new HashMap<>();
         params.put("TABLE", "gpus");
-        params.put("FIELD", "brand,model,vram,purchase_date,warranty_expiry,status,price");
+        params.put("FIELD", "brand,model,vram,purchase_date,warranty_expiry,status");
         helper.buildingQueryParam(params);
 
        boolean result = helper.insertData(values);

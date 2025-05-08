@@ -24,8 +24,8 @@ public class MouseDAL {
                         rs.getString("model"),
                         rs.getDate("purchase_date"),
                         rs.getDate("warranty_expiry"),
-                        rs.getString("status"),
-                        rs.getDouble("price")
+                        rs.getString("status")
+                 
                 ));
             }
             rs.close();
@@ -95,11 +95,11 @@ public class MouseDAL {
             values.add(mouse.getPurchaseDate());
             values.add(mouse.getWarrantyExpiry());
             values.add(mouse.getStatus());
-            values.add(mouse.getPrice());
+          
 
          HashMap<String, String> params = new HashMap<>();
          params.put("TABLE", "mouse");
-         params.put("FIELD", "brand,model,purchase_date,warranty_expiry,status,price");
+         params.put("FIELD", "brand,model,purchase_date,warranty_expiry,status");
          helper.buildingQueryParam(params);
 
         boolean result = helper.insertData(values);

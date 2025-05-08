@@ -36,8 +36,7 @@ public class MotherboardDAL {
                         rs.getInt("psu_id"),
                         rs.getInt("gpu_id"),
                         rs.getDate("purchase_date"),
-                        rs.getDate("warranty_expiry"),
-                        rs.getDouble("price")
+                        rs.getDate("warranty_expiry")
                 ));
             }
             rs.close();
@@ -142,8 +141,8 @@ public class MotherboardDAL {
                         rs.getInt("psu_id"),
                         rs.getInt("gpu_id"),
                         rs.getDate("purchase_date"),
-                        rs.getDate("warranty_expiry"),
-                        rs.getDouble("price")
+                        rs.getDate("warranty_expiry")
+                      
                 ));
             }
             rs.close();
@@ -201,11 +200,10 @@ public class MotherboardDAL {
             values.add(motherboard.getGpuId());
             values.add(motherboard.getPurchaseDate());
             values.add(motherboard.getWarrantyExpiry());
-            values.add(motherboard.getPrice());
 
          HashMap<String, String> params = new HashMap<>();
          params.put("TABLE", "motherboards");
-         params.put("FIELD", "brand,model,socket,chipset,ram_slots,max_ram,ram_speed,storage_slots,sata_ports,m2_slots,max_storage_capacity,status,cpu_id,psu_id,gpu_id,purchase_date,warranty_expiry,price");
+         params.put("FIELD", "brand,model,socket,chipset,ram_slots,max_ram,ram_speed,storage_slots,sata_ports,m2_slots,max_storage_capacity,status,cpu_id,psu_id,gpu_id,purchase_date,warranty_expiry");
          helper.buildingQueryParam(params);
 
         boolean result = helper.insertData(values);

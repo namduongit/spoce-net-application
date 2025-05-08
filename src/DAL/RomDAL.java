@@ -26,8 +26,8 @@ public class RomDAL {
                         rs.getInt("capacity"),
                         rs.getDate("purchase_date"),
                         rs.getDate("warranty_expiry"),
-                        rs.getString("status"),
-                        rs.getDouble("price")
+                        rs.getString("status")
+                       
                 ));
             }
             rs.close();
@@ -101,11 +101,11 @@ public class RomDAL {
         values.add(rom.getPurchaseDate());
         values.add(rom.getWarrantyExpiry());
         values.add(rom.getStatus());
-        values.add(rom.getPrice());
+
 
         HashMap<String, String> params = new HashMap<>();
         params.put("TABLE", "roms");
-        params.put("FIELD", "brand,model,type,capacity,purchase_date,warranty_expiry,status,price");
+        params.put("FIELD", "brand,model,type,capacity,purchase_date,warranty_expiry,status");
         helper.buildingQueryParam(params);
 
         boolean success = helper.insertData(values);

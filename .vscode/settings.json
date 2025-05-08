@@ -8,9 +8,6 @@
         "c:\\libs-api-connect\\jfreechart-1.0.19.jar",
         "c:\\libs-api-connect\\mysql-connector-j-9.1.0.jar",
         "c:\\libs-api-connect\\activation-1.1.1.jar",
-<<<<<<< HEAD
-        "c:\\libs-api-connect\\javax.mail-1.5.3.jar"
-=======
         "c:\\libs-api-connect\\javax.mail.jar",
         "c:\\libs-api-connect\\jakarta.activation-2.0.1.jar",
         "c:\\libs-api-connect\\jakarta.mail-api-2.1.3.jar",
@@ -25,8 +22,12 @@
         "c:\\libs-api-connect\\io-7.0.0.jar",
         "c:\\libs-api-connect\\kernel-7.0.0.jar",
         "c:\\libs-api-connect\\layout-7.0.0.jar",
+        "c:\\libs-api-connect\\flying-saucer-core-9.1.22.jar",
+        "c:\\libs-api-connect\\flying-saucer-pdf-itext5-9.1.22.jar",
+        "c:\\libs-api-connect\\itextpdf-5.5.13.3.jar",
+        "c:\\libs-api-connect\\jsoup-1.15.4.jar",
+        
         "c:\\libs-api-connect\\pdfa-7.0.0.jar"
->>>>>>> cf6316c8d30efa685b73925425c971abc5b430f3
     ],
     "java.debug.settings.onBuildFailureProceed": true
 }

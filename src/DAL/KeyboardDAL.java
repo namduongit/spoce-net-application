@@ -27,8 +27,7 @@ public class KeyboardDAL {
                         rs.getString("model"),
                         rs.getDate("purchase_date"),
                         rs.getDate("warranty_expiry"),
-                        rs.getString("status"),
-                        rs.getDouble("price")
+                        rs.getString("status")
                 ));
             }
             rs.close();
@@ -99,11 +98,10 @@ public class KeyboardDAL {
             values.add(keyboard.getPurchaseDate());
             values.add(keyboard.getWarrantyExpiry());
             values.add(keyboard.getStatus());
-            values.add(keyboard.getPrice());
 
         HashMap<String, String> params = new HashMap<>();
         params.put("TABLE", "keyboards");
-        params.put("FIELD", "brand, model, purchase_date, warranty_expiry, status, price");
+        params.put("FIELD", "brand, model, purchase_date, warranty_expiry, status");
         helper.buildingQueryParam(params);
 
         boolean result = helper.insertData(values);
