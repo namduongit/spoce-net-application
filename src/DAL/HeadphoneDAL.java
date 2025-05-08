@@ -28,8 +28,7 @@ public class HeadphoneDAL {
                         rs.getString("type"),
                         rs.getDate("purchase_date"),
                         rs.getDate("warranty_expiry"),
-                        rs.getString("status"),
-                        rs.getInt("price")
+                        rs.getString("status")
                 ));
             }
             rs.close();
@@ -102,12 +101,11 @@ public class HeadphoneDAL {
             values.add(headphone.getPurchaseDate());
             values.add(headphone.getWarrantyExpiry());
             values.add(headphone.getStatus());
-            values.add(headphone.getPrice());
 
         // Thiết lập queryParams trước khi insert
         HashMap<String, String> params = new HashMap<>();
         params.put("TABLE", "headphones");
-        params.put("FIELD", "brand, model, type, purchase_date, warranty_expiry, status, price");
+        params.put("FIELD", "brand, model, type, purchase_date, warranty_expiry, status");
         helper.buildingQueryParam(params);
 
         boolean result = helper.insertData(values);

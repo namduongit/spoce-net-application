@@ -29,8 +29,8 @@ public class MonitorDAL {
                         rs.getInt("refresh_rate"),
                         rs.getDate("purchase_date"),
                         rs.getDate("warranty_expiry"),
-                        rs.getString("status"),
-                        rs.getDouble("price")
+                        rs.getString("status")
+                    
                 ));
             }
             rs.close();
@@ -102,7 +102,6 @@ public class MonitorDAL {
             values.add(monitor.getPurchaseDate());
             values.add(monitor.getWarrantyExpiry());
             values.add(monitor.getStatus());
-            values.add(monitor.getPrice());
 
         HashMap<String, String> params = new HashMap<>();
         params.put("TABLE", "monitors");

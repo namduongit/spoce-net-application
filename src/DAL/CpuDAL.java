@@ -28,8 +28,7 @@ public class CpuDAL {
                         rs.getBoolean("integrated_gpu"),
                         rs.getDate("purchase_date"),
                         rs.getDate("warranty_expiry"),
-                        rs.getString("status"),
-                        rs.getDouble("price")
+                        rs.getString("status")
                 ));
             }
             rs.close();
@@ -92,11 +91,10 @@ public class CpuDAL {
             values.add(cpu.getPurchaseDate());
             values.add(cpu.getWarrantyExpiry());
             values.add(cpu.getStatus());
-            values.add(cpu.getPrice());
 
        HashMap<String, String> params = new HashMap<>();
        params.put("TABLE","cpus");
-       params.put("FIELD","brand,model,clock_speed,cores,threads,integrated_gpu,purchase_date,warranty_expiry,status,price");
+       params.put("FIELD","brand,model,clock_speed,cores,threads,integrated_gpu,purchase_date,warranty_expiry,status");
        helper.buildingQueryParam(params);
 
         boolean result = helper.insertData(values);

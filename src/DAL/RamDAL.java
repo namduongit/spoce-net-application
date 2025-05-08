@@ -26,8 +26,8 @@ public class RamDAL {
                         rs.getInt("speed"),
                         rs.getDate("purchase_date"),
                         rs.getDate("warranty_expiry"),
-                        rs.getString("status"),
-                        rs.getDouble("price")
+                        rs.getString("status")
+                
                 ));
             }
             rs.close();
@@ -41,7 +41,6 @@ public class RamDAL {
 
     public Rams getRamById(int id) {
         ArrayList<Rams> arr = this.getRamList();
-
         for (Rams x : arr) {
             if (x.getRamId() == id) {
                 return x;
@@ -53,7 +52,6 @@ public class RamDAL {
 
     public ArrayList<Rams> getRamsByStatus(String status) {
         ArrayList<Rams> arr = new ArrayList<>();
-
         for (Rams x : this.getRamList()) {
             if (x.getStatus().equals(status)) {
                 arr.add(x);
@@ -101,11 +99,11 @@ public class RamDAL {
         values.add(ram.getPurchaseDate());
         values.add(ram.getWarrantyExpiry());
         values.add(ram.getStatus());
-        values.add(ram.getPrice());
+   
 
         HashMap<String, String> params = new HashMap<>();
         params.put("TABLE", "rams");
-        params.put("FIELD", "brand,model,capacity,speed,purchase_date,warranty_expiry,status,price");
+        params.put("FIELD", "brand,model,capacity,speed,purchase_date,warranty_expiry,status");
         helper.buildingQueryParam(params);
 
         boolean success = helper.insertData(values);

@@ -11,7 +11,6 @@ public class Rams {
     private Date purchaseDate;
     private Date warrantyExpiry;
     private String status;
-    private double price;
 
     // Constructor không tham số
     public Rams() {
@@ -37,9 +36,8 @@ public class Rams {
         this.purchaseDate = purchaseDate;
         this.warrantyExpiry = warrantyExpiry;
         this.status = status;
-        this.price = price;
     }
-    public Rams( String brand, String model, int capacity, int speed, Date purchaseDate, Date warrantyExpiry, String status, double price) {
+    public Rams( String brand, String model, int capacity, int speed, Date purchaseDate, Date warrantyExpiry, String status) {
         this.brand = brand;
         this.model = model;
         this.capacity = capacity;
@@ -47,17 +45,9 @@ public class Rams {
         this.purchaseDate = purchaseDate;
         this.warrantyExpiry = warrantyExpiry;
         this.status = status;
-        this.price = price;
     }
 
     // Getter và Setter
-    public double getPrice() {
-        return price;
-    }
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
     public int getRamId() {
         return ramId;
     }

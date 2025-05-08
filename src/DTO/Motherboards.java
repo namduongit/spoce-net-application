@@ -21,15 +21,7 @@ public class Motherboards {
     private Integer gpuId;
     private Date purchaseDate;
     private Date warrantyExpiry;
-    private double price;
 
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
 
     public Motherboards(int motherboardId, String brand, String model, String socket, String chipset, int ramSlots, int maxRam, int ramSpeed, int storageSlots, int sataPorts, int m2Slots, int maxStorageCapacity, String status, Integer cpuId, Integer psuId, Integer gpuId, Date purchaseDate, Date warrantyExpiry, double price) {
         this.motherboardId = motherboardId;
@@ -50,7 +42,6 @@ public class Motherboards {
         this.gpuId = gpuId;
         this.purchaseDate = purchaseDate;
         this.warrantyExpiry = warrantyExpiry;
-        this.price = price;
     }
 
     // Constructor không tham số
@@ -78,7 +69,7 @@ public class Motherboards {
         this.purchaseDate = purchaseDate;
         this.warrantyExpiry = warrantyExpiry;
     }
-    public Motherboards( String brand, String model, String socket, String chipset, int ramSlots, int maxRam, int ramSpeed, int storageSlots, int sataPorts, int m2Slots, int maxStorageCapacity, String status, Integer cpuId, Integer psuId, Integer gpuId, Date purchaseDate, Date warrantyExpiry, double price) {
+    public Motherboards( String brand, String model, String socket, String chipset, int ramSlots, int maxRam, int ramSpeed, int storageSlots, int sataPorts, int m2Slots, int maxStorageCapacity, String status, Integer cpuId, Integer psuId, Integer gpuId, Date purchaseDate, Date warrantyExpiry) {
         this.brand = brand;
         this.model = model;
         this.socket = socket;
@@ -96,7 +87,6 @@ public class Motherboards {
         this.gpuId = gpuId;
         this.purchaseDate = purchaseDate;
         this.warrantyExpiry = warrantyExpiry;
-        this.price = price;
     }
 
     public Motherboards(int id, String brand, String model) {
