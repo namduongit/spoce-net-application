@@ -5,20 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0bdff552-49c0-492a-a09d-0536acea60c4" name="Changes" comment="Pull">
-      <change afterPath="$PROJECT_DIR$/src/GUI/Form/DetailsInbound.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/PurchaseReceiptDetailBLL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/BLL/PurchaseReceiptDetailBLL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/PurchaseReceiptDetailDAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/DAL/PurchaseReceiptDetailDAL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/InboundPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/InboundPanel$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/InboundPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/InboundPanel$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/InboundPanel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/InboundPanel$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/InboundPanel$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/InboundPanel$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/InboundPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spoce-net-application/GUI/panels/InboundPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BLL/PurchaseReceiptBLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/PurchaseReceiptBLL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BLL/PurchaseReceiptDetailBLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BLL/PurchaseReceiptDetailBLL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DAL/PurchaseReceiptDAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/PurchaseReceiptDAL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DAL/PurchaseReceiptDetailDAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/PurchaseReceiptDetailDAL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/panels/InboundPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/panels/InboundPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +88,7 @@
       <workItem from="1746454315663" duration="210000" />
       <workItem from="1746538885522" duration="876000" />
       <workItem from="1746576864946" duration="826000" />
-      <workItem from="1746624013860" duration="4115000" />
+      <workItem from="1746624013860" duration="4473000" />
     </task>
     <task id="LOCAL-00001" summary="Pull">
       <option name="closed" value="true" />
