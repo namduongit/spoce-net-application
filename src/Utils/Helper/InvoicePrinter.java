@@ -38,7 +38,7 @@ public class InvoicePrinter {
             ITextRenderer renderer = new ITextRenderer();
 
             // Đường dẫn font
-            String fontPath = System.getProperty("user.dir") + "/src/Utils/Fonts/DejaVuSans.ttf";
+            String fontPath = System.getProperty("user.dir") + "/src/Utils/Fonts/Roboto-Regular.ttf";
             renderer.getFontResolver().addFont(fontPath, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
 
             renderer.setDocumentFromString(htmlContent);
