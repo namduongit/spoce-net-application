@@ -30,6 +30,9 @@ public class DetailsInbound extends JFrame {
     private ArrayList<CustomTextField> foodPriceList;
     private ArrayList<JButton> deleteButtonList;
 
+    // Trạng thái phiếu nhập
+    private CustomTextField statusTextField;
+
     private CustomCombobox<String> foodNameCombo;
     private JPanel content;
     private CustomTextField totalTextField;
@@ -66,7 +69,7 @@ public class DetailsInbound extends JFrame {
         JLabel idLabel = new JLabel("Mã phiếu nhập");
         idLabel.setBounds(10, 10, 100, 20);
 
-        CustomTextField idTextField = new CustomTextField(this.purchaseReceipt.getReceiptId()+"");
+        CustomTextField idTextField = new CustomTextField(this.purchaseReceipt.getReceiptId() + "");
         idTextField.setBounds(10, 35, 100, 30);
         idTextField.setEditable(false);
         idTextField.setFocusable(false);
@@ -74,7 +77,9 @@ public class DetailsInbound extends JFrame {
         JLabel employeeNameLabel = new JLabel("Tên nhân viên lập phiếu");
         employeeNameLabel.setBounds(120, 10, 200, 20);
 
-        CustomTextField employeeNameTextField = new CustomTextField(this.accountBLL.getAccountById(this.staffBLL.getStaffById(this.purchaseReceipt.getStaffId()).getAccountId()).getUsername());
+        CustomTextField employeeNameTextField = new CustomTextField(this.accountBLL
+                .getAccountById(this.staffBLL.getStaffById(this.purchaseReceipt.getStaffId()).getAccountId())
+                .getUsername());
         employeeNameTextField.setBounds(120, 35, 300, 30);
         employeeNameTextField.setEditable(false);
         employeeNameTextField.setFocusable(false);
@@ -82,7 +87,7 @@ public class DetailsInbound extends JFrame {
         JLabel createdDateLabel = new JLabel("Ngày lập phiếu");
         createdDateLabel.setBounds(10, 75, 100, 20);
 
-        CustomTextField createdDateTextField = new CustomTextField(this.purchaseReceipt.getCreateAt()+"");
+        CustomTextField createdDateTextField = new CustomTextField(this.purchaseReceipt.getCreateAt() + "");
         createdDateTextField.setBounds(10, 100, 150, 30);
         createdDateTextField.setEditable(false);
         createdDateTextField.setFocusable(false);
@@ -98,7 +103,7 @@ public class DetailsInbound extends JFrame {
         JLabel totalLabel = new JLabel("Tổng tiền");
         totalLabel.setBounds(330, 75, 200, 20);
 
-        totalTextField = new CustomTextField(Comon.formatMoney(this.purchaseReceipt.getTotal()+""));
+        totalTextField = new CustomTextField(Comon.formatMoney(this.purchaseReceipt.getTotal() + ""));
         totalTextField.setBounds(330, 100, 200, 30);
         totalTextField.setEditable(false);
         totalTextField.setFocusable(false);
@@ -125,8 +130,10 @@ public class DetailsInbound extends JFrame {
         CustomCombobox<String> foodTypeCombo = new CustomCombobox<>(foodTypeList);
         foodTypeCombo.setBounds(75, 235, 120, 30);
         foodTypeCombo.addActionListener(e -> {
-            String foodType = foodTypeCombo.getSelectedItem() != null ? foodTypeCombo.getSelectedItem().toString() : null;
-            if (foodType == null) return;
+            String foodType = foodTypeCombo.getSelectedItem() != null ? foodTypeCombo.getSelectedItem().toString()
+                    : null;
+            if (foodType == null)
+                return;
 
             ArrayList<String> foodNameList = new ArrayList<>();
             if (foodType.equals("Tất cả")) {
@@ -214,9 +221,10 @@ public class DetailsInbound extends JFrame {
         this.setLocationRelativeTo(null);
     }
 
-
     private void addItemRow(ActionEvent e) {
-        String selectedFood = this.foodNameCombo.getSelectedItem() != null ? this.foodNameCombo.getSelectedItem().toString() : null;
+        String selectedFood = this.foodNameCombo.getSelectedItem() != null
+                ? this.foodNameCombo.getSelectedItem().toString()
+                : null;
         if (selectedFood == null) {
             JOptionPane.showMessageDialog(this, "Hết món để tạo phiếu nhập", "Thông báo", JOptionPane.ERROR_MESSAGE);
             return;
@@ -225,6 +233,16 @@ public class DetailsInbound extends JFrame {
         // Nếu đã tồn tại thì cảnh báo
         if (this.currentFoodList.contains(selectedFood)) {
             JOptionPane.showMessageDialog(this, "Món này đã được thêm!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Nếu đã xác nhận thì không cho thêm món
+        if (this.purchaseReceipt.getStatus().equals("Đã xác nhận")) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Phiếu đã xác nhận thì không thể thêm món",
+                    "Lỗi",
+                    JOptionPane.ERROR_MESSAGE);
             return;
         }
 
@@ -258,6 +276,15 @@ public class DetailsInbound extends JFrame {
         this.deleteButtonList.add(deleteButton);
 
         deleteButton.addActionListener(ev -> {
+            if (this.purchaseReceipt.getStatus().equals("Đã xác nhận")) {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Phiếu đã xác nhận thì không thể sửa",
+                        "Lỗi",
+                        JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
             this.content.remove(tfFood);
             this.content.remove(tfQuantity);
             this.content.remove(tfPrice);
@@ -279,10 +306,10 @@ public class DetailsInbound extends JFrame {
 
     private void refreshRows() {
         for (int i = 0; i < this.foodDataList.size(); i++) {
-            this.foodDataList.get(i).setBounds(10, (i+1) * 40, 300, 30);
-            this.foodQuantityList.get(i).setBounds(330, (i+1) * 40, 100, 30);
-            this.foodPriceList.get(i).setBounds(450, (i+1) * 40, 100, 30);
-            this.deleteButtonList.get(i).setBounds(570, (i+1) * 40, 80, 30);
+            this.foodDataList.get(i).setBounds(10, (i + 1) * 40, 300, 30);
+            this.foodQuantityList.get(i).setBounds(330, (i + 1) * 40, 100, 30);
+            this.foodPriceList.get(i).setBounds(450, (i + 1) * 40, 100, 30);
+            this.deleteButtonList.get(i).setBounds(570, (i + 1) * 40, 80, 30);
         }
 
         this.content.setPreferredSize(new Dimension(950, this.foodDataList.size() * 40 + 10));
@@ -311,7 +338,8 @@ public class DetailsInbound extends JFrame {
                 int quantity = Integer.parseInt(this.foodQuantityList.get(i).getText());
                 long price = Long.parseLong(this.foodPriceList.get(i).getText());
 
-                if (quantity == 0 || price == 0) return false;
+                if (quantity == 0 || price == 0)
+                    return false;
             } catch (NumberFormatException ignored) {
             }
         }
@@ -331,10 +359,10 @@ public class DetailsInbound extends JFrame {
             tfFood.setBounds(10, yOffset, 300, 30);
             tfFood.setFocusable(false);
 
-            CustomTextField tfQuantity = new CustomTextField(detail.get(2)+"");
+            CustomTextField tfQuantity = new CustomTextField(detail.get(2) + "");
             tfQuantity.setBounds(330, yOffset, 100, 30);
 
-            CustomTextField tfPrice = new CustomTextField(detail.get(3)+"");
+            CustomTextField tfPrice = new CustomTextField(detail.get(3) + "");
             tfPrice.setBounds(450, yOffset, 100, 30);
 
             CustomButton deleteButton = new CustomButton("Xóa");
@@ -351,6 +379,15 @@ public class DetailsInbound extends JFrame {
             this.deleteButtonList.add(deleteButton);
 
             deleteButton.addActionListener(ev -> {
+                if (this.purchaseReceipt.getStatus().equals("Đã xác nhận")) {
+                    JOptionPane.showMessageDialog(
+                            null,
+                            "Phiếu đã xác nhận thì không thể sửa",
+                            "Lỗi",
+                            JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
                 this.content.remove(tfFood);
                 this.content.remove(tfQuantity);
                 this.content.remove(tfPrice);
@@ -376,10 +413,17 @@ public class DetailsInbound extends JFrame {
             JOptionPane.showMessageDialog(
                     null,
                     "Either the quantity or price is empty",
-                    "Error",
-                    JOptionPane.ERROR_MESSAGE
-            );
+                    "Lỗi",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
+        if (this.purchaseReceipt.getStatus().equals("Đã xác nhận")) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Phiếu đã xác nhận thì không thể sửa",
+                    "Lỗi",
+                    JOptionPane.ERROR_MESSAGE);
             return;
         }
 
@@ -387,20 +431,20 @@ public class DetailsInbound extends JFrame {
 
         this.purchaseReceiptDetailBLL.deleteAllRowsOfSpecificId(this.purchaseReceipt.getReceiptId());
 
-        for (int i=0; i<this.foodDataList.size(); i++) {
+        for (int i = 0; i < this.foodDataList.size(); i++) {
             try {
                 int quantity = Integer.parseInt(this.foodQuantityList.get(i).getText());
                 int price = Integer.parseInt(this.foodPriceList.get(i).getText());
 
                 this.purchaseReceiptBLL.updateNote(this.purchaseReceipt.getReceiptId(), this.noteTextArea.getText());
-                this.purchaseReceiptDetailBLL.insertDataBill(this.purchaseReceipt.getReceiptId(), this.getFoodIdFromFullName(this.foodDataList.get(i).getText()), quantity, price);
+                this.purchaseReceiptDetailBLL.insertDataBill(this.purchaseReceipt.getReceiptId(),
+                        this.getFoodIdFromFullName(this.foodDataList.get(i).getText()), quantity, price);
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(
                         null,
                         "Exception was thrown by saveChanges method of DetailsInbound",
                         "Error",
-                        JOptionPane.ERROR_MESSAGE
-                );
+                        JOptionPane.ERROR_MESSAGE);
                 return;
             }
         }
@@ -409,8 +453,7 @@ public class DetailsInbound extends JFrame {
                 null,
                 "Successfully Saved",
                 "Information",
-                JOptionPane.INFORMATION_MESSAGE
-        );
+                JOptionPane.INFORMATION_MESSAGE);
     }
 
     private int getFoodIdFromFullName(String str) {
