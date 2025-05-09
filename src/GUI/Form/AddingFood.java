@@ -73,8 +73,9 @@ public class AddingFood extends JFrame {
         JLabel quantityLabel = new JLabel("Số lượng:");
         quantityLabel.setBounds(25, 335, 425, 25);
         add(quantityLabel);
-        quantityField = new CustomTextField();
+        quantityField = new CustomTextField("0");
         quantityField.setBounds(25, 360, 425, 30);
+        quantityField.setEditable(false);
         add(quantityField);
 
         JLabel categoryLabel = new JLabel("Loại:");
@@ -120,7 +121,7 @@ public class AddingFood extends JFrame {
     private void resetForm() {
         nameField.setText("");
         priceField.setText("");
-        quantityField.setText("");
+        quantityField.setText("0");
         categoryCombo.setSelectedIndex(0);
         imageLabel.setIcon(null);
         selectedImagePath = null;
@@ -150,8 +151,8 @@ public class AddingFood extends JFrame {
         }
     
         // Kiểm tra số âm
-        if (price < 0 || quantity < 0) {
-            JOptionPane.showMessageDialog(this, "Giá và số lượng phải lớn hơn hoặc bằng 0!", "Lỗi nhập liệu", JOptionPane.ERROR_MESSAGE);
+        if (quantity < 0) {
+            JOptionPane.showMessageDialog(this, "Giá phải lớn hơn hoặc bằng 0!", "Lỗi nhập liệu", JOptionPane.ERROR_MESSAGE);
             return;
         }
     
