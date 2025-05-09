@@ -68,6 +68,7 @@ public class InvoicePrinter {
 
         for (int i = 0; i < this.detailsFoodOrderBill.size(); i++) {
             Object[] row = this.detailsFoodOrderBill.get(i);
+            for (Object object : row) System.out.print(object);
             int quantity = Integer.parseInt(row[6].toString());
             int price = Integer.parseInt(row[8].toString());
             int lineTotal = quantity * price;
@@ -84,7 +85,7 @@ public class InvoicePrinter {
         }
 
         result.append("</tbody></table>")
-                .append("<p class=\"right\"><strong>Total Bill: ")
+                .append("<p class=\"right\"><strong>Tổng hóa đơn: ")
                 .append(Utils.Helper.Comon.formatMoney(String.valueOf(totalMoney)))
                 .append("</strong></p>");
 
@@ -95,12 +96,12 @@ public class InvoicePrinter {
         String date = this.detailsFoodOrderBill.get(0)[9].toString();
         String customer = this.detailsFoodOrderBill.get(0)[1].toString().equals("0") ? "Tài khoản khách (Order riêng)" : this.accountBLL.getAccountById(Integer.parseInt(this.detailsFoodOrderBill.get(0)[1].toString())).getUsername();
         String employee = this.accountBLL.getAccountById(Integer.parseInt(this.detailsFoodOrderBill.get(0)[2].toString())).getUsername() + " - " + this.staffBLL.getStaffById(Integer.parseInt(this.detailsFoodOrderBill.get(0)[2].toString())).getFullName();
-        String status = this.detailsFoodOrderBill.get(0)[this.detailsFoodOrderBill.get(0).length - 1].toString();
+        String status = this.detailsFoodOrderBill.get(0)[this.detailsFoodOrderBill.get(0).length - 5].toString();
         String result =
-                "<p><strong>Billing date:</strong> " + date + "</p>" +
-                        "<p><strong>Customer's Name:</strong> " + customer + "</p>" +
-                        "<p><strong>Employee Name:</strong> " + employee + "</p>" +
-                        "<p><strong>Invoice Status:</strong> " + status + "</p>";
+                "<p><strong>Ngày lập hóa đơn:</strong> " + date + "</p>" +
+                        "<p><strong>Họ tên khách hàng:</strong> " + customer + "</p>" +
+                        "<p><strong>Nhân viên lập hóa đơn:</strong> " + employee + "</p>" +
+                        "<p><strong>Trạng thái hóa đơn:</strong> " + status + "</p>";
         return result;
     }
 
@@ -161,17 +162,17 @@ public class InvoicePrinter {
                         "</head>" +
                         "<body>" +
                         "<div class=\"invoice-container\">" +
-                        "<h2>Customer Invoice</h2>" +
+                        "<h2>Hóa đơn đồ ăn</h2>" +
                         detailFoodOrder +
                         "<table>" +
                         "<thead>" +
                         "<tr>" +
-                        "<th>Order Number</th>" +
-                        "<th>Item Code</th>" +
-                        "<th>Item Name</th>" +
-                        "<th>Amount</th>" +
-                        "<th>Unit Price</th>" +
-                        "<th>Total Money</th>" +
+                        "<th>Số thứ tự</th>" +
+                        "<th>Mã sản phẩm</th>" +
+                        "<th>Tên sản phẩm</th>" +
+                        "<th>Số lượng</th>" +
+                        "<th>Đơn giá</th>" +
+                        "<th>Thành tiền</th>" +
                         "</tr>" +
                         "</thead>" +
                         foodRows +
@@ -238,15 +239,15 @@ public class InvoicePrinter {
                         "</head>" +
                         "<body>" +
                         "<div class=\"invoice-container\">" +
-                        "<h2>Session Invoice</h2>" +
+                        "<h2>Hóa đơn phiên chơi</h2>" +
                         "<table>" +
-                        "<tr><th>Room</th><td>" + infoRoom + "</td></tr>" +
-                        "<tr><th>Computer</th><td>" + infoComputer + "</td></tr>" +
-                        "<tr><th>Price/Hour</th><td>" + infoPricePerHours + "</td></tr>" +
-                        "<tr><th>Start Time</th><td>" + startTime + "</td></tr>" +
-                        "<tr><th>End Time</th><td>" + endTime + "</td></tr>" +
-                        "<tr><th>Total Play Time</th><td>" + totalTimePlay + "</td></tr>" +
-                        "<tr><th>Total Cost</th><td>" + totalCost + "</td></tr>" +
+                        "<tr><th>Phòng chơi</th><td>" + infoRoom + "</td></tr>" +
+                        "<tr><th>Máy tính</th><td>" + infoComputer + "</td></tr>" +
+                        "<tr><th>Giá tiền mỗi giờ</th><td>" + infoPricePerHours + "</td></tr>" +
+                        "<tr><th>Chơi vào lúc</th><td>" + startTime + "</td></tr>" +
+                        "<tr><th>Tắt máy vào lúc</th><td>" + endTime + "</td></tr>" +
+                        "<tr><th>Tổng thời gian chơi</th><td>" + totalTimePlay + "</td></tr>" +
+                        "<tr><th>Tổng tiền</th><td>" + totalCost + "</td></tr>" +
                         "</table>" +
                         "</div>" +
                         "</body>" +
